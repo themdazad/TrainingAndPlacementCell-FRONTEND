@@ -20,8 +20,8 @@ import { useState } from "react";
 import ThemeSwitch from "../ui/ThemeSwitch";
 
 const isLogedIn = {
-  admin: false,
-  student: true,
+  admin: true,
+  student: false,
 }; // This is a dummy variable, you can replace it with your authentication logic
 const student = {
   name: "",
@@ -69,7 +69,7 @@ export default function NavigationBar() {
       {/* Menu Items for Desktop */}
       <NavbarContent className="hidden space-x-2 sm:flex" justify="center">
         {renderNavItems()}
-        {isLogedIn.admin && isLogedIn.student ? (
+        {!isLogedIn.admin && !isLogedIn.student ? (
           <NavbarItem>
             <Dropdown>
               <DropdownTrigger>
