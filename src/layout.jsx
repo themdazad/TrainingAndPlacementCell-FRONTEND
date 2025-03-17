@@ -12,10 +12,10 @@ import { useState, useEffect, useContext } from "react";
 import { ProgramCards } from "./pages/programs-page/Programs";
 import NeedSupport from "./components/NeedSupport/NeedSupport";
 import GradientTracking from "./components/ui/GradientTracking";
-import GooglesheetContext from "./hooks/useContext/contexts/googlesheet-context/GooglesheetContext";
-import NewsNoticeProvider from "./hooks/useContext/providers/googlesheet-provider/news-notice-provider";
 import SimpleSlider from "./components/ui/SimpleSlider";
 import { AnimatedBackground } from "./components/ui/AnimatedBackground";
+import GooglesheetContext from "./contexts/google-sheets/GooglesheetContext";
+import NewsNoticeProvider from "./contexts/google-sheets/news-notice-provider";
 
 export default function Layout() {
   return (

@@ -1,4 +1,4 @@
-import GooglesheetContext from "../../hooks/useContext/contexts/googlesheet-context/GooglesheetContext";
+import GooglesheetContext from "../../contexts/google-sheets/GooglesheetContext";
 import { useContext, useEffect, useState } from "react";
 import { CirclePlus } from "lucide-react";
 import { FaClock, FaLocationDot } from "react-icons/fa6";

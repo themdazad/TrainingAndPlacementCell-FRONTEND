@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 // auth Pages
 import Careers from "./pages/careers/careers.jsx";
@@ -11,9 +11,12 @@ import Layout, { FAQ } from "./layout";
 
 import Contact from "./pages/contact-page/contact.jsx";
 import AdminDashboard from "./pages/dashboard/admin/admin-dashboard.jsx";
-import StudentDashboard from "./pages/dashboard/student/student-dashboard.jsx";
+import StudentDashboard from "./pages/dashboard/student/dashboard.jsx";
+import AuthContext from "./contexts/auth/AuthContext.jsx";
+import { useState, useContext } from "react";
 
 export default function Path() {
+  const [isLogedIn, setAuth] = useState(useContext(AuthContext));
   return (
     <Routes>
       {/* Top-Level Routes | PUBLIC  */}
@@ -24,7 +27,6 @@ export default function Path() {
         <Route path="contact" element={<Contact />} />
         <Route path="faq" element={<FAQ />} />
       </Route>
-
       {/* auth | ADMIN + STUDENT */}
       <Route path="/auth">
         <Route path="admin">
@@ -37,11 +39,28 @@ export default function Path() {
           <Route path="register" element={<StudentRegister />}></Route>
         </Route>
       </Route>
-
       {/* Dashboard | ADMIN + STUDENT */}
       <Route path="/dashboard">
-        <Route path="admin" element={<AdminDashboard />} />
-        <Route path="student" element={<StudentDashboard />} />
+        <Route
+          path="admin"
+          element={
+            isLogedIn.admin ? (
+              <AdminDashboard />
+            ) : (
+              <Navigate to="/auth/admin/login" />
+            )
+          }
+        />
+        <Route
+          path="student"
+          element={
+            isLogedIn.student ? (
+              <StudentDashboard />
+            ) : (
+              <Navigate to="/auth/student/login" />
+            )
+          }
+        />
       </Route>
     </Routes>
   );

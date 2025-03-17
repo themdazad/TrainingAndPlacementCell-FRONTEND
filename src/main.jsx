@@ -7,14 +7,14 @@ import "./styles/AnimatedBackground.css";
 import { BrowserRouter } from "react-router-dom";
 import NavigationBar from "./components/header-footer/NavigationBar.jsx";
 import { Footer } from "./components/header-footer/Footer.jsx";
-import ProgramsProvider from "./hooks/useContext/providers/googlesheet-provider/programs-provider.jsx";
-
-// import AuthProvider from "./contexts/auth/AuthProvider.js";
+// contexts
+import ProgramsProvider from "./contexts/google-sheets/programs-provider.jsx";
+import AuthProvider from "./contexts/auth/AuthProvider.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
- 
-    <HeroUIProvider>
-      <BrowserRouter>
+  <HeroUIProvider>
+    <BrowserRouter>
+      <AuthProvider>
         <ProgramsProvider>
           <main className="dark:dark text-foreground bg-background dark:bg-[#111112] bg-[url('/images/blur_bg.png')] bg-cover">
             <NavigationBar />
@@ -22,7 +22,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             <Footer />
           </main>
         </ProgramsProvider>
-      </BrowserRouter>
-    </HeroUIProvider>
- 
+      </AuthProvider>
+    </BrowserRouter>
+  </HeroUIProvider>
 );

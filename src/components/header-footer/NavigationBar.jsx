@@ -16,13 +16,10 @@ import {
 } from "@heroui/react";
 import { Users } from "lucide-react";
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import ThemeSwitch from "../ui/ThemeSwitch";
+import AuthContext from "../../contexts/auth/AuthContext";
 
-const isLogedIn = {
-  admin: true,
-  student: false,
-}; // This is a dummy variable, you can replace it with your authentication logic
 const student = {
   name: "",
   role: "",
@@ -30,6 +27,7 @@ const student = {
 }; // This is a dummy variable, you can replace it with your authentication logic
 
 export default function NavigationBar() {
+  const [isLogedIn, setIsLogedIn] = useState(useContext(AuthContext))
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
