@@ -5,8 +5,8 @@ import "./styles/index.css";
 import "./styles/MouseCursorGradientTracking.css"
 import "./styles/AnimatedBackground.css";
 import { BrowserRouter } from "react-router-dom";
-import NavigationBar from "./components/common/NavigationBar.jsx";
-import { Footer } from "./components/common/Footer.jsx";
+import NavigationBar from "./components/header-footer/NavigationBar.jsx";
+import { Footer } from "./components/header-footer/Footer.jsx";
 import ProgramsProvider from "./hooks/useContext/providers/googlesheet-provider/programs-provider.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(

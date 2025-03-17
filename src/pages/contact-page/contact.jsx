@@ -4,7 +4,7 @@ import { TPOCoordinators } from "./TPOCoordinators";
 import { FaDownload } from "react-icons/fa6";
 import { FacultyInCharge } from "./FacultyInCharge";
 
-const ContactPage = () => {
+const Contact = () => {
   return (
     <section className="max-w-[1920px] m-auto  md:px-[10%] px-[5%] gap-y-12 py-8 ">
       <div className="space-y-[80px]">
@@ -49,7 +49,7 @@ const ContactPage = () => {
     </section>
   );
 };
-export default ContactPage;
+export default Contact;
 
 export const Contact_Section = () => {
   return (

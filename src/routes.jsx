@@ -1,34 +1,48 @@
 import { Routes, Route } from "react-router-dom";
-// Pages
+
+// auth Pages
+import Careers from "./pages/careers/careers.jsx";
+import AdminLogin from "./pages/auth/admin/login.jsx";
+import AdminRegister from "./pages/auth/admin/register.jsx";
+import StudentLogin from "./pages/auth/student/login.jsx";
+import StudentRegister from "./pages/auth/student/register.jsx";
 import Programs from "./pages/programs-page/Programs.jsx";
 import Layout, { FAQ } from "./layout";
-import ContactPage from "./pages/contact-page/contact.jsx";
-// Authentication Pages
-import LoginPage from "./pages/authentication/login/login.jsx";
-import { Dashboard } from "./pages/authentication/dashboard/admin-dashboard/adminDashboard.jsx";
-import Careers from "./pages/careers/careers.jsx";
-import { DeveloperCredit } from "./pages/developer-credit.jsx";
 
-const isSignin = false;
+import Contact from "./pages/contact-page/contact.jsx";
+import AdminDashboard from "./pages/dashboard/admin/admin-dashboard.jsx";
+import StudentDashboard from "./pages/dashboard/student/student-dashboard.jsx";
 
 export default function Path() {
   return (
     <Routes>
-      {/* default home page  */}
+      {/* Top-Level Routes | PUBLIC  */}
       <Route path="/" element={<Layout />} />
-      {/* Private Routes */}
-      {isSignin && <Route path="/dashboard" element={<Dashboard />} /> }
+      <Route path="/">
+        <Route path="programs" element={<Programs />} />
+        <Route path="careers" element={<Careers />} />
+        <Route path="contact" element={<Contact />} />
+        <Route path="faq" element={<FAQ />} />
+      </Route>
 
+      {/* auth | ADMIN + STUDENT */}
+      <Route path="/auth">
+        <Route path="admin">
+          <Route path="login" element={<AdminLogin />}></Route>
+          <Route path="register" element={<AdminRegister />}></Route>
+        </Route>
 
-      {/* Public Page Routes  */}
-      <Route path="/programs" element={<Programs />} />
-      <Route path="/careers" element={<Careers />} />
-      <Route path="/contact" element={<ContactPage />} />
-      <Route path="/faq" element={<FAQ />} />
-      <Route path="/login" element={<LoginPage />} />
+        <Route path="student">
+          <Route path="login" element={<StudentLogin />}></Route>
+          <Route path="register" element={<StudentRegister />}></Route>
+        </Route>
+      </Route>
 
-      {/* Footer Routes */}
-      <Route path="/developer-credit" element={<DeveloperCredit />} />
+      {/* Dashboard | ADMIN + STUDENT */}
+      <Route path="/dashboard">
+        <Route path="admin" element={<AdminDashboard />} />
+        <Route path="student" element={<StudentDashboard />} />
+      </Route>
     </Routes>
   );
 }
