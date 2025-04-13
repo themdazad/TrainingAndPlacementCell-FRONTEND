@@ -14,7 +14,7 @@ import {
   User,
   Tooltip,
 } from "@heroui/react";
-import { Users } from "lucide-react";
+import { Users,UserRound, UsersRound } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { useState, useContext } from "react";
 import ThemeSwitch from "../ui/ThemeSwitch";
@@ -33,8 +33,9 @@ export default function NavigationBar() {
   const navItems = [
     { title: "Home", navigate: "/" },
     { title: "Programs", navigate: "programs" },
-    { title: "FAQ", navigate: "faq" },
-    { title: "Contact", navigate: "contact" },
+    { title: "Placements", navigate: "placements" },
+    { title: "Gallery", navigate: "gallery" },
+    { title: "Careers", navigate: "careers" },
   ];
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
@@ -61,7 +62,7 @@ export default function NavigationBar() {
             T&P Cell
           </NavLink>
         </NavbarBrand>
-        <NavbarMenuToggle className="sm:hidden" onPress={toggleMenu} />
+        <NavbarMenuToggle className="sm:hidden" onPress={toggleMenu} /> 
       </NavbarContent>
 
       {/* Menu Items for Desktop */}
@@ -84,7 +85,7 @@ export default function NavigationBar() {
                   as={NavLink}
                   to="/auth/admin/register"
                   key="admin"
-                  startContent={<User />}
+                  startContent={<UserRound />}
                 >
                   Admin
                 </DropdownItem>
@@ -93,7 +94,7 @@ export default function NavigationBar() {
                   to="/auth/student/register"
                   className="flex justify-center"
                   key="student"
-                  startContent={<Users />}
+                  startContent={<UsersRound />}
                 >
                   Students
                 </DropdownItem>
@@ -152,7 +153,7 @@ export default function NavigationBar() {
               as={NavLink}
               to="/auth/admin/register"
               key="admin"
-              startContent={<User />}
+              startContent={<UserRound />}
               onPress={toggleMenu}
             >
               Admin
@@ -162,7 +163,7 @@ export default function NavigationBar() {
               to="/auth/student/register"
               className="flex justify-center"
               key="student"
-              startContent={<Users />}
+              startContent={<UsersRound />}
               onPress={toggleMenu}
             >
               Students
@@ -170,7 +171,7 @@ export default function NavigationBar() {
           </DropdownMenu>
         </Dropdown>
       </NavbarMenu>
-      <ThemeSwitch />
+   
     </Navbar>
   );
 }

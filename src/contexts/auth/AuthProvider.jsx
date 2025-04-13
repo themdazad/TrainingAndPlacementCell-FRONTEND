@@ -1,8 +1,10 @@
 import AuthContext from "./AuthContext";
 
+const isAdminLoggedin = localStorage.getItem("isAdminLoggedin");
+
 const isLogedIn = {
     admin: false,
-    student: true,
+    student: false,
   };
 
 const AuthProvider = ({ children }) => {

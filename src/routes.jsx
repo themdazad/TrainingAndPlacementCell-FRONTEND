@@ -1,4 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
+import { useState, useContext } from "react";
 
 // auth Pages
 import Careers from "./pages/careers/careers.jsx";
@@ -10,10 +11,13 @@ import Programs from "./pages/programs-page/Programs.jsx";
 import Layout, { FAQ } from "./layout";
 
 import Contact from "./pages/contact-page/contact.jsx";
-import AdminDashboard from "./pages/dashboard/admin/admin-dashboard.jsx";
-import StudentDashboard from "./pages/dashboard/student/dashboard.jsx";
+import AdminDashboard from "./pages/dashboard/admin";
+import StudentDashboard from "./pages/dashboard/student";
 import AuthContext from "./contexts/auth/AuthContext.jsx";
-import { useState, useContext } from "react";
+import Gallery from "./pages/gallery/index.jsx";
+
+// Private Route
+import PrivateRoute from "./components/auth/PrivateRoute.jsx";
 
 export default function Path() {
   const [isLogedIn, setAuth] = useState(useContext(AuthContext));
@@ -24,9 +28,11 @@ export default function Path() {
       <Route path="/">
         <Route path="programs" element={<Programs />} />
         <Route path="careers" element={<Careers />} />
+        <Route path="gallery" element={<Gallery />} />
         <Route path="contact" element={<Contact />} />
         <Route path="faq" element={<FAQ />} />
       </Route>
+
       {/* auth | ADMIN + STUDENT */}
       <Route path="/auth">
         <Route path="admin">
@@ -39,26 +45,23 @@ export default function Path() {
           <Route path="register" element={<StudentRegister />}></Route>
         </Route>
       </Route>
+
       {/* Dashboard | ADMIN + STUDENT */}
       <Route path="/dashboard">
         <Route
           path="admin"
           element={
-            isLogedIn.admin ? (
+            <PrivateRoute>
               <AdminDashboard />
-            ) : (
-              <Navigate to="/auth/admin/login" />
-            )
+            </PrivateRoute>
           }
         />
         <Route
           path="student"
           element={
-            isLogedIn.student ? (
+            <PrivateRoute>
               <StudentDashboard />
-            ) : (
-              <Navigate to="/auth/student/login" />
-            )
+            </PrivateRoute>
           }
         />
       </Route>

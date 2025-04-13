@@ -1,6 +1,6 @@
 import { Button, Card, CardBody, Input } from "@heroui/react";
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect} from "react";
 
 const AdminRegister = () => {
   const [username, setUsername] = useState("");
@@ -8,6 +8,7 @@ const AdminRegister = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
+
 
   const handleRegister = async () => {
     if (password !== confirmPassword) {

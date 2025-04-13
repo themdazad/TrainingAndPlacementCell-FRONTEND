@@ -229,7 +229,7 @@ function NewsNoticeArea() {
     <div className="news-notice-container max-w-[1920px] m-auto px-[5%] grid md:grid-cols-2 gap-12 ">
       {/* Images carousel  */}
       <SimpleSlider/>
-      <div className="news-notice-area  border hover:border-1 border-gray-500/20  hover:border-sky-500/50 rounded-3xl  p-3 md:p-6 ">
+      <div className="news-notice-area  border hover:border-1 border-gray-500/20 rounded-3xl  p-3 md:p-6 ">
         <h2 className="news-notice-heading text-xl sm:text-2xl md:text-3xl mt-2 flex max-md:justify-center gap-x-2 items-center font-bold">
          Notifications <Bell />
         </h2>
@@ -242,13 +242,13 @@ function NewsNoticeArea() {
                 key={index}
                 href={data.pdf_link}
                 target="_blank"
-                className="news-notice-row transition-all duration-300 flex flex-col items-start py-2 "
+                className="news-notice-row transition-all duration-300 flex flex-col items-start py-1 "
               >
                 <div className="tags space-x-2 ">
-                <span className="news-notice-card-tag text-[12px] bg-zinc-500/20 backdrop-blur-lg border-1  border-zinc-500/50  rounded-3xl px-[0.8em] py-[0.4em] ">
+                <span className="news-notice-card-tag text-[12px] bg-zinc-500/20 backdrop-blur-lg border-1  border-zinc-500/50  rounded-3xl px-[0.6em] py-[0.2em] ">
                   {data.date}
                 </span>
-                <span className="news-notice-card-tag text-[12px] backdrop-blur-lg border-1  border-sky-500/50  rounded-3xl px-[0.8em] py-[0.4em] ">
+                <span className="news-notice-card-tag text-[12px] backdrop-blur-lg border-1  border-sky-500/50  rounded-3xl px-[0.6em] py-[0.2em] ">
                   {data.tag}
                 </span>
                 </div>

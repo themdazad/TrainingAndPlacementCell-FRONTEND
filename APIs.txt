@@ -1,0 +1,6 @@
+Admin register API
+http://localhost:5000/auth/admin/registration
+adminregister  Schema -> name,email,password,registrationNo,phone,department,collegeName,profileImageUrl,role,
+
+http://localhost:5000/auth/admin/login
+adminLoginSchema ->  email, password
