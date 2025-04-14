@@ -16,7 +16,7 @@ const AdminLogin = () => {
     try {
       // Replace with your actual API endpoint
       const response = await axios.post(
-        "http://localhost:3000/test/admin/login",
+        `${import.meta.env.VITE_API_BASE_URL}/api/auth/admin/login`,
         {
           email,
           password,

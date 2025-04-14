@@ -14,8 +14,6 @@ const PrivateRoute = ({ children }) => {
     }
   }, [studentToken]);
 
-  if (isValid === null) return <div>Checking...</div>; // Optional loader
-
   return isValid ? children : <Navigate to="/auth/student/login" />;
 };
 

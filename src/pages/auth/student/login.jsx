@@ -16,7 +16,7 @@ const StudentLogin = () => {
     try {
       // Replace with your actual API endpoint
       const response = await axios.post(
-        `${import.meta.env.VITE_API_BASE_URL}/auth/student/login`,
+        `${import.meta.env.VITE_API_BASE_URL}/api/auth/student/login`,
         {
           registrationNo,
           password,
