@@ -73,7 +73,7 @@ export default function NavigationBar() {
             <Dropdown>
               <DropdownTrigger>
                 <Button radius="lg" variant="bordered">
-                  Signup
+                  Login
                 </Button>
               </DropdownTrigger>
               <DropdownMenu
@@ -91,7 +91,7 @@ export default function NavigationBar() {
                 </DropdownItem>
                 <DropdownItem
                   as={NavLink}
-                  to="/auth/student/register"
+                  to="/auth/student/login"
                   className="flex justify-center"
                   key="student"
                   startContent={<UsersRound />}
