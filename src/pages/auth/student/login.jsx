@@ -12,9 +12,14 @@ const StudentLogin = () => {
 
   const handleLogin = async () => {
     setLoading(true);
-    // login process
+  
+    if (!registrationNo || !password) {
+      toast.error("Please fill in all fields");
+      setLoading(false);
+      return;
+    }
+  
     try {
-      // Replace with your actual API endpoint
       const response = await axios.post(
         `${import.meta.env.VITE_API_BASE_URL}/api/auth/student/login`,
         {
@@ -22,18 +27,17 @@ const StudentLogin = () => {
           password,
         }
       );
-
-      if (response.status) {
-        // saving response data to localStorage 
-        localStorage.setItem("isStudentLoggedin",JSON.stringify(response.data) );
-              
+  
+      if (response.status === 200 && response.data.token) {
         toast.success("Logged in");
+        // Save token and optional info
+        localStorage.setItem("Token", response.data.token);
+  
         navigate("/dashboard/student");
       } else {
-        toast.error("Incorrect Registration No or Password!");
+        toast.error("Invalid credentials!");
       }
     } catch (error) {
-      // Handle errors
       toast.error(
         `Login Failed: ${
           error.response?.data?.message || error.message || "An error occurred"
@@ -43,17 +47,8 @@ const StudentLogin = () => {
       setLoading(false);
     }
   };
+  
 
- /*  // useEffect to check if user is already logged in
-  useEffect(() => {
-    const isStudentLoggedin = JSON.parse(
-      localStorage.getItem("isStudentLoggedin")
-    );
-    if (isStudentLoggedin) {
-      navigate("/dashboard/student");
-    }
-  }, [navigate]); // Empty dependency array, so this runs only once when component mounts
- */
   return (
     <div className="flex items-center justify-center min-h-screen">
       <ToastContainer />

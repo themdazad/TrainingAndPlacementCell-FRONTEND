@@ -3,7 +3,7 @@ import AuthContext from "./AuthContext";
 const isAdminLoggedin = localStorage.getItem("isAdminLoggedin");
 
 const isLogedIn = {
-    admin: false,
+    admin: isAdminLoggedin,
     student: false,
   };
 
