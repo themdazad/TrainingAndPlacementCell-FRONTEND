@@ -1,40 +1,83 @@
 import { Button, Card, CardBody, Input } from "@heroui/react";
 import { NavLink } from "react-router-dom";
-import { useState, useEffect} from "react";
+import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import axios from "axios";
 
 const StudentRegister = () => {
-  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [registrationNo, setRegistrationNo] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-
   const handleRegister = async () => {
-    if (password !== confirmPassword) {
-      alert("Passwords do not match");
+  
+    // Start loading
+    setLoading(true);
+
+    // Validate inputs
+    if (!registrationNo || !password) {
+      toast.error("Please fill in all fields");
+      setLoading(false);
       return;
     }
-    setLoading(true);
-    // Simulate registration process
-    setTimeout(() => {
-      alert("Registration Successful");
+
+    try {
+
+      if (password !== confirmPassword) {
+        toast.warning("Passwords do not match");
+        return;
+      }
+
+      // Send login request
+      const res = await axios.post(
+        `${import.meta.env.VITE_API_BASE_URL}/api/auth/student/registration`,
+        {
+          name,
+          email,
+          phone,
+          registrationNo,
+          password,
+        }
+      );
+
+      // Handle successful login
+      if (res.status === 201) {
+        toast.success("Registration successfully done.");
+        localStorage.setItem("Token", res.data.token); // Save token
+        navigate("/dashboard/student"); // Redirect to dashboard
+      } else {
+        toast.error("Invalid credentials");
+      }
+    } catch (error) {
+      // Handle errors
+      const errorMessage =
+        error.response?.data?.message || error.message || "An error occurred";
+      toast.error(`${errorMessage}`);
+    } finally {
+      // Stop loading
       setLoading(false);
-    }, 1500);
+    }
   };
 
   return (
     <div className="flex items-center justify-center min-h-screen 00">
+      <ToastContainer />
       <Card className="w-full max-w-md p-6 shadow-lg rounded-2xl">
         <CardBody>
-          <h2 className="text-2xl font-bold text-center mb-6">Student Registration</h2>
+          <h2 className="text-2xl font-bold text-center mb-6">
+            Student Registration
+          </h2>
           <div className="space-y-4">
             <Input
               type="text"
-              label="Username"
-              placeholder="Enter your username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              label="Name"
+              placeholder="Enter your name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               className="w-full"
             />
             <Input
@@ -43,6 +86,22 @@ const StudentRegister = () => {
               placeholder="Enter your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              className="w-full"
+            />
+            <Input
+              type="Text"
+              label="Phone"
+              placeholder="Enter your registered phone number"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              className="w-full"
+            />
+            <Input
+              type="Text"
+              label="RegistrationNo"
+              placeholder="Enter your registration no."
+              value={registrationNo}
+              onChange={(e) => setRegistrationNo(e.target.value)}
               className="w-full"
             />
             <Input
@@ -65,12 +124,15 @@ const StudentRegister = () => {
               color="primary"
               className="w-full mt-4"
               isLoading={loading}
-              onClick={handleRegister}
+              onPress={handleRegister}
             >
               Register
             </Button>
             <div className="text-center mt-2">
-              <span className="text-gray-600">Already have an account?</span> <NavLink to="/auth/student/login" className="text-primary">Login</NavLink>
+              <span className="text-gray-600">Already have an account?</span>{" "}
+              <NavLink to="/auth/student/login" className="text-primary">
+                Login
+              </NavLink>
             </div>
           </div>
         </CardBody>

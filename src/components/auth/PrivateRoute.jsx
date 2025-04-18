@@ -4,19 +4,21 @@ import axios from "axios";
 
 const PrivateRoute = ({ children }) => {
   const [isValid, setIsValid] = useState(null);
-  const token = localStorage.getItem("Token"); // Make sure this is the JWT token
+  const token = localStorage.getItem("Token");
 
   useEffect(() => {
-    const validateToken = async () => {
+    const verifyToken = async () => {
       try {
         const res = await axios.post(
           `${import.meta.env.VITE_API_BASE_URL}/api/auth/verify-token`,
+          {}, // Empty body
           {
             headers: {
               Authorization: `Bearer ${token}`,
             },
           }
         );
+
         if (res.status === 200) {
           setIsValid(true);
         } else {
@@ -28,11 +30,15 @@ const PrivateRoute = ({ children }) => {
       }
     };
 
-    validateToken();
+    if (token) {
+      verifyToken();
+    } else {
+      setIsValid(false);
+    }
   }, [token]);
 
   if (isValid === null) {
-    return <div>Loading...</div>; // Optional loader
+    return <div>Loading...</div>; // Show a loading indicator while verifying
   }
 
   return isValid ? children : <Navigate to="/auth/student/login" />;

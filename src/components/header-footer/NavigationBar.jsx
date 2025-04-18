@@ -30,6 +30,8 @@ export default function NavigationBar() {
   const [isLogedIn, setIsLogedIn] = useState(useContext(AuthContext))
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const {admin, student} = isLogedIn;
+
   const navItems = [
     { title: "Home", navigate: "/" },
     { title: "Programs", navigate: "programs" },
@@ -68,7 +70,7 @@ export default function NavigationBar() {
       {/* Menu Items for Desktop */}
       <NavbarContent className="hidden space-x-2 sm:flex" justify="center">
         {renderNavItems()}
-        {!isLogedIn.admin && !isLogedIn.student ? (
+        {!admin && !student ? (
           <NavbarItem>
             <Dropdown>
               <DropdownTrigger>
@@ -104,7 +106,7 @@ export default function NavigationBar() {
         ) : null}
 
         {/* for admin dashboard  */}
-        {isLogedIn.admin ? (
+        {admin ? (
           <Tooltip content="Go To Dashboard" color="primary" closeDelay="100" showArrow={true}>
             <User
               as={NavLink}
@@ -118,7 +120,7 @@ export default function NavigationBar() {
           </Tooltip>
         ) : null}
         {/* for student dashboard */}
-        {isLogedIn.student ? (
+        {student ? (
           <Tooltip content="Go To Dashboard" color="primary" closeDelay="100" showArrow={true}>
             <User
               as={NavLink}
