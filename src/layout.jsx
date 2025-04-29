@@ -1,4 +1,4 @@
-import { Button} from "@heroui/react";
+import { Button } from "@heroui/react";
 import { Accordion, AccordionItem } from "@heroui/accordion";
 import {
   CircleArrowRight,
@@ -9,80 +9,19 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState, useEffect, useContext } from "react";
-import { ProgramCards } from "./pages/programs-page/Programs";
-import NeedSupport from "./components/NeedSupport/NeedSupport";
 import GradientTracking from "./components/ui/GradientTracking";
 import SimpleSlider from "./components/ui/SimpleSlider";
 import { AnimatedBackground } from "./components/ui/AnimatedBackground";
 import GooglesheetContext from "./contexts/google-sheets/GooglesheetContext";
+import { ProgramCards } from "./pages/programs-page/Programs";
 import NewsNoticeProvider from "./contexts/google-sheets/news-notice-provider";
 
 export default function Layout() {
   return (
-    <main className=" overflow-hidden min-h-screen">
+    <main className="overflow-hidden min-h-screen">
       {/* Hero Section */}
       <AnimatedBackground />
-
-      <header className="md:min-h-[50em] max-md:py-12 context grid place-content-center m-auto text-center px-[5%]">
-        <div className=" flex flex-col place-content-center ">
-          <div className="grid justify-items-center max-sm:gap-[1em]">
-            <motion.div
-              className="tracking-tight font-bold "
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <p className="block text-5xl  md:text-6xl lg:text-8xl">
-                Training and <br /> Placement Cell
-              </p>
-              <br />
-              <p className="block text-xl mt-1 sm:text-3xl md:text-5xl ">
-                Government Engineering College, Siwan
-                {/* राजकीय अभियंत्रण महाविद्यालय, सिवान  */}
-              </p>
-            </motion.div>
-            <motion.p
-              className="mt-3 text-base sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-lg lg:mx-0"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-            >
-              We focus on the holistic development of our students by offering
-              regular workshops, technical training, and personality development
-              sessions.
-            </motion.p>
-            <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-center">
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.6 }}
-              >
-                <Button
-                  endContent={<CircleArrowRight />}
-                  radius="full"
-                  size="lg"
-                  color="primary"
-                  variant="flat"
-                >
-                  <a href="#">Campus Placement 2025</a>
-                </Button>
-                <Button
-                  endContent={<CloudDownload />}
-                  radius="full"
-                  size="lg"
-                  color="warning"
-                  variant="bord"
-                >
-                  <a href="#">Brochure</a>
-                </Button>
-              </motion.div>
-            </div>
-          </div>
-          <ChevronDown className="sm:hidden self-center mt-[6em]" />
-          <Mouse className="max-md:hidden self-center mt-[6em]" />
-        </div>
-      </header>
-
+      <HeroSection />
       {/* News/Notice Area */}
       <NewsNoticeProvider>
         <NewsNoticeArea />
@@ -189,7 +128,7 @@ export default function Layout() {
         </div>
       </section>
 
-      {/* upcoming events and programs Section  */}
+{/* upcoming events and programs Section  */}
       <section className="py-12">
         <div className="max-w-[1920px] m-auto  px-[5%]">
           <div className="tittle-bar flex items-center mb-[2rem] gap-6">
@@ -205,12 +144,80 @@ export default function Layout() {
         </div>
       </section>
 
+
       {/* FAQ  */}
       <FAQ />
-
-      {/* Need Supports  */}
-      <NeedSupport />
     </main>
+  );
+}
+
+function HeroSection() {
+  return (
+    <header className="md:min-h-[50em] max-md:py-12 grid place-content-center m-auto text-center px-[5%]">
+      <div className="flex flex-col place-content-center">
+        <div className="grid justify-items-center max-sm:gap-[1em]">
+          {/* Title and Subtitle */}
+          <motion.div
+            className="tracking-tight font-bold"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <p className="block text-5xl md:text-6xl lg:text-8xl">
+              Training and <br /> Placement Cell
+            </p>
+            <br />
+            <p className="block text-xl mt-1 sm:text-3xl md:text-5xl">
+              Government Engineering College, Siwan
+            </p>
+          </motion.div>
+
+          {/* Description */}
+          <motion.p
+            className="mt-3 text-base sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-lg lg:mx-0"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          >
+            We focus on the holistic development of our students by offering
+            regular workshops, technical training, and personality development
+            sessions.
+          </motion.p>
+
+          {/* Buttons */}
+          <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-center">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+            >
+              <Button
+                endContent={<CircleArrowRight />}
+                radius="full"
+                size="lg"
+                color="primary"
+                variant="flat"
+              >
+                <a href="#">Campus Placement 2025</a>
+              </Button>
+              <Button
+                endContent={<CloudDownload />}
+                radius="full"
+                size="lg"
+                color="warning"
+                variant="bord"
+              >
+                <a href="#">Brochure</a>
+              </Button>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Scroll Indicators */}
+        <ChevronDown className="sm:hidden self-center mt-[6em]" />
+        <Mouse className="max-md:hidden self-center mt-[6em]" />
+      </div>
+    </header>
   );
 }
 
@@ -228,12 +235,12 @@ function NewsNoticeArea() {
   return (
     <div className="news-notice-container max-w-[1920px] m-auto px-[5%] grid md:grid-cols-2 gap-12 ">
       {/* Images carousel  */}
-      <SimpleSlider/>
+      <SimpleSlider />
       <div className="news-notice-area  border hover:border-1 border-gray-500/20 rounded-3xl  p-3 md:p-6 ">
         <h2 className="news-notice-heading text-xl sm:text-2xl md:text-3xl mt-2 flex max-md:justify-center gap-x-2 items-center font-bold">
-         Notifications <Bell />
+          Notifications <Bell />
         </h2>
-        
+
         {/* Mapping for upcoming data for latest news and notice   */}
         <div className="row-container  box-border my-[1em] max-h-[20rem] overflow-y-scroll overflow-x-hidden ">
           {response.reverse().map((data, index) => {
@@ -245,12 +252,12 @@ function NewsNoticeArea() {
                 className="news-notice-row transition-all duration-300 flex flex-col items-start py-1 "
               >
                 <div className="tags space-x-2 ">
-                <span className="news-notice-card-tag text-[12px] bg-zinc-500/20 backdrop-blur-lg border-1  border-zinc-500/50  rounded-3xl px-[0.6em] py-[0.2em] ">
-                  {data.date}
-                </span>
-                <span className="news-notice-card-tag text-[12px] backdrop-blur-lg border-1  border-sky-500/50  rounded-3xl px-[0.6em] py-[0.2em] ">
-                  {data.tag}
-                </span>
+                  <span className="news-notice-card-tag text-[12px] bg-zinc-500/20 backdrop-blur-lg border-1  border-zinc-500/50  rounded-3xl px-[0.6em] py-[0.2em] ">
+                    {data.date}
+                  </span>
+                  <span className="news-notice-card-tag text-[12px] backdrop-blur-lg border-1  border-sky-500/50  rounded-3xl px-[0.6em] py-[0.2em] ">
+                    {data.tag}
+                  </span>
                 </div>
 
                 <p className="news-notice-card-content max-sm:text-[14px] p-[0.5em] w-full overflow-ellipsis ">
@@ -261,7 +268,6 @@ function NewsNoticeArea() {
           })}
         </div>
       </div>
-      
     </div>
   );
 }
@@ -331,5 +337,6 @@ export function FAQ() {
         </Accordion>
       </div>
     </section>
-  );` 1ptfby hnjm,`
+  );
+  ` 1ptfby hnjm,`;
 }

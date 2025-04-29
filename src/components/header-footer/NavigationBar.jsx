@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-unused-vars
 import {
   Button,
   Navbar,
@@ -12,25 +11,38 @@ import {
   DropdownMenu,
   DropdownItem,
   User,
-  Tooltip,
+  Tooltip,  
 } from "@heroui/react";
-import { Users,UserRound, UsersRound } from "lucide-react";
-import { NavLink } from "react-router-dom";
-import { useState, useContext } from "react";
+import { UsersRound,MapPinned, UserRound, Briefcase, FileText, Mail } from "lucide-react";
+import { Image } from "@heroui/react";
+import { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/auth/AuthContext"; // Adjust path as needed
 import ThemeSwitch from "../ui/ThemeSwitch";
-import AuthContext from "../../contexts/auth/AuthContext";
-
-const student = {
-  name: "",
-  role: "",
-  registrationNo: "",
-}; // This is a dummy variable, you can replace it with your authentication logic
+import axios from 'axios'
 
 export default function NavigationBar() {
-  const [isLogedIn, setIsLogedIn] = useState(useContext(AuthContext))
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
-  const {admin, student} = isLogedIn;
+  // Access auth context
+  const {isLogedIn, setIsLogedIn } = useAuth();
+
+  // Handle Logout
+  const handleLogout = async () => {
+    try {
+      const res = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/logout`, {}, {
+        withCredentials: true,
+      });
+
+      if (res.status === 200) {
+        setIsLogedIn({ admin: false, student: false }); // Reset state
+        navigate("/");
+      }
+    } catch (error) {
+      console.error("Error during logout:", error);
+    }
+  };
 
   const navItems = [
     { title: "Home", navigate: "/" },
@@ -56,90 +68,166 @@ export default function NavigationBar() {
       </NavbarItem>
     ));
 
-  return (
-    <Navbar isMenuOpen={isMenuOpen} shouldHideOnScroll>
-      <NavbarContent>
-        <NavbarBrand>
-          <NavLink to="/" className="font-bold text-inherit">
-            T&P Cell
-          </NavLink>
-        </NavbarBrand>
-        <NavbarMenuToggle className="sm:hidden" onPress={toggleMenu} /> 
-      </NavbarContent>
-
-      {/* Menu Items for Desktop */}
-      <NavbarContent className="hidden space-x-2 sm:flex" justify="center">
-        {renderNavItems()}
-        {!admin && !student ? (
-          <NavbarItem>
-            <Dropdown>
-              <DropdownTrigger>
-                <Button radius="lg" variant="bordered">
-                  Login
-                </Button>
-              </DropdownTrigger>
-              <DropdownMenu
-                className="flex "
-                aria-label="Dropdown menu with icons"
-                variant="faded"
-              >
-                <DropdownItem
-                  as={NavLink}
-                  to="/auth/admin/register"
-                  key="admin"
-                  startContent={<UserRound />}
-                >
-                  Admin
-                </DropdownItem>
-                <DropdownItem
-                  as={NavLink}
-                  to="/auth/student/login"
-                  className="flex justify-center"
-                  key="student"
-                  startContent={<UsersRound />}
-                >
-                  Students
-                </DropdownItem>
-              </DropdownMenu>
-            </Dropdown>
-          </NavbarItem>
-        ) : null}
-
-        {/* for admin dashboard  */}
-        {admin ? (
-          <Tooltip content="Go To Dashboard" color="primary" closeDelay="100" showArrow={true}>
+  const renderUserSection = () => {
+    if (isLogedIn.admin) {
+      return (
+        <>
+          <Tooltip
+            content="Go To Dashboard"
+            color="primary"
+            closeDelay="100"
+            showArrow={true}
+          >
             <User
               as={NavLink}
               to="/dashboard/admin"
               avatarProps={{
                 src: "https://png.pngtree.com/png-clipart/20221219/original/pngtree-profile-locked-securely-cion-png-image_8781108.png",
               }}
-              description={student.registrationNo}
-              name={student.name}
+              description="Admin User"
+              name="Admin"
             />
           </Tooltip>
-        ) : null}
-        {/* for student dashboard */}
-        {student ? (
-          <Tooltip content="Go To Dashboard" color="primary" closeDelay="100" showArrow={true}>
+          <Button
+            radius="lg"
+            color="danger"
+            variant="bordered"
+            onPress={handleLogout}
+          >
+            Logout
+          </Button>
+        </>
+      );
+    }
+
+    if (isLogedIn.student) {
+      return (
+        <>
+          <Tooltip
+            content="Go To Dashboard"
+            color="primary"
+            closeDelay="100"
+            showArrow={true}
+          >
             <User
               as={NavLink}
               to="/dashboard/student"
               avatarProps={{
                 src: "https://avatars.githubusercontent.com/u/81636077?v=4",
               }}
-              description={student.registrationNo}
-              name={student.name}
+              description="Student User"
+              name="Student"
             />
           </Tooltip>
-        ) : null}
+          <Button
+            radius="lg"
+            color="danger"
+            variant="bordered"
+            onPress={handleLogout}
+          >
+            Logout
+          </Button>
+        </>
+      );
+    }
 
+    return (
+      <NavbarItem>
+        <Dropdown>
+          <DropdownTrigger>
+            <Button radius="lg" variant="bordered">
+              Login
+            </Button>
+          </DropdownTrigger>
+          <DropdownMenu
+            className="flex"
+            aria-label="Dropdown menu with icons"
+            variant="faded"
+          >
+            <DropdownItem
+              onPress={() => navigate("/auth/admin/login")}
+              key="admin"
+              startContent={<UserRound />}
+            >
+              Admin
+            </DropdownItem>
+            <DropdownItem
+              onPress={() => navigate("/auth/student/login")}
+              key="student"
+              startContent={<UsersRound />}
+            >
+              Students
+            </DropdownItem>
+          </DropdownMenu>
+        </Dropdown>
+      </NavbarItem>
+    );
+  };
 
+  const renderRecruiterDropdown = () => (
+    <NavbarItem>
+      <Dropdown>
+        <DropdownTrigger>
+          <Button radius="lg" variant="bordered">
+            For Recruiter
+          </Button>
+        </DropdownTrigger>
+        <DropdownMenu
+          className="flex"
+          aria-label="Dropdown menu for recruiters"
+          variant="faded"
+        >
+          <DropdownItem
+            as={NavLink}
+            to="/reach-siwan"
+            key="reach-siwan"
+            startContent={<MapPinned/>}
+          >
+            Reach Siwan
+          </DropdownItem>
+          <DropdownItem
+            as={NavLink}
+            to="/recruiter/view-applications"
+            key="view-applications"
+            startContent={<FileText />}
+          >
+            View Applications
+          </DropdownItem>
+          <DropdownItem
+            as={NavLink}
+            to="/recruiter/contact"
+            key="contact"
+            startContent={<Mail />}
+          >
+            Contact Us
+          </DropdownItem>
+        </DropdownMenu>
+      </Dropdown>
+    </NavbarItem>
+  );
 
+  return (
+    <Navbar className="py-4" isMenuOpen={isMenuOpen} shouldHideOnScroll>
+      <NavbarContent>
+        <NavbarBrand>
+          <NavLink to="/" className="font-bold py-4 text-inherit">
+            <Image className="dark:brightness-200" src="/images/gecsiwan-logo.png" height={80} width={80} />
+          </NavLink>
+        </NavbarBrand>
+        <NavbarMenuToggle className="sm:hidden" onPress={toggleMenu} />
       </NavbarContent>
+
+      {/* Menu Items for Desktop */}
+      <NavbarContent className="hidden space-x-2 sm:flex" justify="center">
+        {renderNavItems()}
+        {renderRecruiterDropdown()}
+        {renderUserSection()}
+      </NavbarContent>
+
       {/* Menu Items for Mobile */}
       <NavbarMenu className="items-center bg-transparent space-y-4 text-xl justify-center md:hidden sm:flex">
         {renderNavItems(true)}
+        {renderRecruiterDropdown()}
         <Dropdown>
           <DropdownTrigger>
             <Button radius="lg" variant="bordered">
@@ -147,7 +235,7 @@ export default function NavigationBar() {
             </Button>
           </DropdownTrigger>
           <DropdownMenu
-            className="flex "
+            className="flex"
             aria-label="Dropdown menu with icons"
             variant="faded"
           >
@@ -163,7 +251,6 @@ export default function NavigationBar() {
             <DropdownItem
               as={NavLink}
               to="/auth/student/register"
-              className="flex justify-center"
               key="student"
               startContent={<UsersRound />}
               onPress={toggleMenu}
@@ -173,7 +260,8 @@ export default function NavigationBar() {
           </DropdownMenu>
         </Dropdown>
       </NavbarMenu>
-   
+
+      <ThemeSwitch />
     </Navbar>
   );
 }

@@ -5,13 +5,13 @@ import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import Cookies from "js-cookie";
 
-const StudentLogin = () => {
+const ForgotPassword = () => {
   const navigate = useNavigate();
   const [regNo, setRegNo] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleLogin = async () => {
+  const handlePassword = async () => {
     // Start loading
     setLoading(true);
 
@@ -28,13 +28,12 @@ const StudentLogin = () => {
         `${import.meta.env.VITE_API_BASE_URL}/auth/student/login`,
         { regNo, password },
         {
-          withCredentials: true
+          withCredentials: true,
         }
       );
 
       // Handle successful login
       if (res.status === 200) {
-
         // Token automatically save in Cookies by backend
         toast.success("Logged in successfully");
         setTimeout(() => {
@@ -59,29 +58,31 @@ const StudentLogin = () => {
       <ToastContainer />
       <Card className="w-full max-w-md p-6 shadow-lg rounded-2xl">
         <CardBody>
-          <h2 className="text-2xl font-bold text-center mb-6">Student Login</h2>
+          <h2 className="text-2xl font-bold text-center mb-6">
+            Reset Password
+          </h2>
           <div>
             <form
               className="space-y-4"
               onSubmit={(e) => {
                 e.preventDefault();
-                handleLogin();
+                handlePassword();
               }}
             >
               <Input
                 type="text"
                 label="Registration No"
-                placeholder="Enter your registration number"
+                placeholder=""
                 value={regNo}
                 onChange={(e) => setRegNo(e.target.value)}
                 className="w-full"
               />
               <Input
-                type="password"
-                label="Password"
-                placeholder="Enter your password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                type="email"
+                label="Email"
+                placeholder=""
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="w-full"
               />
               <Button
@@ -90,13 +91,12 @@ const StudentLogin = () => {
                 className="w-full mt-4"
                 isLoading={loading}
               >
-                Login
+                Send OTP
               </Button>
             </form>
-
             <div className="text-center mt-4">
-              <Link href="/auth/student/forgot-password" color="primary">
-                Forgot Password?
+              <Link href="/auth/student/login" color="primary">
+                Login
               </Link>
             </div>
             <div className="text-center mt-2">
@@ -112,4 +112,4 @@ const StudentLogin = () => {
   );
 };
 
-export default StudentLogin;
+export default ForgotPassword;

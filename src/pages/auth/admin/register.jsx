@@ -1,6 +1,6 @@
 import { Button, Card, CardBody, Input } from "@heroui/react";
 import { NavLink } from "react-router-dom";
-import { useState, useEffect} from "react";
+import { useState} from "react";
 
 const AdminRegister = () => {
   const [username, setUsername] = useState("");
@@ -15,12 +15,7 @@ const AdminRegister = () => {
       alert("Passwords do not match");
       return;
     }
-    setLoading(true);
-    // Simulate registration process
-    setTimeout(() => {
-      alert("Registration Successful");
-      setLoading(false);
-    }, 1500);
+   
   };
 
   return (

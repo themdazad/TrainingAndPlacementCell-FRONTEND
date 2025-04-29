@@ -16,7 +16,7 @@ const AdminLogin = () => {
     try {
       // Replace with your actual API endpoint
       const response = await axios.post(
-        `${import.meta.env.VITE_API_BASE_URL}/api/auth/admin/login`,
+        `${import.meta.env.VITE_API_BASE_URL}/auth/admin/login`,
         {
           email,
           password,
@@ -73,7 +73,7 @@ const AdminLogin = () => {
               Login
             </Button>
             <div className="text-center mt-4">
-              <Link href="/forgot-password" color="primary">
+              <Link href="#" color="primary">
                 Forgot Password?
               </Link>
             </div>

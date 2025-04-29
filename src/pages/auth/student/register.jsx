@@ -1,14 +1,16 @@
 import { Button, Card, CardBody, Input } from "@heroui/react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate} from "react-router-dom";
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 
+
 const StudentRegister = () => {
+  const navigate = useNavigate(); // hook must be inside component
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [registrationNo, setRegistrationNo] = useState("");
+  const [regNo, setRegNo] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -19,7 +21,7 @@ const StudentRegister = () => {
     setLoading(true);
 
     // Validate inputs
-    if (!registrationNo || !password) {
+    if (!name || !email || !phone || !regNo || !password || !confirmPassword) {
       toast.error("Please fill in all fields");
       setLoading(false);
       return;
@@ -29,26 +31,28 @@ const StudentRegister = () => {
 
       if (password !== confirmPassword) {
         toast.warning("Passwords do not match");
+        setLoading(false);
         return;
       }
 
       // Send login request
       const res = await axios.post(
-        `${import.meta.env.VITE_API_BASE_URL}/api/auth/student/registration`,
+        `${import.meta.env.VITE_API_BASE_URL}/auth/student/register`,
         {
           name,
           email,
           phone,
-          registrationNo,
+          regNo,
           password,
         }
       );
 
       // Handle successful login
-      if (res.status === 201) {
+      if (res.data?.success || res.status < 300) {
         toast.success("Registration successfully done.");
-        localStorage.setItem("Token", res.data.token); // Save token
-        navigate("/dashboard/student"); // Redirect to dashboard
+        setTimeout(()=>{
+          navigate("/student/login"); // Redirect to student login page
+        },1000)
       } else {
         toast.error("Invalid credentials");
       }
@@ -89,7 +93,7 @@ const StudentRegister = () => {
               className="w-full"
             />
             <Input
-              type="Text"
+              type="text"
               label="Phone"
               placeholder="Enter your registered phone number"
               value={phone}
@@ -97,11 +101,11 @@ const StudentRegister = () => {
               className="w-full"
             />
             <Input
-              type="Text"
+              type="text"
               label="RegistrationNo"
               placeholder="Enter your registration no."
-              value={registrationNo}
-              onChange={(e) => setRegistrationNo(e.target.value)}
+              value={regNo}
+              onChange={(e) => setRegNo(e.target.value)}
               className="w-full"
             />
             <Input

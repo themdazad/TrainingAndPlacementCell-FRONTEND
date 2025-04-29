@@ -29,7 +29,9 @@ const ProgramsProvider = ({ children }) => {
     //fetching data using axios
     const fetchData = async () => {
       try {
-        const response = await axios.get( "https://docs.google.com/spreadsheets/d/e/2PACX-1vQl8ryQvd4otEGN24fOy0eWNudgr1zPRJtLC1x5xw0CoIb_6dEBns5hPZzLX9YzAV166dEZz-bMWfGm/pub?gid=0&single=true&output=csv" );
+        const response = await axios.get( "https://docs.google.com/spreadsheets/d/e/2PACX-1vQl8ryQvd4otEGN24fOy0eWNudgr1zPRJtLC1x5xw0CoIb_6dEBns5hPZzLX9YzAV166dEZz-bMWfGm/pub?gid=0&single=true&output=csv",{
+          withCredentials: true, // 🚫 Disable sending credentials (cookies, etc.)
+        } );
         setData(csvToJson(response.data));        
       } catch (err) {
         setError(err);

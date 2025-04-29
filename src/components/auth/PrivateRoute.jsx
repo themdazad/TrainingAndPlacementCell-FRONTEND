@@ -3,45 +3,33 @@ import { Navigate } from "react-router-dom";
 import axios from "axios";
 
 const PrivateRoute = ({ children }) => {
-  const [isValid, setIsValid] = useState(null);
-  const token = localStorage.getItem("Token");
+  const [isValid, setIsValid] = useState(false);
+  const [loading, setLoading] = useState(true); // To prevent premature redirect
 
   useEffect(() => {
     const verifyToken = async () => {
       try {
         const res = await axios.post(
-          `${import.meta.env.VITE_API_BASE_URL}/api/auth/verify-token`,
-          {}, // Empty body
+          `${import.meta.env.VITE_API_BASE_URL}/verify-token`,
+          {},
           {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
+            withCredentials: true,
           }
         );
-
-        if (res.status === 200) {
-          setIsValid(true);
-        } else {
-          setIsValid(false);
-        }
+        setIsValid(res.status === 200);
       } catch (err) {
-        console.error("Token verification failed:", err);
         setIsValid(false);
+      } finally {
+        setLoading(false);
       }
     };
 
-    if (token) {
-      verifyToken();
-    } else {
-      setIsValid(false);
-    }
-  }, [token]);
+    verifyToken();
+  }, []);
 
-  if (isValid === null) {
-    return <div>Loading...</div>; // Show a loading indicator while verifying
-  }
+  if (loading) return null; // Or show a spinner
 
-  return isValid ? children : <Navigate to="/auth/student/login" />;
+  return isValid ? children : <Navigate to="/" />;
 };
 
 export default PrivateRoute;
