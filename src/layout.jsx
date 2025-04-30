@@ -207,7 +207,7 @@ function HeroSection() {
                 color="warning"
                 variant="bord"
               >
-                <a href="#">Resume Template</a>
+                <a href="/files/GEC_Siwan_Official_Resume_Format.docx" target="_blank">Resume Template</a>
               </Button>
             </motion.div>
           </div>
