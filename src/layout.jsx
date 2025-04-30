@@ -13,7 +13,6 @@ import GradientTracking from "./components/ui/GradientTracking";
 import SimpleSlider from "./components/ui/SimpleSlider";
 import { AnimatedBackground } from "./components/ui/AnimatedBackground";
 import GooglesheetContext from "./contexts/google-sheets/GooglesheetContext";
-import { ProgramCards } from "./pages/programs-page/Programs";
 import NewsNoticeProvider from "./contexts/google-sheets/news-notice-provider";
 
 export default function Layout() {
@@ -128,23 +127,6 @@ export default function Layout() {
         </div>
       </section>
 
-{/* upcoming events and programs Section  */}
-      <section className="py-12">
-        <div className="max-w-[1920px] m-auto  px-[5%]">
-          <div className="tittle-bar flex items-center mb-[2rem] gap-6">
-            <h1 className="tittle-bar-heading text-xl sm:text-2xl md:text-3xl text-nowrap font-bold">
-              Latest Updates
-            </h1>
-            <span className="bg-gray-500/40 h-[2px] w-full" />
-          </div>
-          <div className="cards-container snap snap-x snap-mandatory overflow-hidden max-md:overflow-x-scroll max-md:flex gap-[2em]  ">
-            {/* auto loop map function  */}
-            <ProgramCards />
-          </div>
-        </div>
-      </section>
-
-
       {/* FAQ  */}
       <FAQ />
     </main>
@@ -190,6 +172,7 @@ function HeroSection() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.6 }}
+              className = "gap-2"
             >
               <Button
                 endContent={<CircleArrowRight />}
@@ -198,7 +181,7 @@ function HeroSection() {
                 color="primary"
                 variant="flat"
               >
-                <a href="#">Campus Placement 2025</a>
+                <a href="campus-placement-2025">Campus Placement 2025</a>
               </Button>
               <Button
                 endContent={<CloudDownload />}
@@ -236,7 +219,7 @@ function NewsNoticeArea() {
     <div className="news-notice-container max-w-[1920px] m-auto px-[5%] grid md:grid-cols-2 gap-12 ">
       {/* Images carousel  */}
       <SimpleSlider />
-      <div className="news-notice-area  border hover:border-1 border-gray-500/20 rounded-3xl  p-3 md:p-6 ">
+      <div className="news-notice-area  border hover:border-1 border-gray-500/20 rounded-xl  p-3 md:p-6 ">
         <h2 className="news-notice-heading text-xl sm:text-2xl md:text-3xl mt-2 flex max-md:justify-center gap-x-2 items-center font-bold">
           Notifications <Bell />
         </h2>
