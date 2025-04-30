@@ -185,17 +185,10 @@ export default function NavigationBar() {
           >
             Reach Siwan
           </DropdownItem>
+          
           <DropdownItem
             as={NavLink}
-            to="/recruiter/view-applications"
-            key="view-applications"
-            startContent={<FileText />}
-          >
-            View Applications
-          </DropdownItem>
-          <DropdownItem
-            as={NavLink}
-            to="/recruiter/contact"
+            to="/contact"
             key="contact"
             startContent={<Mail />}
           >
@@ -207,11 +200,11 @@ export default function NavigationBar() {
   );
 
   return (
-    <Navbar className="py-4" isMenuOpen={isMenuOpen} shouldHideOnScroll>
+    <Navbar className="py-2" isMenuOpen={isMenuOpen} shouldHideOnScroll>
       <NavbarContent>
         <NavbarBrand>
-          <NavLink to="/" className="font-bold py-4 text-inherit">
-            <Image className="dark:brightness-200" src="/images/gecsiwan-logo.png" height={80} width={80} />
+          <NavLink to="/" className="font-bold py-2 text-inherit">
+            <Image className="dark:brightness-200" src="/images/gecsiwan-logo.png" height={60} width={60} />
           </NavLink>
         </NavbarBrand>
         <NavbarMenuToggle className="sm:hidden" onPress={toggleMenu} />
@@ -261,7 +254,6 @@ export default function NavigationBar() {
         </Dropdown>
       </NavbarMenu>
 
-      <ThemeSwitch />
     </Navbar>
   );
 }

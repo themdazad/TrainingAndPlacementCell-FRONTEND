@@ -55,9 +55,9 @@ const StudentLogin = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
+    <div className="flex items-center justify-center min-h-[100dvh]">
       <ToastContainer />
-      <Card className="w-full max-w-md p-6 shadow-lg rounded-2xl">
+      <Card className="w-full max-w-md p-6 m-[5%] shadow-lg rounded-2xl">
         <CardBody>
           <h2 className="text-2xl font-bold text-center mb-6">Student Login</h2>
           <div>

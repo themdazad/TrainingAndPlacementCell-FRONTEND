@@ -9,7 +9,7 @@ export function Footer() {
     <>
       <Divider />
       <footer className="px-[5%] py-8 max-w-[1920px] m-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-sm text-gray-700 dark:text-gray-300">
+        <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 gap-4 text-sm text-gray-700 dark:text-gray-300">
           
           {/* Column 1 */}
           <div>
@@ -61,11 +61,11 @@ export function Footer() {
               target="_blank" 
               rel="noopener noreferrer"
             >
-              Azad | T&P Cell, GEC Siwan
+              GEC, Siwan
             </a>
           </p>
-          <NavLink to="/developer-credit" className="mt-2 md:mt-0">
-            <Code className="inline mr-1" /> Developer Credits
+          <NavLink to="https://www.linkedin.com/in/themdazad/" className="text-sm mt-2 md:mt-0">
+            <Code className="inline mr-1" />
           </NavLink>
         </div>
       </footer>

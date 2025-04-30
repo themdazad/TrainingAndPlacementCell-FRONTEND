@@ -32,7 +32,7 @@ const NewsNoticeProvider = ({children}) => {
         const response = await axios.get(
           "https://docs.google.com/spreadsheets/d/e/2PACX-1vQl8ryQvd4otEGN24fOy0eWNudgr1zPRJtLC1x5xw0CoIb_6dEBns5hPZzLX9YzAV166dEZz-bMWfGm/pub?gid=1871965751&single=true&output=csv",
           {
-            withCredentials: true, // 🚫 Disable sending credentials (cookies, etc.)
+            withCredentials: false, // 🚫 Disable sending credentials (cookies, etc.)
           }
         );
         setData(csvToJson(response.data));

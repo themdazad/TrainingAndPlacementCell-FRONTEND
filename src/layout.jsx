@@ -207,7 +207,7 @@ function HeroSection() {
                 color="warning"
                 variant="bord"
               >
-                <a href="#">Brochure</a>
+                <a href="#">Resume Template</a>
               </Button>
             </motion.div>
           </div>
