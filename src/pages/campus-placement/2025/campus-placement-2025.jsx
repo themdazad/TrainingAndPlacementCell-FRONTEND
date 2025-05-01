@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import { Image } from "@heroui/react";
 
 export default function CampusPlacements2025() {
-  const settings = {    
+  const settings = {
     infinite: true,
     slidesToShow: 6,
     slidesToScroll: 1,
@@ -26,14 +26,18 @@ export default function CampusPlacements2025() {
       </motion.div>
 
       {/* Placement Students*/}
-      <div className="placed-student bg-slate-400/40 p-3 rounded-xl ">
-        {/* title  */}
-        <div className="title text-xl font-bold ">
-          <h2>
-            Selected <span className="text-sky-600">2025</span>{" "}
-          </h2>
-          
-          
+      <div className="placed-student p-3 rounded-xl ">
+        <div className="student-profile-container border-1 rounded-xl p-3">
+          <div className="student-profile flex gap-3 flex-wrap">
+            <Image
+              className="min-h-[120px] max-h-[400px]"
+              src="https://media.licdn.com/dms/image/v2/D5622AQEzwjsOXFH1fA/feedshare-shrink_800/B56ZZ6Lp4yHUAg-/0/1745806601545?e=1749081600&v=beta&t=HxfA4uB_pz-ptygdirtcVnpb0cFkhbU8f5M4exHtcJc"
+            />
+            <Image
+              className="min-h-[120px] max-h-[400px]"
+              src="https://media.licdn.com/dms/image/v2/D4E22AQGECyUT2jXRRQ/feedshare-shrink_800/B4EZVkUmz.GYAg-/0/1741144924975?e=1749081600&v=beta&t=_LcnTJpmll5MBdKYenvG8AY85--TdeKbSCPtl99uJ2s"
+            />
+          </div>
         </div>
       </div>
     </section>
