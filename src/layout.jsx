@@ -14,6 +14,7 @@ import SimpleSlider from "./components/ui/SimpleSlider";
 import { AnimatedBackground } from "./components/ui/AnimatedBackground";
 import GooglesheetContext from "./contexts/google-sheets/GooglesheetContext";
 import NewsNoticeProvider from "./contexts/google-sheets/news-notice-provider";
+import { NavLink } from "react-router-dom";
 
 export default function Layout() {
   return (
@@ -172,26 +173,34 @@ function HeroSection() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.6 }}
-              className = "gap-2"
+              className="gap-2"
             >
               <Button
+                as={NavLink}
+                to="campus-placement-2025"
                 endContent={<CircleArrowRight />}
                 radius="full"
                 size="lg"
                 color="primary"
                 variant="flat"
               >
-                <a href="campus-placement-2025">Campus Placement 2025</a>
+                Campus Placement 2025
               </Button>
-              <Button
-                endContent={<CloudDownload />}
-                radius="full"
-                size="lg"
-                color="warning"
-                variant="bord"
+
+              <a
+                href="/files/GEC_Siwan_Official_Resume_Format.docx"
+                target="_blank"
               >
-                <a href="/files/GEC_Siwan_Official_Resume_Format.docx" target="_blank">Resume Template</a>
-              </Button>
+                <Button                  
+                  endContent={<CloudDownload />}
+                  radius="full"
+                  size="lg"
+                  color="warning"
+                  variant="bord"
+                >
+                  Resume Template
+                </Button>
+              </a>
             </motion.div>
           </div>
         </div>

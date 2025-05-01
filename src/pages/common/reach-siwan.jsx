@@ -3,7 +3,7 @@ import { Train } from "lucide-react";
 
 export default function ReachSiwan() {
   return (
-    <section className="min-h-[100dvh] max-w-[1440px] m-auto">
+    <section className="min-h-[100dvh] max-w-[1440px] px-[5%] m-auto">
       <div className="py-4 ">
         <h1 className="text-sky-400 text-xl ">HOW TO REACH GEC SIWAN ?</h1>
         <Divider />
