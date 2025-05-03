@@ -6,6 +6,7 @@ import "./styles/MouseCursorGradientTracking.css";
 import "./styles/AnimatedBackground.css";
 import { BrowserRouter } from "react-router-dom";
 import NavigationBar from "./components/header-footer/NavigationBar.jsx";
+import NavBar from "./components/NavBar.jsx";
 import { Footer } from "./components/header-footer/Footer.jsx";
 // contexts
 import ProgramsProvider from "./contexts/google-sheets/programs-provider.jsx";
@@ -18,7 +19,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <AuthProvider>
         <ProgramsProvider>
           <main className="dark:dark text-foreground bg-background dark:bg-[#111112] bg-[url('/images/blur_bg.png')] bg-cover">
-            <NavigationBar />
+            {/* add here navigation bar components */}
+            {/* <NavBar /> */}
+            <NavigationBar/>
             <Path /> {/* Router */}
             <Footer />
           </main>

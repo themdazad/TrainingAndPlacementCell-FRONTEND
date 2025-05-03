@@ -184,7 +184,7 @@ function HeroSection() {
                 color="primary"
                 variant="flat"
               >
-                Campus Placement 2025
+                Campus Placement 2025 
               </Button>
 
               <a
@@ -206,7 +206,7 @@ function HeroSection() {
         </div>
 
         {/* Scroll Indicators */}
-        <ChevronDown className="sm:hidden self-center mt-[6em]" />
+        <ChevronDown className="sm:hidden self-center mt-[2em]" />
         <Mouse className="max-md:hidden self-center mt-[6em]" />
       </div>
     </header>

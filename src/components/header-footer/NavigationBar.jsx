@@ -200,6 +200,7 @@ export default function NavigationBar() {
   );
 
   return (
+    <>
     <Navbar className="py-2" isMenuOpen={isMenuOpen} shouldHideOnScroll>
       <NavbarContent>
         <NavbarBrand>
@@ -254,6 +255,9 @@ export default function NavigationBar() {
         </Dropdown>
       </NavbarMenu>
 
+      <ThemeSwitch/>
     </Navbar>
+
+    </>
   );
 }
