@@ -3,9 +3,11 @@ import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
-import Cookies from "js-cookie";
+import { useContext } from "react";
+import AuthContext from "../../../contexts/auth/AuthContext";
 
 const StudentLogin = () => {
+  const { setIsLogedIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const [regNo, setRegNo] = useState("");
   const [password, setPassword] = useState("");
@@ -37,6 +39,7 @@ const StudentLogin = () => {
 
         // Token automatically save in Cookies by backend
         toast.success("Logged in successfully");
+        setIsLogedIn({ admin: false, student: true }); // Update context state
         setTimeout(() => {
           navigate("/dashboard/student"); // Redirect to dashboard
         }, 1000);

@@ -20,8 +20,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <ProgramsProvider>
           <main className="dark:dark text-foreground bg-background dark:bg-[#111112] bg-[url('/images/blur_bg.png')] bg-cover">
             {/* add here navigation bar components */}
-            {/* <NavBar /> */}
-            <NavigationBar/>
+            <NavBar />
+            {/* <NavigationBar/> */}
             <Path /> {/* Router */}
             <Footer />
           </main>
