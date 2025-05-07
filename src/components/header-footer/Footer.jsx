@@ -5,8 +5,8 @@ import { NavLink } from "react-router-dom";
 
 export function Footer() {
   return (
-    <section className="max-w-[1980px] px-[5%] lg:px-[10%] py-10 bg-gray-50 sm:pt-16 lg:pt-24">
-      <div className="">
+    <section className="max-w-[1980px] px-[5%] lg:px-[10%] py-10 bg-gray-50 sm:pt-16 lg">
+  
         <div className="grid grid-cols-2 md:col-span-3 lg:grid-cols-6 gap-y-16 gap-x-12">
           <div className="col-span-2 md:col-span-3 lg:col-span-2 lg:pr-8">
             <div className="brand-logo max-h-[100%] h-[80px] aspect-square">
@@ -161,9 +161,9 @@ export function Footer() {
           </div>
         </div>
 
-        <Divider className="mt-12 mb-8" />
+        <Divider className="mt-4 mb-2" />
 
-        <div className="text-sm text-center flex justify-center items-center gap-3 text-gray-600">
+        <div className="text-sm text-center flex flex-col md:flex-row justify-center items-center gap-3 text-gray-600">
           <p>
             © Copyright 2025, All Rights Reserved by{" "}
             <a
@@ -188,7 +188,6 @@ export function Footer() {
             />
           </a>
         </div>
-      </div>
     </section>
   );
 }

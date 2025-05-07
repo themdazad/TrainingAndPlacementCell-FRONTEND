@@ -21,7 +21,7 @@ import AnimatedLogoCloud from "./components/ui/AnimatedLogoCloud";
 export default function Layout() {
   return (
     <>
-      <section className="max-w-[1980px] px-[5%] md:px-[10%] m-auto py sm:py-16 lg:py-24">
+      <section className="max-w-[1980px] px-[5%] md:px-[10%] m-auto py sm:py-16">
         <div className="grid items-center py-12 grid-cols-1 gap-12 lg:grid-cols-2">
           <div>
             <p className="text-base font-semibold tracking-wider text-blue-600 uppercase">
@@ -37,7 +37,7 @@ export default function Layout() {
             <a
               href="#"
               title=""
-              className="inline-flex items-center px-6 py-4 mt-8 font-semibold text-black transition-all duration-200 bg-yellow-300 rounded-full lg:mt-16 hover:bg-yellow-400 focus:bg-yellow-400"
+              className="inline-flex items-center px-6 py-4 mt-8 font-semibold text-black transition-all duration-200 bg-blue-300 rounded-full lg:mt-16 hover:bg-blue-400 focus:bg-blue-400"
               role="button"
             >
               Apply for Campus Placement 2025

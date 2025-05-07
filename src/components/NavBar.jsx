@@ -12,48 +12,56 @@ const navItems = [
 ];
 
 export default function NavBar() {
-   const [isVisible, setIsVisible] = useState(true);
-   const [lastScrollY, setLastScrollY] = useState(0);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-   useEffect(() => {
-     const handleScroll = () => {
-       const currentScrollY = window.scrollY;
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
 
-       if (currentScrollY > lastScrollY && currentScrollY > 100) {
-         // Scrolling down and past 100px
-         setIsVisible(false);
-       } else {
-         // Scrolling up
-         setIsVisible(true);
-       }
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
 
-       setLastScrollY(currentScrollY);
-     };
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling down and past 100px
+        setIsVisible(false);
+      } else {
+        // Scrolling up
+        setIsVisible(true);
+      }
 
-     window.addEventListener("scroll", handleScroll);
+      setLastScrollY(currentScrollY);
+    };
 
-     return () => {
-       window.removeEventListener("scroll", handleScroll);
-     };
-   }, [lastScrollY]);
-   
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [lastScrollY]);
 
   return (
-    <nav className={`max-w-[1980px] sticky top-0 m-auto z-[99] ${
-          isVisible ? "translate-y-0" : "-translate-y-full"
-        } transition-all duration-500 ease-in-out`}>
+    <nav
+      className={`max-w-[1980px] sticky top-0 m-auto z-[99] ${
+        isVisible ? "translate-y-0" : "-translate-y-full"
+      } transition-all duration-500 ease-in-out`}
+    >
       {/* 1st row */}
       <header className="navHeader px-[5%] py-4 bg-white min-h-[100px] flex justify-between items-center">
         {/* top-left */}
         <div className="flex  items-center gap-[36px]">
-          <div className="brand-logo max-h-[80px] min-h-[40px] aspect-square">
+          <div className="brand-logo min-h-[40px] max-h-[64px] aspect-square">
             <Image src="./images/gecsiwan-logo.png" alt="gec-siwan-logo" />
           </div>
           <div className="title">
             <h1 className="text-xl md:text-3xl lg:text-3xl font-bold">
               Training and Placement Cell
             </h1>
-            <h3 className="">Government Engineering College, Siwan</h3>
+            <h3 className="">
+              Government Engineering College, Siwan Bihar-841226
+            </h3>
           </div>
         </div>
         {/* top-right */}
@@ -68,12 +76,12 @@ export default function NavBar() {
           </div>
           <div className="images flex gap-3">
             <Image
-              className="brand-logo border-1 border-black p-1 rounded-full min-h-[30px] max-h-[80px] aspect-square"
+              className="brand-logo border-1 border-black p-1 rounded-full min-h-[30px] max-h-[48px] aspect-square"
               src="./images/dstbihar-logo.png"
               alt="dstbihar-logo"
             />
             <Image
-              className="brand-logo min-h-[30px] max-h-[80px] aspect-square"
+              className="brand-logo min-h-[30px] max-h-[48px] aspect-square"
               src="./images/aicte-logo.png"
               alt="aicte-logo"
             />
@@ -132,7 +140,7 @@ export default function NavBar() {
               <NavLink
                 to="#"
                 title=""
-                className="text-base text-black transition-all duration-200 hover:text-opacity-80"
+                className=" text-black transition-all duration-200 hover:text-opacity-80"
               >
                 {" "}
                 Home{" "}
@@ -141,7 +149,7 @@ export default function NavBar() {
               <NavLink
                 to="#"
                 title=""
-                className="text-base text-black transition-all duration-200 hover:text-opacity-80"
+                className=" text-black transition-all duration-200 hover:text-opacity-80"
               >
                 {" "}
                 Training{" "}
@@ -150,7 +158,7 @@ export default function NavBar() {
               <NavLink
                 to="#"
                 title=""
-                className="text-base text-black transition-all duration-200 hover:text-opacity-80"
+                className=" text-black transition-all duration-200 hover:text-opacity-80"
               >
                 {" "}
                 Campus Placement{" "}
@@ -159,16 +167,26 @@ export default function NavBar() {
               <NavLink
                 to="#"
                 title=""
-                className="text-base text-black transition-all duration-200 hover:text-opacity-80"
+                className=" text-black relative drop-down transition-all duration-200 hover:text-opacity-80"
+                onMouseEnter={toggleDropdown}
+                onMouseLeave={toggleDropdown}
               >
-                {" "}
-                Resources{" "}
+                Resources
+                <ul
+                  className={`absolute ${
+                    isDropdownOpen ? "flex" : "hidden"
+                  } bg-sky-300 py-2.5 px-4 rounded-xl`}
+                >
+                  <li>item</li>
+                  <li>item</li>
+                  <li>item</li>
+                </ul>
               </NavLink>
 
               <NavLink
                 to="#"
                 title=""
-                className="text-base text-black transition-all duration-200 hover:text-opacity-80"
+                className=" text-black transition-all duration-200 hover:text-opacity-80"
               >
                 {" "}
                 Online Test{" "}
@@ -178,20 +196,18 @@ export default function NavBar() {
               <NavLink
                 to="#"
                 title=""
-                className="hidden lg:inline-flex items-center justify-center px-5 py-2.5 text-base transition-all duration-200 hover:bg-yellow-300 hover:text-black focus:text-black focus:bg-yellow-300 rounded-full"
+                className="hidden lg:inline-flex items-center justify-center px-5 py-2.5  transition-all duration-200 hover:bg-yellow-300 hover:text-black focus:text-black focus:bg-yellow-300 rounded-full"
                 role="button"
               >
-                {" "}
-                for recruiter{" "}
+                Recruiters
               </NavLink>
               <NavLink
                 to="#"
                 title=""
-                className="hidden lg:inline-flex items-center justify-center px-5 py-2.5 text-base transition-all duration-200 hover:bg-yellow-300 hover:text-black focus:text-black focus:bg-yellow-300 font-semibold text-white bg-black rounded-full"
+                className="hidden lg:inline-flex items-center justify-center px-4 py-2.5 transition-all duration-200 hover:bg-yellow-300 hover:text-black focus:text-black focus:bg-yellow-300 font-semibold text-white bg-black  rounded-full"
                 role="button"
               >
-                {" "}
-                Student Login{" "}
+                Student Login
               </NavLink>
             </div>
           </div>
