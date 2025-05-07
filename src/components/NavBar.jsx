@@ -56,7 +56,7 @@ export default function NavBar() {
             <Image src="./images/gecsiwan-logo.png" alt="gec-siwan-logo" />
           </div>
           <div className="title">
-            <h1 className="text-xl md:text-3xl lg:text-3xl font-bold">
+            <h1 className="text-md md:text-3xl lg:text-3xl font-bold">
               Training and Placement Cell
             </h1>
             <h3 className="">

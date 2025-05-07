@@ -13,10 +13,23 @@ function SimpleSlider() {
   };
   return (
     <div className="slider-container w-full h-full overflow-hidden">
-      <Slider className="w-full h-full"  {...settings}>
-          <Image src="/images/Solar_Enterpreneurship_Training.webp" className=" aspect-video object-cover"/>
-          <Image src="/images/republic-day-2.webp" className=" aspect-video object-cover"/>
-          <Image src="/images/republic-day.webp" className=" aspect-video object-cover"/>
+      <Slider className="w-full h-full" {...settings}>
+        <Image
+          src="/images/hero_image2.svg"
+          className=" aspect-[4/3] object-cover"
+        />
+        <Image
+          src="/images/Solar_Enterpreneurship_Training.webp"
+          className=" aspect-[4/3] object-cover"
+        />
+        <Image
+          src="/images/republic-day-2.webp"
+          className=" aspect-[4/3] object-cover"
+        />
+        <Image
+          src="/images/republic-day.webp"
+          className=" aspect-[4/3] object-cover"
+        />
       </Slider>
     </div>
   );

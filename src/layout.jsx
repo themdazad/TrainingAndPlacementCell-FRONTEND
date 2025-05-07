@@ -10,18 +10,15 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState, useEffect, useContext } from "react";
-import GradientTracking from "./components/ui/GradientTracking";
 import SimpleSlider from "./components/ui/SimpleSlider";
-import { AnimatedBackground } from "./components/ui/AnimatedBackground";
-import GooglesheetContext from "./contexts/google-sheets/GooglesheetContext";
-import NewsNoticeProvider from "./contexts/google-sheets/news-notice-provider";
 import { NavLink } from "react-router-dom";
 import AnimatedLogoCloud from "./components/ui/AnimatedLogoCloud";
+import StaticLogoCloud from "./components/ui/StaticLogoCloud";
 
 export default function Layout() {
   return (
-    <>
-      <section className="max-w-[1980px] px-[5%] md:px-[10%] m-auto py sm:py-16">
+    <main className="overflow-hidden max-w-[1980px] m-auto min-h-screen">
+      <section className="px-[5%] md:px-[10%] sm:py-16">
         <div className="grid items-center py-12 grid-cols-1 gap-12 lg:grid-cols-2">
           <div>
             <p className="text-base font-semibold tracking-wider text-blue-600 uppercase">
@@ -31,9 +28,9 @@ export default function Layout() {
               Launch Your Career with Expert-Guided Training
             </h1>
             <p className="mt-2 text-base text-black lg:mt-8 sm:text-xl">
-            We focus on the holistic development of our students by offering
-            regular workshops, technical training, and personality development
-            sessions.
+              We focus on the holistic development of our students by offering
+              regular workshops, technical training, and personality development
+              sessions.
             </p>
 
             <a
@@ -64,149 +61,39 @@ export default function Layout() {
                 href="/files/GEC_Siwan_Official_Resume_Format.docx"
                 title="Resume Template"
                 className="text-black transition-all duration-200 hover:underline"
-                >
+              >
                 Resume Template{" "}
               </a>
             </p>
           </div>
 
           <div>
-            {/* <img
-                className="w-full"
-                src="https://cdn.rareblocks.xyz/collection/celebration/images/hero/1/hero-img.png"
-                alt="tpo siwan hero image"
-              /> */}
-            <Image
+          <Image
               className="w-full"
               src="/images/hero_image2.svg"
               alt="tpo siwan hero image"
             />
+            {/* Images carousel  */}
+            {/* <SimpleSlider /> */}
           </div>
+
         </div>
       </section>
 
-
-      <section className="py-12">
-        <h2 className="text-center text-xl md:text-2xl lg:text-4xl font-bold">Our Recruiters</h2>
-        <AnimatedLogoCloud />
-        <p className="text-center text-xl text-gray-400 md:text-2xl lg:text-3xl">+ many more</p>
+      <section className="py-12 m-auto ">
+        <StaticLogoCloud />
       </section>
 
-      
-      <main className="hidden overflow-hidden min-h-screen">
-        {/* Hero Section */}
-        <AnimatedBackground />
-        <HeroSection />
-        {/* News/Notice Area */}
-        {/* <NewsNoticeProvider>
-        <NewsNoticeArea />
-      </NewsNoticeProvider> */}
+      <section className="py-12 m-auto ">
+        <AnimatedLogoCloud />
+        <p className="text-center text-xl text-gray-400 md:text-2xl lg:text-3xl mt-12">
+          + many more
+        </p>
+      </section>
 
-        {/* Features  */}
-        <section className="feature-card max-md:hidden my-[4em] ">
-          <div className="max-w-[1920px] m-auto rounded-3xl overflow-hidden px-[5%]">
-            <GradientTracking>
-              <div className="features-container  bg-gray-500/10 py-[6em] px-[2em] rounded-3xl border hover:border-1 border-gray-500/20  hover:border-sky-500/50  transition-all duration-300  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div className="feature-card flex flex-col items-center gap-2 text-center">
-                  <div className="feature-card-icon  ">
-                    <svg
-                      xmlns="https://www.w3.org/2000/svg"
-                      width="80"
-                      height="80"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="lucide lucide-calendar-check-2"
-                    >
-                      <path d="M8 2v4" />
-                      <path d="M16 2v4" />
-                      <path d="M21 14V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8" />
-                      <path d="M3 10h18" />
-                      <path d="m16 20 2 2 4-4" />
-                    </svg>
-                  </div>
-                  <h2 className="feature-card-heading text-xl font-bold">
-                    Regular Workshops
-                  </h2>
-                  <p className="feature-card-description max-sm:text-[14px] text-gray-500">
-                    We conduct regular workshops on various topics to enhance
-                    the skills of our students.
-                  </p>
-                </div>
-                <div className="feature-card flex flex-col items-center gap-2 text-center">
-                  <div className="feature-card-icon ">
-                    <svg
-                      xmlns="https://www.w3.org/2000/svg"
-                      width="80"
-                      height="80"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="lucide lucide-monitor-cog"
-                    >
-                      <path d="M12 17v4" />
-                      <path d="m15.2 4.9-.9-.4" />
-                      <path d="m15.2 7.1-.9.4" />
-                      <path d="m16.9 3.2-.4-.9" />
-                      <path d="m16.9 8.8-.4.9" />
-                      <path d="m19.5 2.3-.4.9" />
-                      <path d="m19.5 9.7-.4-.9" />
-                      <path d="m21.7 4.5-.9.4" />
-                      <path d="m21.7 7.5-.9-.4" />
-                      <path d="M22 13v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7" />
-                      <path d="M8 21h8" />
-                      <circle cx="18" cy="6" r="3" />
-                    </svg>
-                  </div>
-                  <h2 className="feature-card-heading text-xl font-bold">
-                    Technical Training
-                  </h2>
-                  <p className="feature-card-description max-sm:text-[14px] text-gray-500">
-                    We provide technical training to our students to make them
-                    industry-ready.
-                  </p>
-                </div>
-                <div className="feature-card flex flex-col items-center gap-2 text-center">
-                  <div className="feature-card-icon ">
-                    <svg
-                      xmlns="https://www.w3.org/2000/svg"
-                      width="80"
-                      height="80"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="lucide lucide-signature"
-                    >
-                      <path d="m21 17-2.156-1.868A.5.5 0 0 0 18 15.5v.5a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1c0-2.545-3.991-3.97-8.5-4a1 1 0 0 0 0 5c4.153 0 4.745-11.295 5.708-13.5a2.5 2.5 0 1 1 3.31 3.284" />
-                      <path d="M3 21h18" />
-                    </svg>
-                  </div>
-                  <h2 className="feature-card-heading text-xl font-bold">
-                    Personality Development
-                  </h2>
-                  <p className="feature-card-description max-sm:text-[14px] text-gray-500">
-                    We focus on the overall development of our students by
-                    conducting personality development sessions.
-                  </p>
-                </div>
-              </div>
-            </GradientTracking>
-          </div>
-        </section>
-
-        {/* FAQ  */}
-        <FAQ />
-      </main>
-    </> 
+      {/* FAQ  */}
+      <FAQ />
+    </main>
   );
 }
 
@@ -289,56 +176,6 @@ function HeroSection() {
   );
 }
 
-function NewsNoticeArea() {
-  const programData = useContext(GooglesheetContext);
-  const [response, setresponse] = useState([]);
-
-  useEffect(() => {
-    if (programData) {
-      setresponse(programData);
-    } else {
-      setresponse([]);
-    }
-  }, [programData]);
-  return (
-    <div className="news-notice-container max-w-[1920px] m-auto px-[5%] grid md:grid-cols-2 gap-12 ">
-      {/* Images carousel  */}
-      <SimpleSlider />
-      <div className="news-notice-area  border hover:border-1 border-gray-500/20 rounded-xl  p-3 md:p-6 ">
-        <h2 className="news-notice-heading text-xl sm:text-2xl md:text-3xl mt-2 flex max-md:justify-center gap-x-2 items-center font-bold">
-          Notifications <Bell />
-        </h2>
-
-        {/* Mapping for upcoming data for latest news and notice   */}
-        <div className="row-container  box-border my-[1em] max-h-[20rem] overflow-y-scroll overflow-x-hidden ">
-          {response.reverse().map((data, index) => {
-            return (
-              <a
-                key={index}
-                href={data.pdf_link}
-                target="_blank"
-                className="news-notice-row transition-all duration-300 flex flex-col items-start py-1 "
-              >
-                <div className="tags space-x-2 ">
-                  <span className="news-notice-card-tag text-[12px] bg-zinc-500/20 backdrop-blur-lg border-1  border-zinc-500/50  rounded-3xl px-[0.6em] py-[0.2em] ">
-                    {data.date}
-                  </span>
-                  <span className="news-notice-card-tag text-[12px] backdrop-blur-lg border-1  border-sky-500/50  rounded-3xl px-[0.6em] py-[0.2em] ">
-                    {data.tag}
-                  </span>
-                </div>
-
-                <p className="news-notice-card-content max-sm:text-[14px] p-[0.5em] w-full overflow-ellipsis ">
-                  {data.content}
-                </p>
-              </a>
-            );
-          })}
-        </div>
-      </div>
-    </div>
-  );
-}
 
 export function FAQ() {
   const faq_data = [
@@ -403,6 +240,36 @@ export function FAQ() {
             );
           })}
         </Accordion>
+      </div>
+
+      {/* coordinators image and contact details*/}
+      <div className="bg-blue-50 rounded-xl p-12 my-12 text-center w-full mx-auto ">
+        <div className="flex justify-center -space-x-4 mb-4">
+          <img
+            src="/images/coordinators/abhishek_profile.jpg"
+            alt="Avatar 1"
+            className="w-20 aspect-square rounded-full border-2 border-white"
+          />
+          <img
+            src="/images/coordinators/azad_profile.jpg"
+            alt="Avatar 2"
+            className="w-20 aspect-square rounded-full border-2 border-white"
+          />
+          <img
+            src="https://media.licdn.com/dms/image/v2/D4D35AQFmhBAYe3OPzg/profile-framedphoto-shrink_200_200/B4DZWvN989HAAc-/0/1742401429669?e=1747242000&v=beta&t=vRc-Y8WWjTQPKPmp-krBeoKO-bwK6Jzggi8LiseWh14"
+            alt="Avatar 3"
+            className="w-20 aspect-square rounded-full border-2 border-white"
+          />
+        </div>
+        <h2 className="text-lg font-semibold text-gray-900">
+          Still have doubts?
+        </h2>
+        <p className=" text-gray-600 mt-2">
+          Can't find the answer you're looking for? Contact us
+        </p>
+        <button className="mt-5 bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full text-sm font-medium">
+          Our Coordinators
+        </button>
       </div>
     </section>
   );

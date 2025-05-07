@@ -1,4 +1,3 @@
-import { a } from "framer-motion/client";
 
 const logos = [
   {
@@ -57,12 +56,13 @@ const logos = [
   },
 ];
 
-const AnimatedLogoCloud = () =>{
+const AnimatedLogoCloud = () => {
   return (
-    <div className="w-full py-12">
-      <div className="mx-auto w-full px-4 md:px-8">
+    <div className="mx-auto w-full flex justify-center px-4">
+      <div className="flex w-full flex-col  items-center justify-center gap-6 px-4 md:px-8">
+        <div className="font-medium uppercase ">Our Recruiters</div>
         <div
-          className="group relative flex gap-6 overflow-hidden p-2"
+          className="group relative flex justify-center gap-6 overflow-hidden p-2"
           style={{
             maskImage:
               "linear-gradient(to left, transparent 0%, black 20%, black 80%, transparent 95%)",
@@ -81,12 +81,12 @@ const AnimatedLogoCloud = () =>{
                 >
                   {logos.map((logo, key) => (
                     <a href={`${logo.link}`} target="_blank">
-                    <img
-                      key={key}
-                      src={logo.url}
-                      className="max-h-12 px-2 mix-blend-multiply transition-all duration-500 hover:scale-110 saturate-80 hover:saturate-100"
-                      alt={`${logo.name}`}
-                    />
+                      <img
+                        key={key}
+                        src={logo.url}
+                        className="max-h-12 px-2 mix-blend-multiply transition-all duration-500 hover:scale-110 saturate-0 hover:saturate-100 dark:invert"
+                        alt={`${logo.name}`}
+                      />
                     </a>
                     //   brightness-0 dark:invert
                   ))}
