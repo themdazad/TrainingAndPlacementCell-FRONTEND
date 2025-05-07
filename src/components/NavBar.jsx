@@ -138,31 +138,22 @@ export default function NavBar() {
 
             <div className="hidden lg:flex lg:items-center lg:justify-center lg:space-x-10">
               <NavLink
-                to="#"
+                to="/"
                 title=""
                 className=" text-black transition-all duration-200 hover:text-opacity-80"
-              >
-                {" "}
-                Home{" "}
-              </NavLink>
+              >Home</NavLink>
 
               <NavLink
                 to="#"
                 title=""
                 className=" text-black transition-all duration-200 hover:text-opacity-80"
-              >
-                {" "}
-                Training{" "}
-              </NavLink>
+              >Training</NavLink>
 
               <NavLink
                 to="#"
                 title=""
                 className=" text-black transition-all duration-200 hover:text-opacity-80"
-              >
-                {" "}
-                Campus Placement{" "}
-              </NavLink>
+              >Campus Placement</NavLink>
 
               <NavLink
                 to="#"
@@ -170,8 +161,7 @@ export default function NavBar() {
                 className=" text-black relative drop-down transition-all duration-200 hover:text-opacity-80"
                 onMouseEnter={toggleDropdown}
                 onMouseLeave={toggleDropdown}
-              >
-                Resources
+              >Resources
                 <ul
                   className={`absolute ${
                     isDropdownOpen ? "flex" : "hidden"
@@ -202,7 +192,7 @@ export default function NavBar() {
                 Recruiters
               </NavLink>
               <NavLink
-                to="#"
+                to="/auth/student/login"
                 title=""
                 className="hidden lg:inline-flex items-center justify-center px-4 py-2.5 transition-all duration-200 hover:bg-yellow-300 hover:text-black focus:text-black focus:bg-yellow-300 font-semibold text-white bg-black  rounded-full"
                 role="button"

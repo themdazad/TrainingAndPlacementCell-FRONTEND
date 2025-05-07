@@ -31,7 +31,9 @@ export default function Layout() {
               Launch Your Career with Expert-Guided Training
             </h1>
             <p className="mt-2 text-base text-black lg:mt-8 sm:text-xl">
-              Grow your career fast with right training.
+            We focus on the holistic development of our students by offering
+            regular workshops, technical training, and personality development
+            sessions.
             </p>
 
             <a
@@ -84,13 +86,13 @@ export default function Layout() {
       </section>
 
 
-      <section>
-        <h2 className="text-center text-xl md:text-2xl lg:text-4xl font-semibold">
-          {" "}
-          Placement Companies{" "}
-        </h2>
+      <section className="py-12">
+        <h2 className="text-center text-xl md:text-2xl lg:text-4xl font-bold">Our Recruiters</h2>
         <AnimatedLogoCloud />
+        <p className="text-center text-xl text-gray-400 md:text-2xl lg:text-3xl">+ many more</p>
       </section>
+
+      
       <main className="hidden overflow-hidden min-h-screen">
         {/* Hero Section */}
         <AnimatedBackground />
@@ -204,7 +206,7 @@ export default function Layout() {
         {/* FAQ  */}
         <FAQ />
       </main>
-    </>
+    </> 
   );
 }
 

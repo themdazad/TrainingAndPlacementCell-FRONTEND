@@ -18,7 +18,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <BrowserRouter>
       <AuthProvider>
         <ProgramsProvider>
-          <main className="dark:dark text-foreground bg-background dark:bg-[#111112] bg-[url('/images/blur_bg.png')] bg-cover">
+          <main className="dark:dark text-foreground bg-background dark:bg-[#111112] ">
             {/* add here navigation bar components */}
             <NavBar />
             {/* <NavigationBar/> */}
