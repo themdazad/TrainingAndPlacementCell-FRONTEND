@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { Button, Image} from "@heroui/react";
 import { Accordion, AccordionItem } from "@heroui/accordion";
 import {
@@ -6,7 +7,6 @@ import {
   Mouse,
   CloudDownload,
 } from "lucide-react";
-import { motion } from "framer-motion";
 import { useState } from "react";  
 import { NavLink } from "react-router-dom";
 import SelectedStudentSlider from "./components/ui/SelectedStudentSlider";
@@ -31,7 +31,6 @@ export default function Layout() {
               regular workshops, technical training, and personality development
               sessions.
             </p>
-
             <a
               href="/files/GEC_Siwan_Official_Resume_Format.docx"
               title="Resume Template"
@@ -39,20 +38,27 @@ export default function Layout() {
               role="button"
             >
               Resume Template
-              <svg
+              <motion.svg
                 className="w-6 h-6 ml-4 -mr-2"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
+                initial={{ x: 0 }}
+                animate={{ x: [-2, 4, 0] }}
+                transition={{
+                  repeat: Infinity,
+                  duration: 2,
+                  ease: "easeInOut",
+                }}
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={1.5}
                   d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
-              </svg>
+              </motion.svg>
             </a>
           </div>
 
@@ -68,22 +74,22 @@ export default function Layout() {
         </div>
       </section>
 
-      <section className="py-12 m-auto ">
+      <section className="py-6 m-auto ">
         <SelectedStudentSlider />
       </section>
 
-      <section className="py-12 m-auto ">
+      <section className="py-6 m-auto ">
         <StaticLogoCloud />
       </section>
 
-      <section className="py-12 m-auto ">
+      <section className="py-6 m-auto ">
         <AnimatedLogoCloud />
         <p className="text-center text-xl text-gray-400 md:text-2xl lg:text-3xl mt-12">
           + many more
         </p>
       </section>
 
-      <section className="py-12 m-auto ">
+      <section className="py-6 m-auto ">
         <Testimonials />
       </section>
 
@@ -239,7 +245,13 @@ export function FAQ() {
       </div>
 
       {/* coordinators image and contact details*/}
-      <div className="bg-blue-50 rounded-xl p-12 my-12 text-center w-full mx-auto ">
+      <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                viewport={{ once: false, amount: 0.2 }} // 👈 animate every time 20% of it is visible
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+              className="bg-blue-50 rounded-xl p-12 my-12 text-center w-full mx-auto ">
         <div className="flex justify-center -space-x-4 mb-4">
           <img
             src="/images/coordinators/abhishek_profile.jpg"
@@ -266,7 +278,7 @@ export function FAQ() {
         <button className="mt-5 bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full text-sm font-medium">
           Our Coordinators
         </button>
-      </div>
+      </motion.div>
     </section>
   );
   ` 1ptfby hnjm,`;

@@ -1,3 +1,4 @@
+
 import ReactDOM from "react-dom/client";
 import { HeroUIProvider } from "@heroui/react";
 import Path from "./routes.jsx";
@@ -5,7 +6,6 @@ import "./styles/index.css";
 import "./styles/MouseCursorGradientTracking.css";
 import "./styles/AnimatedBackground.css";
 import { BrowserRouter } from "react-router-dom";
-import NavigationBar from "./components/header-footer/NavigationBar.jsx";
 import NavBar from "./components/NavBar.jsx";
 import { Footer } from "./components/header-footer/Footer.jsx";
 // contexts
@@ -14,6 +14,7 @@ import AuthProvider from "./contexts/auth/AuthProvider.jsx";
 import axios from "axios";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
+  
   <HeroUIProvider>
     <BrowserRouter>
       <AuthProvider>
@@ -21,7 +22,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <main className="dark:dark text-foreground bg-background dark:bg-[#111112] ">
             {/* add here navigation bar components */}
             <NavBar />
-            {/* <NavigationBar/> */}
             <Path /> {/* Router */}
             <Footer />
           </main>
