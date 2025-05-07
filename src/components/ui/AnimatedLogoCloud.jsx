@@ -60,7 +60,7 @@ const AnimatedLogoCloud = () => {
   return (
     <div className="mx-auto w-full flex justify-center px-4">
       <div className="flex w-full flex-col  items-center justify-center gap-6 px-4 md:px-8">
-        <div className="font-medium uppercase ">Our Recruiters</div>
+        <div className="font-medium text-2xl ">Our Recruiters</div>
         <div
           className="group relative flex justify-center gap-6 overflow-hidden p-2"
           style={{

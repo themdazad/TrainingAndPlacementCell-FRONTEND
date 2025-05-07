@@ -2,18 +2,17 @@ import { Button, Image} from "@heroui/react";
 import { Accordion, AccordionItem } from "@heroui/accordion";
 import {
   CircleArrowRight,
-  Download,
   ChevronDown,
   Mouse,
   CloudDownload,
-  Bell,
 } from "lucide-react";
 import { motion } from "framer-motion";
-import { useState, useEffect, useContext } from "react";
-import SimpleSlider from "./components/ui/SimpleSlider";
+import { useState } from "react";  
 import { NavLink } from "react-router-dom";
+import SelectedStudentSlider from "./components/ui/SelectedStudentSlider";
 import AnimatedLogoCloud from "./components/ui/AnimatedLogoCloud";
 import StaticLogoCloud from "./components/ui/StaticLogoCloud";
+import Testimonials from "./components/ui/Testimonials";
 
 export default function Layout() {
   return (
@@ -24,8 +23,8 @@ export default function Layout() {
             <p className="text-base font-semibold tracking-wider text-blue-600 uppercase">
               For career and growth
             </p>
-            <h1 className="mt-2 text-4xl font-bold text-black lg:mt-8 sm:text-6xl xl:text-6xl">
-              Launch Your Career with Expert-Guided Training
+            <h1 className="mt-2 text-4xl font-bold text-black lg:mt-8 sm:text-6xl xl:text-8xl">
+              Campus Placement 2025
             </h1>
             <p className="mt-2 text-base text-black lg:mt-8 sm:text-xl">
               We focus on the holistic development of our students by offering
@@ -34,12 +33,12 @@ export default function Layout() {
             </p>
 
             <a
-              href="#"
-              title=""
+              href="/files/GEC_Siwan_Official_Resume_Format.docx"
+              title="Resume Template"
               className="inline-flex items-center px-6 py-4 mt-8 font-semibold text-black transition-all duration-200 bg-blue-300 rounded-full lg:mt-16 hover:bg-blue-400 focus:bg-blue-400"
               role="button"
             >
-              Apply for Campus Placement 2025
+              Resume Template
               <svg
                 className="w-6 h-6 ml-4 -mr-2"
                 xmlns="http://www.w3.org/2000/svg"
@@ -55,29 +54,22 @@ export default function Layout() {
                 />
               </svg>
             </a>
-
-            <p className="mt-5 flex  ">
-              <a
-                href="/files/GEC_Siwan_Official_Resume_Format.docx"
-                title="Resume Template"
-                className="text-black transition-all duration-200 hover:underline"
-              >
-                Resume Template{" "}
-              </a>
-            </p>
           </div>
 
           <div>
-          <Image
+            <Image
               className="w-full"
-              src="/images/hero_image2.svg"
+              src="/images/heroThumbnails/heroThumbnail07052025.svg"
               alt="tpo siwan hero image"
             />
             {/* Images carousel  */}
             {/* <SimpleSlider /> */}
           </div>
-
         </div>
+      </section>
+
+      <section className="py-12 m-auto ">
+        <SelectedStudentSlider />
       </section>
 
       <section className="py-12 m-auto ">
@@ -89,6 +81,10 @@ export default function Layout() {
         <p className="text-center text-xl text-gray-400 md:text-2xl lg:text-3xl mt-12">
           + many more
         </p>
+      </section>
+
+      <section className="py-12 m-auto ">
+        <Testimonials />
       </section>
 
       {/* FAQ  */}

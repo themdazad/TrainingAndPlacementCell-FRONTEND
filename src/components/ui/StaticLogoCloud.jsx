@@ -15,15 +15,15 @@ const StaticLogoCloud = () => {
   return (
     <div className="w-full py-12">
       <div className="flex w-full flex-col items-center justify-center gap-6 px-4 md:px-8">
-        <div className="font-medium uppercase">Internship Partners</div>
+        <div className="font-medium text-2xl">Internship Partners</div>
         <div className="grid grid-cols-3 gap-x-6 md:grid-cols-5 lg:grid-cols-6">
           {logos.map((logo, key) => (
             <a href={`${logo.link}`} target="_blank" key={key}>
-            <img
-              src={logo.url}
-              className="h-10 w-28 px-2 saturate-0 hover:saturate-100 dark:invert"
-              alt={`${logo.name}`}
-            />
+              <img
+                src={logo.url}
+                className="h-10 w-28 px-2 saturate-0 hover:saturate-100 dark:invert"
+                alt={`${logo.name}`}
+              />
             </a>
           ))}
         </div>
