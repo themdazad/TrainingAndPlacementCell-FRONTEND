@@ -1,13 +1,69 @@
 import { useEffect, useState } from "react";
 
 const defaultAvatars = [
-  "/images/students2025/abhishek22102151908.jpg",
-  "/images/students2025/hanshraj21103151013.jpg",
-  "/images/students2025/laxmi22103151953.jpg",
-  "/images/students2025/nishant21103151005.jpg",
-  "/images/students2025/prakash21103151003.jpg",
-  "/images/students2025/romi22102151903.jpg",
-  "/images/students2025/sidhant21103151018.jpg",
+  {image:"/images/students2025/abhishek22102151908.jpg",
+    details:{
+      name:"abcd xyz",
+      branch:"Electrical Engineering",
+      company:"adff company",
+      package:"5LPA",
+      
+    }
+  },
+  {image:"/images/students2025/hanshraj21103151013.jpg",
+    details:{
+      name:"abcd xyz",
+      branch:"Electrical Engineering",
+      company:"adff company",
+      package:"5LPA",
+      
+    }
+  },
+  {image:"/images/students2025/laxmi22103151953.jpg",
+    details:{
+      name:"abcd xyz",
+      branch:"Electrical Engineering",
+      company:"adff company",
+      package:"5LPA",
+      
+    }
+  },
+  {image:"/images/students2025/nishant21103151005.jpg",
+    details:{
+      name:"abcd xyz",
+      branch:"Electrical Engineering",
+      company:"adff company",
+      package:"5LPA",
+      
+    }
+  },
+  {image:"/images/students2025/prakash21103151003.jpg",
+    details:{
+      name:"abcd xyz",
+      branch:"Electrical Engineering",
+      company:"adff company",
+      package:"5LPA",
+      
+    }
+  },
+  {image:"/images/students2025/romi22102151903.jpg",
+    details:{
+      name:"abcd xyz",
+      branch:"Electrical Engineering",
+      company:"adff company",
+      package:"5LPA",
+      
+    }
+  },
+  {image:"/images/students2025/sidhant21103151018.jpg",
+    details:{
+      name:"abcd xyz",
+      branch:"Electrical Engineering",
+      company:"adff company",
+      package:"5LPA",
+      
+    }
+  },
 ];
 
 function AvatarCarousel({
@@ -57,12 +113,12 @@ function AvatarCarousel({
         const shouldHide = isAtEnd(placement);
         const isActive = activeIndex === index;
 
-        return (
+      return (
+        <div className="group" key={index}>
           <img
-            key={index}
-            src={avatar}
+            src={avatar.image}
             alt={`Avatar ${index}`}
-            className={`absolute group m-0 rounded-full object-cover transition-all duration-500`}
+            className={`absolute m-0 rounded-full object-cover transition-all duration-500`}
             style={{
               width: avatarSize,
               height: avatarSize,
@@ -76,7 +132,22 @@ function AvatarCarousel({
               transformOrigin: "top left",
             }}
           />
-        );
+
+          <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 hidden group-hover:flex flex-col items-center bg-white text-black text-xs p-2 rounded shadow-lg z-10 whitespace-nowrap">
+            <div>
+              <strong>{avatar.details.name}</strong>
+            </div>
+             <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 hidden group-hover:flex flex-col items-center bg-white text-black text-xs p-2 rounded shadow-lg z-10 whitespace-nowrap">
+      <div><strong>{avatar.details.name}</strong></div>
+      <div>{avatar.details.branch}</div>
+      <div>{avatar.details.company}</div>
+      <div>{avatar.details.package}</div>
+    </div>
+          </div>
+        </div>
+      );
+
+
       })}
     </div>
   );
@@ -89,12 +160,7 @@ const SelectedStudentSlider = () => {
       <h3 className="text-2xl font-semibold text-gray-800">
         Recently Placed Students
       </h3>
-      <AvatarCarousel />
-
-      <div className="hidden group-hover:flex items-center justify-center gap-4">
-        hellllllo
-      </div>
-
+      <AvatarCarousel  />
     </div>
     </>
   );
