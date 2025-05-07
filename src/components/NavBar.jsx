@@ -51,7 +51,7 @@ export default function NavBar() {
       {/* 1st row */}
       <header className="navHeader px-[5%] py-4 bg-white min-h-[100px] flex justify-between items-center">
         {/* top-left */}
-        <div className="flex  items-center gap-[36px]">
+        <div className="flex items-center gap-3 md: gap-6 lg:gap-12">
           <div className="brand-logo min-h-[40px] max-h-[64px] aspect-square">
             <Image src="./images/gecsiwan-logo.png" alt="gec-siwan-logo" />
           </div>
@@ -59,7 +59,7 @@ export default function NavBar() {
             <h1 className="text-md md:text-3xl lg:text-3xl font-bold">
               Training and Placement Cell
             </h1>
-            <h3 className="">
+            <h3 className="text-sm md:text-md">
               Government Engineering College, Siwan Bihar-841226
             </h3>
           </div>
@@ -74,7 +74,7 @@ export default function NavBar() {
               Email: tpogecsiwan@gmail.com
             </a>
           </div>
-          <div className="images flex gap-3">
+          <div className="images flex gap-1 md:gap-3">
             <Image
               className="brand-logo border-1 border-black p-1 rounded-full min-h-[30px] max-h-[48px] aspect-square"
               src="./images/dstbihar-logo.png"

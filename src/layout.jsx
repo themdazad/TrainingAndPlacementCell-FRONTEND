@@ -77,16 +77,13 @@ export default function Layout() {
       <section className="py-6 m-auto ">
         <SelectedStudentSlider />
       </section>
-
+{/* 
       <section className="py-6 m-auto ">
         <StaticLogoCloud />
       </section>
-
+ */}
       <section className="py-6 m-auto ">
         <AnimatedLogoCloud />
-        <p className="text-center text-xl text-gray-400 md:text-2xl lg:text-3xl mt-12">
-          + many more
-        </p>
       </section>
 
       <section className="py-6 m-auto ">
@@ -249,9 +246,8 @@ export function FAQ() {
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
-                viewport={{ once: false, amount: 0.2 }} // 👈 animate every time 20% of it is visible
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-              className="bg-blue-50 rounded-xl p-12 my-12 text-center w-full mx-auto ">
+                viewport={{ once: false, amount: 0.2 }} 
+                className=" gap-6 bg-blue-50 rounded-xl p-12 my-12 text-center w-full mx-auto ">
         <div className="flex justify-center -space-x-4 mb-4">
           <img
             src="/images/coordinators/abhishek_profile.jpg"
@@ -269,7 +265,7 @@ export function FAQ() {
             className="w-20 aspect-square rounded-full border-2 border-white"
           />
         </div>
-        <h2 className="text-lg font-semibold text-gray-900">
+        <h2 className="text-xl font-semibold text-gray-900">
           Still have doubts?
         </h2>
         <p className=" text-gray-600 mt-2">

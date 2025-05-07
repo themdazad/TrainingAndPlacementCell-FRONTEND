@@ -62,7 +62,7 @@ function AvatarCarousel({
             key={index}
             src={avatar}
             alt={`Avatar ${index}`}
-            className={`absolute m-0 rounded-full object-cover transition-all duration-500`}
+            className={`absolute group m-0 rounded-full object-cover transition-all duration-500`}
             style={{
               width: avatarSize,
               height: avatarSize,
@@ -75,7 +75,6 @@ function AvatarCarousel({
               opacity: shouldHide ? 0 : isActive ? 1 : 0.6,
               transformOrigin: "top left",
             }}
-            
           />
         );
       })}
@@ -85,12 +84,19 @@ function AvatarCarousel({
 
 const SelectedStudentSlider = () => {
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center gap-6 py-10 ">
+    <>
+    <div className="flex h-full w-full flex-col items-center justify-center gap-6 py-10 bg-gray-100 ">
       <h3 className="text-2xl font-semibold text-gray-800">
         Recently Placed Students
       </h3>
       <AvatarCarousel />
+
+      <div className="hidden group-hover:flex items-center justify-center gap-4">
+        hellllllo
+      </div>
+
     </div>
+    </>
   );
 };
 

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import React, { useState, useEffect } from "react";
+import GradientTracking from "../../components/ui/GradientTracking";
 
 const testimonials = [
   {
@@ -80,11 +81,9 @@ const Testimonials = () => {
           {visibleTestimonials.map((t, index) => (
             <div
               key={index}
-              className={`group bg-blue-50 p-6 rounded-xl text-left shadow-sm flex flex-col justify-between 
-        transform ${t.rotate}
-        transition duration-300 ease-in-out hover:scale-105 hover:shadow-lg`}
+              className={`p-6 rounded-xl text-left shadow-sm flex flex-col justify-between transform ${t.rotate} transition duration-300 ease-in-out hover:scale-105 hover:shadow-lg`}
             >
-              <p className="text-gray-900 text-sm group-hover:font-bold transition-all duration-300 mb-4">
+              <p className="text-gray-900 text-sm transition-all duration-300 mb-4">
                 "{t.text}"
               </p>
               <div>
