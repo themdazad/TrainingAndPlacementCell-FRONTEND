@@ -85,7 +85,7 @@ export default function Layout() {
 
 
       <section>
-        <h2 className="text-center text-4xl font-semibold">
+        <h2 className="text-center text-xl md:text-2xl lg:text-4xl font-semibold">
           {" "}
           Placement Companies{" "}
         </h2>

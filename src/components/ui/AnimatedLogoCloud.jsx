@@ -20,7 +20,7 @@ const AnimatedLogoCloud = () =>{
     <div className="w-full py-12">
       <div className="mx-auto w-full px-4 md:px-8">
         <div
-          className="group relative mt-6 flex gap-6 overflow-hidden p-2"
+          className="group relative flex gap-6 overflow-hidden p-2"
           style={{
             maskImage:
               "linear-gradient(to left, transparent 0%, black 20%, black 80%, transparent 95%)",
@@ -41,7 +41,7 @@ const AnimatedLogoCloud = () =>{
                     <img
                       key={key}
                       src={logo.url}
-                      className="max-h-16 px-2 mix-blend-multiply saturate-0 transition-all duration-500 hover:scale-110 hover:saturate-100"
+                      className="max-h-12 px-2 mix-blend-multiply saturate-0 transition-all duration-500 hover:scale-110 hover:saturate-100"
                       alt={`${logo.name}`}
                     />
                     //   brightness-0 dark:invert
