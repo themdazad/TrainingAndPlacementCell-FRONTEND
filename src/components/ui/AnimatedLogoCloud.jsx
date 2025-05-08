@@ -5,7 +5,11 @@ const logos = [
     link: "https://prithivipratapbuildcon.com/",
     url: "https://prithivipratapbuildcon.com/image/logo.png",
   },
-
+  {
+    name: "high-technext engineering & telecom pvt ltd",
+    link: "https://high-technext.com/",
+    url: "https://blogger.googleusercontent.com/img/a/AVvXsEhrpjspiyfkKTXyAVTyuK7w8CcTYv1O-o8trPlYN0a1z3kMbnxZc01rJVFaQTnxRJHsl4Nwau_NWroWWHxwbnuADKpK4ObApMVmSEiVAiHwMaZk1aiZxOeQMpW6ZxeoH9d0bJ1v4edV5rAKlCd5ULSBoWUnYUTuf8GVSNyG9wptaLhLvL5U0QnHCiVJLg",
+  },
   {
     name: "QSpider/JSpider",
     url: "https://placements.pyspiders.com/sites/default/files/s1600-w664-3_1.jpeg",

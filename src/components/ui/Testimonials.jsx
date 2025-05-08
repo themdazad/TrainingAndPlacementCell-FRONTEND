@@ -1,33 +1,32 @@
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import React, { useState, useEffect } from "react";
-import GradientTracking from "../../components/ui/GradientTracking";
 
 const testimonials = [
   {
     text: "The T&P Cell helped me crack my interview with mock tests and technical guidance. I got placed at Infosys with confidence.",
-    name: "Ananya Gupta",
-    title: "B.Tech CSE, Class of 2024",
-    companyName: "Infosys",
-    companyLogo: "💼",
-    avatar: "https://randomuser.me/api/portraits/women/44.jpg",
+    name: "Laxmi Kumari",
+    title: "Electrical Engineering, 2025",
+    companyName: "Prithvi Pratap Buildcon",
+    companyLogo: "",
+    avatar: "/images/students2025/laxmi22103151953.jpg",
     rotate: "-rotate-2",
   },
   {
     text: "We were truly impressed by the students' readiness and communication. The placement team's professionalism was commendable.",
     name: "Vikram Nair",
     title: "Senior Talent Acquisition Manager",
-    companyName: "Accenture",
+    companyName: "Prithvi Pratap Buildcon",
     companyLogo: "🏢",
     avatar: "https://randomuser.me/api/portraits/men/45.jpg",
     rotate: "rotate-1",
   },
   {
     text: "The placement bootcamp boosted my confidence. The aptitude practice and mock interviews really helped me shine.",
-    name: "Priya Rathi",
-    title: "ECE, Class of 2024",
-    companyName: "Wipro",
-    companyLogo: "💼",
+    name: "Abhishek Kumar",
+    title: "Mechanical Engineering, 2025",
+    companyName: "HIGH-TECHNEXT ENGINEERING & TELECOM PVT LTD",
+    companyLogo: "",
     avatar: "https://randomuser.me/api/portraits/women/68.jpg",
     rotate: "-rotate-1",
   },
