@@ -79,7 +79,7 @@ export default function Layout() {
         <SelectedStudentSlider />
       </section>
 
-      <section className="py-6 m-auto ">
+      <section className="py-6 m-auto bg-yellow-100">
         <TPOStory />
       </section>
       {/* 

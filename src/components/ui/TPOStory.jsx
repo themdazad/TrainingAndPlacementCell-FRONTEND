@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
+import { NavLink } from "react-router-dom";
+import {Button, Image} from "@heroui/react";
 
 export default function TPOStory() {
   return (
-    <div className="m-auto flex flex-col md:flex-row items-center justify-center px-[10%] py-12 gap-12">
+    <div className="m-auto grid grid-cols-1 lg:grid-cols-2 items-center justify-center px-[10%] py-12 gap-12">
       {/* Left Text Section */}
       <div className="max-w-xl mb-10 md:mb-0">
         <p className="text-sm tracking-widest uppercase text-gray-500 mb-2">
@@ -11,7 +13,7 @@ export default function TPOStory() {
         <h2 className="text-2xl md:text-3xl font-bold text-gray-800">
           Training & Placement Cell at Government Engineering College, Siwan
         </h2>
-        <p className="mt-4 text-gray-600 leading-relaxed">
+        <p className="mt-4 text-justify text-gray-600 leading-relaxed">
           The Training and Placement Cell at Government Engineering College,
           Siwan, is dedicated to preparing students for successful careers in
           industry and academia. Under the esteemed leadership of our Principal,{" "}
@@ -22,9 +24,9 @@ export default function TPOStory() {
           the academic–industry gap and provide students with ample
           opportunities to realize their professional goals.
         </p>
-        <button className="mt-6 px-6 py-3 bg-blue-600 hover:bg-blue-400 text-white rounded-full transition">
+        <Button as={NavLink} to="/contact-us" className="mt-6 px-6 py-3 bg-blue-600 hover:bg-blue-400 text-white rounded-full transition">
           Know More
-        </button>
+        </Button>
       </div>
 
       {/* Right Image with Framer Motion Animation */}
@@ -32,19 +34,13 @@ export default function TPOStory() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: "easeOut" }}
-        className="rounded-xl overflow-hidden hover:shadow-lg max-w-md w-full ascept-square"
+        className="max-md:hidden rounded-xl overflow-hidden max-w-[500px] w-full"
       >
-        <video
-          controls
-          loop
-          playsInline
-          poster="/images/video-thumbnail.jpg"
-          className="w-full h-full object-cover"
-        >
-          {/* <source src="/videos/sample-video.mp4" type="video/mp4" /> */}
-          <source src="/videos/tpo_gd.webm" type="video/webm" />
-          Your browser does not support the video tag.
-        </video>
+        <Image
+          className="w-full"
+          src="/images/about-tpo-thumbnail.svg"
+          alt="about-tpo-thumbnail"
+        />
       </motion.div>
     </div>
   );

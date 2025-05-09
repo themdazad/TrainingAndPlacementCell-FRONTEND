@@ -61,7 +61,7 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="py-16 px-4 bg-white text-center">
+    <section className="py-16 px-4 bg-blue-100 text-center">
       <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 max-w-2xl mx-auto mb-10">
         Hear from our students and recruiters.{" "}
         <span className="text-blue-600">500+ success stories</span> and
@@ -80,7 +80,7 @@ const Testimonials = () => {
           {visibleTestimonials.map((t, index) => (
             <div
               key={index}
-              className={`p-6 rounded-xl text-left shadow-sm flex flex-col justify-between transform ${t.rotate} transition duration-300 ease-in-out hover:scale-105 hover:shadow-lg`}
+              className={` bg-white p-6 rounded-xl text-left shadow-sm flex flex-col justify-between transform ${t.rotate} transition duration-300 ease-in-out hover:scale-105 hover:shadow-lg`}
             >
               <p className="text-gray-900 text-sm transition-all duration-300 mb-4">
                 "{t.text}"
