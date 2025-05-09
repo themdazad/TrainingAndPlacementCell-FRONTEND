@@ -35,14 +35,15 @@ export default function TPOStory() {
         className="rounded-xl overflow-hidden hover:shadow-lg max-w-md w-full"
       >
         <video
-          autoPlay
+        //   autoPlay
           loop
-          muted
+        //   muted
           playsInline
           poster="" // ✅ Add video thumbnail image here
           className="w-full h-full object-cover"
         >
-          <source src="/videos/sample-video.mp4" type="video/mp4" />
+          {/* <source src="/videos/sample-video.mp4" type="video/mp4" /> */}
+          <source src="/videos/tpo_gd.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </motion.div>
