@@ -184,7 +184,7 @@ function AvatarCarousel({
           maskImage:
             "linear-gradient(to right, transparent, black 20%, black 80%, transparent)",
           minHeight: `${avatarSize + 60}px`,
-          maxWidth: `${(avatarSize + avatarSpacing) * 5}px`,
+          maxWidth: `${(avatarSize + avatarSpacing) *10}px`,
         }}
       >
         {avatars.map((avatar, index) => {
@@ -206,7 +206,7 @@ function AvatarCarousel({
                   className={`absolute ${isActive ? 'border-3': 'border-1'} border-white  aspect-square m-0 rounded-full object-cover transition-all duration-1000`}
                   style={{
                     width: avatarSize,
-                    top: "0%",
+                    top: "50%",
                     left: `calc(50% + ${left}px)`,
                     transform: `translate(-50%, -50%) scale(${
                       1 - Math.abs(placement) * 0.1
@@ -219,7 +219,7 @@ function AvatarCarousel({
               </a>
 
               <div
-                className={`absolute bg-white rounded-[30px] px-6 py-1 m-0 text-center transition-all duration-500`}
+                className={`absolute bg-white rounded-[30px] px-6 py-1 m-0 text-center transition-all duration-1000`}
                 style={{
                   bottom: "-5%",
                   left: `calc(50% + ${left}px)`,
@@ -231,7 +231,8 @@ function AvatarCarousel({
                   transformOrigin: "top left",
                 }}
               >
-                <h2 className="text-[12px] font-bold">{avatar.details.name}</h2>
+                <p className="text-[12px] font-bold text-blue-400">{avatar.details.package}</p>
+                <h2 className="text-[12px] ">{avatar.details.name}</h2>
                 <p className="text-[12px]">{avatar.details.rollNumber}</p>
               </div>
             </div>
