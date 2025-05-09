@@ -87,6 +87,7 @@ const AnimatedLogoCloud = () => {
                 >
                   {logo.link ? (
                     <a
+                    
                       href={logo.link}
                       target="_blank"
                       rel="noopener noreferrer"

@@ -1,75 +1,154 @@
 import { useEffect, useState } from "react";
 
-const defaultAvatars = [
-  {image:"/images/students2025/abhishek22102151908.jpg",
-    details:{
-      name:"abcd xyz",
-      branch:"Electrical Engineering",
-      company:"adff company",
-      package:"5LPA",
-      
-    }
+const studentDetails = [
+  // 🔼 Batch 2025 Students
+  {
+    image: "/images/students2025/abhishek22102151907.jpg",
+    details: {
+      name: "Abhishek Kumar Singh",
+      rollNumber: "22102151907",
+      branch: "Mechanical Engineering",
+      college: "Government Engineering College, Siwan",
+      email: "abhishek.gecs@gmail.com",
+      phone: "+91-8804080749",
+      company: "High-Technext Engineering & Telcom Pvt. Ltd. ",
+      package: "4.5LPA",
+      location: "Bihar/Kolkata/Jharkhand/UP",
+      joiningDate: "2025-07-10",
+      internship: false,
+      skills: [
+        "AutoCAD",
+        "Solidworks",
+        "Ansys",
+        "CNC Programming",
+        " Welding Tech.",
+      ],
+      linkedIn: "https://www.linkedin.com/in/abhishek-kumar-singh-8312a931b",
+      batch: 2025,
+    },
   },
-  {image:"/images/students2025/hanshraj21103151013.jpg",
-    details:{
-      name:"abcd xyz",
-      branch:"Electrical Engineering",
-      company:"adff company",
-      package:"5LPA",
-      
-    }
+  {
+    image: "/images/students2025/hanshraj21103151013.jpg",
+    details: {
+      name: "Hanshraj Meena",
+      rollNumber: "21103151013",
+      branch: "Electrical Engineering",
+      college: "NIT Example",
+      email: "hanshraj.meena@example.com",
+      phone: "+91-9876543102",
+      company: "ADFF Company",
+      package: "5 LPA",
+      location: "Hyderabad",
+      joiningDate: "2025-07-15",
+      internship: false,
+      skills: ["Circuit Design", "Embedded Systems"],
+      linkedIn: "https://linkedin.com/in/",
+      batch: 2025,
+    },
   },
-  {image:"/images/students2025/laxmi22103151953.jpg",
-    details:{
-      name:"abcd xyz",
-      branch:"Electrical Engineering",
-      company:"adff company",
-      package:"5LPA",
-      
-    }
+  {
+    image: "/images/students2025/laxmi22103151953.jpg",
+    details: {
+      name: "Laxmi Kumari",
+      rollNumber: "22103151953",
+      branch: "Electrical Engineering",
+      college: "NIT Example",
+      email: "",
+      phone: "+91-",
+      company: "Prithvi Pratap Buildcon",
+      package: "3.4 LPA",
+      location: "",
+      joiningDate: "",
+      internship: false,
+      skills: ["C++", "web development", "Graphic Designing"],
+      linkedIn: "https://linkedin.com/in/",
+      batch: 2025,
+    },
   },
-  {image:"/images/students2025/nishant21103151005.jpg",
-    details:{
-      name:"abcd xyz",
-      branch:"Electrical Engineering",
-      company:"adff company",
-      package:"5LPA",
-      
-    }
+  {
+    image: "/images/students2025/nishant21103151005.jpg",
+    details: {
+      name: "Nishant Raj",
+      rollNumber: "21103151005",
+      branch: "Electrical Engineering",
+      college: "",
+      email: "",
+      phone: "+91-",
+      company: "",
+      package: "",
+      location: "",
+      joiningDate: "",
+      internship: true,
+      skills: ["Teamwork", "AutoCAD", "Power Systems"],
+      linkedIn: "https://linkedin.com/in/",
+      batch: 2025,
+    },
   },
-  {image:"/images/students2025/prakash21103151003.jpg",
-    details:{
-      name:"abcd xyz",
-      branch:"Electrical Engineering",
-      company:"adff company",
-      package:"5LPA",
-      
-    }
+  {
+    image: "/images/students2025/prakash21103151003.jpg",
+    details: {
+      name: "Prakash Sharma",
+      rollNumber: "21103151003",
+      branch: "Electrical Engineering",
+      college: "NIT Example",
+      email: "",
+      phone: "+91-",
+      company: "",
+      package: "",
+      location: "",
+      joiningDate: "",
+      internship: false,
+      skills: ["SCADA", "Matlab"],
+      linkedIn: "https://linkedin.com/in/",
+      batch: 2025,
+    },
   },
-  {image:"/images/students2025/romi22102151903.jpg",
-    details:{
-      name:"abcd xyz",
-      branch:"Electrical Engineering",
-      company:"adff company",
-      package:"5LPA",
-      
-    }
+  {
+    image: "/images/students2025/romi22102151903.jpg",
+    details: {
+      name: "Romi Patel",
+      rollNumber: "22102151903",
+      branch: "Electrical Engineering",
+      college: "",
+      email: "",
+      phone: "+91-",
+      company: "",
+      package: "",
+      location: "Ahmedabad",
+      joiningDate: "2025-07-22",
+      internship: true,
+      skills: ["Communication", "Testing", "Instrumentation"],
+      linkedIn: "https://linkedin.com/in/",
+      batch: 2025,
+    },
   },
-  {image:"/images/students2025/sidhant21103151018.jpg",
-    details:{
-      name:"abcd xyz",
-      branch:"Electrical Engineering",
-      company:"adff company",
-      package:"5LPA",
-      
-    }
+  {
+    image: "/images/students2025/sidhant21103151018.jpg",
+    details: {
+      name: "Sidhant Singh",
+      rollNumber: "21103151018",
+      branch: "Electrical Engineering",
+      college: "NIT Example",
+      email: "sidhant.singh@example.com",
+      phone: "+91-9876543107",
+      company: "11123 Company",
+      package: "5 LPA",
+      location: "Kolkata",
+      joiningDate: "2025-07-30",
+      internship: true,
+      skills: ["Project Management", "Control Systems"],
+      linkedIn: "https://linkedin.com/in/",
+      batch: 2025,
+    },
   },
 ];
 
+
+
 function AvatarCarousel({
-  avatarSize = 120,
+  avatarSize = 160,
   avatarSpacing = 8,
-  avatars = defaultAvatars,
+  avatars = studentDetails,
 }) {
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -90,78 +169,88 @@ function AvatarCarousel({
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((index) => (index + 1) % avatars.length);
-    }, 3000);
+    },3000);
 
     return () => clearInterval(interval);
   }, [avatars.length]);
 
   return (
-    <div
-      className="relative flex h-full w-full gap-2"
-      style={{
-        WebkitMaskImage:
-          "linear-gradient(to right, transparent, black 20%, black 80%, transparent)",
-        maskImage:
-          "linear-gradient(to right, transparent, black 20%, black 80%, transparent)",
-        minHeight: `${avatarSize}px`,
-        maxWidth: `${(avatarSize + avatarSpacing) * 5}px`,
-      }}
-    >
-      {avatars.map((avatar, index) => {
-        const placement = getPlacementIndex(index);
-        const left = placement * (avatarSize + avatarSpacing);
-        const shouldHide = isAtEnd(placement);
-        const isActive = activeIndex === index;
+    <>
+      <div
+        className="relative h-full w-full  gap-2"
+        style={{
+          WebkitMaskImage:
+            "linear-gradient(to right, transparent, black 20%, black 80%, transparent)",
+          maskImage:
+            "linear-gradient(to right, transparent, black 20%, black 80%, transparent)",
+          minHeight: `${avatarSize + 60}px`,
+          maxWidth: `${(avatarSize + avatarSpacing) * 5}px`,
+        }}
+      >
+        {avatars.map((avatar, index) => {
+          const placement = getPlacementIndex(index);
+          const left = placement * (avatarSize + avatarSpacing);
+          const shouldHide = isAtEnd(placement);
+          const isActive = activeIndex === index;
 
-      return (
-        <div className="group" key={index}>
-          <img
-            src={avatar.image}
-            alt={`Avatar ${index}`}
-            className={`absolute m-0 rounded-full object-cover transition-all duration-500`}
-            style={{
-              width: avatarSize,
-              height: avatarSize,
-              top: "50%",
-              left: `calc(50% + ${left}px)`,
-              transform: `translate(-50%, -50%) scale(${
-                1 - Math.abs(placement) * 0.1
-              })`,
-              zIndex: isActive ? 1 : 0,
-              opacity: shouldHide ? 0 : isActive ? 1 : 0.6,
-              transformOrigin: "top left",
-            }}
-          />
+          return (
+            <div className="group" key={index}>
+              <a
+                href={avatar.details.linkedIn}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src={avatar.image}
+                  alt={`Avatar ${index}`}
+                  className={`absolute ${isActive ? 'border-3': 'border-1'} border-white  aspect-square m-0 rounded-full object-cover transition-all duration-1000`}
+                  style={{
+                    width: avatarSize,
+                    top: "0%",
+                    left: `calc(50% + ${left}px)`,
+                    transform: `translate(-50%, -50%) scale(${
+                      1 - Math.abs(placement) * 0.1
+                    })`,
+                    zIndex: isActive ? 1 : 0,
+                    opacity: shouldHide ? 0 : isActive ? 1 : 0.6,
+                    transformOrigin: "top left",
+                  }}
+                />
+              </a>
 
-          <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 hidden group-hover:flex flex-col items-center bg-white text-black text-xs p-2 rounded shadow-lg z-10 whitespace-nowrap">
-            <div>
-              <strong>{avatar.details.name}</strong>
+              <div
+                className={`absolute bg-white rounded-[30px] px-6 py-1 m-0 text-center transition-all duration-500`}
+                style={{
+                  bottom: "-5%",
+                  left: `calc(50% + ${left}px)`,
+                  transform: `translate(-50%, -50%) scale(${
+                    1 - Math.abs(placement) * 0.1
+                  })`,
+                  zIndex: isActive ? 1 : 0,
+                  opacity: shouldHide ? 0 : isActive ? 1 : 0,
+                  transformOrigin: "top left",
+                }}
+              >
+                <h2 className="text-[12px] font-bold">{avatar.details.name}</h2>
+                <p className="text-[12px]">{avatar.details.rollNumber}</p>
+              </div>
             </div>
-             <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 hidden group-hover:flex flex-col items-center bg-white text-black text-xs p-2 rounded shadow-lg z-10 whitespace-nowrap">
-      <div><strong>{avatar.details.name}</strong></div>
-      <div>{avatar.details.branch}</div>
-      <div>{avatar.details.company}</div>
-      <div>{avatar.details.package}</div>
-    </div>
-          </div>
-        </div>
-      );
-
-
-      })}
-    </div>
+          );
+        })}
+      </div>
+    </>
   );
 }
 
 const SelectedStudentSlider = () => {
   return (
     <>
-    <div className="flex h-full w-full flex-col items-center justify-center gap-6 py-10 bg-gray-100 ">
-      <h3 className="text-2xl font-semibold text-gray-800">
-        Recently Placed Students
-      </h3>
-      <AvatarCarousel  />
-    </div>
+      <div className="flex h-full w-full flex-col items-center justify-center py-10 bg-blue-100 ">
+        <h3 className="text-2xl font-semibold text-gray-800">
+          Recently Placed Students
+        </h3>
+        <AvatarCarousel />
+      </div>
     </>
   );
 };
