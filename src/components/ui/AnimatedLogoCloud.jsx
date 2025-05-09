@@ -68,7 +68,7 @@ const AnimatedLogoCloud = () => {
       </h2>
 
       <div
-        className="relative max-h-[180px] overflow-hidden"
+        className="relative max-h-[360px] overflow-hidden"
         style={{
           maskImage:
             "linear-gradient(to top, transparent 0%, black 30%, black 70%, transparent 95%)",
