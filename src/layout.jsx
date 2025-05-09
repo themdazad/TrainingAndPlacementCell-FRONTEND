@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";  
 import { NavLink } from "react-router-dom";
+import TPOStory from "./components/ui/TPOStory";
 import SelectedStudentSlider from "./components/ui/SelectedStudentSlider";
 import AnimatedLogoCloud from "./components/ui/AnimatedLogoCloud";
 import StaticLogoCloud from "./components/ui/StaticLogoCloud";
@@ -34,7 +35,7 @@ export default function Layout() {
             <a
               href="/files/GEC_Siwan_Official_Resume_Format.docx"
               title="Resume Template"
-              className="inline-flex items-center px-6 py-4 mt-8 font-semibold text-black transition-all duration-200 bg-blue-300 rounded-full lg:mt-16 hover:bg-blue-400 focus:bg-blue-400"
+              className="inline-flex items-center px-6 py-4 mt-8 font-semibold text-white transition-all duration-200 bg-blue-600 rounded-full lg:mt-16 hover:bg-blue-400 focus:bg-blue-400"
               role="button"
             >
               Resume Template
@@ -77,7 +78,11 @@ export default function Layout() {
       <section className="py-6 m-auto ">
         <SelectedStudentSlider />
       </section>
-{/* 
+
+      <section className="py-6 m-auto ">
+        <TPOStory />
+      </section>
+      {/* 
       <section className="py-6 m-auto ">
         <StaticLogoCloud />
       </section>

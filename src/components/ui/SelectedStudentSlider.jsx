@@ -146,7 +146,7 @@ const studentDetails = [
 
 
 function AvatarCarousel({
-  avatarSize = 160,
+  avatarSize = 140,
   avatarSpacing = 8,
   avatars = studentDetails,
 }) {
@@ -203,7 +203,7 @@ function AvatarCarousel({
                 <img
                   src={avatar.image}
                   alt={`Avatar ${index}`}
-                  className={`absolute ${isActive ? 'border-3': 'border-1'} border-white  aspect-square m-0 rounded-full object-cover transition-all duration-1000`}
+                  className={`absolute border-2 border-white  aspect-square m-0 rounded-full object-cover transition-all duration-1000`}
                   style={{
                     width: avatarSize,
                     top: "50%",
@@ -219,7 +219,7 @@ function AvatarCarousel({
               </a>
 
               <div
-                className={`absolute bg-white rounded-[30px] px-6 py-1 m-0 text-center transition-all duration-1000`}
+                className={`absolute bg-white hover:shadow-md rounded-3xl px-6 py-1 m-0 text-center transition-all duration-1000`}
                 style={{
                   bottom: "-5%",
                   left: `calc(50% + ${left}px)`,
@@ -231,8 +231,7 @@ function AvatarCarousel({
                   transformOrigin: "top left",
                 }}
               >
-                <p className="text-[12px] font-bold text-blue-400">{avatar.details.package}</p>
-                <h2 className="text-[12px] ">{avatar.details.name}</h2>
+                <h2 className="text-[12px] text-bold">{avatar.details.name}</h2>
                 <p className="text-[12px]">{avatar.details.rollNumber}</p>
               </div>
             </div>

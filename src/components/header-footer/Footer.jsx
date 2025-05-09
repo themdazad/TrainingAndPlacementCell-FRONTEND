@@ -1,28 +1,28 @@
-import { Divider, Image } from "@heroui/react";
-import { FaTwitter, FaLinkedinIn } from "react-icons/fa";
+import { Divider } from "@heroui/react";
+import { NavLink } from "react-router-dom";
 
 export function Footer() {
   return (
-    <footer className="max-w-[1980px] px-[5%] lg:px-[10%] py-10 bg-gray-50 sm:pt-16 bg-[url('/images/blur_bg.png')] bg-cover">
-      <div className="grid grid-cols-2 md:col-span-3 lg:grid-cols-6 gap-y-16 gap-x-12">
+    <footer className="max-w-[1980px] px-[5%] py-10 bg-gray-50 sm:pt-16 bg-[url('/images/blur_bg.png')] bg-cover">
+      <div className="grid grid-cols-2 md:col-span-3 lg:grid-cols-6 gap-y-12 gap-x-12">
         {/* About Section */}
         <div>
           <h4 className="text-sm font-semibold tracking-widest text-gray-400 uppercase">
             About
           </h4>
-          <ul className="mt-6 space-y-4">
-            {["About Us", "Our Mission", "Our Vision", "Contact"].map(
-              (item) => (
-                <li key={item}>
-                  <a
-                    href="#"
-                    className="text-base text-black hover:text-blue-600 transition"
-                  >
-                    {item}
-                  </a>
-                </li>
-              )
-            )}
+          <ul className="mt-4 grid grid-cols-1">
+            <NavLink
+              to="/about-tpo"
+              className="text-base text-black hover:text-blue-600 transition"
+            >
+              About T&P Cell
+            </NavLink>
+            <NavLink
+              to="/contact-us"
+              className="text-base text-black hover:text-blue-600 transition"
+            >
+              Contact
+            </NavLink>
           </ul>
         </div>
 
@@ -31,7 +31,7 @@ export function Footer() {
           <h4 className="text-sm font-semibold tracking-widest text-gray-400 uppercase">
             Resources
           </h4>
-          <ul className="mt-6 space-y-4">
+          <ul className="mt-4 space-y-1">
             {[
               "Placement Preparation",
               "Internship Opportunities",
@@ -55,19 +55,17 @@ export function Footer() {
           <h4 className="text-sm font-semibold tracking-widest text-gray-400 uppercase">
             Usefull links
           </h4>
-          <ul className="mt-6">
-            {["LinkedIn", "Youtube", "College Website"].map(
-              (item) => (
-                <li key={item}>
-                  <a
-                    href="#"
-                    className="text-base text-black hover:text-blue-600 transition"
-                  >
-                    {item}
-                  </a>
-                </li>
-              )
-            )}
+          <ul className="mt-4 space-y-1">
+            {["LinkedIn", "Youtube", "College Website"].map((item) => (
+              <li key={item}>
+                <a
+                  href="#"
+                  className="text-base text-black hover:text-blue-600 transition"
+                >
+                  {item}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
 
@@ -76,7 +74,7 @@ export function Footer() {
           <h4 className="text-sm font-semibold tracking-widest text-gray-400 uppercase">
             Credit
           </h4>
-          <ul className="mt-6 space-y-4">
+          <ul className="mt-6 space-y-1">
             {["Web Developer", "Graphic Designer", "", "TPO Coordinators"].map(
               (item) => (
                 <li key={item}>
