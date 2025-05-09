@@ -32,18 +32,17 @@ export default function TPOStory() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: "easeOut" }}
-        className="rounded-xl overflow-hidden hover:shadow-lg max-w-md w-full"
+        className="rounded-xl overflow-hidden hover:shadow-lg max-w-md w-full ascept-square"
       >
         <video
-        //   autoPlay
+          controls
           loop
-        //   muted
           playsInline
-          poster="" // ✅ Add video thumbnail image here
+          poster="/images/video-thumbnail.jpg"
           className="w-full h-full object-cover"
         >
           {/* <source src="/videos/sample-video.mp4" type="video/mp4" /> */}
-          <source src="/videos/tpo_gd.mp4" type="video/mp4" />
+          <source src="/videos/tpo_gd.webm" type="video/webm" />
           Your browser does not support the video tag.
         </video>
       </motion.div>
