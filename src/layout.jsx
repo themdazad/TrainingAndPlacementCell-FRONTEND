@@ -248,16 +248,17 @@ export function FAQ() {
 
       {/* coordinators image and contact details*/}
       <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
-                viewport={{ once: false, amount: 0.2 }} 
-                className=" gap-6 bg-blue-50 rounded-xl p-12 my-12 text-center w-full mx-auto ">
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        viewport={{ once: false, amount: 0.2 }}
+        className=" gap-6 bg-blue-50 rounded-xl p-12 my-12 text-center w-full mx-auto "
+      >
         <div className="flex justify-center -space-x-4 mb-4">
           <img
             src="/images/coordinators/abhishek_profile.jpg"
             alt="Avatar 1"
-            className="w-20 aspect-square rounded-full border-2 border-white"
+            className="w-20 aspect-square rounded-full border-2 saturate-0 border-white"
           />
           <img
             src="/images/coordinators/azad_profile.jpg"
@@ -265,7 +266,7 @@ export function FAQ() {
             className="w-20 aspect-square rounded-full border-2 border-white"
           />
           <img
-            src="https://media.licdn.com/dms/image/v2/D4D35AQFmhBAYe3OPzg/profile-framedphoto-shrink_200_200/B4DZWvN989HAAc-/0/1742401429669?e=1747242000&v=beta&t=vRc-Y8WWjTQPKPmp-krBeoKO-bwK6Jzggi8LiseWh14"
+            src="https://avatars.githubusercontent.com/u/156394664?v=4"
             alt="Avatar 3"
             className="w-20 aspect-square rounded-full border-2 border-white"
           />
