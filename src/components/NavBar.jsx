@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { Image } from "@heroui/react";
+import {ChevronDown} from "lucide-react";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -10,9 +11,8 @@ const navLinks = [
     name: "Resources",
     dropdown: true,
     items: [
-      { name: "Item 1", path: "/resources/item1" },
-      { name: "Item 2", path: "/resources/item2" },
-      { name: "Item 3", path: "/resources/item3" },
+      { name: "Student Projects", path: "/resources/projects" },
+      { name: "Resume Template", path: "/files/GEC_Siwan_Official_Resume_Format.docx" },
     ],
   },
   { name: "Online Test", path: "/online-test" },
@@ -147,7 +147,7 @@ export default function NavBar() {
                 ) : (
                   <div
                     key={index}
-                    className="relative"
+                    className="relative group"
                     onMouseEnter={() =>
                       setIsDropdownOpen({ [link.name]: true })
                     }
@@ -155,12 +155,13 @@ export default function NavBar() {
                       setIsDropdownOpen({ [link.name]: false })
                     }
                   >
-                    <span className=" cursor-pointer transition-all duration-200 hover:text-opacity-80">
+                    <span className="flex items-end cursor-pointer transition-all duration-300 hover:text-opacity-80">
                       {link.name}
+                      <ChevronDown className="rotate-0  group-hover:rotate-180 transition-rotate duration-300" />
                     </span>
 
                     <ul
-                      className={`absolute left-[-50%] min-w-max text-small rounded-md border-t-4 border-t-blue-600 bg-white py-2.5 px-12 space-y-1 transition-all duration-200 ${
+                      className={`absolute left-[-50%] min-w-max text-small rounded-md border-t-4 border-t-blue-600 bg-white py-2.5 px-12 space-y-3 transition-all duration-200 ${
                         isDropdownOpen[link.name] ? "flex flex-col" : "hidden"
                       }`}
                     >

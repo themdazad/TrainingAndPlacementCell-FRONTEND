@@ -1,0 +1,6 @@
+.header{
+    background-image: url("/public/images/projects_banner.svg");
+    background-repeat: no-repeat;
+    background-size: contain; 
+    background-position: center;
+}

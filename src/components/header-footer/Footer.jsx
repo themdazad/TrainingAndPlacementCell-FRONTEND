@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 export function Footer() {
   return (
-    <footer className="max-w-[1980px] px-[5%] py-10 bg-gray-50 sm:pt-16 bg-[url('/images/blur_bg.png')] bg-cover">
+    <footer className="max-w-[1980px] m-auto px-[5%] py-10 bg-gray-50 sm:pt-16 bg-[url('/images/blur_bg.png')] bg-cover">
       <div className="grid grid-cols-2 md:col-span-3 lg:grid-cols-6 gap-y-12 gap-x-12">
         {/* About Section */}
         <div>
