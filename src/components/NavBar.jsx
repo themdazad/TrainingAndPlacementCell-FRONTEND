@@ -11,7 +11,7 @@ const navLinks = [
     name: "Resources",
     dropdown: true,
     items: [
-      { name: "Student Projects", path: "/resources/projects" },
+      { name: "Student Projects", path: "/projects" },
       {
         name: "Resume Template",
         path: "/files/GEC_Siwan_Official_Resume_Format.docx",

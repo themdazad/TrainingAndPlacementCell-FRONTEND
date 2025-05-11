@@ -21,7 +21,8 @@ import PrivateRoute from "./components/auth/PrivateRoute.jsx";
 import ContactUs from "./pages/contact-us/index.jsx";
 import Programs from "./pages/programs-page/index.jsx"
 import CampusPlacements2025 from "./pages/campus-placement/2025/campus-placement-2025.jsx"
-import Projects from "./pages/resourses/projects/index.jsx";
+import Projects from "./pages/projects/index.jsx";
+import ProjectDetailsPage from "./pages/projects/projectDetailsPage.jsx";
 
 export default function Path() {
   const [isLogedIn, setAuth] = useState(useContext(AuthContext));
@@ -71,7 +72,11 @@ export default function Path() {
       <Route path="contact-us" element={<ContactUs />} />
       <Route path="programs" element={<Programs />} />
       {/* resources */}
-      <Route path="/resources/projects" element={<Projects />} />
+      <Route path="/projects" >
+        <Route index element={<Projects />} />  
+        {/* Nested Route for Project Details */}
+        <Route path=":title/:id" element={<ProjectDetailsPage />} />
+      </Route>
       <Route path="campus-placement-2025" element={<CampusPlacements2025 />} />
 
 
