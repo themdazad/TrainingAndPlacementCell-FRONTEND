@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { Image } from "@heroui/react";
-import {ChevronDown} from "lucide-react";
+import { ChevronDown, ChevronUp, BellDot } from "lucide-react";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -12,16 +12,15 @@ const navLinks = [
     dropdown: true,
     items: [
       { name: "Student Projects", path: "/resources/projects" },
-      { name: "Resume Template", path: "/files/GEC_Siwan_Official_Resume_Format.docx" },
+      {
+        name: "Resume Template",
+        path: "/files/GEC_Siwan_Official_Resume_Format.docx",
+      },
     ],
   },
   { name: "Online Test", path: "/online-test" },
 ];
 
-const actionButtons = [
-  { name: "Recruiters", path: "/recruiters" },
-  { name: "Student Login", path: "/auth/student/login", primary: true },
-];
 
 export default function NavBar() {
   const [isVisible, setIsVisible] = useState(true);
@@ -94,9 +93,9 @@ export default function NavBar() {
       </header>
 
       {/* 2nd row */}
-      <header className="px-[5%] bg-sky-200">
-        <div className="mx-auto">
-          <div className="flex items-center justify-between py-2 px-4 relative z-50">
+      <header className="mx-auto relative bg-sky-200">
+        
+          <div className="px-[5%] flex items-center justify-between py-2 relative z-50">
             {/* Hamburger */}
             <button
               type="button"
@@ -181,26 +180,9 @@ export default function NavBar() {
               )}
             </div>
 
-            {/* Buttons */}
-            <div className="hidden lg:inline-flex items-center space-x-4">
-              {actionButtons.map((btn, i) => (
-                <NavLink
-                  key={i}
-                  to={btn.path}
-                  className={`px-5 py-2.5 rounded-full transition-all duration-200 ${
-                    btn.primary
-                      ? "bg-black text-white hover:bg-yellow-300 hover:text-black font-semibold"
-                      : "hover:bg-yellow-300 hover:text-black"
-                  }`}
-                >
-                  {btn.name}
-                </NavLink>
-              ))}
-            </div>
-
             {/* Mobile Dropdown */}
             <div
-              className={`lg:hidden flex flex-col w-full absolute top-full left-0 bg-white px-6 py-4 shadow-md transition-all duration-300 ease-in-out overflow-hidden ${
+              className={`lg:hidden flex flex-col w-full absolute top-full left-0 bg-white px-6 py-4 rounded-b-xl transition-all duration-300 ease-in-out overflow-hidden ${
                 isMobileMenuOpen
                   ? "max-h-[500px] opacity-100"
                   : "max-h-0 opacity-0"
@@ -212,7 +194,7 @@ export default function NavBar() {
                   <NavLink
                     key={index}
                     to={link.path}
-                    className="py-2 text-black hover:opacity-80"
+                    className="py-4 text-black hover:opacity-80"
                   >
                     {link.name}
                   </NavLink>
@@ -223,10 +205,16 @@ export default function NavBar() {
                       onClick={() => handleDropdownToggle(link.name)}
                     >
                       {link.name}
-                      <span>{isDropdownOpen[link.name] ? "▲" : "▼"}</span>
+                      <span>
+                        {isDropdownOpen[link.name] ? (
+                          <ChevronUp />
+                        ) : (
+                          <ChevronDown />
+                        )}
+                      </span>
                     </button>
                     <ul
-                      className={`ml-4 mt-2 space-y-1 ${
+                      className={`ml-4 mt-2 space-y-4 ${
                         isDropdownOpen[link.name] ? "block" : "hidden"
                       }`}
                     >
@@ -244,24 +232,25 @@ export default function NavBar() {
                   </div>
                 )
               )}
-              <div className="pt-4 border-t border-gray-200 mt-4">
-                {actionButtons.map((btn, i) => (
-                  <NavLink
-                    key={i}
-                    to={btn.path}
-                    className={`block py-2 rounded-full ${
-                      btn.primary
-                        ? "text-white bg-black font-semibold hover:bg-yellow-300 hover:text-black px-4"
-                        : "text-black hover:opacity-80"
-                    }`}
-                  >
-                    {btn.name}
-                  </NavLink>
-                ))}
-              </div>
+              
+            </div>
+
+            {/* Action Buttons: User Profile  for dashboard and login Page*/}
+            <div>
+              <NavLink
+                to="/auth/student/login"
+                className="flex items-center space-x-4 lg:space-x-6"
+              >
+                <BellDot />
+                <Image
+                  className="brand-logo border rounded-full min-h-[30px] max-h-[48px] aspect-square"
+                  src="https://www.bu.edu/prsocial/files/2019/07/profile-default-photo.jpg"
+                  alt="user-logo"
+                />
+              </NavLink>
             </div>
           </div>
-        </div>
+        
       </header>
     </nav>
   );

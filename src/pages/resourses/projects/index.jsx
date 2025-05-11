@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { CircleArrowLeft, CircleArrowRight } from "lucide-react";
 import "./projects.css";
 
 const projectsData = [
@@ -9,7 +8,7 @@ const projectsData = [
     description:
       "A smart surveillance system that detects fire and smoke using AI image processing techniques in real-time CCTV feeds. Built using Python and TensorFlow.",
     image:
-      "https://images.unsplash.com/photo-1617196038436-bd041ce2000e?auto=format&fit=crop&w=800&q=80",
+      "https://th.bing.com/th/id/OIP.ng5ENi7AqsCASwqhe08ncQHaEO?cb=iwp2&rs=1&pid=ImgDetMain",
     date: "2024-03-10",
   },
   {
@@ -18,7 +17,7 @@ const projectsData = [
     description:
       "An assistive device that moves based on voice commands, designed for physically challenged individuals. Built using Arduino, Bluetooth module, and speech recognition module.",
     image:
-      "https://images.unsplash.com/photo-1606813909357-6613c21a83aa?auto=format&fit=crop&w=800&q=80",
+      "https://i0.wp.com/techacute.com/wp-content/uploads/2017/09/Panasonic-Haneda-Whill-Next-Airport-Mobility-Support-Wheelchair-Robotic-Autonomous-Self-Driving-Tandem-Single-File-Navigation-App-Smartphone-Staff-Help.jpg?fit=800%2C480&ssl=1",
     date: "2024-04-25",
   },
   {
@@ -27,7 +26,7 @@ const projectsData = [
     description:
       "An IoT system that monitors pH, turbidity, and temperature of water in real time and sends alerts for abnormalities. Developed using NodeMCU and various sensors.",
     image:
-      "https://images.unsplash.com/photo-1518551933037-241d176b1985?auto=format&fit=crop&w=800&q=80",
+      "https://www.aquas.com.tw/files/Aquaculture%20Water%20Quality-e-1.jpg",
     date: "2023-12-12",
   },
   {
@@ -36,7 +35,7 @@ const projectsData = [
     description:
       "An ultrasonic sensor-based stick that detects nearby obstacles and alerts the visually impaired with vibrations and buzzer sounds.",
     image:
-      "https://images.unsplash.com/photo-1582719478177-2f6b284d5439?auto=format&fit=crop&w=800&q=80",
+      "https://s.yimg.com/uu/api/res/1.2/fJolK2ywu8mzzytlMFMVbQ--~B/aD01NDA7dz05NjA7c209MTthcHBpZD15dGFjaHlvbg--/http://media.zenfs.com/en-US/video/video.reutersnews.com/2014-07-21T145950Z_1_LOVEA6K15NP8U_RTRMADP_BASEIMAGE-960X540_TECHNOLOGY-SMARTCANE-O.JPG",
     date: "2023-11-03",
   },
   {
@@ -54,7 +53,7 @@ const projectsData = [
     description:
       "An embedded system that automatically turns lights on/off and keeps track of the number of people entering/exiting a room using IR sensors and microcontrollers.",
     image:
-      "https://images.unsplash.com/photo-1616627981734-67292f2f1093?auto=format&fit=crop&w=800&q=80",
+      "https://th.bing.com/th/id/OIP.m7i7puC37Gy7jXSNO4LsygHaEK?cb=iwp2&rs=1&pid=ImgDetMain",
     date: "2023-10-18",
   },
 ];
@@ -66,7 +65,7 @@ const Projects = () => {
   const [sortOrder, setSortOrder] = useState("newest");
   const [currentPage, setCurrentPage] = useState(1);
 
-  const projectsPerPage = 4;
+  const projectsPerPage = 6;
 
   // Filter and sort
   const filteredProjects = projectsData
@@ -96,20 +95,19 @@ const Projects = () => {
     <section className="max-w-[1980px] mx-auto">
       {/* Header */}
       <div className="header bg-slate-200- h-[370px] flex flex-col items-center justify-center">
-        <p className="text-lg text-center mt-4 max-w-2xl">
-        Our Student
+        <p className="md:text-lg text-center mt-4 max-w-2xl">
+        Our Student&apos;s
         </p>
-        <h1 className="text-3xl font-bold text-center">PROJECTS</h1>
-        <p className="text-lg text-center mt-3 max-w-2xl">
+        <h1 className="text-4xl lg:text-6xl font-bold text-center">PROJECTS</h1>
+        <p className="text-center mt-3 max-w-2xl">
           Explore our student's projects and initiatives that showcase our commitment to
           excellence and innovation.
         </p>
       </div>
 
       {/* Search and Sort */}
-      <div className=" px-[5%] mt-4 gap-4 flex justify-between">
-      <span></span>
-        <div className="flex flex-col md:flex-row items-center justify-between ">
+      <div className=" px-[5%] mt-4  flex justify-between">
+        <div className="flex gap-12 items-center justify-between ">
           <input
             type="text"
             placeholder="Search projects..."
@@ -141,10 +139,10 @@ const Projects = () => {
             <img
               src={project.image}
               alt={project.title}
-              className="w-full h-48 object-cover"
+              className="w-full aspect-[16/9] object-cover"
             />
             <div className="p-4 flex-grow">
-              <h2 className="text-xl font-semibold mb-2">{project.title}</h2>
+              <h2 className="text-lg font-semibold mb-2">{project.title}</h2>
               <p className="text-gray-600 ">{project.description}</p>
             </div>
 
@@ -163,7 +161,7 @@ const Projects = () => {
             disabled={currentPage === 1}
             className="disabled:opacity-50"
           >
-            <CircleArrowLeft />
+            Previous
           </button>
           {Array.from({ length: totalPages }, (_, i) => (
             <button
@@ -181,7 +179,7 @@ const Projects = () => {
             disabled={currentPage === totalPages}
             className="disabled:opacity-50"
           >
-            <CircleArrowRight />
+           Next
           </button>
         </div>
       )}

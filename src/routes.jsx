@@ -13,6 +13,8 @@ import AdminDashboard from "./pages/dashboard/admin";
 import StudentDashboard from "./pages/dashboard/student";
 import AuthContext from "./contexts/auth/AuthContext.jsx";
 import ReachSiwan from "./pages/common/reach-siwan.jsx";
+// fallback routes
+import ComingSoon from "./pages/ComingSoon.jsx";
 // Private Route
 import PrivateRoute from "./components/auth/PrivateRoute.jsx";
 // Public Routes 
@@ -72,8 +74,10 @@ export default function Path() {
       <Route path="/resources/projects" element={<Projects />} />
       <Route path="campus-placement-2025" element={<CampusPlacements2025 />} />
 
-      {/* Catch-All Route */}
-      <Route path="*" element={<Navigate to={location.pathname} replace />} />
+
+      {/* Catch-all fallback for unmatched routes */}
+      <Route path="*" element={<ComingSoon />} />
+
     </Routes>
   );
 }
