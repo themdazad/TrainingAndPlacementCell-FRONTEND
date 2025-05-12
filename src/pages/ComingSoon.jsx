@@ -21,7 +21,7 @@ function ComingSoon() {
   }, []);
 
   return (
-    <div className="min-h-[100dvh] flex flex-col items-center justify-center px-6 text-gray-900 bg-white relative text-center">
+    <div className="min-h-[100dvh] flex flex-col items-center justify-center px-6 text-gray-900 dark:text-white bg-white dark:bg-gray-900 relative text-center">
       <motion.h1
         initial={{ opacity: 0, y: -40 }}
         animate={{ opacity: 1, y: 0 }}
@@ -35,7 +35,7 @@ function ComingSoon() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5 }}
-        className="text-lg md:text-xl max-w-2xl mb-10"
+        className="text-lg md:text-xl max-w-2xl mb-10 text-gray-700 dark:text-gray-300"
       >
         We're building something amazing for students like you. Stay inspired!
       </motion.p>
@@ -44,11 +44,10 @@ function ComingSoon() {
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 1 }}
-        className="italic text-xl md:text-2xl max-w-3xl text-indigo-700 font-medium"
+        className="italic text-xl md:text-2xl max-w-3xl text-indigo-700 dark:text-indigo-300 font-medium"
       >
         “{quote}”
       </motion.blockquote>
-
     </div>
   );
 }

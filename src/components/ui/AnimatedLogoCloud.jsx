@@ -62,8 +62,8 @@ const logos = [
 
 const AnimatedLogoCloud = () => {
   return (
-    <section className="py-12 bg-white text-center overflow-hidden">
-      <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-10">
+    <section className="py-12 bg-white dark:bg-gray-900 text-center overflow-hidden">
+      <h2 className="text-2xl md:text-3xl font-bold text-gray-800 dark:text-white mb-10">
         Our Recruiters
       </h2>
 
@@ -71,6 +71,8 @@ const AnimatedLogoCloud = () => {
         className="relative max-h-[360px] overflow-hidden"
         style={{
           maskImage:
+            "linear-gradient(to top, transparent 0%, black 30%, black 70%, transparent 95%)",
+          WebkitMaskImage:
             "linear-gradient(to top, transparent 0%, black 30%, black 70%, transparent 95%)",
         }}
       >
@@ -87,7 +89,6 @@ const AnimatedLogoCloud = () => {
                 >
                   {logo.link ? (
                     <a
-                    
                       href={logo.link}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -95,7 +96,7 @@ const AnimatedLogoCloud = () => {
                       <img
                         src={logo.url}
                         alt={logo.name}
-                        className="max-h-16 object-contain  transition"
+                        className="max-h-16 object-contain transition"
                       />
                     </a>
                   ) : (
@@ -111,7 +112,10 @@ const AnimatedLogoCloud = () => {
           ))}
         </div>
       </div>
-      <p className="mt-10 text-sm text-gray-500">and 50+ more companies</p>
+
+      <p className="mt-10 text-sm text-gray-500 dark:text-gray-400">
+        and more companies
+      </p>
     </section>
   );
 };

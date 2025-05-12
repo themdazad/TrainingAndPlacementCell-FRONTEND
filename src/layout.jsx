@@ -17,17 +17,17 @@ import Testimonials from "./components/ui/Testimonials";
 
 export default function Layout() {
   return (
-    <main className="overflow-hidden max-w-[1980px] m-auto min-h-screen">
+    <main className="overflow-hidden max-w-[1980px] m-auto min-h-screen bg-white dark:bg-gray-900">
       <section className="px-[5%] md:px-[10%] sm:py-16">
         <div className="grid items-center py-12 grid-cols-1 gap-12 lg:grid-cols-2">
           <div>
-            <p className="text-base font-semibold tracking-wider text-blue-600 uppercase">
+            <p className="text-base font-semibold tracking-wider text-blue-600 dark:text-blue-400 uppercase">
               For career and growth
             </p>
-            <h1 className="mt-2 text-4xl font-bold text-black lg:mt-8 sm:text-6xl xl:text-8xl">
+            <h1 className="mt-2 text-4xl font-bold text-gray-900 dark:text-white lg:mt-8 sm:text-6xl xl:text-8xl">
               Campus Placement 2025
             </h1>
-            <p className="mt-2 text-base text-black lg:mt-8 sm:text-xl">
+            <p className="mt-2 text-base text-gray-800 dark:text-gray-300 lg:mt-8 sm:text-xl">
               We focus on the holistic development of our students by offering
               regular workshops, technical training, and personality development
               sessions.
@@ -35,7 +35,7 @@ export default function Layout() {
             <a
               href="/files/GEC_Siwan_Official_Resume_Format.docx"
               title="Resume Template"
-              className="inline-flex items-center px-6 py-4 mt-8 font-semibold text-white transition-all duration-200 bg-blue-600 rounded-full lg:mt-16 hover:bg-blue-400 focus:bg-blue-400"
+              className="inline-flex items-center px-6 py-4 mt-8 font-semibold text-white transition-all duration-200 bg-blue-600 rounded-full lg:mt-16 hover:bg-blue-500 focus:bg-blue-500 dark:bg-blue-500 dark:hover:bg-blue-400"
               role="button"
             >
               Resume Template
@@ -69,34 +69,29 @@ export default function Layout() {
               src="/images/heroThumbnails/heroThumbnail07052025.svg"
               alt="tpo siwan hero image"
             />
-            {/* Images carousel  */}
-            {/* <SimpleSlider /> */}
           </div>
         </div>
       </section>
 
-      <section className="py-6 m-auto ">
+      <section className="py-6 m-auto">
         <SelectedStudentSlider />
       </section>
 
-      <section className="py-6 m-auto bg-yellow-100">
+      <section className="py-6 m-auto">
         <TPOStory />
       </section>
-      {/* 
-      <section className="py-6 m-auto ">
-        <StaticLogoCloud />
-      </section>
- */}
-      <section className="py-6 m-auto ">
+
+      <section className="py-6 m-auto">
         <AnimatedLogoCloud />
       </section>
 
-      <section className="py-6 m-auto ">
+      <section className="py-6 m-auto">
         <Testimonials />
       </section>
 
-      {/* FAQ  */}
-      <FAQ />
+      <section className="py-6 m-auto">
+          <FAQ />
+      </section>
     </main>
   );
 }
@@ -225,63 +220,67 @@ export function FAQ() {
   const [accordionItems, setAccordionItems] = useState(faq_data);
 
   return (
-    <section className="max-w-[1920px] my-[6em] m-auto px-[5%] ">
-      <h2 className="text-lg sm:text-2xl md:text-3xl text-center my-6 font-semibold">
-        Frequently Asked Questions !
+    <section className="max-w-[1920px] my-[6em] m-auto px-[5%]">
+      <h2 className="text-lg sm:text-2xl md:text-3xl text-center my-6 font-semibold text-gray-900 dark:text-white">
+        Frequently Asked Questions
       </h2>
+
+      {/* Accordion Section */}
       <div className="accordion max-w-[1440px] m-auto">
         <Accordion variant="light" className="md:text-lg">
-          {accordionItems.map((item, index) => {
-            return (
-              <AccordionItem
-                key={index}
-                className="md:text-xl"
-                aria-label={`Accordion ${index + 1}`}
-                title={item.question}
-              >
-                <p className="text-[14px] text-gray-500">{item.answer}</p>
-              </AccordionItem>
-            );
-          })}
+          {accordionItems.map((item, index) => (
+            <AccordionItem
+              key={index}
+              className="md:text-xl"
+              aria-label={`Accordion ${index + 1}`}
+              title={item.question}
+            >
+              <p className="text-[14px] text-gray-800 dark:text-gray-200">
+                {item.answer}
+              </p>
+            </AccordionItem>
+          ))}
         </Accordion>
       </div>
 
-      {/* coordinators image and contact details*/}
+      {/* Coordinators Image and Contact Details */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
         viewport={{ once: false, amount: 0.2 }}
-        className=" gap-6 bg-blue-50 rounded-xl p-12 my-12 text-center w-full mx-auto "
+        className="gap-6 bg-blue-50 dark:bg-gray-800 rounded-xl p-12 my-12 text-center w-full mx-auto"
       >
+        {/* Coordinator Images */}
         <div className="flex justify-center -space-x-4 mb-4">
           <img
             src="/images/coordinators/abhishek_profile.jpg"
-            alt="Avatar 1"
-            className="w-20 aspect-square rounded-full border-2 saturate-0 border-white"
+            alt="Abhishek"
+            className="w-20 aspect-square rounded-full border-2 dark:border-gray-700 border-white"
           />
           <img
             src="/images/coordinators/azad_profile.jpg"
-            alt="Avatar 2"
-            className="w-20 aspect-square rounded-full border-2 border-white"
+            alt="Azad"
+            className="w-20 aspect-square rounded-full border-2 dark:border-gray-700 border-white"
           />
           <img
             src="https://avatars.githubusercontent.com/u/156394664?v=4"
-            alt="Avatar 3"
-            className="w-20 aspect-square rounded-full border-2 border-white"
+            alt="Coordinator 3"
+            className="w-20 aspect-square rounded-full border-2 dark:border-gray-700 border-white"
           />
         </div>
-        <h2 className="text-xl font-semibold text-gray-900">
+
+        {/* Contact Section */}
+        <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
           Still have doubts?
         </h2>
-        <p className=" text-gray-600 mt-2">
-          Can't find the answer you're looking for? Contact us
+        <p className="text-gray-700 dark:text-gray-300 mt-2">
+          Can't find the answer you're looking for? Contact us!
         </p>
-        <button className="mt-5 bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full text-sm font-medium">
+        <button className="mt-5 bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600 text-white px-6 py-2 rounded-full text-sm font-medium">
           Our Coordinators
         </button>
       </motion.div>
     </section>
   );
-  ` 1ptfby hnjm,`;
 }

@@ -175,82 +175,81 @@ function AvatarCarousel({
   }, [avatars.length]);
 
   return (
-    <>
-      <div
-        className="relative h-full w-full  gap-2"
-        style={{
-          WebkitMaskImage:
-            "linear-gradient(to right, transparent, black 20%, black 80%, transparent)",
-          maskImage:
-            "linear-gradient(to right, transparent, black 20%, black 80%, transparent)",
-          minHeight: `${avatarSize + 60}px`,
-          maxWidth: `${(avatarSize + avatarSpacing) *10}px`,
-        }}
-      >
-        {avatars.map((avatar, index) => {
-          const placement = getPlacementIndex(index);
-          const left = placement * (avatarSize + avatarSpacing);
-          const shouldHide = isAtEnd(placement);
-          const isActive = activeIndex === index;
+    <div
+      className="relative h-full w-full gap-2"
+      style={{
+        WebkitMaskImage:
+          "linear-gradient(to right, transparent, black 20%, black 80%, transparent)",
+        maskImage:
+          "linear-gradient(to right, transparent, black 20%, black 80%, transparent)",
+        minHeight: `${avatarSize + 60}px`,
+        maxWidth: `${(avatarSize + avatarSpacing) * 10}px`,
+      }}
+    >
+      {avatars.map((avatar, index) => {
+        const placement = getPlacementIndex(index);
+        const left = placement * (avatarSize + avatarSpacing);
+        const shouldHide = isAtEnd(placement);
+        const isActive = activeIndex === index;
 
-          return (
-            <div className="group" key={index}>
-              <a
-                href={avatar.details.linkedIn}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  src={avatar.image}
-                  alt={`Avatar ${index}`}
-                  className={`absolute border-2 border-white  aspect-square m-0 rounded-full object-cover transition-all duration-1000`}
-                  style={{
-                    width: avatarSize,
-                    top: "50%",
-                    left: `calc(50% + ${left}px)`,
-                    transform: `translate(-50%, -50%) scale(${
-                      1 - Math.abs(placement) * 0.1
-                    })`,
-                    zIndex: isActive ? 1 : 0,
-                    opacity: shouldHide ? 0 : isActive ? 1 : 0.6,
-                    transformOrigin: "top left",
-                  }}
-                />
-              </a>
-
-              <div
-                className={`absolute bg-white hover:shadow-md rounded-3xl px-6 py-1 m-0 text-center transition-all duration-1000`}
+        return (
+          <div className="group" key={index}>
+            <a
+              href={avatar.details.linkedIn}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src={avatar.image}
+                alt={`Avatar ${index}`}
+                className={`absolute border-2 border-white dark:border-gray-800 aspect-square m-0 rounded-full object-cover transition-all duration-1000`}
                 style={{
-                  bottom: "-5%",
+                  width: avatarSize,
+                  top: "50%",
                   left: `calc(50% + ${left}px)`,
                   transform: `translate(-50%, -50%) scale(${
                     1 - Math.abs(placement) * 0.1
                   })`,
                   zIndex: isActive ? 1 : 0,
-                  opacity: shouldHide ? 0 : isActive ? 1 : 0,
+                  opacity: shouldHide ? 0 : isActive ? 1 : 0.6,
                   transformOrigin: "top left",
                 }}
-              >
-                <h2 className="text-[12px] text-bold">{avatar.details.name}</h2>
-                <p className="text-[12px]">{avatar.details.rollNumber}</p>
-              </div>
+              />
+            </a>
+
+            <div
+              className={`absolute bg-white dark:bg-gray-800 dark:text-gray-100 hover:shadow-md dark:hover:shadow-lg rounded-3xl px-6 py-1 m-0 text-center transition-all duration-1000`}
+              style={{
+                bottom: "-5%",
+                left: `calc(50% + ${left}px)`,
+                transform: `translate(-50%, -50%) scale(${
+                  1 - Math.abs(placement) * 0.1
+                })`,
+                zIndex: isActive ? 1 : 0,
+                opacity: shouldHide ? 0 : isActive ? 1 : 0,
+                transformOrigin: "top left",
+              }}
+            >
+              <h2 className="text-[12px] font-bold">{avatar.details.name}</h2>
+              <p className="text-[12px]">{avatar.details.rollNumber}</p>
             </div>
-          );
-        })}
-      </div>
-    </>
+          </div>
+        );
+      })}
+    </div>
   );
 }
 
 const SelectedStudentSlider = () => {
   return (
     <>
-      <div className="flex h-full w-full flex-col items-center justify-center py-10  ">
-        <h3 className="text-2xl font-semibold text-gray-800">
-          Recently Placed Students
-        </h3>
-        <AvatarCarousel />
-      </div>
+     <div className="flex h-full w-full flex-col items-center justify-center py-10">
+  <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">
+    Recently Placed Students
+  </h3>
+  <AvatarCarousel />
+</div>
+
     </>
   );
 };
