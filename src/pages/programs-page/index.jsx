@@ -6,7 +6,7 @@ import { Image } from "@heroui/react";
 
 const Programs = () => {
   return (
-    <section className="py-12 bg-gray-500/20 min-h-screen">
+    <section className="py-12 dark:bg-gray-900 min-h-screen">
       <div className="max-w-[1920px] m-auto px-[5%]">
         <div className="tittle-bar flex items-center mb-[4em] gap-6">
           <h1 className="tittle-bar-heading text-xl sm:text-2xl md:text-3xl text-nowrap font-bold">
@@ -38,12 +38,12 @@ export function ProgramCards() {
   }, [programData]);
 
   return (
-    <div className="cards-container snap snap-x snap-mandatory max-md:overflow-x-scroll flex gap-[2em] md:flex-wrap ">
+    <div className="cards-container snap snap-x snap-mandatory max-md:overflow-x-scroll flex gap-[2em] md:flex-wrap">
       {response.reverse().map((program, index) => {
         return (
           <div
             key={index}
-            className="relative card bg-gray-500/10 border hover:border-1 border-gray-500/20  hover:border-sky-500/50 snap-center min-w-[20em] max-w-[24em] min-h-max transition-all duration-300 rounded-3xl overflow-hidden"
+            className="relative card border hover:border-1  dark:bg-gray-800/20 dark:border-gray-900  snap-center min-w-[20em] max-w-[24em] min-h-max transition-all duration-300 rounded-3xl overflow-hidden"
           >
             <Image
               className="card-image rounded-none object-cover aspect-video"
@@ -52,32 +52,34 @@ export function ProgramCards() {
               width={400}
             />
 
-            <div className="card-tag z-10 absolute top-[1em] right-[1em] rounded-3xl px-[0.5em] py-[0.2em] text-[14px]  bg-primary text-white">
+            <div className="card-tag z-10 absolute top-[1em] right-[1em] rounded-3xl px-[0.5em] py-[0.2em] text-[14px] bg-primary text-white dark:bg-primary-dark">
               {program.tag}
             </div>
-            <div className="card-content  p-[1em] ">
-              <h2 className="card-title font-bold sm:text-lg">
+
+            <div className="card-content p-[1em]">
+              <h2 className="card-title font-bold sm:text-lg text-gray-900 dark:text-white">
                 {program.tittle}
               </h2>
-              <p className="card-description text-[14px] mb-[1em] text-gray-500">
+              <p className="card-description text-[14px] mb-[1em] text-gray-500 dark:text-gray-300">
                 {program.description}
               </p>
 
               <div className="card_footer text-[14px] flex justify-between items-center">
                 <div>
-                  <span className="text-gray-500 text-[14px] flex items-center gap-1">
+                  <span className="text-gray-500 text-[14px] flex items-center gap-1 dark:text-gray-400">
                     <FaClock />
                     {program.time}
                   </span>
-                  <span className="text-gray-500  text-[14px] flex items-center  text-nowrap gap-1">
+                  <span className="text-gray-500 text-[14px] flex items-center text-nowrap gap-1 dark:text-gray-400">
                     <FaLocationDot />
                     {program.location}
                   </span>
                 </div>
+
                 <a
                   href={program.google_form_link}
                   target="_blank"
-                  className="text-primary text-[14px] font-bold flex items-center gap-2  mt-[1em]"
+                  className="text-primary text-[14px] font-bold flex items-center gap-2 mt-[1em] hover:text-sky-500 dark:hover:text-sky-400"
                 >
                   {!program.link ? "Know More" : "Date Over"}
                   <CirclePlus />

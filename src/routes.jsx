@@ -19,7 +19,7 @@ import ComingSoon from "./pages/ComingSoon.jsx";
 import PrivateRoute from "./components/auth/PrivateRoute.jsx";
 // Public Routes 
 import ContactUs from "./pages/contact-us/index.jsx";
-import Programs from "./pages/programs-page/index.jsx"
+import Programs from "./pages/programs-page/index.jsx";
 import CampusPlacements2025 from "./pages/campus-placement/2025/campus-placement-2025.jsx"
 import Projects from "./pages/projects/index.jsx";
 import ProjectDetailsPage from "./pages/projects/projectDetailsPage.jsx";
@@ -33,10 +33,8 @@ export default function Path() {
     <Routes>
       {/* ScrollToTop component will now trigger on route change */}
       ScrollToTop();
-
       {/* Top-Level Routes | PUBLIC */}
       <Route path="/" element={<Layout />} />
-    
       {/* auth | ADMIN + STUDENT */}
       <Route path="/auth">
         <Route path="admin">

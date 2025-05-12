@@ -15,11 +15,9 @@ const navLinks = [
     name: "Resources",
     dropdown: true,
     items: [
+      { name: "Programs", path: "/programs" },
       { name: "Student Projects", path: "/projects" },
-      {
-        name: "Resume Template",
-        path: "/files/GEC_Siwan_Official_Resume_Format.docx",
-      },
+      { name: "Resume Template", path: "/files/GEC_Siwan_Official_Resume_Format.docx"},
     ],
   },
   { name: "Online Test", path: "/online-test" },
