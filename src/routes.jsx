@@ -23,6 +23,7 @@ import Programs from "./pages/programs-page/index.jsx"
 import CampusPlacements2025 from "./pages/campus-placement/2025/campus-placement-2025.jsx"
 import Projects from "./pages/projects/index.jsx";
 import ProjectDetailsPage from "./pages/projects/projectDetailsPage.jsx";
+import ScrollToTop from "./utils/ScrollToTop.jsx"
 
 export default function Path() {
   const [isLogedIn, setAuth] = useState(useContext(AuthContext));
@@ -30,9 +31,12 @@ export default function Path() {
 
   return (
     <Routes>
+      {/* ScrollToTop component will now trigger on route change */}
+      ScrollToTop();
+
       {/* Top-Level Routes | PUBLIC */}
       <Route path="/" element={<Layout />} />
-
+    
       {/* auth | ADMIN + STUDENT */}
       <Route path="/auth">
         <Route path="admin">
@@ -46,7 +50,6 @@ export default function Path() {
           <Route path="forgot-password" element={<ForgotPassword />} />
         </Route>
       </Route>
-
       {/* Dashboard | ADMIN + STUDENT */}
       <Route path="/dashboard">
         <Route
@@ -66,23 +69,19 @@ export default function Path() {
           }
         />
       </Route>
-
       {/* Public Routes  */}
       <Route path="reach-siwan" element={<ReachSiwan />} />
       <Route path="contact-us" element={<ContactUs />} />
       <Route path="programs" element={<Programs />} />
       {/* resources */}
-      <Route path="/projects" >
-        <Route index element={<Projects />} />  
+      <Route path="/projects">
+        <Route index element={<Projects />} />
         {/* Nested Route for Project Details */}
         <Route path=":title/:id" element={<ProjectDetailsPage />} />
       </Route>
       <Route path="campus-placement-2025" element={<CampusPlacements2025 />} />
-
-
       {/* Catch-all fallback for unmatched routes */}
       <Route path="*" element={<ComingSoon />} />
-
     </Routes>
   );
 }

@@ -39,122 +39,119 @@ const Projects = () => {
 
   return (
     <section className="max-w-[1980px] mx-auto text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-900">
-      {/* Header */}
-      <div className="header bg-slate-200 dark:bg-gray-800 h-[370px] flex flex-col items-center justify-center text-center px-4">
-        <p className="md:text-lg mt-4 max-w-2xl text-gray-700 dark:text-gray-300">
-          Our Student&apos;s
-        </p>
-        <h1 className="text-4xl lg:text-6xl font-bold">PROJECTS</h1>
-        <p className="mt-3 max-w-2xl text-gray-600 dark:text-gray-400">
-          Explore our student's projects and initiatives that showcase our
-          commitment to excellence and innovation.
-        </p>
-      </div>
+  {/* Header */}
+  <div className="header bg-slate-200 dark:bg-gray-800 h-[370px] flex flex-col items-center justify-center text-center px-4">
+    <p className="md:text-lg mt-4 max-w-2xl text-gray-700 dark:text-gray-300">
+      Our Student&apos;s
+    </p>
+    <h1 className="text-4xl lg:text-6xl font-bold">PROJECTS</h1>
+    <p className="mt-3 max-w-2xl text-gray-600 dark:text-gray-400">
+      Explore our student's projects and initiatives that showcase our commitment to excellence and innovation.
+    </p>
+  </div>
 
-      {/* Search and Sort */}
-      <div className="px-[5%] mt-4 flex flex-col md:flex-row justify-between items-center gap-4">
-        <input
-          type="text"
-          placeholder="Search projects..."
-          value={searchQuery}
-          onChange={(e) => {
-            setSearchQuery(e.target.value);
-            setCurrentPage(1);
-          }}
-          className="w-full md:w-[60%] p-2 px-4 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-[30px]"
-        />
-        <select
-          value={sortOrder}
-          onChange={(e) => setSortOrder(e.target.value)}
-          className="w-full md:w-[30%] p-2 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-[30px]"
+  {/* Search and Sort */}
+  <div className="px-[5%] mt-4 flex flex-col md:flex-row justify-between items-center gap-4">
+    <input
+      type="text"
+      placeholder="Search projects..."
+      value={searchQuery}
+      onChange={(e) => {
+        setSearchQuery(e.target.value);
+        setCurrentPage(1);
+      }}
+      className="w-full md:w-[60%] p-2 px-4 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-[30px]"
+    />
+    <select
+      value={sortOrder}
+      onChange={(e) => setSortOrder(e.target.value)}
+      className="w-full md:w-[30%] p-2 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-[30px]"
+    >
+      <option value="newest">Sort by Newest</option>
+      <option value="oldest">Sort by Oldest</option>
+    </select>
+  </div>
+
+  {/* Cards */}
+  <div className="mt-8 px-[5%] py-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+    {currentProjects.map((project) => {
+      const leader = project.team[0];
+      return (
+        <NavLink
+          to={`${slugify(project.title)}/${project.id}`}
+          key={project.id}
+          className="group bg-gray-100 dark:bg-gray-800 rounded-2xl overflow-hidden hover:shadow-lg transition duration-300 flex flex-col"
         >
-          <option value="newest">Sort by Newest</option>
-          <option value="oldest">Sort by Oldest</option>
-        </select>
-      </div>
+          <img
+            src={project.image}
+            alt={project.title}
+            className="w-full aspect-[16/9] object-cover"
+          />
+          <div className="p-4 flex-grow">
+            <h2 className="text-lg font-semibold mb-2">{project.title}</h2>
+            <p className="text-neutral-600 dark:text-neutral-400">
+              {project.description.split(" ").length > 25
+                ? project.description.split(" ").slice(0, 25).join(" ") + "..."
+                : project.description}
+              <span className="text-blue-500 px-3 group-hover:underline underline-offset-4">Read more</span>
+            </p>
 
-      {/* Cards */}
-      <div className="mt-8 px-[5%] py-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-        {currentProjects.map((project) => {
-          const leader = project.team[0];
-          return (
-            <NavLink
-              to={`${slugify(project.title)}/${project.id}`}
-              key={project.id}
-              className="group bg-gray-100 dark:bg-gray-800 rounded-2xl overflow-hidden hover:shadow-lg transition duration-300 flex flex-col"
-            >
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full aspect-[16/9] object-cover"
-              />
-              <div className="p-4 flex-grow">
-                <h2 className="text-lg font-semibold mb-2">{project.title}</h2>
-                <p className="text-neutral-600 dark:text-neutral-400">
-                  {project.description.split(" ").length > 25
-                    ? project.description.split(" ").slice(0, 25).join(" ") +
-                      "..."
-                    : project.description}
-                  <span className="text-blue-500 px-3 group-hover:underline underline-offset-4">
-                    Read more
-                  </span>
-                </p>
-
-                <div className="mt-4">
-                  <h3 className="font-semibold">Project Leader:</h3>
-                  <div className="flex items-center gap-3 mt-2">
-                    <img
-                      src={leader.photo}
-                      alt={leader.name}
-                      className="w-10 h-10 rounded-full border border-gray-300 dark:border-gray-600"
-                    />
-                    <div>
-                      <p className="font-semibold">{leader.name}</p>
-                      <p className="text-xs text-gray-500 dark:text-gray-400">
-                        {leader.branch} | {leader.registrationNo}
-                      </p>
-                    </div>
-                  </div>
+            <div className="mt-4">
+              <h3 className="font-semibold">Project Leader:</h3>
+              <div className="flex items-center gap-3 mt-2">
+                <img
+                  src={leader.photo}
+                  alt={leader.name}
+                  className="w-10 h-10 rounded-full border border-gray-300 dark:border-gray-600"
+                />
+                <div>
+                  <p className="font-semibold">{leader.name}</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">
+                    {leader.branch} | {leader.registrationNo}
+                  </p>
                 </div>
               </div>
-            </NavLink>
-          );
-        })}
-      </div>
+            </div>
+          </div>
+        </NavLink>
+      );
+    })}
+  </div>
 
-      {/* Pagination */}
-      {totalPages > 1 && (
-        <div className="flex justify-center gap-2 mb-12 text-sm">
-          <button
-            onClick={() => goToPage(currentPage - 1)}
-            disabled={currentPage === 1}
-            className="px-3 py-1 border rounded-full disabled:opacity-50 bg-gray-200 dark:bg-gray-700"
-          >
-            Previous
-          </button>
-          {Array.from({ length: totalPages }, (_, i) => (
-            <button
-              key={i}
-              onClick={() => goToPage(i + 1)}
-              className={`px-4 py-2 border rounded-full ${
-                currentPage === i + 1
-                  ? "bg-blue-600 text-white"
-                  : "bg-gray-200 dark:bg-gray-700"
-              }`}
-            >
-              {i + 1}
-            </button>
-          ))}
-          <button
-            onClick={() => goToPage(currentPage + 1)}
-            disabled={currentPage === totalPages}
-            className="px-3 py-1 border rounded-full disabled:opacity-50 bg-gray-200 dark:bg-gray-700"
-          >
-            Next
-          </button>
-        </div>
-      )}
-    </section>
+  {/* Pagination */}
+  {totalPages > 1 && (
+    <div className="flex justify-center gap-2 mb-12 text-sm">
+      <button
+        onClick={() => goToPage(currentPage - 1)}
+        disabled={currentPage === 1}
+        className="px-3 py-1 border rounded-full disabled:opacity-50 bg-gray-200 dark:bg-gray-700"
+      >
+        Previous
+      </button>
+      {Array.from({ length: totalPages }, (_, i) => (
+        <button
+          key={i}
+          onClick={() => goToPage(i + 1)}
+          className={`px-4 py-2 border rounded-full ${
+            currentPage === i + 1
+              ? "bg-blue-600 text-white"
+              : "bg-gray-200 dark:bg-gray-700"
+          }`}
+        >
+          {i + 1}
+        </button>
+      ))}
+      <button
+        onClick={() => goToPage(currentPage + 1)}
+        disabled={currentPage === totalPages}
+        className="px-3 py-1 border rounded-full disabled:opacity-50 bg-gray-200 dark:bg-gray-700"
+      >
+        Next
+      </button>
+    </div>
+  )}
+</section>
+
   );
 };
 
