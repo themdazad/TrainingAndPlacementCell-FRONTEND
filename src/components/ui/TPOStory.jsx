@@ -43,9 +43,9 @@ export default function TPOStory() {
         className="max-md:hidden rounded-xl overflow-hidden max-w-[500px] w-full"
       >
         <video width="640" height="360" controls loop>
-  <source src="/videos/tpo_gd.webm" type="video/mp4"/>
-  Your browser does not support the video tag.
-</video>
+          <source src="/videos/tpo_gd.webm" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
         {/* <Image
           className="w-full"
           src="/images/about-tpo-thumbnail.svg"
