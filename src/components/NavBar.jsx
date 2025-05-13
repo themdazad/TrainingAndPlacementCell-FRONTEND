@@ -116,17 +116,17 @@ export default function NavBar() {
           <div className="brand-logo min-h-[40px] max-h-[64px] aspect-square">
             <Image
               className="dark:hidden"
-              src="./images/gecsiwan-logo.png"
+              src="/images/gecsiwan-logo.png"
               alt="gec-siwan-logo"
             />
             <Image
               className="hidden dark:inline"
-              src="./images/gecsiwan-logo-light.png"
+              src="/images/gecsiwan-logo-light.png"
               alt="gec-siwan-logo"
             />
           </div>
           <div className="title">
-            <h1 className="text-md md:text-3xl font-bold">
+            <h1 className="text-md md:text-3xl text-blue-600 dark:text-blue-400 font-bold">
               Training and Placement Cell
             </h1>
             <h3 className="text-sm md:text-md">
@@ -143,7 +143,7 @@ export default function NavBar() {
           <div className="images flex gap-1 md:gap-3">
             <Image
               className="brand-logo border border-black dark:border-white p-1 rounded-full min-h-[30px] max-h-[48px] aspect-square"
-              src="./images/dstbihar-logo.png"
+              src="/images/dstbihar-logo.png"
               alt="dstbihar-logo"
             />
             <Image

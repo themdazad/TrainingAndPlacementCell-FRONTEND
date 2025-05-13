@@ -1,29 +1,33 @@
 export const projects = [
   {
     id: 1,
-    title: "AI-Based Fire Detection System",
-    branch: "Computer Science / Electronics",
-    description:
-      "Utilizes AI-driven image processing to detect fire and smoke in real-time from CCTV feeds. Built using Python, TensorFlow, and OpenCV for automated fire detection.",
-    technologyStack: ["Python", "TensorFlow", "OpenCV", "Machine Learning", "CCTV Integration"],
+    title: "AI-Based Fire Detection System for Enhanced Safety and Rapid Response",
+    branch: "Computer Science / Electronics / Safety Engineering",
+    description: "This project introduces an intelligent fire detection system leveraging the power of artificial intelligence and real-time image processing. By analyzing live video streams from existing CCTV infrastructure, the system is designed to automatically identify the visual signatures of fire and smoke with high accuracy. Built using a robust combination of Python for backend logic, TensorFlow for deep learning model implementation, and OpenCV for image manipulation and analysis, this system offers a significant advancement over traditional smoke detectors and human-monitored surveillance. Its core functionality lies in the trained convolutional neural network (CNN) capable of distinguishing between fire/smoke and other dynamic elements in the environment, thereby minimizing false alarms. Upon detection, the system will trigger immediate alerts, providing crucial early warnings that can drastically reduce response times and mitigate potential damage. Furthermore, the project explores the integration of edge computing for on-site processing, enhancing speed and reducing network latency for critical real-time applications. This AI-driven approach aims to create safer environments in various settings, including industrial complexes, residential buildings, and public spaces, by providing a reliable and automated layer of fire safety.",
+    technologyStack: ["Python", "TensorFlow", "OpenCV", "Machine Learning", "Deep Learning", "CCTV Integration", "Edge Computing (Potential)"],
     objectives: [
-      "Develop an AI-based system that detects fire and smoke in real-time.",
-      "Reduce human dependency in fire detection.",
-      "Implement a real-time alert system for fire incidents.",
+      "Develop a highly accurate AI-based system for real-time fire and smoke detection from CCTV feeds.",
+      "Significantly reduce human dependency in continuous fire monitoring and surveillance.",
+      "Implement a low-latency, real-time alert system capable of notifying relevant authorities and personnel upon fire detection.",
+      "Minimize false positives by training the AI model on a diverse dataset of fire and non-fire scenarios.",
+      "Explore the feasibility of edge deployment for faster processing and reduced network reliance."
     ],
     benefits: [
-      "Improves safety by automating fire detection.",
-      "Reduces response time in emergencies.",
-      "Lower implementation costs compared to traditional systems.",
+      "Dramatically improves safety and security by providing automated and continuous fire detection.",
+      "Significantly reduces emergency response times, potentially saving lives and minimizing property damage.",
+      "Offers lower long-term operational costs compared to traditional, labor-intensive monitoring systems.",
+      "Provides a scalable and adaptable solution that can be integrated with existing CCTV infrastructure.",
+      "Enhances the reliability of fire detection, especially in environments where human vigilance might be compromised."
     ],
     challenges: [
-      "Integrating real-time video processing with high accuracy.",
-      "Maintaining robustness in diverse lighting conditions.",
-      "Optimizing the model for faster detection on limited hardware.",
+      "Achieving high accuracy and real-time processing speeds with complex video data.",
+      "Ensuring the system's robustness and reliability across diverse and challenging lighting and environmental conditions.",
+      "Optimizing the AI model for efficient deployment on potentially resource-constrained hardware.",
+      "Addressing privacy concerns related to continuous video analysis and data storage.",
+      "Integrating seamlessly with existing fire alarm systems and emergency response protocols."
     ],
-    futureGoal:
-      "Integrate IoT sensors and develop a cloud-based alert system for large-scale deployment in industrial and residential buildings.",
-    image: "https://th.bing.com/th/id/OIP.ng5ENi7AqsCASwqhe08ncQHaEO?cb=iwp2&rs=1&pid=ImgDetMain",
+    futureGoal: "Integrate data from IoT-based temperature and gas sensors for multi-modal fire verification and develop a cloud-based central alert and management system for large-scale deployments in smart cities and industrial facilities.",
+    image: "https://th.bing.com/th/id/OIP.j36xHn1k9_q4n4n4n4n4HaHa?rs=1&pid=ImgDetMain",
     date: "2024-03-10",
     pptLink: "/ppt/AI-Based-Fire-Detection.pptx",
     team: [
@@ -34,7 +38,7 @@ export const projects = [
         branch: "Computer Science",
         session: "2020-2024",
         linkedin: "https://www.linkedin.com/in/amitkumar",
-        photo: "https://randomuser.me/api/portraits/men/1.jpg",
+        photo: "https://randomuser.me/api/portraits/men/1.jpg"
       },
       {
         name: "Fatima Begum",
@@ -43,7 +47,7 @@ export const projects = [
         branch: "Computer Science",
         session: "2020-2024",
         linkedin: "https://www.linkedin.com/in/fatimabegum",
-        photo: "https://randomuser.me/api/portraits/women/2.jpg",
+        photo: "https://randomuser.me/api/portraits/women/2.jpg"
       },
       {
         name: "Rahul Sharma",
@@ -52,7 +56,7 @@ export const projects = [
         branch: "Computer Science",
         session: "2020-2024",
         linkedin: "https://www.linkedin.com/in/rahulsharma",
-        photo: "https://randomuser.me/api/portraits/men/4.jpg",
+        photo: "https://randomuser.me/api/portraits/men/4.jpg"
       },
       {
         name: "Priya Singh",
@@ -61,7 +65,7 @@ export const projects = [
         branch: "Computer Science",
         session: "2020-2024",
         linkedin: "https://www.linkedin.com/in/priyasingh",
-        photo: "https://randomuser.me/api/portraits/women/5.jpg",
+        photo: "https://randomuser.me/api/portraits/women/5.jpg"
       },
       {
         name: "Ankit Verma",
@@ -70,9 +74,9 @@ export const projects = [
         branch: "Computer Science",
         session: "2020-2024",
         linkedin: "https://www.linkedin.com/in/ankitverma",
-        photo: "https://randomuser.me/api/portraits/men/6.jpg",
-      },
-    ],
+        photo: "https://randomuser.me/api/portraits/men/6.jpg"
+      }
+    ]
   },
   {
     id: 2,

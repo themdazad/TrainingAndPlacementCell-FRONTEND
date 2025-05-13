@@ -1,23 +1,28 @@
 import { motion } from "framer-motion";
-import { Button, Image} from "@heroui/react";
-import { Accordion, AccordionItem } from "@heroui/accordion";
+import { Button, Image } from "@heroui/react";
 import {
+  ArrowRightCircle,
   CircleArrowRight,
-  ChevronDown,
   Mouse,
   CloudDownload,
+  ChevronDown,
+  Bell,
 } from "lucide-react";
-import { useState } from "react";  
+import { Accordion, AccordionItem } from "@heroui/accordion";
+import { useState, useEffect , useContext } from "react";
 import { NavLink } from "react-router-dom";
 import TPOStory from "./components/ui/TPOStory";
 import SelectedStudentSlider from "./components/ui/SelectedStudentSlider";
 import AnimatedLogoCloud from "./components/ui/AnimatedLogoCloud";
-import StaticLogoCloud from "./components/ui/StaticLogoCloud";
 import Testimonials from "./components/ui/Testimonials";
+import GooglesheetContext from "./contexts/google-sheets/GooglesheetContext";
+import NewsNoticeProvider from "./contexts/google-sheets/news-notice-provider";
+import SimpleSlider from "./components/ui/SimpleSlider";
 
 export default function Layout() {
   return (
     <main className="overflow-hidden max-w-[1980px] m-auto min-h-screen bg-white dark:bg-gray-900">
+      {/* Hero section  */}
       <section className="px-[5%] md:px-[10%] sm:py-16">
         <div className="grid items-center py-12 grid-cols-1 gap-12 lg:grid-cols-2">
           <div>
@@ -74,6 +79,13 @@ export default function Layout() {
       </section>
 
       <section className="py-6 m-auto">
+        {/* News/Notice Area */}
+        <NewsNoticeProvider>
+          <NewsNoticeArea />
+        </NewsNoticeProvider>
+      </section>
+
+      <section className="py-6 m-auto">
         <SelectedStudentSlider />
       </section>
 
@@ -90,7 +102,7 @@ export default function Layout() {
       </section>
 
       <section className="py-6 m-auto">
-          <FAQ />
+        <FAQ />
       </section>
     </main>
   );
@@ -174,7 +186,6 @@ function HeroSection() {
     </header>
   );
 }
-
 
 export function FAQ() {
   const faq_data = [
@@ -274,13 +285,70 @@ export function FAQ() {
         <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
           Still have doubts?
         </h2>
-        <p className="text-gray-700 dark:text-gray-300 mt-2">
+        <p className="text-gray-700 dark:text-gray-300 my-2">
           Can't find the answer you're looking for? Contact us!
         </p>
-        <button className="mt-5 bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600 text-white px-6 py-2 rounded-full text-sm font-medium">
-          Our Coordinators
-        </button>
+
+        <NavLink
+          className="text-blue-600 dark:text-blue-400 hover:text-blue-600 font-medium text-sm inline-flex items-center"
+          to="/contact-us"
+        >
+          {" "}
+          Contact us
+          <ArrowRightCircle className="w-4 h-4 ml-1" />
+        </NavLink>
       </motion.div>
     </section>
+  );
+}
+
+function NewsNoticeArea() {
+  const programData = useContext(GooglesheetContext);
+  const [response, setresponse] = useState([]);
+
+  useEffect(() => {
+    if (programData) {
+      setresponse(programData);
+    } else {
+      setresponse([]);
+    }
+  }, [programData]);
+  return (
+    <div className="news-notice-container max-w-[1920px] m-auto px-[5%] grid md:grid-cols-2 gap-12 ">
+      {/* Images carousel  */}
+      <SimpleSlider />
+      <div className="news-notice-area  border hover:border-1 border-gray-500/20 rounded-3xl  p-3 md:p-6 ">
+        <h2 className="news-notice-heading text-xl sm:text-2xl md:text-3xl mt-2 flex max-md:justify-center gap-x-2 items-center font-bold">
+          Notifications <Bell />
+        </h2>
+
+        {/* Mapping for upcoming data for latest news and notice   */}
+        <div className="row-container  box-border my-[1em] max-h-[20rem] overflow-y-scroll overflow-x-hidden ">
+          {response.reverse().map((data, index) => {
+            return (
+              <a
+                key={index}
+                href={data.pdf_link}
+                target="_blank"
+                className="news-notice-row transition-all duration-300 flex flex-col items-start py-1 "
+              >
+                <div className="tags space-x-2 ">
+                  <span className="news-notice-card-tag text-[12px] bg-zinc-500/20 backdrop-blur-lg border-1  border-zinc-500/50  rounded-3xl px-[0.6em] py-[0.2em] ">
+                    {data.date}
+                  </span>
+                  <span className="news-notice-card-tag text-[12px] backdrop-blur-lg border-1  border-sky-500/50  rounded-3xl px-[0.6em] py-[0.2em] ">
+                    {data.tag}
+                  </span>
+                </div>
+
+                <p className="news-notice-card-content max-sm:text-[14px] p-[0.5em] w-full overflow-ellipsis ">
+                  {data.content}
+                </p>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    </div>
   );
 }

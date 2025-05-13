@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const testimonials = [
   {
@@ -62,7 +62,7 @@ const Testimonials = () => {
 
   return (
     <section className="py-16 px-4 bg-blue-100 dark:bg-gray-900 text-center">
-      <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white max-w-2xl mx-auto mb-10 leading-snug">
+      <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white max-w-2xl mx-auto mb-20 leading-snug">
         Hear from our students and recruiters.{" "}
         <span className="text-blue-600 dark:text-blue-400">
           500+ success stories

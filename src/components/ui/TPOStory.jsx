@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
-import {Button, Image} from "@heroui/react";
+import { Button, Image } from "@heroui/react";
+import { ArrowRightCircle } from "lucide-react"; // ✅ Use correct Lucide imports
 
 export default function TPOStory() {
   return (
@@ -13,7 +14,7 @@ export default function TPOStory() {
         <h2 className="text-2xl md:text-3xl font-bold text-gray-800 dark:text-white">
           Training & Placement Cell at Government Engineering College, Siwan
         </h2>
-        <p className="mt-4 text-justify text-gray-600 dark:text-gray-300 leading-relaxed">
+        <p className="my-4 text-justify text-gray-600 dark:text-gray-300 leading-relaxed">
           The Training and Placement Cell at Government Engineering College,
           Siwan, is dedicated to preparing students for successful careers in
           industry and academia. Under the esteemed leadership of our Principal,{" "}
@@ -24,13 +25,14 @@ export default function TPOStory() {
           the academic–industry gap and provide students with ample
           opportunities to realize their professional goals.
         </p>
-        <Button
-          as={NavLink}
-          to="/contact-us"
-          className="mt-6 px-6 py-3 bg-blue-600 hover:bg-blue-400 text-white rounded-full transition dark:bg-blue-500 dark:hover:bg-blue-400"
-        >
-          Know More
-        </Button>
+
+        {/* Read More link */}
+        <NavLink to="/contact-us">
+          <span className="text-blue-600 hover:text-blue-500 font-medium text-sm inline-flex items-center">
+            know more
+            <ArrowRightCircle className="w-4 h-4 ml-1" />
+          </span>
+        </NavLink>
       </div>
 
       {/* Right Image with Framer Motion Animation */}
@@ -40,11 +42,15 @@ export default function TPOStory() {
         transition={{ duration: 1, ease: "easeOut" }}
         className="max-md:hidden rounded-xl overflow-hidden max-w-[500px] w-full"
       >
-        <Image
+        <video width="640" height="360" controls loop>
+  <source src="/videos/tpo_gd.webm" type="video/mp4"/>
+  Your browser does not support the video tag.
+</video>
+        {/* <Image
           className="w-full"
           src="/images/about-tpo-thumbnail.svg"
           alt="about-tpo-thumbnail"
-        />
+        /> */}
       </motion.div>
     </div>
   );

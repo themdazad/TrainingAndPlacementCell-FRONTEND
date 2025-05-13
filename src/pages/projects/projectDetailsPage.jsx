@@ -1,219 +1,243 @@
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import { projects } from "./projectsData";
 import { FaLinkedin } from "react-icons/fa";
-import { Divider } from "@heroui/react";
+import { projects } from "./projectsData";
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 30 },
+// Fade-in animation configuration
+const fadeIn = {
+  hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0 },
 };
 
+// Main Content Component
+const MainContent = ({ project, leader }) => {
+  return (
+    <motion.article
+      className="prose dark:prose-invert flex-1 max-w-none"
+      initial="hidden"
+      animate="visible"
+      variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+    >
+      <motion.h1 className="text-3xl font-semibold mb-2" variants={fadeIn}>
+        {project.title}
+      </motion.h1>
+
+      <motion.p
+        className="text-md text-gray-600 dark:text-gray-400 mb-4"
+        variants={fadeIn}
+      >
+        Led by <span className="font-medium">{leader.name}</span> (
+        {leader.branch}, {leader.session})
+      </motion.p>
+
+      <motion.img
+        src={project.image || "/default-project.png"}
+        alt={project.title}
+        className="rounded-xl my-6 shadow-md"
+        variants={fadeIn}
+      />
+
+      <motion.p className="leading-relaxed" variants={fadeIn}>
+        {project.description}
+      </motion.p>
+
+      <motion.h2
+        className="text-2xl font-semibold pt-6 pb-3 border-b dark:border-gray-700"
+        id="objectives"
+        variants={fadeIn}
+      >
+        Why This Project?
+      </motion.h2>
+      <motion.ul
+        className="list-disc pl-5 mt-2 leading-relaxed"
+        variants={fadeIn}
+      >
+        {project.objectives.map((item, i) => (
+          <li key={i}>{item}</li>
+        ))}
+      </motion.ul>
+
+      <motion.h2
+        className="text-2xl font-semibold pt-6 pb-3 border-b dark:border-gray-700"
+        id="challenges"
+        variants={fadeIn}
+      >
+        The Journey
+      </motion.h2>
+      <motion.ul
+        className="list-disc pl-5 mt-2 leading-relaxed"
+        variants={fadeIn}
+      >
+        {project.challenges.map((item, i) => (
+          <li key={i}>{item}</li>
+        ))}
+      </motion.ul>
+
+      <motion.h2
+        className="text-2xl font-semibold pt-6 pb-3 border-b dark:border-gray-700"
+        id="benefits"
+        variants={fadeIn}
+      >
+        Outcomes & Benefits
+      </motion.h2>
+      <motion.ul
+        className="list-disc pl-5 mt-2 leading-relaxed"
+        variants={fadeIn}
+      >
+        {project.benefits.map((item, i) => (
+          <li key={i}>{item}</li>
+        ))}
+      </motion.ul>
+
+      <motion.h2
+        className="text-2xl font-semibold pt-6 pb-3 border-b dark:border-gray-700"
+        id="tech"
+        variants={fadeIn}
+      >
+        Technologies Used
+      </motion.h2>
+      <motion.div className="flex flex-wrap gap-3 mt-2" variants={fadeIn}>
+        {project.technologyStack.map((tech, i) => (
+          <span
+            key={i}
+            className="inline-block bg-blue-100 dark:bg-blue-800 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full text-sm font-medium"
+          >
+            {tech}
+          </span>
+        ))}
+      </motion.div>
+
+      <motion.h2
+        className="text-2xl font-semibold pt-6 pb-3 border-b dark:border-gray-700"
+        id="future"
+        variants={fadeIn}
+      >
+        What’s Next?
+      </motion.h2>
+      <motion.p className="leading-relaxed mt-2" variants={fadeIn}>
+        {project.futureGoal}
+      </motion.p>
+
+      {project.pptLink && (
+        <motion.div className="mt-8 text-center" variants={fadeIn}>
+          <a
+            href={project.pptLink}
+            download
+            className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-semibold shadow-md"
+          >
+            Download Presentation
+          </a>
+        </motion.div>
+      )}
+    </motion.article>
+  );
+};
+
+// Sidebar Component
+const Sidebar = ({ project, leader }) => {
+  return (
+    <aside className="hidden lg:block w-72 sticky top-28 h-max">
+      <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl shadow">
+        <h3 className="text-lg font-semibold text-blue-700 dark:text-blue-300 mb-4">
+          Explore This Page
+        </h3>
+        <ul className="space-y-3 text-sm text-blue-600 dark:text-blue-300">
+          <li>
+            <a href="#objectives" className="hover:underline font-medium">
+              Objectives
+            </a>
+          </li>
+          <li>
+            <a href="#challenges" className="hover:underline font-medium">
+              Challenges
+            </a>
+          </li>
+          <li>
+            <a href="#benefits" className="hover:underline font-medium">
+              Benefits
+            </a>
+          </li>
+          <li>
+            <a href="#tech" className="hover:underline font-medium">
+              Technologies
+            </a>
+          </li>
+          <li>
+            <a href="#future" className="hover:underline font-medium">
+              Future Goal
+            </a>
+          </li>
+          <li>
+            <a href="#team" className="hover:underline font-medium">
+              Team
+            </a>
+          </li>
+        </ul>
+
+        <div className="mt-8 border-t dark:border-gray-700 pt-6">
+          <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+            Project Leader
+          </h4>
+          <p className="text-sm font-medium text-blue-700 dark:text-blue-300">
+            {leader.name}
+          </p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">
+            {leader.branch}, {leader.session}
+          </p>
+        </div>
+
+        <div className="mt-6 border-t dark:border-gray-700 pt-6">
+          <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+            Team Members
+          </h4>
+          <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-2">
+            {project.team.map((member, idx) => (
+              <li key={idx}>
+                <p className="font-medium">{member.name}</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">
+                  {member.role} ({member.branch})
+                </p>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="mt-4 text-xs text-gray-500 dark:text-gray-400">
+          {project.team.length} team member{project.team.length > 1 ? "s" : ""}
+        </div>
+      </div>
+    </aside>
+  );
+};
+
+// Main Page Component
 const ProjectDetailsPage = () => {
   const { id } = useParams();
   const project = projects.find((p) => p.id === parseInt(id));
 
   if (!project) {
     return (
-      <div className="text-center mt-20 text-red-500 text-xl">
+      <div className="text-center mt-20 text-red-500 text-xl font-semibold">
         Project not found.
       </div>
     );
   }
 
   const leader =
-    project.team?.find((member) =>
-      member.role.toLowerCase().includes("lead")
-    ) || project.team?.[0];
+    project.team?.find((m) => m.role?.toLowerCase().includes("lead")) ||
+    project.team?.[0];
 
   return (
-    <div className=" text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-900">
-      <motion.div
-        className="p-6 md:p-[10%] mx-auto"
-        initial="hidden"
-        animate="visible"
-        variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
-      >
-        {/* Title & Description */}
-        <motion.h1
-          className="text-3xl md:text-4xl font-bold mb-2 text-center text-blue-700 dark:text-blue-400"
-          variants={fadeInUp}
-        >
-          {project.title}
-        </motion.h1>
-        <motion.p
-          className="text-center text-gray-700 dark:text-gray-300 mb-8 max-w-3xl mx-auto"
-          variants={fadeInUp}
-        >
-          {project.description}
-        </motion.p>
+    <div className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 min-h-screen py-12">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="flex flex-col lg:flex-row gap-12">
+          {/* Main Content */}
+          <MainContent project={project} leader={leader} />
 
-        {/* Project Image */}
-        <motion.div className="mb-10" variants={fadeInUp}>
-          <img
-            src={project.image}
-            alt={`${project.title} visual`}
-            className="w-full rounded-xl shadow-md object-cover"
-          />
-        </motion.div>
-
-        {/* Objectives & Benefits */}
-        <motion.div
-          className="grid md:grid-cols-2 gap-6 mb-10"
-          variants={fadeInUp}
-        >
-          <div>
-            <h2 className="text-xl font-semibold text-blue-600 dark:text-blue-400 mb-2">
-              Objectives
-            </h2>
-            <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
-              {project.objectives.map((item, i) => (
-                <li key={i}>{item}</li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h2 className="text-xl font-semibold text-blue-600 dark:text-blue-400 mb-2">
-              Benefits
-            </h2>
-            <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
-              {project.benefits.map((item, i) => (
-                <li key={i}>{item}</li>
-              ))}
-            </ul>
-          </div>
-        </motion.div>
-
-        {/* Challenges */}
-        <motion.div className="mb-10" variants={fadeInUp}>
-          <h2 className="text-xl font-semibold text-blue-600 dark:text-blue-400 mb-2">
-            Challenges
-          </h2>
-          <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
-            {project.challenges.map((item, i) => (
-              <li key={i}>{item}</li>
-            ))}
-          </ul>
-        </motion.div>
-
-        {/* Technologies and Future Goals */}
-        <motion.div
-          className="grid md:grid-cols-2 gap-6 mb-10"
-          variants={fadeInUp}
-        >
-          <div>
-            <h3 className="text-xl font-semibold text-blue-600 dark:text-blue-400 mb-2">
-              Technologies Used
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              {project.technologyStack.map((tech, i) => (
-                <span
-                  key={i}
-                  className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full text-sm"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </div>
-          <div>
-            <h3 className="text-xl font-semibold text-blue-600 dark:text-blue-400 mb-2">
-              Future Goal
-            </h3>
-            <p className="text-gray-700 dark:text-gray-300">
-              {project.futureGoal}
-            </p>
-          </div>
-        </motion.div>
-
-        <Divider className="my-10 border-gray-300 dark:border-gray-700" />
-
-        {/* Project Leader */}
-        <motion.div className="mb-10" variants={fadeInUp}>
-          <h2 className="text-xl font-semibold text-blue-600 dark:text-blue-400 mb-4">
-            Project Leader
-          </h2>
-          {leader && (
-            <div className="flex items-center gap-4 bg-gray-100 dark:bg-gray-800 p-4 rounded-xl shadow-md">
-              <img
-                src={leader.photo}
-                alt={leader.name}
-                className="w-20 h-20 rounded-full object-cover"
-              />
-              <div>
-                <h3 className="text-lg font-semibold">{leader.name}</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
-                  {leader.branch} • {leader.session}
-                </p>
-                <p className="text-sm text-gray-500">
-                  Reg. No: {leader.registrationNo}
-                </p>
-                <a
-                  href={leader.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 mt-1 text-blue-600 dark:text-blue-300 hover:underline text-sm"
-                >
-                  <FaLinkedin /> LinkedIn
-                </a>
-              </div>
-            </div>
-          )}
-        </motion.div>
-
-        {/* Team Members */}
-        {project.team.length > 1 && (
-          <motion.div className="mb-10" variants={fadeInUp}>
-            <h2 className="text-xl font-semibold text-blue-600 dark:text-blue-400 mb-4">
-              Team Members
-            </h2>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {project.team
-                .filter((member) => member.name !== leader.name)
-                .map((member, idx) => (
-                  <div
-                    key={idx}
-                    className="bg-gray-100 dark:bg-gray-800 p-4 rounded-xl shadow-md flex items-center gap-4"
-                  >
-                    <img
-                      src={member.photo}
-                      alt={member.name}
-                      className="w-16 h-16 rounded-full object-cover"
-                    />
-                    <div>
-                      <h4 className="font-semibold text-base">{member.name}</h4>
-                      <p className="text-sm text-gray-600 dark:text-gray-300">
-                        {member.role}
-                      </p>
-                      <p className="text-xs text-gray-500">
-                        {member.branch} • {member.session}
-                      </p>
-                      <a
-                        href={member.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-500 dark:text-blue-300 hover:underline inline-flex items-center gap-1 text-sm mt-1"
-                      >
-                        <FaLinkedin className="text-base" /> LinkedIn
-                      </a>
-                    </div>
-                  </div>
-                ))}
-            </div>
-          </motion.div>
-        )}
-
-        {/* Download Button */}
-        <motion.div className="text-center mt-10" variants={fadeInUp}>
-          <a
-            href={project.pptLink}
-            download
-            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full transition"
-          >
-            Download Project PPT
-          </a>
-        </motion.div>
-      </motion.div>
+          {/* Sidebar on the right */}
+          <Sidebar project={project} leader={leader} />
+        </div>
+      </div>
     </div>
   );
 };
