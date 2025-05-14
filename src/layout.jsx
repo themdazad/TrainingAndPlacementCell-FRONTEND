@@ -68,7 +68,7 @@ export default function Layout() {
             </a>
           </div>
 
-          <div>
+          <div className="max-sm:hidden">
             <Image
               className="w-full"
               src="/images/heroThumbnails/heroThumbnail07052025.svg"
