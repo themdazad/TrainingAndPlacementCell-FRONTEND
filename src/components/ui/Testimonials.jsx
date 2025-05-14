@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 const testimonials = [
   {
-    text: "The T&P Cell helped me crack my interview with mock tests and technical guidance. I got placed at Infosys with confidence.",
+    text: "The process was competitive, but I liked that mock interview pushed me to go beyond my comfort zone.",
     name: "Laxmi Kumari",
     title: "Electrical Engineering, 2025",
     companyName: "Prithvi Pratap Buildcon",
@@ -22,9 +22,18 @@ const testimonials = [
     rotate: "rotate-1",
   },
   {
-    text: "The placement bootcamp boosted my confidence. The aptitude practice and mock interviews really helped me shine.",
+    text: "Happy to be placed through this college.The company's work aligned with my interest areas, which made the placement even more exciting. ",
     name: "Abhishek Kumar",
     title: "Mechanical Engineering, 2025",
+    companyName: "HIGH-TECHNEXT ENGINEERING & TELECOM PVT LTD",
+    companyLogo: "",
+    avatar: "https://randomuser.me/api/portraits/women/68.jpg",
+    rotate: "-rotate-1",
+  },
+  {
+    text: "Joining a company in my own field is a huge confidence booster. Feeling motivated and grateful.",
+    name: "Nidhi Kumari",
+    title: "Electrical Engineering, 2026",
     companyName: "HIGH-TECHNEXT ENGINEERING & TELECOM PVT LTD",
     companyLogo: "",
     avatar: "https://randomuser.me/api/portraits/women/68.jpg",
@@ -65,7 +74,7 @@ const Testimonials = () => {
       <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white max-w-2xl mx-auto mb-20 leading-snug">
         Hear from our students and recruiters.{" "}
         <span className="text-blue-600 dark:text-blue-400">
-          500+ success stories
+          100+ success stories
         </span>{" "}
         and counting.
       </h2>
@@ -82,15 +91,15 @@ const Testimonials = () => {
           {visibleTestimonials.map((t, index) => (
             <div
               key={index}
-              className={`bg-white dark:bg-gray-800 p-6 rounded-xl text-left shadow-md flex flex-col justify-between transform ${
+              className={`bg-white hover:border-t-4 border-blue-500 dark:bg-gray-800 p-6 rounded-xl text-left shadow-md flex flex-col justify-between transition-all duration-100 ${
                 t.rotate ?? ""
               } transition duration-300 ease-in-out hover:scale-105 hover:shadow-xl`}
             >
-              <p className="text-gray-800 dark:text-gray-100 text-sm mb-4 leading-relaxed">
+              <p className="text-gray-800 dark:text-gray-100 mb-4 leading-relaxed">
                 "{t.text}"
               </p>
               <div>
-                <p className="font-semibold text-gray-900 dark:text-white">
+                <p className="font-semibold text-gray-900 text-sm dark:text-white">
                   {t.name}
                 </p>
                 <p className="text-gray-600 dark:text-gray-400 text-sm mb-2">
@@ -98,18 +107,11 @@ const Testimonials = () => {
                 </p>
                 <div className="flex items-center justify-between border-t border-gray-200 dark:border-gray-700 pt-2 mt-2">
                   <div className="flex items-center gap-2">
-                    <span className="text-lg dark:text-white">
-                      {t.companyLogo}
-                    </span>
                     <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                       {t.companyName}
                     </span>
                   </div>
-                  <img
-                    src={t.avatar}
-                    alt={t.name}
-                    className="w-8 h-8 rounded-full object-cover border border-gray-300 dark:border-gray-600"
-                  />
+                 
                 </div>
               </div>
             </div>

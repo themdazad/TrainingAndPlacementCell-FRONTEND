@@ -55,17 +55,23 @@ export function Footer() {
           <h4 className="text-sm font-semibold tracking-widest text-gray-400 dark:text-gray-300 uppercase">
             Useful Links
           </h4>
-          <ul className="mt-4 space-y-1">
-            {["LinkedIn", "Youtube", "College Website"].map((item) => (
-              <li key={item}>
+          <ul className="mt-4 space-y-1">            
+              <li>
                 <a
                   href="#"
                   className="text-base text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition"
                 >
-                  {item}
+                  LinkedIn
                 </a>
               </li>
-            ))}
+              <li>
+                <a
+                  href="https://www.gecsiwan.org/"
+                  className="text-base text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition"
+                >
+                  College Website
+                </a>
+              </li>            
           </ul>
         </div>
 

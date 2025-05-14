@@ -12,7 +12,7 @@ function SimpleSlider() {
     autoplaySpeed: 5000,
   };
   return (
-    <div className="slider-container w-full h-full overflow-hidden">
+    <div className="max-sm:hidden slider-container w-full h-full overflow-hidden">
       <Slider className="w-full h-full" {...settings}>
         <Image
           src="/images/Solar_Enterpreneurship_Training.webp"

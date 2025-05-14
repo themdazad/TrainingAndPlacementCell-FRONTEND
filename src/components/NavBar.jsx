@@ -9,18 +9,19 @@ import axios from "axios";
 
 const navLinks = [
   { name: "Home", path: "/" },
-  { name: "Training", path: "/training" },
-  { name: "Campus Placement", path: "/campus-placement" },
+  { name: "Programs", path: "/programs" },
+  { name: "Projects", path: "/projects" },
   {
     name: "Resources",
     dropdown: true,
     items: [
       { name: "Programs", path: "/programs" },
-      { name: "Student Projects", path: "/projects" },
-      { name: "Resume Template", path: "/files/GEC_Siwan_Official_Resume_Format.docx"},
+      {
+        name: "Resume Template",
+        path: "/files/GEC_Siwan_Official_Resume_Format.docx",
+      },
     ],
   },
-  { name: "Online Test", path: "/online-test" },
 ];
 
 export default function NavBar() {
@@ -126,7 +127,7 @@ export default function NavBar() {
             />
           </div>
           <div className="title">
-            <h1 className="text-md md:text-3xl text-blue-600 dark:text-blue-400 font-bold">
+            <h1 className=" dm-serif-text-regular text-md md:text-3xl font-bold">
               Training and Placement Cell
             </h1>
             <h3 className="text-sm md:text-md">

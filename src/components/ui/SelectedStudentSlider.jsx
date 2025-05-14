@@ -48,25 +48,6 @@ const studentDetails = [
     },
   },
   {
-    image: "/images/students2025/laxmi22103151953.jpg",
-    details: {
-      name: "Laxmi Kumari",
-      rollNumber: "22103151953",
-      branch: "Electrical Engineering",
-      college: "NIT Example",
-      email: "",
-      phone: "+91-",
-      company: "Prithvi Pratap Buildcon",
-      package: "3.4 LPA",
-      location: "",
-      joiningDate: "",
-      internship: false,
-      skills: ["C++", "web development", "Graphic Designing"],
-      linkedIn: "https://linkedin.com/in/",
-      batch: 2025,
-    },
-  },
-  {
     image: "/images/students2025/nishant21103151005.jpg",
     details: {
       name: "Nishant Raj",
@@ -245,9 +226,9 @@ const SelectedStudentSlider = () => {
   return (
     <>
      <div className="flex h-full w-full flex-col items-center justify-center py-10">
-  <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">
+  <h1 className="text-xl font-semibold text-gray-800 dark:text-gray-100">
     Recently Placed Students
-  </h3>
+  </h1>
   <AvatarCarousel />
 </div>
 

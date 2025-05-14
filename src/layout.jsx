@@ -29,13 +29,13 @@ export default function Layout() {
             <p className="text-base font-semibold tracking-wider text-blue-600 dark:text-blue-400 uppercase">
               For career and growth
             </p>
-            <h1 className="mt-2 text-4xl font-bold text-gray-900 dark:text-white lg:mt-8 sm:text-6xl xl:text-8xl">
+            <h1 className="dm-serif-text-bold mt-2 text-4xl font-bold text-gray-900 dark:text-white lg:mt-8 sm:text-6xl xl:text-8xl">
               Campus Placement 2025
             </h1>
             <p className="mt-2 text-base text-gray-800 dark:text-gray-300 lg:mt-8 sm:text-xl">
-              We focus on the holistic development of our students by offering
-              regular workshops, technical training, and personality development
-              sessions.
+              We strive to organize mock sessions, and provide real-world
+              exposure through internships and project showcases, ensuring each
+              student steps confidently into the professional world.
             </p>
             <a
               href="/files/GEC_Siwan_Official_Resume_Format.docx"
@@ -105,85 +105,6 @@ export default function Layout() {
         <FAQ />
       </section>
     </main>
-  );
-}
-
-function HeroSection() {
-  return (
-    <header className="md:min-h-[50em] max-md:py-12 grid place-content-center m-auto text-center px-[5%]">
-      <div className="flex flex-col place-content-center">
-        <div className="grid justify-items-center max-sm:gap-[1em]">
-          {/* Title and Subtitle */}
-          <motion.div
-            className="tracking-tight font-bold"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <p className="block text-5xl md:text-6xl lg:text-8xl">
-              Training and <br /> Placement Cell
-            </p>
-            <br />
-            <p className="block text-xl mt-1 sm:text-3xl md:text-5xl">
-              Government Engineering College, Siwan
-            </p>
-          </motion.div>
-
-          {/* Description */}
-          <motion.p
-            className="mt-3 text-base sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-lg lg:mx-0"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          >
-            We focus on the holistic development of our students by offering
-            regular workshops, technical training, and personality development
-            sessions.
-          </motion.p>
-
-          {/* Buttons */}
-          <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-center">
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.6 }}
-              className="gap-2"
-            >
-              <Button
-                as={NavLink}
-                to="campus-placement-2025"
-                endContent={<CircleArrowRight />}
-                radius="full"
-                size="lg"
-                color="primary"
-                variant="flat"
-              >
-                Campus Placement 2025
-              </Button>
-
-              <a
-                href="/files/GEC_Siwan_Official_Resume_Format.docx"
-                target="_blank"
-              >
-                <Button
-                  endContent={<CloudDownload />}
-                  radius="full"
-                  size="lg"
-                  color="warning"
-                  variant="bord"
-                >
-                  Resume Template
-                </Button>
-              </a>
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Scroll Indicators */}
-        <ChevronDown className="sm:hidden self-center mt-[2em]" />
-        <Mouse className="max-md:hidden self-center mt-[6em]" />
-      </div>
-    </header>
   );
 }
 
@@ -318,8 +239,8 @@ function NewsNoticeArea() {
       {/* Images carousel  */}
       <SimpleSlider />
       <div className="news-notice-area border-t-4 border-y-blue-500 rounded-xl p-3 md:p-6 ">
-        <h2 className="news-notice-heading text-lg sm:text-xl md:text-2xl mt-2 flex max-md:justify-center gap-x-2 items-center font-bold">
-          Announcement
+        <h2 className="news-notice-heading text-lg text-blue-500 sm:text-xl md:text-2xl mt-2 flex max-md:justify-center gap-x-4 items-center font-bold">
+          Announcements
         </h2>
 
         {/* Mapping for upcoming data for latest news and notice   */}
@@ -338,7 +259,7 @@ function NewsNoticeArea() {
                   </span>
                 </div>
 
-                <p className="group-hover:text-blue-500 news-notice-card-content max-sm:text-[14px] p-[0.5em] w-full overflow-ellipsis ">
+                <p className="group-hover:text-blue-500 news-notice-card-content max-sm:text-[14px] text-justify p-[0.5em] w-full overflow-ellipsis ">
                   {data.content}
                 </p>
               </a>

@@ -137,9 +137,9 @@ const MainContent = ({ project, leader }) => {
 const Sidebar = ({ project, leader }) => {
   return (
     <aside className="hidden lg:block w-72 sticky top-28 h-max">
-      <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl shadow">
+      <div className="bg-gray-50 dark:bg-gray-800 border-t-4 border-blue-600 p-6 rounded-xl">
         <h3 className="text-lg font-semibold text-blue-700 dark:text-blue-300 mb-4">
-          Explore This Page
+          Content Table
         </h3>
         <ul className="space-y-3 text-sm text-blue-600 dark:text-blue-300">
           <li>

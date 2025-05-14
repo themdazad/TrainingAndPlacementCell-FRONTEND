@@ -1,33 +1,44 @@
 export const projects = [
   {
     id: 1,
-    title: "AI-Based Fire Detection System for Enhanced Safety and Rapid Response",
+    title: "AI-Based Fire Detection System",
     branch: "Computer Science / Electronics / Safety Engineering",
-    description: "This project introduces an intelligent fire detection system leveraging the power of artificial intelligence and real-time image processing. By analyzing live video streams from existing CCTV infrastructure, the system is designed to automatically identify the visual signatures of fire and smoke with high accuracy. Built using a robust combination of Python for backend logic, TensorFlow for deep learning model implementation, and OpenCV for image manipulation and analysis, this system offers a significant advancement over traditional smoke detectors and human-monitored surveillance. Its core functionality lies in the trained convolutional neural network (CNN) capable of distinguishing between fire/smoke and other dynamic elements in the environment, thereby minimizing false alarms. Upon detection, the system will trigger immediate alerts, providing crucial early warnings that can drastically reduce response times and mitigate potential damage. Furthermore, the project explores the integration of edge computing for on-site processing, enhancing speed and reducing network latency for critical real-time applications. This AI-driven approach aims to create safer environments in various settings, including industrial complexes, residential buildings, and public spaces, by providing a reliable and automated layer of fire safety.",
-    technologyStack: ["Python", "TensorFlow", "OpenCV", "Machine Learning", "Deep Learning", "CCTV Integration", "Edge Computing (Potential)"],
+    description:
+      "This project introduces an intelligent fire detection system leveraging the power of artificial intelligence and real-time image processing. By analyzing live video streams from existing CCTV infrastructure, the system is designed to automatically identify the visual signatures of fire and smoke with high accuracy. Built using a robust combination of Python for backend logic, TensorFlow for deep learning model implementation, and OpenCV for image manipulation and analysis, this system offers a significant advancement over traditional smoke detectors and human-monitored surveillance. Its core functionality lies in the trained convolutional neural network (CNN) capable of distinguishing between fire/smoke and other dynamic elements in the environment, thereby minimizing false alarms. Upon detection, the system will trigger immediate alerts, providing crucial early warnings that can drastically reduce response times and mitigate potential damage. Furthermore, the project explores the integration of edge computing for on-site processing, enhancing speed and reducing network latency for critical real-time applications. This AI-driven approach aims to create safer environments in various settings, including industrial complexes, residential buildings, and public spaces, by providing a reliable and automated layer of fire safety.",
+    technologyStack: [
+      "Python",
+      "TensorFlow",
+      "OpenCV",
+      "Machine Learning",
+      "Deep Learning",
+      "CCTV Integration",
+      "Edge Computing (Potential)",
+    ],
     objectives: [
       "Develop a highly accurate AI-based system for real-time fire and smoke detection from CCTV feeds.",
       "Significantly reduce human dependency in continuous fire monitoring and surveillance.",
       "Implement a low-latency, real-time alert system capable of notifying relevant authorities and personnel upon fire detection.",
       "Minimize false positives by training the AI model on a diverse dataset of fire and non-fire scenarios.",
-      "Explore the feasibility of edge deployment for faster processing and reduced network reliance."
+      "Explore the feasibility of edge deployment for faster processing and reduced network reliance.",
     ],
     benefits: [
       "Dramatically improves safety and security by providing automated and continuous fire detection.",
       "Significantly reduces emergency response times, potentially saving lives and minimizing property damage.",
       "Offers lower long-term operational costs compared to traditional, labor-intensive monitoring systems.",
       "Provides a scalable and adaptable solution that can be integrated with existing CCTV infrastructure.",
-      "Enhances the reliability of fire detection, especially in environments where human vigilance might be compromised."
+      "Enhances the reliability of fire detection, especially in environments where human vigilance might be compromised.",
     ],
     challenges: [
       "Achieving high accuracy and real-time processing speeds with complex video data.",
       "Ensuring the system's robustness and reliability across diverse and challenging lighting and environmental conditions.",
       "Optimizing the AI model for efficient deployment on potentially resource-constrained hardware.",
       "Addressing privacy concerns related to continuous video analysis and data storage.",
-      "Integrating seamlessly with existing fire alarm systems and emergency response protocols."
+      "Integrating seamlessly with existing fire alarm systems and emergency response protocols.",
     ],
-    futureGoal: "Integrate data from IoT-based temperature and gas sensors for multi-modal fire verification and develop a cloud-based central alert and management system for large-scale deployments in smart cities and industrial facilities.",
-    image: "https://th.bing.com/th/id/OIP.j36xHn1k9_q4n4n4n4n4HaHa?rs=1&pid=ImgDetMain",
+    futureGoal:
+      "Integrate data from IoT-based temperature and gas sensors for multi-modal fire verification and develop a cloud-based central alert and management system for large-scale deployments in smart cities and industrial facilities.",
+    image:
+      "https://th.bing.com/th/id/R.caa1f18da3a32ff44ee3d505aeda65d1?rik=h%2fc6CYN51jKG1A&riu=http%3a%2f%2fwww.bharatifire.com%2fassets%2fimages%2falarm-systems.jpg&ehk=vV%2fBdcjNBCp3dLjmUkICqte%2fISghk1T2KkJeRHPoKFM%3d&risl=&pid=ImgRaw&r=0",
     date: "2024-03-10",
     pptLink: "/ppt/AI-Based-Fire-Detection.pptx",
     team: [
@@ -38,7 +49,7 @@ export const projects = [
         branch: "Computer Science",
         session: "2020-2024",
         linkedin: "https://www.linkedin.com/in/amitkumar",
-        photo: "https://randomuser.me/api/portraits/men/1.jpg"
+        photo: "https://randomuser.me/api/portraits/men/1.jpg",
       },
       {
         name: "Fatima Begum",
@@ -47,7 +58,7 @@ export const projects = [
         branch: "Computer Science",
         session: "2020-2024",
         linkedin: "https://www.linkedin.com/in/fatimabegum",
-        photo: "https://randomuser.me/api/portraits/women/2.jpg"
+        photo: "https://randomuser.me/api/portraits/women/2.jpg",
       },
       {
         name: "Rahul Sharma",
@@ -56,7 +67,7 @@ export const projects = [
         branch: "Computer Science",
         session: "2020-2024",
         linkedin: "https://www.linkedin.com/in/rahulsharma",
-        photo: "https://randomuser.me/api/portraits/men/4.jpg"
+        photo: "https://randomuser.me/api/portraits/men/4.jpg",
       },
       {
         name: "Priya Singh",
@@ -65,7 +76,7 @@ export const projects = [
         branch: "Computer Science",
         session: "2020-2024",
         linkedin: "https://www.linkedin.com/in/priyasingh",
-        photo: "https://randomuser.me/api/portraits/women/5.jpg"
+        photo: "https://randomuser.me/api/portraits/women/5.jpg",
       },
       {
         name: "Ankit Verma",
@@ -74,9 +85,9 @@ export const projects = [
         branch: "Computer Science",
         session: "2020-2024",
         linkedin: "https://www.linkedin.com/in/ankitverma",
-        photo: "https://randomuser.me/api/portraits/men/6.jpg"
-      }
-    ]
+        photo: "https://randomuser.me/api/portraits/men/6.jpg",
+      },
+    ],
   },
   {
     id: 2,
@@ -84,7 +95,12 @@ export const projects = [
     branch: "Electronics / Biomedical / Robotics",
     description:
       "Design of a voice-controlled wheelchair to assist physically disabled individuals. Uses Arduino, Bluetooth, and speech recognition for hands-free mobility.",
-    technologyStack: ["Arduino", "Bluetooth Module", "Speech Recognition", "Embedded Systems"],
+    technologyStack: [
+      "Arduino",
+      "Bluetooth Module",
+      "Speech Recognition",
+      "Embedded Systems",
+    ],
     objectives: [
       "Enable wheelchair control via voice commands.",
       "Provide a cost-effective mobility solution.",
@@ -159,7 +175,7 @@ export const projects = [
     title: "Smart Irrigation System",
     branch: "Electronics / IoT",
     description:
-      "An IoT-based smart irrigation system that monitors soil moisture and automates water supply to optimize water usage in agriculture.",
+      "An IoT-based smart irrigation system is an advanced agricultural solution designed to enhance water efficiency by continuously monitoring soil moisture levels in real-time. Using a network of sensors placed in the soil, the system collects data on moisture content and transmits it to a central controller. When the moisture drops below a predefined threshold, the system automatically activates the water supply to irrigate the crops. This automation helps farmers reduce water waste, conserve resources, and improve crop yield. It also enables remote monitoring and control through smartphones or computers, allowing for more precise and data-driven decision-making.",
     technologyStack: ["IoT", "Arduino", "Sensors", "Cloud Integration"],
     objectives: [
       "Monitor soil moisture levels in real-time.",
@@ -178,7 +194,8 @@ export const projects = [
     ],
     futureGoal:
       "Expand the system to include weather forecasting and crop-specific irrigation recommendations.",
-    image: "https://cdn.pixabay.com/photo/2017/01/20/00/30/sprinkler-1990927_960_720.jpg",
+    image:
+      "https://th.bing.com/th/id/OIP.XaVDS9269zyfIVgIqj7iMQHaE8?cb=iwp2&rs=1&pid=ImgDetMain",
     date: "2024-05-15",
     pptLink: "/ppt/Smart-Irrigation-System.pptx",
     team: [
@@ -226,6 +243,54 @@ export const projects = [
         session: "2020-2024",
         linkedin: "https://www.linkedin.com/in/mohitjain",
         photo: "https://randomuser.me/api/portraits/men/14.jpg",
+      },
+    ],
+  },
+  {
+    id: 4,
+    title: "सतत शहरी जल निकासी प्रणाली",
+    branch: "सिविल इंजीनियरिंग",
+    description: "यह परियोजना एक सतत शहरी जल निकासी प्रणाली (Sustainable Urban Drainage System - SUDS) के विकास पर केंद्रित है, जिसका उद्देश्य शहरी क्षेत्रों में अत्यधिक वर्षा के दौरान जलजमाव और बाढ़ की समस्याओं को कम करना है। इस प्रणाली में पारंपरिक जल निकासी के बजाय आधुनिक और पर्यावरणीय तकनीकों जैसे वर्षा जल संचयन, जैविक नालियाँ, परगनीय सतहें और कृत्रिम आर्द्रभूमियों का उपयोग किया जाता है। यह तकनीक न केवल वर्षा जल को संरक्षित करती है, बल्कि उसे धीरे-धीरे ज़मीन में समाहित कर भूजल स्तर को भी बेहतर बनाती है। साथ ही, यह प्रणाली शहरी सौंदर्य और हरियाली को भी बढ़ावा देती है। पर्यावरणीय दृष्टिकोण से यह प्रणाली टिकाऊ विकास की दिशा में एक महत्वपूर्ण कदम है, जो जल संकट की समस्या का समाधान प्रदान करती है।",
+    technologyStack: ["ऑटोकैड", "स्टैड प्रो", "जीआईएस", "वर्षा जल संचयन तकनीक"],
+    objectives: [
+      "शहरी क्षेत्रों में जलजमाव की समस्या को कम करना।",
+      "वर्षा जल का संरक्षण और पुनः उपयोग।",
+      "पर्यावरण-अनुकूल जल निकासी प्रणाली का विकास।",
+    ],
+    benefits: [
+      "बेहतर जल प्रबंधन और बाढ़ की रोकथाम।",
+      "भूजल स्तर में सुधार।",
+      "टिकाऊ और पर्यावरण-सम्मत निर्माण प्रथाओं का समर्थन।",
+    ],
+    challenges: [
+      "शहरी क्षेत्रों में स्थान की कमी।",
+      "परियोजना की लागत और रखरखाव।",
+      "लोगों में जागरूकता और सहयोग की आवश्यकता।",
+    ],
+    futureGoal:
+      "स्मार्ट सेंसर तकनीक और IoT का उपयोग करके जल प्रवाह की निगरानी और पूर्वानुमान की सुविधा जोड़ना।",
+    image:
+      "https://th.bing.com/th/id/OIP.XaVDS9269zyfIVgIqj7iMQHaE8?cb=iwp2&rs=1&pid=ImgDetMain",
+    date: "2024-05-15",
+    pptLink: "/ppt/Sustainable-Urban-Drainage-System.pptx",
+    team: [
+      {
+        name: "अर्जुन मिश्रा",
+        role: "प्रोजेक्ट लीड",
+        registrationNo: "CE123401",
+        branch: "सिविल",
+        session: "2020-2024",
+        linkedin: "https://www.linkedin.com/in/arjunmishra",
+        photo: "https://randomuser.me/api/portraits/men/15.jpg",
+      },
+      {
+        name: "स्नेहा सिंह",
+        role: "जल संसाधन विशेषज्ञ",
+        registrationNo: "CE123402",
+        branch: "सिविल",
+        session: "2020-2024",
+        linkedin: "https://www.linkedin.com/in/snehasingh",
+        photo: "https://randomuser.me/api/portraits/women/16.jpg",
       },
     ],
   },

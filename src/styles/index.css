@@ -1,23 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap');
 
-
-
-*{box-sizing:border-box; padding: 0; margin: 0; }
-html{
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+html {
   font-size: 16px;
 }
-body{
-    margin:auto;    
-    max-width: 100%;
-   
-    font-optical-sizing: auto;
-    
-    /* font-family: 'SF Pro Display', sans-serif; */
-  }
+body {
+  margin: auto;
+  max-width: 100%;
 
-h1,h2,h3,h4,h5,h6{
+  font-optical-sizing: auto;
+
+  /* font-family: 'SF Pro Display', sans-serif; */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-optical-sizing: auto;
 }
 
@@ -25,3 +34,54 @@ h1,h2,h3,h4,h5,h6{
 /* ::-webkit-scrollbar{
   width: 0;
 } */
+.dm-serif-text-regular {
+  font-family: "DM Serif Text", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.dm-serif-text-regular-italic {
+  font-family: "DM Serif Text", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+.dm-serif-text-bold {
+  font-family: "DM Serif Text", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+.dm-serif-text-bold-italic {
+  font-family: "DM Serif Text", serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+
+.p{
+  font-family: "Hanken Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+.hanken-grotesk{
+  font-family: "Hanken Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+.hanken-grotesk-200 {
+  font-family: "Hanken Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+.hanken-grotesk-400 {
+  font-family: "Hanken Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+.hanken-grotesk-800 {
+  font-family: "Hanken Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+}
