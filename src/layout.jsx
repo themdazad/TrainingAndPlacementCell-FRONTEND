@@ -317,31 +317,28 @@ function NewsNoticeArea() {
     <div className="news-notice-container max-w-[1920px] m-auto px-[5%] grid md:grid-cols-2 gap-12 ">
       {/* Images carousel  */}
       <SimpleSlider />
-      <div className="news-notice-area  border hover:border-1 border-gray-500/20 rounded-3xl  p-3 md:p-6 ">
-        <h2 className="news-notice-heading text-xl sm:text-2xl md:text-3xl mt-2 flex max-md:justify-center gap-x-2 items-center font-bold">
-          Notifications <Bell />
+      <div className="news-notice-area border-t-4 border-y-blue-500 rounded-xl p-3 md:p-6 ">
+        <h2 className="news-notice-heading text-lg sm:text-xl md:text-2xl mt-2 flex max-md:justify-center gap-x-2 items-center font-bold">
+          Announcement
         </h2>
 
         {/* Mapping for upcoming data for latest news and notice   */}
-        <div className="row-container  box-border my-[1em] max-h-[20rem] overflow-y-scroll overflow-x-hidden ">
+        <div className="row-container box-border my-[1em] max-h-[20rem] overflow-y-scroll overflow-x-hidden ">
           {response.reverse().map((data, index) => {
             return (
               <a
                 key={index}
                 href={data.pdf_link}
                 target="_blank"
-                className="news-notice-row transition-all duration-300 flex flex-col items-start py-1 "
+                className="group news-notice-row transition-all duration-300 flex flex-col items-start py-1 "
               >
                 <div className="tags space-x-2 ">
-                  <span className="news-notice-card-tag text-[12px] bg-zinc-500/20 backdrop-blur-lg border-1  border-zinc-500/50  rounded-3xl px-[0.6em] py-[0.2em] ">
+                  <span className="news-notice-card-tag text-[10px] bg-zinc-500/20 backdrop-blur-lg border-1  border-zinc-500/50  rounded-3xl px-[0.6em] py-[0.2em] ">
                     {data.date}
-                  </span>
-                  <span className="news-notice-card-tag text-[12px] backdrop-blur-lg border-1  border-sky-500/50  rounded-3xl px-[0.6em] py-[0.2em] ">
-                    {data.tag}
                   </span>
                 </div>
 
-                <p className="news-notice-card-content max-sm:text-[14px] p-[0.5em] w-full overflow-ellipsis ">
+                <p className="group-hover:text-blue-500 news-notice-card-content max-sm:text-[14px] p-[0.5em] w-full overflow-ellipsis ">
                   {data.content}
                 </p>
               </a>

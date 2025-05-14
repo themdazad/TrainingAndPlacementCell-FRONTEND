@@ -54,9 +54,9 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
+    <div className="flex items-center justify-center">
       <ToastContainer />
-      <Card className="w-full max-w-md p-6 shadow-lg rounded-2xl">
+      <Card className="border-t-4 border-y-blue-500 w-full max-w-md p-3 m-[5%] shadow-lg rounded-2xl">
         <CardBody>
           <h2 className="text-2xl font-bold text-center mb-6">
             Reset Password
@@ -70,19 +70,19 @@ const ForgotPassword = () => {
               }}
             >
               <Input
-                type="text"
-                label="Registration No"
-                placeholder=""
-                value={regNo}
-                onChange={(e) => setRegNo(e.target.value)}
-                className="w-full"
-              />
-              <Input
                 type="email"
                 label="Email"
                 placeholder=""
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                className="w-full"
+              />
+               <Input
+                type="text"
+                label="Registration No"
+                placeholder=""
+                value={regNo}
+                onChange={(e) => setRegNo(e.target.value)}
                 className="w-full"
               />
               <Button
