@@ -60,11 +60,11 @@ const logos = [
   },
 ];
 
-const AnimatedLogoCloud = () => {
+const AnimatedLogoCloud2 = () => {
   return (
     <section className="py-12 bg-white dark:bg-gray-900 text-center overflow-hidden">
       <h2 className="text-2xl md:text-3xl font-bold text-gray-800 dark:text-white mb-10">
-        Our Recruiters
+        Past Recruiters
       </h2>
 
       <div
@@ -114,16 +114,20 @@ const AnimatedLogoCloud = () => {
       </div>
 
       <p className="mt-10 text-sm text-gray-500 dark:text-gray-400">
-        and more companies
+        and more 
       </p>
     </section>
   );
 };
-const AnimatedLogoCloud2 = () => {
+const AnimatedLogoCloud = () => {
   return (
-    <div className="mx-auto w-full flex justify-center px-4">
-      <div className="flex w-full flex-col  items-center justify-center gap-6 px-4 md:px-8">
-        <div className="font-medium text-2xl ">Our Recruiters</div>
+    <div className="mx-auto w-full flex justify-center px-4 py-[100px]">
+      <div className="flex flex-col items-center justify-center gap-6 px-4 md:px-8">
+        {/* title */}
+        <div className="py-[24px] text-2xl md:text-[32px] font-extrabold">
+          Past Recruiters
+        </div>
+        {/* logos */}
         <div
           className="group relative flex justify-center gap-6 overflow-hidden p-2"
           style={{
@@ -147,7 +151,7 @@ const AnimatedLogoCloud2 = () => {
                       <img
                         key={key}
                         src={logo.url}
-                        className="max-h-12 px-2 mix-blend-multiply transition-all duration-500 hover:scale-110 saturate-0 hover:saturate-100 dark:invert"
+                        className="max-h-12 px-2 mix-blend-multiply transition-all duration-500 hover:scale-110 dark:invert"
                         alt={`${logo.name}`}
                       />
                     </a>
