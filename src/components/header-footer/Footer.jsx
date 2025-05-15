@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 export function Footer() {
   return (
     <footer className="max-w-[1980px] m-auto px-[5%] py-10 sm:pt-16 bg-[url('/images/blur_bg.png')] bg-cover dark:bg-gray-800">
-      <div className="grid grid-cols-2 sm:col-span-3 md:grid-cols-6 gap-y-12 gap-x-12">
+      <div className="grid grid-cols-2 sm:col-span-3 md:grid-cols-6 gap-y-6 gap-x-12">
         {/* About Section */}
         <div>
           <h4 className="font-semibold tracking-widest text-gray-400 dark:text-gray-300 uppercase">
@@ -134,7 +134,7 @@ export function Footer() {
             rel="noopener noreferrer"
             className="underline hover:text-blue-600 dark:hover:text-blue-400"
           >
-            GEC, Siwan
+            Government Engineering College, Siwan
           </a>
           .
         </p>
