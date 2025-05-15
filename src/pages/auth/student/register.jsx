@@ -1,9 +1,8 @@
 import { Button, Card, CardBody, Input } from "@heroui/react";
-import { NavLink, useNavigate} from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
-
 
 const StudentRegister = () => {
   const navigate = useNavigate(); // hook must be inside component
@@ -16,7 +15,6 @@ const StudentRegister = () => {
   const [loading, setLoading] = useState(false);
 
   const handleRegister = async () => {
-  
     // Start loading
     setLoading(true);
 
@@ -28,7 +26,6 @@ const StudentRegister = () => {
     }
 
     try {
-
       if (password !== confirmPassword) {
         toast.warning("Passwords do not match");
         setLoading(false);
@@ -50,9 +47,9 @@ const StudentRegister = () => {
       // Handle successful login
       if (res.data?.success || res.status < 300) {
         toast.success("Registration successfully done.");
-        setTimeout(()=>{
+        setTimeout(() => {
           navigate("/student/login"); // Redirect to student login page
-        },1000)
+        }, 1000);
       } else {
         toast.error("Invalid credentials");
       }
@@ -68,7 +65,7 @@ const StudentRegister = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen 00">
+    <div className="flex items-center justify-center">
       <ToastContainer />
       <Card className="w-full border-t-4 border-y-blue-500 max-w-md p-6 m-[5%] shadow-lg rounded-2xl">
         <CardBody>

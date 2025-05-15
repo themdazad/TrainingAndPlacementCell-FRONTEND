@@ -46,7 +46,7 @@ const Projects = () => {
     <section className="max-w-[1980px] px-[5%] mx-auto text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-900">
       {/* Header */}
       <div className="header flex flex-col  justify-center py-12">
-        <h1 className="text-4xl lg:text-8xl font-bold">PROJECTS</h1>
+        <h1 className="text-4xl sm:text-6xl lg:text-8xl font-bold">PROJECTS</h1>
         <p className="mt-3 max-w-2xl text-gray-600 dark:text-gray-400">
           Explore our student's projects and initiatives that showcase our
           commitment to excellence and innovation.
@@ -54,7 +54,7 @@ const Projects = () => {
       </div>
 
       {/* Search and Sort */}
-      <div className="mt-4 flex flex-col md:flex-row justify-between items-center gap-4">
+      <div className="mt-4 flex flex-col sm:flex-row justify-between items-center gap-4">
         <input
           type="text"
           placeholder="Search projects..."
@@ -76,14 +76,14 @@ const Projects = () => {
       </div>
 
       {/* Cards Container */}
-      <div className="cards-container snap snap-x snap-mandatory max-md:overflow-x-scroll grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 py-8">
+      <div className="cards-container snap snap-x snap-mandatory max-md:overflow-x-scroll grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 py-8">
         {currentProjects.map((project) => {
           const leader = project.team?.[0];
           return (
             <NavLink
               key={project.id}
               to={`${slugify(project.title)}/${project.id}`}
-              className="relative rounded-xl card hover:border-t-4 border-blue-600 dark:border-gray-800 bg-white dark:bg-gray-900 snap-center min-w-[20em] max-w-[24em] transition-all duration-100 overflow-hidden flex-shrink-0 shadow-sm hover:shadow-md"
+              className="relative rounded-xl card hover:border-t-4 border-blue-600 dark:border-gray-800 bg-white dark:bg-gray-900 snap-center min-w-[16em] max-w-[24em] transition-all duration-100 overflow-hidden flex-shrink-0 shadow-sm hover:shadow-md"
             >
               <Image
                 className="object-cover rounded-none aspect-video w-full"
