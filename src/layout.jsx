@@ -13,7 +13,7 @@ import { useState, useEffect , useContext } from "react";
 import { NavLink } from "react-router-dom";
 import TPOStory from "./components/ui/TPOStory";
 import SelectedStudentSlider from "./components/ui/SelectedStudentSlider";
-import AnimatedLogoCloud from "./components/ui/AnimatedLogoCloud";
+import AnimatedLogoCloud from "./components/ui/PastRecruiters";
 import Testimonials from "./components/ui/Testimonials";
 import GooglesheetContext from "./contexts/google-sheets/GooglesheetContext";
 import NewsNoticeProvider from "./contexts/google-sheets/news-notice-provider";
@@ -153,7 +153,7 @@ export function FAQ() {
 
   return (
     <section className="max-w-[1920px] my-[6em] m-auto px-[5%]">
-      <h2 className="text-lg sm:text-2xl md:text-3xl text-center my-6 font-semibold text-gray-900 dark:text-white">
+      <h2 className="text-lg  sm:text-2xl md:text-3xl text-center my-6 font-extrabold text-gray-900 dark:text-white">
         Frequently Asked Questions
       </h2>
 

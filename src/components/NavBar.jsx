@@ -9,6 +9,11 @@ import axios from "axios";
 
 const navLinks = [
   { name: "Home", path: "/" },
+  {
+    name: "Academics",
+    dropdown: true,
+    items: [{ name: "Course Highlights", path: "/academics/course-highlights" }],
+  },
   { name: "Programs", path: "/programs" },
   { name: "Projects", path: "/projects" },
   {
@@ -215,9 +220,8 @@ export default function NavBar() {
                     {link.name}
                     <ChevronDown className="rotate-0 group-hover:rotate-180 transition-rotate duration-300" />
                   </span>
-
                   <ul
-                    className={`absolute left-[-50%] min-w-max text-small rounded-md border-t-4 border-t-blue-600 bg-white dark:bg-gray-800 py-2.5 px-12 space-y-4 transition-all duration-200 ${
+                    className={`absolute left-[-50%] min-w-max text-small rounded-md border-t-4 border-t-blue-600 bg-white dark:bg-gray-800 py-2 px-6 space-y-4 transition-all duration-200 ${
                       isDropdownOpen[link.name] ? "flex flex-col" : "hidden"
                     }`}
                   >
@@ -230,15 +234,7 @@ export default function NavBar() {
                           {item.name}
                         </NavLink>
                       </li>
-                    ))}
-                    <li>
-                      <NavLink
-                        to="/files/GEC_Siwan_Official_Resume_Format.docx"
-                        className="text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-400 space-y-4"
-                      >
-                        Resume Template
-                      </NavLink>
-                    </li>
+                    ))}                   
                   </ul>
                 </div>
               )
@@ -309,16 +305,7 @@ export default function NavBar() {
                           </NavLink>
                         </li>
                       ))}
-                      <li>
-                        <a
-                          href="/files/GEC_Siwan_Official_Resume_Format.docx"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-400 px-2 py-3 text-md rounded-3xl"
-                        >
-                          Resume Template
-                        </a>
-                      </li>
+                      
                     </ul>
                   </div>
                 )

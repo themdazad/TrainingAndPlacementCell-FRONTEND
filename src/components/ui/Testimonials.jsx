@@ -70,7 +70,7 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="py-16 px-4 bg-blue-100 dark:bg-gray-900 text-center">
+    <section className="py-16 px-4dark:bg-gray-900 text-center">
       <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white max-w-2xl mx-auto mb-20 leading-snug">
         Hear from our students and recruiters.{" "}
         <span className="text-blue-600 dark:text-blue-400">
@@ -88,10 +88,11 @@ const Testimonials = () => {
           viewport={{ once: false, amount: 0.2 }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
         >
+          {/* card */}
           {visibleTestimonials.map((t, index) => (
             <div
               key={index}
-              className={`bg-white hover:border-t-4 border-blue-500 dark:bg-gray-800 p-6 rounded-xl text-left shadow-md flex flex-col justify-between transition-all duration-100 ${
+              className={`bg-blue-100 border-t-4 border-blue-500 dark:bg-gray-800 p-6 rounded-xl text-left shadow-md flex flex-col justify-between transition-all duration-100 ${
                 t.rotate ?? ""
               } transition duration-300 ease-in-out hover:scale-105 hover:shadow-xl`}
             >
@@ -105,13 +106,12 @@ const Testimonials = () => {
                 <p className="text-gray-600 dark:text-gray-400 text-sm mb-2">
                   {t.title}
                 </p>
-                <div className="flex items-center justify-between border-t border-gray-200 dark:border-gray-700 pt-2 mt-2">
+                <div className="flex items-center justify-between border-t border-gray-500/50 dark:border-gray-700 pt-2 mt-2">
                   <div className="flex items-center gap-2">
                     <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                       {t.companyName}
                     </span>
                   </div>
-                 
                 </div>
               </div>
             </div>
