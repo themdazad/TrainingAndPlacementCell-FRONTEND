@@ -68,7 +68,7 @@ export default function Layout() {
             </a>
           </div>
 
-          <div className="max-sm:hidden">
+          <div className="max-md:hidden">
             <Image
               className="w-full"
               src="/images/heroThumbnails/heroThumbnail07052025.svg"
@@ -235,7 +235,7 @@ function NewsNoticeArea() {
     }
   }, [programData]);
   return (
-    <div className="news-notice-container max-w-[1920px] m-auto px-[5%] grid md:grid-cols-2 gap-12 ">
+    <div className="news-notice-container max-w-[1920px] m-auto px-[5%] grid grid-cols-1 lg:grid-cols-2 gap-12 ">
       {/* Images carousel  */}
       <SimpleSlider />
       <div className="news-notice-area border-t-4 border-y-blue-500 rounded-xl p-3 md:p-6 ">
@@ -254,8 +254,8 @@ function NewsNoticeArea() {
                 className="group news-notice-row transition-all duration-300 flex flex-col items-start py-1 "
               >
                 <div className="tags space-x-2 ">
-                  <span className="news-notice-card-tag text-[10px] bg-zinc-500/20 backdrop-blur-lg border-1  border-zinc-500/50  rounded-3xl px-[0.6em] py-[0.2em] ">
-                    {data.date}
+                  <span className="news-notice-card-tag text-[10px] backdrop-blur-lg border-1  border-zinc-500/50  rounded-3xl px-[0.6em] py-[0.5em] ">
+                    Published: {data.date}
                   </span>
                 </div>
 

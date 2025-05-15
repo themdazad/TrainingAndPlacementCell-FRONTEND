@@ -4,22 +4,22 @@ import { NavLink } from "react-router-dom";
 export function Footer() {
   return (
     <footer className="max-w-[1980px] m-auto px-[5%] py-10 sm:pt-16 bg-[url('/images/blur_bg.png')] bg-cover dark:bg-gray-800">
-      <div className="grid grid-cols-2 md:col-span-3 lg:grid-cols-6 gap-y-12 gap-x-12">
+      <div className="grid grid-cols-2 sm:col-span-3 md:grid-cols-6 gap-y-6 gap-x-12">
         {/* About Section */}
         <div>
-          <h4 className="text-sm font-semibold tracking-widest text-gray-400 dark:text-gray-300 uppercase">
+          <h4 className="font-semibold tracking-widest text-gray-400 dark:text-gray-300 uppercase">
             About
           </h4>
           <ul className="mt-4 grid grid-cols-1">
             <NavLink
               to="/about-tpo"
-              className="text-base text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition"
+              className="text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition"
             >
               About T&P Cell
             </NavLink>
             <NavLink
               to="/contact-us"
-              className="text-base text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition"
+              className="text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition"
             >
               Contact
             </NavLink>
@@ -28,7 +28,7 @@ export function Footer() {
 
         {/* Resources Section */}
         <div>
-          <h4 className="text-sm font-semibold tracking-widest text-gray-400 dark:text-gray-300 uppercase">
+          <h4 className="font-semibold tracking-widest text-gray-400 dark:text-gray-300 uppercase">
             Resources
           </h4>
           <ul className="mt-4 space-y-1">
@@ -52,7 +52,7 @@ export function Footer() {
 
         {/* Useful Links Section */}
         <div>
-          <h4 className="text-sm font-semibold tracking-widest text-gray-400 dark:text-gray-300 uppercase">
+          <h4 className="font-semibold tracking-widest text-gray-400 dark:text-gray-300 uppercase">
             Useful Links
           </h4>
           <ul className="mt-4 space-y-1">            
@@ -77,7 +77,7 @@ export function Footer() {
 
         {/* Credit Section */}
         <div>
-          <h4 className="text-sm font-semibold tracking-widest text-gray-400 dark:text-gray-300 uppercase">
+          <h4 className="font-semibold tracking-widest text-gray-400 dark:text-gray-300 uppercase">
             Credit
           </h4>
           <ul className="mt-6 space-y-1">
@@ -98,7 +98,7 @@ export function Footer() {
 
         {/* Newsletter Section */}
         <div className="col-span-2 md:col-span-1 lg:col-span-2 lg:pl-8">
-          <h4 className="text-sm font-semibold tracking-widest text-gray-400 dark:text-gray-300 uppercase">
+          <h4 className="font-semibold tracking-widest text-gray-400 dark:text-gray-300 uppercase">
             Subscribe to Newsletter
           </h4>
           <form className="mt-6">
@@ -125,7 +125,7 @@ export function Footer() {
       <Divider className="mt-10 mb-6" />
 
       {/* Bottom bar */}
-      <div className="text-sm text-center flex flex-col md:flex-row justify-center items-center gap-3 text-gray-600 dark:text-gray-300">
+      <div className="text-center flex flex-col md:flex-row justify-center items-center gap-3 text-gray-600 dark:text-gray-300">
         <p>
           © 2025, All Rights Reserved by{" "}
           <a
@@ -134,21 +134,11 @@ export function Footer() {
             rel="noopener noreferrer"
             className="underline hover:text-blue-600 dark:hover:text-blue-400"
           >
-            GEC, Siwan
+            Government Engineering College, Siwan
           </a>
           .
         </p>
-        <p>
-          Developed & Designed by{" "}
-          <a
-            href="https://www.linkedin.com/in/modest-azad/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-500"
-          >
-            Azad
-          </a>
-        </p>
+       
       </div>
     </footer>
   );

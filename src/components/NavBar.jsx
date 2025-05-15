@@ -14,13 +14,7 @@ const navLinks = [
   {
     name: "Resources",
     dropdown: true,
-    items: [
-      { name: "Programs", path: "/programs" },
-      {
-        name: "Resume Template",
-        path: "/files/GEC_Siwan_Official_Resume_Format.docx",
-      },
-    ],
+    items: [{ name: "Programs", path: "/programs" }],
   },
 ];
 
@@ -29,10 +23,9 @@ export default function NavBar() {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState({});
-  
+
   const mobileMenuRef = useRef(null);
   const hamburgerRef = useRef(null);
-
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -54,8 +47,6 @@ export default function NavBar() {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isMobileMenuOpen]);
-  
-  
 
   // Handling login/logout Features
   const navigate = useNavigate();
@@ -127,7 +118,7 @@ export default function NavBar() {
             />
           </div>
           <div className="title">
-            <h1 className=" dm-serif-text-regular text-md md:text-3xl font-bold">
+            <h1 className=" dm-serif-text-regular text-md sm:text-2xl md:text-3xl font-bold">
               Training and Placement Cell
             </h1>
             <h3 className="text-sm md:text-md">
@@ -240,6 +231,14 @@ export default function NavBar() {
                         </NavLink>
                       </li>
                     ))}
+                    <li>
+                      <NavLink
+                        to="/files/GEC_Siwan_Official_Resume_Format.docx"
+                        className="text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-400 space-y-4"
+                      >
+                        Resume Template
+                      </NavLink>
+                    </li>
                   </ul>
                 </div>
               )
@@ -249,14 +248,14 @@ export default function NavBar() {
           {/* Mobile Dropdown */}
           <div
             ref={mobileMenuRef}
-            className={`lg:hidden absolute top-[60px] left-0 w-screen bg-white dark:bg-gray-900 z-40 shadow-md transition-all duration-300 ease-in-out overflow-hidden ${
+            className={`lg:hidden absolute py-12 top-[60px] left-0 w-screen bg-white dark:bg-gray-900 z-40 shadow-md transition-all duration-300 ease-in-out overflow-hidden ${
               isMobileMenuOpen
                 ? "max-h-screen opacity-100"
                 : "max-h-0 opacity-0"
             }`}
             style={{ transitionProperty: "max-height, opacity" }}
           >
-            <div className="flex flex-col px-6 py-6 space-y-4">
+            <div className="flex flex-col rounded-[30px] px-6 py-6 space-y-4">
               {navLinks.map((link, index) =>
                 !link.dropdown ? (
                   <NavLink
@@ -299,7 +298,7 @@ export default function NavBar() {
                             to={item.path}
                             onClick={() => setMobileMenuOpen(false)}
                             className={({ isActive }) =>
-                              `block px-2 py-3 text-md rounded-md ${
+                              `block px-2 py-3 text-md rounded-3xl ${
                                 isActive
                                   ? "text-blue-600 dark:text-blue-400 font-medium"
                                   : "text-gray-800 dark:text-white"
@@ -310,6 +309,16 @@ export default function NavBar() {
                           </NavLink>
                         </li>
                       ))}
+                      <li>
+                        <a
+                          href="/files/GEC_Siwan_Official_Resume_Format.docx"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-400 px-2 py-3 text-md rounded-3xl"
+                        >
+                          Resume Template
+                        </a>
+                      </li>
                     </ul>
                   </div>
                 )
