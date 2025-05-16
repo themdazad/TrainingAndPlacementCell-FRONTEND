@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import { Image } from "@heroui/react";
 
 const studentDetails = [
   // 🔼 Batch 2025 Students
@@ -125,8 +125,6 @@ const studentDetails = [
   },
 ];
 
-
-
 function AvatarCarousel({
   avatarSize = 140,
   avatarSpacing = 8,
@@ -151,7 +149,7 @@ function AvatarCarousel({
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((index) => (index + 1) % avatars.length);
-    },3000);
+    }, 3000);
 
     return () => clearInterval(interval);
   }, [avatars.length]);
@@ -175,33 +173,31 @@ function AvatarCarousel({
         const isActive = activeIndex === index;
 
         return (
-          <div className="group" key={index}>
+          <div className=" group" key={index}>
+            <img 
+              src={avatar.image}
+              alt={`Avatar ${index}`}
+              className={`absolute border-2 border-white dark:border-gray-800 aspect-square m-0 rounded-full object-cover transition-all duration-1000`}
+              style={{
+                width: avatarSize,
+                top: "50%",
+                left: `calc(50% + ${left}px)`,
+                transform: `translate(-50%, -50%) scale(${
+                  1 - Math.abs(placement) * 0.1
+                })`,
+                zIndex: isActive ? 1 : 0,
+                opacity: shouldHide ? 0 : isActive ? 1 : 0.6,
+                transformOrigin: "top left",
+              }}
+            />
+
             <a
               href={avatar.details.linkedIn}
               target="_blank"
               rel="noopener noreferrer"
-            >
-              <img
-                src={avatar.image}
-                alt={`Avatar ${index}`}
-                className={`absolute border-2 border-white dark:border-gray-800 aspect-square m-0 rounded-full object-cover transition-all duration-1000`}
-                style={{
-                  width: avatarSize,
-                  top: "50%",
-                  left: `calc(50% + ${left}px)`,
-                  transform: `translate(-50%, -50%) scale(${
-                    1 - Math.abs(placement) * 0.1
-                  })`,
-                  zIndex: isActive ? 1 : 0,
-                  opacity: shouldHide ? 0 : isActive ? 1 : 0.6,
-                  transformOrigin: "top left",
-                }}
-              />
-            </a>
-
-            <div
               className={`absolute bg-white dark:bg-gray-800 dark:text-gray-100 hover:shadow-md dark:hover:shadow-lg rounded-3xl px-6 py-1 m-0 text-center transition-all duration-1000`}
-              style={{
+              style=
+              {{
                 bottom: "-5%",
                 left: `calc(50% + ${left}px)`,
                 transform: `translate(-50%, -50%) scale(${
@@ -211,10 +207,9 @@ function AvatarCarousel({
                 opacity: shouldHide ? 0 : isActive ? 1 : 0,
                 transformOrigin: "top left",
               }}
-            >
-              <h2 className="text-[12px] font-bold">{avatar.details.name}</h2>
+              ><h2 className="text-[12px] font-bold">{avatar.details.name}</h2>
               <p className="text-[12px]">{avatar.details.rollNumber}</p>
-            </div>
+            </a>
           </div>
         );
       })}
@@ -225,13 +220,12 @@ function AvatarCarousel({
 const SelectedStudentSlider = () => {
   return (
     <>
-     <div className="flex h-full w-full flex-col items-center justify-center py-10">
-  <h1 className="text-xl font-semibold text-gray-800 dark:text-gray-100">
-    Recently Placed Students
-  </h1>
-  <AvatarCarousel />
-</div>
-
+      <div className="flex h-full w-full flex-col items-center justify-center py-10">
+        <h1 className="text-xl font-extrabold text-gray-800 dark:text-gray-100">
+          Recently Placed Students
+        </h1>
+        <AvatarCarousel />
+      </div>
     </>
   );
 };

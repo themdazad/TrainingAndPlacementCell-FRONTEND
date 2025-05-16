@@ -1,17 +1,17 @@
 import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
-import { Button, Image } from "@heroui/react";
+import {Image } from "@heroui/react";
 import { ArrowRightCircle } from "lucide-react"; // ✅ Use correct Lucide imports
 
 export default function TPOStory() {
   return (
-    <div className="m-auto grid grid-cols-1 lg:grid-cols-2 items-center justify-center px-[10%] py-12 gap-12 bg-sky-100 dark:bg-gray-800 shadow-md">
+    <div className="m-auto grid grid-cols-1 lg:grid-cols-2 items-center justify-center px-[5%] py-12 gap-12 bg-sky-100 dark:bg-gray-800 shadow-md">
       {/* Left Text Section */}
       <div className="max-w-xl mb-10 md:mb-0">
-        <p className="text-sm tracking-widest uppercase text-gray-500 dark:text-gray-400 mb-2">
+        <p className="text-sm tracking-widest text-bold uppercase text-gray-500 dark:text-gray-400 mb-2">
           About Us
         </p>
-        <h2 className="text-2xl md:text-3xl font-bold text-gray-800 dark:text-white">
+        <h2 className="text-2xl md:text-3xl font-extrabold text-gray-800 dark:text-white">
           Training & Placement Cell at Government Engineering College, Siwan
         </h2>
         <p className="my-4 text-justify text-gray-600 dark:text-gray-300 leading-relaxed">
