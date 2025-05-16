@@ -13,18 +13,16 @@ import { Footer } from "./components/header-footer/Footer.jsx";
 import ProgramsProvider from "./contexts/google-sheets/programs-provider.jsx";
 import AuthProvider from "./contexts/auth/AuthProvider.jsx";
 import axios from "axios";
-import { useEffect } from "react";
 
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  
   <HeroUIProvider>
     <BrowserRouter>
       <AuthProvider>
         <ProgramsProvider>
           <main className="dark:dark text-foreground bg-background dark:bg-[#111112] ">
             {/* add here navigation bar components */}
-
+            {scrollToTop()}
             <NavBar />
             <Path /> {/* Router */}
             <Footer />

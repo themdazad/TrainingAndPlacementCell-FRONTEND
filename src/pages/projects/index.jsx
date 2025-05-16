@@ -46,7 +46,7 @@ const Projects = () => {
     <section className="max-w-[1980px] px-[5%] mx-auto text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-900">
       {/* Header */}
       <div className="header flex flex-col  justify-center py-12">
-        <h1 className="text-4xl sm:text-6xl lg:text-8xl font-bold">PROJECTS</h1>
+        <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold">PROJECTS</h1>
         <p className="mt-3 max-w-2xl text-gray-600 dark:text-gray-400">
           Explore our student's projects and initiatives that showcase our
           commitment to excellence and innovation.
@@ -54,7 +54,7 @@ const Projects = () => {
       </div>
 
       {/* Search and Sort */}
-      <div className="mt-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <div className="mt-4 flex flex-col sm:flex-row justify-end items-center gap-4">
         <input
           type="text"
           placeholder="Search projects..."
@@ -63,12 +63,12 @@ const Projects = () => {
             setSearchQuery(e.target.value);
             setCurrentPage(1);
           }}
-          className="w-full md:w-[60%] p-2 px-4 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-[30px]"
+          className="w-full md:w-[14em] p-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-[30px]"
         />
         <select
           value={sortOrder}
           onChange={(e) => setSortOrder(e.target.value)}
-          className="w-full md:w-[30%] p-2 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-[30px]"
+          className="w-full md:w-[14em] p-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-[30px]"
         >
           <option value="newest">Sort by Newest</option>
           <option value="oldest">Sort by Oldest</option>

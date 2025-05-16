@@ -60,7 +60,7 @@ const logos = [
   },
 ];
 
-const AnimatedLogoCloud2 = () => {
+const PastRecruiters2 = () => {
   return (
     <section className="py-12 bg-white dark:bg-gray-900 text-center overflow-hidden">
       <h2 className="text-2xl md:text-3xl font-bold text-gray-800 dark:text-white mb-10">
@@ -113,13 +113,11 @@ const AnimatedLogoCloud2 = () => {
         </div>
       </div>
 
-      <p className="mt-10 text-sm text-gray-500 dark:text-gray-400">
-        and more 
-      </p>
+      <p className="mt-10 text-sm text-gray-500 dark:text-gray-400">and more</p>
     </section>
   );
 };
-const AnimatedLogoCloud = () => {
+const PastRecruiters = () => {
   return (
     <div className="mx-auto w-full flex justify-center px-4 py-[100px]">
       <div className="flex flex-col items-center justify-center gap-6 px-4 md:px-8">
@@ -151,11 +149,11 @@ const AnimatedLogoCloud = () => {
                       <img
                         key={key}
                         src={logo.url}
-                        className="max-h-12 px-2 mix-blend-multiply transition-all duration-500 hover:scale-110 dark:invert"
+                        className="max-h-12 px-2 mix-blend-multiply saturate-0 hover:saturate-100 transition-all duration-500 hover:scale-110 dark:invert"
                         alt={`${logo.name}`}
                       />
                     </a>
-                    //   brightness-0 dark:invert
+                    
                   ))}
                 </div>
               )
@@ -166,4 +164,4 @@ const AnimatedLogoCloud = () => {
   );
 };
 
-export default AnimatedLogoCloud;
+export default PastRecruiters;

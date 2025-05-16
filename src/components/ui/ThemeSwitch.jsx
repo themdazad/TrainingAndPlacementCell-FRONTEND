@@ -5,7 +5,7 @@ import { useState, useEffect } from "react"
 const ThemeSwitch = () => {
 
   // Get the system's theme preference or fall back to 'light'
-  const systemTheme = window.matchMedia("(prefers-color-scheme: light)").matches ? "dark" : "light";
+  const systemTheme = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
   const savedTheme = localStorage.getItem('theme');
 
   const [theme, setTheme] = useState(savedTheme || systemTheme);

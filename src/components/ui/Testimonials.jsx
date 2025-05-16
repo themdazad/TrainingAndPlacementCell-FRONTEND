@@ -70,7 +70,7 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="py-16 px-4dark:bg-gray-900 text-center">
+    <section className="py-16 px-[5%] px-4dark:bg-gray-900 text-center">
       <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white max-w-2xl mx-auto mb-20 leading-snug">
         Hear from our students and recruiters.{" "}
         <span className="text-blue-600 dark:text-blue-400">
@@ -86,13 +86,13 @@ const Testimonials = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: false, amount: 0.2 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="snap-mandatory snap-x overflow-x-scroll scrollbar-hide p-4 flex gap-8"
         >
           {/* card */}
           {visibleTestimonials.map((t, index) => (
             <div
               key={index}
-              className={`bg-blue-100 border-t-4 border-blue-500 dark:bg-gray-800 p-6 rounded-xl text-left shadow-md flex flex-col justify-between transition-all duration-100 ${
+              className={`snap-start min-w-[320px] bg-blue-100 border-t-4 border-blue-500 dark:bg-gray-800 p-6 rounded-xl text-left shadow-md flex flex-col justify-between transition-all duration-100 ${
                 t.rotate ?? ""
               } transition duration-300 ease-in-out hover:scale-105 hover:shadow-xl`}
             >

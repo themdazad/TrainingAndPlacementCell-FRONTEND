@@ -1,19 +1,12 @@
 import { motion } from "framer-motion";
-import { Button, Image } from "@heroui/react";
-import {
-  ArrowRightCircle,
-  CircleArrowRight,
-  Mouse,
-  CloudDownload,
-  ChevronDown,
-  Bell,
-} from "lucide-react";
+import { Image } from "@heroui/react";
+import {  ArrowRightCircle,} from "lucide-react";
 import { Accordion, AccordionItem } from "@heroui/accordion";
 import { useState, useEffect , useContext } from "react";
 import { NavLink } from "react-router-dom";
 import TPOStory from "./components/ui/TPOStory";
 import SelectedStudentSlider from "./components/ui/SelectedStudentSlider";
-import AnimatedLogoCloud from "./components/ui/PastRecruiters";
+import PastRecruiters from "./components/ui/PastRecruiters";
 import Testimonials from "./components/ui/Testimonials";
 import GooglesheetContext from "./contexts/google-sheets/GooglesheetContext";
 import NewsNoticeProvider from "./contexts/google-sheets/news-notice-provider";
@@ -26,12 +19,13 @@ export default function Layout() {
       <section className="px-[5%] md:px-[10%] sm:py-16">
         <div className="grid items-center py-12 grid-cols-1 gap-12 lg:grid-cols-2">
           <div>
-            <p className="text-base font-semibold tracking-wider text-blue-600 dark:text-blue-400 uppercase">
-              For career and growth
-            </p>
-            <h1 className="dm-serif-text-bold mt-2 text-4xl font-bold text-gray-900 dark:text-white lg:mt-8 sm:text-6xl xl:text-8xl">
-              Campus Placement 2025
+            <h1 className="mt-2 text-4xl font-extrabold text-gray-900 dark:text-white lg:mt-8 sm:text-6xl xl:text-8xl">
+              {/* Campus Placement 2025 */}
+              Training & Placement Cell
             </h1>
+            <p className="dm-serif-text-bold text-lg md:text-3xl font-semibold tracking-wider text-blue-600 dark:text-blue-400">
+              Government Engineering College, Siwan
+            </p>
             <p className="mt-2 text-base text-gray-800 dark:text-gray-300 lg:mt-8 sm:text-xl">
               We strive to organize mock sessions, and provide real-world
               exposure through internships and project showcases, ensuring each
@@ -94,7 +88,7 @@ export default function Layout() {
       </section>
 
       <section className="py-6 m-auto">
-        <AnimatedLogoCloud />
+        <PastRecruiters />
       </section>
 
       <section className="py-6 m-auto">
