@@ -106,9 +106,9 @@ export function FAQ() {
   const faq_data = [
     {
       question:
-        "1. What is the role of the Training and Placement Cell at GEC, Siwan?",
+        "1. Do companies also hire through virtual drives?",
       answer:
-        "The TPC bridges the gap between students and employers, offering career guidance, training programs, and managing campus recruitment to help students secure internships and job placements.",
+        "Yes.",
     },
     {
       question: "2. Who is eligible for placement?",
