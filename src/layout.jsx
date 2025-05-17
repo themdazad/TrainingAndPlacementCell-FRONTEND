@@ -106,40 +106,40 @@ export function FAQ() {
   const faq_data = [
     {
       question:
-        "1. Do companies also hire through virtual drives?",
+        "1. What kind of infrastructure does the TPC provide for placement drives?",
       answer:
-        "Yes.",
-    },
-    {
-      question: "2. Who is eligible for placement?",
-      answer:
-        "Eligibility generally depends on your academic performance, skills, branch-specific requirements, and sometimes internship experience.",
-    },
-    {
-      question: "3. What types of companies visit for campus placements?",
-      answer:
-        "Companies from various sectors including IT (e.g., TCS, Infosys), Core Engineering (e.g., L&T, BHEL), Consulting (e.g., Deloitte), and PSUs (e.g., BHEL, ONGC) visit the campus.",
-    },
-    {
-      question: "4. How should I prepare for the placement process?",
-      answer:
-        "Focus on enhancing your technical skills, preparing for aptitude tests, practicing soft skills, and updating your resume. Attend mock interviews and group discussion sessions organized by TPC.",
-    },
-    {
-      question: "5. Are internships arranged by the TPC?",
-      answer:
-        "Yes, the TPC arranges internships, providing students with industry experience that enhances their skills and improves their chances of securing a job after graduation.",
-    },
-    {
-      question: "6. How can I contact the TPC for assistance?",
-      answer:
-        "You can contact directly with Student Coordinator details mentioned in about us page, Or email us through the official placement email address.",
+        "The Training and Placement Cell typically offers a well-equipped infrastructure designed to facilitate a smooth and professional recruitment experience. This includes dedicated interview rooms, group discussion spaces, and seminar halls with projectors and audio systems for pre-placement talks (PPTs). The TPC is also equipped with computer labs featuring high-speed internet connectivity and LAN setups to support online assessments and virtual interviews.",
     },
     {
       question:
-        "7. What is the role of the Training and Placement Cell (TPC) at Government Engineering College, Siwan?",
+        "2. Is domain-oriented technical along with soft skills training offered?",
       answer:
-        "The TPC bridges the gap between students and employers, offering career guidance, training programs, and managing campus recruitment to help students secure internships and job placements.",
+        "Yes, The TPC curriculum integrates both domain-specific technical training and soft skills development.",
+    },
+    {
+      question: "3. Do companies also hire through virtual drives?",
+      answer:
+        "Absolutely. Companies now a days conduct the entire recruitment cycle, from aptitude tests and technical interviews to HR rounds via platforms like Zoom, MS Teams [can include other platform as well]. The TPC coordinates with students and recruiters to manage slots, troubleshoot tech issues, and ensure proper conduct throughout the virtual process.",
+    },
+    {
+      question: "4. What is the annual student placement rate?",
+      answer:
+        "The annual placement rate varies however, TPC often report placement rates above 50-60% for core branches.",
+    },
+    {
+      question: "5. Does the TPC engage in workshops or career sessions?",
+      answer:
+        "Yes, the TPC often organizes industry-focused workshops, expert lectures, and career development sessions which help student to explore and achieve their goals.",
+    },
+    {
+      question: "6. How are recruitment drives usually conducted?",
+      answer:
+        "Recruitment drives are executed in a phased manner. They begin with company registration and student eligibility screening, followed by pre-placement talks. Next are written aptitude/technical tests, group discussions, and technical/HR interviews. Drives may be held in physical mode or virtually. The TPC ensures scheduling, student preparedness, hospitality for visiting officials (in case of on-campus drives) and real-time coordination during the process.",
+    },
+    {
+      question: "7. How can I reach out for more information on TPC?",
+      answer:
+        "For further information, you can contact the official college website, where contact emails, phone numbers and a dedicated portal for placement related queries is included. you can also explore our social media platforms or LinkedIn profiles for more exciting drives .",
     },
   ];
 
