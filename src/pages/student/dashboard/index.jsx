@@ -9,7 +9,7 @@ import {
   PanelRightClose,
   PanelRightOpen,
 } from "lucide-react";
-import Profile from "../../../components/dashboard/student/dashboard-tab/Profile";
+import Profile from "../../../components/student/dashboard/dashboard-tab/Profile";
 
 const menuItems = [
   { name: "Dashboard", icon: Home },
