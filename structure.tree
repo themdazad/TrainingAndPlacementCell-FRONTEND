@@ -1,0 +1,233 @@
+D:.
+│   .env
+│   .eslintrc.cjs
+│   .gitignore
+│   APIs.txt
+│   index.html
+│   package-lock.json
+│   package.json
+│   postcss.config.js
+│   README.md
+│   tailwind.config.js
+│   vercel.json
+│   vite.config.js
+│   webpack.config.js
+│
+├───.idea
+│   │   .gitignore
+│   │   Frontend.iml
+│   │   modules.xml
+│   │   vcs.xml
+│   │   workspace.xml
+│   │
+│   └───inspectionProfiles
+│           Project_Default.xml
+│
+├───public
+│   │   manifest.webmanifest
+│   │
+│   ├───assets
+│   │   │   female-profile.webp
+│   │   │   linkedin.svg
+│   │   │   linkedin_qr.png
+│   │   │   linkedin_qr1.png
+│   │   │   male-profile.webp
+│   │   │   yellow_circle.svg
+│   │   │
+│   │   └───favicons
+│   │           android-icon-144x144.png
+│   │           android-icon-192x192.png
+│   │           android-icon-36x36.png
+│   │           android-icon-48x48.png
+│   │           android-icon-72x72.png
+│   │           android-icon-96x96.png
+│   │           apple-icon-114x114.png
+│   │           apple-icon-120x120.png
+│   │           apple-icon-144x144.png
+│   │           apple-icon-152x152.png
+│   │           apple-icon-180x180.png
+│   │           apple-icon-57x57.png
+│   │           apple-icon-60x60.png
+│   │           apple-icon-72x72.png
+│   │           apple-icon-76x76.png
+│   │           apple-icon-precomposed.png
+│   │           apple-icon.png
+│   │           browserconfig.xml
+│   │           favicon-16x16.png
+│   │           favicon-32x32.png
+│   │           favicon-96x96.png
+│   │           favicon.ico
+│   │           ms-icon-144x144.png
+│   │           ms-icon-150x150.png
+│   │           ms-icon-310x310.png
+│   │           ms-icon-70x70.png
+│   │
+│   ├───files
+│   │       GEC_Siwan_Official_Resume_Format.docx
+│   │
+│   ├───images
+│   │   │   about-tpo-thumbnail.svg
+│   │   │   aicte-logo.png
+│   │   │   azad_sign.svg
+│   │   │   blur_bg.png
+│   │   │   blur_bg2.svg
+│   │   │   dstbihar-logo.png
+│   │   │   gecsiwan-logo-light.png
+│   │   │   gecsiwan-logo.png
+│   │   │   govbihar-logo.png
+│   │   │   hero_image.svg
+│   │   │   hero_image2.svg
+│   │   │   photo-1.jpg
+│   │   │   photo-2.jpg
+│   │   │   projects_banner.svg
+│   │   │   republic-day-2.png
+│   │   │   republic-day-2.webp
+│   │   │   republic-day.jpg
+│   │   │   republic-day.webp
+│   │   │   Solar_Enterpreneurship_Training.webp
+│   │   │
+│   │   ├───coordinators
+│   │   │       abhishek_profile.jpg
+│   │   │       azad_profile.jpg
+│   │   │
+│   │   ├───heroThumbnails
+│   │   │       heroThumbnail07052025.svg
+│   │   │
+│   │   └───students2025
+│   │           abhishek22102151907.jpg
+│   │           hanshraj21103151013.jpg
+│   │           laxmi22103151953.jpg
+│   │           nishant21103151005.jpg
+│   │           prakash21103151003.jpg
+│   │           romi22102151903.jpg
+│   │           sidhant21103151018.jpg
+│   │           vishal22102151908.jpg
+│   │
+│   └───videos
+│           sample-video.mp4
+│           tpo_gd.webm
+│
+└───src
+    │   layout.jsx
+    │   main.jsx
+    │   
+    ├───components
+    │   │   NavBar.jsx
+    │   │   
+    │   ├───admin
+    │   │   └───dashboard
+    │   ├───auth
+    │   │   │   PrivateRoute.jsx
+    │   │   │   
+    │   │   ├───dashboard
+    │   │   │   └───AdminDashboard
+    │   │   │           AdminDashboard.jsx
+    │   │   │
+    │   │   └───login
+    │   │           PopOver.jsx
+    │   │
+    │   ├───Functions
+    │   │       RandomLoadingMessage.jsx
+    │   │       
+    │   ├───student
+    │   │   └───dashboard
+    │   │       ├───dashboard-tab
+    │   │       │       Profile.jsx
+    │   │       │
+    │   │       └───resume-builder-tab
+    │   │               .gitkeep
+    │   │
+    │   └───web
+    │       └───header-footer
+    │               Footer.jsx
+    │               NavigationBar.jsx
+    │
+    ├───contexts
+    │   ├───auth
+    │   │       AuthContext.jsx
+    │   │       AuthProvider.jsx
+    │   │
+    │   └───google-sheets
+    │           GooglesheetContext.jsx
+    │           news-notice-provider.jsx
+    │           programs-provider.jsx
+    │
+    ├───modules
+    │   ├───admin
+    │   ├───student
+    │   └───web
+    │       └───section
+    │               PastRecruiters.jsx
+    │               SelectedStudentSlider.jsx
+    │               Testimonials.jsx
+    │               TPOStory.jsx
+    │
+    ├───pages
+    │   ├───admin
+    │   │   └───dashboard
+    │   │           index.jsx
+    │   │
+    │   ├───student
+    │   │   └───dashboard
+    │   │           index.jsx
+    │   │
+    │   └───web
+    │       │   ComingSoon.jsx
+    │       │
+    │       ├───academics
+    │       │   └───course-highlights
+    │       │           index.jsx
+    │       │
+    │       ├───auth
+    │       │   ├───admin
+    │       │   │       login.jsx
+    │       │   │       register.jsx
+    │       │   │       
+    │       │   └───student
+    │       │           forgot-password.jsx
+    │       │           login.jsx
+    │       │           register.jsx
+    │       │
+    │       ├───campus-placement
+    │       │   └───2025
+    │       │           campus-placement-2025.jsx
+    │       │
+    │       ├───common
+    │       │       reach-siwan.jsx
+    │       │
+    │       ├───contact-us
+    │       │       FacultyInCharge.jsx
+    │       │       index.jsx
+    │       │       TPOCoordinators.jsx
+    │       │
+    │       ├───programs-page
+    │       │       index.jsx
+    │       │
+    │       ├───projects
+    │       │       index.jsx
+    │       │       projectDetailsPage.jsx
+    │       │       projects.css
+    │       │       projectsData.js
+    │       │
+    │       └───resourses
+    ├───routes
+    │   ├───admin
+    │   ├───student
+    │   │       index.jsx
+    │   │
+    │   └───web
+    │           index.jsx
+    │
+    ├───styles
+    │       AnimatedBackground.css
+    │       index.css
+    │       MouseCursorGradientTracking.css
+    │
+    ├───ui
+    │       AnimatedBackground.jsx
+    │       GradientTracking.jsx
+    │       SimpleSlider.jsx
+    │       ThemeSwitch.jsx
+    │
+    └───utils
+            slugify.js

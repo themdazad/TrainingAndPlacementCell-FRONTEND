@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { slugify } from "../../utils/slugify";
+import { slugify } from "../../../utils/slugify";
 import "./projects.css";
 import { projects } from "./projectsData";
 import { NavLink } from "react-router-dom";

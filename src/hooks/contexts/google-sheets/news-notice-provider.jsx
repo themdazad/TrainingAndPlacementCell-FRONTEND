@@ -1,7 +1,7 @@
 import Papa from "papaparse";
 import { useEffect, useState } from "react";
 import GooglesheetContext from "./GooglesheetContext";
-import RandomLoadingMessage from "../../components/Functions/RandomLoadingMessage";
+import RandomLoadingMessage from "../../../utils/RandomLoadingMessage";
 import axios from "axios";
 
 // csv to json converter
