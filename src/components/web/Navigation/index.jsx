@@ -21,6 +21,8 @@ const navLinks = [
     dropdown: true,
     items: [{ name: "Programs", path: "/programs" }],
   },
+  { name: "About Us", path: "/about-us" },
+  
 ];
 
 export default function NavBar() {
