@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import Layout from "../../pages/web/home/layout.jsx";
+import Home from "../../pages/web/home";
 // auth Pages
 import AdminLogin from "../../pages/web/auth/admin/login.jsx";
 import AdminRegister from "../../pages/web/auth/admin/register.jsx";
@@ -16,11 +16,13 @@ import CampusPlacements2025 from "../../pages/web/campus-placement/2025/campus-p
 import Projects from "../../pages/web/projects";
 import CourseHighlights from "../../pages/web/academics/course-highlights/index.jsx";
 import ProjectDetailsPage from "../../pages/web/projects/project-details-page.jsx";
+import AboutUs from "../../pages/web/about-us/index.jsx";
+
 
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<Layout />} /> 
+      <Route path="/" element={<Home />} />
       <Route path="/auth">
         <Route path="admin">
           <Route path="login" element={<AdminLogin />} />
@@ -38,6 +40,7 @@ const AppRoutes = () => {
       <Route path="reach-siwan" element={<ReachSiwan />} />
       <Route path="contact-us" element={<ContactUs />} />
       <Route path="programs" element={<Programs />} />
+      <Route path="about-us" element={<AboutUs />} />
       <Route path="/academics">
         <Route path="course-highlights" element={<CourseHighlights />} />
       </Route>

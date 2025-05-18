@@ -12,7 +12,7 @@ import SimpleSlider from "../../../components/ui/SimpleSlider";
 import GooglesheetContext from "../../../hooks/contexts/google-sheets/GooglesheetContext";
 import NewsNoticeProvider from "../../../hooks/contexts/google-sheets/news-notice-provider";
 
-export default function Layout() {
+export default function Home() {
   return (
     <main className="overflow-hidden max-w-[1980px] m-auto min-h-screen bg-white dark:bg-gray-900">
       {/* Hero section  */}
