@@ -119,17 +119,17 @@ export function FAQ() {
     {
       question: "3. Do companies also hire through virtual drives?",
       answer:
-        "Absolutely. Companies now a days conduct the entire recruitment cycle, from aptitude tests and technical interviews to HR rounds via platforms like Zoom, MS Teams [can include other platform as well]. The TPC coordinates with students and recruiters to manage slots, troubleshoot tech issues, and ensure proper conduct throughout the virtual process.",
+        "Absolutely. Companies now a days conduct the entire recruitment cycle, from aptitude tests and technical interviews to HR rounds via platforms like Zoom, MS Teams, skype, etc. The TPC coordinates with students and recruiters to manage slots, troubleshoot tech issues, and ensure proper conduct throughout the virtual process.",
     },
     {
       question: "4. What is the annual student placement rate?",
       answer:
-        "The annual placement rate varies however, TPC often report placement rates above 50-60% for core branches.",
+        "The annual placement rate varies however, TPC often reports placement rates above 50-60% for core branches.",
     },
     {
       question: "5. Does the TPC engage in workshops or career sessions?",
       answer:
-        "Yes, the TPC often organizes industry-focused workshops, expert lectures, and career development sessions which help student to explore and achieve their goals.",
+        "Yes, the TPC often organizes industry-focused workshops, expert lectures, and career development sessions which help students to explore and achieve their goals.",
     },
     {
       question: "6. How are recruitment drives usually conducted?",
@@ -139,7 +139,7 @@ export function FAQ() {
     {
       question: "7. How can I reach out for more information on TPC?",
       answer:
-        "For further information, you can contact the official college website, where contact emails, phone numbers and a dedicated portal for placement related queries is included. you can also explore our social media platforms or LinkedIn profiles for more exciting drives .",
+        "For further information, you can contact the official college website, where contact emails, phone numbers and a dedicated portal for placement related queries is included. you can also explore our social media platforms or LinkedIn profiles for more exciting drives .",
     },
   ];
 
