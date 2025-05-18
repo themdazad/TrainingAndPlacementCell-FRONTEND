@@ -4,7 +4,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import { useContext } from "react";
-import AuthContext from "../../../contexts/auth/AuthContext";
+import AuthContext from "../../../../hooks/contexts/auth/AuthContext";
 
 const StudentLogin = () => {
   const { setIsLogedIn } = useContext(AuthContext);

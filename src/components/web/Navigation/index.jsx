@@ -3,8 +3,8 @@ import { Button } from "@heroui/react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Image } from "@heroui/react";
 import { ChevronDown, ChevronUp, BellDot } from "lucide-react";
-import { useAuth } from "../contexts/auth/AuthContext"; // Adjust path as needed
-import ThemeSwitch from "./ui/ThemeSwitch";
+import { useAuth } from "../../../hooks/contexts/auth/AuthContext"; // Adjust path as needed
+import ThemeSwitch from "../../ui/ThemeSwitch";
 import axios from "axios";
 
 const navLinks = [

@@ -1,26 +1,26 @@
 import { Routes, Route } from "react-router-dom";
-import Layout from "../../layout.jsx";
+import Layout from "../../pages/web/home/layout.jsx";
 // auth Pages
-import AdminLogin from "../../pages/auth/admin/login.jsx";
-import AdminRegister from "../../pages/auth/admin/register.jsx";
-import StudentLogin from "../../pages/auth/student/login.jsx";
-import StudentRegister from "../../pages/auth/student/register.jsx";
-import ForgotPassword from "../../pages/auth/student/forgot-password.jsx";
-import ReachSiwan from "../../pages/common/reach-siwan.jsx";
+import AdminLogin from "../../pages/web/auth/admin/login.jsx";
+import AdminRegister from "../../pages/web/auth/admin/register.jsx";
+import StudentLogin from "../../pages/web/auth/student/login.jsx";
+import StudentRegister from "../../pages/web/auth/student/register.jsx";
+import ForgotPassword from "../../pages/web/auth/student/forgot-password.jsx";
+import ReachSiwan from "../../pages/web/common/reach-siwan.jsx";
 // fallback routes
-import ComingSoon from "../../pages/ComingSoon.jsx";
+import ComingSoon from "../../pages/web/ComingSoon.jsx";
 // Public Routes
-import ContactUs from "../../pages/contact-us/index.jsx";
-import Programs from "../../pages/programs-page/index.jsx";
-import CampusPlacements2025 from "../../pages/campus-placement/2025/campus-placement-2025.jsx";
-import Projects from "../../pages/projects/index.jsx";
-import CourseHighlights from "../../pages/academics/course-highlights/index.jsx";
-import ProjectDetailsPage from "../../pages/projects/projectDetailsPage.jsx";
+import ContactUs from "../../pages/web/contact-us/index.jsx";
+import Programs from "../../pages/web/programs-page/index.jsx";
+import CampusPlacements2025 from "../../pages/web/campus-placement/2025/campus-placement-2025.jsx";
+import Projects from "../../pages/web/projects";
+import CourseHighlights from "../../pages/web/academics/course-highlights/index.jsx";
+import ProjectDetailsPage from "../../pages/web/projects/project-details-page.jsx";
 
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<Layout />} />
+      <Route path="/" element={<Layout />} /> 
       <Route path="/auth">
         <Route path="admin">
           <Route path="login" element={<AdminLogin />} />
