@@ -5,14 +5,14 @@ import "./styles/MouseCursorGradientTracking.css";
 import "./styles/AnimatedBackground.css";
 import { HeroUIProvider } from "@heroui/react";
 import { BrowserRouter } from "react-router-dom";
-import NavBar from "./components/web/Navigation";
-import Footer from "./components/web/Footer";
+import NavBar from "./components/shared/Navigation";
+import Footer from "./components/shared/Footer";
 // contexts
 import ProgramsProvider from "./hooks/contexts/google-sheets/programs-provider.jsx";
 import AuthProvider from "./hooks/contexts/auth/AuthProvider.jsx";
 
 // Routes
-import WebRoutes from "./routes/web";
+import SharedRoutes from "./routes/shared";
 import StudentRoutes from "./routes/student";
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
     <main className="dark:dark text-foreground bg-background dark:bg-[#111112] ">
       <NavBar />
       {/* Role based routes */}
-      <WebRoutes />
+      <SharedRoutes />
       <StudentRoutes />
       <Footer />
     </main>

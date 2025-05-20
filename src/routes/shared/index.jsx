@@ -1,22 +1,22 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "../../pages/web/home";
+import Home from "../../pages/shared/home";
 // auth Pages
-import AdminLogin from "../../pages/web/auth/admin/login.jsx";
-import AdminRegister from "../../pages/web/auth/admin/register.jsx";
-import StudentLogin from "../../pages/web/auth/student/login.jsx";
-import StudentRegister from "../../pages/web/auth/student/register.jsx";
-import ForgotPassword from "../../pages/web/auth/student/forgot-password.jsx";
-import ReachSiwan from "../../pages/web/common/reach-siwan.jsx";
+import AdminLogin from "../../pages/shared/auth/admin/login.jsx";
+import AdminRegister from "../../pages/shared/auth/admin/register.jsx";
+import StudentLogin from "../../pages/shared/auth/student/login.jsx";
+import StudentRegister from "../../pages/shared/auth/student/register.jsx";
+import ForgotPassword from "../../pages/shared/auth/student/forgot-password.jsx";
+import ReachSiwan from "../../pages/shared/common/reach-siwan.jsx";
 // fallback routes
-import ComingSoon from "../../pages/web/ComingSoon.jsx";
+import ComingSoon from "../../pages/shared/ComingSoon.jsx";
 // Public Routes
-import ContactUs from "../../pages/web/contact-us/index.jsx";
-import Programs from "../../pages/web/programs-page/index.jsx";
-import CampusPlacements2025 from "../../pages/web/campus-placement/2025/campus-placement-2025.jsx";
-import Projects from "../../pages/web/projects";
-import CourseHighlights from "../../pages/web/academics/course-highlights/index.jsx";
-import ProjectDetailsPage from "../../pages/web/projects/project-details-page.jsx";
-import AboutUs from "../../pages/web/about-us/index.jsx";
+import ContactUs from "../../pages/shared/contact-us/index.jsx";
+import Programs from "../../pages/shared/programs-page/index.jsx";
+import CampusPlacements2025 from "../../pages/shared/campus-placement/2025/campus-placement-2025.jsx";
+import Projects from "../../pages/shared/projects";
+import CourseHighlights from "../../pages/shared/academics/course-highlights/index.jsx";
+import ProjectDetailsPage from "../../pages/shared/projects/project-details-page.jsx";
+import AboutUs from "../../pages/shared/about-us/index.jsx";
 
 
 const AppRoutes = () => {

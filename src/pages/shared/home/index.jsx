@@ -4,10 +4,10 @@ import {  ArrowRightCircle,} from "lucide-react";
 import { Accordion, AccordionItem } from "@heroui/accordion";
 import { useState, useEffect , useContext } from "react";
 import { NavLink } from "react-router-dom";
-import TPOStory from "../../../features/web/section/TPOStory"
-import SelectedStudentSlider from "../../../features/web/section/SelectedStudentSlider";
-import PastRecruiters from "../../../features/web/section/PastRecruiters";
-import Testimonials from "../../../features/web/section/Testimonials";
+import TPOStory from "../../../features/shared/section/TPOStory"
+import SelectedStudentSlider from "../../../features/shared/section/SelectedStudentSlider";
+import PastRecruiters from "../../../features/shared/section/PastRecruiters";
+import Testimonials from "../../../features/shared/section/Testimonials";
 import SimpleSlider from "../../../components/ui/SimpleSlider";
 import GooglesheetContext from "../../../hooks/contexts/google-sheets/GooglesheetContext";
 import NewsNoticeProvider from "../../../hooks/contexts/google-sheets/news-notice-provider";
