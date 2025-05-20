@@ -1,0 +1,4 @@
+
+The 'assets' folder is used to store static resources such as images, icons, fonts, and static data files (e.g., JSON, markdown, or text files) that are required by the application.
+These files are not processed by the build tools and are served as-is to the client.
+Organizing static resources in the 'assets' folder helps maintain a clean project structure and makes it easier to manage and reference these files throughout the app.
