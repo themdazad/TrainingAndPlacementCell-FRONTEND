@@ -155,7 +155,7 @@ export default function NavBar() {
       </header>
 
       {/* 2nd row */}
-      <header className="mx-auto relative bg-sky-200 dark:bg-gray-800">
+      <header className="mx-auto relative bg-blue-100 dark:bg-gray-800">
         <div className="px-[5%] flex items-center justify-between py-2 relative z-50">
           {/* Hamburger */}
           <button
@@ -236,7 +236,7 @@ export default function NavBar() {
                           {item.name}
                         </NavLink>
                       </li>
-                    ))}                   
+                    ))}
                   </ul>
                 </div>
               )
@@ -307,7 +307,6 @@ export default function NavBar() {
                           </NavLink>
                         </li>
                       ))}
-                      
                     </ul>
                   </div>
                 )
@@ -329,7 +328,6 @@ export default function NavBar() {
               }
               className="flex items-center gap-2 text-gray-800 dark:text-gray-100"
             >
-              <BellDot />
               <Image
                 className="rounded-full border border-gray-300 dark:border-gray-600 w-10 h-10 object-cover"
                 src="https://www.bu.edu/prsocial/files/2019/07/profile-default-photo.jpg"
@@ -343,7 +341,7 @@ export default function NavBar() {
             {/* Logout Button (only when logged in) */}
             {(isLogedIn?.admin || isLogedIn?.student) && (
               <Button
-                onClick={handleLogout}
+                onPress={handleLogout}
                 className="px-3 py-1.5 rounded-xl bg-red-500 hover:bg-red-600 text-white text-sm font-medium transition"
               >
                 Logout

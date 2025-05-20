@@ -1,31 +1,31 @@
 import { Image } from "@heroui/react";
 import Slider from "react-slick";
 
-function SimpleSlider() {
- 
-  
+
+
+function SimpleSlider({slider_data}) {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 1000,
+    speed: 500,
     autoplay: true,
     autoplaySpeed: 5000,
   };
   return (
     <div className="slider-container w-full h-full overflow-hidden">
-      <Slider className="w-full h-full" {...settings}>
-        <Image
-          src="/images/Solar_Enterpreneurship_Training.webp"
-          className=" aspect-video object-cover"
-        />
-        <Image
-          src="/images/republic-day-2.webp"
-          className=" aspect-video object-cover"
-        />
-        <Image
-          src="/images/republic-day.webp"
-          className=" aspect-video object-cover"
-        />
+      <Slider className="w-full  h-full aspect-[4/3]" {...settings}>
+        {slider_data.map((data, index) => {
+          return (
+            <Image
+              key={index}
+              src={data}
+              alt="Slider Image"
+              className="w-full h-full rounded-none object-cover"
+              width={""}
+              height={""}
+            />
+          );
+        })}
       </Slider>
     </div>
   );

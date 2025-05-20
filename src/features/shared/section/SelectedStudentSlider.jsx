@@ -159,9 +159,9 @@ function AvatarCarousel({
       className="relative h-full w-full gap-2"
       style={{
         WebkitMaskImage:
-          "linear-gradient(to right, transparent, black 20%, black 80%, transparent)",
+          "linear-gradient(to right, transparent, black 30%, black 80%, transparent)",
         maskImage:
-          "linear-gradient(to right, transparent, black 20%, black 80%, transparent)",
+          "linear-gradient(to right, transparent, black 30%, black 80%, transparent)",
         minHeight: `${avatarSize + 60}px`,
         maxWidth: `${(avatarSize + avatarSpacing) * 10}px`,
       }}
@@ -174,10 +174,12 @@ function AvatarCarousel({
 
         return (
           <div className=" group" key={index}>
-            <img 
+            <img
               src={avatar.image}
               alt={`Avatar ${index}`}
-              className={`absolute border-2 border-white dark:border-gray-800 aspect-square m-0 rounded-full object-cover transition-all duration-1000`}
+              className={`${
+                isActive ? "" : 'saturate-0'
+              }  absolute  border-2 border-white dark:border-gray-800 aspect-square m-0 rounded-full object-cover transition-all duration-1000`}
               style={{
                 width: avatarSize,
                 top: "50%",
@@ -186,7 +188,7 @@ function AvatarCarousel({
                   1 - Math.abs(placement) * 0.1
                 })`,
                 zIndex: isActive ? 1 : 0,
-                opacity: shouldHide ? 0 : isActive ? 1 : 0.6,
+                opacity: shouldHide ? 0 : isActive ? 1 : 0.3,
                 transformOrigin: "top left",
               }}
             />
@@ -196,8 +198,7 @@ function AvatarCarousel({
               target="_blank"
               rel="noopener noreferrer"
               className={`absolute bg-white dark:bg-gray-800 dark:text-gray-100 hover:shadow-md dark:hover:shadow-lg rounded-3xl px-6 py-1 m-0 text-center transition-all duration-1000`}
-              style=
-              {{
+              style={{
                 bottom: "-5%",
                 left: `calc(50% + ${left}px)`,
                 transform: `translate(-50%, -50%) scale(${
@@ -207,7 +208,8 @@ function AvatarCarousel({
                 opacity: shouldHide ? 0 : isActive ? 1 : 0,
                 transformOrigin: "top left",
               }}
-              ><h2 className="text-[12px] font-bold">{avatar.details.name}</h2>
+            >
+              <h2 className="text-[12px] font-bold">{avatar.details.name}</h2>
               <p className="text-[12px]">{avatar.details.rollNumber}</p>
             </a>
           </div>

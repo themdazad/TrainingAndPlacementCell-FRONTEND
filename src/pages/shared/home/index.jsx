@@ -4,19 +4,19 @@ import {  ArrowRightCircle,} from "lucide-react";
 import { Accordion, AccordionItem } from "@heroui/accordion";
 import { useState, useEffect , useContext } from "react";
 import { NavLink } from "react-router-dom";
-import TPOStory from "../../../features/shared/section/TPOStory"
 import SelectedStudentSlider from "../../../features/shared/section/SelectedStudentSlider";
 import PastRecruiters from "../../../features/shared/section/PastRecruiters";
 import Testimonials from "../../../features/shared/section/Testimonials";
 import SimpleSlider from "../../../components/ui/SimpleSlider";
 import GooglesheetContext from "../../../hooks/contexts/google-sheets/GooglesheetContext";
 import NewsNoticeProvider from "../../../hooks/contexts/google-sheets/news-notice-provider";
-
+// data
+import SliderData from "../../../assets/data/SliderData.js";
 export default function Home() {
   return (
     <main className="overflow-hidden max-w-[1980px] m-auto min-h-screen bg-white dark:bg-gray-900">
       {/* Hero section  */}
-      <section className="px-[5%] md:px-[10%] sm:py-16">
+      <section className="px-[5%] sm:py-16">
         <div className="grid items-center py-12 grid-cols-1 gap-12 lg:grid-cols-2">
           <div>
             <h1 className="mt-2 text-4xl font-extrabold text-gray-900 dark:text-white lg:mt-8 sm:text-6xl xl:text-8xl">
@@ -34,7 +34,7 @@ export default function Home() {
             <a
               href="/files/GEC_Siwan_Official_Resume_Format.docx"
               title="Resume Template"
-              className="inline-flex items-center px-6 py-4 mt-8 font-semibold text-white transition-all duration-200 bg-blue-600 rounded-full lg:mt-16 hover:bg-blue-500 focus:bg-blue-500 dark:bg-blue-500 dark:hover:bg-blue-400"
+              className="inline-flex items-center px-6 py-4 mt-8 font-semibold text-white transition-all duration-200 bg-blue-600 rounded-3xl lg:mt-16 hover:bg-blue-500 focus:bg-blue-500 dark:bg-blue-500 dark:hover:bg-blue-400"
               role="button"
             >
               Resume Template
@@ -63,11 +63,12 @@ export default function Home() {
           </div>
 
           <div className="max-md:hidden">
-            <Image
+          <SimpleSlider slider_data={SliderData} />
+            {/* <Image
               className="w-full"
               src="/images/heroThumbnails/heroThumbnail07052025.svg"
               alt="tpo siwan hero image"
-            />
+            /> */}
           </div>
         </div>
       </section>
@@ -81,10 +82,6 @@ export default function Home() {
 
       <section className="py-6 m-auto">
         <SelectedStudentSlider />
-      </section>
-
-      <section className="py-6 m-auto">
-        <TPOStory />
       </section>
 
       <section className="py-6 m-auto">
@@ -230,10 +227,35 @@ function NewsNoticeArea() {
   }, [programData]);
   return (
     <div className="news-notice-container max-w-[1920px] m-auto px-[5%] grid grid-cols-1 lg:grid-cols-2 gap-12 ">
-      {/* Images carousel  */}
-      <SimpleSlider />
-      <div className="news-notice-area border-t-4 border-y-blue-500 rounded-xl p-3 md:p-6 ">
-        <h2 className="news-notice-heading text-lg text-blue-500 sm:text-xl md:text-2xl mt-2 flex max-md:justify-center gap-x-4 items-center font-bold">
+     <div>
+             <p className="text-sm tracking-widest text-bold uppercase text-gray-500 dark:text-gray-400 mb-2">
+               About Us
+             </p>
+             <h2 className="text-2xl md:text-3xl font-extrabold text-gray-800 dark:text-white">
+               Training & Placement Cell at Government Engineering College, Siwan
+             </h2>
+             <p className="my-4 text-justify text-gray-600 dark:text-gray-300 leading-relaxed">
+               The Training and Placement Cell at Government Engineering College,
+               Siwan, is dedicated to preparing students for successful careers in
+               industry and academia. Under the esteemed leadership of our Principal,{" "}
+               <strong>Dr. Suryakant Singh</strong>, and the guidance of our Training
+               & Placement Officer, <strong>Mr. Navdeep Pandey</strong>, the cell
+               actively fosters industry interaction, soft skills training,
+               internship programs, and placement support. Our mission is to bridge
+               the academic–industry gap and provide students with ample
+               opportunities to realize their professional goals.
+             </p>
+     
+             {/* Read More link */}
+             <NavLink to="/contact-us">
+               <span className="text-blue-600 hover:text-blue-500 font-medium text-sm inline-flex items-center">
+                 know more
+                 <ArrowRightCircle className="w-4 h-4 ml-1" />
+               </span>
+             </NavLink>
+      </div>
+      <div className="news-notice-area max-md:border-t-4 lg:border-l-4 border-blue-600 p-3 ">
+        <h2 className="news-notice-heading text-lg text-blue-600 sm:text-xl md:text-2xl flex max-md:justify-center gap-x-4 items-center font-bold">
           Announcements
         </h2>
 

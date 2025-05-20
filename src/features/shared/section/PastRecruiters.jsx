@@ -119,7 +119,7 @@ const PastRecruiters2 = () => {
 };
 const PastRecruiters = () => {
   return (
-    <div className="mx-auto w-full flex justify-center px-4 py-[100px]">
+    <div className="mx-auto w-full flex justify-center px-4">
       <div className="flex flex-col items-center justify-center gap-6 px-4 md:px-8">
         {/* title */}
         <div className="py-[24px] text-2xl md:text-[32px] font-extrabold">

@@ -1,9 +1,8 @@
 
-import {} from "lucide-react";
-
 const CourseHighlights = () => {
   return (
     <section className="max-w-[1980px] px-[5%] mx-auto text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-900">
+      
       {/* Header */}
       <div className="header flex flex-col  justify-center py-12">
         <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase">
