@@ -1,7 +1,7 @@
 const SliderData = [
-  "/images/heroThumbnails/heroThumbnail07052025.svg",
-    "/images/Solar_Enterpreneurship_Training.webp",
-    "/images/republic-day-2.webp",
+  "/images/heroThumbnails/hero_1.svg",
+  "/images/heroThumbnails/hero_2.svg",
+  "/images/heroThumbnails/hero_3.svg",    
   ];
 
 export default SliderData;
