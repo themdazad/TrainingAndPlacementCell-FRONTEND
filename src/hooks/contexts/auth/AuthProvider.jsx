@@ -7,6 +7,7 @@ const AuthProvider = ({ children }) => {
     admin: false,
     student: false,
   });
+  const [Loading, setLoading] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
  useEffect(() => {
