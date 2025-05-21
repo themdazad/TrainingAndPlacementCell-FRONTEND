@@ -1,5 +1,5 @@
-
 import GECSIWAN_LOGO from "../../../../assets/images/logos/gecsiwan-logo.png";
+import GECSIWAN_LOGO_LIGHT from "../../../../assets/images/logos/gecsiwan-logo-light.png";
 import { Image } from "@heroui/react";
 import { Button, Card, CardBody, Input, Link } from "@heroui/react";
 import { useState } from "react";
@@ -60,13 +60,20 @@ const StudentLogin = () => {
   };
 
   return (
-    <main className="min-h-screen grid grid-cols-1 md:grid-cols-2 ">
+    <main className="min-h-max grid grid-cols-1 md:grid-cols-2 ">
       {/* Left Section */}
-      <div className="hidden md:flex flex-col justify-center items-center bg-sky-100">
+      <div className="py-[180px] hidden md:flex flex-col justify-center items-center bg-sky-100 dark:bg-gray-900">
         <Image
           src={GECSIWAN_LOGO}
+          alt="GEC Siwan Logo "
+          className="my-6 dark:hidden"
+          height={240}
+          width={240}
+        />
+        <Image
+          src={GECSIWAN_LOGO_LIGHT}
           alt="GEC Siwan Logo"
-          className="my-6"
+          className="my-6 hidden dark:block"
           height={240}
           width={240}
         />
@@ -79,9 +86,11 @@ const StudentLogin = () => {
           Login using your institute registration number.
         </p>
       </div>
+
+      {/* Right Section: Form */}
       <div className="flex items-center justify-center">
-        <ToastContainer />
-        <Card className="border-t-4 border-y-blue-500 w-full max-w-md p-3 m-[5%] shadow-lg rounded-2xl">
+        
+        <Card className="border-t-4 border-y-blue-500 w-full max-w-md p-3 m-[5%] shadow-md rounded-3xl">
           <CardBody>
             <h2 className="text-2xl font-bold text-center mb-6">
               Student Login
