@@ -1,5 +1,5 @@
 import { CarFront, TrainFront, PlaneTakeoff } from "lucide-react";
-
+import TPCellMembers from "./sections/TPCellMembers.jsx";
 
 const transportModes = [
   {
@@ -19,9 +19,9 @@ const transportModes = [
     mode: "By Train",
     icon: <TrainFront />,
     description:
-      "Siwan Junction (SV) is the nearest railway station, located approximately 5 km from the college. It is a major station with connections to cities like Delhi, Kolkata, Patna, and Varanasi.",
+      "Siwan Junction (SV) is the nearest railway station, located approximately 3 km from the college. It is a major station with connections to cities like Delhi, Kolkata, Patna, and Varanasi.",
     cities: [
-      { name: "Patna", travelTime: "4 hrs" },
+      { name: "Patna", travelTime: "3 hrs" },
       { name: "Varanasi", travelTime: "5 hrs" },
       { name: "Delhi", travelTime: "12 hrs" },
     ],
@@ -50,7 +50,7 @@ const transportModes = [
 export default function AboutUs() {
   return (
     <main className="about-us max-w-[1980px] m-auto dark:bg-gray-900">
-      <div className="header  px-[5%] border-b-3 border-b-blue-600 flex flex-col  justify-center py-12">
+      <div className="header px-[5%] flex flex-col justify-center py-12">
         <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold">
           About Us
         </h1>
@@ -59,13 +59,9 @@ export default function AboutUs() {
           College, Siwan
         </p>
       </div>
-      <section className="m-auto px-[5%] grid grid-cols-1 gap-12">
+      <section className="m-auto px-[5%] grid grid-cols-1 gap-6">
         {/* google-map */}
         <div className="google-map-container w-full h-[600px] space-y-3">
-          <h1 className="text-xl sm:text-2xl lg:text-3xl font-extrabold mt-3">
-            Locate us
-          </h1>
-
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3579.123061521421!2d84.32628237583968!3d26.225190677063694!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3992ff716c7b37ad%3A0x5737371d64c4aed1!2sGovernment%20Engineering%20College%2C%20Siwan!5e0!3m2!1sen!2sin!4v1747835854317!5m2!1sen!2sin&maptype=satellite"
             width=""
@@ -109,6 +105,9 @@ export default function AboutUs() {
           ))}
         </div>
       </section>
+        
+      <TPCellMembers/>
+
     </main>
   );
 }

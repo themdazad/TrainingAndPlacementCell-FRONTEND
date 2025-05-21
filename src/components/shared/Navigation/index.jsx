@@ -218,7 +218,7 @@ export default function NavBar() {
                   onMouseEnter={() => setIsDropdownOpen({ [link.name]: true })}
                   onMouseLeave={() => setIsDropdownOpen({ [link.name]: false })}
                 >
-                  <span className="flex items-end cursor-pointer transition-all duration-300 hover:text-opacity-80 dark:hover:text-opacity-80">
+                  <span className="flex items-center cursor-pointer transition-all duration-300 hover:text-opacity-80 dark:hover:text-opacity-80">
                     {link.name}
                     <ChevronDown className="rotate-0 group-hover:rotate-180 transition-rotate duration-300" />
                   </span>
