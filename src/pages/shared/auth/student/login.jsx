@@ -1,3 +1,6 @@
+
+import GECSIWAN_LOGO from "../../../../assets/images/logos/gecsiwan-logo.png";
+import { Image } from "@heroui/react";
 import { Button, Card, CardBody, Input, Link } from "@heroui/react";
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -30,13 +33,12 @@ const StudentLogin = () => {
         `${import.meta.env.VITE_API_BASE_URL}/auth/student/login`,
         { regNo, password },
         {
-          withCredentials: true
+          withCredentials: true,
         }
       );
 
       // Handle successful login
       if (res.status === 200) {
-
         // Token automatically save in Cookies by backend
         toast.success("Logged in successfully");
         setIsLogedIn({ admin: false, student: true }); // Update context state
@@ -58,60 +60,82 @@ const StudentLogin = () => {
   };
 
   return (
-    <div className="flex items-center justify-center">
-      <ToastContainer />
-      <Card className="border-t-4 border-y-blue-500 w-full max-w-md p-3 m-[5%] shadow-lg rounded-2xl">
-        <CardBody>
-          <h2 className="text-2xl font-bold text-center mb-6">Student Login</h2>
-          <div>
-            <form
-              className="space-y-4"
-              onSubmit={(e) => {
-                e.preventDefault();
-                handleLogin();
-              }}
-            >
-              <Input
-                type="text"
-                label="Registration No"
-                placeholder="Enter your registration number"
-                value={regNo}
-                onChange={(e) => setRegNo(e.target.value)}
-                className="w-full"
-              />
-              <Input
-                type="password"
-                label="Password"
-                placeholder="Enter your password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-full"
-              />
-              <Button
-                type="submit"
-                color="primary"
-                className="w-full mt-4"
-                isLoading={loading}
-              >
-                Login
-              </Button>
-            </form>
+    <main className="min-h-screen grid grid-cols-1 md:grid-cols-2 ">
+      {/* Left Section */}
+      <div className="hidden md:flex flex-col justify-center items-center bg-sky-100">
+        <Image
+          src={GECSIWAN_LOGO}
+          alt="GEC Siwan Logo"
+          className="my-6"
+          height={240}
+          width={240}
+        />
+        <div className="text-sm font-semibold mb-4">
+          Training and Placement Cell
+        </div>
 
-            <div className="text-center mt-4">
-              <Link href="/auth/student/forgot-password" color="primary">
-                Forgot Password?
-              </Link>
+        <p className="text-sm font-semibold">Instructions</p>
+        <p className="text-sm text-center">
+          Login using your institute registration number.
+        </p>
+      </div>
+      <div className="flex items-center justify-center">
+        <ToastContainer />
+        <Card className="border-t-4 border-y-blue-500 w-full max-w-md p-3 m-[5%] shadow-lg rounded-2xl">
+          <CardBody>
+            <h2 className="text-2xl font-bold text-center mb-6">
+              Student Login
+            </h2>
+            <div>
+              <form
+                className="space-y-4"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  handleLogin();
+                }}
+              >
+                <Input
+                  type="text"
+                  label="Registration No"
+                  placeholder="Enter your registration number"
+                  value={regNo}
+                  onChange={(e) => setRegNo(e.target.value)}
+                  className="w-full"
+                />
+                <Input
+                  type="password"
+                  label="Password"
+                  placeholder="Enter your password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="w-full"
+                />
+                <Button
+                  type="submit"
+                  color="primary"
+                  className="w-full mt-4"
+                  isLoading={loading}
+                >
+                  Login
+                </Button>
+              </form>
+
+              <div className="text-center mt-4">
+                <Link href="/auth/student/forgot-password" color="primary">
+                  Forgot Password?
+                </Link>
+              </div>
+              <div className="text-center mt-2">
+                <span className="text-gray-600">Not registered?</span>{" "}
+                <NavLink to="/auth/student/register" className="text-primary">
+                  Sign Up
+                </NavLink>
+              </div>
             </div>
-            <div className="text-center mt-2">
-              <span className="text-gray-600">Not registered?</span>{" "}
-              <NavLink to="/auth/student/register" className="text-primary">
-                Sign Up
-              </NavLink>
-            </div>
-          </div>
-        </CardBody>
-      </Card>
-    </div>
+          </CardBody>
+        </Card>
+      </div>
+    </main>
   );
 };
 

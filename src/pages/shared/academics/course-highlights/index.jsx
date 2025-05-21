@@ -17,25 +17,25 @@ const CourseHighlights = () => {
       </div>
 
       {/* available branch */}
-      <div className="mt-4 border-t-3 border-t-sky-500 rounded-xl flex flex-col py-6 gap-4">
-        <h2 className="text-lg sm:text-xl lg:text-2xl font-bold">
+      <div className="mt-4 border-t-3 border-t-blue-500 flex flex-col py-6 gap-4">
+        <h2 className="text-lg sm:text-lg lg:text-2xl font-bold">
           Available Branches
         </h2>
         <ul className="list-inside grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          <li className="bg-sky-500/10 p-4 rounded-xl">
+          <li className="bg-blue-500/10 p-4 rounded-3xl">
             Electrical Engineering
           </li>
-          <li className="bg-sky-500/10 p-4 rounded-xl">
+          <li className="bg-blue-500/10 p-4 rounded-3xl">
             Mechanical Engineering
           </li>
-          <li className="bg-sky-500/10 p-4 rounded-xl">Civil Engineering</li>
-          <li className="bg-sky-500/10 p-4 rounded-xl">
+          <li className="bg-blue-500/10 p-4 rounded-3xl">Civil Engineering</li>
+          <li className="bg-blue-500/10 p-4 rounded-3xl">
             Computer Science and Engineering
           </li>
-          <li className="bg-sky-500/10 p-4 rounded-xl">
+          <li className="bg-blue-500/10 p-4 rounded-3xl">
             Computer Science and Engineering (IoT)
           </li>
-          <li className="bg-sky-500/10 p-4 rounded-xl">
+          <li className="bg-blue-500/10 p-4 rounded-3xl">
             Electronics Engineering (VLSI)
           </li>
         </ul>
