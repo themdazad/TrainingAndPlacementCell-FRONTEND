@@ -1,4 +1,4 @@
-import ProfileCard from "../../../../components/ui/ProfileCard";
+import { Linkedin } from "lucide-react";
 
 const profiles = [
   {
@@ -13,7 +13,7 @@ const profiles = [
   },
   {
     title: "Asst. T&P Officer",
-    image: "https://placehold.co/128x128?text=JD", // Optional second profile
+    image: "https://placehold.co/128x128?text=SK", // Optional second profile
     name: "Prof. Sweta Kumari",
     designation: "Asst. Professor, Electrical Engineering",
     mobile: "+91 9905618148",
@@ -22,7 +22,7 @@ const profiles = [
   },
   {
     title: "Asst. T&P Officer",
-    image: "https://placehold.co/128x128?text=JD", // Optional second profile
+    image: "https://placehold.co/128x128?text=YP", // Optional second profile
     name: "Dr. Yamika Palel",
     designation: "Asst. Professor, Mechanical Engineering",
     mobile: "+91 ",
@@ -31,7 +31,7 @@ const profiles = [
   },
   {
     title: "Asst. T&P Officer",
-    image: "https://placehold.co/128x128?text=JD", // Optional second profile
+    image: "https://placehold.co/128x128?text=SM", // Optional second profile
     name: "Prof. Sundram Mishra",
     designation: "Asst. Professor, Electrical Engineering",
     mobile: "+91 9354701980",
@@ -40,7 +40,7 @@ const profiles = [
   },
   {
     title: "Asst. T&P Officer",
-    image: "https://placehold.co/128x128?text=JD", // Optional second profile
+    image: "https://placehold.co/128x128?text=SP", // Optional second profile
     name: "Prof. Shikha Pal",
     designation: "Asst. Professor, Civil Engineering",
     mobile: "+91 6394212913",
@@ -49,7 +49,7 @@ const profiles = [
   },
   {
     title: "Asst. T&P Officer",
-    image: "https://placehold.co/128x128?text=JD", // Optional second profile
+    image: "https://placehold.co/128x128?text=TK", // Optional second profile
     name: "Prof. Tufail Khan",
     designation: "Asst. Professor, Civil Engineering",
     mobile: "+91 9716030691",
@@ -69,7 +69,7 @@ export default function TPCellMembers() {
 
         {/* Members Details */}
         <div className="members-list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4 mt-4">
-          <ProfileList profiles = {profiles} />
+          <ProfileList profiles={profiles} />
         </div>
       </div>
     </section>
@@ -95,3 +95,56 @@ function ProfileList({ profiles }) {
   );
 }
 
+function ProfileCard({
+  title,
+  image,
+  name,
+  designation,
+  mobile,
+  email,
+  linkedin,
+}) {
+  return (
+    <div className="max-w-sm bg-white dark:bg-gray-800 rounded-3xl shadow-md p-6 text-center space-y-4">
+      <h2 className="text-lg font-bold text-blue-600 dark:text-blue-500 py-2">
+        {title}
+      </h2>
+      <img
+        src={image}
+        alt={name}
+        className="w-32 h-32 mx-auto rounded-full border-2 border-blue-500 object-cover"
+      />
+      <div>
+        <p className="font-bold">{name}</p>
+        <p className="text-sm text-blue-700 dark:text-blue-300">
+          {designation}
+        </p>
+
+        <p className="text-sm text-blue-700 dark:text-blue-300">
+          Email:{" "}
+          <a
+            href={`mailto:${email}`}
+            className="text-blue-600 dark:text-blue-400 underline"
+          >
+            {email}
+          </a>
+        </p>
+
+        {/* LinkedIn Icon */}
+        {linkedin && (
+          <div className="mt-4 flex justify-center">
+            <a
+              href={linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300"
+              aria-label="LinkedIn"
+            >
+              <Linkedin className="w-6 h-6" />
+            </a>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}

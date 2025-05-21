@@ -1,5 +1,6 @@
 import { CarFront, TrainFront, PlaneTakeoff } from "lucide-react";
 import TPCellMembers from "./sections/TPCellMembers.jsx";
+import TPCellCoordinators from "./sections/TPCellCoordinators.jsx";
 
 const transportModes = [
   {
@@ -61,7 +62,7 @@ export default function AboutUs() {
       </div>
       <section className="m-auto px-[5%] grid grid-cols-1 gap-6">
         {/* google-map */}
-        <div className="google-map-container w-full h-[600px] space-y-3">
+        <div className="google-map-container w-full h-[300px] md:h-[500px] space-y-3">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3579.123061521421!2d84.32628237583968!3d26.225190677063694!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3992ff716c7b37ad%3A0x5737371d64c4aed1!2sGovernment%20Engineering%20College%2C%20Siwan!5e0!3m2!1sen!2sin!4v1747835854317!5m2!1sen!2sin&maptype=satellite"
             width=""
@@ -107,6 +108,7 @@ export default function AboutUs() {
       </section>
         
       <TPCellMembers/>
+      <TPCellCoordinators/>
 
     </main>
   );
