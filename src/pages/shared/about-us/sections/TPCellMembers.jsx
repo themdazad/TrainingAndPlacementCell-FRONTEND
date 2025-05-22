@@ -1,4 +1,5 @@
 import { Linkedin } from "lucide-react";
+import YamikaPatelImage from "../../../../assets/images/tpo_members/yamika_patel.jpg";
 
 const profiles = [
   {
@@ -13,34 +14,34 @@ const profiles = [
   },
   {
     title: "Asst. T&P Officer",
-    image: "https://placehold.co/128x128?text=SK", // Optional second profile
+    image: "https://placehold.co/128x128?text=SK", 
     name: "Prof. Sweta Kumari",
     designation: "Asst. Professor, Electrical Engineering",
     mobile: "+91 9905618148",
-    email: "",
+    email: "swetagecsiwanee@gmail.com",
     linkedin: "",
   },
   {
     title: "Asst. T&P Officer",
-    image: "https://placehold.co/128x128?text=YP", // Optional second profile
-    name: "Dr. Yamika Palel",
+    image: YamikaPatelImage, 
+    name: "Dr. Yamika Patel",
     designation: "Asst. Professor, Mechanical Engineering",
-    mobile: "+91 ",
-    email: "",
+    mobile: "+91 9717463922",
+    email: "yamika.patel013@gmail.com",
     linkedin: "",
   },
   {
     title: "Asst. T&P Officer",
-    image: "https://placehold.co/128x128?text=SM", // Optional second profile
+    image: " ", 
     name: "Prof. Sundram Mishra",
     designation: "Asst. Professor, Electrical Engineering",
     mobile: "+91 9354701980",
-    email: "",
-    linkedin: "",
+    email: " ",
+    linkedin: " ",
   },
   {
     title: "Asst. T&P Officer",
-    image: "https://placehold.co/128x128?text=SP", // Optional second profile
+    image: "https://placehold.co/128x128?text=SP", 
     name: "Prof. Shikha Pal",
     designation: "Asst. Professor, Civil Engineering",
     mobile: "+91 6394212913",
@@ -49,7 +50,7 @@ const profiles = [
   },
   {
     title: "Asst. T&P Officer",
-    image: "https://placehold.co/128x128?text=TK", // Optional second profile
+    image: "https://placehold.co/128x128?text=TK", 
     name: "Prof. Tufail Khan",
     designation: "Asst. Professor, Civil Engineering",
     mobile: "+91 9716030691",

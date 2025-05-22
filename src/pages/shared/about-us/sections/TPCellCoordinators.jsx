@@ -14,7 +14,7 @@ const coordinators = [
     name: "Abhishek Kumar Singh",
     designation: "Mechanical Engineering, 22102151907",
     mobile: "+91 8804080749",
-    email: "cabhishek.gecs@gmail.com",
+    email: "abhishek.gecs@gmail.com",
     linkedin: "https://www.linkedin.com/in/abhishek-kumar-singh-8312a931b",
     github: "",
   },
