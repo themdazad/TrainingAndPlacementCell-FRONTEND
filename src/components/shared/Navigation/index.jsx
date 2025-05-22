@@ -12,7 +12,9 @@ const navLinks = [
   {
     name: "Academics",
     dropdown: true,
-    items: [{ name: "Course Highlights", path: "/academics/course-highlights" }],
+    items: [
+      { name: "Course Highlights", path: "/academics/course-highlights" },
+    ],
   },
   { name: "Programs", path: "/programs" },
   { name: "Projects", path: "/projects" },
@@ -22,7 +24,6 @@ const navLinks = [
     items: [{ name: "Programs", path: "/programs" }],
   },
   { name: "About Us", path: "/about-us" },
-  
 ];
 
 export default function NavBar() {
@@ -223,7 +224,7 @@ export default function NavBar() {
                     <ChevronDown className="rotate-0 group-hover:rotate-180 transition-rotate duration-300" />
                   </span>
                   <ul
-                    className={`absolute left-[-50%] min-w-max text-small rounded-md border-t-4 border-t-blue-600 bg-white dark:bg-gray-800 py-2 px-6 space-y-4 transition-all duration-200 ${
+                    className={`absolute left-1/2 transform -translate-x-1/2 min-w-max text-small rounded-md border-t-4 border-t-blue-600 bg-white dark:bg-gray-800 py-2 px-6 space-y-4 transition-all duration-200 ${
                       isDropdownOpen[link.name] ? "flex flex-col" : "hidden"
                     }`}
                   >

@@ -60,15 +60,15 @@ const profiles = [
 
 export default function TPCellMembers() {
   return (
-    <section className="m-auto px-[5%] grid grid-cols-1 gap-12">
-      <div className="members dark:bg-gray-900 p-4 my-12 rounded-3xl">
+    <section className="m-auto px-[5%] grid grid-cols-1 gap-6">
+      <div className="members dark:bg-gray-900 p-4 rounded-3xl">
         {/* Section Title */}
         <div className="title text-xl md:text-3xl font-extrabold text-center py-12">
           Training & Placement Members
         </div>
 
         {/* Members Details */}
-        <div className="members-list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4 mt-4">
+        <div className="members-list grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mt-4">
           <ProfileList profiles={profiles} />
         </div>
       </div>

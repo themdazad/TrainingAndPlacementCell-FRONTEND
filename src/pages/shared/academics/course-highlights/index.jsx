@@ -2,17 +2,15 @@
 const CourseHighlights = () => {
   return (
     <section className="max-w-[1980px] px-[5%] mx-auto text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-900">
-      
       {/* Header */}
-      <div className="header flex flex-col  justify-center py-12">
-        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase">
+      <div className="header flex flex-col justify-center py-12">
+        <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold">
           Bachelor of Technology
         </h1>
         <p className="mt-3 max-w-2xl text-gray-600 dark:text-gray-400">
-          Our institute's B.Tech curriculum is intended to generate engineers
-          who are prepared for the workforce by providing them with solid
-          fundamental knowledge and real-world expertise in their chosen
-          subject.
+          Our B.Tech curriculum is designed to give students a strong foundation
+          in engineering along with the practical skills they need to succeed in
+          their chosen field.
         </p>
       </div>
 
@@ -40,7 +38,6 @@ const CourseHighlights = () => {
           </li>
         </ul>
       </div>
-     
     </section>
   );
 };

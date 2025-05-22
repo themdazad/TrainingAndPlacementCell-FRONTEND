@@ -23,7 +23,23 @@ const coordinators = [
     designation: "Electrical Engineering, 23103151945",
     mobile: "",
     email: "",
-    linkedin: "",
+    linkedin: "#",
+    github: "",
+  },
+  {
+    name: "Anupam Kumar",
+    designation: "Electrical Engineering, 23103151945",
+    mobile: "",
+    email: "",
+    linkedin: "#",
+    github: "",
+  },
+  {
+    name: "Shahnoor Ishtiyaque",
+    designation: "CSE (IoT)",
+    mobile: "",
+    email: "",
+    linkedin: "#",
     github: "",
   },
 ];
@@ -31,10 +47,15 @@ const coordinators = [
 export default function TPCellCoordinators() {
   return (
     <section className="m-auto px-[5%] grid grid-cols-1 gap-6">
-      <div className="members dark:bg-gray-900 p-4 my-12 rounded-3xl">
+      <div className="members dark:bg-gray-900 p-4 rounded-3xl">
         {/* Section Title */}
-        <div className="title text-xl md:text-3xl font-extrabold text-center py-12">
-          T&P Student Coordinators
+        <div className="title  text-center py-12">
+          <h1 className="text-xl md:text-3xl font-extrabold">
+            T&P Student Coordinators
+          </h1>
+          <p>
+            Have questions about placements or internships? We’re here to help!
+          </p>
         </div>
 
         {/* Coordinator Details */}
@@ -65,10 +86,10 @@ function CoordinatorCard({
   github,
 }) {
   return (
-    <div className="w-full max-w-4xl bg-white dark:bg-gray-800 rounded-3xl shadow-md flex flex-col md:flex-row p-6 gap-6 items-start md:items-center justify-between">
+    <div className="w-full max-w-4xl bg-white dark:bg-gray-800 rounded-3xl shadow-md grid grid-cols-2 p-6 gap-3 items-start md:items-center justify-between">
+      <h3 className="col-span-2 text-lg font-bold dark:text-white">{name}</h3>
       {/* Middle Content */}
       <div className="flex-1 text-center md:text-left space-y-2">
-        <h3 className="text-lg font-bold dark:text-white">{name}</h3>
         <p className="text-sm ">
           {designation}
         </p>
