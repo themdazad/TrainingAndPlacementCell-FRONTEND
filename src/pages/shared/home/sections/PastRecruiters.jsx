@@ -62,7 +62,7 @@ const logos = [
 
 const PastRecruiters2 = () => {
   return (
-    <section className="py-12 bg-white dark:bg-gray-900 text-center overflow-hidden">
+    <section className="py-[100px] bg-white dark:bg-gray-900 text-center overflow-hidden">
       <h2 className="text-2xl md:text-3xl font-bold text-gray-800 dark:text-white mb-10">
         Past Recruiters
       </h2>

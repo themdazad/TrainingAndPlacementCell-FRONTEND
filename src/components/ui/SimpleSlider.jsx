@@ -7,12 +7,14 @@ function SimpleSlider({slider_data}) {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 1000,
     autoplay: true,
-    autoplaySpeed: 5000,
+    autoplaySpeed: 3000,
   };
   return (
-    <div className="slider-container w-full h-full overflow-hidden">
+    <div
+      className="slider-container w-full h-full overflow-hidden"
+    >
       <Slider className="w-full  h-full aspect-[4/3]" {...settings}>
         {slider_data.map((data, index) => {
           return (

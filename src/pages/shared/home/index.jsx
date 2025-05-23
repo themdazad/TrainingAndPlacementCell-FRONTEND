@@ -9,6 +9,7 @@ import Testimonials from "./sections/Testimonials";
 import GooglesheetContext from "../../../hooks/contexts/google-sheets/GooglesheetContext";
 import NewsNoticeProvider from "../../../hooks/contexts/google-sheets/news-notice-provider";
 import Hero from "./sections/Hero.jsx"
+import VisionMission from "./sections/VisionMission.jsx";
 export default function Home() {
   return (
     <main className="overflow-hidden max-w-[1980px] m-auto min-h-screen bg-white dark:bg-gray-900">
@@ -19,6 +20,10 @@ export default function Home() {
         <NewsNoticeProvider>
           <NewsNoticeArea />
         </NewsNoticeProvider>
+      </section>
+
+      <section className="py-6 m-auto">
+        <VisionMission />
       </section>
 
       <section className="py-6 m-auto">
