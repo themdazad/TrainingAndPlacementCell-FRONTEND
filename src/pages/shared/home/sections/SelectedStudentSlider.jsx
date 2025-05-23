@@ -156,7 +156,7 @@ function AvatarCarousel({
 
   return (
     <div
-      className="relative h-full w-full gap-2"
+      className="relative h-full w-full gap-2 py-[100px]"
       style={{
         WebkitMaskImage:
           "linear-gradient(to right, transparent, black 30%, black 80%, transparent)",
@@ -178,7 +178,7 @@ function AvatarCarousel({
               src={avatar.image}
               alt={`Avatar ${index}`}
               className={`${
-                isActive ? "" : 'saturate-0'
+                isActive ? "" : "saturate-0"
               }  absolute  border-2 border-white dark:border-gray-800 aspect-square m-0 rounded-full object-cover transition-all duration-1000`}
               style={{
                 width: avatarSize,

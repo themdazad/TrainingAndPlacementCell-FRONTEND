@@ -73,7 +73,7 @@ export default function Announcements() {
 
           {/* Read More link */}
           <NavLink to="/contact-us">
-            <span className="text-blue-600 hover:text-blue-500 font-medium text-sm inline-flex items-center">
+            <span className="text-blue-600 hover:text-blue-500 font-medium inline-flex items-center">
               know more
               <ArrowRightCircle className="w-4 h-4 ml-1" />
             </span>
