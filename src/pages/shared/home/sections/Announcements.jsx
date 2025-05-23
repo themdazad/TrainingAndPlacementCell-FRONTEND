@@ -1,21 +1,52 @@
-
+import axios from "axios";
+import Papa from "papaparse";
 import { NavLink } from "react-router-dom";
 import { ArrowRightCircle } from "lucide-react";
-import { useState, useEffect, useContext } from "react";
-import GooglesheetContext from "../../../../hooks/contexts/google-sheets/GooglesheetContext";
-import NewsNoticeProvider from "../../../../hooks/contexts/google-sheets/news-notice-provider";
+import { useState, useEffect } from "react";
+
+// csv to json converter
+const csvToJson = (csvString) => {
+  const results = Papa.parse(csvString, {
+    header: true, // Converts rows to objects using headers as keys
+    dynamicTyping: true, // Automatically converts numbers and booleans
+    skipEmptyLines: true, // Skips empty lines in the CSV
+  });
+
+  if (results.errors.length > 0) {
+    console.error("Error parsing CSV:", results.errors);
+    return null;
+  }
+
+  return results.data; // Returns an array of JSON objects
+};
 
 export default function Announcements() {
-  const programData = useContext(GooglesheetContext);
-  const [response, setresponse] = useState([]);
-
-  useEffect(() => {
-    if (programData) {
-      setresponse(programData);
-    } else {
-      setresponse([]);
-    }
-  }, [programData]);
+  const [response, setResponse] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+  
+    useEffect(() => {
+    
+      const fetchData = async () => {
+        try {
+          const response = await axios.get(
+            "https://docs.google.com/spreadsheets/d/e/2PACX-1vQl8ryQvd4otEGN24fOy0eWNudgr1zPRJtLC1x5xw0CoIb_6dEBns5hPZzLX9YzAV166dEZz-bMWfGm/pub?gid=1871965751&single=true&output=csv",
+            {
+              withCredentials: false, // 🚫 Disable sending credentials (cookies, etc.)
+            }
+          );
+          setResponse(csvToJson(response.data));
+        } catch (err) {
+          setError(err);
+          console.error("Error fetching data:", err);
+        } finally {
+          setLoading(false);
+        }
+      };
+  
+      console.log(data)
+      fetchData();
+    }, []);
   return (
     <NewsNoticeProvider>
       <section className="news-notice-container max-w-[1920px] m-auto px-[5%] grid grid-cols-1 lg:grid-cols-2 gap-12 ">
