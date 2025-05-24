@@ -32,7 +32,7 @@ const profiles = [
   },
   {
     title: "Asst. T&P Officer",
-    image: " ", 
+    image: "https://placehold.co/128x128?text=SM", 
     name: "Prof. Sundram Mishra",
     designation: "Asst. Professor, Electrical Engineering",
     mobile: "+91 9354701980",
@@ -62,7 +62,7 @@ const profiles = [
 export default function TPCellMembers() {
   return (
     <section className="m-auto px-[5%] grid grid-cols-1 gap-6">
-      <div className="members dark:bg-gray-900 p-4 rounded-3xl">
+      <div className="members  p-4 rounded-3xl">
         {/* Section Title */}
         <div className="title text-xl md:text-3xl font-extrabold text-center py-12">
           Training & Placement Members
@@ -106,7 +106,7 @@ function ProfileCard({
   linkedin,
 }) {
   return (
-    <div className="max-w-sm bg-white dark:bg-gray-800 rounded-3xl shadow-md p-6 text-center space-y-4">
+    <div className="max-w-sm bg-gray-100/50 dark:bg-gray-800 rounded-3xl hover:shadow-md p-6 text-center space-y-4">
       <h2 className="text-lg font-bold text-blue-600 dark:text-blue-500 py-2">
         {title}
       </h2>

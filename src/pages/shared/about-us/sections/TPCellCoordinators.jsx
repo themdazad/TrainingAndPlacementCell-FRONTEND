@@ -47,7 +47,7 @@ const coordinators = [
 export default function TPCellCoordinators() {
   return (
     <section className="m-auto px-[5%] grid grid-cols-1 gap-6">
-      <div className="members dark:bg-gray-900 p-4 rounded-3xl">
+      <div className="members p-4 rounded-3xl">
         {/* Section Title */}
         <div className="title  text-center py-12">
           <h1 className="text-xl md:text-3xl font-extrabold">
@@ -86,16 +86,12 @@ function CoordinatorCard({
   github,
 }) {
   return (
-    <div className="w-full max-w-4xl bg-white dark:bg-gray-800 rounded-3xl shadow-md grid grid-cols-2 p-6 gap-3 items-start md:items-center justify-between">
+    <div className="w-full max-w-4xl bg-gray-100/50 dark:bg-gray-800 rounded-3xl hover:shadow-md grid grid-cols-2 p-6 gap-3 items-start md:items-center justify-between">
       <h3 className="col-span-2 text-lg font-bold dark:text-white">{name}</h3>
       {/* Middle Content */}
       <div className="flex-1 text-center md:text-left space-y-2">
-        <p className="text-sm ">
-          {designation}
-        </p>
-        <p className="text-sm">
-          Mobile: {mobile}
-        </p>
+        <p className="text-sm ">{designation}</p>
+        <p className="text-sm">Mobile: {mobile}</p>
       </div>
 
       {/* Right-Aligned Bottom Section */}
