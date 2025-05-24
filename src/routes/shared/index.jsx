@@ -16,6 +16,7 @@ import CampusPlacements2025 from "../../pages/shared/campus-placement/2025/campu
 import Projects from "../../pages/shared/projects";
 import CourseHighlights from "../../pages/shared/academics/course-highlights/index.jsx";
 import ProjectDetailsPage from "../../pages/shared/projects/project-details-page.jsx";
+import ReachUs from "../../pages/shared/reach-us/index.jsx";
 import AboutUs from "../../pages/shared/about-us/index.jsx";
 
 
@@ -40,6 +41,7 @@ const AppRoutes = () => {
       <Route path="reach-siwan" element={<ReachSiwan />} />
       <Route path="contact-us" element={<ContactUs />} />
       <Route path="programs" element={<Programs />} />
+      <Route path="reach-us" element={<ReachUs />} />
       <Route path="about-us" element={<AboutUs />} />
       <Route path="/academics">
         <Route path="course-highlights" element={<CourseHighlights />} />
