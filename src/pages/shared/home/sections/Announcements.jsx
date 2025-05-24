@@ -49,7 +49,7 @@ export default function Announcements() {
     <section className="news-notice-container max-w-[1920px] m-auto px-[5%] grid grid-cols-1 lg:grid-cols-2 gap-12 ">
       {/* Left Section */}
       <div className="hidden md:block">
-        <p className="text-sm tracking-widest text-bold uppercase text-gray-100/50 dark:text-gray-400 mb-2">
+        <p className="text-sm tracking-widest text-bold uppercase dark:text-gray-400 mb-2">
           About Us
         </p>
         <h2 className="text-2xl md:text-3xl font-extrabold text-gray-800 dark:text-white">
@@ -92,7 +92,7 @@ export default function Announcements() {
                 className="group news-notice-row transition-all duration-300 flex flex-col items-start py-1 "
               >
                 <div className="tags space-x-2 ">
-                  <span className="news-notice-card-tag text-[10px] backdrop-blur-lg bg-gray-100/50 rounded-3xl px-[0.8em] py-[0.5em] ">
+                  <span className="news-notice-card-tag text-[10px] backdrop-blur-lg rounded-3xl px-[0.8em] py-[0.5em] ">
                     Published: {data.date}
                   </span>
                 </div>

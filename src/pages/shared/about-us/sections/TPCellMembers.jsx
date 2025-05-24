@@ -106,7 +106,7 @@ function ProfileCard({
   linkedin,
 }) {
   return (
-    <div className="max-w-sm bg-gray-100/50 dark:bg-gray-800 rounded-3xl hover:shadow-md p-6 text-center space-y-4">
+    <div className="max-w-sm bg-gray-100/50 dark:bg-gray-800 rounded-3xl shadow-md p-6 text-center space-y-4">
       <h2 className="text-lg font-bold text-blue-600 dark:text-blue-500 py-2">
         {title}
       </h2>

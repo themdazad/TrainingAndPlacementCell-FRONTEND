@@ -78,7 +78,7 @@ export default function Faq() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
         viewport={{ once: false, amount: 0.2 }}
-        className="gap-6 bg-gray-100/50 hover:shadow-md dark:bg-gray-800 rounded-3xl p-12 my-12 text-center w-full mx-auto"
+        className="gap-6  hover:shadow-md dark:bg-gray-800 rounded-3xl p-12 my-12 text-center w-full mx-auto"
       >
         {/* Coordinator Images */}
         <div className="flex justify-center -space-x-4 mb-4">

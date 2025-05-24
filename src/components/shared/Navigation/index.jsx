@@ -9,18 +9,19 @@ import axios from "axios";
 
 const navLinks = [
   { name: "Home", path: "/" },
-  { name: "Projects", path: "/projects" },
+  { name: "Student's Projects", path: "/projects" },
   {
     name: "Academics",
     dropdown: true,
     items: [
+      { name: "Programs", path: "/programs" },
       { name: "Course Highlights", path: "/academics/course-highlights" },
     ],
   },
   {
-    name: "Students",
+    name: "Recruiter",
     dropdown: true,
-    items: [{ name: "Programs", path: "/programs" }],
+    items: [{ name: "Reach us", path: "/reach-us" }],
   },
   { name: "About Us", path: "/about-us" },
 ];
