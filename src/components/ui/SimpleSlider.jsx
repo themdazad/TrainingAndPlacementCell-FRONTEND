@@ -7,9 +7,9 @@ function SimpleSlider({slider_data}) {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 1000,
+    speed: 2000,
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 6000,
   };
   return (
     <div

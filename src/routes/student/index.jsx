@@ -4,11 +4,11 @@ import PrivateRoute from "../../components/auth/PrivateRoute.jsx";
 
 const AppRoutes = () => {
   return (
-    <PrivateRoute>
-      <Routes>
-        <Route path="/dashboard/student" element={<StudentDashboard />} />
+    <Routes>
+        <PrivateRoute>
+          <Route path="/dashboard/student" element={<StudentDashboard />} />
+        </PrivateRoute>
       </Routes>
-    </PrivateRoute>
   );
 };
 export default AppRoutes;
