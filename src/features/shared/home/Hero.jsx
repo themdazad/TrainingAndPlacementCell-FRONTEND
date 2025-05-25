@@ -1,9 +1,8 @@
 import { motion } from "framer-motion";
-import { ToastContainer, toast } from "react-toastify";
-import PLACEMENT_BROCHURE from "../../../../assets/downloads/GEC_SIWAN_PLACEMENT_BROCHURE.pdf";
-import SimpleSlider from "../../../../components/ui/SimpleSlider";
+import PLACEMENT_BROCHURE from "../../../assets/downloads/GEC_SIWAN_PLACEMENT_BROCHURE.pdf";
+import SimpleSlider from "../../../components/ui/SimpleSlider.jsx";
 // data
-import SliderData from "../../../../assets/data/SliderData.js";
+import SliderData from "../../../assets/data/SliderData.js";
 
 
 
