@@ -6,13 +6,13 @@ import { Image } from "@heroui/react";
 
 const Programs = () => {
   return (
-    <section className="py-12 dark:bg-gray-900 min-h-screen">
+    <section className="py-12 dark:bg-stone-900 min-h-screen">
       <div className="max-w-[1920px] m-auto px-[5%]">
         <div className="tittle-bar flex items-center mb-[4em] gap-6">
           <h1 className="tittle-bar-heading text-xl sm:text-2xl md:text-3xl text-nowrap font-bold">
             Upcoming Programs
           </h1>
-          <span className="bg-gray-500 h-[2px] w-full" />
+          <span className="bg-stone-500 h-[2px] w-full" />
         </div>
         <div className="cards-container snap snap-x snap-mandatory max-md:overflow-x-scroll  flex gap-[2em] md:flex-wrap ">
           {/* auto loop map function  */}
@@ -43,7 +43,7 @@ export function ProgramCards() {
         return (
           <div
             key={index}
-            className="relative card border hover:border-1  dark:bg-gray-800/20 dark:border-gray-900  snap-center min-w-[20em] max-w-[24em] min-h-max transition-all duration-300 rounded-3xl overflow-hidden"
+            className="relative card border hover:border-1  dark:bg-stone-800/20 dark:border-stone-900  snap-center min-w-[20em] max-w-[24em] min-h-max transition-all duration-300 rounded-3xl overflow-hidden"
           >
             <Image
               className="card-image rounded-none object-cover aspect-video"
@@ -57,20 +57,20 @@ export function ProgramCards() {
             </div>
 
             <div className="card-content p-[1em]">
-              <h2 className="card-title font-bold sm:text-lg text-gray-900 dark:text-white">
+              <h2 className="card-title font-bold sm:text-lg text-stone-900 dark:text-white">
                 {program.tittle}
               </h2>
-              <p className="card-description text-[14px] mb-[1em] text-gray-500 dark:text-gray-300">
+              <p className="card-description text-[14px] mb-[1em] text-stone-500 dark:text-stone-300">
                 {program.description}
               </p>
 
               <div className="card_footer text-[14px] flex justify-between items-center">
                 <div>
-                  <span className="text-gray-500 text-[14px] flex items-center gap-1 dark:text-gray-400">
+                  <span className="text-stone-500 text-[14px] flex items-center gap-1 dark:text-stone-400">
                     <FaClock />
                     {program.time}
                   </span>
-                  <span className="text-gray-500 text-[14px] flex items-center text-nowrap gap-1 dark:text-gray-400">
+                  <span className="text-stone-500 text-[14px] flex items-center text-nowrap gap-1 dark:text-stone-400">
                     <FaLocationDot />
                     {program.location}
                   </span>

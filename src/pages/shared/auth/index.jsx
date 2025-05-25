@@ -28,20 +28,20 @@ export default function Auth() {
       {/* Right Section */}
       <div className="w-1/2 flex items-center justify-center bg-white">
         <div className="w-full max-w-md">
-          <h2 className="text-center text-blue-600 font-semibold mb-4">
+          <h2 className="text-center text-blue-500 font-semibold mb-4">
             Sign-in to IIT Bombay Placement Portal
           </h2>
 
           {/* Tabs */}
-          <div className="flex justify-center space-x-6 text-sm font-medium text-gray-500 mb-6">
-            <span className="hover:text-blue-600 cursor-pointer">Student</span>
+          <div className="flex justify-center space-x-6 text-sm font-medium text-stone-500 mb-6">
+            <span className="hover:text-blue-500 cursor-pointer">Student</span>
             <span className="text-blue-700 border-b-2 border-blue-700">
               Recruiter
             </span>
-            <span className="hover:text-blue-600 cursor-pointer">
+            <span className="hover:text-blue-500 cursor-pointer">
               Coordinator
             </span>
-            <span className="hover:text-blue-600 cursor-pointer">Verifier</span>
+            <span className="hover:text-blue-500 cursor-pointer">Verifier</span>
           </div>
 
           {/* LinkedIn Button */}
@@ -56,23 +56,23 @@ export default function Auth() {
             Sign in with LinkedIn
           </button>
 
-          <div className="text-center text-sm text-gray-500 mb-4">or</div>
+          <div className="text-center text-sm text-stone-500 mb-4">or</div>
 
           {/* Email/Password Fields */}
           <form className="space-y-4">
             <input
               type="email"
               placeholder="Email"
-              className="w-full border-b border-gray-400 py-2 focus:outline-none"
+              className="w-full border-b border-stone-400 py-2 focus:outline-none"
             />
             <div className="relative">
               <input
                 type={showPassword ? "text" : "password"}
                 placeholder="Password"
-                className="w-full border-b border-gray-400 py-2 focus:outline-none"
+                className="w-full border-b border-stone-400 py-2 focus:outline-none"
               />
               <span
-                className="absolute right-0 top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-500"
+                className="absolute right-0 top-1/2 transform -translate-y-1/2 cursor-pointer text-stone-500"
                 onClick={() => setShowPassword(!showPassword)}
               >
                 👁️
@@ -80,7 +80,7 @@ export default function Auth() {
             </div>
 
             <div className="text-right">
-              <a href="#" className="text-sm text-blue-600 hover:underline">
+              <a href="#" className="text-sm text-blue-500 hover:underline">
                 Forgot password?
               </a>
             </div>
@@ -91,13 +91,13 @@ export default function Auth() {
               <label htmlFor="captcha" className="text-sm">
                 I'm not a robot
               </label>
-              <div className="ml-auto text-xs text-gray-400">reCAPTCHA</div>
+              <div className="ml-auto text-xs text-stone-400">reCAPTCHA</div>
             </div>
 
             {/* Sign In Button */}
             <button
               type="submit"
-              className="w-full bg-gray-300 text-white py-2 rounded-md cursor-not-allowed"
+              className="w-full bg-stone-300 text-white py-2 rounded-md cursor-not-allowed"
               disabled
             >
               Sign In
@@ -106,7 +106,7 @@ export default function Auth() {
             {/* Register */}
             <p className="text-center text-sm mt-4">
               Don't have an account?{" "}
-              <a href="#" className="text-blue-600 hover:underline">
+              <a href="#" className="text-blue-500 hover:underline">
                 Register now
               </a>
             </p>

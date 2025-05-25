@@ -31,6 +31,8 @@ export default function NavBar() {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState({});
+  // Access auth context
+  const { isLogedIn, setIsLogedIn } = useAuth();
 
   const mobileMenuRef = useRef(null);
   const hamburgerRef = useRef(null);
@@ -58,29 +60,6 @@ export default function NavBar() {
 
   // Handling login/logout Features
   const navigate = useNavigate();
-
-  // Access auth context
-  const { isLogedIn, setIsLogedIn } = useAuth();
-
-  // Handle Logout
-  const handleLogout = async () => {
-    try {
-      const res = await axios.post(
-        `${import.meta.env.VITE_API_BASE_URL}/logout`,
-        {},
-        {
-          withCredentials: true,
-        }
-      );
-
-      if (res.status === 200) {
-        setIsLogedIn({ admin: false, student: false }); // Reset state
-        navigate("/");
-      }
-    } catch (error) {
-      console.error("Error during logout:", error);
-    }
-  };
 
   const handleDropdownToggle = (name) => {
     setIsDropdownOpen((prev) => ({
@@ -111,7 +90,7 @@ export default function NavBar() {
       } transition-all duration-500 ease-in-out`}
     >
       {/* 1st row */}
-      <header className="navHeader px-[5%] py-4 bg-white dark:bg-gray-900 min-h-[100px] flex justify-between items-center">
+      <header className="navHeader px-[5%] py-4 bg-white dark:bg-stone-900 min-h-[100px] flex justify-between items-center">
         <div className="flex items-center gap-3 md:gap-6 lg:gap-12">
           <div className="brand-logo min-h-[40px] max-h-[64px] aspect-square">
             <Image
@@ -148,7 +127,7 @@ export default function NavBar() {
             />
             <Image
               className="brand-logo min-h-[30px] max-h-[48px] aspect-square"
-              src="./images/aicte-logo.png"
+              src="/images/aicte-logo.png"
               alt="aicte-logo"
             />
           </div>
@@ -156,14 +135,14 @@ export default function NavBar() {
       </header>
 
       {/* 2nd row */}
-      <header className="mx-auto relative bg-blue-100 dark:bg-gray-800">
+      <header className="mx-auto relative bg-blue-100 dark:bg-stone-800">
         <div className="px-[5%] flex items-center justify-between py-2 relative z-50">
           {/* Hamburger */}
           <button
             ref={hamburgerRef}
             type="button"
             onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
-            className="inline-flex p-2 text-black dark:text-white transition-all duration-200 rounded-md lg:hidden focus:bg-gray-100 hover:bg-gray-100 dark:focus:bg-gray-700 dark:hover:bg-gray-700"
+            className="inline-flex p-2 text-black dark:text-white transition-all duration-200 rounded-md lg:hidden focus:bg-stone-100 hover:bg-stone-100 dark:focus:bg-stone-700 dark:hover:bg-stone-700"
           >
             <svg
               className={`${isMobileMenuOpen ? "hidden" : "block"} w-6 h-6`}
@@ -205,7 +184,7 @@ export default function NavBar() {
                   className={({ isActive }) =>
                     `relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-blue-600 dark:after:bg-blue-400 after:transition-all after:duration-300 ${
                       isActive
-                        ? "text-blue-600 dark:text-blue-400 after:w-full"
+                        ? "text-blue-500 dark:text-blue-400 after:w-full"
                         : "text-black dark:text-white after:w-0 group-hover:after:w-full"
                     } hover:opacity-80 transition-all`
                   }
@@ -224,7 +203,7 @@ export default function NavBar() {
                     <ChevronDown className="rotate-0 group-hover:rotate-180 transition-rotate duration-300" />
                   </span>
                   <ul
-                    className={`absolute left-1/2 transform -translate-x-1/2 min-w-max text-small rounded-md border-t-4 border-t-blue-600 bg-white dark:bg-gray-800 py-2 px-6 space-y-4 transition-all duration-200 ${
+                    className={`absolute left-1/2 transform -translate-x-1/2 min-w-max text-small rounded-md border-t-4 border-t-blue-600 bg-white dark:bg-stone-800 py-2 px-6 space-y-4 transition-all duration-200 ${
                       isDropdownOpen[link.name] ? "flex flex-col" : "hidden"
                     }`}
                   >
@@ -232,7 +211,7 @@ export default function NavBar() {
                       <li key={idx}>
                         <NavLink
                           to={item.path}
-                          className="text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-400 space-y-4"
+                          className="text-black dark:text-white hover:text-blue-500 dark:hover:text-blue-400 space-y-4"
                         >
                           {item.name}
                         </NavLink>
@@ -247,7 +226,7 @@ export default function NavBar() {
           {/* Mobile Dropdown */}
           <div
             ref={mobileMenuRef}
-            className={`lg:hidden absolute py-12 top-[60px] left-0 w-screen bg-white dark:bg-gray-900 z-40 shadow-md transition-all duration-300 ease-in-out overflow-hidden ${
+            className={`lg:hidden absolute py-12 top-[60px] left-0 w-screen bg-white dark:bg-stone-900 z-40 shadow-md transition-all duration-300 ease-in-out overflow-hidden ${
               isMobileMenuOpen
                 ? "max-h-screen opacity-100"
                 : "max-h-0 opacity-0"
@@ -264,9 +243,9 @@ export default function NavBar() {
                     className={({ isActive }) =>
                       `py-4 px-2 text-lg rounded-md ${
                         isActive
-                          ? "text-blue-600 dark:text-blue-400 font-semibold"
-                          : "text-gray-800 dark:text-white"
-                      } hover:bg-gray-100 dark:hover:bg-gray-800 transition-all`
+                          ? "text-blue-500 dark:text-blue-400 font-semibold"
+                          : "text-stone-800 dark:text-white"
+                      } hover:bg-stone-100 dark:hover:bg-stone-800 transition-all`
                     }
                   >
                     {link.name}
@@ -274,7 +253,7 @@ export default function NavBar() {
                 ) : (
                   <div key={index} className="flex flex-col gap-2">
                     <button
-                      className="text-lg text-left w-full px-2 py-3 rounded-md text-gray-800 dark:text-white font-semibold flex justify-between items-center hover:bg-gray-100 dark:hover:bg-gray-800"
+                      className="text-lg text-left w-full px-2 py-3 rounded-md text-stone-800 dark:text-white font-semibold flex justify-between items-center hover:bg-stone-100 dark:hover:bg-stone-800"
                       onClick={() => handleDropdownToggle(link.name)}
                     >
                       {link.name}
@@ -299,9 +278,9 @@ export default function NavBar() {
                             className={({ isActive }) =>
                               `block px-2 py-3 text-md rounded-3xl ${
                                 isActive
-                                  ? "text-blue-600 dark:text-blue-400 font-medium"
-                                  : "text-gray-800 dark:text-white"
-                              } hover:bg-gray-100 dark:hover:bg-gray-800 transition-all`
+                                  ? "text-blue-500 dark:text-blue-400 font-medium"
+                                  : "text-stone-800 dark:text-white"
+                              } hover:bg-stone-100 dark:hover:bg-stone-800 transition-all`
                             }
                           >
                             {item.name}
@@ -324,13 +303,13 @@ export default function NavBar() {
             <NavLink
               to={
                 isLogedIn?.student
-                  ? "/auth/dashboard/student"
+                  ? "/dashboard/student"
                   : "/auth/student/login"
               }
-              className="flex items-center gap-2 text-gray-800 dark:text-gray-100"
+              className="flex items-center gap-2 text-stone-800 dark:text-stone-100"
             >
               <Image
-                className="rounded-full border border-gray-300 dark:border-gray-600 w-10 h-10 object-cover"
+                className="rounded-full border border-stone-300 dark:border-stone-600 w-10 h-10 object-cover"
                 src="https://www.bu.edu/prsocial/files/2019/07/profile-default-photo.jpg"
                 alt="user-profile"
               />
@@ -339,15 +318,6 @@ export default function NavBar() {
               </span>
             </NavLink>
 
-            {/* Logout Button (only when logged in) */}
-            {(isLogedIn?.admin || isLogedIn?.student) && (
-              <Button
-                onPress={handleLogout}
-                className="px-3 py-1.5 rounded-xl bg-red-500 hover:bg-red-600 text-white text-sm font-medium transition"
-              >
-                Logout
-              </Button>
-            )}
           </div>
         </div>
       </header>

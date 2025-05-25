@@ -65,7 +65,7 @@ const AdminRegister = () => {
               Register
             </Button>
             <div className="text-center mt-2">
-              <span className="text-gray-600">Already have an account?</span> <NavLink to="/auth/admin/login" className="text-primary">Login</NavLink>
+              <span className="text-stone-600">Already have an account?</span> <NavLink to="/auth/admin/login" className="text-primary">Login</NavLink>
             </div>
           </div>
         </CardBody>

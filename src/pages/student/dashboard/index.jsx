@@ -5,11 +5,15 @@ import {
   Book,
   FileUser,
   Settings,
-  FileCheck2,
   PanelRightClose,
   PanelRightOpen,
+  LogOut,
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import { Button } from "@heroui/react";
 import Profile from "../../../components/student/dashboard/dashboard-tab/Profile";
+import { useAuth } from "../../../hooks/contexts/auth/AuthContext"; // Adjust path as needed
 
 const menuItems = [
   { name: "Dashboard", icon: Home },
@@ -23,22 +27,40 @@ export default function StudentDashboard() {
   const [activeTab, setActiveTab] = useState("Dashboard");
   const [studentData, setStudentData] = useState(null);
 
-  useEffect(() => {
-    fetch("/api/student")
-      .then((response) => response.json())
-      .then((data) => setStudentData(data))
-      .catch((error) => console.error("Error fetching student data:", error));
-  }, []);
+  // Access auth context
+  const { isLogedIn, setIsLogedIn } = useAuth();
+  // Handling login/logout Features
+  const navigate = useNavigate();
+
+  // Handle Logout
+  const handleLogout = async () => {
+    try {
+      const res = await axios.post(
+        `${import.meta.env.VITE_API_BASE_URL}/logout`,
+        {},
+        {
+          withCredentials: true,
+        }
+      );
+
+      if (res.status === 200) {
+        setIsLogedIn({ admin: false, student: false }); // Reset state
+        navigate("/");
+      }
+    } catch (error) {
+      console.error("Error during logout:", error);
+    }
+  };
 
   const renderContent = () => {
     switch (activeTab) {
       case "Dashboard":
-        return  (
+        return (
           <section>
             <Profile />
           </section>
-        ) 
-     
+        );
+
       case "Projects":
         return <p>Projects Section</p>;
       case "Placements":
@@ -54,39 +76,55 @@ export default function StudentDashboard() {
 
   return (
     <div className="flex min-h-screen">
+      <ToastContainer />
       {/* Sidebar */}
-      <motion.div
-        animate={{ width: isOpen ? 250 : 80 }}
-        className=" border-r border-zinc-500/40 p-4 flex flex-col relative"
-      >
-        <div className="sticky top-0">
+      {isOpen && (
+        <motion.div className="border-r border-stone-500/40 p-4 flex flex-col relative space-y-3">
+          <div className="sticky top-0">
+            <ul className="mt-12 space-y-4">
+              {menuItems.map((item, index) => (
+                <li
+                  key={index}
+                  className={`flex items-center gap-4 p-2 cursor-pointer dark:hover:bg-stone-800 hover:bg-blue-100 rounded-lg ${
+                    activeTab === item.name ? "bg-stone-500/40" : ""
+                  }`}
+                  onClick={() => setActiveTab(item.name)}
+                >
+                  <item.icon size={24} />
+                  {isOpen && <span>{item.name}</span>}
+                </li>
+              ))}
+            </ul>
+            {(isLogedIn?.admin || isLogedIn?.student) && (
+              <div className="flex items-center">
+                <Button
+                  onPress={handleLogout}
+                  className=" py-1.5 mt-4 rounded-xl font-medium transition"
+                >
+                  {isOpen && "Logout"}
+                  <LogOut />
+                </Button>
+              </div>
+            )}
+          </div>
+        </motion.div>
+      )}
+
+      {/* Main Content */}
+      <div className="flex-1 p-6 px-[5%]">
+        {/* Heading */}
+        <div className="header flex flex-col justify-center">
           <span
-            className="absolute cursor-pointer -top-[10] right-0 "
+            className=" cursor-pointer  "
             variant="none"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <PanelRightOpen /> : <PanelRightClose />}
           </span>
-          <ul className="mt-12 space-y-4">
-            {menuItems.map((item, index) => (
-              <li
-                key={index}
-                className={`flex items-center gap-4 p-2 cursor-pointer hover:bg-zinc-500/40 rounded-lg ${
-                  activeTab === item.name ? "bg-zinc-500/40" : ""
-                }`}
-                onClick={() => setActiveTab(item.name)}
-              >
-                <item.icon size={24} />
-                {isOpen && <span>{item.name}</span>}
-              </li>
-            ))}
-          </ul>
+          <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold">
+            {activeTab}
+          </h1>
         </div>
-      </motion.div>
-
-      {/* Main Content */}
-      <div className="flex-1 p-6 h-[120vh]">
-        <h1 className="text-2xl font-bold">{activeTab}</h1>
         {renderContent()}
       </div>
     </div>

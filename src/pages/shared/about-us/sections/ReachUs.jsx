@@ -67,9 +67,9 @@ export default function ReachUs() {
         {transportModes.map(({ mode, icon, description, cities }) => (
           <div
             key={mode}
-            className="card shadow-md p-6 dark:bg-gray-800 rounded-3xl"
+            className="card shadow-md p-6 dark:bg-stone-800 rounded-3xl"
           >
-            <h1 className="text-lg font-extrabold inline-flex gap-3 text-blue-600 dark:text-blue-400">
+            <h1 className="text-lg font-extrabold inline-flex gap-3 text-blue-500 dark:text-blue-400">
               {icon} {mode}
             </h1>
             <p className="mt-2">{description}</p>
@@ -94,8 +94,8 @@ export default function ReachUs() {
       </div>
 
       {/* Accommodation  */}
-      <div className="shadow-md p-6 dark:bg-gray-800 rounded-3xl max-w-full">
-        <h2 className="text-lg font-bold text-blue-600 dark:text-blue-400 inline-flex gap-3 items-center mb-4">
+      <div className="shadow-md p-6 dark:bg-stone-800 rounded-3xl max-w-full">
+        <h2 className="text-lg font-bold text-blue-500 dark:text-blue-400 inline-flex gap-3 items-center mb-4">
           <BedDouble /> Accommodation
         </h2>
         <p>

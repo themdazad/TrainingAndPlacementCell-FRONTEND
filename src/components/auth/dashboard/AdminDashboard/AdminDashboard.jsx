@@ -12,7 +12,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="flex min-h-screen bg-gray-100">
+    <div className="flex min-h-screen bg-stone-100">
       {/* Sidebar for Desktop */}
       <motion.div
         initial={{ x: -250 }}
@@ -69,7 +69,7 @@ const Dashboard = () => {
         className="flex-1 p-4 md:p-8"
       >
         <h1 className="text-3xl font-bold mb-4">Welcome to Your Dashboard</h1>
-        <p className="text-gray-700">
+        <p className="text-stone-700">
           This is a simple example of a responsive dashboard with animations
           using React, Tailwind CSS, and Framer Motion.
         </p>

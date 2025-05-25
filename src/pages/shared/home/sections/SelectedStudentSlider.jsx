@@ -179,7 +179,7 @@ function AvatarCarousel({
               alt={`Avatar ${index}`}
               className={`${
                 isActive ? "" : "saturate-0"
-              }  absolute  border-2 border-white dark:border-gray-800 aspect-square m-0 rounded-full object-cover transition-all duration-1000`}
+              }  absolute  border-2 border-white dark:border-stone-800 aspect-square m-0 rounded-full object-cover transition-all duration-1000`}
               style={{
                 width: avatarSize,
                 top: "50%",
@@ -197,7 +197,7 @@ function AvatarCarousel({
               href={avatar.details.linkedIn}
               target="_blank"
               rel="noopener noreferrer"
-              className={`absolute bg-white dark:bg-gray-800 dark:text-gray-100 hover:shadow-md dark:hover:shadow-lg rounded-3xl px-6 py-1 m-0 text-center transition-all duration-1000`}
+              className={`absolute bg-white dark:bg-stone-800 dark:text-stone-100 hover:shadow-md dark:hover:shadow-lg rounded-3xl px-6 py-1 m-0 text-center transition-all duration-1000`}
               style={{
                 bottom: "-5%",
                 left: `calc(50% + ${left}px)`,
@@ -223,7 +223,7 @@ const SelectedStudentSlider = () => {
   return (
     <>
       <div className="flex h-full w-full flex-col items-center justify-center py-10">
-        <h1 className="text-xl font-extrabold text-gray-800 dark:text-gray-100">
+        <h1 className="text-xl font-extrabold text-stone-800 dark:text-stone-100">
           Recently Placed Students
         </h1>
         <AvatarCarousel />
