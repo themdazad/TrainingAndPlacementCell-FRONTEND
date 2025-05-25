@@ -86,7 +86,7 @@ function CoordinatorCard({
   github,
 }) {
   return (
-    <div className="w-full max-w-4xl bg-gray-100/50 dark:bg-gray-800 rounded-3xl shadow-md grid grid-cols-2 p-6 gap-3 items-start md:items-center justify-between">
+    <div className="w-full max-w-4xl bg-stone-100/50 dark:bg-stone-800 rounded-3xl shadow-md grid grid-cols-2 p-6 gap-3 items-start md:items-center justify-between">
       <h3 className="col-span-2 text-lg font-bold dark:text-white">{name}</h3>
       {/* Middle Content */}
       <div className="flex-1 text-center md:text-left space-y-2">
@@ -103,7 +103,7 @@ function CoordinatorCard({
               href={linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300"
+              className="text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300"
             >
               <Linkedin className="w-6 h-6" />
             </a>
@@ -114,7 +114,7 @@ function CoordinatorCard({
               href={github}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300"
+              className="text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300"
             >
               <Github className="w-6 h-6" />
             </a>
@@ -123,7 +123,7 @@ function CoordinatorCard({
         {/* Email */}
         <a
           href={`mailto:${email}`}
-          className="text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1"
+          className="text-blue-500 dark:text-blue-400 hover:underline flex items-center gap-1"
         >
           <Mail className="w-4 h-4" />
           <span className="hidden md:inline">{email}</span>

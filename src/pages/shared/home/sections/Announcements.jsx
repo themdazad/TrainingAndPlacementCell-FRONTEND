@@ -49,13 +49,13 @@ export default function Announcements() {
     <section className="news-notice-container max-w-[1920px] m-auto px-[5%] grid grid-cols-1 lg:grid-cols-2 gap-12 ">
       {/* Left Section */}
       <div className="hidden md:block">
-        <p className="text-sm tracking-widest text-bold uppercase dark:text-gray-400 mb-2">
+        <p className="text-sm tracking-widest text-bold uppercase dark:text-stone-400 mb-2">
           About Us
         </p>
-        <h2 className="text-2xl md:text-3xl font-extrabold text-gray-800 dark:text-white">
+        <h2 className="text-2xl md:text-3xl font-extrabold text-stone-800 dark:text-white">
           Training & Placement Cell at Government Engineering College, Siwan
         </h2>
-        <p className="my-4 text-justify text-gray-600 dark:text-gray-300 leading-relaxed">
+        <p className="my-4 text-justify text-stone-600 dark:text-stone-300 leading-relaxed">
           The Training and Placement Cell at Government Engineering College,
           Siwan, is dedicated to preparing students for successful careers in
           industry and academia. Under the esteemed leadership of our Principal,{" "}
@@ -69,7 +69,7 @@ export default function Announcements() {
 
         {/* Read More link */}
         <NavLink to="/about-us">
-          <span className="text-blue-600 hover:text-blue-500 font-medium inline-flex items-center">
+          <span className="text-blue-500 hover:text-blue-500 font-medium inline-flex items-center">
             know more
             <ArrowRightCircle className="w-4 h-4 ml-1" />
           </span>
@@ -77,8 +77,8 @@ export default function Announcements() {
       </div>
 
       {/* Right Section  */}
-      <div className="news-notice-area max-md:border-t-4 lg:border-l-4 border-blue-600 p-3 ">
-        <h2 className="news-notice-heading text-lg text-blue-600 sm:text-xl md:text-2xl flex max-md:justify-center gap-x-4 items-center font-extrabold">
+      <div className="news-notice-area max-md:border-t-4 lg:border-l-4  border-blue-500 p-3 ">
+        <h2 className="news-notice-heading text-2xl md:text-3xl font-extrabold text-blue-500  flex max-md:justify-center gap-x-4 items-center">
           Announcements
         </h2>
 

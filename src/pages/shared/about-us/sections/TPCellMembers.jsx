@@ -106,8 +106,8 @@ function ProfileCard({
   linkedin,
 }) {
   return (
-    <div className="max-w-sm bg-gray-100/50 dark:bg-gray-800 rounded-3xl shadow-md p-6 text-center space-y-4">
-      <h2 className="text-lg font-bold text-blue-600 dark:text-blue-500 py-2">
+    <div className="max-w-sm bg-stone-100/50 dark:bg-stone-800 rounded-3xl shadow-md p-6 text-center space-y-4">
+      <h2 className="text-lg font-bold text-blue-500 dark:text-blue-500 py-2">
         {title}
       </h2>
       <img
@@ -125,7 +125,7 @@ function ProfileCard({
           Email:{" "}
           <a
             href={`mailto:${email}`}
-            className="text-blue-600 dark:text-blue-400 underline"
+            className="text-blue-500 dark:text-blue-400 underline"
           >
             {email}
           </a>
@@ -138,7 +138,7 @@ function ProfileCard({
               href={linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300"
+              className="text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300"
               aria-label="LinkedIn"
             >
               <Linkedin className="w-6 h-6" />

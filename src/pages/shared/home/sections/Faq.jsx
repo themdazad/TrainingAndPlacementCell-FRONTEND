@@ -50,7 +50,7 @@ export default function Faq() {
 
   return (
     <section className="max-w-[1920px] my-[6em] m-auto px-[5%]">
-      <h2 className="text-lg  sm:text-2xl md:text-3xl text-center my-6 font-extrabold text-gray-900 dark:text-white">
+      <h2 className="text-lg  sm:text-2xl md:text-3xl text-center my-6 font-extrabold text-stone-900 dark:text-white">
         Frequently Asked Questions
       </h2>
 
@@ -64,7 +64,7 @@ export default function Faq() {
               aria-label={`Accordion ${index + 1}`}
               title={item.question}
             >
-              <p className="text-[14px] text-gray-800 dark:text-gray-200">
+              <p className="text-[14px] text-stone-800 dark:text-stone-200">
                 {item.answer}
               </p>
             </AccordionItem>
@@ -78,37 +78,37 @@ export default function Faq() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
         viewport={{ once: false, amount: 0.2 }}
-        className="gap-6  hover:shadow-md dark:bg-gray-800 rounded-3xl p-12 my-12 text-center w-full mx-auto"
+        className="gap-6  hover:shadow-md dark:bg-stone-800 rounded-3xl p-12 my-12 text-center w-full mx-auto"
       >
         {/* Coordinator Images */}
         <div className="flex justify-center -space-x-4 mb-4">
           <img
             src="/images/coordinators/abhishek_profile.jpg"
             alt="Abhishek"
-            className="w-20 aspect-square rounded-full border-2 dark:border-gray-700 border-white"
+            className="w-20 aspect-square rounded-full border-2 dark:border-stone-700 border-white"
           />
           <img
             src="/images/coordinators/azad_profile.jpg"
             alt="Azad"
-            className="w-20 aspect-square rounded-full border-2 dark:border-gray-700 border-white"
+            className="w-20 aspect-square rounded-full border-2 dark:border-stone-700 border-white"
           />
           <img
             src="https://avatars.githubusercontent.com/u/156394664?v=4"
             alt="Coordinator 3"
-            className="w-20 aspect-square rounded-full border-2 dark:border-gray-700 border-white"
+            className="w-20 aspect-square rounded-full border-2 dark:border-stone-700 border-white"
           />
         </div>
 
         {/* Contact Section */}
-        <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
+        <h2 className="text-xl font-semibold text-stone-900 dark:text-white">
           Still have doubts?
         </h2>
-        <p className="text-gray-700 dark:text-gray-300 my-2">
+        <p className="text-stone-700 dark:text-stone-300 my-2">
           Can't find the answer you're looking for? Contact us!
         </p>
 
         <NavLink
-          className="text-blue-600 dark:text-blue-400 hover:text-blue-600 font-medium text-sm inline-flex items-center"
+          className="text-blue-500 dark:text-blue-400 hover:text-blue-500 font-medium text-sm inline-flex items-center"
           to="/contact-us"
         >
           {" "}

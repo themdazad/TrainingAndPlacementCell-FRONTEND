@@ -60,66 +60,9 @@ const logos = [
   },
 ];
 
-const PastRecruiters2 = () => {
-  return (
-    <section className="py-[100px] bg-white dark:bg-gray-900 text-center overflow-hidden">
-      <h2 className="text-2xl md:text-3xl font-bold text-gray-800 dark:text-white mb-10">
-        Past Recruiters
-      </h2>
-
-      <div
-        className="relative max-h-[360px] overflow-hidden"
-        style={{
-          maskImage:
-            "linear-gradient(to top, transparent 0%, black 30%, black 70%, transparent 95%)",
-          WebkitMaskImage:
-            "linear-gradient(to top, transparent 0%, black 30%, black 70%, transparent 95%)",
-        }}
-      >
-        <div className="animate-scroll-up w-[80%] md:w-[70%] lg:w-[50%] m-auto space-y-12">
-          {[...Array(2)].map((_, repeatIndex) => (
-            <div
-              key={repeatIndex}
-              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-y-3 justify-items-center"
-            >
-              {logos.map((logo, index) => (
-                <div
-                  key={`${logo.name}-${index}`}
-                  className="w-32 h-20 flex items-center justify-center"
-                >
-                  {logo.link ? (
-                    <a
-                      href={logo.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <img
-                        src={logo.url}
-                        alt={logo.name}
-                        className="max-h-16 object-contain transition"
-                      />
-                    </a>
-                  ) : (
-                    <img
-                      src={logo.url}
-                      alt={logo.name}
-                      className="max-h-16 object-contain grayscale hover:grayscale-0 transition"
-                    />
-                  )}
-                </div>
-              ))}
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <p className="mt-10 text-sm text-gray-500 dark:text-gray-400">and more</p>
-    </section>
-  );
-};
 const PastRecruiters = () => {
   return (
-    <div className="mx-auto w-full flex justify-center px-4">
+    <div className="mx-auto w-full flex justify-center px-4 py-24">
       <div className="flex flex-col items-center justify-center gap-6 px-4 md:px-8">
         {/* title */}
         <div className="py-[24px] text-2xl md:text-[32px] font-extrabold">
@@ -153,7 +96,6 @@ const PastRecruiters = () => {
                         alt={`${logo.name}`}
                       />
                     </a>
-                    
                   ))}
                 </div>
               )
