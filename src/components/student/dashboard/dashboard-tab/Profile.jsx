@@ -41,10 +41,10 @@ const Profile = () => {
         </div>
         <div>
           <h2 className="text-xl font-semibold">{student.name}</h2>
-          <p className="text-stone-400 text-sm">{student.email}</p>
+          <p className="text-zinc-400 text-sm">{student.email}</p>
         </div>
         <button
-          className="ml-auto p-2 rounded-full hover:bg-stone-200"
+          className="ml-auto p-2 rounded-full hover:bg-zinc-200"
           onClick={() => setIsEditing(!isEditing)}
         >
           ✏️
@@ -54,19 +54,19 @@ const Profile = () => {
       {/* Profile Details */}
       <div className="grid grid-cols-2 gap-4 text-sm mt-4">
         <div>
-          <p className="text-stone-400">Department</p>
+          <p className="text-zinc-400">Department</p>
           <p className="font-medium">{student.department}</p>
         </div>
         <div>
-          <p className="text-stone-400">register No.</p>
+          <p className="text-zinc-400">register No.</p>
           <p className="font-medium">BEU-{student.registerNo}</p>
         </div>
         <div>
-          <p className="text-stone-400">CGPA</p>
+          <p className="text-zinc-400">CGPA</p>
           <p className="font-medium">{student.cgpa}</p>
         </div>
         <div>
-          <p className="text-stone-400">Placement Status</p>
+          <p className="text-zinc-400">Placement Status</p>
           <p
             className={`font-medium ${
               student.placementStatus === "Eligible"
@@ -78,7 +78,7 @@ const Profile = () => {
           </p>
         </div>
         <div>
-          <p className="text-stone-400">Phone</p>
+          <p className="text-zinc-400">Phone</p>
           <p className="font-medium">{student.phone}</p>
         </div>
         

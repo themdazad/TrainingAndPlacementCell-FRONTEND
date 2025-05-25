@@ -29,7 +29,7 @@ const MainContent = ({ project, leader }) => {
       </motion.h1>
 
       <motion.p
-        className="text-md text-stone-600 dark:text-stone-400 mb-4"
+        className="text-md text-zinc-600 dark:text-zinc-400 mb-4"
         variants={fadeIn}
       >
         Led by <span className="font-medium">{leader.name}</span> (
@@ -48,7 +48,7 @@ const MainContent = ({ project, leader }) => {
       </motion.p>
 
       <motion.h2
-        className="text-2xl font-semibold pt-6 pb-3 border-b dark:border-stone-700"
+        className="text-2xl font-semibold pt-6 pb-3 border-b dark:border-zinc-700"
         id="objectives"
         variants={fadeIn}
       >
@@ -64,7 +64,7 @@ const MainContent = ({ project, leader }) => {
       </motion.ul>
 
       <motion.h2
-        className="text-2xl font-semibold pt-6 pb-3 border-b dark:border-stone-700"
+        className="text-2xl font-semibold pt-6 pb-3 border-b dark:border-zinc-700"
         id="challenges"
         variants={fadeIn}
       >
@@ -80,7 +80,7 @@ const MainContent = ({ project, leader }) => {
       </motion.ul>
 
       <motion.h2
-        className="text-2xl font-semibold pt-6 pb-3 border-b dark:border-stone-700"
+        className="text-2xl font-semibold pt-6 pb-3 border-b dark:border-zinc-700"
         id="benefits"
         variants={fadeIn}
       >
@@ -96,7 +96,7 @@ const MainContent = ({ project, leader }) => {
       </motion.ul>
 
       <motion.h2
-        className="text-2xl font-semibold pt-6 pb-3 border-b dark:border-stone-700"
+        className="text-2xl font-semibold pt-6 pb-3 border-b dark:border-zinc-700"
         id="tech"
         variants={fadeIn}
       >
@@ -114,7 +114,7 @@ const MainContent = ({ project, leader }) => {
       </motion.div>
 
       <motion.h2
-        className="text-2xl font-semibold pt-6 pb-3 border-b dark:border-stone-700"
+        className="text-2xl font-semibold pt-6 pb-3 border-b dark:border-zinc-700"
         id="future"
         variants={fadeIn}
       >
@@ -144,7 +144,7 @@ const MainContent = ({ project, leader }) => {
 const Sidebar = ({ project, leader }) => {
   return (
     <aside className="hidden lg:block w-72 sticky top-28 h-max">
-      <div className="bg-stone-50 dark:bg-stone-800 border-t-4  border-blue-500 p-6 rounded-xl">
+      <div className="bg-zinc-50 dark:bg-zinc-800 border-t-4  border-blue-500 p-6 rounded-xl">
         <h3 className="text-lg font-semibold text-blue-700 dark:text-blue-300 mb-4">
           Content Table
         </h3>
@@ -181,27 +181,27 @@ const Sidebar = ({ project, leader }) => {
           </li>
         </ul>
 
-        <div className="mt-8 border-t dark:border-stone-700 pt-6">
-          <h4 className="text-sm font-semibold text-stone-700 dark:text-stone-300 mb-2">
+        <div className="mt-8 border-t dark:border-zinc-700 pt-6">
+          <h4 className="text-sm font-semibold text-zinc-700 dark:text-zinc-300 mb-2">
             Project Leader
           </h4>
           <p className="text-sm font-medium text-blue-700 dark:text-blue-300">
             {leader.name}
           </p>
-          <p className="text-xs text-stone-500 dark:text-stone-400">
+          <p className="text-xs text-zinc-500 dark:text-zinc-400">
             {leader.branch}, {leader.session}
           </p>
         </div>
 
-        <div className="mt-6 border-t dark:border-stone-700 pt-6">
-          <h4 className="text-sm font-semibold text-stone-700 dark:text-stone-300 mb-2">
+        <div className="mt-6 border-t dark:border-zinc-700 pt-6">
+          <h4 className="text-sm font-semibold text-zinc-700 dark:text-zinc-300 mb-2">
             Team Members
           </h4>
-          <ul className="text-sm text-stone-600 dark:text-stone-300 space-y-2">
+          <ul className="text-sm text-zinc-600 dark:text-zinc-300 space-y-2">
             {project.team.map((member, idx) => (
               <li key={idx}>
                 <p className="font-medium">{member.name}</p>
-                <p className="text-xs text-stone-500 dark:text-stone-400">
+                <p className="text-xs text-zinc-500 dark:text-zinc-400">
                   {member.role} ({member.branch})
                 </p>
               </li>
@@ -209,7 +209,7 @@ const Sidebar = ({ project, leader }) => {
           </ul>
         </div>
 
-        <div className="mt-4 text-xs text-stone-500 dark:text-stone-400">
+        <div className="mt-4 text-xs text-zinc-500 dark:text-zinc-400">
           {project.team.length} team member{project.team.length > 1 ? "s" : ""}
         </div>
       </div>
@@ -235,7 +235,7 @@ const ProjectDetailsPage = () => {
     project.team?.[0];
 
   return (
-    <div className="bg-white dark:bg-stone-900 text-stone-800 dark:text-stone-100 min-h-screen py-12">
+    <div className="bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-100 min-h-screen py-12">
       {/* breadcrumbs */}
       <div className="px-[5%]">
         <BreadCrumbs items={breadcrumbItems} />

@@ -49,13 +49,13 @@ export default function Announcements() {
     <section className="news-notice-container max-w-[1920px] m-auto px-[5%] grid grid-cols-1 lg:grid-cols-2 gap-12 ">
       {/* Left Section */}
       <div className="hidden md:block">
-        <p className="text-sm tracking-widest text-bold uppercase dark:text-stone-400 mb-2">
+        <p className="text-sm tracking-widest text-bold uppercase dark:text-zinc-400 mb-2">
           About Us
         </p>
-        <h2 className="text-2xl md:text-3xl font-extrabold text-stone-800 dark:text-white">
+        <h2 className="text-2xl md:text-3xl font-extrabold text-zinc-800 dark:text-white">
           Training & Placement Cell at Government Engineering College, Siwan
         </h2>
-        <p className="my-4 text-justify text-stone-600 dark:text-stone-300 leading-relaxed">
+        <p className="my-4 text-justify text-zinc-600 dark:text-zinc-300 leading-relaxed">
           The Training and Placement Cell at Government Engineering College,
           Siwan, is dedicated to preparing students for successful careers in
           industry and academia. Under the esteemed leadership of our Principal,{" "}

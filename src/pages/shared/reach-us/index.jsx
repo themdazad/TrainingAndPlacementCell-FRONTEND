@@ -54,13 +54,13 @@ const transportModes = [
 
 export default function ReachUs() {
   return (
-    <main className="m-auto dark:bg-stone-900 grid gap-12 py-12 ">
+    <main className="m-auto dark:bg-zinc-900 grid gap-12 py-12 ">
       {/* Reach Us Heading */}
       <div className="header px-[5%] flex flex-col justify-center">
         <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold">
           Reach Us
         </h1>
-        <p className="mt-3 max-w-2xl text-stone-600 dark:text-stone-400">
+        <p className="mt-3 max-w-2xl text-zinc-600 dark:text-zinc-400">
           Reach out to the T&P Cell for career guidance and placement support
         </p>
       </div>
@@ -89,7 +89,7 @@ export default function ReachUs() {
           {transportModes.map(({ mode, icon, description, cities }) => (
             <div
               key={mode}
-              className="card shadow-md p-6 dark:bg-stone-800 rounded-3xl"
+              className="card shadow-md p-6 dark:bg-zinc-800 rounded-3xl"
             >
               <h1 className="text-lg font-extrabold inline-flex gap-3 text-blue-500 dark:text-blue-400">
                 {icon} {mode}
@@ -116,7 +116,7 @@ export default function ReachUs() {
         </div>
 
         {/* Accommodation  */}
-        <div className="shadow-md p-6 dark:bg-stone-800 rounded-3xl max-w-full">
+        <div className="shadow-md p-6 dark:bg-zinc-800 rounded-3xl max-w-full">
           <h2 className="text-lg font-bold text-blue-500 dark:text-blue-400 inline-flex gap-3 items-center mb-4">
             <BedDouble /> Accommodation
           </h2>

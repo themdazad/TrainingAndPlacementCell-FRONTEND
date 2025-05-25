@@ -86,7 +86,7 @@ function CoordinatorCard({
   github,
 }) {
   return (
-    <div className="w-full max-w-4xl bg-stone-100/50 dark:bg-stone-800 rounded-3xl shadow-md grid grid-cols-2 p-6 gap-3 items-start md:items-center justify-between">
+    <div className="w-full max-w-4xl bg-zinc-100/50 dark:bg-zinc-800 rounded-3xl shadow-md grid grid-cols-2 p-6 gap-3 items-start md:items-center justify-between">
       <h3 className="col-span-2 text-lg font-bold dark:text-white">{name}</h3>
       {/* Middle Content */}
       <div className="flex-1 text-center md:text-left space-y-2">

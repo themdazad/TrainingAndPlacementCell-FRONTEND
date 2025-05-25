@@ -24,7 +24,7 @@ const cards = [
     icon: Handshake,
     title: "32+ Verified Industry Tie-ups",
     description:
-      "Our partnerships with companies offer students real-world exposure through internships, workshops, and capstone project collaborations — verified annually by our T&P Cell.",
+      "Our partnerships with companies offer students real-world exposure through internships, workshops, and capzinc project collaborations — verified annually by our T&P Cell.",
   },
 ];
 const container = {
@@ -44,13 +44,13 @@ const item = {
 
 export default function AcademicPrograms() {
   return (
-    <section className="min-h-[100px] dark:bg-stone-900 px-[5%] my-[100px] transition-colors duration-300">
+    <section className="min-h-[100px] dark:bg-zinc-900 px-[5%] my-[100px] transition-colors duration-300">
       <div className="academic-program grid gap-16">
         <div className="academic-program__title text-center">
-          <h1 className="font-extrabold text-lg md:text-3xl text-stone-900 dark:text-white">
+          <h1 className="font-extrabold text-lg md:text-3xl text-zinc-900 dark:text-white">
             Academic Programs
           </h1>
-          <p className="text-stone-700 dark:text-stone-300">
+          <p className="text-zinc-700 dark:text-zinc-300">
             Bachelor of Technology | Undergraduate Program
           </p>
         </div>
@@ -68,13 +68,13 @@ export default function AcademicPrograms() {
               <motion.div
                 key={index}
                 variants={item}
-                className="academic-program__item flex flex-col items-center justify-center gap-4 text-center border-t-4 border-blue-500 p-6 bg-blue-100 dark:bg-stone-800 rounded-3xl hover:shadow-lg transition-all duration-300"
+                className="academic-program__item flex flex-col items-center justify-center gap-4 text-center border-t-4 border-blue-500 p-6 bg-blue-100 dark:bg-zinc-800 rounded-3xl hover:shadow-lg transition-all duration-300"
               >
                 <Icon className="h-16 w-16 text-blue-500 dark:text-blue-400" />
-                <div className="academic-program__item-title font-bold text-lg text-stone-900 dark:text-white">
+                <div className="academic-program__item-title font-bold text-lg text-zinc-900 dark:text-white">
                   {card.title}
                 </div>
-                <div className="academic-program__item-description text-sm text-stone-700 dark:text-stone-300">
+                <div className="academic-program__item-description text-sm text-zinc-700 dark:text-zinc-300">
                   {card.description}
                 </div>
               </motion.div>
