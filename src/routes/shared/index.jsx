@@ -52,8 +52,7 @@ const AppRoutes = () => {
         <Route path=":title/:id" element={<ProjectDetailsPage />} />
       </Route>
       <Route path="campus-placement-2025" element={<CampusPlacements2025 />} />
-      {/* Catch-all fallback for unmatched routes */}
-      <Route path="*" element={<ComingSoon />} />
+     
     </Routes>
   );
 };

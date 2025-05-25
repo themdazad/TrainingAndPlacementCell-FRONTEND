@@ -31,6 +31,8 @@ export default function NavBar() {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState({});
+  // Access auth context
+  const { isLogedIn, setIsLogedIn } = useAuth();
 
   const mobileMenuRef = useRef(null);
   const hamburgerRef = useRef(null);
@@ -58,29 +60,6 @@ export default function NavBar() {
 
   // Handling login/logout Features
   const navigate = useNavigate();
-
-  // Access auth context
-  const { isLogedIn, setIsLogedIn } = useAuth();
-
-  // Handle Logout
-  const handleLogout = async () => {
-    try {
-      const res = await axios.post(
-        `${import.meta.env.VITE_API_BASE_URL}/logout`,
-        {},
-        {
-          withCredentials: true,
-        }
-      );
-
-      if (res.status === 200) {
-        setIsLogedIn({ admin: false, student: false }); // Reset state
-        navigate("/");
-      }
-    } catch (error) {
-      console.error("Error during logout:", error);
-    }
-  };
 
   const handleDropdownToggle = (name) => {
     setIsDropdownOpen((prev) => ({
@@ -148,7 +127,7 @@ export default function NavBar() {
             />
             <Image
               className="brand-logo min-h-[30px] max-h-[48px] aspect-square"
-              src="./images/aicte-logo.png"
+              src="/images/aicte-logo.png"
               alt="aicte-logo"
             />
           </div>
@@ -324,7 +303,7 @@ export default function NavBar() {
             <NavLink
               to={
                 isLogedIn?.student
-                  ? "/auth/dashboard/student"
+                  ? "/dashboard/student"
                   : "/auth/student/login"
               }
               className="flex items-center gap-2 text-stone-800 dark:text-stone-100"
@@ -339,15 +318,6 @@ export default function NavBar() {
               </span>
             </NavLink>
 
-            {/* Logout Button (only when logged in) */}
-            {(isLogedIn?.admin || isLogedIn?.student) && (
-              <Button
-                onPress={handleLogout}
-                className="px-3 py-1.5 rounded-xl bg-red-500 hover:bg-red-600 text-white text-sm font-medium transition"
-              >
-                Logout
-              </Button>
-            )}
           </div>
         </div>
       </header>

@@ -78,10 +78,10 @@ export default function Faq() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
         viewport={{ once: false, amount: 0.2 }}
-        className="gap-6  hover:shadow-md dark:bg-stone-800 rounded-3xl p-12 my-12 text-center w-full mx-auto"
+        className="space-y-3 py-24 text-center w-full mx-auto"
       >
         {/* Coordinator Images */}
-        <div className="flex justify-center -space-x-4 mb-4">
+        <div className="flex justify-center -space-x-4">
           <img
             src="/images/coordinators/abhishek_profile.jpg"
             alt="Abhishek"
@@ -108,12 +108,9 @@ export default function Faq() {
         </p>
 
         <NavLink
-          className="text-blue-500 dark:text-blue-400 hover:text-blue-500 font-medium text-sm inline-flex items-center"
+          className="text-blue-500 dark:text-blue-400 hover:text-blue-500 font-medium inline-flex items-center"
           to="/contact-us"
-        >
-          {" "}
-          Contact us
-          <ArrowRightCircle className="w-4 h-4 ml-1" />
+        >Contact us<ArrowRightCircle className="w-4 h-4 ml-1" />
         </NavLink>
       </motion.div>
     </section>
