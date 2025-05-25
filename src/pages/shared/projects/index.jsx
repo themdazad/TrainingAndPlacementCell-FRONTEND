@@ -9,9 +9,13 @@ import {
   MapPin as MapPinIcon,
   ArrowRightCircle as ArrowRightCircleIcon,
 } from "lucide-react"; // ✅ Use correct Lucide imports
+import BreadCrumbs from "../../../components/ui/BreadCrumbs.jsx";
 
 export const projectsData = projects;
-
+const breadcrumbItems = [
+  { label: "Home", to: "/" },
+  { label: "Projects", to: "/projects" , isCurrent: true }, // No `to` = current page
+];
 const Projects = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOrder, setSortOrder] = useState("newest");
@@ -52,6 +56,11 @@ const Projects = () => {
           commitment to excellence and innovation.
         </p>
       </div>
+
+      {/* breadcrumbs */}
+            <div className="px-[5%]">
+              <BreadCrumbs items={breadcrumbItems} />
+            </div>
 
       {/* Search and Sort */}
       <div className="mt-4 flex flex-col sm:flex-row justify-end items-center gap-4">

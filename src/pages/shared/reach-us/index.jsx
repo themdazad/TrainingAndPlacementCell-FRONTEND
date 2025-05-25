@@ -1,4 +1,10 @@
 import { CarFront, TrainFront, PlaneTakeoff, BedDouble } from "lucide-react";
+import BreadCrumbs from "../../../components/ui/BreadCrumbs.jsx";
+
+const breadcrumbItems = [
+  { label: "Home", to: "/" },
+  { label: "Reach us", isCurrent: true }, // No `to` = current page
+];
 
 const transportModes = [
   {
@@ -57,6 +63,11 @@ export default function ReachUs() {
         <p className="mt-3 max-w-2xl text-stone-600 dark:text-stone-400">
           Reach out to the T&P Cell for career guidance and placement support
         </p>
+      </div>
+
+      {/* breadcrumbs */}
+      <div className="px-[5%]">
+        <BreadCrumbs items={breadcrumbItems} />
       </div>
 
       <section className="px-[5%] grid grid-cols-1 gap-6 ">

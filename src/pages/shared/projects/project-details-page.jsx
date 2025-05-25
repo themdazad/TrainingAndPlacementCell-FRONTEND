@@ -1,17 +1,23 @@
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import { FaLinkedin } from "react-icons/fa";
 import { projects } from "./projectsData";
+
+import BreadCrumbs from "../../../components/ui/BreadCrumbs.jsx";
 
 // Fade-in animation configuration
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0 },
 };
-
+const breadcrumbItems = [
+  { label: "Home", to: "/" },
+  { label: "Projects", to: "/projects" },
+  { label: projects.title, isCurrent: true }, // No `to` = current page
+];
 // Main Content Component
 const MainContent = ({ project, leader }) => {
   return (
+     
     <motion.article
       className="prose dark:prose-invert flex-1 max-w-none"
       initial="hidden"
@@ -130,6 +136,7 @@ const MainContent = ({ project, leader }) => {
         </motion.div>
       )}
     </motion.article>
+  
   );
 };
 
@@ -229,6 +236,10 @@ const ProjectDetailsPage = () => {
 
   return (
     <div className="bg-white dark:bg-stone-900 text-stone-800 dark:text-stone-100 min-h-screen py-12">
+      {/* breadcrumbs */}
+      <div className="px-[5%]">
+        <BreadCrumbs items={breadcrumbItems} />
+      </div>
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row gap-12">
           {/* Main Content */}

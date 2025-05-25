@@ -6,9 +6,6 @@ import AdminRegister from "../../pages/shared/auth/admin/register.jsx";
 import StudentLogin from "../../pages/shared/auth/student/login.jsx";
 import StudentRegister from "../../pages/shared/auth/student/register.jsx";
 import ForgotPassword from "../../pages/shared/auth/student/forgot-password.jsx";
-import ReachSiwan from "../../pages/shared/common/reach-siwan.jsx";
-// fallback routes
-import ComingSoon from "../../pages/shared/ComingSoon.jsx";
 // Public Routes
 import ContactUs from "../../pages/shared/contact-us/index.jsx";
 import Programs from "../../pages/shared/programs-page/index.jsx";
@@ -38,7 +35,6 @@ const AppRoutes = () => {
       </Route>
 
       {/* Public Routes  */}
-      <Route path="reach-siwan" element={<ReachSiwan />} />
       <Route path="contact-us" element={<ContactUs />} />
       <Route path="programs" element={<Programs />} />
       <Route path="reach-us" element={<ReachUs />} />

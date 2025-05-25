@@ -1,5 +1,5 @@
 import { Linkedin } from "lucide-react";
-import YamikaPatelImage from "../../../../assets/images/tpo_members/yamika_patel.jpg";
+import YamikaPatelImage from "../../../assets/images/tpo_members/yamika_patel.jpg";
 
 const profiles = [
   {
