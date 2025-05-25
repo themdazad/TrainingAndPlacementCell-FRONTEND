@@ -3,11 +3,11 @@ import { NavLink } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <footer className="max-w-[1980px] bg-stone-100 m-auto px-[5%] py-10 sm:pt-16 border-t-4  border-blue-500 dark:bg-stone-800">
+    <footer className="max-w-[1980px] bg-zinc-100 m-auto px-[5%] py-10 sm:pt-16 border-t-4  border-blue-500 dark:bg-zinc-800">
       <div className="grid grid-cols-2 sm:col-span-3 md:grid-cols-6 gap-y-6 gap-x-12">
         {/* About Section */}
         <div>
-          <h4 className="font-semibold tracking-widest text-stone-400 dark:text-stone-300 uppercase">
+          <h4 className="font-semibold tracking-widest text-zinc-400 dark:text-zinc-300 uppercase">
             About
           </h4>
           <ul className="mt-4 grid grid-cols-1">
@@ -28,7 +28,7 @@ export default function Footer() {
 
         {/* Resources Section */}
         <div>
-          <h4 className="font-semibold tracking-widest text-stone-400 dark:text-stone-300 uppercase">
+          <h4 className="font-semibold tracking-widest text-zinc-400 dark:text-zinc-300 uppercase">
             Resources
           </h4>
           <ul className="mt-4 space-y-1">
@@ -52,7 +52,7 @@ export default function Footer() {
 
         {/* Useful Links Section */}
         <div>
-          <h4 className="font-semibold tracking-widest text-stone-400 dark:text-stone-300 uppercase">
+          <h4 className="font-semibold tracking-widest text-zinc-400 dark:text-zinc-300 uppercase">
             Useful Links
           </h4>
           <ul className="mt-4 space-y-1">
@@ -77,7 +77,7 @@ export default function Footer() {
 
         {/* Credit Section */}
         <div>
-          <h4 className="font-semibold tracking-widest text-stone-400 dark:text-stone-300 uppercase">
+          <h4 className="font-semibold tracking-widest text-zinc-400 dark:text-zinc-300 uppercase">
             Credit
           </h4>
           <ul className="mt-6 space-y-1">
@@ -98,7 +98,7 @@ export default function Footer() {
 
         {/* Newsletter Section */}
         <div className="col-span-2 md:col-span-1 lg:col-span-2 lg:pl-8">
-          <h4 className="font-semibold tracking-widest text-stone-400 dark:text-stone-300 uppercase">
+          <h4 className="font-semibold tracking-widest text-zinc-400 dark:text-zinc-300 uppercase">
             Subscribe to Newsletter
           </h4>
           <form className="mt-6">
@@ -109,7 +109,7 @@ export default function Footer() {
               type="email"
               id="email"
               placeholder="Enter your email"
-              className="block w-full p-4 text-black dark:text-white placeholder-stone-500 dark:placeholder-stone-300 bg-white dark:bg-stone-700 border border-stone-200 dark:border-stone-600 rounded-3xl focus:outline-none focus: border-blue-500"
+              className="block w-full p-4 text-black dark:text-white placeholder-zinc-500 dark:placeholder-zinc-300 bg-white dark:bg-zinc-700 border border-zinc-200 dark:border-zinc-600 rounded-3xl focus:outline-none focus: border-blue-500"
             />
             <button
               type="submit"
@@ -125,7 +125,7 @@ export default function Footer() {
       <Divider className="mt-10 mb-6" />
 
       {/* Bottom bar */}
-      <div className="text-center flex flex-col md:flex-row justify-center items-center gap-3 text-stone-600 dark:text-stone-300">
+      <div className="text-center flex flex-col md:flex-row justify-center items-center gap-3 text-zinc-600 dark:text-zinc-300">
         <p>
           © 2025, All Rights Reserved by{" "}
           <a

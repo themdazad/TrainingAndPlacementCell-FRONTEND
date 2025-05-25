@@ -79,14 +79,14 @@ export default function StudentDashboard() {
       <ToastContainer />
       {/* Sidebar */}
       {isOpen && (
-        <motion.div className="border-r border-stone-500/40 p-4 flex flex-col relative space-y-3">
+        <motion.div className="border-r border-zinc-500/40 p-4 flex flex-col relative space-y-3">
           <div className="sticky top-0">
             <ul className="mt-12 space-y-4">
               {menuItems.map((item, index) => (
                 <li
                   key={index}
-                  className={`flex items-center gap-4 p-2 cursor-pointer dark:hover:bg-stone-800 hover:bg-blue-100 rounded-lg ${
-                    activeTab === item.name ? "bg-stone-500/40" : ""
+                  className={`flex items-center gap-4 p-2 cursor-pointer dark:hover:bg-zinc-800 hover:bg-blue-100 rounded-lg ${
+                    activeTab === item.name ? "bg-zinc-500/40" : ""
                   }`}
                   onClick={() => setActiveTab(item.name)}
                 >

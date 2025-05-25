@@ -90,7 +90,7 @@ export default function NavBar() {
       } transition-all duration-500 ease-in-out`}
     >
       {/* 1st row */}
-      <header className="navHeader px-[5%] py-4 bg-white dark:bg-stone-900 min-h-[100px] flex justify-between items-center">
+      <header className="navHeader px-[5%] py-4 bg-white dark:bg-zinc-900 min-h-[100px] flex justify-between items-center">
         <div className="flex items-center gap-3 md:gap-6 lg:gap-12">
           <div className="brand-logo min-h-[40px] max-h-[64px] aspect-square">
             <Image
@@ -135,14 +135,14 @@ export default function NavBar() {
       </header>
 
       {/* 2nd row */}
-      <header className="mx-auto relative bg-blue-100 dark:bg-stone-800">
+      <header className="mx-auto relative bg-blue-100 dark:bg-zinc-800">
         <div className="px-[5%] flex items-center justify-between py-2 relative z-50">
           {/* Hamburger */}
           <button
             ref={hamburgerRef}
             type="button"
             onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
-            className="inline-flex p-2 text-black dark:text-white transition-all duration-200 rounded-md lg:hidden focus:bg-stone-100 hover:bg-stone-100 dark:focus:bg-stone-700 dark:hover:bg-stone-700"
+            className="inline-flex p-2 text-black dark:text-white transition-all duration-200 rounded-md lg:hidden focus:bg-zinc-100 hover:bg-zinc-100 dark:focus:bg-zinc-700 dark:hover:bg-zinc-700"
           >
             <svg
               className={`${isMobileMenuOpen ? "hidden" : "block"} w-6 h-6`}
@@ -203,7 +203,7 @@ export default function NavBar() {
                     <ChevronDown className="rotate-0 group-hover:rotate-180 transition-rotate duration-300" />
                   </span>
                   <ul
-                    className={`absolute left-1/2 transform -translate-x-1/2 min-w-max text-small rounded-md border-t-4 border-t-blue-600 bg-white dark:bg-stone-800 py-2 px-6 space-y-4 transition-all duration-200 ${
+                    className={`absolute left-1/2 transform -translate-x-1/2 min-w-max text-small rounded-md border-t-4 border-t-blue-600 bg-white dark:bg-zinc-800 py-2 px-6 space-y-4 transition-all duration-200 ${
                       isDropdownOpen[link.name] ? "flex flex-col" : "hidden"
                     }`}
                   >
@@ -226,7 +226,7 @@ export default function NavBar() {
           {/* Mobile Dropdown */}
           <div
             ref={mobileMenuRef}
-            className={`lg:hidden absolute py-12 top-[60px] left-0 w-screen bg-white dark:bg-stone-900 z-40 shadow-md transition-all duration-300 ease-in-out overflow-hidden ${
+            className={`lg:hidden absolute py-12 top-[60px] left-0 w-screen bg-white dark:bg-zinc-900 z-40 shadow-md transition-all duration-300 ease-in-out overflow-hidden ${
               isMobileMenuOpen
                 ? "max-h-screen opacity-100"
                 : "max-h-0 opacity-0"
@@ -244,8 +244,8 @@ export default function NavBar() {
                       `py-4 px-2 text-lg rounded-md ${
                         isActive
                           ? "text-blue-500 dark:text-blue-400 font-semibold"
-                          : "text-stone-800 dark:text-white"
-                      } hover:bg-stone-100 dark:hover:bg-stone-800 transition-all`
+                          : "text-zinc-800 dark:text-white"
+                      } hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all`
                     }
                   >
                     {link.name}
@@ -253,7 +253,7 @@ export default function NavBar() {
                 ) : (
                   <div key={index} className="flex flex-col gap-2">
                     <button
-                      className="text-lg text-left w-full px-2 py-3 rounded-md text-stone-800 dark:text-white font-semibold flex justify-between items-center hover:bg-stone-100 dark:hover:bg-stone-800"
+                      className="text-lg text-left w-full px-2 py-3 rounded-md text-zinc-800 dark:text-white font-semibold flex justify-between items-center hover:bg-zinc-100 dark:hover:bg-zinc-800"
                       onClick={() => handleDropdownToggle(link.name)}
                     >
                       {link.name}
@@ -279,8 +279,8 @@ export default function NavBar() {
                               `block px-2 py-3 text-md rounded-3xl ${
                                 isActive
                                   ? "text-blue-500 dark:text-blue-400 font-medium"
-                                  : "text-stone-800 dark:text-white"
-                              } hover:bg-stone-100 dark:hover:bg-stone-800 transition-all`
+                                  : "text-zinc-800 dark:text-white"
+                              } hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all`
                             }
                           >
                             {item.name}
@@ -306,10 +306,10 @@ export default function NavBar() {
                   ? "/dashboard/student"
                   : "/auth/student/login"
               }
-              className="flex items-center gap-2 text-stone-800 dark:text-stone-100"
+              className="flex items-center gap-2 text-zinc-800 dark:text-zinc-100"
             >
               <Image
-                className="rounded-full border border-stone-300 dark:border-stone-600 w-10 h-10 object-cover"
+                className="rounded-full border border-zinc-300 dark:border-zinc-600 w-10 h-10 object-cover"
                 src="https://www.bu.edu/prsocial/files/2019/07/profile-default-photo.jpg"
                 alt="user-profile"
               />
