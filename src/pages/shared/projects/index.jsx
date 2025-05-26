@@ -14,7 +14,7 @@ import BreadCrumbs from "../../../components/ui/BreadCrumbs.jsx";
 export const projectsData = projects;
 const breadcrumbItems = [
   { label: "Home", to: "/" },
-  { label: "Projects", to: "/projects" , isCurrent: true }, // No `to` = current page
+  { label: "Projects", to: "/projects", isCurrent: true }, // No `to` = current page
 ];
 const Projects = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -50,7 +50,9 @@ const Projects = () => {
     <section className="max-w-[1980px] px-[5%] mx-auto text-zinc-900 dark:text-zinc-100 bg-white dark:bg-zinc-900">
       {/* Header */}
       <div className="header flex flex-col  justify-center py-12">
-        <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold">PROJECTS</h1>
+        <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold">
+          PROJECTS
+        </h1>
         <p className="mt-3 max-w-2xl text-zinc-600 dark:text-zinc-400">
           Explore our student's projects and initiatives that showcase our
           commitment to excellence and innovation.
@@ -58,9 +60,7 @@ const Projects = () => {
       </div>
 
       {/* breadcrumbs */}
-            <div className="px-[5%]">
-              <BreadCrumbs items={breadcrumbItems} />
-            </div>
+      <BreadCrumbs items={breadcrumbItems} />
 
       {/* Search and Sort */}
       <div className="mt-4 flex flex-col sm:flex-row justify-end items-center gap-4">

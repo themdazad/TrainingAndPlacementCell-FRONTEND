@@ -44,19 +44,10 @@ const item = {
 
 export default function AcademicPrograms() {
   return (
-    <section className="min-h-[100px] dark:bg-zinc-900 px-[5%] my-[100px] transition-colors duration-300">
-      <div className="academic-program grid gap-16">
-        <div className="academic-program__title text-center">
-          <h1 className="font-extrabold text-lg md:text-3xl text-zinc-900 dark:text-white">
-            Academic Programs
-          </h1>
-          <p className="text-zinc-700 dark:text-zinc-300">
-            Bachelor of Technology | Undergraduate Program
-          </p>
-        </div>
-
+    <section className="min-h-[100px] dark:bg-zinc-900 px-[5%] my-[100px] py-24 transition-colors duration-300 ">
+      <div className="academic-program">       
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
           variants={container}
           initial="hidden"
           whileInView="show"

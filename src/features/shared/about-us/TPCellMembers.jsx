@@ -15,7 +15,7 @@ const profiles = [
   {
     title: "Asst. T&P Officer",
     image: "https://placehold.co/128x128?text=SK", 
-    name: "Prof. Sweta Kumari",
+    name: "Dr. Sweta Kumari",
     designation: "Asst. Professor, Electrical Engineering",
     mobile: "+91 9905618148",
     email: "swetagecsiwanee@gmail.com",

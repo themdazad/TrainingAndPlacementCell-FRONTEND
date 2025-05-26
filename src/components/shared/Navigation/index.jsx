@@ -11,6 +11,13 @@ const navLinks = [
   { name: "Home", path: "/" },
   { name: "Student's Projects", path: "/projects" },
   {
+    name: "Training", 
+    dropdown: true,
+    items: [
+      { name: "Summer Web Development 2025", path: "/training/summer-web-development-2025" },
+    ],
+  },
+  {
     name: "Academics",
     dropdown: true,
     items: [
@@ -182,7 +189,7 @@ export default function NavBar() {
                   key={index}
                   to={link.path}
                   className={({ isActive }) =>
-                    `relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-blue-600 dark:after:bg-blue-400 after:transition-all after:duration-300 ${
+                    `relative after:bg-blue-600 dark:after:bg-blue-400  ${
                       isActive
                         ? "text-blue-500 dark:text-blue-400 after:w-full"
                         : "text-black dark:text-white after:w-0 group-hover:after:w-full"
