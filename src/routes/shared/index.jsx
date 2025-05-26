@@ -15,6 +15,7 @@ import CourseHighlights from "../../pages/shared/academics/course-highlights/ind
 import ProjectDetailsPage from "../../pages/shared/projects/project-details-page.jsx";
 import ReachUs from "../../pages/shared/reach-us/index.jsx";
 import AboutUs from "../../pages/shared/about-us/index.jsx";
+import SummerWebDevelopment2025 from "../../pages/shared/training/summer-web-development-2025/index.jsx";
 
 
 const AppRoutes = () => {
@@ -43,12 +44,18 @@ const AppRoutes = () => {
         <Route path="course-highlights" element={<CourseHighlights />} />
       </Route>
       {/* resources */}
+      <Route path="/training">
+        <Route
+          path="summer-web-development-2025"
+          element={<SummerWebDevelopment2025 />}
+        />
+      </Route>
       <Route path="/projects">
         <Route index element={<Projects />} />
         <Route path=":title/:id" element={<ProjectDetailsPage />} />
       </Route>
+
       <Route path="campus-placement-2025" element={<CampusPlacements2025 />} />
-     
     </Routes>
   );
 };
