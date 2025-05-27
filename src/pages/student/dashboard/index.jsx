@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
 import { motion } from "framer-motion";
+import { toast } from "react-toastify";
 import {
   Home,
   Book,
@@ -10,7 +12,6 @@ import {
   LogOut,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
 import { Button } from "@heroui/react";
 import Profile from "../../../components/student/dashboard/dashboard-tab/Profile";
 import { useAuth } from "../../../hooks/contexts/auth/AuthContext"; // Adjust path as needed
@@ -42,9 +43,10 @@ export default function StudentDashboard() {
           withCredentials: true,
         }
       );
-
+        console.log("Logout response:", res);
       if (res.status === 200) {
         setIsLogedIn({ admin: false, student: false }); // Reset state
+        toast.error("Logged out successfully");
         navigate("/");
       }
     } catch (error) {
@@ -76,7 +78,6 @@ export default function StudentDashboard() {
 
   return (
     <div className="flex min-h-screen">
-      <ToastContainer />
       {/* Sidebar */}
       {isOpen && (
         <motion.div className="border-r border-zinc-500/40 p-4 flex flex-col relative space-y-3">
