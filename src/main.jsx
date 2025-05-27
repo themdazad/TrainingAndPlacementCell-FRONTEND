@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { Suspense, lazy, useState, useEffect } from "react";
+import {ToastContainer} from "react-toastify";
 import ReactDOM from "react-dom/client";
 import "./styles/index.css";
 import "./styles/MouseCursorGradientTracking.css";
@@ -20,6 +21,7 @@ const StudentRoutes = lazy(() => import("./routes/student"));
 function App() {
   return (
     <HeroUIProvider>
+       <ToastContainer />
       <main className="text-foreground bg-background dark:bg-[#111112] min-h-screen">
         <Suspense fallback={<Loader />}>
           <NavBar />

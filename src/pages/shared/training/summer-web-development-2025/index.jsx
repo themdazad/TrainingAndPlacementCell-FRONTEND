@@ -76,7 +76,7 @@ export default function SummerWebDevelopment2025() {
       {/* Register CTA */}
       <section className="px-[5%] py-12 flex justify-center">
         <div className="bg-white dark:bg-zinc-800 rounded-3xl shadow-md p-8 rounded-3xl text-center max-w-xl w-full">
-          <h2 className="text-2xl font-bold mb-3">Register Open</h2>
+          <h2 className="text-2xl font-bold mb-3">Registration Open</h2>
           <p className="text-zinc-600 dark:text-zinc-300 mb-6">
             Summer Web Development Program 2025 is now open for registration!
             Join us to learn the latest web technologies and build real-world

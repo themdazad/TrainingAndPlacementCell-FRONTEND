@@ -29,7 +29,7 @@ const PrivateRoute = ({ children }) => {
 
   if (loading) return null; // Or show a spinner
 
-  return isValid ? children : <Navigate to="/" />;
+  return (isValid ? children : <Navigate to="/" />)
 };
 
 export default PrivateRoute;

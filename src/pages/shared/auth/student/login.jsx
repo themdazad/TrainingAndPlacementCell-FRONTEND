@@ -4,7 +4,7 @@ import { Image } from "@heroui/react";
 import { Button, Card, CardBody, Input, Link } from "@heroui/react";
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import axios from "axios";
 import { useContext } from "react";
 import AuthContext from "../../../../hooks/contexts/auth/AuthContext";
