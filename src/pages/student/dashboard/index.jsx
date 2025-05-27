@@ -14,6 +14,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { Button } from "@heroui/react";
 import Profile from "../../../components/student/dashboard/dashboard-tab/Profile";
+import ResumeBuilder from "../../../features/student/resume-builder/ResumeBuilder";
 import { useAuth } from "../../../hooks/contexts/auth/AuthContext"; // Adjust path as needed
 
 const menuItems = [
@@ -68,7 +69,7 @@ export default function StudentDashboard() {
       case "Placements":
         return <p>Placements Section</p>;
       case "Resume Builder":
-        return <p>Coming Soon...</p>;
+        return <ResumeBuilder/>;
       case "Settings":
         return <p>Settings Section</p>;
       default:
@@ -77,10 +78,10 @@ export default function StudentDashboard() {
   };
 
   return (
-    <div className="flex min-h-screen">
+    <main className="flex min-h-screen max-w-[1980px] m-auto">
       {/* Sidebar */}
       {isOpen && (
-        <motion.div className="border-r border-zinc-500/40 p-4 flex flex-col relative space-y-3">
+        <motion.div className="border-r border-zinc-500/40 p-6 px-12 flex flex-col relative space-y-3">
           <div className="sticky top-0">
             <ul className="mt-12 space-y-4">
               {menuItems.map((item, index) => (
@@ -128,6 +129,6 @@ export default function StudentDashboard() {
         </div>
         {renderContent()}
       </div>
-    </div>
+    </main>
   );
 }
