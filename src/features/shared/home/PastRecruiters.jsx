@@ -1,3 +1,4 @@
+import { Image } from "@heroui/react";
 
 const logos = [
   {
@@ -68,12 +69,12 @@ const PastRecruiters = () => {
         <div className="py-[24px] text-2xl md:text-[32px] font-extrabold">
           Past Recruiters
         </div>
-        {/* logos */}
+        {/* logos bar */}
         <div
-          className="group relative flex justify-center gap-6 overflow-hidden p-2"
+          className="group relative flex justify-center md:w-[70%] gap-6 overflow-hidden p-2"
           style={{
             maskImage:
-              "linear-gradient(to left, transparent 0%, black 20%, black 80%, transparent 95%)",
+              "linear-gradient(to left, transparent 0%, black40%, black 60%, transparent 95%)",
           }}
         >
           {Array(5)
@@ -89,7 +90,7 @@ const PastRecruiters = () => {
                 >
                   {logos.map((logo, key) => (
                     <a href={`${logo.link}`} target="_blank">
-                      <img
+                      <Image
                         key={key}
                         src={logo.url}
                         className="max-h-12 px-2 mix-blend-multiply saturate-0 hover:saturate-100 transition-all duration-500 hover:scale-110 dark:invert"

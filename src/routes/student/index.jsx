@@ -2,10 +2,9 @@ import { Routes, Route } from "react-router-dom";
 import StudentDashboard from "../../pages/student/dashboard/index.jsx";
 import PrivateRoute from "../../components/auth/PrivateRoute.jsx";
 
-
 const studentRoutes = [
   {
-    Path: "dashboard/student",
+    path: "/dashboard/student",
     Page: <StudentDashboard />,
   },
 ];
@@ -17,7 +16,7 @@ const AppRoutes = () => {
         return (
           <Route
             key={index}
-            path={value.Path}
+            path={value.path}
             element={<PrivateRoute>{value.Page}</PrivateRoute>}
           />
         );
@@ -25,4 +24,5 @@ const AppRoutes = () => {
     </Routes>
   );
 };
+
 export default AppRoutes;

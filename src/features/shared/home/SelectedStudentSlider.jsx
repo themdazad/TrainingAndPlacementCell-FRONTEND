@@ -1,129 +1,5 @@
+import studentDetails from "../../../assets/data/PlacedStudentDetails";
 import { useEffect, useState } from "react";
-import { Image } from "@heroui/react";
-
-const studentDetails = [
-  // 🔼 Batch 2025 Students
-  {
-    image: "/images/students2025/abhishek22102151907.jpg",
-    details: {
-      name: "Abhishek Kumar Singh",
-      rollNumber: "22102151907",
-      branch: "Mechanical Engineering",
-      college: "Government Engineering College, Siwan",
-      email: "abhishek.gecs@gmail.com",
-      phone: "+91-8804080749",
-      company: "High-Technext Engineering & Telcom Pvt. Ltd. ",
-      package: "4.5LPA",
-      location: "Bihar/Kolkata/Jharkhand/UP",
-      joiningDate: "2025-07-10",
-      internship: false,
-      skills: [
-        "AutoCAD",
-        "Solidworks",
-        "Ansys",
-        "CNC Programming",
-        " Welding Tech.",
-      ],
-      linkedIn: "https://www.linkedin.com/in/abhishek-kumar-singh-8312a931b",
-      batch: 2025,
-    },
-  },
-  {
-    image: "/images/students2025/hanshraj21103151013.jpg",
-    details: {
-      name: "Hanshraj Meena",
-      rollNumber: "21103151013",
-      branch: "Electrical Engineering",
-      college: "NIT Example",
-      email: "hanshraj.meena@example.com",
-      phone: "+91-9876543102",
-      company: "ADFF Company",
-      package: "5 LPA",
-      location: "Hyderabad",
-      joiningDate: "2025-07-15",
-      internship: false,
-      skills: ["Circuit Design", "Embedded Systems"],
-      linkedIn: "https://linkedin.com/in/",
-      batch: 2025,
-    },
-  },
-  {
-    image: "/images/students2025/nishant21103151005.jpg",
-    details: {
-      name: "Nishant Raj",
-      rollNumber: "21103151005",
-      branch: "Electrical Engineering",
-      college: "",
-      email: "",
-      phone: "+91-",
-      company: "",
-      package: "",
-      location: "",
-      joiningDate: "",
-      internship: true,
-      skills: ["Teamwork", "AutoCAD", "Power Systems"],
-      linkedIn: "https://linkedin.com/in/",
-      batch: 2025,
-    },
-  },
-  {
-    image: "/images/students2025/prakash21103151003.jpg",
-    details: {
-      name: "Prakash Sharma",
-      rollNumber: "21103151003",
-      branch: "Electrical Engineering",
-      college: "NIT Example",
-      email: "",
-      phone: "+91-",
-      company: "",
-      package: "",
-      location: "",
-      joiningDate: "",
-      internship: false,
-      skills: ["SCADA", "Matlab"],
-      linkedIn: "https://linkedin.com/in/",
-      batch: 2025,
-    },
-  },
-  {
-    image: "/images/students2025/romi22102151903.jpg",
-    details: {
-      name: "Romi Patel",
-      rollNumber: "22102151903",
-      branch: "Electrical Engineering",
-      college: "",
-      email: "",
-      phone: "+91-",
-      company: "",
-      package: "",
-      location: "Ahmedabad",
-      joiningDate: "2025-07-22",
-      internship: true,
-      skills: ["Communication", "Testing", "Instrumentation"],
-      linkedIn: "https://linkedin.com/in/",
-      batch: 2025,
-    },
-  },
-  {
-    image: "/images/students2025/sidhant21103151018.jpg",
-    details: {
-      name: "Sidhant Singh",
-      rollNumber: "21103151018",
-      branch: "Electrical Engineering",
-      college: "NIT Example",
-      email: "sidhant.singh@example.com",
-      phone: "+91-9876543107",
-      company: "11123 Company",
-      package: "5 LPA",
-      location: "Kolkata",
-      joiningDate: "2025-07-30",
-      internship: true,
-      skills: ["Project Management", "Control Systems"],
-      linkedIn: "https://linkedin.com/in/",
-      batch: 2025,
-    },
-  },
-];
 
 function AvatarCarousel({
   avatarSize = 140,
@@ -209,8 +85,8 @@ function AvatarCarousel({
                 transformOrigin: "top left",
               }}
             >
-              <h2 className="text-[12px] font-bold">{avatar.details.name}</h2>
-              <p className="text-[12px]">{avatar.details.rollNumber}</p>
+              <h2 className="font-bold">{avatar.details.package}</h2>
+              <p className="text-[12px]">{avatar.details.name} | {avatar.details.rollNumber}</p>
             </a>
           </div>
         );
@@ -222,7 +98,7 @@ function AvatarCarousel({
 const SelectedStudentSlider = () => {
   return (
     <>
-      <div className="flex h-full w-full flex-col items-center justify-center py-10">
+      <div className="flex h-full w-full flex-col items-center justify-center">
         <h1 className="text-xl font-extrabold text-zinc-800 dark:text-zinc-100">
           Recently Placed Students
         </h1>

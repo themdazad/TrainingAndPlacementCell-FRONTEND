@@ -27,6 +27,8 @@ const cards = [
       "Our partnerships with companies offer students real-world exposure through internships, workshops, and capzinc project collaborations — verified annually by our T&P Cell.",
   },
 ];
+
+
 const container = {
   hidden: { opacity: 0 },
   show: {

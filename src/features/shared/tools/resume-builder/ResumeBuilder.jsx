@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import {Button} from "@heroui/react";
 import { X } from "lucide-react";
-import GECSIWAN_LOGO from "../../../assets/images/logos/gecsiwanlogo.svg";
+import GECSIWAN_LOGO from "../../../../assets/images/logos/gecsiwanlogo.svg";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 

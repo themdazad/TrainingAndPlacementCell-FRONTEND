@@ -16,6 +16,7 @@ import ProjectDetailsPage from "../../pages/shared/projects/project-details-page
 import ReachUs from "../../pages/shared/reach-us/index.jsx";
 import AboutUs from "../../pages/shared/about-us/index.jsx";
 import SummerWebDevelopment2025 from "../../pages/shared/training/summer-web-development-2025/index.jsx";
+import ResumeBuilderTool from "../../pages/shared/resume-builder/index.jsx";
 
 
 const AppRoutes = () => {
@@ -38,6 +39,7 @@ const AppRoutes = () => {
       {/* Public Routes  */}
       <Route path="contact-us" element={<ContactUs />} />
       <Route path="programs" element={<Programs />} />
+      <Route path="/tools/resume-builder" element={<ResumeBuilderTool />} />
       <Route path="reach-us" element={<ReachUs />} />
       <Route path="about-us" element={<AboutUs />} />
       <Route path="/academics">

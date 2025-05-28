@@ -5,32 +5,79 @@ import { Image } from "@heroui/react";
 import { ChevronDown, ChevronUp, BellDot } from "lucide-react";
 import { useAuth } from "../../../hooks/contexts/auth/AuthContext"; // Adjust path as needed
 import ThemeSwitch from "../../ui/ThemeSwitch";
-import axios from "axios";
 
 const navLinks = [
   { name: "Home", path: "/" },
-  { name: "Student's Projects", path: "/projects" },
+
+  // Learn & Prepare
   {
-    name: "Training", 
+    name: "Learn & Prepare",
     dropdown: true,
     items: [
-      { name: "Summer Web Development 2025", path: "/training/summer-web-development-2025" },
-    ],
-  },
-  {
-    name: "Academics",
-    dropdown: true,
-    items: [
+      { name: "Projects", path: "/projects" },
       { name: "Programs", path: "/programs" },
       { name: "Course Highlights", path: "/academics/course-highlights" },
+      { name: "Skill Courses", path: "/academics/skills" },
+      { name: "Certifications", path: "/academics/certifications" },
+      { name: "Aptitude & Soft Skills", path: "/training/aptitude-softskills" },
     ],
   },
+
+  // Career & Events
   {
-    name: "Recruiter",
+    name: "Career & Events",
     dropdown: true,
-    items: [{ name: "Reach us", path: "/reach-us" }],
+    items: [
+      { name: "Upcoming Drives", path: "/events/upcoming-drives" },
+      { name: "Workshops & Webinars", path: "/events/workshops" },
+      { name: "Hackathons", path: "/events/hackathons" },
+      { name: "Placement Calendar", path: "/events/placement-calendar" },
+      { name: "Mock Interviews", path: "/training/mock-interview" },
+    ],
   },
-  { name: "About Us", path: "/about-us" },
+
+  // Resources
+  {
+    name: "Resources",
+    dropdown: true,
+    items: [
+      { name: "Resume Builder", path: "/tools/resume-builder" },
+      { name: "Resume Templates", path: "/resources/resume-templates" },
+      { name: "Interview Q&A Bank", path: "/resources/qa-bank" },
+      { name: "Company Profiles", path: "/resources/company-profiles" },
+      { name: "Placement Preparation Guide", path: "/resources/guide" },
+    ],
+  },
+
+  // Community
+  {
+    name: "Community",
+    dropdown: true,
+    items: [
+      { name: "Alumni Connect", path: "/alumni/connect" },
+      { name: "Success Stories", path: "/alumni/success-stories" },
+      { name: "Mentorship Program", path: "/alumni/mentorship" },
+      { name: "Photo Gallery", path: "/events/gallery" },
+    ],
+  },
+
+  // Recruiters
+  {
+    name: "Recruiters",
+    dropdown: true,
+    items: [
+      { name: "Why Recruit From Us?", path: "/recruiter/why-us" },
+      { name: "Past Recruiters", path: "/recruiter/past-recruiters" },
+      { name: "Recruiter Registration", path: "/recruiter/registration" },
+      { name: "Contact Us", path: "/reach-us" },
+    ],
+  },
+
+  // Static Info
+  {
+    name: "About",
+    path: "/about-us",
+  },
 ];
 
 export default function NavBar() {
@@ -142,7 +189,7 @@ export default function NavBar() {
       </header>
 
       {/* 2nd row */}
-      <header className="mx-auto relative bg-blue-100 dark:bg-zinc-800">
+      <header className="mx-auto relative bg-zinc-100 dark:bg-zinc-800">
         <div className="px-[5%] flex items-center justify-between py-2 relative z-50">
           {/* Hamburger */}
           <button
@@ -182,7 +229,7 @@ export default function NavBar() {
           </button>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex lg:items-center lg:space-x-10">
+          <div className="hidden lg:flex lg:items-center lg:space-x-6">
             {navLinks.map((link, index) =>
               !link.dropdown ? (
                 <NavLink
@@ -210,19 +257,18 @@ export default function NavBar() {
                     <ChevronDown className="rotate-0 group-hover:rotate-180 transition-rotate duration-300" />
                   </span>
                   <ul
-                    className={`absolute left-1/2 transform -translate-x-1/2 min-w-max text-small rounded-md border-t-4 border-t-blue-600 bg-white dark:bg-zinc-800 py-2 px-6 space-y-4 transition-all duration-200 ${
+                    className={`absolute  shadow-md left-1/2 transform -translate-x-1/2 min-w-max text-small rounded-xl border-t-4 border-t-blue-600 bg-white dark:bg-zinc-800 p-3  transition-all duration-200 ${
                       isDropdownOpen[link.name] ? "flex flex-col" : "hidden"
                     }`}
                   >
                     {link.items.map((item, idx) => (
-                      <li key={idx}>
-                        <NavLink
-                          to={item.path}
-                          className="text-black dark:text-white hover:text-blue-500 dark:hover:text-blue-400 space-y-4"
-                        >
-                          {item.name}
-                        </NavLink>
-                      </li>
+                      <NavLink
+                        key={idx}
+                        to={item.path}
+                        className="text-black dark:text-white hover:text-blue-500 dark:hover:text-blue-400 hover:bg-blue-100 rounded-3xl w-full py- px-3"
+                      >
+                        {item.name}
+                      </NavLink>
                     ))}
                   </ul>
                 </div>
@@ -324,7 +370,6 @@ export default function NavBar() {
                 {isLogedIn?.student ? "Dashboard" : "Login"}
               </span>
             </NavLink>
-
           </div>
         </div>
       </header>

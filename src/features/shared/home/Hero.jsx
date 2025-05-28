@@ -11,7 +11,7 @@ export default function Hero() {
     <section className="px-[5%] sm:py-16">
       <div className="grid items-center py-12 grid-cols-1 gap-12 lg:grid-cols-2">
         <div>
-          <h1 className="dm-serif-text-bold mt-2 lg:mt-8 text-3xl sm:text-6xl font-extrabold text-zinc-900 dark:text-white">
+          <h1 className="dm-serif-text-bold mt-2 lg:mt-8 text-4xl sm:text-6xl font-extrabold text-zinc-900 dark:text-white">
             {/* Campus Placement 2025 */}
             Training & Placement Cell
           </h1>
