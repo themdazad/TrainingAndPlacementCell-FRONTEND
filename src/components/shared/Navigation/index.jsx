@@ -265,7 +265,7 @@ export default function NavBar() {
                       <NavLink
                         key={idx}
                         to={item.path}
-                        className="text-black dark:text-white hover:text-blue-500 dark:hover:text-blue-400 hover:bg-blue-100 rounded-3xl w-full py- px-3"
+                        className="text-black dark:text-white hover:text-blue-500 dark:hover:text-blue-400 hover:bg-blue-100 rounded-3xl w-full py-2 px-3"
                       >
                         {item.name}
                       </NavLink>
