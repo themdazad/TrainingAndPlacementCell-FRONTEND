@@ -1,229 +1,388 @@
 import { useState, useRef } from "react";
-import html2canvas from "html2canvas";
+import { X } from "lucide-react";
+import GECSIWAN_LOGO from "../../../assets/images/logos/gecsiwanlogo.svg";
 import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
 
-export default function ResumeBuilder() {
-  const [form, setForm] = useState({
+const initialData = {
+  personalInfo: {
     name: "MD AZAD",
     title: "MERN Stack Web Developer",
     email: "collezian@gmail.com",
     phone: "+91 9110172886",
     location: "Vaishali, Bihar, India",
+  },
+  onlineProfiles: {
     github: "github/themdazad",
     linkedin: "linkedin/in/themdazad",
-    skills: "C/C++, Tailwind CSS, JavaScript, React.js, Node.js, MongoDB",
-    education:
-      "Electrical Engineering - GEC Siwan (2022–2026)\nDiploma in CSE - GP Chhapra (2019–2022)",
-    experience:
-      "Web Developer Intern at Sishar Global (June 2024–Aug 2024)\n- Redesigned landing page\n- Used Laravel & MySQL\n- Fixed UI bugs",
-    achievements:
-      "Infosys offer for Ass. Engineer\nLead technical club at GEC Siwan",
-  });
+  },
+  skills: ["C/C++", "Tailwind CSS", "JavaScript", "React.js", "Node.js", "MongoDB"],
+  education: [
+    { year: "2022–2026", course: "Electrical Engineering", institution: "GEC Siwan" },
+    { year: "2019–2022", course: "Diploma in CSE", institution: "GP Chhapra" },
+  ],
+  experience: [
+    {
+      role: "Web Developer Intern",
+      company: "Sishar Global",
+      duration: "June 2024–Aug 2024",
+      details: ["Redesigned landing page", "Used Laravel & MySQL", "Fixed UI bugs"],
+    },
+  ],
+  achievements: ["Infosys offer for Ass. Engineer", "Lead technical club at GEC Siwan"],
+};
+
+export default function ResumeBuilder() {
+  const [personalInfo, setPersonalInfo] = useState(initialData.personalInfo);
+  const [onlineProfiles, setOnlineProfiles] = useState(initialData.onlineProfiles);
+  const [skills, setSkills] = useState(initialData.skills);
+  const [education, setEducation] = useState(initialData.education);
+  const [experience, setExperience] = useState(initialData.experience);
+  const [achievements, setAchievements] = useState(initialData.achievements);
 
   const resumeRef = useRef();
 
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+  // Handlers for personal info
+  const handlePersonalInfoChange = (e) => {
+    setPersonalInfo({ ...personalInfo, [e.target.name]: e.target.value });
   };
 
-  const downloadPDF = () => {
+  // Handlers for online profiles
+  const handleOnlineProfilesChange = (e) => {
+    setOnlineProfiles({ ...onlineProfiles, [e.target.name]: e.target.value });
+  };
+
+  // Skill handlers
+  const addSkill = () => setSkills([...skills, ""]);
+  const updateSkill = (index, value) => {
+    const newSkills = [...skills];
+    newSkills[index] = value;
+    setSkills(newSkills);
+  };
+  const removeSkill = (index) => {
+    const newSkills = skills.filter((_, i) => i !== index);
+    setSkills(newSkills);
+  };
+
+  // Education handlers
+  const addEducation = () =>
+    setEducation([...education, { year: "", course: "", institution: "" }]);
+  const updateEducation = (index, field, value) => {
+    const newEducation = [...education];
+    newEducation[index][field] = value;
+    setEducation(newEducation);
+  };
+  const removeEducation = (index) => {
+    setEducation(education.filter((_, i) => i !== index));
+  };
+
+  // Experience handlers
+  const addExperience = () =>
+    setExperience([...experience, { role: "", company: "", duration: "", details: [""] }]);
+  const updateExperienceField = (index, field, value) => {
+    const newExperience = [...experience];
+    newExperience[index][field] = value;
+    setExperience(newExperience);
+  };
+  const addExperienceDetail = (index) => {
+    const newExperience = [...experience];
+    newExperience[index].details.push("");
+    setExperience(newExperience);
+  };
+  const updateExperienceDetail = (expIndex, detailIndex, value) => {
+    const newExperience = [...experience];
+    newExperience[expIndex].details[detailIndex] = value;
+    setExperience(newExperience);
+  };
+  const removeExperienceDetail = (expIndex, detailIndex) => {
+    const newExperience = [...experience];
+    newExperience[expIndex].details.splice(detailIndex, 1);
+    setExperience(newExperience);
+  };
+  const removeExperience = (index) => {
+    setExperience(experience.filter((_, i) => i !== index));
+  };
+
+  // Achievements handlers
+  const addAchievement = () => setAchievements([...achievements, ""]);
+  const updateAchievement = (index, value) => {
+    const newAchievements = [...achievements];
+    newAchievements[index] = value;
+    setAchievements(newAchievements);
+  };
+  const removeAchievement = (index) => {
+    setAchievements(achievements.filter((_, i) => i !== index));
+  };
+
+  // PDF download code unchanged
+  const downloadPDF = async () => {
+    const input = resumeRef.current;
+    if (!input) return;
+    window.scrollTo(0, 0);
+    const canvas = await html2canvas(input, { scale: 2, useCORS: true });
+    const imgData = canvas.toDataURL("image/png");
     const pdf = new jsPDF("p", "mm", "a4");
-    const margin = 10;
-    let y = margin;
-
-    pdf.setFont("helvetica", "bold");
-    pdf.setFontSize(16);
-    pdf.text(form.name, margin, y);
-    y += 8;
-
-    pdf.setFont("helvetica", "normal");
-    pdf.setFontSize(12);
-    pdf.text(form.title, margin, y);
-    y += 10;
-
-    // Contact Info
-    pdf.setFontSize(10);
-    pdf.text(`Email: ${form.email}`, margin, y);
-    y += 6;
-    pdf.text(`Phone: ${form.phone}`, margin, y);
-    y += 6;
-    pdf.text(`Location: ${form.location}`, margin, y);
-    y += 6;
-    pdf.text(`GitHub: ${form.github}`, margin, y);
-    y += 6;
-    pdf.text(`LinkedIn: ${form.linkedin}`, margin, y);
-    y += 10;
-
-    // Skills
-    pdf.setFont("helvetica", "bold");
-    pdf.setFontSize(12);
-    pdf.text("Skills", margin, y);
-    y += 6;
-    pdf.setFont("helvetica", "normal");
-    const skillsList = form.skills.split(",").map((s) => s.trim());
-    skillsList.forEach((skill) => {
-      pdf.text(`- ${skill}`, margin + 4, y);
-      y += 5;
-    });
-
-    y += 5;
-
-    // Education
-    pdf.setFont("helvetica", "bold");
-    pdf.setFontSize(12);
-    pdf.text("Education", margin, y);
-    y += 6;
-    pdf.setFont("helvetica", "normal");
-    form.education.split("\n").forEach((edu) => {
-      pdf.text(edu, margin + 4, y);
-      y += 5;
-    });
-
-    y += 5;
-
-    // Experience
-    pdf.setFont("helvetica", "bold");
-    pdf.setFontSize(12);
-    pdf.text("Experience", margin, y);
-    y += 6;
-    pdf.setFont("helvetica", "normal");
-    form.experience.split("\n").forEach((exp) => {
-      pdf.text(`- ${exp}`, margin + 4, y);
-      y += 5;
-    });
-
-    y += 5;
-
-    // Achievements
-    pdf.setFont("helvetica", "bold");
-    pdf.setFontSize(12);
-    pdf.text("Achievements", margin, y);
-    y += 6;
-    pdf.setFont("helvetica", "normal");
-    form.achievements.split("\n").forEach((ach) => {
-      pdf.text(`- ${ach}`, margin + 4, y);
-      y += 5;
-    });
-
-    pdf.save(`${form.name.replace(/\s+/g, "_")}_Resume.pdf`);
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+    const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+    pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+    pdf.save(`${personalInfo.name.replace(/\s+/g, "_")}_Resume.pdf`);
   };
-  
 
   return (
-    <div className="mt-24 bg-zinc-100 dark:bg-zinc-900 min-h-screen text-zinc-800 dark:text-zinc-100 transition-colors duration-300">
-      <div className="flex flex-col lg:flex-row gap-6">
-        {/* Form Section */}
-        <div className="w-full lg:w-1/2 bg-white dark:bg-zinc-800 p-6 rounded shadow space-y-6">
-          <h2 className="text-xl font-bold mb-4">Resume Builder</h2>
+    <div className="dark:bg-zinc-900 min-h-screen text-zinc-800 dark:text-zinc-100 transition-colors duration-300 py-8">
+      <div className="flex flex-col lg:flex-row gap-8 mx-auto">
+        {/* Edit Form */}
+        <div className="w-full lg:w-1/2 p-6 rounded shadow overflow-auto max-h-[90vh]">
+          <h2 className="text-2xl font-bold mb-6">Edit Resume</h2>
 
-          {/* Personal Information */}
-          <div>
-            <h3 className="text-lg font-semibold mb-2">Personal Information</h3>
-            {[
-              ["name", "Full Name"],
-              ["title", "Job Title"],
-              ["email", "Email"],
-              ["phone", "Phone"],
-              ["location", "Location"],
-            ].map(([field, label]) => (
+          {/* Personal Info */}
+          <section className="mb-6">
+            <h3 className="text-xl font-semibold mb-4">Personal Information</h3>
+            {["name", "title", "email", "phone", "location"].map((field) => (
               <div key={field} className="mb-4">
-                <label className="block font-medium mb-1">{label}</label>
+                <label className="block mb-1 capitalize font-medium">
+                  {field}
+                </label>
                 <input
                   type="text"
                   name={field}
-                  value={form[field]}
-                  onChange={handleChange}
+                  value={personalInfo[field]}
+                  onChange={handlePersonalInfoChange}
                   className="w-full p-2 border rounded bg-zinc-50 dark:bg-zinc-700"
                 />
               </div>
             ))}
-          </div>
+          </section>
 
           {/* Online Profiles */}
-          <div>
-            <h3 className="text-lg font-semibold mb-2">Online Profiles</h3>
-            {[
-              ["github", "GitHub"],
-              ["linkedin", "LinkedIn"],
-            ].map(([field, label]) => (
+          <section className="mb-6">
+            <h3 className="text-xl font-semibold mb-4">Online Profiles</h3>
+            {["github", "linkedin"].map((field) => (
               <div key={field} className="mb-4">
-                <label className="block font-medium mb-1">{label}</label>
+                <label className="block mb-1 capitalize font-medium">
+                  {field}
+                </label>
                 <input
                   type="text"
                   name={field}
-                  value={form[field]}
-                  onChange={handleChange}
+                  value={onlineProfiles[field]}
+                  onChange={handleOnlineProfilesChange}
                   className="w-full p-2 border rounded bg-zinc-50 dark:bg-zinc-700"
                 />
               </div>
             ))}
-          </div>
+          </section>
 
-          {/* Skills & Qualifications */}
-          <div>
-            <h3 className="text-lg font-semibold mb-2">
-              Skills & Qualifications
+          {/* Skills */}
+          <section className="mb-6">
+            <h3 className="text-xl font-semibold mb-4 flex items-center justify-between">
+              Skills
+              <button
+                onClick={addSkill}
+                className="text-md px-3 py-1 text-green-500 hover:text-green-700"
+                type="button"
+              >
+                + Add Skill
+              </button>
             </h3>
-            {[["skills", "Skills (comma-separated)"]].map(([field, label]) => (
-              <div key={field} className="mb-4">
-                <label className="block font-medium mb-1">{label}</label>
-                <textarea
-                  rows={3}
-                  name={field}
-                  value={form[field]}
-                  onChange={handleChange}
-                  className="w-full p-2 border rounded bg-zinc-50 dark:bg-zinc-700 resize-none"
+            {skills.map((skill, i) => (
+              <div key={i} className="flex mb-2 items-center">
+                <input
+                  type="text"
+                  value={skill}
+                  onChange={(e) => updateSkill(i, e.target.value)}
+                  className="flex-grow p-2 border rounded bg-zinc-50 dark:bg-zinc-700"
                 />
+                <button
+                  onClick={() => removeSkill(i)}
+                  className="ml-2 text-red-500 hover:text-red-600 px-2 py-1"
+                  type="button"
+                >
+                  <X />
+                </button>
               </div>
             ))}
-          </div>
+          </section>
 
-          {/* Education & Experience */}
-          <div>
-            <h3 className="text-lg font-semibold mb-2">
-              Education & Experience
+          {/* Education */}
+          <section className="mb-6">
+            <h3 className="text-xl font-semibold mb-4 flex items-center justify-between">
+              Education
+              <button
+                onClick={addEducation}
+                className="text-md px-3 py-1 text-green-500 hover:text-green-700"
+                type="button"
+              >
+                + Add Education
+              </button>
             </h3>
-            {[
-              ["education", "Education (newline-separated)"],
-              ["experience", "Experience (newline-separated)"],
-            ].map(([field, label]) => (
-              <div key={field} className="mb-4">
-                <label className="block font-medium mb-1">{label}</label>
-                <textarea
-                  rows={3}
-                  name={field}
-                  value={form[field]}
-                  onChange={handleChange}
-                  className="w-full p-2 border rounded bg-zinc-50 dark:bg-zinc-700 resize-none"
-                />
-              </div>
-            ))}
-          </div>
-
-          {/* Additional Information */}
-          <div>
-            <h3 className="text-lg font-semibold mb-2">
-              Additional Information
-            </h3>
-            {[["achievements", "Achievements (newline-separated)"]].map(
-              ([field, label]) => (
-                <div key={field} className="mb-4">
-                  <label className="block font-medium mb-1">{label}</label>
-                  <textarea
-                    rows={3}
-                    name={field}
-                    value={form[field]}
-                    onChange={handleChange}
-                    className="w-full p-2 border rounded bg-zinc-50 dark:bg-zinc-700 resize-none"
+            {education.map((edu, i) => (
+              <div
+                key={i}
+                className="mb-4 border rounded p-4 bg-zinc-50 dark:bg-zinc-700"
+              >
+                <div className="flex gap-4 mb-2">
+                  <input
+                    type="text"
+                    placeholder="Year"
+                    value={edu.year}
+                    onChange={(e) => updateEducation(i, "year", e.target.value)}
+                    className="flex-1 p-2 border rounded"
+                  />
+                  <input
+                    type="text"
+                    placeholder="Course"
+                    value={edu.course}
+                    onChange={(e) =>
+                      updateEducation(i, "course", e.target.value)
+                    }
+                    className="flex-2 p-2 border rounded"
                   />
                 </div>
-              )
-            )}
-          </div>
+                <div className="flex items-center justify-between">
+                  <input
+                    type="text"
+                    placeholder="Institution"
+                    value={edu.institution}
+                    onChange={(e) =>
+                      updateEducation(i, "institution", e.target.value)
+                    }
+                    className="w-full p-2 border rounded"
+                  />
+                  <button
+                    onClick={() => removeEducation(i)}
+                    className="ml-2 bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700"
+                    type="button"
+                  >
+                    Remove
+                  </button>
+                </div>
+              </div>
+            ))}
+          </section>
+
+          {/* Experience */}
+          <section className="mb-6">
+            <h3 className="text-xl font-semibold mb-4 flex items-center justify-between">
+              Experience
+              <button
+                onClick={addExperience}
+                className="text-md px-3 py-1 text-green-500 hover:text-green-700"
+                type="button"
+              >
+                + Add Experience
+              </button>
+            </h3>
+            {experience.map((exp, i) => (
+              <div
+                key={i}
+                className="mb-6 border rounded p-4 bg-zinc-50 dark:bg-zinc-700"
+              >
+                <div className="flex gap-4 mb-2">
+                  <input
+                    type="text"
+                    placeholder="Role"
+                    value={exp.role}
+                    onChange={(e) =>
+                      updateExperienceField(i, "role", e.target.value)
+                    }
+                    className="flex-1 p-2 border rounded"
+                  />
+                  <input
+                    type="text"
+                    placeholder="Company"
+                    value={exp.company}
+                    onChange={(e) =>
+                      updateExperienceField(i, "company", e.target.value)
+                    }
+                    className="flex-1 p-2 border rounded"
+                  />
+                  <input
+                    type="text"
+                    placeholder="Duration"
+                    value={exp.duration}
+                    onChange={(e) =>
+                      updateExperienceField(i, "duration", e.target.value)
+                    }
+                    className="flex-1 p-2 border rounded"
+                  />
+                </div>
+
+                <div className="mb-2">
+                  <h4 className="font-semibold mb-1">Details</h4>
+                  {exp.details.map((detail, dIdx) => (
+                    <div key={dIdx} className="flex items-center mb-1">
+                      <input
+                        type="text"
+                        value={detail}
+                        onChange={(e) =>
+                          updateExperienceDetail(i, dIdx, e.target.value)
+                        }
+                        className="flex-grow p-2 border rounded"
+                      />
+                      <button
+                        onClick={() => removeExperienceDetail(i, dIdx)}
+                        className="ml-2 bg-red-600 text-white px-2 py-1 rounded hover:bg-red-700"
+                        type="button"
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  ))}
+                  <button
+                    onClick={() => addExperienceDetail(i)}
+                    className="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700"
+                    type="button"
+                  >
+                    + Add Detail
+                  </button>
+                </div>
+
+                <button
+                  onClick={() => removeExperience(i)}
+                  className="bg-red-700 text-white px-3 py-1 rounded hover:bg-red-800"
+                  type="button"
+                >
+                  Remove Experience
+                </button>
+              </div>
+            ))}
+          </section>
+
+          {/* Achievements */}
+          <section className="mb-6">
+            <h3 className="text-xl font-semibold mb-4 flex items-center justify-between">
+              Achievements
+              <button
+                onClick={addAchievement}
+                className="text-md px-3 py-1 text-green-500 hover:text-green-700"
+                type="button"
+              >
+                + Add Achievement
+              </button>
+            </h3>
+            {achievements.map((ach, i) => (
+              <div key={i} className="flex mb-2 items-center">
+                <input
+                  type="text"
+                  value={ach}
+                  onChange={(e) => updateAchievement(i, e.target.value)}
+                  className="flex-grow p-2 border rounded bg-zinc-50 dark:bg-zinc-700"
+                />
+                <button
+                  onClick={() => removeAchievement(i)}
+                  className="ml-2 bg-red-600 text-white px-2 py-1 rounded hover:bg-red-700"
+                  type="button"
+                >
+                  Remove
+                </button>
+              </div>
+            ))}
+          </section>
 
           <button
             onClick={downloadPDF}
-            className="mt-4 bg-blue-600 px-4 py-2 rounded-3xl hover:bg-blue-700"
+            className="mt-4 w-full bg-blue-600 px-4 py-3 rounded-3xl hover:bg-blue-700 font-bold text-white"
           >
             Download PDF
           </button>
@@ -232,63 +391,96 @@ export default function ResumeBuilder() {
         {/* Resume Preview */}
         <div
           ref={resumeRef}
-          className="w-full lg:w-1/2 bg-white dark:bg-zinc-800 text-black dark:text-zinc-100 p-6 rounded shadow font-sans text-sm"
+          className="w-full lg:w-1/2 bg-white dark:bg-zinc-800 text-black dark:text-zinc-100 p-6 rounded shadow font-sans text-sm overflow-auto max-h-[90vh]"
         >
-          <div className="grid gap-4">
-            {/* Sidebar */}
-            <div className="header grid grid-cols-2 w-full p-4 space-y-4">
-              <div>
-                <h1 className="text-4xl font-bold">{form.name}</h1>
-                <p>{form.title}</p>
+          {/* Preview header */}
+          <div className="mb-6">
+            <div className="flex justify-between items-center mb-4">
+              <img src={GECSIWAN_LOGO} alt="GEC Siwan logo" className="w-24" />
+              <div className="text-center">
+                <h1 className="text-4xl font-bold">{personalInfo.name}</h1>
+                <b>{personalInfo.title}</b>
+                <p>
+                  <a
+                    href={`https://${onlineProfiles.github}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="underline"
+                  >
+                    {onlineProfiles.github}
+                  </a>
+                </p>
+                <p>
+                  <a
+                    href={`https://${onlineProfiles.linkedin}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="underline"
+                  >
+                    {onlineProfiles.linkedin}
+                  </a>
+                </p>
               </div>
-              <div className="text-xs space-y-1">
-                <p>📧 {form.email}</p>
-                <p>📞 {form.phone}</p>
-                <p>📍 {form.location}</p>
-                <p>🔗 {form.github}</p>
-                <p>🔗 {form.linkedin}</p>
-              </div>
-              <div>
-                <h2 className="font-semibold border-b  mb-1">Skills</h2>
-                <ul className="list-disc ml-4">
-                  {form.skills.split(",").map((s, i) => (
-                    <li key={i}>{s.trim()}</li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <h2 className="font-semibold border-b mb-1">Education</h2>
-                {form.education.split("\n").map((e, i) => (
-                  <p key={i} className="text-xs mb-1">
-                    {e}
-                  </p>
-                ))}
+              <div className="text-right no-underline">
+                <p>📞 {personalInfo.phone}</p>
+                <p>📧 {personalInfo.email}</p>
+                <p>📍 {personalInfo.location}</p>
               </div>
             </div>
+            {/* Career objective placeholder */}
+            <div className="mb-4">
+              <h2 className="font-bold border-b mb-1">Career Objective</h2>
+              <p className="text-sm">
+                A passionate MERN Stack Web Developer with a strong foundation
+                in building responsive and user-friendly web applications.
+                Seeking to leverage my skills in a dynamic team environment.
+              </p>
+            </div>
+          </div>
 
-            {/* Main Content */}
-            <div className="col-span-2 space-y-4">
-              <div>
-                <h2 className="text-lg font-bold border-b border-black dark:border-white mb-1">
-                  Experience
-                </h2>
-                {form.experience.split("\n").map((line, i) => (
-                  <p key={i} className="mb-1">
-                    {line}
-                  </p>
-                ))}
-              </div>
-              <div>
-                <h2 className="text-lg font-bold border-b border-black dark:border-white mb-1">
-                  Achievements
-                </h2>
-                <ul className="list-disc ml-5">
-                  {form.achievements.split("\n").map((a, i) => (
-                    <li key={i}>{a}</li>
+          {/* Education */}
+          <div className="mb-6">
+            <h2 className="font-bold border-b mb-2">Education</h2>
+            {education.map((edu, i) => (
+              <p key={i}>
+                <b>{edu.year}</b> - {edu.course} - {edu.institution}
+              </p>
+            ))}
+          </div>
+
+          {/* Skills */}
+          <div className="mb-6">
+            <h2 className="font-bold border-b mb-2">Skills</h2>
+            <ul className="list-disc pl-6 grid grid-cols-2 gap-1">
+              {skills.map((skill, i) => (
+                <li key={i}>{skill}</li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Experience */}
+          <div className="mb-6">
+            <h2 className="font-bold border-b mb-2">Experience</h2>
+            {experience.map((exp, i) => (
+              <div key={i} className="mb-3">
+                <b>{exp.role}</b> — <i>{exp.company}</i> ({exp.duration})
+                <ul className="list-disc pl-6">
+                  {exp.details.map((detail, dIdx) => (
+                    <li key={dIdx}>{detail}</li>
                   ))}
                 </ul>
               </div>
-            </div>
+            ))}
+          </div>
+
+          {/* Achievements */}
+          <div className="mb-6">
+            <h2 className="font-bold border-b mb-2">Achievements</h2>
+            <ul className="list-disc pl-6">
+              {achievements.map((ach, i) => (
+                <li key={i}>{ach}</li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>
