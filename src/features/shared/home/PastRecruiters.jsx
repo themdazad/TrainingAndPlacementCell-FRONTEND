@@ -74,7 +74,7 @@ const PastRecruiters = () => {
           className="group relative flex justify-center md:w-[70%] gap-6 overflow-hidden p-2"
           style={{
             maskImage:
-              "linear-gradient(to left, transparent 0%, black40%, black 60%, transparent 95%)",
+              "linear-gradient(to left, transparent 0%, black 40%, black 60%, transparent 95%)",
           }}
         >
           {Array(5)
