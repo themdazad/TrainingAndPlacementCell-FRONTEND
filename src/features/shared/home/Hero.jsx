@@ -4,18 +4,16 @@ import SimpleSlider from "../../../components/ui/SimpleSlider.jsx";
 // data
 import SliderData from "../../../assets/data/SliderData.js";
 
-
-
 export default function Hero() {
   return (
     <section className="px-[5%] sm:py-16">
       <div className="grid items-center py-12 grid-cols-1 gap-12 lg:grid-cols-2">
         <div>
-          <h1 className="dm-serif-text-bold mt-2 lg:mt-8 text-6xl font-extrabold text-zinc-900 dark:text-white">
+          <h1 className="dm-serif-text-bold mt-2 lg:mt-8 text-4xl lg:text-6xl font-extrabold text-zinc-900 dark:text-white">
             {/* Campus Placement 2025 */}
             Training & Placement Cell
           </h1>
-          <p className=" text-lg md:text-3xl font-semibold tracking-wider text-blue-500 dark:text-blue-400 pt-4">
+          <p className="dm-serif-text-bold text-lg md:text-3xl font-semibold tracking-wider text-blue-500 dark:text-blue-400 pt-4">
             Government Engineering College, Siwan
           </p>
           <p className="mt-2 text-base text-zinc-800 dark:text-zinc-300 lg:mt-8 sm:text-xl">

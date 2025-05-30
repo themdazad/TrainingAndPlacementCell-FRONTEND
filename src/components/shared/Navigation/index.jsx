@@ -58,9 +58,9 @@ const navLinks = [
     name: "For Recruiters",
     dropdown: true,
     items: [
+      { name: "Reach us", path: "/recruiters/reach-us" },
       { name: "Why Recruit From Us?", path: "/recruiter/why-us" },
       { name: "Past Recruiters", path: "/recruiter/past-recruiters" },
-      { name: "Contact Us", path: "/reach-us" },
     ],
   },
 

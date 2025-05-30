@@ -3,6 +3,7 @@ import BreadCrumbs from "../../../components/ui/BreadCrumbs.jsx";
 
 const breadcrumbItems = [
   { label: "Home", to: "/" },
+  { label: "Recruiters"},
   { label: "Reach us", isCurrent: true }, // No `to` = current page
 ];
 
