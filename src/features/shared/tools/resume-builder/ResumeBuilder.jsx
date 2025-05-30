@@ -1,41 +1,53 @@
 import { useState, useRef } from "react";
-import {Button} from "@heroui/react";
-import { X } from "lucide-react";
+import { Button, Input } from "@heroui/react";
+import { Github, Linkedin, Mail, MapPinned, Phone, X } from "lucide-react";
 import GECSIWAN_LOGO from "../../../../assets/images/logos/gecsiwanlogo.svg";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 
 const initialData = {
   personalInfo: {
-    name: "MD AZAD",
-    title: "MERN Stack Web Developer",
-    email: "collezian@gmail.com",
-    phone: "+91 9110172886",
-    location: "Vaishali, Bihar, India",
+    name: "",
+    title: "",
+    email: "",
+    phone: "",
+    location: "",
   },
   onlineProfiles: {
-    github: "github/themdazad",
-    linkedin: "linkedin/in/themdazad",
+    github: "",
+    linkedin: "",
   },
-  skills: ["C/C++", "Tailwind CSS", "JavaScript", "React.js", "Node.js", "MongoDB"],
+  skills: [""],
   education: [
-    { year: "2022–2026", course: "Electrical Engineering", institution: "GEC Siwan" },
-    { year: "2019–2022", course: "Diploma in CSE", institution: "GP Chhapra" },
+    {
+      year: "",
+      course: "",
+      institution: "",
+      marks_cgpa: "",
+    },
   ],
   experience: [
     {
-      role: "Web Developer Intern",
-      company: "Sishar Global",
-      duration: "June 2024–Aug 2024",
-      details: ["Redesigned landing page", "Used Laravel & MySQL", "Fixed UI bugs"],
+      role: "Add Your Role",
+      company: "Company Name",
+      duration: "Starting Date - Ending Date",
+      details: ["Add your work details here", "Add more details if needed"],
     },
   ],
-  achievements: ["Infosys offer for Ass. Engineer", "Lead technical club at GEC Siwan"],
+  achievements: [
+    "Add your achievement here",
+    "Add more achievements if needed",
+  ],
 };
 
 export default function ResumeBuilder() {
   const [personalInfo, setPersonalInfo] = useState(initialData.personalInfo);
-  const [onlineProfiles, setOnlineProfiles] = useState(initialData.onlineProfiles);
+  const [careerObjective, setCareerObjective] = useState(
+    "Add your career objective here"
+  );
+  const [onlineProfiles, setOnlineProfiles] = useState(
+    initialData.onlineProfiles
+  );
   const [skills, setSkills] = useState(initialData.skills);
   const [education, setEducation] = useState(initialData.education);
   const [experience, setExperience] = useState(initialData.experience);
@@ -67,7 +79,10 @@ export default function ResumeBuilder() {
 
   // Education handlers
   const addEducation = () =>
-    setEducation([...education, { year: "", course: "", institution: "" }]);
+    setEducation([
+      ...education,
+      { year: "", course: "", institution: "", marks_cgpa: "" },
+    ]);
   const updateEducation = (index, field, value) => {
     const newEducation = [...education];
     newEducation[index][field] = value;
@@ -79,7 +94,10 @@ export default function ResumeBuilder() {
 
   // Experience handlers
   const addExperience = () =>
-    setExperience([...experience, { role: "", company: "", duration: "", details: [""] }]);
+    setExperience([
+      ...experience,
+      { role: "", company: "", duration: "", details: [""] },
+    ]);
   const updateExperienceField = (index, field, value) => {
     const newExperience = [...experience];
     newExperience[index][field] = value;
@@ -132,79 +150,104 @@ export default function ResumeBuilder() {
   return (
     <div className="dark:bg-zinc-900 min-h-screen text-zinc-800 dark:text-zinc-100 transition-colors duration-300 py-8">
       <div className="flex flex-col lg:flex-row gap-8 mx-auto">
-        {/* Edit Form */}
         <div className="w-full lg:w-1/2 p-6 rounded shadow overflow-auto max-h-[90vh] space-y-6 bg-white dark:bg-zinc-900">
           <h2 className="text-2xl font-bold text-blue-600 border-b pb-3 mb-2 text-center">
             Edit Resume
           </h2>
 
           {/* Personal Info */}
-          <section className="p-4 border border-zinc-300 dark:border-zinc-700 rounded-lg bg-zinc-50 dark:bg-zinc-800 space-y-4">
+          <section className="p-5 border border-zinc-300 dark:border-zinc-700 rounded-3xl bg-zinc-50 dark:bg-zinc-800 space-y-4">
             <h3 className="text-lg font-semibold text-blue-500">
               Personal Information
             </h3>
-            {["name", "title", "email", "phone", "location"].map((field) => (
-              <div key={field}>
-                <label className="block mb-1 capitalize font-medium text-zinc-700 dark:text-zinc-200">
-                  {field}
-                </label>
-                <input
-                  type="text"
-                  name={field}
-                  value={personalInfo[field]}
-                  onChange={handlePersonalInfoChange}
-                  className="w-full p-2 border border-zinc-300 dark:border-zinc-600 rounded bg-white dark:bg-zinc-700 text-zinc-900 dark:text-white"
-                />
-              </div>
-            ))}
+            <div className="grid grid-cols-2 gap-4">
+              {["name", "title", "email", "phone", "location"].map((field) => (
+                <div
+                  key={field}
+                  className={`${field === "location" ? "col-span-2" : ""}`}
+                >
+                  <Input
+                    type="text"
+                    label={field}
+                    name={field}
+                    value={personalInfo[field]}
+                    onChange={handlePersonalInfoChange}
+                    className="w-full"
+                  />
+                </div>
+              ))}
+            </div>
           </section>
 
+          {/* Career Objective */}
+          <section className="p-5 border border-zinc-300 dark:border-zinc-700 rounded-2xl bg-zinc-50 dark:bg-zinc-800 space-y-4">
+            <h3 className="text-lg font-semibold text-blue-500">
+              Career Objective
+            </h3>
+            <Input
+              type="textarea"
+              rows={4}
+              value={careerObjective}
+              onChange={(e) => setCareerObjective(e.target.value)}
+              placeholder="Write your career objective here..."
+              className="w-full "
+            />
+          </section>
           {/* Online Profiles */}
-          <section className="p-4 border border-zinc-300 dark:border-zinc-700 rounded-lg bg-zinc-50 dark:bg-zinc-800 space-y-4">
+          <section className="p-5 border border-zinc-300 dark:border-zinc-700 rounded-2xl bg-zinc-50 dark:bg-zinc-800 space-y-4">
             <h3 className="text-lg font-semibold text-blue-500">
               Online Profiles
             </h3>
-            {["github", "linkedin"].map((field) => (
-              <div key={field}>
-                <label className="block mb-1 capitalize font-medium text-zinc-700 dark:text-zinc-200">
-                  {field}
-                </label>
-                <input
-                  type="text"
-                  name={field}
-                  value={onlineProfiles[field]}
-                  onChange={handleOnlineProfilesChange}
-                  className="w-full p-2 border border-zinc-300 dark:border-zinc-600 rounded bg-white dark:bg-zinc-700 text-zinc-900 dark:text-white"
-                />
-              </div>
-            ))}
+            <div className="space-y-2">
+              <Input
+                type="text"
+                name="github"
+                placeholder="github.com/yourusername"
+                startContent={<Github className="py-1" />}
+                value={onlineProfiles["github"]}
+                onChange={handleOnlineProfilesChange}
+                className="w-full"
+              />
+              <Input
+                type="text"
+                name="linkedin"
+                placeholder="linkedin.com/in/yourusername"
+                startContent={<Linkedin className="py-1" />}
+                value={onlineProfiles["linkedin"]}
+                onChange={handleOnlineProfilesChange}
+                className="w-full"
+              />
+            </div>
           </section>
 
           {/* Skills */}
-          <section className="p-4 border border-zinc-300 dark:border-zinc-700 rounded-lg bg-zinc-50 dark:bg-zinc-800">
-            <div className="flex justify-between items-center mb-4">
+          <section className="p-5 border border-zinc-300 dark:border-zinc-700 rounded-2xl bg-zinc-50 dark:bg-zinc-800 space-y-4">
+            <div className="flex justify-between items-center">
               <h3 className="text-lg font-semibold text-blue-500">Skills</h3>
             </div>
-            {skills.map((skill, i) => (
-              <div key={i} className="flex mb-2 items-center">
-                <input
-                  type="text"
-                  value={skill}
-                  onChange={(e) => updateSkill(i, e.target.value)}
-                  className="flex-grow p-2 border border-zinc-300 dark:border-zinc-600 rounded bg-white dark:bg-zinc-700 text-zinc-900 dark:text-white"
-                />
-                <button
-                  onClick={() => removeSkill(i)}
-                  className="ml-2 text-red-500 hover:text-red-600"
-                  type="button"
-                >
-                  <X />
-                </button>
-              </div>
-            ))}
+            <div className="space-y-2">
+              {skills.map((skill, i) => (
+                <div key={i} className="flex items-center gap-2">
+                  <Input
+                    type="text"
+                    placeholder="Add your Skill"
+                    value={skill}
+                    onChange={(e) => updateSkill(i, e.target.value)}
+                    className="w-full"
+                  />
+                  <button
+                    onClick={() => removeSkill(i)}
+                    className="text-red-500 hover:text-red-600"
+                    type="button"
+                  >
+                    <X />
+                  </button>
+                </div>
+              ))}
+            </div>
             <button
               onClick={addSkill}
-              className="text-sm text-blue-600 hover:underline"
+              className="text-sm text-blue-600 "
               type="button"
             >
               + Add Skill
@@ -212,206 +255,208 @@ export default function ResumeBuilder() {
           </section>
 
           {/* Education */}
-          <section className="p-4 border border-zinc-300 dark:border-zinc-700 rounded-lg bg-zinc-50 dark:bg-zinc-800">
-            <div className="flex justify-between items-center mb-4">
+          <section className="p-5 border border-zinc-300 dark:border-zinc-700 rounded-2xl bg-zinc-50 dark:bg-zinc-800 space-y-4">
+            <div className="flex justify-between items-center">
               <h3 className="text-lg font-semibold text-blue-500">Education</h3>
-              <button
-                onClick={addEducation}
-                className="text-sm text-blue-600 hover:underline"
-                type="button"
-              >
-                + Add Education
-              </button>
             </div>
-            {education.map((edu, i) => (
-              <div
-                key={i}
-                className="mb-4 border border-zinc-300 dark:border-zinc-600 rounded p-4 bg-white dark:bg-zinc-700 space-y-2"
-              >
-                <div className="flex gap-4">
-                  <input
-                    type="text"
-                    placeholder="Year"
-                    value={edu.year}
-                    onChange={(e) => updateEducation(i, "year", e.target.value)}
-                    className="flex-1 p-2 border border-zinc-300 dark:border-zinc-600 rounded"
-                  />
-                  <input
-                    type="text"
-                    placeholder="Course"
-                    value={edu.course}
-                    onChange={(e) =>
-                      updateEducation(i, "course", e.target.value)
-                    }
-                    className="flex-2 p-2 border border-zinc-300 dark:border-zinc-600 rounded"
-                  />
-                </div>
-                <div className="flex items-center">
-                  <input
+            <div className="space-y-4">
+              {education.map((edu, i) => (
+                <div
+                  key={i}
+                  className="border border-zinc-300 dark:border-zinc-600 rounded-2xl p-4 space-y-3 bg-white dark:bg-zinc-700"
+                >
+                  <div className="grid grid-cols-2 gap-4">
+                    <Input
+                      type="text"
+                      placeholder="Year"
+                      value={edu.year}
+                      onChange={(e) =>
+                        updateEducation(i, "year", e.target.value)
+                      }
+                    />
+                    <Input
+                      type="text"
+                      placeholder="Course"
+                      value={edu.course}
+                      onChange={(e) =>
+                        updateEducation(i, "course", e.target.value)
+                      }
+                    />
+                  </div>
+                  <Input
                     type="text"
                     placeholder="Institution"
                     value={edu.institution}
                     onChange={(e) =>
                       updateEducation(i, "institution", e.target.value)
                     }
-                    className="w-full p-2 border border-zinc-300 dark:border-zinc-600 rounded"
+                  />
+                  <Input
+                    type="text"
+                    placeholder="Marks/CGPA"
+                    value={edu.marks_cgpa}
+                    onChange={(e) =>
+                      updateEducation(i, "marks_cgpa", e.target.value)
+                    }
                   />
                   <button
                     onClick={() => removeEducation(i)}
-                    className="ml-2 text-white bg-red-600 px-3 py-1 rounded hover:bg-red-700"
+                    className="text-center w-full text-red-500 hover:text-red-600"
                     type="button"
                   >
-                    Remove
+                    Remove Education
                   </button>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
+            <button
+              onClick={addEducation}
+              className="text-sm text-blue-500"
+              type="button"
+            >
+              + Add Education
+            </button>
           </section>
 
           {/* Experience */}
-          <section className="p-4 border border-zinc-300 dark:border-zinc-700 rounded-lg bg-zinc-50 dark:bg-zinc-800">
-            <div className="flex justify-between items-center mb-4">
+          <section className="p-5 border border-zinc-300 dark:border-zinc-700 rounded-2xl bg-zinc-50 dark:bg-zinc-800 space-y-4">
+            <div className="flex justify-between items-center">
               <h3 className="text-lg font-semibold text-blue-500">
                 Experience
               </h3>
-              <button
-                onClick={addExperience}
-                className="text-sm text-blue-600 hover:underline"
-                type="button"
-              >
-                + Add Experience
-              </button>
             </div>
-            {experience.map((exp, i) => (
-              <div
-                key={i}
-                className="mb-6 border border-zinc-300 dark:border-zinc-600 rounded p-4 bg-white dark:bg-zinc-700 space-y-2"
-              >
-                <div className="flex gap-4">
-                  <input
-                    type="text"
-                    placeholder="Role"
-                    value={exp.role}
-                    onChange={(e) =>
-                      updateExperienceField(i, "role", e.target.value)
-                    }
-                    className="flex-1 p-2 border rounded"
-                  />
-                  <input
-                    type="text"
-                    placeholder="Company"
-                    value={exp.company}
-                    onChange={(e) =>
-                      updateExperienceField(i, "company", e.target.value)
-                    }
-                    className="flex-1 p-2 border rounded"
-                  />
-                  <input
-                    type="text"
-                    placeholder="Duration"
-                    value={exp.duration}
-                    onChange={(e) =>
-                      updateExperienceField(i, "duration", e.target.value)
-                    }
-                    className="flex-1 p-2 border rounded"
-                  />
-                </div>
+            <div className="space-y-4">
+              {experience.map((exp, i) => (
+                <div
+                  key={i}
+                  className="border border-zinc-300 dark:border-zinc-600 rounded-2xl p-4 space-y-3 bg-white dark:bg-zinc-700"
+                >
+                  <div className="grid grid-cols-3 gap-4">
+                    <Input
+                      type="text"
+                      placeholder="Role"
+                      value={exp.role}
+                      onChange={(e) =>
+                        updateExperienceField(i, "role", e.target.value)
+                      }
+                    />
+                    <Input
+                      type="text"
+                      placeholder="Company"
+                      value={exp.company}
+                      onChange={(e) =>
+                        updateExperienceField(i, "company", e.target.value)
+                      }
+                    />
+                    <Input
+                      type="text"
+                      placeholder="Duration"
+                      value={exp.duration}
+                      onChange={(e) =>
+                        updateExperienceField(i, "duration", e.target.value)
+                      }
+                    />
+                  </div>
 
-                <div>
-                  <h4 className="font-semibold text-sm text-zinc-600 dark:text-zinc-200 mb-1">
-                    Details
-                  </h4>
-                  {exp.details.map((detail, dIdx) => (
-                    <div key={dIdx} className="flex items-center mb-1">
-                      <input
-                        type="text"
-                        value={detail}
-                        onChange={(e) =>
-                          updateExperienceDetail(i, dIdx, e.target.value)
-                        }
-                        className="flex-grow p-2 border rounded"
-                      />
+                  <div>
+                    <h4 className="font-semibold text-sm text-zinc-600 dark:text-zinc-200 mb-1">
+                      Details
+                    </h4>
+                    <div className="space-y-2">
+                      {exp.details.map((detail, dIdx) => (
+                        <div key={dIdx} className="flex items-center gap-2">
+                          <Input
+                            type="text"
+                            value={detail}
+                            onChange={(e) =>
+                              updateExperienceDetail(i, dIdx, e.target.value)
+                            }
+                            className="w-full"
+                          />
+                          <button
+                            onClick={() => removeExperienceDetail(i, dIdx)}
+                            className="text-red-500 hover:text-red-600"
+                            type="button"
+                          >
+                            <X />
+                          </button>
+                        </div>
+                      ))}
                       <button
-                        onClick={() => removeExperienceDetail(i, dIdx)}
-                        className="ml-2 text-white bg-red-600 px-2 py-1 rounded hover:bg-red-700"
+                        onClick={() => addExperienceDetail(i)}
+                        className="text-center w-full text-blue-500 hover:text-blue-600"
                         type="button"
                       >
-                        Remove
+                        Add more details
                       </button>
                     </div>
-                  ))}
+                  </div>
+
                   <button
-                    onClick={() => addExperienceDetail(i)}
-                    className="mt-2 text-white bg-blue-600 px-3 py-1 rounded hover:bg-blue-700"
+                    onClick={() => removeExperience(i)}
+                    className="text-center w-full text-red-500 hover:text-red-600"
                     type="button"
                   >
-                    + Add Detail
+                    Remove Experience
                   </button>
                 </div>
-
-                <button
-                  onClick={() => removeExperience(i)}
-                  className="text-white bg-red-700 px-3 py-1 rounded hover:bg-red-800"
-                  type="button"
-                >
-                  Remove Experience
-                </button>
-              </div>
-            ))}
+              ))}
+            </div>
+            <button
+              onClick={addExperience}
+              className="text-sm text-blue-600 "
+              type="button"
+            >
+              + Add Experience
+            </button>
           </section>
 
           {/* Achievements */}
-          <section className="p-4 border border-zinc-300 dark:border-zinc-700 rounded-lg bg-zinc-50 dark:bg-zinc-800">
-            <div className="flex justify-between items-center mb-4">
+          <section className="p-5 border border-zinc-300 dark:border-zinc-700 rounded-2xl bg-zinc-50 dark:bg-zinc-800 space-y-4">
+            <div className="flex justify-between items-center">
               <h3 className="text-lg font-semibold text-blue-500">
                 Achievements
               </h3>
-              <button
-                onClick={addAchievement}
-                className="text-sm text-blue-600 hover:underline"
-                type="button"
-              >
-                + Add Achievement
-              </button>
             </div>
-            {achievements.map((ach, i) => (
-              <div key={i} className="flex mb-2 items-center">
-                <input
-                  type="text"
-                  value={ach}
-                  onChange={(e) => updateAchievement(i, e.target.value)}
-                  className="flex-grow p-2 border rounded bg-white dark:bg-zinc-700 text-zinc-900 dark:text-white"
-                />
-                <button
-                  onClick={() => removeAchievement(i)}
-                  className="ml-2 text-white bg-red-600 px-2 py-1 rounded hover:bg-red-700"
-                  type="button"
-                >
-                  Remove
-                </button>
-              </div>
-            ))}
+            <div className="space-y-2">
+              {achievements.map((ach, i) => (
+                <div key={i} className="flex items-center gap-2">
+                  <Input
+                    type="text"
+                    value={ach}
+                    onChange={(e) => updateAchievement(i, e.target.value)}
+                    className="w-full"
+                  />
+                  <button
+                    onClick={() => removeAchievement(i)}
+                    className="text-red-500 hover:text-red-600"
+                    type="button"
+                  >
+                    <X />
+                  </button>
+                </div>
+              ))}
+            </div>
+            <button
+              onClick={addAchievement}
+              className="text-sm text-blue-600 "
+              type="button"
+            >
+              + Add Achievement
+            </button>
           </section>
-
-          {/* Download Button */}
-          <Button
-            onClick={downloadPDF}
-            className="w-full bg-blue-600 px-4 py-3 rounded-3xl hover:bg-blue-700 font-bold text-white"
-          >
-            Download PDF
-          </Button>
         </div>
-
+        {/* ******************************************Resume Preview****************************** */}
         {/* Resume Preview */}
         <div
           ref={resumeRef}
           className="w-full lg:w-1/2 bg-white dark:bg-zinc-800 text-black dark:text-zinc-100 p-16 rounded shadow font-sans text-sm overflow-auto max-h-[90vh]"
         >
           {/* Preview header */}
-          <div className="mb-6">
+          <div className="mb-12">
             <div className="flex justify-between items-center mb-4">
               <img src={GECSIWAN_LOGO} alt="GEC Siwan logo" className="w-24" />
-              <div className="text-center">
+              <div className="text-center gap-1">
                 <h1 className="text-4xl font-bold">{personalInfo.name}</h1>
                 <b>{personalInfo.title}</b>
                 <p>
@@ -435,69 +480,140 @@ export default function ResumeBuilder() {
                   </a>
                 </p>
               </div>
-              <div className="text-right no-underline">
-                <p>📞 {personalInfo.phone}</p>
-                <p>📧 {personalInfo.email}</p>
-                <p>📍 {personalInfo.location}</p>
+              <div className="text-sm no-underline">
+                <p className="flex gap-1 items-center">
+                  <Phone className="p-1" />
+                  {personalInfo.phone}
+                </p>
+                <p className="flex gap-1 items-center">
+                  <Mail className="p-1" />
+                  {personalInfo.email}
+                </p>
+                <p className="flex gap-1 items-center">
+                  <MapPinned className="p-1" /> {personalInfo.location}
+                </p>
               </div>
-            </div>
-            {/* Career objective placeholder */}
-            <div className="mb-4">
-              <h2 className="font-bold border-b mb-1">Career Objective</h2>
-              <p className="text-sm">
-                A passionate MERN Stack Web Developer with a strong foundation
-                in building responsive and user-friendly web applications.
-                Seeking to leverage my skills in a dynamic team environment.
-              </p>
             </div>
           </div>
 
-          {/* Education */}
-          <div className="mb-6">
-            <h2 className="font-bold border-b mb-2">Education</h2>
-            {education.map((edu, i) => (
-              <p key={i}>
-                <b>{edu.year}</b> - {edu.course} - {edu.institution}
-              </p>
-            ))}
+          {/* Career Objective */}
+          <div className="mb-4">
+            <h2 className="text-lg font-semibold mb-2">Career Objective</h2>
+            <p>{careerObjective}</p>
           </div>
+          <hr />
+          {/* Education Table*/}
+          {education.length > 0 && (
+            <div className="my-6">
+              <h2 className="font-semibold text-lg border-b mb-2">Education</h2>
+              <table className="w-full text-center table-auto border-collapse border border-zinc-300 dark:border-zinc-700">
+                <thead>
+                  <tr>
+                    <th>Year</th>
+                    <th>Course</th>
+                    <th>College</th>
+                    <th>Marks/CGPA</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {education.map((edu, i) => (
+                    <tr key={i}>
+                      <td>{edu.year}</td>
+                      <td>{edu.course}</td>
+                      <td>{edu.institution}</td>
+                      <td>{edu.marks_cgpa}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
 
           {/* Skills */}
-          <div className="mb-6">
-            <h2 className="font-bold border-b mb-2">Skills</h2>
-            <ul className="list-disc pl-6 grid grid-cols-2 gap-1">
-              {skills.map((skill, i) => (
-                <li key={i}>{skill}</li>
-              ))}
-            </ul>
-          </div>
+          {skills.length > 0 && (
+            <div className="mb-6">
+              <h2 className="font-semibold text-lg border-b mb-2">Skills</h2>
+              <ul className="list-disc pl-6 grid grid-cols-2 gap-1">
+                {skills.map((skill, i) => (
+                  <li key={i}>{skill}</li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           {/* Experience */}
-          <div className="mb-6">
-            <h2 className="font-bold border-b mb-2">Experience</h2>
-            {experience.map((exp, i) => (
-              <div key={i} className="mb-3">
-                <b>{exp.role}</b> — <i>{exp.company}</i> ({exp.duration})
-                <ul className="list-disc pl-6">
-                  {exp.details.map((detail, dIdx) => (
-                    <li key={dIdx}>{detail}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
+          {experience.length > 0 && (
+            <div className="mb-6">
+              <h2 className="font-semibold text-lg border-b mb-2">
+                Experience
+              </h2>
+              {experience.map((exp, i) => (
+                <div key={i} className="mb-3">
+                  <b>{exp.role}</b> — <i>{exp.company}</i> ({exp.duration})
+                  <ul className="list-disc pl-6">
+                    {exp.details.map((detail, dIdx) => (
+                      <li key={dIdx}>{detail}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Projects */}
+          {experience.length > 0 && (
+            <div className="mb-6">
+              <h2 className="font-semibold text-lg border-b mb-2">Projects</h2>
+              {experience.map((exp, i) => (
+                <div key={i} className="mb-3">
+                  <b>{exp.role}</b> — <i>{exp.company}</i> ({exp.duration})
+                  <ul className="list-disc pl-6">
+                    {exp.details.map((detail, dIdx) => (
+                      <li key={dIdx}>{detail}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          )}
 
           {/* Achievements */}
-          <div className="mb-6">
-            <h2 className="font-bold border-b mb-2">Achievements</h2>
-            <ul className="list-disc pl-6">
-              {achievements.map((ach, i) => (
-                <li key={i}>{ach}</li>
-              ))}
-            </ul>
-          </div>
+          {achievements.length > 0 && (
+            <div className="mb-6">
+              <h2 className="font-semibold text-lg border-b mb-2">
+                Achievements and Responsibility
+              </h2>
+              <ul className="list-disc pl-6">
+                {achievements.map((ach, i) => (
+                  <li key={i}>{ach}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {/* Interests and Hobbies */}
+          {achievements.length > 0 && (
+            <div className="mb-6">
+              <h2 className="font-semibold text-lg border-b mb-2">
+                {" "}
+                Interests and Hobbies
+              </h2>
+              <ul className="list-disc pl-6">
+                {achievements.map((ach, i) => (
+                  <li key={i}>{ach}</li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       </div>
+      {/* Download Button */}
+      <Button
+        onPress={downloadPDF}
+        className=" bg-blue-500 mt-6 px-4 py-3 rounded-3xl hover:bg-blue-700 font-bold text-white"
+      >
+        Download PDF
+      </Button>
     </div>
   );
 }

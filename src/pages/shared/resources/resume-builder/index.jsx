@@ -1,5 +1,5 @@
-import BreadCrumbs from "../../../components/ui/BreadCrumbs.jsx";
-import ResumeBuilder from "../../../features/shared/tools/resume-builder/ResumeBuilder.jsx";
+import BreadCrumbs from "../../../../components/ui/BreadCrumbs.jsx";
+import ResumeBuilder from "../../../../features/shared/tools/resume-builder/ResumeBuilder.jsx";
 
 
 const breadcrumbItems = [

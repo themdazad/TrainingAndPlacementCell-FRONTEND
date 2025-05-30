@@ -10,40 +10,35 @@ const navLinks = [
 
   // Learn & Prepare
   {
-    name: "Learn & Prepare",
+    name: "Student Zone",
     dropdown: true,
     items: [
       { name: "Projects", path: "/projects" },
-      { name: "Programs", path: "/programs" },
       { name: "Course Highlights", path: "/academics/course-highlights" },
-      { name: "Skill Courses", path: "/academics/skills" },
-      { name: "Certifications", path: "/academics/certifications" },
       { name: "Aptitude & Soft Skills", path: "/training/aptitude-softskills" },
     ],
   },
 
-  // Career & Events
+  // Training
   {
-    name: "Career & Events",
+    name: "Training and Career",
     dropdown: true,
     items: [
-      { name: "Upcoming Drives", path: "/events/upcoming-drives" },
-      { name: "Workshops & Webinars", path: "/events/workshops" },
-      { name: "Hackathons", path: "/events/hackathons" },
-      { name: "Placement Calendar", path: "/events/placement-calendar" },
       { name: "Mock Interviews", path: "/training/mock-interview" },
+      { name: "Placement Calendar", path: "/career/placement-calendar" },
+      { name: "Placement Drives", path: "/career/placement-drives" },
+      { name: "Workshops & Webinars", path: "/training/workshops" },
     ],
   },
 
+
   // Resources
   {
-    name: "Resources",
+    name: "Tools & Guides",
     dropdown: true,
     items: [
       { name: "Resume Builder", path: "/tools/resume-builder" },
-      { name: "Resume Templates", path: "/resources/resume-templates" },
       { name: "Interview Q&A Bank", path: "/resources/qa-bank" },
-      { name: "Company Profiles", path: "/resources/company-profiles" },
       { name: "Placement Preparation Guide", path: "/resources/guide" },
     ],
   },
@@ -53,21 +48,18 @@ const navLinks = [
     name: "Community",
     dropdown: true,
     items: [
-      { name: "Alumni Connect", path: "/alumni/connect" },
-      { name: "Success Stories", path: "/alumni/success-stories" },
-      { name: "Mentorship Program", path: "/alumni/mentorship" },
-      { name: "Photo Gallery", path: "/events/gallery" },
+      { name: "Alumni Connect", path: "/community/connect" },
+      { name: "Photo Gallery", path: "/community/gallery" },
     ],
   },
 
   // Recruiters
   {
-    name: "Recruiters",
+    name: "For Recruiters",
     dropdown: true,
     items: [
       { name: "Why Recruit From Us?", path: "/recruiter/why-us" },
       { name: "Past Recruiters", path: "/recruiter/past-recruiters" },
-      { name: "Recruiter Registration", path: "/recruiter/registration" },
       { name: "Contact Us", path: "/reach-us" },
     ],
   },
