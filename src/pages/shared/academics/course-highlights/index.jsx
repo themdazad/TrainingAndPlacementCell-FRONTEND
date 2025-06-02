@@ -1,6 +1,6 @@
 import BreadCrumbs from "../../../../components/ui/BreadCrumbs.jsx";
-import AcademicPrograms from "../../../../features/shared/academics/course-highlights/AcademicPrograms.jsx";
-import BranchSection from "../../../../features/shared/academics/course-highlights/BranchSection.jsx";
+import AcademicPrograms from "../../../../components/shared/academics/course-highlights/AcademicPrograms.jsx";
+import BranchSection from "../../../../components/shared/academics/course-highlights/BranchSection.jsx";
 
 const breadcrumbItems = [
   { label: "Home", to: "/" },

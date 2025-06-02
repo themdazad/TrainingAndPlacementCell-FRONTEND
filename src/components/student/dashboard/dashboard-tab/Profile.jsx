@@ -29,7 +29,7 @@ const Profile = () => {
       transition={{ duration: 0.5 }}
       className="mx-auto mt-6"
     >
-      <div className="shadow-lg w-full rounded-2xl p-4 bg-zinc-500/10">
+      <div className="shadow-lg w-full rounded-2xl p-6  dark:bg-zinc-800">
       {/* Profile Header */}
       <div className="flex items-center gap-4 border-b border-zinc-500/50 pb-4">
         <div className="w-16 h-16">

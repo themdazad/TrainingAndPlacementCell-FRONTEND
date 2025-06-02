@@ -2,18 +2,18 @@ import { useState, useEffect, useRef } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Image, Button } from "@heroui/react";
 import { ChevronDown, ChevronUp, X, AlignLeft } from "lucide-react";
-import { useAuth } from "../../../hooks/contexts/auth/AuthContext"; // Adjust path as needed
-import ThemeSwitch from "../../ui/ThemeSwitch";
+import { useAuth } from "../../hooks/contexts/auth/AuthContext"; // Adjust path as needed
+import ThemeSwitch from "../ui/ThemeSwitch";
 
 const navLinks = [
   { name: "Home", path: "/" },
 
   // Learn & Prepare
   {
-    name: "Student Zone",
+    name: "For Student",
     dropdown: true,
     items: [
-      { name: "Projects", path: "/projects" },
+      { name: "Student's Projects", path: "/projects" },
       { name: "Course Highlights", path: "/academics/course-highlights" },
       { name: "Aptitude & Soft Skills", path: "/training/aptitude-softskills" },
     ],
@@ -24,6 +24,10 @@ const navLinks = [
     name: "Training and Career",
     dropdown: true,
     items: [
+      {
+        name: "Summer Web Development 2025",
+        path: "/training/summer-web-development-2025",
+      },
       { name: "Mock Interviews", path: "/training/mock-interview" },
       { name: "Placement Calendar", path: "/career/placement-calendar" },
       { name: "Placement Drives", path: "/career/placement-drives" },
@@ -31,13 +35,11 @@ const navLinks = [
     ],
   },
 
-
   // Resources
   {
-    name: "Tools & Guides",
+    name: "Tools and Resources",
     dropdown: true,
     items: [
-      { name: "Resume Builder", path: "/tools/resume-builder" },
       { name: "Interview Q&A Bank", path: "/resources/qa-bank" },
       { name: "Placement Preparation Guide", path: "/resources/guide" },
     ],
@@ -66,7 +68,7 @@ const navLinks = [
 
   // Static Info
   {
-    name: "About",
+    name: "About us",
     path: "/about-us",
   },
 ];
@@ -170,12 +172,12 @@ export default function NavBar() {
               <a href="">Email: tpogecsiwan@gmail.com</a>
             </div>
             <div className="images flex gap-1 md:gap-3">
-              <Image
+              <img
                 className="brand-logo border border-black dark:border-white p-1 rounded-full min-h-[30px] max-h-[48px] aspect-square"
                 src="/images/dstbihar-logo.png"
                 alt="dstbihar-logo"
               />
-              <Image
+              <img
                 className="brand-logo min-h-[30px] max-h-[48px] aspect-square"
                 src="/images/aicte-logo.png"
                 alt="aicte-logo"
@@ -233,7 +235,7 @@ export default function NavBar() {
                       setIsDropdownOpen({ [link.name]: false })
                     }
                   >
-                    <span className="flex items-center cursor-pointer transition-all duration-300 hover:text-opacity-80 dark:hover:text-opacity-80">
+                    <span className="flex items-center cursor-pointer transition-all duration-300hover:text-opacity-80 dark:hover:text-opacity-80">
                       {link.name}
                       <ChevronDown className="rotate-0 group-hover:rotate-180 transition-rotate duration-300" />
                     </span>
@@ -242,11 +244,12 @@ export default function NavBar() {
                         isDropdownOpen[link.name] ? "flex flex-col" : "hidden"
                       }`}
                     >
+                    {/* dropdown list items  */}
                       {link.items.map((item, idx) => (
                         <NavLink
                           key={idx}
                           to={item.path}
-                          className="text-black dark:text-white hover:text-blue-500 dark:hover:text-blue-400 hover:bg-blue-100 rounded-3xl w-full py-2 px-3"
+                          className="hover:text-zinc-100 hover:bg-blue-600 rounded-3xl w-full py-2 px-3"
                         >
                           {item.name}
                         </NavLink>
@@ -342,9 +345,9 @@ export default function NavBar() {
                 }
                 className="flex items-center gap-2 text-zinc-800 dark:text-zinc-100"
               >
-                <Image
+                <img
                   className="rounded-full border border-zinc-300 dark:border-zinc-600 w-10 h-10 object-cover"
-                  src="https://www.bu.edu/prsocial/files/2019/07/profile-default-photo.jpg"
+                  src="./images/profile-default-photo.jpg"
                   alt="user-profile"
                 />
                 <span className="hidden sm:inline text-sm font-medium">

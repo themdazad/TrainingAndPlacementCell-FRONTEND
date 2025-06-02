@@ -7,8 +7,8 @@ import "./styles/MouseCursorGradientTracking.css";
 import "./styles/AnimatedBackground.css";
 import { HeroUIProvider } from "@heroui/react";
 import { BrowserRouter } from "react-router-dom";
-import NavBar from "./components/shared/Navigation";
-import Footer from "./components/shared/Footer";
+import NavBar from "./components/shared/Navigation.jsx";
+import Footer from "./components/shared/Footer";  
 import Loader from "./components/ui/Loader.jsx";
 // contexts
 import ProgramsProvider from "./hooks/contexts/google-sheets/programs-provider.jsx";

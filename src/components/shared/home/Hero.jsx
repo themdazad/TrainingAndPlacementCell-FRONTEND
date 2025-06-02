@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import PLACEMENT_BROCHURE from "../../../assets/downloads/GEC_SIWAN_PLACEMENT_BROCHURE.pdf";
-import SimpleSlider from "../../../components/ui/SimpleSlider.jsx";
-// data
+import SimpleSlider from "../../ui/SimpleSlider.jsx";
 import SliderData from "../../../assets/data/SliderData.js";
 
 export default function Hero() {
@@ -9,14 +8,14 @@ export default function Hero() {
     <section className="px-[5%] sm:py-16">
       <div className="grid items-center py-12 grid-cols-1 gap-12 lg:grid-cols-2">
         <div>
-          <h1 className="dm-serif-text-bold mt-2 lg:mt-8 text-4xl lg:text-6xl font-extrabold text-zinc-900 dark:text-white">
+          <h1 className="mt-2 lg:mt-8 text-4xl lg:text-6xl dm-serif-text-regular text-zinc-900 dark:text-white">
             {/* Campus Placement 2025 */}
             Training & Placement Cell
           </h1>
-          <p className="dm-serif-text-bold text-lg md:text-3xl font-semibold tracking-wider text-blue-500 dark:text-blue-400 pt-4">
+          <p className=" text-lg md:text-3xl font-semibold tracking-wider text-blue-500 dark:text-blue-400 pt-4">
             Government Engineering College, Siwan
           </p>
-          <p className="mt-2 text-base text-zinc-800 dark:text-zinc-300 lg:mt-8 sm:text-xl">
+          <p className="mt-2 text-zinc-800 dark:text-zinc-300 lg:mt-8 sm:text-xl">
             We strive to organize mock sessions, and provide real-world exposure
             through internships and project showcases, ensuring each student
             steps confidently into the professional world.
@@ -55,12 +54,6 @@ export default function Hero() {
 
         <div>
           <SimpleSlider slider_data={SliderData} />
-
-          {/* <Image
-                 className="w-full"
-                 src="/images/heroThumbnails/heroThumbnail07052025.svg"
-                 alt="tpo siwan hero image"
-               /> */}
         </div>
       </div>
     </section>

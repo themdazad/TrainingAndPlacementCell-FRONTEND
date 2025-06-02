@@ -39,7 +39,7 @@ const AuthProvider = ({ children }) => {
       setIsAuthenticated(false);
       setIsLogedIn({ admin: false, student: false });
     } finally {
-      setLoading(false);
+      setLoading(false);  
     }
   };
 

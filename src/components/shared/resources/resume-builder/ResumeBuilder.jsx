@@ -17,7 +17,7 @@ const initialData = {
     github: "",
     linkedin: "",
   },
-  skills: [""],
+  skills: ["",],
   education: [
     {
       year: "",
@@ -28,23 +28,18 @@ const initialData = {
   ],
   experience: [
     {
-      role: "Add Your Role",
-      company: "Company Name",
-      duration: "Starting Date - Ending Date",
-      details: ["Add your work details here", "Add more details if needed"],
+      role: "",
+      company: "",
+      duration: "",
+      details: ["",],
     },
   ],
-  achievements: [
-    "Add your achievement here",
-    "Add more achievements if needed",
-  ],
+  achievements: [],
 };
 
 export default function ResumeBuilder() {
   const [personalInfo, setPersonalInfo] = useState(initialData.personalInfo);
-  const [careerObjective, setCareerObjective] = useState(
-    "Add your career objective here"
-  );
+  const [careerObjective, setCareerObjective] = useState();
   const [onlineProfiles, setOnlineProfiles] = useState(
     initialData.onlineProfiles
   );

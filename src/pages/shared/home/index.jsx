@@ -1,11 +1,11 @@
 // sections
-import Hero from "../../../features/shared/home/Hero.jsx";
-import Announcements from "../../../features/shared/home/Announcements.jsx";
-import AcademicPrograms from "../../../features/shared/home/AcademicPrograms.jsx";
-import Testimonials from "../../../features/shared/home/Testimonials.jsx";
-import SelectedStudentSlider from "../../../features/shared/home/SelectedStudentSlider.jsx";
-import PastRecruiters from "../../../features/shared/home/PastRecruiters.jsx";
-import Faq from "../../../features/shared/home/Faq.jsx";
+import Hero from "../../../components/shared/home/Hero.jsx";
+import Announcements from "../../../components/shared/home/Announcements.jsx";
+import AcademicPrograms from "../../../components/shared/home/AcademicPrograms.jsx";
+import Testimonials from "../../../components/shared/home/Testimonials.jsx";
+import SelectedStudentSlider from "../../../components/shared/home/SelectedStudentSlider.jsx";
+import PastRecruiters from "../../../components/shared/home/PastRecruiters.jsx";
+import Faq from "../../../components/shared/home/Faq.jsx";
 export default function Home() {
   return (
     <main className="overflow-hidden max-w-[1980px] m-auto min-h-screen bg-white dark:bg-zinc-900">

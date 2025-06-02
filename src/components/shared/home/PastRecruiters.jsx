@@ -12,10 +12,6 @@ const logos = [
     url: "https://blogger.googleusercontent.com/img/a/AVvXsEhrpjspiyfkKTXyAVTyuK7w8CcTYv1O-o8trPlYN0a1z3kMbnxZc01rJVFaQTnxRJHsl4Nwau_NWroWWHxwbnuADKpK4ObApMVmSEiVAiHwMaZk1aiZxOeQMpW6ZxeoH9d0bJ1v4edV5rAKlCd5ULSBoWUnYUTuf8GVSNyG9wptaLhLvL5U0QnHCiVJLg",
   },
   {
-    name: "QSpider/JSpider",
-    url: "https://placements.pyspiders.com/sites/default/files/s1600-w664-3_1.jpeg",
-  },
-  {
     name: "Salesforge",
     link: "https://www.salesforce.com/in/",
     url: "https://logodix.com/logo/86351.png",
@@ -24,10 +20,6 @@ const logos = [
     name: "TCS",
     link: "https://www.tcs.com/",
     url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTPAWYqoR1E-YMPwd869I0X2WuToOjTrPXgQ&s",
-  },
-  {
-    name: "BHEL",
-    url: "https://th.bing.com/th/id/OIP.rQXXfTaHvqmBjhOjGJFyfAHaEA?rs=1&pid=ImgDetMain",
   },
   {
     name: "Rinex Logo",
@@ -53,11 +45,6 @@ const logos = [
     name: "nissi engineering solution pvt ltd",
     link: "https://nissi.co.in/",
     url: "https://th.bing.com/th/id/OIP.uHxfZSoiW2LbqQ6CEWGsPgHaC-?rs=1&pid=ImgDetMain",
-  },
-  {
-    name: "CISCO",
-    link: "https://www.cisco.com/",
-    url: "https://1000logos.net/wp-content/uploads/2016/11/Cisco-logo.png",
   },
 ];
 

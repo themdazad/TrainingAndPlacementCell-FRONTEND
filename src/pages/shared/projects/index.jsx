@@ -9,13 +9,9 @@ import {
   MapPin as MapPinIcon,
   ArrowRightCircle as ArrowRightCircleIcon,
 } from "lucide-react"; // ✅ Use correct Lucide imports
-import BreadCrumbs from "../../../components/ui/BreadCrumbs.jsx";
+import PageHeader from "../../../components/ui/PageHeader.jsx";
 
 export const projectsData = projects;
-const breadcrumbItems = [
-  { label: "Home", to: "/" },
-  { label: "Projects", to: "/projects", isCurrent: true }, // No `to` = current page
-];
 const Projects = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOrder, setSortOrder] = useState("newest");
@@ -48,19 +44,16 @@ const Projects = () => {
 
   return (
     <section className="max-w-[1980px] px-[5%] mx-auto text-zinc-900 dark:text-zinc-100 bg-white dark:bg-zinc-900">
-      {/* Header */}
-      <div className="header flex flex-col  justify-center py-12">
-        <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold">
-          PROJECTS
-        </h1>
-        <p className="mt-3 max-w-2xl text-zinc-600 dark:text-zinc-400">
-          Explore our student's projects and initiatives that showcase our
-          commitment to excellence and innovation.
-        </p>
-      </div>
-
-      {/* breadcrumbs */}
-      <BreadCrumbs items={breadcrumbItems} />
+      <PageHeader
+        title={"Projects"}
+        description={
+          "  Explore our student's projects and initiatives that showcase our commitment to excellence and innovation."
+        }
+        breadcrumbItems={[
+          { label: "Home", to: "/" },
+          { label: "Projects", to: "/projects", isCurrent: true }, // No `to` = current page
+        ]}
+      />
 
       {/* Search and Sort */}
       <div className="mt-4 flex flex-col sm:flex-row justify-end items-center gap-4">

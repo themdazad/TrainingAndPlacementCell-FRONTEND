@@ -14,11 +14,13 @@ import {
 import { useNavigate } from "react-router-dom";
 import { Button } from "@heroui/react";
 import Profile from "../../../components/student/dashboard/dashboard-tab/Profile";
-import ResumeBuilder from "../../../features/student/resume-builder/ResumeBuilder";
+// import ResumeBuilder from "../../../components/student/resume-builder/ResumeBuilder";
+import ResumeBuilder from "../../../components/shared/resources/resume-builder/ResumeBuilder";
+import PageHeader from "../../../components/ui/PageHeader.jsx";
 import { useAuth } from "../../../hooks/contexts/auth/AuthContext"; // Adjust path as needed
 
 const menuItems = [
-  { name: "Dashboard", icon: Home },
+  { name: "Profile", icon: Home },
   { name: "Projects", icon: Book },
   { name: "Resume Builder", icon: FileUser },
   { name: "Settings", icon: Settings },
@@ -57,7 +59,7 @@ export default function StudentDashboard() {
 
   const renderContent = () => {
     switch (activeTab) {
-      case "Dashboard":
+      case "Profile":
         return (
           <section>
             <Profile />
@@ -69,7 +71,7 @@ export default function StudentDashboard() {
       case "Placements":
         return <p>Placements Section</p>;
       case "Resume Builder":
-        return <ResumeBuilder/>;
+        return <ResumeBuilder />;
       case "Settings":
         return <p>Settings Section</p>;
       default:
@@ -114,19 +116,16 @@ export default function StudentDashboard() {
 
       {/* Main Content */}
       <div className="flex-1 p-6 px-[5%]">
-        {/* Heading */}
-        <div className="header flex flex-col justify-center">
-          <span
-            className=" cursor-pointer  "
+          
+          <Button
+            className=" cursor-pointer py-4 "
             variant="none"
-            onClick={() => setIsOpen(!isOpen)}
+            onPress={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <PanelRightOpen /> : <PanelRightClose />}
-          </span>
-          <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold">
-            {activeTab}
-          </h1>
-        </div>
+          </Button>
+
+        {/* main content */}
         {renderContent()}
       </div>
     </main>

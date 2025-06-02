@@ -1,7 +1,7 @@
 import { Button, Card, CardBody, Input, Link } from "@heroui/react";
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom"; // Import useNavigate
-import {  toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 
 const AdminLogin = () => {
@@ -11,42 +11,42 @@ const AdminLogin = () => {
   const [loading, setLoading] = useState(false);
 
   const handleLogin = async () => {
-    setLoading(true);
-    // login process
-    try {
-      // Replace with your actual API endpoint
-      const response = await axios.post(
-        `${import.meta.env.VITE_API_BASE_URL}/auth/admin/login`,
-        {
-          email,
-          password,
-        }
-      );
+	setLoading(true);
+	// login process
+	try {
+	  // Replace with your actual API endpoint
+	  const response = await axios.post(
+		`${import.meta.env.VITE_API_BASE_URL}/auth/admin/login`,
+		{
+		  email,
+		  password,
+		}
+	  );
 
-      if (response.data.success) {
-        localStorage.setItem("isAdminLoggedin",response.data.success);
-        console.log(localStorage.getItem("isAdminLoggedin"))
-        navigate("/dashboard/admin");
-        toast.success("Logged in");   
-      } else {
-        toast.error("Incorrect email or password!");
-      }
-    } catch (error) {
-      // Handle errors
-      toast.error(
-        `Login Failed: ${error.response?.data?.message || error.message}`
-      );
-    } finally {
-      setLoading(false);
-    }
+	  if (response.data.success) {
+		localStorage.setItem("isAdminLoggedin",response.data.success);
+		console.log(localStorage.getItem("isAdminLoggedin"))
+		navigate("/dashboard/admin");
+		toast.success("Logged in");   
+	  } else {
+		toast.error("Incorrect email or password!");
+	  }
+	} catch (error) {
+	  // Handle errors
+	  toast.error(
+		`Login Failed: ${error.response?.data?.message || error.message}`
+	  );
+	} finally {
+	  setLoading(false);
+	}
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
-      <Card className="w-full max-w-md p-6 shadow-lg rounded-2xl">
+    <div className="flex items-center justify-center">
+      <Card className="border-t-4 border-y-blue-500 w-full max-w-md p-3 m-[5%] shadow-md rounded-3xl">
         <CardBody>
           <h2 className="text-2xl font-bold text-center mb-6">Admin Login</h2>
-          <div className="space-y-4">
+          <form  className="space-y-4">
             <Input
               type="email"
               label="Email"
@@ -72,17 +72,13 @@ const AdminLogin = () => {
               Login
             </Button>
             <div className="text-center mt-4">
-              <Link href="#" color="primary">
+              <a href="#" color="primary" onClick={()=>{
+				window.alert("Contact developer for new password.")
+			  }}>
                 Forgot Password?
-              </Link>
+              </a>
             </div>
-            <div className="text-center mt-2">
-              <span className="text-zinc-600">Not registered?</span>{" "}
-              <NavLink to="/auth/admin/register" className="text-primary">
-                Sign Up
-              </NavLink>
-            </div>
-          </div>
+          </form>
         </CardBody>
       </Card>
     </div>
