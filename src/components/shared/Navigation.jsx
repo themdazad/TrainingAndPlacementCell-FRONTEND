@@ -341,7 +341,7 @@ export default function NavBar() {
                 to={
                   isLogedIn?.student
                     ? "/dashboard/student"
-                    : "/auth/student/login"
+                    : "/auth"
                 }
                 className="flex items-center gap-2 text-zinc-800 dark:text-zinc-100"
               >
@@ -354,6 +354,8 @@ export default function NavBar() {
                   {isLogedIn?.student ? "Dashboard" : "Login"}
                 </span>
               </NavLink>
+             
+
             </div>
           </div>
         </header>

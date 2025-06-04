@@ -18,16 +18,9 @@ export default function About() {
         Placement Officer, <strong>Mr. Navdeep Pandey</strong>, the cell
         actively fosters industry interaction, soft skills training, internship
         programs, and placement support. Our mission is to bridge the
-        academic–industry gap and provide students with ample opportunities to
+        academic-industry gap and provide students with ample opportunities to
         realize their professional goals.
       </p>
-
-      <NavLink to="/about-us">
-        <span className="text-blue-500 hover:text-blue-500 font-medium inline-flex items-center">
-          know more
-          <ArrowRightCircle className="w-4 h-4 ml-1" />
-        </span>
-      </NavLink>
     </div>
   );
 }

@@ -28,9 +28,10 @@ const AdminLogin = () => {
         console.log(localStorage.getItem("isAdminLoggedin"))
         navigate("/dashboard/admin");
         toast.success("Logged in");   
-      } else {
-        toast.error("Incorrect email or password!");
       }
+      //  else {
+      //   toast.error("Incorrect email or password!");
+      // }
     } catch (error) {
       // Handle errors
       toast.error(

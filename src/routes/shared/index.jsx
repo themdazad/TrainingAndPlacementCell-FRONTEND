@@ -15,13 +15,14 @@ import ProjectDetailsPage from "../../pages/shared/projects/project-details-page
 import ReachUs from "../../pages/recruiters/reach-us/index.jsx";
 import AboutUs from "../../pages/shared/about-us/index.jsx";
 import SummerWebDevelopment2025 from "../../pages/shared/training/summer-web-development-2025/index.jsx";
+import MockInterview from "../../pages/shared/training/mock-interview/index.jsx";
 
 const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/auth" element={<Auth/>}>
-        <Route path="admin">
+      <Route path="/auth" element={<Auth />} />
+      {/* <Route path="admin">
           <Route path="login" element={<AdminLogin />} />
           <Route path="register" element={<AdminRegister />} />
         </Route>
@@ -29,8 +30,7 @@ const AppRoutes = () => {
           <Route path="login" element={<StudentLogin />} />
           <Route path="register" element={<StudentRegister />} />
           <Route path="forgot-password" element={<ForgotPassword />} />
-        </Route>
-      </Route>
+        </Route> */}
 
       {/* Public Routes  */}
       <Route path="/recruiters/reach-us" element={<ReachUs />} />
@@ -44,6 +44,7 @@ const AppRoutes = () => {
           path="summer-web-development-2025"
           element={<SummerWebDevelopment2025 />}
         />
+        <Route path="mock-interview" element={<MockInterview />} />
       </Route>
       <Route path="/projects">
         <Route index element={<Projects />} />

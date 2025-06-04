@@ -61,7 +61,7 @@ export default function TPCellCoordinators() {
         {/* Coordinator Details */}
         <div className="members-list grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
           {coordinators.map((coordinator, index) => (
-            <CoordinatorCard
+            <Card
               key={index}
               name={coordinator.name}
               designation={coordinator.designation}
@@ -77,7 +77,7 @@ export default function TPCellCoordinators() {
   );
 }
 
-function CoordinatorCard({
+export function Card({
   name,
   designation,
   mobile,

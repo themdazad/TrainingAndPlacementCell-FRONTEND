@@ -17,7 +17,7 @@ const initialData = {
     github: "",
     linkedin: "",
   },
-  skills: ["",],
+  skills: [""],
   education: [
     {
       year: "",
@@ -31,10 +31,11 @@ const initialData = {
       role: "",
       company: "",
       duration: "",
-      details: ["",],
+      details: [""],
     },
   ],
   achievements: [],
+  interestsandhobbies: [],
 };
 
 export default function ResumeBuilder() {
@@ -47,6 +48,9 @@ export default function ResumeBuilder() {
   const [education, setEducation] = useState(initialData.education);
   const [experience, setExperience] = useState(initialData.experience);
   const [achievements, setAchievements] = useState(initialData.achievements);
+  const [interestsandhobbies, setInterestsHobbies] = useState(
+    initialData.interestsandhobbies
+  );
 
   const resumeRef = useRef();
 
@@ -128,12 +132,28 @@ export default function ResumeBuilder() {
     setAchievements(achievements.filter((_, i) => i !== index));
   };
 
-  // PDF download code unchanged
+  // Interests and Hobbies handlers
+  const addInterestsHobbies = () =>
+    setInterestsHobbies([...interestsandhobbies, ""]);
+  const updateInterestsHobbies = (index, value) => {
+    const newInterestsHobbies = [...interestsandhobbies];
+    newInterestsHobbies[index] = value;
+    setAchievements(newInterestsHobbies);
+  };
+  const removeInterestsHobbies = (index) => {
+    setInterestsHobbies(interestsandhobbies.filter((_, i) => i !== index));
+  };
+
+  // PDF download code
   const downloadPDF = async () => {
     const input = resumeRef.current;
     if (!input) return;
     window.scrollTo(0, 0);
-    const canvas = await html2canvas(input, { scale: 2, useCORS: true });
+    const canvas = await html2canvas(input, {
+      scale: 3,
+      useCORS: true,
+      svgRendering: "foreignObject", // helps preserve icon rendering
+    });
     const imgData = canvas.toDataURL("image/png");
     const pdf = new jsPDF("p", "mm", "a4");
     const pdfWidth = pdf.internal.pageSize.getWidth();
@@ -440,7 +460,43 @@ export default function ResumeBuilder() {
               + Add Achievement
             </button>
           </section>
+          {/* Interests and Hobbies */}
+
+          <section className="p-5 border border-zinc-300 dark:border-zinc-700 rounded-2xl bg-zinc-50 dark:bg-zinc-800 space-y-4">
+            <div className="flex justify-between items-center">
+              <h3 className="text-lg font-semibold text-blue-500">
+                Interests and Hobbies
+              </h3>
+            </div>
+            <div className="space-y-2">
+              {interestsandhobbies.map((ach, i) => (
+                <div key={i} className="flex items-center gap-2">
+                  <Input
+                    type="text"
+                    value={ach}
+                    onChange={(e) => updateInterestsHobbies(i, e.target.value)}
+                    className="w-full"
+                  />
+                  <button
+                    onClick={() => removeInterestsHobbies(i)}
+                    className="text-red-500 hover:text-red-600"
+                    type="button"
+                  >
+                    <X />
+                  </button>
+                </div>
+              ))}
+            </div>
+            <button
+              onClick={addInterestsHobbies}
+              className="text-sm text-blue-600 "
+              type="button"
+            >
+              + Add Interest and sHobbies
+            </button>
+          </section>
         </div>
+
         {/* ******************************************Resume Preview****************************** */}
         {/* Resume Preview */}
         <div
@@ -451,6 +507,7 @@ export default function ResumeBuilder() {
           <div className="mb-12">
             <div className="flex justify-between items-center mb-4">
               <img src={GECSIWAN_LOGO} alt="GEC Siwan logo" className="w-24" />
+
               <div className="text-center gap-1">
                 <h1 className="text-4xl font-bold">{personalInfo.name}</h1>
                 <b>{personalInfo.title}</b>
@@ -475,17 +532,19 @@ export default function ResumeBuilder() {
                   </a>
                 </p>
               </div>
-              <div className="text-sm no-underline">
-                <p className="flex gap-1 items-center">
-                  <Phone className="p-1" />
+
+              <div className="text-sm">
+                <p className="flex items-center gap-1 leading-tight">
+                  <Phone className="w-4 h-4" />
                   {personalInfo.phone}
                 </p>
-                <p className="flex gap-1 items-center">
-                  <Mail className="p-1" />
+                <p className="flex items-center gap-1 leading-tight">
+                  <Mail className="w-4 h-4" />
                   {personalInfo.email}
                 </p>
-                <p className="flex gap-1 items-center">
-                  <MapPinned className="p-1" /> {personalInfo.location}
+                <p className="flex items-center gap-1 leading-tight">
+                  <MapPinned className="w-4 h-4" />
+                  {personalInfo.location}
                 </p>
               </div>
             </div>
@@ -501,33 +560,38 @@ export default function ResumeBuilder() {
           {education.length > 0 && (
             <div className="my-6">
               <h2 className="font-semibold text-lg border-b mb-2">Education</h2>
-              <table className="w-full text-center table-auto border-collapse border border-zinc-300 dark:border-zinc-700">
-                <thead>
-                  <tr>
-                    <th>Year</th>
-                    <th>Course</th>
-                    <th>College</th>
-                    <th>Marks/CGPA</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {education.map((edu, i) => (
-                    <tr key={i}>
-                      <td>{edu.year}</td>
-                      <td>{edu.course}</td>
-                      <td>{edu.institution}</td>
-                      <td>{edu.marks_cgpa}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+              <div className="w-full border border-zinc-300 dark:border-zinc-700 ">
+                {/* Header Row */}
+                <div className="grid grid-cols-4 py-2 bg-zinc-100 dark:bg-zinc-800 text-center font-semibold border-b border-zinc-300 dark:border-zinc-700">
+                  <span>Year</span>
+                  <span>Course</span>
+                  <span>School/College</span>
+                  <span>Marks/CGPA</span> 
+                </div>
+
+                {/* Data Rows */}
+                {education.map((edu, i) => (
+                  <div
+                    key={i}
+                    className=" text-center border-b border-zinc-200 dark:border-zinc-700"
+                  >
+                    <div className="my-2  grid grid-cols-4">
+                      <span>{edu.year}</span>
+                      <span>{edu.course}</span>
+                      <span>{edu.institution}</span>
+                      <span>{edu.marks_cgpa}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           )}
 
           {/* Skills */}
           {skills.length > 0 && (
             <div className="mb-6">
-              <h2 className="font-semibold text-lg border-b mb-2">Skills</h2>
+              <h2 className="font-semibold text-lg ">Skills</h2>
+              <hr />
               <ul className="list-disc pl-6 grid grid-cols-2 gap-1">
                 {skills.map((skill, i) => (
                   <li key={i}>{skill}</li>
@@ -539,9 +603,8 @@ export default function ResumeBuilder() {
           {/* Experience */}
           {experience.length > 0 && (
             <div className="mb-6">
-              <h2 className="font-semibold text-lg border-b mb-2">
-                Experience
-              </h2>
+              <h2 className="font-semibold text-lg">Experience</h2>
+              <hr />
               {experience.map((exp, i) => (
                 <div key={i} className="mb-3">
                   <b>{exp.role}</b> — <i>{exp.company}</i> ({exp.duration})
@@ -558,7 +621,8 @@ export default function ResumeBuilder() {
           {/* Projects */}
           {experience.length > 0 && (
             <div className="mb-6">
-              <h2 className="font-semibold text-lg border-b mb-2">Projects</h2>
+              <h2 className="font-semibold text-lg">Projects</h2>
+              <hr />
               {experience.map((exp, i) => (
                 <div key={i} className="mb-3">
                   <b>{exp.role}</b> — <i>{exp.company}</i> ({exp.duration})
@@ -575,9 +639,10 @@ export default function ResumeBuilder() {
           {/* Achievements */}
           {achievements.length > 0 && (
             <div className="mb-6">
-              <h2 className="font-semibold text-lg border-b mb-2">
+              <h2 className="font-semibold text-lg">
                 Achievements and Responsibility
               </h2>
+              <hr />
               <ul className="list-disc pl-6">
                 {achievements.map((ach, i) => (
                   <li key={i}>{ach}</li>
@@ -587,14 +652,12 @@ export default function ResumeBuilder() {
           )}
 
           {/* Interests and Hobbies */}
-          {achievements.length > 0 && (
+          {interestsandhobbies.length > 0 && (
             <div className="mb-6">
-              <h2 className="font-semibold text-lg border-b mb-2">
-                {" "}
-                Interests and Hobbies
-              </h2>
+              <h2 className="font-semibold text-lg">Interests and Hobbies</h2>
+              <hr />
               <ul className="list-disc pl-6">
-                {achievements.map((ach, i) => (
+                {interestsandhobbies.map((ach, i) => (
                   <li key={i}>{ach}</li>
                 ))}
               </ul>

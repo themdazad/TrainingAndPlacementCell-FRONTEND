@@ -69,7 +69,7 @@ export default function TPCellMembers() {
         </div>
 
         {/* Members Details */}
-        <div className="members-list grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mt-4">
+        <div className="members-list grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mt-4">
           <ProfileList profiles={profiles} />
         </div>
       </div>
@@ -121,11 +121,11 @@ function ProfileCard({
           {designation}
         </p>
 
-        <p className="text-sm text-blue-700 dark:text-blue-300">
+        <p className="text-sm text-blue-700 dark:text-blue-300 ">
           Email:{" "}
           <a
             href={`mailto:${email}`}
-            className="text-blue-500 dark:text-blue-400 underline"
+            className="text-blue-500 dark:text-blue-400"
           >
             {email}
           </a>
