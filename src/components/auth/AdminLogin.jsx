@@ -1,44 +1,60 @@
-import { Button, Card, CardBody, Input, Link } from "@heroui/react";
-import { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom"; // Import useNavigate
-import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
+import { toast } from "react-toastify";
+import { Button, Card, CardBody, Input } from "@heroui/react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import AuthContext from "../../hooks/contexts/auth/AuthContext";
 
 const AdminLogin = () => {
+  const { setIsLogedIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleLogin = async () => {
-	setLoading(true);
-	// login process
-	try {
-	  // Replace with your actual API endpoint
-	  const response = await axios.post(
-		`${import.meta.env.VITE_API_BASE_URL}/auth/admin/login`,
-		{
-		  email,
-		  password,
-		}
-	  );
+    setLoading(true);
 
-	  if (response.data.success) {
-		localStorage.setItem("isAdminLoggedin",response.data.success);
-		console.log(localStorage.getItem("isAdminLoggedin"))
-		navigate("/dashboard/admin");
-		toast.success("Logged in");   
-	  } else {
-		toast.error("Incorrect email or password!");
-	  }
-	} catch (error) {
-	  // Handle errors
-	  toast.error(
-		`Login Failed: ${error.response?.data?.message || error.message}`
-	  );
-	} finally {
-	  setLoading(false);
-	}
+    // Validate inputs
+    if (!email || !password) {
+      toast.error("Please fill in all fields");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      // 1. Send login request
+      const res = await axios.post(
+        `${import.meta.env.VITE_API_BASE_URL}/auth/admin/login`,
+        { email, password },
+        {
+          withCredentials: true,
+        }
+      );
+
+      console.log(res);
+      // 2. Handle successful login
+      if (res.status === 200) {
+        // Token automatically save in Cookies by backend
+        toast.success("Logged in successfully");
+        setTimeout(() => {
+          navigate("/dashboard/admin"); // Redirect to dashboard
+          setIsLogedIn({ admin: true, student: false }); // Update context state
+          setLoading(false);
+        }, 1000);
+      } else {
+        toast.error("Invalid credentials");
+      }
+    } catch (error) {
+      // Handle errors
+      const errorMessage =
+        error.response?.data?.message || error.message || "An error occurred";
+      toast.error(`Login Failed: ${errorMessage}`);
+    } finally {
+      // Stop loading
+      setLoading(false);
+    }
   };
 
   return (
@@ -46,7 +62,7 @@ const AdminLogin = () => {
       <Card className="border-t-4 border-y-blue-500 w-full max-w-md p-3 m-[5%] shadow-md rounded-3xl">
         <CardBody>
           <h2 className="text-2xl font-bold text-center mb-6">Admin Login</h2>
-          <form  className="space-y-4">
+          <form className="space-y-4">
             <Input
               type="email"
               label="Email"
@@ -72,9 +88,13 @@ const AdminLogin = () => {
               Login
             </Button>
             <div className="text-center mt-4">
-              <a href="#" color="primary" onClick={()=>{
-				window.alert("Contact developer for new password.")
-			  }}>
+              <a
+                href="#"
+                color="primary"
+                onClick={() => {
+                  window.alert("Contact developer for new password.");
+                }}
+              >
                 Forgot Password?
               </a>
             </div>

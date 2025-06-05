@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import AuthContext from "./AuthContext";
 import axios from "axios";
+import { Construction } from "lucide-react";
 
 const AuthProvider = ({ children }) => {
   const [isLogedIn, setIsLogedIn] = useState({
@@ -21,7 +22,6 @@ const AuthProvider = ({ children }) => {
 
       if (res.status === 200) {
         const role = res.data.tokenData?.role;
-
         setIsAuthenticated(true);
 
         if (role === "admin") {

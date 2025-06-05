@@ -27,7 +27,7 @@ const StudentLogin = () => {
     }
 
     try {
-      // Send login request
+      // 1. Send login request
       const res = await axios.post(
         `${import.meta.env.VITE_API_BASE_URL}/auth/student/login`,
         { regNo, password },
@@ -36,7 +36,7 @@ const StudentLogin = () => {
         }
       );
 
-      // Handle successful login
+      // 2. Handle successful login
       if (res.status === 200) {
         // Token automatically save in Cookies by backend
         toast.success("Logged in successfully");

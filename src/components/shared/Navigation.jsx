@@ -61,8 +61,8 @@ const navLinks = [
     dropdown: true,
     items: [
       { name: "Reach us", path: "/recruiters/reach-us" },
-      { name: "Why Recruit From Us?", path: "/recruiter/why-us" },
-      { name: "Past Recruiters", path: "/recruiter/past-recruiters" },
+      { name: "Why Recruit From Us?", path: "/recruiters/why-us" },
+      { name: "Past Recruiters", path: "/recruiters/past-recruiters" },
     ],
   },
 
@@ -244,7 +244,7 @@ export default function NavBar() {
                         isDropdownOpen[link.name] ? "flex flex-col" : "hidden"
                       }`}
                     >
-                    {/* dropdown list items  */}
+                      {/* dropdown list items  */}
                       {link.items.map((item, idx) => (
                         <NavLink
                           key={idx}
@@ -336,26 +336,54 @@ export default function NavBar() {
               {/* Theme Switch */}
               <ThemeSwitch />
 
-              {/* Dashboard or Login Button */}
-              <NavLink
-                to={
-                  isLogedIn?.student
-                    ? "/dashboard/student"
-                    : "/auth"
-                }
-                className="flex items-center gap-2 text-zinc-800 dark:text-zinc-100"
-              >
-                <img
-                  className="rounded-full border border-zinc-300 dark:border-zinc-600 w-10 h-10 object-cover"
-                  src="./images/profile-default-photo.jpg"
-                  alt="user-profile"
-                />
-                <span className="hidden sm:inline text-sm font-medium">
-                  {isLogedIn?.student ? "Dashboard" : "Login"}
-                </span>
-              </NavLink>
-             
+              {/* Login Button */}
+              {!(isLogedIn.admin || isLogedIn.student) && (
+                <NavLink
+                  to="/auth"
+                  className="flex items-center gap-2 text-zinc-800 dark:text-zinc-100"
+                >
+                  <img
+                    className="rounded-full border border-zinc-300 dark:border-zinc-600 w-10 h-10 object-cover"
+                    src="./images/profile-default-photo.jpg"
+                    alt="user-profile"
+                  />
+                  <span className="hidden sm:inline text-sm font-medium">
+                    Login
+                  </span>
+                </NavLink>
+              )}
 
+              {/* Dashboard button  */}
+              {!!isLogedIn.admin && (
+                <NavLink
+                  to="/dashboard/admin"
+                  className="flex items-center gap-2 text-zinc-800 dark:text-zinc-100"
+                >
+                  <img
+                    className="rounded-full border border-zinc-300 dark:border-zinc-600 w-10 h-10 object-cover"
+                    src="./images/profile-default-photo.jpg"
+                    alt="user-profile"
+                  />
+                  <span className="hidden sm:inline text-sm font-medium">
+                    Dashboard
+                  </span>
+                </NavLink>
+              )}
+              {!!isLogedIn.student && (
+                <NavLink
+                  to="/dashboard/student"
+                  className="flex items-center gap-2 text-zinc-800 dark:text-zinc-100"
+                >
+                  <img
+                    className="rounded-full border border-zinc-300 dark:border-zinc-600 w-10 h-10 object-cover"
+                    src="./images/profile-default-photo.jpg"
+                    alt="user-profile"
+                  />
+                  <span className="hidden sm:inline text-sm font-medium">
+                    Dashboard
+                  </span>
+                </NavLink>
+              )}
             </div>
           </div>
         </header>

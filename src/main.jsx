@@ -17,16 +17,18 @@ import AuthProvider from "./hooks/contexts/auth/AuthProvider.jsx";
 // Lazy load routes
 const SharedRoutes = lazy(() => import("./routes/shared"));
 const StudentRoutes = lazy(() => import("./routes/student"));
+const AdminRoutes = lazy(() => import("./routes/admin"));
 
 function App() {
   return (
     <HeroUIProvider>
-       <ToastContainer />
+      <ToastContainer />
       <main className="text-foreground bg-background dark:bg-[#111112] min-h-screen">
         <Suspense fallback={<Loader />}>
           <NavBar />
           <SharedRoutes />
           <StudentRoutes />
+          <AdminRoutes />
           <Footer />
         </Suspense>
       </main>

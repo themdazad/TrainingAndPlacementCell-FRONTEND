@@ -7,9 +7,9 @@ import AdminLogin from "../../../components/auth/AdminLogin";
 export default function Auth() {
   const [tab, setTab] = useState("Student");
   return (
-    <div className="min-h-screen flex ">
+    <div className="min-h-screen grid md:grid-cols-2 ">
       {/* Left Section */}
-      <div className="w-1/2 flex flex-col justify-center items-center px-10 ">
+      <div className="max-sm:hidden flex flex-col justify-center items-center px-10 ">
         <Image
           src={GECSIWAN_LOGO}
           alt="GEC Siwan Logo"
@@ -28,7 +28,7 @@ export default function Auth() {
       </div>
 
       {/* Right Section */}
-      <div className="w-1/2 flex items-center justify-center">
+      <div className="flex items-center justify-center">
         <div className="w-full max-w-md">
           <h2 className="text-center text-blue-500 font-semibold mb-4">
             Sign-in to GEC Siwan Placement Portal

@@ -1,101 +1,126 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
 import { motion } from "framer-motion";
+import { toast } from "react-toastify";
 import {
   Home,
   Book,
-  FileUser,
   Settings,
-  LogOut,
   PanelRightClose,
   PanelRightOpen,
-  CircleHelp,
+  LogOut,
 } from "lucide-react";
-import Profile from "../../../components/dashboard/student/dashboard-tab/Profile";
+import { useNavigate } from "react-router-dom";
+import { Button } from "@heroui/react";
+import Profile from "../../../components/admin/dashboard/dashboard-tab/Profile";
+import { useAuth } from "../../../hooks/contexts/auth/AuthContext"; // Adjust path as needed
 
 const menuItems = [
-  { name: "Dashboard", icon: Home },
-  { name: "Projects", icon: Book },
-  { name: "Quiz Maker", icon: CircleHelp },
-  { name: "Post a Job", icon: FileUser },
+  { name: "Profile", icon: Home },
+  { name: "Post a Job", icon: Book },
   { name: "Settings", icon: Settings },
-  { name: "Logout", icon: LogOut },
 ];
 
 export default function AdminDashboard() {
   const [isOpen, setIsOpen] = useState(true);
   const [activeTab, setActiveTab] = useState("Dashboard");
-  const [studentData, setStudentData] = useState(null);
+  const [adminData, setAdminData] = useState(null);
 
-  useEffect(() => {
-    axios
-      .post("http://localhost:3000//test/admin/login")
-      .then((res) => res.json())
-      .then((data) => setStudentData(data))
-      .catch((err) => console.error("Error fetching student data:", err));
-  }, []);
+  // Access auth context
+  const { isLogedIn, setIsLogedIn } = useAuth();
+  // Handling login/logout Features
+  const navigate = useNavigate();
 
-  const handleTabClick = (tabName) => {
-    const renderContent = () => {
-      switch (activeTab) {
-        case "Dashboard":
-          return (
-            <section>
-              <Profile />
-            </section>
-          );
-        case "Projects":
-          return <p>Projects Section</p>;
-        case "Placements":
-          return <p>Placements Section</p>;
-        case "Resume Builder":
-          return <p>Coming Soon...</p>;
-        case "Quiz Maker":
-          return <p>Coming Soon...</p>;
-        case "Settings":
-          return <p>Settings Section</p>;
-        default:
-          return <p>Welcome to the Student Dashboard</p>;
+  // Handle Logout
+  const handleLogout = async () => {
+    try {
+      const res = await axios.post(
+        `${import.meta.env.VITE_API_BASE_URL}/logout`,
+        {},
+        {
+          withCredentials: true,
+        }
+      );
+        console.log(res);
+      if (res.status === 200) {
+        setIsLogedIn({ admin: false, student: false }); // Reset state
+        toast.error("Logged out successfully");
+        navigate("/");
       }
-    };
+    } catch (error) {
+      console.error("Error during logout:", error);
+    }
+  };
 
-    return (
-      <div className="flex min-h-screen">
-        {/* Sidebar */}
-        <motion.div
-          animate={{ width: isOpen ? 250 : 80 }}
-          className="border-r border-zinc-500/40 p-4 flex flex-col relative"
-        >
+  const renderContent = () => {
+    switch (activeTab) {
+      case "Profile":
+        return (
+          <section>
+            <Profile />
+          </section>
+        );
+
+      case "Post a Job":
+        return <p>Post a Job </p>;
+      case "Verify Students":
+        return <p>Verify Students</p>;
+      case "Settings":
+        return <p>Settings Section</p>;
+      default:
+        return <p>Welcome to the Admin Dashboard</p>;
+    }
+  };
+
+  return (
+    <main className="flex min-h-screen max-w-[1980px] m-auto">
+      {/* Sidebar */}
+      {isOpen && (
+        <motion.div className="border-r border-zinc-500/40 p-6 px-12 flex flex-col relative space-y-3">
           <div className="sticky top-0">
-            <span
-              className="absolute cursor-pointer -top-[10px] right-0"
-              onClick={() => setIsOpen(!isOpen)}
-            >
-              {isOpen ? <PanelRightOpen /> : <PanelRightClose />}
-            </span>
-
             <ul className="mt-12 space-y-4">
-              {menuItems.map(({ name, icon: Icon }, idx) => (
+              {menuItems.map((item, index) => (
                 <li
-                  key={idx}
-                  className={`flex items-center gap-4 p-2 cursor-pointer hover:bg-zinc-500/40 rounded-lg ${
-                    activeTab === name ? "bg-zinc-500/40" : ""
+                  key={index}
+                  className={`flex items-center gap-4 p-2 cursor-pointer dark:hover:bg-zinc-800 hover:bg-blue-100 rounded-lg ${
+                    activeTab === item.name ? "bg-zinc-500/40" : ""
                   }`}
-                  onClick={() => handleTabClick(name)}
+                  onClick={() => setActiveTab(item.name)}
                 >
-                  <Icon size={24} />
-                  {isOpen && <span>{name}</span>}
+                  <item.icon size={24} />
+                  {isOpen && <span>{item.name}</span>}
                 </li>
               ))}
             </ul>
+            {(isLogedIn?.admin || isLogedIn?.admin) && (
+              <div className="flex items-center">
+                <Button
+                  onPress={handleLogout}
+                  className=" py-1.5 mt-4 rounded-xl font-medium transition"
+                >
+                  {isOpen && "Logout"}
+                  <LogOut />
+                </Button>
+              </div>
+            )}
           </div>
         </motion.div>
+      )}
 
-        {/* Main Content */}
-        <div className="flex-1 p-6 h-[120vh]">
-          <h1 className="text-2xl font-bold mb-4">{activeTab}</h1>
-          {renderContent()}
-        </div>
+      {/* Main Content */}
+      <div className="flex-1 p-6 px-[5%]">
+          
+          <Button
+            className=" cursor-pointer py-4 "
+            variant="none"
+            onPress={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <PanelRightOpen /> : <PanelRightClose />}
+          </Button>
+
+        {/* main content */}
+        {renderContent()}
       </div>
-    );
-  };
+    </main>
+  );
 }

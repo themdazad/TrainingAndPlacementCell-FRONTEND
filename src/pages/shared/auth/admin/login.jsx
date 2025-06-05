@@ -3,8 +3,11 @@ import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom"; // Import useNavigate
 import {  toast } from "react-toastify";
 import axios from "axios";
+import { useContext } from "react";
+import AuthContext from "../../../../hooks/contexts/auth/AuthContext";
 
 const AdminLogin = () => {
+  const { setIsLogedIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -12,32 +15,43 @@ const AdminLogin = () => {
 
   const handleLogin = async () => {
     setLoading(true);
-    // login process
+
+    // Validate inputs
+        if (!email || !password) {
+          toast.error("Please fill in all fields");
+          setLoading(false);
+          return;
+        }
+
+  
     try {
-      // Replace with your actual API endpoint
-      const response = await axios.post(
+      // 1. Send login request
+      const res = await axios.post(
         `${import.meta.env.VITE_API_BASE_URL}/auth/admin/login`,
+        { email, password },
         {
-          email,
-          password,
+          withCredentials: true,
         }
       );
 
-      if (response.data.success) {
-        localStorage.setItem("isAdminLoggedin",response.data.success);
-        console.log(localStorage.getItem("isAdminLoggedin"))
-        navigate("/dashboard/admin");
-        toast.success("Logged in");   
+      // 2. Handle successful login
+      if (res.status === 200) {
+        // Token automatically save in Cookies by backend
+        toast.success("Logged in successfully");
+        setIsLogedIn({ admin: true, student: false }); // Update context state
+        setTimeout(() => {
+          navigate("/dashboard/admin"); // Redirect to dashboard
+        }, 1000);
+      } else {
+        toast.error("Invalid credentials");
       }
-      //  else {
-      //   toast.error("Incorrect email or password!");
-      // }
     } catch (error) {
       // Handle errors
-      toast.error(
-        `Login Failed: ${error.response?.data?.message || error.message}`
-      );
+      const errorMessage =
+        error.response?.data?.message || error.message || "An error occurred";
+      toast.error(`Login Failed: ${errorMessage}`);
     } finally {
+      // Stop loading
       setLoading(false);
     }
   };

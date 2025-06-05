@@ -40,9 +40,10 @@ const StudentLogin = () => {
       if (res.status === 200) {
         // Token automatically save in Cookies by backend
         toast.success("Logged in successfully");
-        setIsLogedIn({ admin: false, student: true }); // Update context state
         setTimeout(() => {
           navigate("/dashboard/student"); // Redirect to dashboard
+          setIsLogedIn({ admin: false, student: true }); // Update context state
+          setLoading(false);
         }, 1000);
       } else {
         toast.error("Invalid credentials");
@@ -51,7 +52,7 @@ const StudentLogin = () => {
       // Handle errors
       const errorMessage =
         error.response?.data?.message || error.message || "An error occurred";
-      toast.error(`Login Failed: ${errorMessage}`);
+      toast.error(`Invalid Registration No. or Password.`);
     } finally {
       // Stop loading
       setLoading(false);

@@ -46,7 +46,7 @@ export default function StudentDashboard() {
           withCredentials: true,
         }
       );
-        console.log("Logout response:", res);
+        console.log(res);
       if (res.status === 200) {
         setIsLogedIn({ admin: false, student: false }); // Reset state
         toast.error("Logged out successfully");
