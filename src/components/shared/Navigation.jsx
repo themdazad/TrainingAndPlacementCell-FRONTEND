@@ -54,6 +54,7 @@ const navLinks = [
     dropdown: true,
     items: [
       { name: "Alumni Connect", path: "/community/connect" },
+      { name: "devXcoder", path: "/community/devxcoder" },
       { name: "Photo Gallery", path: "/community/gallery" },
     ],
   },
@@ -121,7 +122,7 @@ export default function NavBar() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+      if (currentScrollY > lastScrollY && currentScrollY > 50) {
         setIsVisible(false);
       } else {
         setIsVisible(true);
