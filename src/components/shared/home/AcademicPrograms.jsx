@@ -46,7 +46,7 @@ const item = {
 
 export default function AcademicPrograms() {
   return (
-    <section className="min-h-[100px] dark:bg-zinc-900 px-[5%] my-[100px] py-24 transition-colors duration-300 ">
+    <section className="min-h-[100px] dark:bg-zinc-900 px-[2.5%] my-[100px] py-24 transition-colors duration-300 ">
       <div className="academic-program">       
         <motion.div
           className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"

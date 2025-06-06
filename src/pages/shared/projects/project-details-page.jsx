@@ -1,19 +1,13 @@
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { projects } from "./projectsData";
-
-import BreadCrumbs from "../../../components/ui/BreadCrumbs.jsx";
+import PageHeader from "../../../components/ui/PageHeader.jsx";
 
 // Fade-in animation configuration
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0 },
 };
-const breadcrumbItems = [
-  { label: "Home", to: "/" },
-  { label: "Projects", to: "/projects" },
-  { label: projects.title, isCurrent: true }, // No `to` = current page
-];
 // Main Content Component
 const MainContent = ({ project, leader }) => {
   return (
@@ -235,20 +229,24 @@ const ProjectDetailsPage = () => {
     project.team?.[0];
 
   return (
-    <div className="bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-100 min-h-screen py-12">
-      {/* breadcrumbs */}
-      <div className="px-[5%]">
-        <BreadCrumbs items={breadcrumbItems} />
-      </div>
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row gap-12">
-          {/* Main Content */}
-          <MainContent project={project} leader={leader} />
+    <div className="bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-100 min-h-screen py-6">
+         <div className="max-w-[1980px] m-auto px-[2.5%]">
+        <PageHeader
+          breadcrumbItems={[
+            { label: "Home", to: "/" },
+            { label: "Projects", to: "/projects", isCurrent: true }, // No `to` = current page
+          ]}
+        />
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row gap-12">
+            {/* Main Content */}
+            <MainContent project={project} leader={leader} />
 
-          {/* Sidebar on the right */}
-          <Sidebar project={project} leader={leader} />
+            {/* Sidebar on the right */}
+            <Sidebar project={project} leader={leader} />
+          </div>
         </div>
-      </div>
+        </div>
     </div>
   );
 };

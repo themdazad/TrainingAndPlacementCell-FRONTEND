@@ -55,7 +55,7 @@ export default function Announcements() {
     );
 
   return (
-    <section className="news-notice-container max-w-[1920px] m-auto px-[5%] grid grid-cols-1 lg:grid-cols-2 gap-12">
+    <section className="news-notice-container max-w-[1920px] m-auto px-[2.5%] grid grid-cols-1 lg:grid-cols-2 gap-12">
       {/* Left Section */}
       <div className="hidden md:block">
       <About/>       

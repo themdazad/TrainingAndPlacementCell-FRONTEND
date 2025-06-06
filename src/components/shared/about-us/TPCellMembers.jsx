@@ -61,7 +61,7 @@ const profiles = [
 
 export default function TPCellMembers() {
   return (
-    <section className="m-auto px-[5%] grid grid-cols-1 gap-6">
+    <section className="m-auto px-[2.5%] grid grid-cols-1 gap-6">
       <div className="members  p-4 rounded-3xl">
         {/* Section Title */}
         <div className="title text-xl md:text-3xl font-extrabold text-center py-12">

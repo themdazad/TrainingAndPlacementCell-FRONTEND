@@ -21,7 +21,7 @@ const getRandomLoadingMessage = () => {
 
 const RandomLoadingMessage = () => {
   return (
-    <div className=" grid place-content-center min-h-max py-12 overflow-hidden text-center px-[5%]">
+    <div className=" grid place-content-center min-h-max py-12 overflow-hidden text-center px-[2.5%]">
       <h1 className="dm-serif-text-bold text-3xl mb-[1.5rem]">
         {getRandomLoadingMessage()}
       </h1>

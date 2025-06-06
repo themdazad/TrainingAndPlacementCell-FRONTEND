@@ -55,9 +55,9 @@ const transportModes = [
 
 export default function ReachUs() {
   return (
-    <main className="m-auto dark:bg-zinc-900 grid gap-12 py-12 ">
+    <main className="m-auto max-w-[1980px] dark:bg-zinc-900 grid gap-12 py-12 ">
       {/* Reach Us Heading */}
-      <div className="header px-[5%] flex flex-col justify-center">
+      <div className="header px-[2.5%] flex flex-col justify-center">
         <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold">
           Reach Us
         </h1>
@@ -67,11 +67,11 @@ export default function ReachUs() {
       </div>
 
       {/* breadcrumbs */}
-      <div className="px-[5%]">
+      <div className="px-[2.5%]">
         <BreadCrumbs items={breadcrumbItems} />
       </div>
 
-      <section className="px-[5%] grid grid-cols-1 gap-4 lg:gap-12 ">
+      <section className="px-[2.5%] grid grid-cols-1 gap-4 lg:gap-12 ">
         {/* Travel cards */}
         <div className="contact-info mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {transportModes.map(({ mode, icon, description, cities }) => (

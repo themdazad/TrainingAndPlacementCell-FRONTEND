@@ -43,7 +43,7 @@ const Projects = () => {
   };
 
   return (
-    <section className="max-w-[1980px] px-[5%] mx-auto text-zinc-900 dark:text-zinc-100 bg-white dark:bg-zinc-900">
+    <section className="max-w-[1980px] px-[5%] mx-auto dark:text-zinc-100 bg-white dark:bg-zinc-900">
       <PageHeader
         title={"Projects"}
         description={

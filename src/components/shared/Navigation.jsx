@@ -41,7 +41,10 @@ const navLinks = [
     dropdown: true,
     items: [
       { name: "Interview Q&A Bank", path: "/resources/qa-bank" },
-      { name: "Placement Preparation Guide", path: "/resources/guide" },
+      {
+        name: "Placement Preparation Guide",
+        path: "/resources/placement-guide",
+      },
     ],
   },
 
@@ -132,262 +135,261 @@ export default function NavBar() {
 
   return (
     <nav
-      className={`sticky top-0 m-auto z-[99] ${
+      className={`sticky top-0 z-[99] m-auto ${
         isVisible ? "translate-y-0" : "-translate-y-full"
-      } transition-all duration-500 ease-in-out`}
+      } transition-all duration-700 ease-in-out`}
     >
-      <div className="max-w-[1980px] m-auto ">
+      <header className=" m-auto ">
         {/* Navigation Header*/}
-        <header className="navHeader px-[5%] py-4 bg-white dark:bg-zinc-900 min-h-[100px] flex justify-between items-center">
-          <div className="flex flex-wrap justify-center items-center gap-3 md:gap-6 lg:gap-12">
-            <div className="college-logo aspect-square">
-              <Image
-                className="dark:hidden"
-                src="/images/gecsiwan-logo.png"
-                alt="gec-siwan-logo"
-                height={80}
-                width={80}
-              />
-              <Image
-                className="hidden dark:inline"
-                src="/images/gecsiwan-logo-light.png"
-                alt="gec-siwan-logo"
-                height={80}
-                width={80}
-              />
+        <div className="navHeader bg-white dark:bg-zinc-900">
+          <div className=" max-w-[1980px] m-auto px-[2.5%] py-2 flex justify-between items-center">
+            <div className="max-md:w-full flex max-md:flex-col justify-center items-center gap-3 md:gap-6 lg:gap-12">
+              <div className="college-logo flex justify-center aspect-square">
+                <Image
+                  className="dark:hidden h-[60px] lg:h-[80px]"
+                  src="/images/gecsiwan-logo.png"
+                  alt="gec-siwan-logo"
+                />
+                <Image
+                  className="hidden dark:inline h-[60px] lg:h-[80px]"
+                  src="/images/gecsiwan-logo-light.png"
+                  alt="gec-siwan-logo"
+                />
+              </div>
+              <div className="title max-sm:hidden max-md:text-center">
+                <h1 className=" dm-serif-text-regular text-xl md:text-3xl font-bold">
+                  Training and Placement Cell
+                </h1>
+                <h2 className="md:text-md font-semibold">
+                  Government Engineering College, Siwan Bihar-841226
+                </h2>
+              </div>
             </div>
-            <div className="title max-sm:text-center">
-              <h1 className=" dm-serif-text-regular text-3xl font-bold">
-                Training and Placement Cell
-              </h1>
-              <h2 className="md:text-md font-semibold">
-                Government Engineering College, Siwan Bihar-841226
-              </h2>
-            </div>
-          </div>
-
-          <div className="r-logos  max-md:hidden flex gap-3 items-center">
-            <div className="hidden md:flex flex-col text-right text-sm">
-              <a href="">Contact: +91-123456789</a>
-              <a href="">Email: tpogecsiwan@gmail.com</a>
-            </div>
-            <div className="images flex gap-1 md:gap-3">
-              <img
-                className="brand-logo border border-black dark:border-white p-1 rounded-full min-h-[30px] max-h-[48px] aspect-square"
-                src="/images/dstbihar-logo.png"
-                alt="dstbihar-logo"
-              />
-              <img
-                className="brand-logo min-h-[30px] max-h-[48px] aspect-square"
-                src="/images/aicte-logo.png"
-                alt="aicte-logo"
-              />
+            <div className="r-logos  max-md:hidden flex gap-3 items-center">
+              <div className="hidden md:flex flex-col text-right text-sm">
+                <a href="">Contact: +91-123456789</a>
+                <a href="">Email: tpogecsiwan@gmail.com</a>
+              </div>
+              <div className="images flex gap-1 md:gap-3">
+                <img
+                  className="brand-logo border border-black dark:border-white p-1 rounded-full min-h-[30px] max-h-[48px] aspect-square"
+                  src="/images/dstbihar-logo.png"
+                  alt="dstbihar-logo"
+                />
+                <img
+                  className="brand-logo min-h-[30px] max-h-[48px] aspect-square"
+                  src="/images/aicte-logo.png"
+                  alt="aicte-logo"
+                />
+              </div>
             </div>
           </div>
-        </header>
+        </div>
 
-        {/* Navigation menus bar*/}
-        <header className="mx-auto relative bg-zinc-100 dark:bg-zinc-800">
-          <div className="px-[5%] flex items-center justify-between py-2 relative z-50">
-            {/* Hamburger */}
-            <button
-              ref={hamburgerRef}
-              onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-black dark:text-white transition-all duration-200 lg:hidden"
-            >
-              <AlignLeft
-                className={`${
-                  isMobileMenuOpen ? "hidden" : "block"
-                } w-9 h-auto`}
-              />
-              <X
-                className={`${
-                  isMobileMenuOpen ? "block" : "hidden"
-                } w-9 h-auto `}
-              />
-            </button>
+        {/* Menu items bar*/}
+        <div className="mx-auto relative bg-zinc-100 dark:bg-zinc-800">
+          <div className="max-w-[1980px] m-auto">
+            <div className="px-[2.5%] flex items-center justify-between py-2 relative z-50">
+              {/* Hamburger */}
+              <button
+                ref={hamburgerRef}
+                onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
+                className="text-black dark:text-white transition-all duration-200 lg:hidden"
+              >
+                <AlignLeft
+                  className={`${
+                    isMobileMenuOpen ? "hidden" : "block"
+                  } w-8 h-auto`}
+                />
+                <X
+                  className={`${
+                    isMobileMenuOpen ? "block" : "hidden"
+                  } w-8 h-auto `}
+                />
+              </button>
 
-            {/* Desktop Menu Nav */}
-            <div className="hidden lg:flex lg:items-center lg:space-x-6">
-              {navLinks.map((link, index) =>
-                !link.dropdown ? (
-                  <NavLink
-                    key={index}
-                    to={link.path}
-                    className={({ isActive }) =>
-                      `relative after:bg-blue-600 dark:after:bg-blue-400  ${
-                        isActive
-                          ? "text-blue-500 dark:text-blue-400 after:w-full"
-                          : "text-black dark:text-white after:w-0 group-hover:after:w-full"
-                      } hover:opacity-80 transition-all`
-                    }
-                  >
-                    {link.name}
-                  </NavLink>
-                ) : (
-                  <div
-                    key={index}
-                    className="relative group"
-                    onMouseEnter={() =>
-                      setIsDropdownOpen({ [link.name]: true })
-                    }
-                    onMouseLeave={() =>
-                      setIsDropdownOpen({ [link.name]: false })
-                    }
-                  >
-                    <span className="flex items-center cursor-pointer transition-all duration-300hover:text-opacity-80 dark:hover:text-opacity-80">
-                      {link.name}
-                      <ChevronDown className="rotate-0 group-hover:rotate-180 transition-rotate duration-300" />
-                    </span>
-                    <ul
-                      className={`absolute  shadow-md left-1/2 transform -translate-x-1/2 min-w-max text-small rounded-xl border-t-4 border-t-blue-600 bg-white dark:bg-zinc-800 p-3  transition-all duration-200 ${
-                        isDropdownOpen[link.name] ? "flex flex-col" : "hidden"
-                      }`}
-                    >
-                      {/* dropdown list items  */}
-                      {link.items.map((item, idx) => (
-                        <NavLink
-                          key={idx}
-                          to={item.path}
-                          className="hover:text-zinc-100 hover:bg-blue-600 rounded-3xl w-full py-2 px-3"
-                        >
-                          {item.name}
-                        </NavLink>
-                      ))}
-                    </ul>
-                  </div>
-                )
-              )}
-            </div>
-
-            {/* Mobile Dropdown Menu Nav */}
-            <div
-              ref={mobileMenuRef}
-              className={`lg:hidden absolute top-[48px] left-0 w-screen bg-white dark:bg-zinc-900 z-40 shadow-md overflow-hidden transition-all duration-500 ease-in-out ${
-                isMobileMenuOpen ? "opacity-100" : "opacity-0"
-              }`}
-              style={{
-                transitionProperty: "max-height, opacity",
-              }}
-            >
-              <div className="flex flex-col rounded-3xl p-6 space-y-4">
+              {/* Desktop Menu Nav */}
+              <div className="hidden lg:flex lg:items-center lg:space-x-6">
                 {navLinks.map((link, index) =>
                   !link.dropdown ? (
                     <NavLink
                       key={index}
                       to={link.path}
-                      onClick={() => setMobileMenuOpen(false)}
                       className={({ isActive }) =>
-                        `py-4 px-2 text-xl rounded-md ${
+                        `relative after:bg-blue-600 dark:after:bg-blue-400  ${
                           isActive
-                            ? "text-blue-500 dark:text-blue-400 font-semibold"
-                            : "text-zinc-800 dark:text-white"
-                        } hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all`
+                            ? "text-blue-500 dark:text-blue-400 after:w-full"
+                            : "text-black dark:text-white after:w-0 group-hover:after:w-full"
+                        } hover:opacity-80 transition-all`
                       }
                     >
                       {link.name}
                     </NavLink>
                   ) : (
-                    <div key={index} className="flex flex-col gap-2">
-                      <button
-                        className="text-lg text-left w-full p-3 rounded-2xl text-zinc-800 dark:text-white flex justify-between items-center hover:bg-zinc-100 dark:hover:bg-zinc-800"
-                        onClick={() => handleDropdownToggle(link.name)}
-                      >
+                    <div
+                      key={index}
+                      className="relative group"
+                      onMouseEnter={() =>
+                        setIsDropdownOpen({ [link.name]: true })
+                      }
+                      onMouseLeave={() =>
+                        setIsDropdownOpen({ [link.name]: false })
+                      }
+                    >
+                      <span className="flex items-center cursor-pointer transition-all duration-300hover:text-opacity-80 dark:hover:text-opacity-80">
                         {link.name}
-                        <span>
-                          {isDropdownOpen[link.name] ? (
-                            <ChevronUp />
-                          ) : (
-                            <ChevronDown />
-                          )}
-                        </span>
-                      </button>
+                        <ChevronDown className="rotate-0 group-hover:rotate-180 transition-rotate duration-300" />
+                      </span>
                       <ul
-                        className={`ml-4 space-y-3 transition-all duration-300 ${
-                          isDropdownOpen[link.name] ? "block" : "hidden"
+                        className={`absolute  shadow-md left-1/2 transform -translate-x-1/2 min-w-max text-small rounded-xl border-t-1 hover:border-t-4 border-t-blue-600 bg-white dark:bg-zinc-800 p-3  transition-all duration-200 ${
+                          isDropdownOpen[link.name] ? "flex flex-col" : "hidden"
                         }`}
                       >
+                        {/* dropdown list items  */}
                         {link.items.map((item, idx) => (
-                          <li key={idx}>
-                            <NavLink
-                              to={item.path}
-                              onClick={() => setMobileMenuOpen(false)}
-                              className={({ isActive }) =>
-                                `block px-2 py-3 text-md rounded-3xl ${
-                                  isActive
-                                    ? "text-blue-500 dark:text-blue-400 font-medium"
-                                    : "text-zinc-800 dark:text-white"
-                                } hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all`
-                              }
-                            >
-                              {item.name}
-                            </NavLink>
-                          </li>
+                          <NavLink
+                            key={idx}
+                            to={item.path}
+                            className="hover:text-zinc-100 hover:bg-blue-600 rounded-3xl w-full py-2 px-3"
+                          >
+                            {item.name}
+                          </NavLink>
                         ))}
                       </ul>
                     </div>
                   )
                 )}
               </div>
-            </div>
 
-            {/* Action Buttons: Theme Switch, Dashboard/Login, and Logout */}
-            <div className="flex items-center gap-6 ml-4">
-              {/* Theme Switch */}
-              <ThemeSwitch />
+              {/* Mobile Dropdown Menu Nav */}
+              <div
+                ref={mobileMenuRef}
+                className={`lg:hidden absolute top-[48px] left-0 w-screen bg-white dark:bg-zinc-900 z-40 shadow-md overflow-hidden transition-all duration-500 ease-in-out ${
+                  isMobileMenuOpen ? "opacity-100" : "opacity-0"
+                }`}
+                style={{
+                  transitionProperty: "max-height, opacity",
+                }}
+              >
+                <div className="flex flex-col rounded-3xl p-6 space-y-4">
+                  {navLinks.map((link, index) =>
+                    !link.dropdown ? (
+                      <NavLink
+                        key={index}
+                        to={link.path}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className={({ isActive }) =>
+                          `py-4 px-2 text-xl rounded-md ${
+                            isActive
+                              ? "text-blue-500 dark:text-blue-400 font-semibold"
+                              : "text-zinc-800 dark:text-white"
+                          } hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all`
+                        }
+                      >
+                        {link.name}
+                      </NavLink>
+                    ) : (
+                      <div key={index} className="flex flex-col gap-2">
+                        <button
+                          className="text-lg text-left w-full p-3 rounded-2xl text-zinc-800 dark:text-white flex justify-between items-center hover:bg-zinc-100 dark:hover:bg-zinc-800"
+                          onClick={() => handleDropdownToggle(link.name)}
+                        >
+                          {link.name}
+                          <span>
+                            {isDropdownOpen[link.name] ? (
+                              <ChevronUp />
+                            ) : (
+                              <ChevronDown />
+                            )}
+                          </span>
+                        </button>
+                        <ul
+                          className={`ml-4 space-y-3 transition-all duration-300 ${
+                            isDropdownOpen[link.name] ? "block" : "hidden"
+                          }`}
+                        >
+                          {link.items.map((item, idx) => (
+                            <li key={idx}>
+                              <NavLink
+                                to={item.path}
+                                onClick={() => setMobileMenuOpen(false)}
+                                className={({ isActive }) =>
+                                  `block px-2 py-3 text-md rounded-3xl ${
+                                    isActive
+                                      ? "text-blue-500 dark:text-blue-400 font-medium"
+                                      : "text-zinc-800 dark:text-white"
+                                  } hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all`
+                                }
+                              >
+                                {item.name}
+                              </NavLink>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )
+                  )}
+                </div>
+              </div>
 
-              {/* Login Button */}
-              {!(isLogedIn.admin || isLogedIn.student) && (
-                <NavLink
-                  to="/auth"
-                  className="flex items-center gap-2 text-zinc-800 dark:text-zinc-100"
-                >
-                  <img
-                    className="rounded-full border border-zinc-300 dark:border-zinc-600 w-10 h-10 object-cover"
-                    src="./images/profile-default-photo.jpg"
-                    alt="user-profile"
-                  />
-                  <span className="hidden sm:inline text-sm font-medium">
-                    Login
-                  </span>
-                </NavLink>
-              )}
+              {/* Action Buttons: Theme Switch, Dashboard/Login, and Logout */}
+              <div className="flex items-center gap-6 ml-4">
+                {/* Theme Switch */}
+                <ThemeSwitch />
 
-              {/* Dashboard button  */}
-              {!!isLogedIn.admin && (
-                <NavLink
-                  to="/dashboard/admin"
-                  className="flex items-center gap-2 text-zinc-800 dark:text-zinc-100"
-                >
-                  <img
-                    className="rounded-full border border-zinc-300 dark:border-zinc-600 w-10 h-10 object-cover"
-                    src="./images/profile-default-photo.jpg"
-                    alt="user-profile"
-                  />
-                  <span className="hidden sm:inline text-sm font-medium">
-                    Dashboard
-                  </span>
-                </NavLink>
-              )}
-              {!!isLogedIn.student && (
-                <NavLink
-                  to="/dashboard/student"
-                  className="flex items-center gap-2 text-zinc-800 dark:text-zinc-100"
-                >
-                  <img
-                    className="rounded-full border border-zinc-300 dark:border-zinc-600 w-10 h-10 object-cover"
-                    src="./images/profile-default-photo.jpg"
-                    alt="user-profile"
-                  />
-                  <span className="hidden sm:inline text-sm font-medium">
-                    Dashboard
-                  </span>
-                </NavLink>
-              )}
+                {/* Login Button */}
+                {!(isLogedIn.admin || isLogedIn.student) && (
+                  <NavLink
+                    to="/auth"
+                    className="flex items-center gap-2 text-zinc-800 dark:text-zinc-100"
+                  >
+                    <img
+                      className="rounded-full border border-zinc-300 dark:border-zinc-600 w-10 h-10 object-cover"
+                      src="./images/profile-default-photo.jpg"
+                      alt="user-profile"
+                    />
+                    <span className="hidden sm:inline text-sm font-medium">
+                      Login
+                    </span>
+                  </NavLink>
+                )}
+
+                {/* Dashboard button  */}
+                {!!isLogedIn.admin && (
+                  <NavLink
+                    to="/dashboard/admin"
+                    className="flex items-center gap-2 text-zinc-800 dark:text-zinc-100"
+                  >
+                    <img
+                      className="rounded-full border border-zinc-300 dark:border-zinc-600 w-10 h-10 object-cover"
+                      src="./images/profile-default-photo.jpg"
+                      alt="user-profile"
+                    />
+                    <span className="hidden sm:inline text-sm font-medium">
+                      Dashboard
+                    </span>
+                  </NavLink>
+                )}
+                {!!isLogedIn.student && (
+                  <NavLink
+                    to="/dashboard/student"
+                    className="flex items-center gap-2 text-zinc-800 dark:text-zinc-100"
+                  >
+                    <img
+                      className="rounded-full border border-zinc-300 dark:border-zinc-600 w-10 h-10 object-cover"
+                      src="./images/profile-default-photo.jpg"
+                      alt="user-profile"
+                    />
+                    <span className="hidden sm:inline text-sm font-medium">
+                      Dashboard
+                    </span>
+                  </NavLink>
+                )}
+              </div>
             </div>
           </div>
-        </header>
-      </div>
+        </div>
+      </header>
     </nav>
   );
 }

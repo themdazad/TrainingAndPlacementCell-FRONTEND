@@ -16,6 +16,7 @@ import ReachUs from "../../pages/recruiters/reach-us/index.jsx";
 import AboutUs from "../../pages/shared/about-us/index.jsx";
 import SummerWebDevelopment2025 from "../../pages/shared/training/summer-web-development-2025/index.jsx";
 import MockInterview from "../../pages/shared/training/mock-interview/index.jsx";
+import PlacementGuide from "../../pages/shared/resources/placement-guide/index.jsx";
 
 const AppRoutes = () => {
   return (
@@ -38,14 +39,23 @@ const AppRoutes = () => {
       <Route path="/academics">
         <Route path="course-highlights" element={<CourseHighlights />} />
       </Route>
-      {/* resources */}
+
+      {/* Training & Career */}
       <Route path="/training">
         <Route
           path="summer-web-development-2025"
           element={<SummerWebDevelopment2025 />}
         />
         <Route path="mock-interview" element={<MockInterview />} />
+        <Route path="placement-guide" element={<PlacementGuide />} />
       </Route>
+
+      {/* Tools & Resources  */}
+      <Route path="/resources">
+      <Route path="placement-guide" element={<PlacementGuide />} />
+      </Route>
+
+
       <Route path="/projects">
         <Route index element={<Projects />} />
         <Route path=":title/:id" element={<ProjectDetailsPage />} />

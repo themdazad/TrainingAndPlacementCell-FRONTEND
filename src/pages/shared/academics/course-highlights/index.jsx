@@ -1,5 +1,4 @@
-import BreadCrumbs from "../../../../components/ui/BreadCrumbs.jsx";
-import AcademicPrograms from "../../../../components/shared/academics/course-highlights/AcademicPrograms.jsx";
+import PageHeader from "../../../../components/ui/PageHeader.jsx";
 import BranchSection from "../../../../components/shared/academics/course-highlights/BranchSection.jsx";
 
 const breadcrumbItems = [
@@ -46,37 +45,30 @@ const branches = [
 ];
 const CourseHighlights = () => {
   return (
-    <main className="about-us max-w-[1980px] m-auto dark:bg-zinc-900 grid py-12 gap-12">
-      {/* Header */}
-      <section className="header-section grid space-y-12">
-        <div className="header px-[5%] flex flex-col justify-center">
-          <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold">
-            Course Highlights
-          </h1>
-          <p className="mt-3 max-w-2xltext-zinc-600 dark:text-zinc-400">
-            Explore the academic strengths and career-driven curriculum of each
-            B.Tech branch.
-          </p>
-        </div>
+    <main className="course-highlights">
+      <div className="max-w-[1980px] px-[2.5%] m-auto grid py-12 gap-12">
+        {/* Header */}
+          <PageHeader
+            title={" Course Highlights"}
+            description={
+              "Explore the academic strengths and career-driven curriculum of each B.Tech branch"
+            }
+            breadcrumbItems={breadcrumbItems}
+          />        
 
-        {/* breadcrumbs */}
-        <div className="px-[5%]">
-          <BreadCrumbs items={breadcrumbItems} />
-        </div>
-      </section>
-
-      {/* Main Content */}
-      <section>
-        {branches.map((branch, index) => (
-          <BranchSection
-            key={branch.title}
-            title={branch.title}
-            description={branch.description}
-            stats={branch.stats}
-            reverse={index % 2 !== 0}
-          />
-        ))}
-      </section>
+        {/* Main Content */}
+        <section>
+          {branches.map((branch, index) => (
+            <BranchSection
+              key={branch.title}
+              title={branch.title}
+              description={branch.description}
+              stats={branch.stats}
+              reverse={index % 2 !== 0}
+            />
+          ))}
+        </section>
+      </div>
     </main>
   );
 };

@@ -12,7 +12,7 @@ export default function CampusPlacements2025() {
     ltr: true,
   };
   return (
-    <section className="min-h-[100dvh] m-auto max-w-[1980px] px-[5%] space-y-12">
+    <section className="min-h-[100dvh] m-auto max-w-[1980px] px-[2.5%] space-y-12">
       {/* Heading  */}
       <motion.div
         className="tracking-tight font-bold"

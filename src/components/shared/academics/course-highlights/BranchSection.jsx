@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 export default function BranchSection({ title, description, stats, reverse = false }) {
   return (
-    <section className="min-h-[100px] dark:bg-zinc-900 px-[5%] my-[100px] transition-colors duration-300">
+    <section className="min-h-[100px] dark:bg-zinc-900 my-[100px] transition-colors duration-300">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

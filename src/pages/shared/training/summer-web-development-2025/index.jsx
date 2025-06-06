@@ -56,7 +56,7 @@ export default function SummerWebDevelopment2025() {
   return (
     <main className="m-auto dark:bg-zinc-900 grid gap-12 py-12 ">
       {/* Heading */}
-      <div className="header px-[5%] flex flex-col justify-center">
+      <div className="header px-[2.5%] flex flex-col justify-center">
         <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold">
           Summer Program
         </h1>
@@ -69,12 +69,12 @@ export default function SummerWebDevelopment2025() {
       </div>
 
       {/* breadcrumbs */}
-      <div className="px-[5%]">
+      <div className="px-[2.5%]">
         <BreadCrumbs items={breadcrumbItems} />
       </div>
 
       {/* Register CTA */}
-      <section className="px-[5%] py-12 flex justify-center">
+      <section className="px-[2.5%] py-12 flex justify-center">
         <div className="bg-white dark:bg-zinc-800 rounded-3xl shadow-md p-8 rounded-3xl text-center max-w-xl w-full">
           <h2 className="text-2xl font-bold mb-3">Registration Open</h2>
           <p className="text-zinc-600 dark:text-zinc-300 mb-6">

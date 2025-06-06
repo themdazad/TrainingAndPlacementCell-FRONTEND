@@ -49,7 +49,7 @@ export default function Faq() {
   const [accordionItems, setAccordionItems] = useState(faq_data);
 
   return (
-    <section className="max-w-[1920px] my-[6em] m-auto px-[5%]">
+    <section className="max-w-[1920px] my-[6em] m-auto px-[2.5%]">
       <h2 className="text-lg  sm:text-2xl md:text-3xl text-center my-6 font-extrabold text-zinc-900 dark:text-white">
         Frequently Asked Questions
       </h2>

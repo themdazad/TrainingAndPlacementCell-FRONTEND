@@ -46,7 +46,7 @@ const coordinators = [
 
 export default function TPCellCoordinators() {
   return (
-    <section className="m-auto px-[5%] grid grid-cols-1 gap-6">
+    <section className="m-auto px-[2.5%] grid grid-cols-1 gap-6">
       <div className="members p-4 rounded-3xl">
         {/* Section Title */}
         <div className="title  text-center py-12">

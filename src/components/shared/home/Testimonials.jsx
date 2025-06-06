@@ -70,7 +70,7 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="py-24 px-[5%] dark:bg-zinc-900 text-center">
+    <section className="py-24 px-[2.5%] dark:bg-zinc-900 text-center">
       <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-white max-w-2xl mx-auto mb-20 leading-snug">
         Hear from our students and recruiters.{" "}
         <span className="text-blue-500 dark:text-blue-400">

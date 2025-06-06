@@ -71,7 +71,7 @@ const item = {
 export default function AcademicPrograms() {
   
   return (
-    <section className="min-h-[100px] dark:bg-zinc-900 px-[5%] my-[100px] transition-colors duration-300">
+    <section className="min-h-[100px] dark:bg-zinc-900 px-[2.5%] my-[100px] transition-colors duration-300">
       <div className="academic-program grid gap-16">
         <div className="academic-program__title text-center">
           <h1 className="font-extrabold text-lg md:text-3xl text-zinc-900 dark:text-white">

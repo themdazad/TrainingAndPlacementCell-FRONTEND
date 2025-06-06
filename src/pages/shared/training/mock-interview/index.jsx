@@ -2,7 +2,10 @@
 import PageHeader from "../../../../components/ui/PageHeader.jsx";
 import { motion } from "framer-motion";
 import { BookCheck, Backpack, Handshake } from "lucide-react";
-
+import CONFIDENT_GIF from "../../../../assets/gif/confident.gif";
+import INTERVIEW_GIF from "../../../../assets/gif/Interview.gif";
+import TEACHERSTUDENT_GIF from "../../../../assets/gif/TeacherStudent.gif";
+import { Image } from "@heroui/react";
 
 const mock_interview_data = [
   {
@@ -29,20 +32,6 @@ const breadcrumbItems = [
   { label: "Mock interview", isCurrent: true }, // No `to` = current page
 ];
 
-const cards = [
-  {
-    icon: BookCheck,
-    title: "Resume Screening",
-  },
-  {
-    icon: Backpack,
-    title: "Personalised Feedback",
-  },
-  {
-    icon: Handshake,
-    title: "Boost Confidence",
-  },
-];
 
 export default function MockInterview() {
   const container = {
@@ -61,7 +50,7 @@ export default function MockInterview() {
   };
   
   return (
-    <main className="max-w-[1980px] px-[5%] m-auto dark:bg-zinc-900 grid gap-12 py-6 ">
+    <main className="max-w-[1980px] px-[2.5%] m-auto dark:bg-zinc-900 grid gap-12 py-6 ">
       <PageHeader breadcrumbItems={breadcrumbItems} />
 
       {/* main content */}
@@ -72,34 +61,7 @@ export default function MockInterview() {
             <h1 className="text-xl lg:text-3xl font-extrabold">
               Why Mock Interview?
             </h1>
-            <div className="illustration py-12">
-              <motion.div
-                className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
-                variants={container}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: false, amount: 0.1 }}
-              >
-                {cards.map((card, index) => {
-                  const Icon = card.icon;
-                  return (
-                    <motion.div
-                      key={index}
-                      variants={item}
-                      className="academic-program__item flex flex-col items-center justify-center gap-4 text-center "
-                    >
-                      <Icon className="h-24 w-24 aspect-square text-blue-500 dark:text-blue-400" />
-                      <div className="academic-program__item-title font-bold text-lg text-zinc-900 dark:text-white">
-                        {card.title}
-                      </div>
-                      <div className="academic-program__item-description text-sm text-zinc-700 dark:text-zinc-300">
-                        {card.description}
-                      </div>
-                    </motion.div>
-                  );
-                })}
-              </motion.div>
-            </div>
+         
             <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt at
               inventore obcaecati expedita laudantium excepturi fugiat qui illo
@@ -153,13 +115,13 @@ export default function MockInterview() {
                 return (
                   <div
                     key={index}
-                    className="bg-white dark:bg-zinc-800 rounded-3xl shadow-md p-8 grid gap-3 text-center  w-full"
+                    className="bg-white dark:bg-zinc-800 rounded-xl shadow-md p-8 grid gap-3 text-center  w-full"
                   >
-                    <h2 className="text-xl font-bold">{data.id}</h2>
-                    <h2 className="text-lg font-bold">
+                    <h2 className="text-lg font-bold">{data.id}</h2>
+                    <h2 className="font-semibold">
                       Mock Interview Session
                     </h2>
-                    <p className="font-bold text-zinc-600 dark:text-zinc-300">
+                    <p className=" text-zinc-600 dark:text-zinc-300">
                       Register by :{data.last_date}
                     </p>
                     

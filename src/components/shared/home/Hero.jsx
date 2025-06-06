@@ -5,7 +5,7 @@ import SliderData from "../../../assets/data/SliderData.js";
 
 export default function Hero() {
   return (
-    <section className="px-[5%] sm:py-16">
+    <section className="px-[2.5%] sm:py-16">
       <div className="grid items-center py-12 grid-cols-1 gap-12 lg:grid-cols-2">
         <div>
           <h1 className="mt-2 lg:mt-8 text-4xl lg:text-6xl dm-serif-text-regular text-zinc-900 dark:text-white">

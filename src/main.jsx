@@ -23,7 +23,7 @@ function App() {
   return (
     <HeroUIProvider>
       <ToastContainer />
-      <main className="text-foreground bg-background dark:bg-[#111112] min-h-screen">
+      <main className="text-foreground bg-background dark:bg-zinc-900 min-h-screen">
         <Suspense fallback={<Loader />}>
           <NavBar />
           <SharedRoutes />

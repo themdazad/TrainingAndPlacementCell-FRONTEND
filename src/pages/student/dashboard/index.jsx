@@ -115,7 +115,7 @@ export default function StudentDashboard() {
       )}
 
       {/* Main Content */}
-      <div className="flex-1 p-6 px-[5%]">
+      <div className="flex-1 p-6 px-[2.5%]">
           
           <Button
             className=" cursor-pointer py-4 "

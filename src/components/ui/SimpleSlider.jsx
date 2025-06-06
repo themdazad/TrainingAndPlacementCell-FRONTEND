@@ -5,7 +5,7 @@ import Slider from "react-slick";
 
 function SimpleSlider({slider_data}) {
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 2000,
     autoplay: true,
