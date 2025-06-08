@@ -8,7 +8,7 @@ import "./styles/AnimatedBackground.css";
 import { HeroUIProvider } from "@heroui/react";
 import { BrowserRouter } from "react-router-dom";
 import NavBar from "./components/shared/Navigation.jsx";
-import Footer from "./components/shared/Footer";  
+import Footer from "./components/shared/Footer.jsx";  
 import Loader from "./components/ui/Loader.jsx";
 // contexts
 import ProgramsProvider from "./hooks/contexts/google-sheets/programs-provider.jsx";

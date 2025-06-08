@@ -340,19 +340,17 @@ export default function NavBar() {
 
                 {/* Login Button */}
                 {!(isLogedIn.admin || isLogedIn.student) && (
-                  <NavLink
-                    to="/auth"
-                    className="flex items-center gap-2 text-zinc-800 dark:text-zinc-100"
-                  >
-                    <img
-                      className="rounded-full border border-zinc-300 dark:border-zinc-600 w-10 h-10 object-cover"
-                      src="./images/profile-default-photo.jpg"
-                      alt="user-profile"
-                    />
-                    <span className="hidden sm:inline text-sm font-medium">
+                 <Button
+                      as={NavLink}
+                      to="/auth"
+                      content="Login"
+                      variant="solid"
+                      radius="full"
+                      color="primary"
+                      className="hidden sm:flex text-sm items-centerfont-medium"
+                      >
                       Login
-                    </span>
-                  </NavLink>
+                    </Button>
                 )}
 
                 {/* Dashboard button  */}

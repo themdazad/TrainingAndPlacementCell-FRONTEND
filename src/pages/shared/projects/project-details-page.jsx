@@ -230,7 +230,7 @@ const ProjectDetailsPage = () => {
 
   return (
     <div className="bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-100 min-h-screen py-6">
-         <div className="max-w-[1980px] m-auto px-[2.5%]">
+         <div className="max-w-screen-2xl m-auto px-[2.5%]">
         <PageHeader
           breadcrumbItems={[
             { label: "Home", to: "/" },

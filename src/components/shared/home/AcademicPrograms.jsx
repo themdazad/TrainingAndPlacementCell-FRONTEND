@@ -46,7 +46,7 @@ const item = {
 
 export default function AcademicPrograms() {
   return (
-    <section className="min-h-[100px] dark:bg-zinc-900 px-[2.5%] my-[100px] py-24 transition-colors duration-300 ">
+    <section className="dark:bg-zinc-900 px-[2.5%] my-[100px] py-24 ">
       <div className="academic-program">       
         <motion.div
           className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
@@ -61,7 +61,7 @@ export default function AcademicPrograms() {
               <motion.div
                 key={index}
                 variants={item}
-                className="academic-program__item flex flex-col items-center justify-center gap-4 text-center border-t-4 border-blue-500 p-6 bg-blue-100 dark:bg-zinc-800 rounded-3xl hover:shadow-lg transition-all duration-300"
+                className="academic-program__item flex flex-col items-center justify-center gap-4 text-center border-t-4 border-blue-500 p-6 bg-blue-100 dark:bg-zinc-800 rounded-3xl hover:shadow-lg transition-all duration-200"
               >
                 <Icon className="h-16 w-16 text-blue-500 dark:text-blue-400" />
                 <div className="academic-program__item-title font-bold text-lg text-zinc-900 dark:text-white">

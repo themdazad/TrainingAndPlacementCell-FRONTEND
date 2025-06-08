@@ -50,7 +50,7 @@ const CoordinatorLogin = () => {
       // Handle errors
       const errorMessage =
         error.response?.data?.message || error.message || "An error occurred";
-      toast.error(`Login Failed: ${errorMessage}`);
+      toast.error(`${errorMessage}`);
     } finally {
       // Stop loading
       setLoading(false);

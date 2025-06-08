@@ -20,13 +20,9 @@ export default function Auth() {
             width={240}
           />
           <div className="text-sm font-semibold mb-4">GEC Siwan Placements</div>
-          <h1 className="text-3xl font-bold leading-tight mb-6">
+          <h1 className="text-3xl text-center font-bold leading-tight mb-6">
             One stop portal for students & companies for placements.
           </h1>
-          <p className="text-sm font-semibold">Instructions</p>
-          <p className="text-sm text-center">
-            Login using your LinkedIn account or email address and password.
-          </p>
         </div>
 
         {/* Right Section */}
@@ -40,9 +36,9 @@ export default function Auth() {
             <div className="flex justify-center space-x-6 text-sm font-medium text-zinc-500 mb-6">
               {["Student", "Coordinator", "Admin"].map((value, index) => {
                 return (
-                  <span
+                  <a
                     key={value}
-                    className={`cursor-pointer after:bg-blue-600 dark:after:bg-blue-400  ${
+                    className={`cursor-pointer py-2 after:bg-blue-600 dark:after:bg-blue-400  ${
                       tab === value
                         ? "text-blue-500 dark:text-blue-400 underline underline-offset-4 after:w-full"
                         : "text-black dark:text-white after:w-0 group-hover:after:w-full"
@@ -52,7 +48,7 @@ export default function Auth() {
                     }}
                   >
                     {value}
-                  </span>
+                  </a>
                 );
               })}
             </div>
