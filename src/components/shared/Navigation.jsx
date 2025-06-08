@@ -266,7 +266,7 @@ export default function NavBar() {
               <div
                 ref={mobileMenuRef}
                 className={`lg:hidden absolute top-[48px] left-0 w-screen bg-white dark:bg-zinc-900 z-40 shadow-md overflow-hidden transition-all duration-500 ease-in-out ${
-                  isMobileMenuOpen ? "opacity-100" : "opacity-0"
+                  isMobileMenuOpen ? "opacity-100" : "h-0 opacity-0"
                 }`}
                 style={{
                   transitionProperty: "max-height, opacity",

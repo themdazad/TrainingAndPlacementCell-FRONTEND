@@ -67,7 +67,7 @@ export default function AcademicPrograms() {
                 <div className="academic-program__item-title font-bold text-lg text-zinc-900 dark:text-white">
                   {card.title}
                 </div>
-                <div className="academic-program__item-description text-sm text-zinc-700 dark:text-zinc-300">
+                <div className="academic-program__item-description leading-relaxed text-sm text-zinc-700 dark:text-zinc-300">
                   {card.description}
                 </div>
               </motion.div>

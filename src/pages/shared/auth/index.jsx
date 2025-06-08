@@ -2,6 +2,7 @@ import { useState } from "react";
 import GECSIWAN_LOGO from "../../../assets/images/logos/gecsiwan-logo.png";
 import { Image } from "@heroui/react";
 import StudentLogin from "../../../components/auth/StudentLogin";
+import CoordinatorLogin from "../../../components/auth/CoordinatorLogin";
 import AdminLogin from "../../../components/auth/AdminLogin";
 
 export default function Auth() {
@@ -37,7 +38,7 @@ export default function Auth() {
 
             {/* Tabs */}
             <div className="flex justify-center space-x-6 text-sm font-medium text-zinc-500 mb-6">
-              {["Student", "Admin"].map((value, index) => {
+              {["Student", "Coordinator", "Admin"].map((value, index) => {
                 return (
                   <span
                     key={value}
@@ -59,7 +60,7 @@ export default function Auth() {
             {/* rendered components */}
             {tab === "Student" && <StudentLogin />}
             {tab === "Recruiter" && "Recruiter"}
-            {tab === "Coordinator" && "Coordinator"}
+            {tab === "Coordinator" && <CoordinatorLogin/>}
             {tab === "Admin" && <AdminLogin />}
           </div>
         </div>

@@ -136,8 +136,15 @@ export default function Footer() {
               </h5>
               <ul className="space-y-1">
                 <li>TPO Coordinators</li>
-                <li>Web & Design Team</li>
-                <li>Content Team</li>
+                <li>
+                  <a
+                    href="https://www.linkedin.com/in/themdazad/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Know Developer
+                  </a>
+                </li>
               </ul>
             </div>
 
@@ -187,7 +194,7 @@ export default function Footer() {
           <Divider className="mt-10 mb-6" />
 
           {/* Bottom Bar */}
-          <div className="text-center flex flex-col md:flex-row justify-center items-center gap-3 text-zinc-600 dark:text-zinc-300">
+          <div className="text-center text-zinc-600 dark:text-zinc-300">
             <p>
               © 2025, All Rights Reserved by{" "}
               <a
@@ -199,7 +206,16 @@ export default function Footer() {
                 Government Engineering College, Siwan
               </a>
               .
-            </p>
+            </p>{" "}
+            <br />
+            <a
+              href="https://www.linkedin.com/in/themdazad/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline text-blue-500"
+            >
+              Currenty Under Development
+            </a>
           </div>
         </div>
       </div>
