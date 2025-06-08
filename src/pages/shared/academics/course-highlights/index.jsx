@@ -46,15 +46,16 @@ const branches = [
 const CourseHighlights = () => {
   return (
     <main className="course-highlights">
-      <div className="max-w-[1980px] px-[2.5%] m-auto grid py-12 gap-12">
+
+      <div className="max-w-screen-2xl px-[2.5%] m-auto grid py-6 gap-12">
         {/* Header */}
-          <PageHeader
-            title={" Course Highlights"}
-            description={
-              "Explore the academic strengths and career-driven curriculum of each B.Tech branch"
-            }
-            breadcrumbItems={breadcrumbItems}
-          />        
+        <PageHeader
+          title={" Course Highlights"}
+          description={
+            "Explore the academic strengths and career-driven curriculum of each B.Tech branch"
+          }
+          breadcrumbItems={breadcrumbItems}
+        />
 
         {/* Main Content */}
         <section>

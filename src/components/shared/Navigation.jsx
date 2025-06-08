@@ -143,7 +143,7 @@ export default function NavBar() {
       <header className=" m-auto ">
         {/* Navigation Header*/}
         <div className="navHeader bg-white dark:bg-zinc-900">
-          <div className=" max-w-[1980px] m-auto px-[2.5%] py-2 flex justify-between items-center">
+          <div className="max-w-screen-2xl m-auto px-[2.5%] py-2 flex justify-between items-center">
             <div className="max-md:w-full flex max-md:flex-col justify-center items-center gap-3 md:gap-6 lg:gap-12">
               <div className="college-logo flex justify-center aspect-square">
                 <Image
@@ -189,7 +189,7 @@ export default function NavBar() {
 
         {/* Menu items bar*/}
         <div className="mx-auto relative bg-zinc-100 dark:bg-zinc-800">
-          <div className="max-w-[1980px] m-auto">
+          <div className="max-w-screen-2xl m-auto">
             <div className="px-[2.5%] flex items-center justify-between py-2 relative z-50">
               {/* Hamburger */}
               <button

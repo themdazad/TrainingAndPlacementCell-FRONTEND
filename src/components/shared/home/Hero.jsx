@@ -12,7 +12,7 @@ export default function Hero() {
             {/* Campus Placement 2025 */}
             Training & Placement Cell
           </h1>
-          <p className=" text-lg md:text-3xl font-semibold tracking-wider text-blue-500 dark:text-blue-400 pt-4">
+          <p className="text-lg md:text-3xl font-semibold tracking-wider text-blue-500 dark:text-blue-400 pt-4">
             Government Engineering College, Siwan
           </p>
           <p className="mt-2 text-zinc-800 dark:text-zinc-300 lg:mt-8 sm:text-xl">

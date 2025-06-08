@@ -8,7 +8,7 @@ export default function Auth() {
   const [tab, setTab] = useState("Student");
   return (
     <main>
-      <div className="max-w-[1980px] m-auto min-h-[900px] grid md:grid-cols-2 ">
+      <div className="max-w-screen-2xl m-auto min-h-[900px] grid md:grid-cols-2 ">
         {/* Left Section */}
         <div className="max-sm:hidden flex flex-col justify-center items-center px-10 ">
           <Image

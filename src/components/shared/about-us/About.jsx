@@ -1,6 +1,3 @@
-import { ArrowRightCircle } from "lucide-react";
-import { NavLink } from "react-router-dom";
-
 export default function About() {
   return (
     <div>
@@ -8,7 +5,7 @@ export default function About() {
         About Us
       </p>
       <h2 className="text-2xl md:text-3xl font-extrabold text-zinc-800 dark:text-white">
-        Training & Placement Cell at Government Engineering College, Siwan
+        Training & Placement Cell
       </h2>
       <p className="my-4 text-justify text-zinc-600 dark:text-zinc-300 leading-relaxed">
         The Training and Placement Cell at Government Engineering College,

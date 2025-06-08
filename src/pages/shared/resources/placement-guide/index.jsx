@@ -10,7 +10,7 @@ const breadcrumbItems = [
 
 export default function PlacementGuide() {
   return (
-    <main className="max-w-[1980px] m-auto grid gap-12 py-12 ">
+    <main className="max-w-screen-2xl m-auto grid gap-12 py-12 ">
       <PageHeader title={"Placement Guide"} breadcrumbItems ={breadcrumbItems}/>
       <section className="px-[2.5%] grid grid-cols-1 gap-6 ">helo</section>
     </main>

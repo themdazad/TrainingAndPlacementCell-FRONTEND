@@ -45,7 +45,7 @@ const Testimonials = () => {
   const [startIndex, setStartIndex] = useState(0);
 
   const nextSlide = () => {
-    setStartIndex((prev) => (prev + 1) % testimonials.length);
+    setStartIndex((prev) => (prev + 1) % testimonials.length);1
   };
 
   const prevSlide = () => {
@@ -79,11 +79,12 @@ const Testimonials = () => {
         and counting.
       </h2>
 
-      <div className="relative max-w-7xl mx-auto">
+      <div className="relative  mx-auto">
         {/* Cards */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
+         
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: false, amount: 0.2 }}
           className="snap-mandatory snap-x overflow-x-scroll scrollbar-hide p-4 flex gap-8"

@@ -11,7 +11,7 @@ const breadcrumbItems = [
 export default function AboutUs() {
   return (
     <main className="about-us">
-      <div className="px-[2.5%] max-w-[1980px] m-auto grid py-6 gap-12">
+      <div className="m-auto max-w-screen-2xl px-[2.5%]  grid py-6 gap-12">
         <div>
           <PageHeader
             title={" About Us"}

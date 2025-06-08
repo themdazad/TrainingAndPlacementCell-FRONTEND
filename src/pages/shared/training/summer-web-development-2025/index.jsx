@@ -1,4 +1,4 @@
-import BreadCrumbs from "../../../../components/ui/BreadCrumbs.jsx";
+import PageHeader from "../../../../components/ui/PageHeader.jsx";
 
 const breadcrumbItems = [
   { label: "Home", to: "/" },
@@ -54,28 +54,18 @@ const schedule = [
 ];
 export default function SummerWebDevelopment2025() {
   return (
-    <main className="m-auto dark:bg-zinc-900 grid gap-12 py-12 ">
-      {/* Heading */}
-      <div className="header px-[2.5%] flex flex-col justify-center">
-        <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold">
-          Summer Program
-        </h1>
-        <p className="mt-3 max-w-2xl text-zinc-600 dark:text-zinc-400">
-          Organized by the <strong>Training & Placement Cell</strong>, this
-          program offers students an opportunity to gain practical experience in
-          modern web technologies through guided instruction and hands-on
-          project work.
-        </p>
-      </div>
-
-      {/* breadcrumbs */}
-      <div className="px-[2.5%]">
-        <BreadCrumbs items={breadcrumbItems} />
-      </div>
+    <main className="max-w-screen-2xl m-auto  px-[2.5%] dark:bg-zinc-900 grid gap-12 py-6 ">
+      <PageHeader
+        title={"Summer Program"}
+        breadcrumbItems={breadcrumbItems}
+        description={
+          "Organized by the Training & Placement Cell, this program offers students an opportunity to gain practical experience in modern web technologies through guided instruction and hands-on project work."
+        }
+      />
 
       {/* Register CTA */}
       <section className="px-[2.5%] py-12 flex justify-center">
-        <div className="bg-white dark:bg-zinc-800 rounded-3xl shadow-md p-8 rounded-3xl text-center max-w-xl w-full">
+        <div className="bg-white dark:bg-zinc-800 rounded-3xl shadow-md p-8 text-center max-w-xl w-full">
           <h2 className="text-2xl font-bold mb-3">Registration Open</h2>
           <p className="text-zinc-600 dark:text-zinc-300 mb-6">
             Summer Web Development Program 2025 is now open for registration!

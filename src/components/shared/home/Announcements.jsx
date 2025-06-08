@@ -58,24 +58,24 @@ export default function Announcements() {
     <section className="news-notice-container max-w-[1920px] m-auto px-[2.5%] grid grid-cols-1 lg:grid-cols-2 gap-12">
       {/* Left Section */}
       <div className="hidden md:block">
-      <About/>       
+        <About />
       </div>
 
       {/* Right Section */}
       <div className="news-notice-area max-md:border-t-4 lg:border-l-4 border-blue-500 p-3">
         <div className="grid grid-cols-2 items-center">
-        <h2 className="text-2xl md:text-3xl w-full font-extrabold text-blue-500 flex max-md:justify-center gap-x-4 items-center">
-          Latest Updates
-        </h2>
+          <h2 className="text-2xl md:text-3xl w-full font-extrabold text-blue-500 flex max-md:justify-center gap-x-4 items-center">
+            Announcements
+          </h2>
 
-        {/* 🔍 Search Input */}
-        <input
-          type="text"
-          placeholder="Finding? Search here..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full mt-4 mb-2 px-3 p-2 border border-zinc-300 dark:border-zinc-700 rounded-3xl focus:outline-none focus:ring-2 focus:ring-blue-400 dark:bg-zinc-800 dark:text-white"
-        />
+          {/* 🔍 Search Input */}
+          <input
+            type="text"
+            placeholder="Finding? Search here..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="w-full mt-4 mb-2 px-3 p-2 border border-zinc-300 dark:border-zinc-700 rounded-3xl focus:outline-none focus:ring-2 focus:ring-blue-400 dark:bg-zinc-800 dark:text-white"
+          />
         </div>
 
         <div className="row-container box-border my-[1em] max-h-[20rem] overflow-y-scroll overflow-x-hidden">
@@ -98,7 +98,7 @@ export default function Announcements() {
             ))
           ) : (
             <p className="text-zinc-500 dark:text-zinc-400">
-              No notices found.
+              No updates found.
             </p>
           )}
         </div>
