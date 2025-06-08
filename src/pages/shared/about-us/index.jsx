@@ -24,7 +24,7 @@ export default function AboutUs() {
         <section className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <About />
           {/* Address */}
-          <div className="bg-zinc-100/50 dark:bg-zinc-800 rounded-3xl shadow-md place-content-center text-center">
+          <div className="bg-zinc-100/50 dark:bg-zinc-800 rounded-3xl border-t-1 hover:border-t-4 border-t-blue-600 transition-all duration-200 shadow-md place-content-center text-center">
             <h5 className="font-semibold uppercase tracking-widest text-zinc-400 dark:text-zinc-300 mb-2">
               Address
             </h5>

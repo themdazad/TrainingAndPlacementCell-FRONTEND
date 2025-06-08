@@ -2,11 +2,6 @@ import { Routes, Route } from "react-router-dom";
 import Home from "../../pages/shared/home";
 // auth Pages
 import Auth from "../../pages/shared/auth/index.jsx";
-import AdminLogin from "../../pages/shared/auth/admin/login.jsx";
-import AdminRegister from "../../pages/shared/auth/admin/register.jsx";
-import StudentLogin from "../../pages/shared/auth/student/login.jsx";
-import StudentRegister from "../../pages/shared/auth/student/register.jsx";
-import ForgotPassword from "../../pages/shared/auth/student/forgot-password.jsx";
 // Public Routes
 import CampusPlacements2025 from "../../pages/shared/campus-placement/2025/campus-placement-2025.jsx";
 import Projects from "../../pages/shared/projects";
@@ -52,9 +47,8 @@ const AppRoutes = () => {
 
       {/* Tools & Resources  */}
       <Route path="/resources">
-      <Route path="placement-guide" element={<PlacementGuide />} />
+        <Route path="placement-guide" element={<PlacementGuide />} />
       </Route>
-
 
       <Route path="/projects">
         <Route index element={<Projects />} />

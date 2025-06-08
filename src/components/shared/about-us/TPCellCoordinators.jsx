@@ -46,7 +46,7 @@ const coordinators = [
 
 export default function TPCellCoordinators() {
   return (
-    <section className="m-auto px-[2.5%] grid grid-cols-1 gap-6">
+    <section className="m-auto grid grid-cols-1 gap-6">
       <div className="members p-4 rounded-3xl">
         {/* Section Title */}
         <div className="title  text-center py-12">
@@ -59,7 +59,7 @@ export default function TPCellCoordinators() {
         </div>
 
         {/* Coordinator Details */}
-        <div className="members-list grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
+        <div className="members-list grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
           {coordinators.map((coordinator, index) => (
             <Card
               key={index}

@@ -40,6 +40,7 @@ const navLinks = [
     name: "Tools and Resources",
     dropdown: true,
     items: [
+      { name: "Resume Builder", path: "/tools/resume-builder" },
       { name: "Interview Q&A Bank", path: "/resources/qa-bank" },
       {
         name: "Placement Preparation Guide",
@@ -140,7 +141,7 @@ export default function NavBar() {
         isVisible ? "translate-y-0" : "-translate-y-full"
       } transition-all duration-700 ease-in-out`}
     >
-      <header className=" m-auto ">
+      <header>
         {/* Navigation Header*/}
         <div className="navHeader bg-white dark:bg-zinc-900">
           <div className="max-w-screen-2xl m-auto px-[2.5%] py-2 flex justify-between items-center">
@@ -188,7 +189,7 @@ export default function NavBar() {
         </div>
 
         {/* Menu items bar*/}
-        <div className="mx-auto relative bg-zinc-100 dark:bg-zinc-800">
+        <div className="py-1 mx-auto relative bg-blue-100 dark:bg-zinc-800">
           <div className="max-w-screen-2xl m-auto">
             <div className="px-[2.5%] flex items-center justify-between py-2 relative z-50">
               {/* Hamburger */}
@@ -347,7 +348,7 @@ export default function NavBar() {
                       variant="solid"
                       radius="full"
                       color="primary"
-                      className="hidden sm:flex text-sm items-centerfont-medium"
+                      className="inline-flex text-sm items-centerfont-medium"
                       >
                       Login
                     </Button>
@@ -388,6 +389,7 @@ export default function NavBar() {
             </div>
           </div>
         </div>
+
       </header>
     </nav>
   );

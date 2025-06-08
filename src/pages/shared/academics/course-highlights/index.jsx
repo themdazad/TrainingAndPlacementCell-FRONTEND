@@ -58,7 +58,7 @@ const CourseHighlights = () => {
         />
 
         {/* Main Content */}
-        <section>
+        <section className="space-y-[120px]">
           {branches.map((branch, index) => (
             <BranchSection
               key={branch.title}

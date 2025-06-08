@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <footer className=" bg-zinc-100 border-t-1 hover:border-t-4 rounded-3xl border-blue-500 dark:bg-zinc-900 transition-all duration-200">
+    <footer className=" bg-blue-100 border-t-1 hover:border-t-4 hover:rounded-3xl border-blue-500 dark:bg-zinc-900 transition-all duration-200">
       <div className="max-w-screen-2xl m-auto py-10 sm:pt-16 px-[2.5%] ">
         {/* Top Section */}
         <div className=" grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-y-10 gap-x-12">
@@ -195,7 +195,7 @@ export default function Footer() {
             rel="noopener noreferrer"
             className="underline text-blue-500"
           >
-            Currenty Under Development
+            Currently Under Development
           </a>
         </div>
 
