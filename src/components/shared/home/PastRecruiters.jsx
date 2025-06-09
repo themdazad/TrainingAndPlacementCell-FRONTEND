@@ -50,18 +50,18 @@ const logos = [
 
 const PastRecruiters = () => {
   return (
-    <div className="mx-auto w-full flex justify-center px-4 py-24">
-      <div className="flex flex-col items-center justify-center gap-6 px-4 md:px-8">
+    <div className="py-32">
+      <div className="max-w-screen-2xl m-auto px-[2.5%] flex flex-col items-center justify-center gap-6">
         {/* title */}
-        <div className="py-[24px] text-2xl md:text-[32px] font-extrabold">
+        <div className="mb-6 text-2xl md:text-[32px] font-extrabold">
           Past Recruiters
         </div>
         {/* logos bar */}
         <div
-          className="group relative flex justify-center md:w-[70%] gap-6 overflow-hidden p-2"
+          className="group relative flex justify-center gap-6 overflow-hidden p-2"
           style={{
             maskImage:
-              "linear-gradient(to left, transparent 0%, black 40%, black 60%, transparent 95%)",
+              "linear-gradient(to right, transparent 0%, black 40%, black 70%, transparent 100%)",
           }}
         >
           {Array(5)

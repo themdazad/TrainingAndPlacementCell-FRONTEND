@@ -98,7 +98,7 @@ function AvatarCarousel({
 const SelectedStudentSlider = () => {
   return (
     <>
-      <div className="flex h-full w-full flex-col items-center justify-center">
+      <div className="max-w-screen-2xl m-auto px-[2.5%] flex h-full w-full flex-col items-center justify-center">
         <h1 className="text-xl font-extrabold text-zinc-800 dark:text-zinc-100">
           Recently Placed Students
         </h1>

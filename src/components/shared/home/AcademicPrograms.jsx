@@ -20,12 +20,7 @@ const cards = [
     description:
       "Over 1,400 students are currently pursuing their B.Tech degrees across six specializations. Our academic environment emphasizes mentorship, peer collaboration, and continuous support through faculty advisors and career guidance cells.",
   },
-  {
-    icon: Handshake,
-    title: "32+ Verified Industry Tie-ups",
-    description:
-      "Our partnerships with companies offer students real-world exposure through internships, workshops, and capzinc project collaborations — verified annually by our T&P Cell.",
-  },
+  
 ];
 
 
@@ -46,10 +41,10 @@ const item = {
 
 export default function AcademicPrograms() {
   return (
-    <section className="dark:bg-zinc-900 px-[2.5%] my-[100px] py-24 ">
-      <div className="academic-program">       
+    <section className="dark:bg-zinc-900 my-[100px] py-24 ">
+      <div className="max-w-screen-2xl m-auto px-[2.5%] academic-program">
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
           variants={container}
           initial="hidden"
           whileInView="show"
@@ -61,7 +56,7 @@ export default function AcademicPrograms() {
               <motion.div
                 key={index}
                 variants={item}
-                className="academic-program__item flex flex-col items-center justify-center gap-4 text-center border-t-4 border-blue-500 p-6 bg-blue-100 dark:bg-zinc-800 rounded-3xl hover:shadow-lg transition-all duration-200"
+                className="academic-program__item flex flex-col items-center justify-center gap-4 text-center bg-zinc-500/10 border-t-4 border-blue-500 p-6  dark:bg-zinc-80  rounded-3xl hover:shadow-lg transition-all duration-200"
               >
                 <Icon className="h-16 w-16 text-blue-500 dark:text-blue-400" />
                 <div className="academic-program__item-title font-bold text-lg text-zinc-900 dark:text-white">

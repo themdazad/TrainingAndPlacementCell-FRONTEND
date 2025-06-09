@@ -49,13 +49,14 @@ export default function Faq() {
   const [accordionItems, setAccordionItems] = useState(faq_data);
 
   return (
-    <section className="max-w-[1920px] my-[6em] m-auto px-[2.5%]">
-      <h2 className="text-lg  sm:text-2xl md:text-3xl text-center my-6 font-extrabold text-zinc-900 dark:text-white">
+    <section className="max-w-screen-2xl m-auto px-[2.5%] my-[6em]">
+      
+      <h2 className="text-lg sm:text-2xl md:text-3xl text-center my-6 font-extrabold text-zinc-900 dark:text-white">
         Frequently Asked Questions
       </h2>
 
       {/* Accordion Section */}
-      <div className="accordion max-w-[1440px] m-auto">
+      <div className="accordion ">
         <Accordion variant="light" className="md:text-lg">
           {accordionItems.map((item, index) => (
             <AccordionItem

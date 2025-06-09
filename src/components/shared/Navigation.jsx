@@ -238,9 +238,9 @@ export default function NavBar() {
                         setIsDropdownOpen({ [link.name]: false })
                       }
                     >
-                      <span className="flex items-center cursor-pointer transition-all duration-300hover:text-opacity-80 dark:hover:text-opacity-80">
+                      <span className="flex items-center cursor-pointer transition-all duration-200hover:text-opacity-80 dark:hover:text-opacity-80">
                         {link.name}
-                        <ChevronDown className="rotate-0 group-hover:rotate-180 transition-rotate duration-300" />
+                        <ChevronDown className="rotate-0 group-hover:rotate-180 transition-rotate duration-200" />
                       </span>
                       <ul
                         className={`absolute  shadow-md left-1/2 transform -translate-x-1/2 min-w-max text-small rounded-xl border-t-1 hover:border-t-4 border-t-blue-600 bg-white dark:bg-zinc-800 p-3  transition-all duration-200 ${
@@ -306,7 +306,7 @@ export default function NavBar() {
                           </span>
                         </button>
                         <ul
-                          className={`ml-4 space-y-3 transition-all duration-300 ${
+                          className={`ml-4 space-y-3 transition-all duration-200 ${
                             isDropdownOpen[link.name] ? "block" : "hidden"
                           }`}
                         >

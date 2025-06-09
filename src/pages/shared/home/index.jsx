@@ -9,7 +9,7 @@ import Faq from "../../../components/shared/home/Faq.jsx";
 export default function Home() {
   return (
     <main className=" bg-white dark:bg-zinc-900">
-      <section className="max-w-screen-2xl m-auto min-h-screen overflow-hidden">
+      <section className="min-h-screen overflow-hidden">
         <Hero />
         <Announcements />
         <AcademicPrograms />
