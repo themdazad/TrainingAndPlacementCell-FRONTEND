@@ -29,7 +29,6 @@ const navLinks = [
         path: "/training/summer-web-development-2025",
       },
       { name: "Mock Interviews", path: "/training/mock-interview" },
-      { name: "Placement Calendar", path: "/career/placement-calendar" },
       { name: "Placement Drives", path: "/career/placement-drives" },
       { name: "Workshops & Webinars", path: "/training/workshops" },
     ],
@@ -40,8 +39,6 @@ const navLinks = [
     name: "Tools and Resources",
     dropdown: true,
     items: [
-      { name: "Resume Builder", path: "/tools/resume-builder" },
-      { name: "Interview Q&A Bank", path: "/resources/qa-bank" },
       {
         name: "Placement Preparation Guide",
         path: "/resources/placement-guide",
@@ -55,7 +52,6 @@ const navLinks = [
     dropdown: true,
     items: [
       { name: "Alumni Connect", path: "/community/connect" },
-      { name: "devXcoder", path: "/community/devxcoder" },
       { name: "Photo Gallery", path: "/community/gallery" },
     ],
   },
@@ -67,7 +63,7 @@ const navLinks = [
     items: [
       { name: "Reach us", path: "/recruiters/reach-us" },
       { name: "Why Recruit From Us?", path: "/recruiters/why-us" },
-      { name: "Past Recruiters", path: "/recruiters/past-recruiters" },
+      { name: "Media Glance", path: "/recruiters/media-glance" },
     ],
   },
 
@@ -169,7 +165,7 @@ export default function NavBar() {
             </div>
             <div className="r-logos  max-md:hidden flex gap-3 items-center">
               <div className="hidden md:flex flex-col text-right text-sm">
-                <a href="">Contact: +91-123456789</a>
+                <a href="">Contact: +91-9084063221</a>
                 <a href="">Email: tpogecsiwan@gmail.com</a>
               </div>
               <div className="images flex gap-1 md:gap-3">
@@ -341,17 +337,17 @@ export default function NavBar() {
 
                 {/* Login Button */}
                 {!(isLogedIn.admin || isLogedIn.student) && (
-                 <Button
-                      as={NavLink}
-                      to="/auth"
-                      content="Login"
-                      variant="solid"
-                      radius="full"
-                      color="primary"
-                      className="inline-flex text-sm items-centerfont-medium"
-                      >
-                      Login
-                    </Button>
+                  <Button
+                    as={NavLink}
+                    to="/auth"
+                    content="Login"
+                    variant="solid"
+                    radius="full"
+                    color="primary"
+                    className="inline-flex text-sm items-centerfont-medium"
+                  >
+                    Login
+                  </Button>
                 )}
 
                 {/* Dashboard button  */}
@@ -389,7 +385,6 @@ export default function NavBar() {
             </div>
           </div>
         </div>
-
       </header>
     </nav>
   );

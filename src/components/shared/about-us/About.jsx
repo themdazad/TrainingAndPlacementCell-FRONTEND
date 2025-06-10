@@ -1,6 +1,6 @@
 export default function About() {
   return (
-    <div>
+    <div >
       <p className="text-sm tracking-widest text-bold uppercase dark:text-zinc-400 mb-2">
         About Us
       </p>

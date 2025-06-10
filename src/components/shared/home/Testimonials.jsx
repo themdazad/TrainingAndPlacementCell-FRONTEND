@@ -12,15 +12,7 @@ const testimonials = [
     avatar: "/images/students2025/laxmi22103151953.jpg",
     rotate: "-rotate-2",
   },
-  {
-    text: "We were truly impressed by the students' readiness and communication. The placement team's professionalism was commendable.",
-    name: "Vikram Nair",
-    title: "Senior Talent Acquisition Manager",
-    companyName: "Prithvi Pratap Buildcon",
-    companyLogo: "🏢",
-    avatar: "https://randomuser.me/api/portraits/men/45.jpg",
-    rotate: "rotate-1",
-  },
+  
   {
     text: "Happy to be placed through this college.The company's work aligned with my interest areas, which made the placement even more exciting. ",
     name: "Abhishek Kumar",

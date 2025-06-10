@@ -55,17 +55,18 @@ export default function Announcements() {
     );
 
   return (
-    <section className="news-notice-container max-w-screen-2xl m-auto px-[2.5%] grid grid-cols-1 lg:grid-cols-2 gap-12">
+    <section className="news-notice-container max-w-screen-2xl m-auto px-[2.5%] grid grid-cols-1 lg:grid-cols-12 gap-12">
       {/* Left Section */}
-      <div className="hidden md:block">
+      <div className="lg:col-span-5 hidden md:block">
         <About />
       </div>
 
       {/* Right Section */}
-      <div className="news-notice-area max-md:border-t-4 lg:border-l-4 border-blue-500 p-3">
+      <div className="news-notice-area lg:col-span-7 max-md:border-t-4 lg:border-l-4 border-blue-500 p-3">
         <div className="grid grid-cols-2 items-center">
           <h2 className="text-2xl md:text-3xl w-full font-extrabold text-blue-500 flex max-md:justify-center gap-x-4 items-center">
-            Announcements
+            {/* Announcements */}
+            Notices/Latest Updates
           </h2>
 
           {/* 🔍 Search Input */}
@@ -78,7 +79,7 @@ export default function Announcements() {
           />
         </div>
 
-        <div className="row-container box-border my-[1em] max-h-[20rem] overflow-y-scroll overflow-x-hidden">
+        <div className="row-container box-border my-[1em] max-h-64 overflow-y-scroll overflow-x-hidden">
           {filteredNotices.length > 0 ? (
             filteredNotices.map((data, index) => (
               <a

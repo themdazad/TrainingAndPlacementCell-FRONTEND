@@ -19,7 +19,7 @@ const admin = {
   ],
 };
 
-const Profile = () => {
+const Dashboard = () => {
   const [isEditing, setIsEditing] = useState(false);
 
   return (
@@ -109,4 +109,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default Dashboard;

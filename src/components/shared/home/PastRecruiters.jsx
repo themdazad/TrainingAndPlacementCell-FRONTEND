@@ -12,16 +12,6 @@ const logos = [
     url: "https://blogger.googleusercontent.com/img/a/AVvXsEhrpjspiyfkKTXyAVTyuK7w8CcTYv1O-o8trPlYN0a1z3kMbnxZc01rJVFaQTnxRJHsl4Nwau_NWroWWHxwbnuADKpK4ObApMVmSEiVAiHwMaZk1aiZxOeQMpW6ZxeoH9d0bJ1v4edV5rAKlCd5ULSBoWUnYUTuf8GVSNyG9wptaLhLvL5U0QnHCiVJLg",
   },
   {
-    name: "Salesforge",
-    link: "https://www.salesforce.com/in/",
-    url: "https://logodix.com/logo/86351.png",
-  },
-  {
-    name: "TCS",
-    link: "https://www.tcs.com/",
-    url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTPAWYqoR1E-YMPwd869I0X2WuToOjTrPXgQ&s",
-  },
-  {
     name: "Rinex Logo",
     link: "https://rinex.ai/",
     url: "https://www.sret.edu.in/images/Placement/logo/RInex.png",

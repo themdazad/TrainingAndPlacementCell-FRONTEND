@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { slugify } from "../../../utils/slugify";
 import "./projects.css";
-import { projects } from "./projectsData";
+import { projects } from "../../../assets/data/projectsData";
 import { NavLink } from "react-router-dom";
 import { Image } from "@heroui/react";
 import {
@@ -17,7 +17,7 @@ const Projects = () => {
   const [sortOrder, setSortOrder] = useState("newest");
   const [currentPage, setCurrentPage] = useState(1);
 
-  const projectsPerPage = 6;
+  const projectsPerPage = 4;
 
   const filteredProjects = projectsData
     .filter((project) =>
@@ -136,7 +136,7 @@ const Projects = () => {
         </div>
 
         {/* Pagination */}
-        {totalPages > 1 && (
+        
           <div className="flex justify-center gap-2 py-12 text-sm">
             <button
               onClick={() => goToPage(currentPage - 1)}
@@ -166,7 +166,7 @@ const Projects = () => {
               Next
             </button>
           </div>
-        )}
+        
       </section>
     </main>
   );

@@ -246,56 +246,6 @@ export const projects = [
       },
     ],
   },
-  {
-    id: 4,
-    title: "सतत शहरी जल निकासी प्रणाली",
-    branch: "सिविल इंजीनियरिंग",
-    description: "यह परियोजना एक सतत शहरी जल निकासी प्रणाली (Sustainable Urban Drainage System - SUDS) के विकास पर केंद्रित है, जिसका उद्देश्य शहरी क्षेत्रों में अत्यधिक वर्षा के दौरान जलजमाव और बाढ़ की समस्याओं को कम करना है। इस प्रणाली में पारंपरिक जल निकासी के बजाय आधुनिक और पर्यावरणीय तकनीकों जैसे वर्षा जल संचयन, जैविक नालियाँ, परगनीय सतहें और कृत्रिम आर्द्रभूमियों का उपयोग किया जाता है। यह तकनीक न केवल वर्षा जल को संरक्षित करती है, बल्कि उसे धीरे-धीरे ज़मीन में समाहित कर भूजल स्तर को भी बेहतर बनाती है। साथ ही, यह प्रणाली शहरी सौंदर्य और हरियाली को भी बढ़ावा देती है। पर्यावरणीय दृष्टिकोण से यह प्रणाली टिकाऊ विकास की दिशा में एक महत्वपूर्ण कदम है, जो जल संकट की समस्या का समाधान प्रदान करती है।",
-    technologyStack: ["ऑटोकैड", "स्टैड प्रो", "जीआईएस", "वर्षा जल संचयन तकनीक"],
-    objectives: [
-      "शहरी क्षेत्रों में जलजमाव की समस्या को कम करना।",
-      "वर्षा जल का संरक्षण और पुनः उपयोग।",
-      "पर्यावरण-अनुकूल जल निकासी प्रणाली का विकास।",
-    ],
-    benefits: [
-      "बेहतर जल प्रबंधन और बाढ़ की रोकथाम।",
-      "भूजल स्तर में सुधार।",
-      "टिकाऊ और पर्यावरण-सम्मत निर्माण प्रथाओं का समर्थन।",
-    ],
-    challenges: [
-      "शहरी क्षेत्रों में स्थान की कमी।",
-      "परियोजना की लागत और रखरखाव।",
-      "लोगों में जागरूकता और सहयोग की आवश्यकता।",
-    ],
-    futureGoal:
-      "स्मार्ट सेंसर तकनीक और IoT का उपयोग करके जल प्रवाह की निगरानी और पूर्वानुमान की सुविधा जोड़ना।",
-    image:
-      "https://th.bing.com/th/id/OIP.XaVDS9269zyfIVgIqj7iMQHaE8?cb=iwp2&rs=1&pid=ImgDetMain",
-    date: "2024-05-15",
-    pptLink: "/ppt/Sustainable-Urban-Drainage-System.pptx",
-    team: [
-      {
-        name: "अर्जुन मिश्रा",
-        role: "प्रोजेक्ट लीड",
-        registrationNo: "CE123401",
-        branch: "सिविल",
-        session: "2020-2024",
-        linkedin: "https://www.linkedin.com/in/arjunmishra",
-        photo: "https://randomuser.me/api/portraits/men/15.jpg",
-      },
-      {
-        name: "स्नेहा सिंह",
-        role: "जल संसाधन विशेषज्ञ",
-        registrationNo: "CE123402",
-        branch: "सिविल",
-        session: "2020-2024",
-        linkedin: "https://www.linkedin.com/in/snehasingh",
-        photo: "https://randomuser.me/api/portraits/women/16.jpg",
-      },
-    ],
-  },
-
-  // ...Keep the rest of the projects from 3 to 10 as-is following the same format...
 
   // Optionally add any new projects here in the same structure.
 ];

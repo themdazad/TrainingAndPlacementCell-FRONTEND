@@ -39,58 +39,6 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-
-          {/* Resources */}
-          <div>
-            <h4 className="font-semibold tracking-widest text-zinc-400 dark:text-zinc-300 uppercase">
-              Resources
-            </h4>
-            <ul className="mt-4 space-y-1">
-              {[
-                { label: "Resume Builder", path: "/tools/resume-builder" },
-                { label: "Q&A Bank", path: "/resources/qa-bank" },
-                { label: "Guide", path: "/resources/guide" },
-                {
-                  label: "Company Profiles",
-                  path: "/resources/company-profiles",
-                },
-              ].map(({ label, path }) => (
-                <li key={label}>
-                  <NavLink
-                    to={path}
-                    className="text-base text-black dark:text-white hover:text-blue-500 dark:hover:text-blue-400 transition"
-                  >
-                    {label}
-                  </NavLink>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Career & Events */}
-          <div>
-            <h4 className="font-semibold tracking-widest text-zinc-400 dark:text-zinc-300 uppercase">
-              Career & Events
-            </h4>
-            <ul className="mt-4 space-y-1">
-              {[
-                { label: "Upcoming Drives", path: "/events/upcoming-drives" },
-                { label: "Workshops", path: "/events/workshops" },
-                { label: "Hackathons", path: "/events/hackathons" },
-                { label: "Calendar", path: "/events/placement-calendar" },
-              ].map(({ label, path }) => (
-                <li key={label}>
-                  <NavLink
-                    to={path}
-                    className="text-base text-black dark:text-white hover:text-blue-500 dark:hover:text-blue-400 transition"
-                  >
-                    {label}
-                  </NavLink>
-                </li>
-              ))}
-            </ul>
-          </div>
-
           {/* Recruiters */}
           <div>
             <h4 className="font-semibold tracking-widest text-zinc-400 dark:text-zinc-300 uppercase">
@@ -98,12 +46,8 @@ export default function Footer() {
             </h4>
             <ul className="mt-4 space-y-1">
               {[
-                { label: "Why Us?", path: "/recruiter/why-us" },
-                {
-                  label: "Past Recruiters",
-                  path: "/recruiter/past-recruiters",
-                },
-                { label: "Register", path: "/recruiter/registration" },
+                { label: "Why Us?", path: "/recruiters/why-us" },
+                { label: "Register", path: "/recruiters/registration" },
               ].map(({ label, path }) => (
                 <li key={label}>
                   <NavLink
@@ -116,7 +60,6 @@ export default function Footer() {
               ))}
             </ul>
           </div>
-
           {/* Social Media */}
           <div>
             <h5 className="font-semibold uppercase tracking-widest text-zinc-400 dark:text-zinc-300 mb-2">
@@ -124,8 +67,14 @@ export default function Footer() {
             </h5>
             <ul className="space-y-1">
               <li>X</li>
-              <li>LinkedIn</li>
-              <li>YouTube</li>
+              <li>
+                <a
+                  href="*https://www.linkedin.com/company/tpogecsiwan/"
+                  target="_blank"
+                >
+                  LinkedIn
+                </a>
+              </li>
             </ul>
           </div>
           {/* Teams */}
@@ -141,14 +90,13 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Know Developer
+                  Developer
                 </a>
               </li>
             </ul>
           </div>
 
-          <div className="col-span-2 md:col-span-6 flex justify-between items-start flex-col md:flex-row gap-6">
-          
+          <div className="col-span-2 flex justify-between items-start flex-col md:flex-row gap-6">
             {/* Newsletter */}
             <div className="justify-self-end w-full">
               <h4 className="font-semibold tracking-widest text-zinc-400 dark:text-zinc-300 uppercase">
@@ -184,7 +132,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="underline hover:text-blue-500 dark:hover:text-blue-400"
             >
-              Government Engineering College, Siwan
+              Training and Placement Cell | GEC, Siwan
             </a>
             .
           </p>{" "}
@@ -198,7 +146,6 @@ export default function Footer() {
             Currently Under Development
           </a>
         </div>
-
       </div>
     </footer>
   );

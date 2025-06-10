@@ -12,17 +12,17 @@ import {
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@heroui/react";
-import Profile from "../../../components/admin/dashboard/dashboard-tab/Profile";
+import Dashboard from "../../../components/admin/dashboard/dashboard-tab/Dashboard.jsx";
 import { useAuth } from "../../../hooks/contexts/auth/AuthContext"; // Adjust path as needed
+import BlogEditor from "../../../components/shared/blog-editor/BlogEditor.jsx";
 
 const menuItems = [
-  { name: "Profile", icon: Home },
-  { name: "Post a Job", icon: Book },
+  { name: "Dashboard", icon: Home },
+  { name: "Write a blog", icon: Book },
   { name: "Settings", icon: Settings },
 ];
 
 export default function AdminDashboard() {
-  const [isOpen, setIsOpen] = useState(true);
   const [activeTab, setActiveTab] = useState("Dashboard");
   const [adminData, setAdminData] = useState(null);
 
@@ -41,7 +41,7 @@ export default function AdminDashboard() {
           withCredentials: true,
         }
       );
-        console.log(res);
+      console.log(res);
       if (res.status === 200) {
         setIsLogedIn({ admin: false, student: false }); // Reset state
         toast.error("Logged out successfully");
@@ -54,15 +54,10 @@ export default function AdminDashboard() {
 
   const renderContent = () => {
     switch (activeTab) {
-      case "Profile":
-        return (
-          <section>
-            <Profile />
-          </section>
-        );
-
-      case "Post a Job":
-        return <p>Post a Job </p>;
+      case "Dashboard":
+        return <Dashboard />;
+      case "Write a blog":
+        return <BlogEditor />;
       case "Verify Students":
         return <p>Verify Students</p>;
       case "Settings":
@@ -73,50 +68,38 @@ export default function AdminDashboard() {
   };
 
   return (
-    <main className="flex min-h-screen max-w-[1980px] m-auto">
+    <main className="min-h-screen max-w-screen-2xl m-auto">
       {/* Sidebar */}
-      {isOpen && (
-        <motion.div className="border-r border-zinc-500/40 p-6 px-12 flex flex-col relative space-y-3">
-          <div className="sticky top-0">
-            <ul className="mt-12 space-y-4">
-              {menuItems.map((item, index) => (
-                <li
-                  key={index}
-                  className={`flex items-center gap-4 p-2 cursor-pointer dark:hover:bg-zinc-800 hover:bg-blue-100 rounded-lg ${
-                    activeTab === item.name ? "bg-zinc-500/40" : ""
-                  }`}
-                  onClick={() => setActiveTab(item.name)}
-                >
-                  <item.icon size={24} />
-                  {isOpen && <span>{item.name}</span>}
-                </li>
-              ))}
-            </ul>
-            {(isLogedIn?.admin || isLogedIn?.admin) && (
-              <div className="flex items-center">
-                <Button
-                  onPress={handleLogout}
-                  className=" py-1.5 mt-4 rounded-xl font-medium transition"
-                >
-                  {isOpen && "Logout"}
-                  <LogOut />
-                </Button>
-              </div>
-            )}
-          </div>
+      {/* {isOpen && ( */}
+      {1 && (
+        <motion.div className="border-r border-zinc-500/40 p-6 px-12 flex  space-y-3 sticky top-0">
+          <ul className="flex mt-12 space-y-4">
+            {menuItems.map((item, index) => (
+              <li
+                key={index}
+                className={`flex items-center gap-4 p-2 cursor-pointer dark:hover:bg-zinc-800 hover:bg-blue-100 rounded-lg ${
+                  activeTab === item.name ? "bg-zinc-500/40" : ""
+                }`}
+                onClick={() => setActiveTab(item.name)}
+              >
+                <item.icon size={24} />
+                {isOpen && <span>{item.name}</span>}
+              </li>
+            ))}
+          </ul>
+          
         </motion.div>
       )}
 
       {/* Main Content */}
       <div className="flex-1 p-6 px-[2.5%]">
-          
-          <Button
-            className=" cursor-pointer py-4 "
-            variant="none"
-            onPress={() => setIsOpen(!isOpen)}
-          >
-            {isOpen ? <PanelRightOpen /> : <PanelRightClose />}
-          </Button>
+        <Button
+          className=" cursor-pointer py-4 "
+          variant="none"
+          onPress={() => setIsOpen(!isOpen)}
+        >
+          {isOpen ? <PanelRightOpen /> : <PanelRightClose />}
+        </Button>
 
         {/* main content */}
         {renderContent()}
