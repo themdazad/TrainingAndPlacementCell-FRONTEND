@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import { projects } from "./projectsData";
+import { projects } from "../../../assets/data/projectsData";
 import PageHeader from "../../../components/ui/PageHeader.jsx";
 
 // Fade-in animation configuration
