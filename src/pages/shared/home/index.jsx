@@ -9,7 +9,7 @@ import HaveDoubts from "../../../components/shared/home/HaveDoubts.jsx";
 
 export default function Home() {
   return (
-    <main className="bg-[url('/images/blur_bg.png')] bg-cover bg-no-repeat dark:bg-neutral-900">
+    <main className="dark:bg-neutral-900">
       <section className="min-h-screen overflow-hidden space-y-10">
         <Hero />
         <Announcements />

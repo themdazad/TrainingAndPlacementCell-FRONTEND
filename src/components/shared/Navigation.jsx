@@ -18,9 +18,10 @@ const navLinks = [
     ],
   },
 
-  // Training
+
+  // Careers
   {
-    name: "Training and Career",
+    name: "Training",
     dropdown: true,
     items: [
       {
@@ -33,39 +34,14 @@ const navLinks = [
     ],
   },
 
-  // Resources
   {
-    name: "Tools and Resources",
-    dropdown: true,
-    items: [
-      {
-        name: "Placement Preparation Guide",
-        path: "/resources/placement-guide",
-      },
-    ],
+    name: "Careers",
+    path: "/careers",
   },
-
-  // Community
   {
-    name: "Community",
-    dropdown: true,
-    items: [
-      { name: "Alumni Connect", path: "/community/connect" },
-      { name: "Photo Gallery", path: "/community/gallery" },
-    ],
+    name: "Gallery",
+    path: "/gallery",
   },
-
-  // Recruiters
-  {
-    name: "For Recruiters",
-    dropdown: true,
-    items: [
-      { name: "Reach us", path: "/recruiters/reach-us" },
-      { name: "Why Recruit From Us?", path: "/recruiters/why-us" },
-      { name: "Media Glance", path: "/recruiters/media-glance" },
-    ],
-  },
-
   // Static Info
   {
     name: "About us",
@@ -184,9 +160,9 @@ export default function NavBar() {
         </div>
 
         {/* Menu items bar*/}
-        <div className=" px-4 py-2 mx-auto relative bg-sky-100 dark:bg-neutral-800">
+        <div className=" py-2 mx-auto relative bg-sky-100 dark:bg-neutral-800">
           <div className="max-w-screen-2xl m-auto">
-            <div className=" flex items-center justify-between py-2 relative z-50">
+            <div className=" px-4 flex items-center justify-between py-2 relative z-50">
               {/* Hamburger */}
               <button
                 ref={hamburgerRef}
@@ -258,77 +234,6 @@ export default function NavBar() {
                 )}
               </div>
 
-              {/* Mobile Dropdown Menu Nav */}
-              <div
-                ref={mobileMenuRef}
-                className={`lg:hidden absolute top-[48px] left-0 w-screen bg-white dark:bg-neutral-900 z-40 shadow-md overflow-hidden transition-all duration-500 ease-in-out ${
-                  isMobileMenuOpen ? "opacity-100" : "h-0 opacity-0"
-                }`}
-                style={{
-                  transitionProperty: "max-height, opacity",
-                }}
-              >
-                <div className="flex flex-col rounded-3xl p-6 space-y-4">
-                  {navLinks.map((link, index) =>
-                    !link.dropdown ? (
-                      <NavLink
-                        key={index}
-                        to={link.path}
-                        onClick={() => setMobileMenuOpen(false)}
-                        className={({ isActive }) =>
-                          `py-4 px-2 text-xl rounded-md ${
-                            isActive
-                              ? "text-blue-500 dark:text-blue-400 font-semibold"
-                              : "text-neutral-800 dark:text-white"
-                          } hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all`
-                        }
-                      >
-                        {link.name}
-                      </NavLink>
-                    ) : (
-                      <div key={index} className="flex flex-col gap-2">
-                        <button
-                          className="text-lg text-left w-full p-3 rounded-2xl text-neutral-800 dark:text-white flex justify-between items-center hover:bg-neutral-100 dark:hover:bg-neutral-800"
-                          onClick={() => handleDropdownToggle(link.name)}
-                        >
-                          {link.name}
-                          <span>
-                            {isDropdownOpen[link.name] ? (
-                              <ChevronUp />
-                            ) : (
-                              <ChevronDown />
-                            )}
-                          </span>
-                        </button>
-                        <ul
-                          className={`ml-4 space-y-3 transition-all duration-200 ${
-                            isDropdownOpen[link.name] ? "block" : "hidden"
-                          }`}
-                        >
-                          {link.items.map((item, idx) => (
-                            <li key={idx}>
-                              <NavLink
-                                to={item.path}
-                                onClick={() => setMobileMenuOpen(false)}
-                                className={({ isActive }) =>
-                                  `block px-2 py-3 text-md rounded-3xl ${
-                                    isActive
-                                      ? "text-blue-500 dark:text-blue-400 font-medium"
-                                      : "text-neutral-800 dark:text-white"
-                                  } hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all`
-                                }
-                              >
-                                {item.name}
-                              </NavLink>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )
-                  )}
-                </div>
-              </div>
-
               {/* Action Buttons: Theme Switch, Dashboard/Login, and Logout */}
               <div className="flex items-center gap-6 ml-4">
                 {/* Theme Switch */}
@@ -381,6 +286,76 @@ export default function NavBar() {
                       Dashboard
                     </span>
                   </NavLink>
+                )}
+              </div>
+            </div>
+            {/* Mobile Dropdown Menu Nav */}
+            <div
+              ref={mobileMenuRef}
+              className={`lg:hidden absolute top-[56px] w-full bg-blue-400 dark:bg-neutral-900 z-40 shadow-md overflow-hidden transition-all duration-200 ease-in-out ${
+                isMobileMenuOpen ? "opacity-100" : "h-0 opacity-0"
+              }`}
+              style={{
+                transitionProperty: "max-height, opacity",
+              }}
+            >
+              <div className="flex flex-col rounded-3xl p-6 space-y-4">
+                {navLinks.map((link, index) =>
+                  !link.dropdown ? (
+                    <NavLink
+                      key={index}
+                      to={link.path}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className={({ isActive }) =>
+                        `py-4 px-2 text-xl rounded-md ${
+                          isActive
+                            ? "text-blue-500 dark:text-blue-400 font-semibold"
+                            : "text-neutral-800 dark:text-white"
+                        } hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all`
+                      }
+                    >
+                      {link.name}
+                    </NavLink>
+                  ) : (
+                    <div key={index} className="flex flex-col gap-2">
+                      <button
+                        className="text-lg text-left w-full p-3 rounded-2xl text-neutral-800 dark:text-white flex justify-between items-center hover:bg-neutral-100 dark:hover:bg-neutral-800"
+                        onClick={() => handleDropdownToggle(link.name)}
+                      >
+                        {link.name}
+                        <span>
+                          {isDropdownOpen[link.name] ? (
+                            <ChevronUp />
+                          ) : (
+                            <ChevronDown />
+                          )}
+                        </span>
+                      </button>
+                      <ul
+                        className={`ml-4 space-y-3 transition-all duration-200 ${
+                          isDropdownOpen[link.name] ? "block" : "hidden"
+                        }`}
+                      >
+                        {link.items.map((item, idx) => (
+                          <li key={idx}>
+                            <NavLink
+                              to={item.path}
+                              onClick={() => setMobileMenuOpen(false)}
+                              className={({ isActive }) =>
+                                `block px-2 py-3 text-md rounded-3xl ${
+                                  isActive
+                                    ? "text-blue-500 dark:text-blue-400 font-medium"
+                                    : "text-neutral-800 dark:text-white"
+                                } hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all`
+                              }
+                            >
+                              {item.name}
+                            </NavLink>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )
                 )}
               </div>
             </div>
