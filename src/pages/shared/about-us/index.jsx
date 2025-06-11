@@ -25,7 +25,7 @@ export default function AboutUs() {
           <About />
           {/* Address */}
           <div className="py-6 bg-sky-500/10 dark:bg-neutral-800 rounded-3xl border-t-4 border-t-blue-600  shadow-md place-content-center text-center">
-            <h5 className="font-semibold uppercase tracking-widest text-neutral-400 dark:text-neutral-300 mb-2">
+            <h5 className="font-semibold uppercase text-blue-600 dark:text-neutral-300 mb-2">
               Address
             </h5>
             <p>

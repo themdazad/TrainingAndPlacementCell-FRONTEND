@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <footer className=" bg-neutral-100 border-t-1 hover:border-t-4 hover:rounded-3xl border-blue-500 dark:bg-neutral-900 transition-all duration-200">
+    <footer className=" bg-neutral-100 border-t-4 rounded-3xl border-blue-500 dark:bg-neutral-900 transition-all duration-200">
       <div className="max-w-screen-2xl m-auto py-10 sm:pt-16 px-[2.5%] ">
         {/* Top Section */}
         <div className=" grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-y-10 gap-x-12">
@@ -123,7 +123,7 @@ export default function Footer() {
         <Divider className="mt-10 mb-6" />
 
         {/* Bottom Bar */}
-        <div className="text-center text-neutral-600 dark:text-neutral-300">
+        <div className="text-center text-sm text-neutral-600 dark:text-neutral-300">
           <p>
             © 2025, All Rights Reserved by{" "}
             <a
@@ -135,8 +135,7 @@ export default function Footer() {
               Training and Placement Cell | GEC, Siwan
             </a>
             .
-          </p>{" "}
-          <br />
+          </p>
           <a
             href="https://www.linkedin.com/in/themdazad/"
             target="_blank"

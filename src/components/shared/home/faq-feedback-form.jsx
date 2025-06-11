@@ -1,9 +1,7 @@
-
 import { Accordion, AccordionItem } from "@heroui/accordion";
 import { useState } from "react";
 
 export default function FaqFeedbackForm() {
- 
   return (
     <section className=" section grid lg:grid-cols-2 gap-6">
       <FAQAccordion />
@@ -12,7 +10,7 @@ export default function FaqFeedbackForm() {
   );
 }
 
-function FAQAccordion(){
+function FAQAccordion() {
   const faq_data = [
     {
       question:
@@ -55,31 +53,37 @@ function FAQAccordion(){
   const [accordionItems, setAccordionItems] = useState(faq_data);
 
   return (
-      <div className="accordion ">
-        <Accordion variant="light" className="md:text-lg">
-          {accordionItems.map((item, index) => (
-            <AccordionItem
-              key={index}
-              className="md:text-xl"
-              aria-label={`Accordion ${index + 1}`}
-              title={item.question}
-            >
-              <p className="text-[14px] text-neutral-800 dark:text-neutral-200">
-                {item.answer}
-              </p>
-            </AccordionItem>
-          ))}
-        </Accordion>
-      </div>
+    <div className="accordion ">
+      <h2 className="text-3xl text-center my-6 font-extrabold text-neutral-900 dark:text-white">
+        FAQ
+      </h2>
+      <Accordion variant="light" className="md:text-lg">
+        {accordionItems.map((item, index) => (
+          <AccordionItem
+            key={index}
+            className="md:text-xl"
+            aria-label={`Accordion ${index + 1}`}
+            title={item.question}
+          >
+            <p className="text-[14px] text-neutral-800 dark:text-neutral-200">
+              {item.answer}
+            </p>
+          </AccordionItem>
+        ))}
+      </Accordion>
+    </div>
   );
 }
-function FeedbackForm(){
+function FeedbackForm() {
   return (
-    <section>
-      <h2 className="text-lg sm:text-2xl md:text-3xl text-center my-6 font-extrabold text-neutral-900 dark:text-white">
-       Feedback Form
-      </h2>
-      <p className="text-center">No Data Found! </p>
-    </section>
+    <iframe
+      src="https://docs.google.com/forms/d/e/1FAIpQLSfyQXY42QLLCvrRDSTnUAYMdL-AN6TsCW8VAlBjRu-ntDA62g/viewform?embedded=true"
+      className="min-w-full min-h-[538px]"
+      frameborder="0"
+      marginheight="0"
+      marginwidth="0"
+    >
+      Loading…
+    </iframe>
   );
 }
