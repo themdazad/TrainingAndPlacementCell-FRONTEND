@@ -61,7 +61,7 @@ const StudentLogin = () => {
   return (
     <main className="min-h-max grid grid-cols-1 md:grid-cols-2 ">
       {/* Left Section */}
-      <div className="py-[180px] hidden md:flex flex-col justify-center items-center bg-sky-100 dark:bg-zinc-900">
+      <div className="py-[180px] hidden md:flex flex-col justify-center items-center bg-sky-100 dark:bg-neutral-900">
         <Image
           src={GECSIWAN_LOGO}
           alt="GEC Siwan Logo "
@@ -134,7 +134,7 @@ const StudentLogin = () => {
                 </Link>
               </div>
               <div className="text-center mt-2">
-                <span className="text-zinc-600">Not registered?</span>{" "}
+                <span className="text-neutral-600">Not registered?</span>{" "}
                 <NavLink to="/auth/student/register" className="text-primary">
                   Sign Up
                 </NavLink>

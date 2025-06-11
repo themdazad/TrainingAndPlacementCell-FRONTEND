@@ -163,15 +163,15 @@ export default function ResumeBuilder() {
   };
 
   return (
-    <div className="dark:bg-zinc-900 min-h-screen text-zinc-800 dark:text-zinc-100 transition-colors duration-300 py-8">
+    <div className="dark:bg-neutral-900 min-h-screen text-neutral-800 dark:text-neutral-100 transition-colors duration-300 py-8">
       <div className="flex flex-col lg:flex-row gap-8 mx-auto">
-        <div className="w-full lg:w-1/2 p-6 rounded shadow overflow-auto max-h-[90vh] space-y-6 bg-white dark:bg-zinc-900">
+        <div className="w-full lg:w-1/2 p-6 rounded shadow overflow-auto max-h-[90vh] space-y-6 bg-white dark:bg-neutral-900">
           <h2 className="text-2xl font-bold text-blue-600 border-b pb-3 mb-2 text-center">
             Edit Resume
           </h2>
 
           {/* Personal Info */}
-          <section className="p-5 border border-zinc-300 dark:border-zinc-700 rounded-3xl bg-zinc-50 dark:bg-zinc-800 space-y-4">
+          <section className="p-5 border border-neutral-300 dark:border-neutral-700 rounded-3xl bg-neutral-50 dark:bg-neutral-800 space-y-4">
             <h3 className="text-lg font-semibold text-blue-500">
               Personal Information
             </h3>
@@ -195,7 +195,7 @@ export default function ResumeBuilder() {
           </section>
 
           {/* Career Objective */}
-          <section className="p-5 border border-zinc-300 dark:border-zinc-700 rounded-2xl bg-zinc-50 dark:bg-zinc-800 space-y-4">
+          <section className="p-5 border border-neutral-300 dark:border-neutral-700 rounded-2xl bg-neutral-50 dark:bg-neutral-800 space-y-4">
             <h3 className="text-lg font-semibold text-blue-500">
               Career Objective
             </h3>
@@ -209,7 +209,7 @@ export default function ResumeBuilder() {
             />
           </section>
           {/* Online Profiles */}
-          <section className="p-5 border border-zinc-300 dark:border-zinc-700 rounded-2xl bg-zinc-50 dark:bg-zinc-800 space-y-4">
+          <section className="p-5 border border-neutral-300 dark:border-neutral-700 rounded-2xl bg-neutral-50 dark:bg-neutral-800 space-y-4">
             <h3 className="text-lg font-semibold text-blue-500">
               Online Profiles
             </h3>
@@ -236,7 +236,7 @@ export default function ResumeBuilder() {
           </section>
 
           {/* Skills */}
-          <section className="p-5 border border-zinc-300 dark:border-zinc-700 rounded-2xl bg-zinc-50 dark:bg-zinc-800 space-y-4">
+          <section className="p-5 border border-neutral-300 dark:border-neutral-700 rounded-2xl bg-neutral-50 dark:bg-neutral-800 space-y-4">
             <div className="flex justify-between items-center">
               <h3 className="text-lg font-semibold text-blue-500">Skills</h3>
             </div>
@@ -270,7 +270,7 @@ export default function ResumeBuilder() {
           </section>
 
           {/* Education */}
-          <section className="p-5 border border-zinc-300 dark:border-zinc-700 rounded-2xl bg-zinc-50 dark:bg-zinc-800 space-y-4">
+          <section className="p-5 border border-neutral-300 dark:border-neutral-700 rounded-2xl bg-neutral-50 dark:bg-neutral-800 space-y-4">
             <div className="flex justify-between items-center">
               <h3 className="text-lg font-semibold text-blue-500">Education</h3>
             </div>
@@ -278,7 +278,7 @@ export default function ResumeBuilder() {
               {education.map((edu, i) => (
                 <div
                   key={i}
-                  className="border border-zinc-300 dark:border-zinc-600 rounded-2xl p-4 space-y-3 bg-white dark:bg-zinc-700"
+                  className="border border-neutral-300 dark:border-neutral-600 rounded-2xl p-4 space-y-3 bg-white dark:bg-neutral-700"
                 >
                   <div className="grid grid-cols-2 gap-4">
                     <Input
@@ -334,7 +334,7 @@ export default function ResumeBuilder() {
           </section>
 
           {/* Experience */}
-          <section className="p-5 border border-zinc-300 dark:border-zinc-700 rounded-2xl bg-zinc-50 dark:bg-zinc-800 space-y-4">
+          <section className="p-5 border border-neutral-300 dark:border-neutral-700 rounded-2xl bg-neutral-50 dark:bg-neutral-800 space-y-4">
             <div className="flex justify-between items-center">
               <h3 className="text-lg font-semibold text-blue-500">
                 Experience
@@ -344,7 +344,7 @@ export default function ResumeBuilder() {
               {experience.map((exp, i) => (
                 <div
                   key={i}
-                  className="border border-zinc-300 dark:border-zinc-600 rounded-2xl p-4 space-y-3 bg-white dark:bg-zinc-700"
+                  className="border border-neutral-300 dark:border-neutral-600 rounded-2xl p-4 space-y-3 bg-white dark:bg-neutral-700"
                 >
                   <div className="grid grid-cols-3 gap-4">
                     <Input
@@ -374,7 +374,7 @@ export default function ResumeBuilder() {
                   </div>
 
                   <div>
-                    <h4 className="font-semibold text-sm text-zinc-600 dark:text-zinc-200 mb-1">
+                    <h4 className="font-semibold text-sm text-neutral-600 dark:text-neutral-200 mb-1">
                       Details
                     </h4>
                     <div className="space-y-2">
@@ -427,7 +427,7 @@ export default function ResumeBuilder() {
           </section>
 
           {/* Achievements */}
-          <section className="p-5 border border-zinc-300 dark:border-zinc-700 rounded-2xl bg-zinc-50 dark:bg-zinc-800 space-y-4">
+          <section className="p-5 border border-neutral-300 dark:border-neutral-700 rounded-2xl bg-neutral-50 dark:bg-neutral-800 space-y-4">
             <div className="flex justify-between items-center">
               <h3 className="text-lg font-semibold text-blue-500">
                 Achievements
@@ -462,7 +462,7 @@ export default function ResumeBuilder() {
           </section>
           {/* Interests and Hobbies */}
 
-          <section className="p-5 border border-zinc-300 dark:border-zinc-700 rounded-2xl bg-zinc-50 dark:bg-zinc-800 space-y-4">
+          <section className="p-5 border border-neutral-300 dark:border-neutral-700 rounded-2xl bg-neutral-50 dark:bg-neutral-800 space-y-4">
             <div className="flex justify-between items-center">
               <h3 className="text-lg font-semibold text-blue-500">
                 Interests and Hobbies
@@ -501,7 +501,7 @@ export default function ResumeBuilder() {
         {/* Resume Preview */}
         <div
           ref={resumeRef}
-          className="w-full lg:w-1/2 bg-white dark:bg-zinc-800 text-black dark:text-zinc-100 p-16 rounded shadow font-sans text-sm overflow-auto max-h-[90vh]"
+          className="w-full lg:w-1/2 bg-white dark:bg-neutral-800 text-black dark:text-neutral-100 p-16 rounded shadow font-sans text-sm overflow-auto max-h-[90vh]"
         >
           {/* Preview header */}
           <div className="mb-12">
@@ -560,9 +560,9 @@ export default function ResumeBuilder() {
           {education.length > 0 && (
             <div className="my-6">
               <h2 className="font-semibold text-lg border-b mb-2">Education</h2>
-              <div className="w-full border border-zinc-300 dark:border-zinc-700 ">
+              <div className="w-full border border-neutral-300 dark:border-neutral-700 ">
                 {/* Header Row */}
-                <div className="grid grid-cols-4 py-2 bg-zinc-100 dark:bg-zinc-800 text-center font-semibold border-b border-zinc-300 dark:border-zinc-700">
+                <div className="grid grid-cols-4 py-2 bg-neutral-100 dark:bg-neutral-800 text-center font-semibold border-b border-neutral-300 dark:border-neutral-700">
                   <span>Year</span>
                   <span>Course</span>
                   <span>School/College</span>
@@ -573,7 +573,7 @@ export default function ResumeBuilder() {
                 {education.map((edu, i) => (
                   <div
                     key={i}
-                    className=" text-center border-b border-zinc-200 dark:border-zinc-700"
+                    className=" text-center border-b border-neutral-200 dark:border-neutral-700"
                   >
                     <div className="my-2  grid grid-cols-4">
                       <span>{edu.year}</span>

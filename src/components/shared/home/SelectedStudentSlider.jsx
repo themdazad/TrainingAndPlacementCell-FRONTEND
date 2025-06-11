@@ -55,7 +55,7 @@ function AvatarCarousel({
               alt={`Avatar ${index}`}
               className={`${
                 isActive ? "" : "saturate-0"
-              }  absolute  border-2 border-white dark:border-zinc-800 aspect-square m-0 rounded-full object-cover transition-all duration-1000`}
+              }  absolute  border-2 border-white dark:border-neutral-800 aspect-square m-0 rounded-full object-cover transition-all duration-1000`}
               style={{
                 width: avatarSize,
                 top: "50%",
@@ -73,7 +73,7 @@ function AvatarCarousel({
               href={avatar.details.linkedIn}
               target="_blank"
               rel="noopener noreferrer"
-              className={`absolute bg-white dark:bg-zinc-800 dark:text-zinc-100 hover:shadow-md dark:hover:shadow-lg rounded-3xl px-6 py-1 m-0 text-center transition-all duration-1000`}
+              className={`absolute bg-white dark:bg-neutral-800 dark:text-neutral-100 hover:shadow-md dark:hover:shadow-lg rounded-3xl px-6 py-1 m-0 text-center transition-all duration-1000`}
               style={{
                 bottom: "-5%",
                 left: `calc(50% + ${left}px)`,
@@ -97,12 +97,10 @@ function AvatarCarousel({
 
 const SelectedStudentSlider = () => {
   return (
-    <>
-      <div className="max-w-screen-2xl m-auto px-[2.5%] flex h-full w-full flex-col items-center justify-center">
-       
+      <section className=" section flex h-full w-full flex-col items-center justify-center">
         <AvatarCarousel />
-      </div>
-    </>
+      </section>
+    
   );
 };
 

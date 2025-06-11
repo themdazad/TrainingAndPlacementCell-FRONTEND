@@ -29,9 +29,9 @@ const Dashboard = () => {
       transition={{ duration: 0.5 }}
       className="mx-auto mt-6"
     >
-      <div className="shadow-lg w-full rounded-2xl p-6  dark:bg-zinc-800">
+      <div className="shadow-lg w-full rounded-2xl p-6  dark:bg-neutral-800">
       {/* Profile Header */}
-      <div className="flex items-center gap-4 border-b border-zinc-500/50 pb-4">
+      <div className="flex items-center gap-4 border-b border-neutral-500/50 pb-4">
         <div className="w-16 h-16">
           <img
             src={admin.profilePic}
@@ -41,10 +41,10 @@ const Dashboard = () => {
         </div>
         <div>
           <h2 className="text-xl font-semibold">{admin.name}</h2>
-          <p className="text-zinc-400 text-sm">{admin.email}</p>
+          <p className="text-neutral-400 text-sm">{admin.email}</p>
         </div>
         <button
-          className="ml-auto p-2 rounded-full hover:bg-zinc-200"
+          className="ml-auto p-2 rounded-full hover:bg-neutral-200"
           onClick={() => setIsEditing(!isEditing)}
         >
           ✏️
@@ -54,19 +54,19 @@ const Dashboard = () => {
       {/* Profile Details */}
       <div className="grid grid-cols-2 gap-4 text-sm mt-4">
         <div>
-          <p className="text-zinc-400">Department</p>
+          <p className="text-neutral-400">Department</p>
           <p className="font-medium">{admin.department}</p>
         </div>
         <div>
-          <p className="text-zinc-400">register No.</p>
+          <p className="text-neutral-400">register No.</p>
           <p className="font-medium">BEU-{admin.registerNo}</p>
         </div>
         <div>
-          <p className="text-zinc-400">CGPA</p>
+          <p className="text-neutral-400">CGPA</p>
           <p className="font-medium">{admin.cgpa}</p>
         </div>
         <div>
-          <p className="text-zinc-400">Placement Status</p>
+          <p className="text-neutral-400">Placement Status</p>
           <p
             className={`font-medium ${
               admin.placementStatus === "Eligible"
@@ -78,7 +78,7 @@ const Dashboard = () => {
           </p>
         </div>
         <div>
-          <p className="text-zinc-400">Phone</p>
+          <p className="text-neutral-400">Phone</p>
           <p className="font-medium">{admin.phone}</p>
         </div>
         
@@ -86,7 +86,7 @@ const Dashboard = () => {
 
       {/* Projects Section */}
       {admin.projects.length > 0 && (
-        <div className="mt-6 border-t border-zinc-500/50 pt-4">
+        <div className="mt-6 border-t border-neutral-500/50 pt-4">
           <h3 className="text-lg font-semibold mb-2">Projects</h3>
           <ul className="list-disc pl-5 space-y-1">
             {admin.projects.map((project, index) => (

@@ -72,13 +72,13 @@ export default function AdminDashboard() {
       {/* Sidebar */}
       {/* {isOpen && ( */}
       {1 && (
-        <motion.div className="border-r border-zinc-500/40 p-6 px-12 flex  space-y-3 sticky top-0">
+        <motion.div className="border-r border-neutral-500/40 p-6 px-12 flex  space-y-3 sticky top-0">
           <ul className="flex mt-12 space-y-4">
             {menuItems.map((item, index) => (
               <li
                 key={index}
-                className={`flex items-center gap-4 p-2 cursor-pointer dark:hover:bg-zinc-800 hover:bg-blue-100 rounded-lg ${
-                  activeTab === item.name ? "bg-zinc-500/40" : ""
+                className={`flex items-center gap-4 p-2 cursor-pointer dark:hover:bg-neutral-800 hover:bg-blue-100 rounded-lg ${
+                  activeTab === item.name ? "bg-neutral-500/40" : ""
                 }`}
                 onClick={() => setActiveTab(item.name)}
               >

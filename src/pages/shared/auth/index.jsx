@@ -33,7 +33,7 @@ export default function Auth() {
             </h2>
 
             {/* Tabs */}
-            <div className="flex justify-center space-x-6 text-sm font-medium text-zinc-500 mb-6">
+            <div className="flex justify-center space-x-6 text-sm font-medium text-neutral-500 mb-6">
               {["Student", "Coordinator", "Admin"].map((value, index) => {
                 return (
                   <a

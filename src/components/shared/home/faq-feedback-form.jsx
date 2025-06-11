@@ -1,11 +1,18 @@
 
-import { motion } from "framer-motion";
-import {  ArrowRightCircle,} from "lucide-react";
 import { Accordion, AccordionItem } from "@heroui/accordion";
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
 
-export default function Faq() {
+export default function FaqFeedbackForm() {
+ 
+  return (
+    <section className=" section grid lg:grid-cols-2 gap-6">
+      <FAQAccordion />
+      <FeedbackForm />
+    </section>
+  );
+}
+
+function FAQAccordion(){
   const faq_data = [
     {
       question:
@@ -45,17 +52,9 @@ export default function Faq() {
         "For further information, you can contact the official college website, where contact emails, phone numbers and a dedicated portal for placement related queries is included. you can also explore our social media platforms or LinkedIn profiles for more exciting drives .",
     },
   ];
-
   const [accordionItems, setAccordionItems] = useState(faq_data);
 
   return (
-    <section className="max-w-screen-2xl m-auto px-[2.5%] my-[6em]">
-      
-      <h2 className="text-lg sm:text-2xl md:text-3xl text-center my-6 font-extrabold text-zinc-900 dark:text-white">
-        Frequently Asked Questions
-      </h2>
-
-      {/* Accordion Section */}
       <div className="accordion ">
         <Accordion variant="light" className="md:text-lg">
           {accordionItems.map((item, index) => (
@@ -65,55 +64,22 @@ export default function Faq() {
               aria-label={`Accordion ${index + 1}`}
               title={item.question}
             >
-              <p className="text-[14px] text-zinc-800 dark:text-zinc-200">
+              <p className="text-[14px] text-neutral-800 dark:text-neutral-200">
                 {item.answer}
               </p>
             </AccordionItem>
           ))}
         </Accordion>
       </div>
-
-      {/* Coordinators Image and Contact Details */}
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        viewport={{ once: false, amount: 0.2 }}
-        className="space-y-3 py-24 text-center w-full mx-auto"
-      >
-        {/* Coordinator Images */}
-        <div className="flex justify-center -space-x-4">
-          <img
-            src="/images/coordinators/abhishek_profile.jpg"
-            alt="Abhishek"
-            className="w-20 aspect-square rounded-full border-2 dark:border-zinc-700 border-white"
-          />
-          <img
-            src="/images/coordinators/azad_profile.jpg"
-            alt="Azad"
-            className="w-20 aspect-square rounded-full border-2 dark:border-zinc-700 border-white"
-          />
-          <img
-            src="https://avatars.githubusercontent.com/u/156394664?v=4"
-            alt="Coordinator 3"
-            className="w-20 aspect-square rounded-full border-2 dark:border-zinc-700 border-white"
-          />
-        </div>
-
-        {/* Contact Section */}
-        <h2 className="text-xl font-semibold text-zinc-900 dark:text-white">
-          Still have doubts?
-        </h2>
-        <p className="text-zinc-700 dark:text-zinc-300 my-2">
-          Can't find the answer you're looking for? Contact us!
-        </p>
-
-        <NavLink
-          className="text-blue-500 dark:text-blue-400 hover:text-blue-500 font-medium inline-flex items-center"
-          to="/contact-us"
-        >Contact us<ArrowRightCircle className="w-4 h-4 ml-1" />
-        </NavLink>
-      </motion.div>
+  );
+}
+function FeedbackForm(){
+  return (
+    <section>
+      <h2 className="text-lg sm:text-2xl md:text-3xl text-center my-6 font-extrabold text-neutral-900 dark:text-white">
+       Feedback Form
+      </h2>
+      <p className="text-center">No Data Found! </p>
     </section>
   );
 }

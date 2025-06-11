@@ -71,13 +71,13 @@ const item = {
 export default function AcademicPrograms() {
   
   return (
-    <section className="min-h-[100px] dark:bg-zinc-900 px-[2.5%] my-[100px] transition-colors duration-300">
+    <section className="min-h-[100px] dark:bg-neutral-900 px-[2.5%] my-[100px] transition-colors duration-300">
       <div className="academic-program grid gap-16">
         <div className="academic-program__title text-center">
-          <h1 className="font-extrabold text-lg md:text-3xl text-zinc-900 dark:text-white">
+          <h1 className="font-extrabold text-lg md:text-3xl text-neutral-900 dark:text-white">
             Undergraduate Programs
           </h1>
-          <p className="text-zinc-700 dark:text-zinc-300">
+          <p className="text-neutral-700 dark:text-neutral-300">
             Bachelor of Technology | Undergraduate Program
           </p>
         </div>
@@ -95,15 +95,15 @@ export default function AcademicPrograms() {
               <motion.div
                 key={index}
                 variants={item}
-                className="academic-program__item flex flex-col items-center justify-center gap-3 text-center border-t-4 border-blue-500 p-6 bg-blue-100 dark:bg-zinc-800 rounded-3xl hover:shadow-lg transition-all duration-300"
+                className="academic-program__item flex flex-col items-center justify-center gap-3 text-center border-t-4 border-blue-500 p-6 bg-blue-100 dark:bg-neutral-800 rounded-3xl hover:shadow-lg transition-all duration-300"
               >
                 <Icon className="h-16 w-16 text-blue-500 dark:text-blue-400" />
 
-                <div className="academic-program__item-title font-bold text-lg text-zinc-900 dark:text-white">
+                <div className="academic-program__item-title font-bold text-lg text-neutral-900 dark:text-white">
                   {card.title}
                 </div>
 
-                <div className="w-full text-sm text-center mt-4 space-y-1 text-zinc-800 dark:text-zinc-200">
+                <div className="w-full text-sm text-center mt-4 space-y-1 text-neutral-800 dark:text-neutral-200">
                   <p>
                     <span className="font-semibold">Intake Capacity:</span>{" "}
                     {card.intake} Students

@@ -130,22 +130,22 @@ export default function ResumeBuilder() {
   };
 
   return (
-    <div className="dark:bg-zinc-900 min-h-screen text-zinc-800 dark:text-zinc-100 transition-colors duration-300 py-8">
+    <div className="dark:bg-neutral-900 min-h-screen text-neutral-800 dark:text-neutral-100 transition-colors duration-300 py-8">
       <div className="flex flex-col lg:flex-row gap-8 mx-auto">
         {/* Edit Form */}
-        <div className="w-full lg:w-1/2 p-6 rounded shadow overflow-auto max-h-[90vh] space-y-6 bg-white dark:bg-zinc-900">
+        <div className="w-full lg:w-1/2 p-6 rounded shadow overflow-auto max-h-[90vh] space-y-6 bg-white dark:bg-neutral-900">
           <h2 className="text-2xl font-bold text-blue-600 border-b pb-3 mb-2 text-center">
             Edit Resume
           </h2>
 
           {/* Personal Info */}
-          <section className="p-4 border border-zinc-300 dark:border-zinc-700 rounded-lg bg-zinc-50 dark:bg-zinc-800 space-y-4">
+          <section className="p-4 border border-neutral-300 dark:border-neutral-700 rounded-lg bg-neutral-50 dark:bg-neutral-800 space-y-4">
             <h3 className="text-lg font-semibold text-blue-500">
               Personal Information
             </h3>
             {["name", "title", "email", "phone", "location"].map((field) => (
               <div key={field}>
-                <label className="block mb-1 capitalize font-medium text-zinc-700 dark:text-zinc-200">
+                <label className="block mb-1 capitalize font-medium text-neutral-700 dark:text-neutral-200">
                   {field}
                 </label>
                 <input
@@ -153,20 +153,20 @@ export default function ResumeBuilder() {
                   name={field}
                   value={personalInfo[field]}
                   onChange={handlePersonalInfoChange}
-                  className="w-full p-2 border border-zinc-300 dark:border-zinc-600 rounded bg-white dark:bg-zinc-700 text-zinc-900 dark:text-white"
+                  className="w-full p-2 border border-neutral-300 dark:border-neutral-600 rounded bg-white dark:bg-neutral-700 text-neutral-900 dark:text-white"
                 />
               </div>
             ))}
           </section>
 
           {/* Online Profiles */}
-          <section className="p-4 border border-zinc-300 dark:border-zinc-700 rounded-lg bg-zinc-50 dark:bg-zinc-800 space-y-4">
+          <section className="p-4 border border-neutral-300 dark:border-neutral-700 rounded-lg bg-neutral-50 dark:bg-neutral-800 space-y-4">
             <h3 className="text-lg font-semibold text-blue-500">
               Online Profiles
             </h3>
             {["github", "linkedin"].map((field) => (
               <div key={field}>
-                <label className="block mb-1 capitalize font-medium text-zinc-700 dark:text-zinc-200">
+                <label className="block mb-1 capitalize font-medium text-neutral-700 dark:text-neutral-200">
                   {field}
                 </label>
                 <input
@@ -174,14 +174,14 @@ export default function ResumeBuilder() {
                   name={field}
                   value={onlineProfiles[field]}
                   onChange={handleOnlineProfilesChange}
-                  className="w-full p-2 border border-zinc-300 dark:border-zinc-600 rounded bg-white dark:bg-zinc-700 text-zinc-900 dark:text-white"
+                  className="w-full p-2 border border-neutral-300 dark:border-neutral-600 rounded bg-white dark:bg-neutral-700 text-neutral-900 dark:text-white"
                 />
               </div>
             ))}
           </section>
 
           {/* Skills */}
-          <section className="p-4 border border-zinc-300 dark:border-zinc-700 rounded-lg bg-zinc-50 dark:bg-zinc-800">
+          <section className="p-4 border border-neutral-300 dark:border-neutral-700 rounded-lg bg-neutral-50 dark:bg-neutral-800">
             <div className="flex justify-between items-center mb-4">
               <h3 className="text-lg font-semibold text-blue-500">Skills</h3>
             </div>
@@ -191,7 +191,7 @@ export default function ResumeBuilder() {
                   type="text"
                   value={skill}
                   onChange={(e) => updateSkill(i, e.target.value)}
-                  className="flex-grow p-2 border border-zinc-300 dark:border-zinc-600 rounded bg-white dark:bg-zinc-700 text-zinc-900 dark:text-white"
+                  className="flex-grow p-2 border border-neutral-300 dark:border-neutral-600 rounded bg-white dark:bg-neutral-700 text-neutral-900 dark:text-white"
                 />
                 <button
                   onClick={() => removeSkill(i)}
@@ -212,7 +212,7 @@ export default function ResumeBuilder() {
           </section>
 
           {/* Education */}
-          <section className="p-4 border border-zinc-300 dark:border-zinc-700 rounded-lg bg-zinc-50 dark:bg-zinc-800">
+          <section className="p-4 border border-neutral-300 dark:border-neutral-700 rounded-lg bg-neutral-50 dark:bg-neutral-800">
             <div className="flex justify-between items-center mb-4">
               <h3 className="text-lg font-semibold text-blue-500">Education</h3>
               <button
@@ -226,7 +226,7 @@ export default function ResumeBuilder() {
             {education.map((edu, i) => (
               <div
                 key={i}
-                className="mb-4 border border-zinc-300 dark:border-zinc-600 rounded p-4 bg-white dark:bg-zinc-700 space-y-2"
+                className="mb-4 border border-neutral-300 dark:border-neutral-600 rounded p-4 bg-white dark:bg-neutral-700 space-y-2"
               >
                 <div className="flex gap-4">
                   <input
@@ -234,7 +234,7 @@ export default function ResumeBuilder() {
                     placeholder="Year"
                     value={edu.year}
                     onChange={(e) => updateEducation(i, "year", e.target.value)}
-                    className="flex-1 p-2 border border-zinc-300 dark:border-zinc-600 rounded"
+                    className="flex-1 p-2 border border-neutral-300 dark:border-neutral-600 rounded"
                   />
                   <input
                     type="text"
@@ -243,7 +243,7 @@ export default function ResumeBuilder() {
                     onChange={(e) =>
                       updateEducation(i, "course", e.target.value)
                     }
-                    className="flex-2 p-2 border border-zinc-300 dark:border-zinc-600 rounded"
+                    className="flex-2 p-2 border border-neutral-300 dark:border-neutral-600 rounded"
                   />
                 </div>
                 <div className="flex items-center">
@@ -254,7 +254,7 @@ export default function ResumeBuilder() {
                     onChange={(e) =>
                       updateEducation(i, "institution", e.target.value)
                     }
-                    className="w-full p-2 border border-zinc-300 dark:border-zinc-600 rounded"
+                    className="w-full p-2 border border-neutral-300 dark:border-neutral-600 rounded"
                   />
                   <button
                     onClick={() => removeEducation(i)}
@@ -269,7 +269,7 @@ export default function ResumeBuilder() {
           </section>
 
           {/* Experience */}
-          <section className="p-4 border border-zinc-300 dark:border-zinc-700 rounded-lg bg-zinc-50 dark:bg-zinc-800">
+          <section className="p-4 border border-neutral-300 dark:border-neutral-700 rounded-lg bg-neutral-50 dark:bg-neutral-800">
             <div className="flex justify-between items-center mb-4">
               <h3 className="text-lg font-semibold text-blue-500">
                 Experience
@@ -285,7 +285,7 @@ export default function ResumeBuilder() {
             {experience.map((exp, i) => (
               <div
                 key={i}
-                className="mb-6 border border-zinc-300 dark:border-zinc-600 rounded p-4 bg-white dark:bg-zinc-700 space-y-2"
+                className="mb-6 border border-neutral-300 dark:border-neutral-600 rounded p-4 bg-white dark:bg-neutral-700 space-y-2"
               >
                 <div className="flex gap-4">
                   <input
@@ -318,7 +318,7 @@ export default function ResumeBuilder() {
                 </div>
 
                 <div>
-                  <h4 className="font-semibold text-sm text-zinc-600 dark:text-zinc-200 mb-1">
+                  <h4 className="font-semibold text-sm text-neutral-600 dark:text-neutral-200 mb-1">
                     Details
                   </h4>
                   {exp.details.map((detail, dIdx) => (
@@ -361,7 +361,7 @@ export default function ResumeBuilder() {
           </section>
 
           {/* Achievements */}
-          <section className="p-4 border border-zinc-300 dark:border-zinc-700 rounded-lg bg-zinc-50 dark:bg-zinc-800">
+          <section className="p-4 border border-neutral-300 dark:border-neutral-700 rounded-lg bg-neutral-50 dark:bg-neutral-800">
             <div className="flex justify-between items-center mb-4">
               <h3 className="text-lg font-semibold text-blue-500">
                 Achievements
@@ -380,7 +380,7 @@ export default function ResumeBuilder() {
                   type="text"
                   value={ach}
                   onChange={(e) => updateAchievement(i, e.target.value)}
-                  className="flex-grow p-2 border rounded bg-white dark:bg-zinc-700 text-zinc-900 dark:text-white"
+                  className="flex-grow p-2 border rounded bg-white dark:bg-neutral-700 text-neutral-900 dark:text-white"
                 />
                 <button
                   onClick={() => removeAchievement(i)}
@@ -405,7 +405,7 @@ export default function ResumeBuilder() {
         {/* Resume Preview */}
         <div
           ref={resumeRef}
-          className="w-full lg:w-1/2 bg-white dark:bg-zinc-800 text-black dark:text-zinc-100 p-16 rounded shadow font-sans text-sm overflow-auto max-h-[90vh]"
+          className="w-full lg:w-1/2 bg-white dark:bg-neutral-800 text-black dark:text-neutral-100 p-16 rounded shadow font-sans text-sm overflow-auto max-h-[90vh]"
         >
           {/* Preview header */}
           <div className="mb-6">

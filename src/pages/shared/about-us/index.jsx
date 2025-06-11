@@ -21,11 +21,11 @@ export default function AboutUs() {
             breadcrumbItems={breadcrumbItems}
           />
         </div>
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12">
           <About />
           {/* Address */}
-          <div className="py-6 bg-zinc-100/50 dark:bg-zinc-800 rounded-3xl border-t-4 border-t-blue-600 transition-all duration-200 shadow-md place-content-center text-center">
-            <h5 className="font-semibold uppercase tracking-widest text-zinc-400 dark:text-zinc-300 mb-2">
+          <div className="py-6 bg-sky-500/10 dark:bg-neutral-800 rounded-3xl border-t-4 border-t-blue-600  shadow-md place-content-center text-center">
+            <h5 className="font-semibold uppercase tracking-widest text-neutral-400 dark:text-neutral-300 mb-2">
               Address
             </h5>
             <p>
@@ -35,7 +35,6 @@ export default function AboutUs() {
               841226
             </p>
             <p>
-              {" "}
               <br />
               <strong>Contact Details</strong>
               <br />

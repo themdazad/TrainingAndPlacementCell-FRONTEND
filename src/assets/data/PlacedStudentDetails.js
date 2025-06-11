@@ -122,4 +122,4 @@ const studentDetails = [
     },
   ];
 
-  export default studentDetails;
+export default studentDetails;

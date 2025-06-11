@@ -40,11 +40,10 @@ const item = {
 };
 
 export default function AcademicPrograms() {
-  return (
-    <section className="dark:bg-zinc-900 my-[100px] py-24 ">
-      <div className="max-w-screen-2xl m-auto px-[2.5%] academic-program">
+  return (    
+      <section className="section">
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-10 lg:gap-12"
           variants={container}
           initial="hidden"
           whileInView="show"
@@ -56,20 +55,19 @@ export default function AcademicPrograms() {
               <motion.div
                 key={index}
                 variants={item}
-                className="academic-program__item flex flex-col items-center justify-center gap-4 text-center bg-zinc-500/10 border-t-4 border-blue-500 p-6  dark:bg-zinc-80  rounded-3xl hover:shadow-lg transition-all duration-200"
+                className="academic-program__item flex flex-col items-center justify-center gap-4 text-center bg-sky-500/10 border-t-4 border-blue-500 p-6  dark:bg-neutral-80  rounded-3xl hover:shadow-lg transition-all duration-200"
               >
                 <Icon className="h-16 w-16 text-blue-500 dark:text-blue-400" />
-                <div className="academic-program__item-title font-bold text-lg text-zinc-900 dark:text-white">
+                <div className="academic-program__item-title font-bold text-lg text-neutral-900 dark:text-white">
                   {card.title}
                 </div>
-                <div className="academic-program__item-description leading-relaxed text-sm text-zinc-700 dark:text-zinc-300">
+                <div className="academic-program__item-description leading-relaxed text-sm text-neutral-700 dark:text-neutral-300">
                   {card.description}
                 </div>
               </motion.div>
             );
           })}
         </motion.div>
-      </div>
-    </section>
+      </section>
   );
 }

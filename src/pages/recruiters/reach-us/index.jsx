@@ -55,7 +55,7 @@ const transportModes = [
 
 export default function ReachUs() {
   return (
-    <main className=" dark:bg-zinc-900 grid gap-12">
+    <main className=" dark:bg-neutral-900 grid gap-12">
       <div className="m-auto max-w-screen-2xl px-[2.5%] ">
         <PageHeader
           title={"Reach Us"}
@@ -71,7 +71,7 @@ export default function ReachUs() {
             {transportModes.map(({ mode, icon, description, cities }) => (
               <div
                 key={mode}
-                className="card shadow-md p-6 dark:bg-zinc-800 rounded-3xl"
+                className="card shadow-md p-6 dark:bg-neutral-800 rounded-3xl"
               >
                 <h1 className="text-lg font-extrabold inline-flex gap-3 text-blue-500 dark:text-blue-400">
                   {icon} {mode}
@@ -111,7 +111,7 @@ export default function ReachUs() {
           </div>
 
           {/* Accommodation  */}
-          <div className="shadow-md p-6 dark:bg-zinc-800 rounded-3xl max-w-full">
+          <div className="shadow-md p-6 dark:bg-neutral-800 rounded-3xl max-w-full">
             <h2 className="text-lg font-bold text-blue-500 dark:text-blue-400 inline-flex gap-3 items-center mb-4">
               <BedDouble /> Accommodation
             </h2>

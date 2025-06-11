@@ -55,7 +55,7 @@ export default function Announcements() {
     );
 
   return (
-    <section className="news-notice-container max-w-screen-2xl m-auto px-[2.5%] grid grid-cols-1 lg:grid-cols-12 gap-12">
+    <section className="news-notice-container section grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-10 lg:gap-12">
       {/* Left Section */}
       <div className="lg:col-span-5 hidden md:block">
         <About />
@@ -75,7 +75,7 @@ export default function Announcements() {
             placeholder="Finding? Search here..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full mt-4 mb-2 px-3 p-2 border border-zinc-300 dark:border-zinc-700 rounded-3xl focus:outline-none focus:ring-2 focus:ring-blue-400 dark:bg-zinc-800 dark:text-white"
+            className="w-full mt-4 mb-2 px-3 p-2 border border-neutral-300 dark:border-neutral-700 rounded-3xl focus:outline-none focus:ring-2 focus:ring-blue-400 dark:bg-neutral-800 dark:text-white"
           />
         </div>
 
@@ -98,7 +98,7 @@ export default function Announcements() {
               </a>
             ))
           ) : (
-            <p className="text-zinc-500 dark:text-zinc-400">
+            <p className="text-neutral-500 dark:text-neutral-400">
               No updates found.
             </p>
           )}

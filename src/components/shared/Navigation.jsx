@@ -15,7 +15,6 @@ const navLinks = [
     items: [
       { name: "Student's Projects", path: "/projects" },
       { name: "Course Highlights", path: "/academics/course-highlights" },
-      { name: "Aptitude & Soft Skills", path: "/training/aptitude-softskills" },
     ],
   },
 
@@ -139,17 +138,17 @@ export default function NavBar() {
     >
       <header>
         {/* Navigation Header*/}
-        <div className="navHeader bg-white dark:bg-zinc-900">
-          <div className="max-w-screen-2xl m-auto px-[2.5%] py-2 flex justify-between items-center">
+        <div className="navHeader bg-white dark:bg-neutral-900  px-4 py-2">
+          <div className="max-w-screen-2xl m-auto flex justify-between items-center">
             <div className="max-md:w-full flex max-md:flex-col justify-center items-center gap-3 md:gap-6 lg:gap-12">
               <div className="college-logo flex justify-center aspect-square">
                 <Image
-                  className="dark:hidden h-[60px] lg:h-[80px]"
+                  className="dark:hidden h-[80px]"
                   src="/images/gecsiwan-logo.png"
                   alt="gec-siwan-logo"
                 />
                 <Image
-                  className="hidden dark:inline h-[60px] lg:h-[80px]"
+                  className="hidden dark:inline h-[80px]"
                   src="/images/gecsiwan-logo-light.png"
                   alt="gec-siwan-logo"
                 />
@@ -185,9 +184,9 @@ export default function NavBar() {
         </div>
 
         {/* Menu items bar*/}
-        <div className="py-1 mx-auto relative bg-blue-100 dark:bg-zinc-800">
+        <div className=" px-4 py-2 mx-auto relative bg-sky-100 dark:bg-neutral-800">
           <div className="max-w-screen-2xl m-auto">
-            <div className="px-[2.5%] flex items-center justify-between py-2 relative z-50">
+            <div className=" flex items-center justify-between py-2 relative z-50">
               {/* Hamburger */}
               <button
                 ref={hamburgerRef}
@@ -239,7 +238,7 @@ export default function NavBar() {
                         <ChevronDown className="rotate-0 group-hover:rotate-180 transition-rotate duration-200" />
                       </span>
                       <ul
-                        className={`absolute  shadow-md left-1/2 transform -translate-x-1/2 min-w-max text-small rounded-xl border-t-1 hover:border-t-4 border-t-blue-600 bg-white dark:bg-zinc-800 p-3  transition-all duration-200 ${
+                        className={`absolute  shadow-md left-1/2 transform -translate-x-1/2 min-w-max text-small rounded-xl border-t-1 hover:border-t-4 border-t-blue-600 bg-white dark:bg-neutral-800 p-3  transition-all duration-200 ${
                           isDropdownOpen[link.name] ? "flex flex-col" : "hidden"
                         }`}
                       >
@@ -248,7 +247,7 @@ export default function NavBar() {
                           <NavLink
                             key={idx}
                             to={item.path}
-                            className="hover:text-zinc-100 hover:bg-blue-600 rounded-3xl w-full py-2 px-3"
+                            className="hover:text-neutral-100 hover:bg-blue-600 rounded-3xl w-full py-2 px-3"
                           >
                             {item.name}
                           </NavLink>
@@ -262,7 +261,7 @@ export default function NavBar() {
               {/* Mobile Dropdown Menu Nav */}
               <div
                 ref={mobileMenuRef}
-                className={`lg:hidden absolute top-[48px] left-0 w-screen bg-white dark:bg-zinc-900 z-40 shadow-md overflow-hidden transition-all duration-500 ease-in-out ${
+                className={`lg:hidden absolute top-[48px] left-0 w-screen bg-white dark:bg-neutral-900 z-40 shadow-md overflow-hidden transition-all duration-500 ease-in-out ${
                   isMobileMenuOpen ? "opacity-100" : "h-0 opacity-0"
                 }`}
                 style={{
@@ -280,8 +279,8 @@ export default function NavBar() {
                           `py-4 px-2 text-xl rounded-md ${
                             isActive
                               ? "text-blue-500 dark:text-blue-400 font-semibold"
-                              : "text-zinc-800 dark:text-white"
-                          } hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all`
+                              : "text-neutral-800 dark:text-white"
+                          } hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all`
                         }
                       >
                         {link.name}
@@ -289,7 +288,7 @@ export default function NavBar() {
                     ) : (
                       <div key={index} className="flex flex-col gap-2">
                         <button
-                          className="text-lg text-left w-full p-3 rounded-2xl text-zinc-800 dark:text-white flex justify-between items-center hover:bg-zinc-100 dark:hover:bg-zinc-800"
+                          className="text-lg text-left w-full p-3 rounded-2xl text-neutral-800 dark:text-white flex justify-between items-center hover:bg-neutral-100 dark:hover:bg-neutral-800"
                           onClick={() => handleDropdownToggle(link.name)}
                         >
                           {link.name}
@@ -315,8 +314,8 @@ export default function NavBar() {
                                   `block px-2 py-3 text-md rounded-3xl ${
                                     isActive
                                       ? "text-blue-500 dark:text-blue-400 font-medium"
-                                      : "text-zinc-800 dark:text-white"
-                                  } hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all`
+                                      : "text-neutral-800 dark:text-white"
+                                  } hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all`
                                 }
                               >
                                 {item.name}
@@ -333,7 +332,9 @@ export default function NavBar() {
               {/* Action Buttons: Theme Switch, Dashboard/Login, and Logout */}
               <div className="flex items-center gap-6 ml-4">
                 {/* Theme Switch */}
-                <ThemeSwitch />
+                <span className="max-md:hidden">
+                  <ThemeSwitch />
+                </span>
 
                 {/* Login Button */}
                 {!(isLogedIn.admin || isLogedIn.student) && (
@@ -354,10 +355,10 @@ export default function NavBar() {
                 {!!isLogedIn.admin && (
                   <NavLink
                     to="/dashboard/admin"
-                    className="flex items-center gap-2 text-zinc-800 dark:text-zinc-100"
+                    className="flex items-center gap-2 text-neutral-800 dark:text-neutral-100"
                   >
                     <img
-                      className="rounded-full border border-zinc-300 dark:border-zinc-600 w-10 h-10 object-cover"
+                      className="rounded-full border border-neutral-300 dark:border-neutral-600 w-10 h-10 object-cover"
                       src="./images/profile-default-photo.jpg"
                       alt="user-profile"
                     />
@@ -369,10 +370,10 @@ export default function NavBar() {
                 {!!isLogedIn.student && (
                   <NavLink
                     to="/dashboard/student"
-                    className="flex items-center gap-2 text-zinc-800 dark:text-zinc-100"
+                    className="flex items-center gap-2 text-neutral-800 dark:text-neutral-100"
                   >
                     <img
-                      className="rounded-full border border-zinc-300 dark:border-zinc-600 w-10 h-10 object-cover"
+                      className="rounded-full border border-neutral-300 dark:border-neutral-600 w-10 h-10 object-cover"
                       src="./images/profile-default-photo.jpg"
                       alt="user-profile"
                     />

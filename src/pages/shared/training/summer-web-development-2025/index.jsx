@@ -54,7 +54,7 @@ const schedule = [
 ];
 export default function SummerWebDevelopment2025() {
   return (
-    <main className="max-w-screen-2xl m-auto  px-[2.5%] dark:bg-zinc-900 grid gap-12 py-6 ">
+    <main className="max-w-screen-2xl m-auto  px-[2.5%] dark:bg-neutral-900 grid gap-12 py-6 ">
       <PageHeader
         title={"Summer Program"}
         breadcrumbItems={breadcrumbItems}
@@ -65,9 +65,9 @@ export default function SummerWebDevelopment2025() {
 
       {/* Register CTA */}
       <section className="px-[2.5%] py-12 flex justify-center">
-        <div className="bg-white dark:bg-zinc-800 rounded-3xl shadow-md p-8 text-center max-w-xl w-full">
+        <div className="bg-white dark:bg-neutral-800 rounded-3xl shadow-md p-8 text-center max-w-xl w-full">
           <h2 className="text-2xl font-bold mb-3">Registration Open</h2>
-          <p className="text-zinc-600 dark:text-zinc-300 mb-6">
+          <p className="text-neutral-600 dark:text-neutral-300 mb-6">
             Summer Web Development Program 2025 is now open for registration!
             Join us to learn the latest web technologies and build real-world
             projects.

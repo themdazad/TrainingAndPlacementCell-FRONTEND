@@ -9,7 +9,7 @@ const breadcrumbItems = [
 
 export default function WhyUs() {
   return (
-	<main className=" dark:bg-zinc-900 grid gap-12">
+	<main className=" dark:bg-neutral-900 grid gap-12">
 	  <div className="m-auto max-w-screen-2xl px-[2.5%] ">
 		<PageHeader
 		  title={"Why Us"}

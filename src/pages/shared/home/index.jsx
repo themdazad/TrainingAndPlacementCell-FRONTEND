@@ -1,22 +1,24 @@
-// sections
 import Hero from "../../../components/shared/home/Hero.jsx";
 import Announcements from "../../../components/shared/home/Announcements.jsx";
 import AcademicPrograms from "../../../components/shared/home/AcademicPrograms.jsx";
 import Testimonials from "../../../components/shared/home/Testimonials.jsx";
 import SelectedStudentSlider from "../../../components/shared/home/SelectedStudentSlider.jsx";
 import PastRecruiters from "../../../components/shared/home/PastRecruiters.jsx";
-import Faq from "../../../components/shared/home/Faq.jsx";
+import FaqFeedbackForm from "../../../components/shared/home/faq-feedback-form.jsx";
+import HaveDoubts from "../../../components/shared/home/HaveDoubts.jsx";
+
 export default function Home() {
   return (
-    <main className=" bg-white dark:bg-zinc-900">
-      <section className="min-h-screen overflow-hidden">
+    <main className="bg-[url('/images/blur_bg.png')] bg-cover bg-no-repeat dark:bg-neutral-900">
+      <section className="min-h-screen overflow-hidden space-y-10">
         <Hero />
         <Announcements />
         <AcademicPrograms />
         <SelectedStudentSlider />
         <PastRecruiters />
         <Testimonials />
-        <Faq />
+        <FaqFeedbackForm />
+        <HaveDoubts />
       </section>
     </main>
   );

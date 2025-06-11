@@ -21,7 +21,7 @@ function ComingSoon() {
   }, []);
 
   return (
-    <div className="min-h-[100dvh] flex flex-col items-center justify-center px-6 text-zinc-900 dark:text-white bg-white dark:bg-zinc-900 relative text-center">
+    <div className="min-h-[100dvh] flex flex-col items-center justify-center px-6 text-neutral-900 dark:text-white bg-white dark:bg-neutral-900 relative text-center">
       <motion.h1
         initial={{ opacity: 0, y: -40 }}
         animate={{ opacity: 1, y: 0 }}
@@ -35,7 +35,7 @@ function ComingSoon() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5 }}
-        className="text-lg md:text-xl max-w-2xl mb-10 text-zinc-700 dark:text-zinc-300"
+        className="text-lg md:text-xl max-w-2xl mb-10 text-neutral-700 dark:text-neutral-300"
       >
         We're building something amazing for students like you. Stay inspired!
       </motion.p>

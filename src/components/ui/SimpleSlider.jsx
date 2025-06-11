@@ -1,8 +1,6 @@
 import { Image } from "@heroui/react";
 import Slider from "react-slick";
 
-
-
 function SimpleSlider({slider_data}) {
   const settings = {
     dots: false,

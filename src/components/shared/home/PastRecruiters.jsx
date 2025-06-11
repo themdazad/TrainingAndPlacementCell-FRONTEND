@@ -40,8 +40,7 @@ const logos = [
 
 const PastRecruiters = () => {
   return (
-    <div className="py-32">
-      <div className="max-w-screen-2xl m-auto px-[2.5%] flex flex-col items-center justify-center gap-6">
+      <section className="section flex flex-col items-center justify-center gap-6">
         {/* title */}
         <div className="mb-6 text-2xl md:text-[32px] font-extrabold">
           Past Recruiters
@@ -79,8 +78,8 @@ const PastRecruiters = () => {
               )
             )}
         </div>
-      </div>
-    </div>
+      </section>
+   
   );
 };
 
