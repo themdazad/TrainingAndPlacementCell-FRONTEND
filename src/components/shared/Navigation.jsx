@@ -43,6 +43,10 @@ const navLinks = [
     name: "Gallery",
     path: "/gallery",
   },
+  {
+    name: "Blogs",
+    path: "/blogs",
+  },
   // Static Info
   {
     name: "About us",
@@ -235,9 +239,8 @@ export default function NavBar() {
                 )}
               </div>
 
-              {/* Action Buttons: Theme Switch, Dashboard/Login, and Logout */}
+              {/* Auth: Theme Switch, Dashboard/Login, and Logout */}
               <div className="flex items-center gap-6 ml-4">
-                {/* Theme Switch */}
                 <span className="max-md:hidden">
                   <ThemeSwitch />
                 </span>
@@ -263,9 +266,9 @@ export default function NavBar() {
                     to="/dashboard/admin"
                     className="flex items-center gap-2 text-neutral-800 dark:text-neutral-100"
                   >
-                    <img
+                    <Image
                       className="rounded-full border border-neutral-300 dark:border-neutral-600 w-10 h-10 object-cover"
-                      src="./images/profile-default-photo.jpg"
+                      src="/images/profile-default-photo.jpg"
                       alt="user-profile"
                     />
                     <span className="hidden sm:inline text-sm font-medium">
@@ -278,9 +281,9 @@ export default function NavBar() {
                     to="/dashboard/student"
                     className="flex items-center gap-2 text-neutral-800 dark:text-neutral-100"
                   >
-                    <img
+                    <Image
                       className="rounded-full border border-neutral-300 dark:border-neutral-600 w-10 h-10 object-cover"
-                      src="./images/profile-default-photo.jpg"
+                      src="/images/profile-default-photo.jpg"
                       alt="user-profile"
                     />
                     <span className="hidden sm:inline text-sm font-medium">

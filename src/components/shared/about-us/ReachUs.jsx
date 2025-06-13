@@ -51,6 +51,20 @@ export default function ReachUs() {
     <section className="section">
       <h1 className="text-4xl font-extrabold flex items-center">Reach Us</h1>
       <div className=" grid grid-cols-1 gap-4 lg:gap-12 py-6">
+        
+         {/* google-map */}
+         <div className="google-map-container w-full h-[300px] md:h-[600px] ">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3579.123061521421!2d84.32628237583968!3d26.225190677063694!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3992ff716c7b37ad%3A0x5737371d64c4aed1!2sGovernment%20Engineering%20College%2C%20Siwan!5e0!3m2!1sen!2sin!4v1747835854317!5m2!1sen!2sin&maptype=satellite"
+            width=""
+            height=""
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            className="google-map w-full h-full rounded-3xl"
+          ></iframe>
+        </div>
+        
         {/* Travel cards */}
         <div className="contact-info mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {transportModes.map(({ mode, icon, description, cities }) => (
@@ -80,19 +94,6 @@ export default function ReachUs() {
               )}
             </div>
           ))}
-        </div>
-
-        {/* google-map */}
-        <div className="google-map-container w-full h-[300px] md:h-[600px] ">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3579.123061521421!2d84.32628237583968!3d26.225190677063694!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3992ff716c7b37ad%3A0x5737371d64c4aed1!2sGovernment%20Engineering%20College%2C%20Siwan!5e0!3m2!1sen!2sin!4v1747835854317!5m2!1sen!2sin&maptype=satellite"
-            width=""
-            height=""
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            className="google-map w-full h-full rounded-3xl"
-          ></iframe>
         </div>
 
         {/* Accommodation  */}

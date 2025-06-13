@@ -75,7 +75,7 @@ const StudentLogin = () => {
               <Input
                 type="text"
                 label="Registration No"
-                placeholder="Enter your registration number"
+                placeholder="e.g. 23103151000"
                 value={regNo}
                 onChange={(e) => setRegNo(e.target.value)}
                 className="w-full"

@@ -4,6 +4,7 @@ import EditorJS from "@editorjs/editorjs";
 import Header from "@editorjs/header";
 import List from "@editorjs/list";
 import Paragraph from "@editorjs/paragraph";
+import { Button } from "@heroui/react";
 
 const BlogEditor = ({ data, onSave }) => {
   const editorRef = useRef(null);
@@ -42,12 +43,12 @@ const BlogEditor = ({ data, onSave }) => {
         ref={editorRef}
         className="border p-4 rounded-lg bg-white dark:bg-gray-900"
       />
-      <button
-        onClick={handleSave}
-        className="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+      <Button
+        onPress={handleSave}
+        className="mt-4 px-4 py-2 bg-sky-600 text-white rounded hover:bg-sky-700"
       >
-        Save
-      </button>
+        Publish
+      </Button>
     </div>
   );
 };

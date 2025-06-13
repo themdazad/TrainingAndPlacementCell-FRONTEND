@@ -1,5 +1,5 @@
 import { useState } from "react";
-import GECSIWAN_LOGO from "../../../assets/images/logos/gecsiwan-logo.png";
+import GECSIWAN_COLLEGE from "../../../assets/images/gecsiwan.jpeg";
 import { Image } from "@heroui/react";
 import StudentLogin from "../../../components/auth/StudentLogin";
 import CoordinatorLogin from "../../../components/auth/CoordinatorLogin";
@@ -9,20 +9,15 @@ export default function Auth() {
   const [tab, setTab] = useState("Student");
   return (
     <main>
-      <div className="max-w-screen-2xl m-auto min-h-[900px] grid md:grid-cols-2 ">
+      <div className="max-w-screen-2xl m-auto min-h-[900px] grid lg:grid-cols-2 ">
         {/* Left Section */}
-        <div className="max-sm:hidden flex flex-col justify-center items-center px-10 ">
+        <div className="max-lg:hidden flex flex-col justify-center items-center px-10 ">
           <Image
-            src={GECSIWAN_LOGO}
+            src={GECSIWAN_COLLEGE}
             alt="GEC Siwan Logo"
-            className="my-6"
-            height={240}
-            width={240}
+            className="my-6 rounded-[4rem]"
           />
-          <div className="text-sm font-semibold mb-4">GEC Siwan Placements</div>
-          <h1 className="text-3xl text-center font-bold leading-tight mb-6">
-            One stop portal for students & companies for placements.
-          </h1>
+         
         </div>
 
         {/* Right Section */}
@@ -56,7 +51,7 @@ export default function Auth() {
             {/* rendered components */}
             {tab === "Student" && <StudentLogin />}
             {tab === "Recruiter" && "Recruiter"}
-            {tab === "Coordinator" && <CoordinatorLogin/>}
+            {tab === "Coordinator" && <CoordinatorLogin />}
             {tab === "Admin" && <AdminLogin />}
           </div>
         </div>
