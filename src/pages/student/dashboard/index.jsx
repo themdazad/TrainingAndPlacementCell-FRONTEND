@@ -15,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@heroui/react";
 import Profile from "../../../components/student/dashboard/dashboard-tab/Profile";
 // import ResumeBuilder from "../../../components/student/resume-builder/ResumeBuilder";
-import ResumeBuilder from "../../../components/shared/resources/resume-builder/ResumeBuilder";
+import ResumeBuilder from "../../../components/shared/tools/resume-builder/ResumeBuilder";
 import PageHeader from "../../../components/ui/PageHeader.jsx";
 import { useAuth } from "../../../hooks/contexts/auth/AuthContext"; // Adjust path as needed
 

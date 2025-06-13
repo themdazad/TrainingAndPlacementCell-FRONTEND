@@ -9,11 +9,11 @@ import CourseHighlights from "../../pages/shared/academics/course-highlights/ind
 import ProjectDetailsPage from "../../pages/shared/projects/project-details-page.jsx";
 import ReachUs from "../../pages/recruiters/reach-us/index.jsx";
 import WhyUs from "../../pages/recruiters/why-us/index.jsx";
-import MediaGlance from "../../pages/recruiters/media-glance/index.jsx";
 import AboutUs from "../../pages/shared/about-us/index.jsx";
 import SummerWebDevelopment2025 from "../../pages/shared/training/summer-web-development-2025/index.jsx";
 import MockInterview from "../../pages/shared/training/mock-interview/index.jsx";
 import PlacementGuide from "../../pages/shared/resources/placement-guide/index.jsx";
+import ResumeBuilder from "../../pages/shared/resume-builder/index.jsx";
 
 const AppRoutes = () => {
   return (
@@ -40,7 +40,6 @@ const AppRoutes = () => {
       <Route path="/recruiters">
         <Route path="reach-us" element={<ReachUs />} />
         <Route path="why-us" element={<WhyUs />} />
-        <Route path="media-glance" element={<MediaGlance />} />
       </Route>
 
       {/* Training & Career */}
@@ -53,14 +52,10 @@ const AppRoutes = () => {
         <Route path="placement-guide" element={<PlacementGuide />} />
       </Route>
 
-      {/* Tools & Resources  */}
-      <Route path="/resources">
-        <Route path="placement-guide" element={<PlacementGuide />} />
-      </Route>
-
-      <Route path="/projects">
-        <Route index element={<Projects />} />
-        <Route path=":title/:id" element={<ProjectDetailsPage />} />
+      <Route path="/student">
+        <Route path="tools/resume-builder" element={<ResumeBuilder />} />
+        <Route path="projects" element={<Projects />} />
+        <Route path="projects/:title/:id" element={<ProjectDetailsPage />} />
       </Route>
 
       <Route path="campus-placement-2025" element={<CampusPlacements2025 />} />

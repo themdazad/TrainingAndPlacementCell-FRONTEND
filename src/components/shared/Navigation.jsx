@@ -13,7 +13,8 @@ const navLinks = [
     name: "For Student",
     dropdown: true,
     items: [
-      { name: "Student's Projects", path: "/projects" },
+      { name: "Resume Builder", path: "/student/tools/resume-builder" },
+      { name: "Student's Projects", path: "/student/projects" },
       { name: "Course Highlights", path: "/academics/course-highlights" },
     ],
   },
@@ -292,7 +293,7 @@ export default function NavBar() {
             {/* Mobile Dropdown Menu Nav */}
             <div
               ref={mobileMenuRef}
-              className={`lg:hidden absolute top-[56px] w-full bg-blue-400 dark:bg-neutral-900 z-40 shadow-md overflow-hidden transition-all duration-200 ease-in-out ${
+              className={`lg:hidden absolute top-[56px] w-full bg-white dark:bg-neutral-900 z-40 shadow-md overflow-hidden transition-all duration-200 ease-in-out ${
                 isMobileMenuOpen ? "opacity-100" : "h-0 opacity-0"
               }`}
               style={{

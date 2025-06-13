@@ -1,9 +1,10 @@
-import { CarFront, TrainFront, PlaneTakeoff, BedDouble } from "lucide-react";
+
 import TPCellMembers from "../../../components/shared/about-us/TPCellMembers.jsx";
-import TPCellCoordinators from "../../../components/shared/about-us/TPCellCoordinators.jsx";
+import ReachUs from "../../../components/shared/about-us/ReachUs.jsx";
+// import TPCellCoordinators from "../../../components/shared/about-us/TPCellCoordinators.jsx";
 import About from "../../../components/shared/about-us/About.jsx";
 import PageHeader from "../../../components/ui/PageHeader.jsx";
-import { Divider } from "@heroui/react";
+import { Button, Image } from "@heroui/react";
 
 const breadcrumbItems = [
   { label: "Home", to: "/" },
@@ -16,16 +17,35 @@ export default function AboutUs() {
         <div>
           <PageHeader
             title={" About Us"}
-            description={
-              " Connect with Training and Placement Cell - Government Engineering College, Siwan"
-            }
             breadcrumbItems={breadcrumbItems}
           />
         </div>
         <section className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12">
-          <About />
+          <div>
+            <p className="text-sm tracking-widest text-bold uppercase dark:text-neutral-400 mb-2">
+              About
+            </p>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-neutral-800 dark:text-white">
+              Government Engineering College, Siwan
+            </h2>
+            <p className="my-4 text-justify text-neutral-600 dark:text-neutral-300 leading-relaxed">
+              The Training and Placement Cell at Government Engineering College,
+              Siwan, is dedicated to preparing students for successful careers
+              in industry and academia. Under the esteemed leadership of our
+              Principal, <strong>Dr. Suryakant Singh</strong>, and the guidance
+              of our Training & Placement Officer,{" "}
+              <strong>Mr. Navdeep Pandey</strong>, the cell actively fosters
+              industry interaction, soft skills training, internship programs,
+              and placement support. Our mission is to bridge the
+              academic-industry gap and provide students with ample
+              opportunities to realize their professional goals.
+            </p>
+            <Button>College Site</Button>
+          
+          </div>
+          <Image src="/images/heroThumbnails/gecsiwan_building.png" />
           {/* Address */}
-          <div className="py-6 bg-sky-500/10 dark:bg-neutral-800 rounded-3xl border-t-4 border-t-blue-600  shadow-md place-content-center text-center">
+          {/* <div className="py-6 bg-sky-500/10 dark:bg-neutral-800 rounded-3xl border-t-4 border-t-blue-600  shadow-md place-content-center text-center">
             <h5 className="font-semibold uppercase text-blue-600 dark:text-neutral-300 mb-2">
               Address
             </h5>
@@ -43,7 +63,7 @@ export default function AboutUs() {
               Phone: +91-9084063221 <br />
               Email: tpogecsiwan@gmail.com
             </p>
-          </div>
+          </div> */}
         </section>
 
         <ReachUs />
@@ -54,142 +74,4 @@ export default function AboutUs() {
   );
 }
 
-function ReachUs() {
-  const transportModes = [
-    {
-      mode: "By Road",
-      icon: <CarFront />,
-      description:
-        "Government Engineering College, Siwan, is well-connected by road to major cities in Bihar. The college is located approximately 4 km from Siwan city center, easily accessible via local and state highways.",
-      cities: [
-        { name: "Patna", distance: "137 km", travelTime: "3 hrs 52 mins" },
-        { name: "Muzaffarpur", distance: "127 km", travelTime: "3 hrs 9 mins" },
-        { name: "Gopalganj", distance: "34 km", travelTime: "1 hr 5 mins" },
-        { name: "Chhapra", distance: "67 km", travelTime: "1 hr 51 mins" },
-      ],
-    },
 
-    {
-      mode: "By Train",
-      icon: <TrainFront />,
-      description:
-        "Siwan Junction is the nearest railway station, located approximately 3 km from the college. It is a major station with connections to cities like Delhi, Kolkata, Patna, and Varanasi.",
-      cities: [
-        { name: "Patna", travelTime: "3 hrs" },
-        { name: "Varanasi", travelTime: "5 hrs" },
-        { name: "Delhi", travelTime: "12 hrs" },
-      ],
-    },
-
-    {
-      mode: "By Air",
-      icon: <PlaneTakeoff />,
-      description:
-        "The nearest airport to Siwan is Jay Prakash Narayan International Airport, Patna, approximately 130 km away. It is connected to major Indian cities by regular domestic flights.",
-      cities: [
-        {
-          name: "Patna Airport",
-          distance: "130 km",
-          travelTime: "3.5 hrs by road",
-        },
-        {
-          name: "Gorakhpur Airport",
-          distance: "160 km",
-          travelTime: "4 hrs by road",
-        },
-      ],
-    },
-  ];
-
-  return (
-    <section className="section">
-      <h1 className="text-4xl font-extrabold flex items-center">Reach Us</h1>
-      <div className=" grid grid-cols-1 gap-4 lg:gap-12 py-6">
-        {/* Travel cards */}
-        <div className="contact-info mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {transportModes.map(({ mode, icon, description, cities }) => (
-            <div
-              key={mode}
-              className="card shadow-md p-6 dark:bg-neutral-800 rounded-3xl"
-            >
-              <h1 className="text-lg font-extrabold inline-flex gap-3 text-blue-500 dark:text-blue-400">
-                {icon} {mode}
-              </h1>
-              <p className="mt-2">{description}</p>
-              {cities?.length > 0 && (
-                <>
-                  <p className="font-bold mt-4">
-                    Distance/Travel Time from key locations:
-                  </p>
-                  <ul className="list-disc list-inside mt-2">
-                    {cities.map(({ name, distance, travelTime }) => (
-                      <li key={name}>
-                        <strong>{name}:</strong>{" "}
-                        {distance && `Approximately ${distance}, `}travel time ~{" "}
-                        {travelTime}
-                      </li>
-                    ))}
-                  </ul>
-                </>
-              )}
-            </div>
-          ))}
-        </div>
-
-        {/* google-map */}
-        <div className="google-map-container w-full h-[300px] md:h-[600px] ">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3579.123061521421!2d84.32628237583968!3d26.225190677063694!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3992ff716c7b37ad%3A0x5737371d64c4aed1!2sGovernment%20Engineering%20College%2C%20Siwan!5e0!3m2!1sen!2sin!4v1747835854317!5m2!1sen!2sin&maptype=satellite"
-            width=""
-            height=""
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            className="google-map w-full h-full rounded-3xl"
-          ></iframe>
-        </div>
-
-        {/* Accommodation  */}
-        <div className="shadow-md p-6 dark:bg-neutral-800 rounded-3xl max-w-full">
-          <h2 className="text-lg font-bold text-blue-500 dark:text-blue-400 inline-flex gap-3 items-center mb-4">
-            <BedDouble /> Accommodation
-          </h2>
-          <p>
-            Government Engineering College, Siwan provides on-campus
-            accommodation facilities for visiting faculty, recruiters, and
-            guests through its dedicated guest house. This facility ensures a
-            comfortable stay within the college premises, facilitating easy
-            access to campus activities.
-          </p>
-
-          <ul className="list-disc list-inside mt-4 space-y-2">
-            <li>
-              <strong>Location:</strong> Within the campus at Mairwa Road, Old
-              Suta Mill Factory, Bhada Khurd, Siwan, Bihar – 841226.
-            </li>
-            <li>
-              <strong>Facilities:</strong> The guest house offers well-furnished
-              rooms equipped with essential amenities to ensure a pleasant stay
-              for guests.
-            </li>
-            <li>
-              <strong>Eligibility:</strong> Primarily available for visiting
-              faculty, recruiters, and family members of students.
-            </li>
-            <li>
-              <strong>Booking:</strong> For reservations and inquiries, please
-              contact the college administration at{" "}
-              <a
-                href="mailto:gecsiwan@gmail.com"
-                className="text-blue-500 underline"
-              >
-                gecsiwan@gmail.com
-              </a>
-              .
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
-  );
-}

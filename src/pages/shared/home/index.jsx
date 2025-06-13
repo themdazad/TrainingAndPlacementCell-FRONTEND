@@ -14,7 +14,7 @@ export default function Home() {
         <Hero />
         <Announcements />
         <AcademicPrograms />
-        <SelectedStudentSlider />
+        {/* <SelectedStudentSlider /> */}
         <PastRecruiters />
         <Testimonials />
         <FaqFeedbackForm />

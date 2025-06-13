@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { Button, Input } from "@heroui/react";
+import { Button, Divider, Input } from "@heroui/react";
 import { Github, Linkedin, Mail, MapPinned, Phone, X } from "lucide-react";
 import GECSIWAN_LOGO from "../../../../assets/images/logos/gecsiwanlogo.svg";
 import jsPDF from "jspdf";
@@ -48,9 +48,7 @@ export default function ResumeBuilder() {
   const [education, setEducation] = useState(initialData.education);
   const [experience, setExperience] = useState(initialData.experience);
   const [achievements, setAchievements] = useState(initialData.achievements);
-  const [interestsandhobbies, setInterestsHobbies] = useState(
-    initialData.interestsandhobbies
-  );
+  const [interestsandhobbies, setInterestsHobbies] = useState(initialData.interestsandhobbies);
 
   const resumeRef = useRef();
 
@@ -138,7 +136,7 @@ export default function ResumeBuilder() {
   const updateInterestsHobbies = (index, value) => {
     const newInterestsHobbies = [...interestsandhobbies];
     newInterestsHobbies[index] = value;
-    setAchievements(newInterestsHobbies);
+    setInterestsHobbies(newInterestsHobbies);
   };
   const removeInterestsHobbies = (index) => {
     setInterestsHobbies(interestsandhobbies.filter((_, i) => i !== index));
@@ -166,10 +164,6 @@ export default function ResumeBuilder() {
     <div className="dark:bg-neutral-900 min-h-screen text-neutral-800 dark:text-neutral-100 transition-colors duration-300 py-8">
       <div className="flex flex-col lg:flex-row gap-8 mx-auto">
         <div className="w-full lg:w-1/2 p-6 rounded shadow overflow-auto max-h-[90vh] space-y-6 bg-white dark:bg-neutral-900">
-          <h2 className="text-2xl font-bold text-blue-600 border-b pb-3 mb-2 text-center">
-            Edit Resume
-          </h2>
-
           {/* Personal Info */}
           <section className="p-5 border border-neutral-300 dark:border-neutral-700 rounded-3xl bg-neutral-50 dark:bg-neutral-800 space-y-4">
             <h3 className="text-lg font-semibold text-blue-500">
@@ -195,6 +189,7 @@ export default function ResumeBuilder() {
           </section>
 
           {/* Career Objective */}
+         
           <section className="p-5 border border-neutral-300 dark:border-neutral-700 rounded-2xl bg-neutral-50 dark:bg-neutral-800 space-y-4">
             <h3 className="text-lg font-semibold text-blue-500">
               Career Objective
@@ -208,6 +203,8 @@ export default function ResumeBuilder() {
               className="w-full "
             />
           </section>
+          
+
           {/* Online Profiles */}
           <section className="p-5 border border-neutral-300 dark:border-neutral-700 rounded-2xl bg-neutral-50 dark:bg-neutral-800 space-y-4">
             <h3 className="text-lg font-semibold text-blue-500">
@@ -337,7 +334,7 @@ export default function ResumeBuilder() {
           <section className="p-5 border border-neutral-300 dark:border-neutral-700 rounded-2xl bg-neutral-50 dark:bg-neutral-800 space-y-4">
             <div className="flex justify-between items-center">
               <h3 className="text-lg font-semibold text-blue-500">
-                Experience
+                Projects/Experience
               </h3>
             </div>
             <div className="space-y-4">
@@ -460,8 +457,9 @@ export default function ResumeBuilder() {
               + Add Achievement
             </button>
           </section>
-          {/* Interests and Hobbies */}
 
+
+          {/* Interests and Hobbies */}
           <section className="p-5 border border-neutral-300 dark:border-neutral-700 rounded-2xl bg-neutral-50 dark:bg-neutral-800 space-y-4">
             <div className="flex justify-between items-center">
               <h3 className="text-lg font-semibold text-blue-500">
@@ -492,24 +490,23 @@ export default function ResumeBuilder() {
               className="text-sm text-blue-600 "
               type="button"
             >
-              + Add Interest and sHobbies
+              + Add Interest and Hobbies
             </button>
           </section>
         </div>
 
-        {/* ******************************************Resume Preview****************************** */}
         {/* Resume Preview */}
         <div
           ref={resumeRef}
-          className="w-full lg:w-1/2 bg-white dark:bg-neutral-800 text-black dark:text-neutral-100 p-16 rounded shadow font-sans text-sm overflow-auto max-h-[90vh]"
+          className="w-full lg:w-1/2 bg-white dark:bg-neutral-800 text-black dark:text-neutral-100 p-8 rounded shadow font-sans text-sm overflow-auto "
         >
-          {/* Preview header */}
-          <div className="mb-12">
+          {/* I. Header */}
+          <div className="py-2">
             <div className="flex justify-between items-center mb-4">
-              <img src={GECSIWAN_LOGO} alt="GEC Siwan logo" className="w-24" />
+              <img src={GECSIWAN_LOGO} alt="GEC Siwan logo" className="w-16" />
 
               <div className="text-center gap-1">
-                <h1 className="text-4xl font-bold">{personalInfo.name}</h1>
+                <h1 className="text-2xl font-bold">{personalInfo.name}</h1>
                 <b>{personalInfo.title}</b>
                 <p>
                   <a
@@ -535,38 +532,38 @@ export default function ResumeBuilder() {
 
               <div className="text-sm">
                 <p className="flex items-center gap-1 leading-tight">
-                  <Phone className="w-4 h-4" />
-                  {personalInfo.phone}
+                  Phone: {personalInfo.phone}
                 </p>
                 <p className="flex items-center gap-1 leading-tight">
-                  <Mail className="w-4 h-4" />
-                  {personalInfo.email}
+                  Email: {personalInfo.email}
                 </p>
                 <p className="flex items-center gap-1 leading-tight">
-                  <MapPinned className="w-4 h-4" />
-                  {personalInfo.location}
+                  Adress: {personalInfo.location}
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Career Objective */}
-          <div className="mb-4">
-            <h2 className="text-lg font-semibold mb-2">Career Objective</h2>
+          {/* II. Career Objective */}
+          {!!careerObjective &&
+          <div className="py-2">
+            <h2 className="font-semibold py-2">Career Objective</h2>
             <p>{careerObjective}</p>
           </div>
-          <hr />
-          {/* Education Table*/}
+        }
+          <Divider/>
+
+          {/* III. Education Table*/}
           {education.length > 0 && (
             <div className="my-6">
-              <h2 className="font-semibold text-lg border-b mb-2">Education</h2>
+              <h2 className="mb-3 text-lg font-semibold">Education</h2>
               <div className="w-full border border-neutral-300 dark:border-neutral-700 ">
-                {/* Header Row */}
-                <div className="grid grid-cols-4 py-2 bg-neutral-100 dark:bg-neutral-800 text-center font-semibold border-b border-neutral-300 dark:border-neutral-700">
+                {/* Table Row */}
+                <div className="grid grid-cols-5 pb-3 bg-neutral-100 dark:bg-neutral-800 text-center font-semibold border-b border-neutral-300 dark:border-neutral-700">
                   <span>Year</span>
                   <span>Course</span>
-                  <span>School/College</span>
-                  <span>Marks/CGPA</span> 
+                  <span className="col-span-2">School/College</span>
+                  <span>Marks/CGPA</span>
                 </div>
 
                 {/* Data Rows */}
@@ -575,10 +572,10 @@ export default function ResumeBuilder() {
                     key={i}
                     className=" text-center border-b border-neutral-200 dark:border-neutral-700"
                   >
-                    <div className="my-2  grid grid-cols-4">
+                    <div className="grid grid-cols-5 mb-3">
                       <span>{edu.year}</span>
                       <span>{edu.course}</span>
-                      <span>{edu.institution}</span>
+                      <span className="col-span-2">{edu.institution}</span>
                       <span>{edu.marks_cgpa}</span>
                     </div>
                   </div>
@@ -589,10 +586,10 @@ export default function ResumeBuilder() {
 
           {/* Skills */}
           {skills.length > 0 && (
-            <div className="mb-6">
-              <h2 className="font-semibold text-lg ">Skills</h2>
-              <hr />
-              <ul className="list-disc pl-6 grid grid-cols-2 gap-1">
+            <div className="">
+              <h2 className="mb-3 text-lg font-semibold">Skills</h2>
+              <Divider />
+              <ul className="list-disc pl-6 grid grid-cols-3">
                 {skills.map((skill, i) => (
                   <li key={i}>{skill}</li>
                 ))}
@@ -600,29 +597,11 @@ export default function ResumeBuilder() {
             </div>
           )}
 
-          {/* Experience */}
+          {/* Projects/Experience */}
           {experience.length > 0 && (
-            <div className="mb-6">
-              <h2 className="font-semibold text-lg">Experience</h2>
-              <hr />
-              {experience.map((exp, i) => (
-                <div key={i} className="mb-3">
-                  <b>{exp.role}</b> — <i>{exp.company}</i> ({exp.duration})
-                  <ul className="list-disc pl-6">
-                    {exp.details.map((detail, dIdx) => (
-                      <li key={dIdx}>{detail}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          )}
-
-          {/* Projects */}
-          {experience.length > 0 && (
-            <div className="mb-6">
-              <h2 className="font-semibold text-lg">Projects</h2>
-              <hr />
+            <div className="py-2">
+              <h2 className="mb-3 text-lg font-semibold ">Projects/Experience</h2>
+              <Divider/>
               {experience.map((exp, i) => (
                 <div key={i} className="mb-3">
                   <b>{exp.role}</b> — <i>{exp.company}</i> ({exp.duration})
@@ -639,10 +618,10 @@ export default function ResumeBuilder() {
           {/* Achievements */}
           {achievements.length > 0 && (
             <div className="mb-6">
-              <h2 className="font-semibold text-lg">
+              <h2 className="mb-3 text-lg font-semibold ">
                 Achievements and Responsibility
               </h2>
-              <hr />
+              <Divider/>
               <ul className="list-disc pl-6">
                 {achievements.map((ach, i) => (
                   <li key={i}>{ach}</li>
@@ -654,8 +633,8 @@ export default function ResumeBuilder() {
           {/* Interests and Hobbies */}
           {interestsandhobbies.length > 0 && (
             <div className="mb-6">
-              <h2 className="font-semibold text-lg">Interests and Hobbies</h2>
-              <hr />
+              <h2 className="mb-3 text-lg font-semibold">Interests and Hobbies</h2>
+              <Divider/>
               <ul className="list-disc pl-6">
                 {interestsandhobbies.map((ach, i) => (
                   <li key={i}>{ach}</li>
@@ -666,6 +645,7 @@ export default function ResumeBuilder() {
         </div>
       </div>
       {/* Download Button */}
+
       <Button
         onPress={downloadPDF}
         className=" bg-blue-500 mt-6 px-4 py-3 rounded-3xl hover:bg-blue-700 font-bold text-white"
