@@ -7,7 +7,7 @@ export default function Hero() {
   return (
       <section className=" section grid items-center grid-cols-1 gap-6 lg:grid-cols-2">
         <div>
-          <h1 className="mt-2 lg:mt-8 text-4xl lg:text-6xl dm-serif-text-regular text-neutral-900 dark:text-white">
+          <h1 className="mt-2 lg:mt-8 font-extrabold text-4xl lg:text-6xl dm-serif-text-regular text-neutral-900 dark:text-white">
             Campus Placement 2025
             {/* Training & Placement Cell */}
           </h1>

@@ -1,15 +1,10 @@
-import { useState} from "react";
-import {
-  Home,
-  Book,
-  Settings,
-  UploadCloud,
-  Image,
-} from "lucide-react";
+import { useState } from "react";
+import { Home, Book, Settings, UploadCloud, Image } from "lucide-react";
 import { Button } from "@heroui/react";
-import Dashboard from "../../../components/admin/dashboard/dashboard-tab/Dashboard.jsx";
+import Dashboard from "../../../components/admin/Dashboard.jsx";
 import { useAuth } from "../../../hooks/contexts/auth/AuthContext"; // Adjust path as needed
 import BlogEditor from "../../../components/shared/blog-editor/BlogEditor.jsx";
+import AddNotice from "../../../components/admin/AddNotice.jsx";
 
 const Tabs = [
   { name: "Dashboard", icon: Home },
@@ -22,17 +17,22 @@ const Tabs = [
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState("Dashboard");
   const [adminData, setAdminData] = useState(null);
- 
-  const {handleLogout} = useAuth(); // Global auth context
- 
+
+  const { handleLogout } = useAuth(); // Global auth context
+
   function renderContent() {
     switch (activeTab) {
       case "Dashboard":
         return <Dashboard />;
-        case "Publish":
-          return <> Public Notice | Add WorkShop and training</>;
-        case "Add Photos":
-          return <> Add Gallery Photos | Add Photo to Home Slider | Add Past Recruiter</>;
+      case "Publish":
+        return <AddNotice />;
+      case "Add Photos":
+        return (
+          <>
+            {" "}
+            Add Gallery Photos | Add Photo to Home Slider | Add Past Recruiter
+          </>
+        );
       case "Write a blog":
         return <BlogEditor />;
       case "Settings":
@@ -40,7 +40,7 @@ export default function AdminDashboard() {
       default:
         return <p>Welcome to the Admin Dashboard</p>;
     }
-  };
+  }
   return (
     <main className="min-h-screen">
       <div className="p-4 max-w-screen-2xl m-auto flex sticky top-10 space-x-2 w-full max-md:overflow-x-scroll">

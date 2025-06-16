@@ -15,9 +15,9 @@ import ProgramsProvider from "./hooks/contexts/google-sheets/programs-provider.j
 import AuthProvider from "./hooks/contexts/auth/AuthProvider.jsx";
 
 // Lazy load routes
-const SharedRoutes = lazy(() => import("./routes/shared"));
-const StudentRoutes = lazy(() => import("./routes/student"));
-const AdminRoutes = lazy(() => import("./routes/admin"));
+const SharedRoutes = lazy(() => import("./routes/shared-routes.jsx"));
+const StudentRoutes = lazy(() => import("./routes/student-routes.jsx"));
+const AdminRoutes = lazy(() => import("./routes/admin-routes.jsx"));
 
 function App() {
   return (

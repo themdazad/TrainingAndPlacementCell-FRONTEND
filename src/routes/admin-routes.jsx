@@ -1,18 +1,18 @@
 import { Routes, Route } from "react-router-dom";
-import StudentDashboard from "../../pages/student/dashboard/index.jsx";
-import PrivateRoute from "../../components/auth/PrivateRoute.jsx";
+import AdminDashboard from "../pages/admin/dashboard/index.jsx";
+import PrivateRoute from "../components/auth/PrivateRoute.jsx";
 
-const studentRoutes = [
+const adminRoutes = [
   {
-    path: "/dashboard/student",
-    Page: <StudentDashboard />,
+    path: "/dashboard/admin",
+    Page: <AdminDashboard />,
   },
 ];
 
 const AppRoutes = () => {
   return (
     <Routes>
-      {studentRoutes.map((value, index) => {
+      {adminRoutes.map((value, index) => {
         return (
           <Route
             key={index}

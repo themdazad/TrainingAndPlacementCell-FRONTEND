@@ -3,11 +3,12 @@ import Slider from "react-slick";
 
 function SimpleSlider({slider_data}) {
   const settings = {
-    dots: false,
     infinite: true,
-    speed: 0,
+    speed: 2000,
+    fade: true,
     autoplay: true,
     autoplaySpeed: 6000,
+    arrows:false,
   };
   return (
     <div

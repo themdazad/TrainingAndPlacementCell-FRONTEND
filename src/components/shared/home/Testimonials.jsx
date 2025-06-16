@@ -71,7 +71,7 @@ const Testimonials = () => {
         and counting.
       </h2>
 
-      <div className="relative  mx-auto">
+      <div className="relative mx-auto">
         {/* Cards */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}

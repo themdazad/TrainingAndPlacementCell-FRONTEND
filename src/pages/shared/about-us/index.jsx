@@ -3,6 +3,7 @@ import TPCellMembers from "../../../components/shared/about-us/TPCellMembers.jsx
 import ReachUs from "../../../components/shared/about-us/ReachUs.jsx";
 // import TPCellCoordinators from "../../../components/shared/about-us/TPCellCoordinators.jsx";
 import About from "../../../components/shared/about-us/About.jsx";
+import AcademicPrograms from "../../../components/shared/about-us/AcademicPrograms.jsx";
 import PageHeader from "../../../components/ui/PageHeader.jsx";
 import { Button, Image } from "@heroui/react";
 
@@ -61,7 +62,7 @@ export default function AboutUs() {
             </p>
           </div> */}
         </section>
-
+        <AcademicPrograms />
         <ReachUs />
         <TPCellMembers />
         {/* <TPCellCoordinators /> */}
