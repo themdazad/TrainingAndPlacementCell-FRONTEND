@@ -21,7 +21,7 @@ export default function About() {
           the academic-industry gap and provide students with ample
           opportunities to realize their professional goals.
         </p>
-        <Button color="primary">Know more</Button>
+        <Button className="rounded-3xl" color="primary">Know more</Button>
       </div>
     
     </>

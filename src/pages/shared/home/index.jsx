@@ -5,7 +5,8 @@ import SelectedStudentSlider from "../../../components/shared/home/SelectedStude
 import PastRecruiters from "../../../components/shared/home/PastRecruiters.jsx";
 import FaqFeedbackForm from "../../../components/shared/home/faq-feedback-form.jsx";
 import HaveDoubts from "../../../components/shared/home/HaveDoubts.jsx";
-import Workshops from "../../../components/shared/home/workshops.jsx";
+import PlacementDrives from "../../../components/shared/home/placement-drives.jsx";
+import WorkshopsTraining from "../../../components/shared/home/workshops-training.jsx";
 
 export default function Home() {
   return (
@@ -13,7 +14,8 @@ export default function Home() {
       <section className="min-h-screen overflow-hidden space-y-10">
         <Hero />
         <Announcements />
-        <Workshops/>
+        <PlacementDrives />
+        <WorkshopsTraining />
         <SelectedStudentSlider />
         <PastRecruiters />
         <Testimonials />

@@ -25,11 +25,11 @@ export default function Announcements() {
       <div className="hidden md:block">
         <About />
       </div>
-        <Notice />     
+      <Notice />
     </section>
   );
 }
-export function Notice(){
+export function Notice() {
   const [response, setResponse] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -63,53 +63,53 @@ export function Notice(){
         .toLowerCase()
         .includes(searchTerm.toLowerCase())
     );
-  return(
-     <div className="notice-area max-md:border-t-4 lg:border-l-4 border-blue-500 px-4">
-     <div className="grid grid-cols-2 items-center">
-       <h2 className="text-2xl md:text-3xl w-full font-extrabold text-blue-500 flex max-md:justify-center gap-x-4 items-center">
-         Latest Updates
-       </h2>
+  return (
+    <div className="notice-area bg-sky-100 rounded-3xl border-t-4 border-blue-500 px-4">
+      <div className="grid grid-cols-2 items-center">
+        <h2 className="text-2xl w-full font-extrabold text-blue-500 flex max-md:justify-center gap-x-4 items-center">
+          Announcements
+        </h2>
 
-       {/* 🔍 Search Input */}
-       <input
-         type="text"
-         placeholder="Finding? Search here..."
-         value={searchTerm}
-         onChange={(e) => setSearchTerm(e.target.value)}
-         className="w-full mt-4 mb-2 px-3 p-2 border border-neutral-300 dark:border-neutral-700 rounded-3xl focus:outline-none focus:ring-2 focus:ring-blue-400 dark:bg-neutral-800 dark:text-white"
-       />
-     </div>
+        {/* 🔍 Search Input */}
+        <input
+          type="text"
+          placeholder="Search here..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="w-full mt-4 mb-2 px-3 p-2 border border-neutral-300 dark:border-neutral-700 rounded-3xl focus:outline-none focus:ring-2 focus:ring-blue-400 dark:bg-neutral-800 dark:text-white"
+        />
+      </div>
 
-     <div
-       className="row-container box-border my-[1em] max-h-64 overflow-y-scroll overflow-x-hidden"
-       style={{
-         maskImage:
-           "linear-gradient(to bottom, transparent 0%, black 0%, black 70%, transparent 100%)",
-       }}
-     >
-       {filteredNotices.length > 0 ? (
-         filteredNotices.map((data, index) => (
-           <a
-             key={index}
-             href={data.pdf_link}
-             target="_blank"
-             rel="noopener noreferrer"
-             className="group news-notice-row transition-all duration-300 flex items-center space-x-2"
-           >
-             <span className="news-notice-card-tag text-[10px] backdrop-blur-lg bg-blue-500/10 rounded-3xl px-[1em] py-[0.5em] ">
-               {data.date}
-             </span>
-             <p className="group-hover:text-blue-500 news-notice-card-content max-sm:text-[14px] text-justify py-[1em] w-full overflow-ellipsis">
-               {data.content}
-             </p>
-           </a>
-         ))
-       ) : (
-         <p className="text-neutral-500 dark:text-neutral-400">
-           No updates found.
-         </p>
-       )}
-     </div>
-   </div>
-  )
+      <div
+        className="row-container box-border my-[1em] max-h-64 overflow-y-scroll overflow-x-hidden"
+        style={{
+          maskImage:
+            "linear-gradient(to bottom, transparent 0%, black 0%, black 70%, transparent 100%)",
+        }}
+      >
+        {filteredNotices.length > 0 ? (
+          filteredNotices.map((data, index) => (
+            <a
+              key={index}
+              href={data.pdf_link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group news-notice-row transition-all duration-300 flex items-center space-x-2"
+            >
+              <span className="news-notice-card-tag text-[10px] backdrop-blur-lg bg-blue-500/10 rounded-3xl px-[1em] py-[0.5em] ">
+                {data.date}
+              </span>
+              <p className="group-hover:text-blue-500 news-notice-card-content max-sm:text-[14px] text-justify py-[1em] w-full overflow-ellipsis">
+                {data.content}
+              </p>
+            </a>
+          ))
+        ) : (
+          <p className="text-neutral-500 dark:text-neutral-400">
+            No internet !
+          </p>
+        )}
+      </div>
+    </div>
+  );
 }

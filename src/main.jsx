@@ -3,8 +3,6 @@ import React, { Suspense, lazy, useState, useEffect } from "react";
 import {ToastContainer} from "react-toastify";
 import ReactDOM from "react-dom/client";
 import "./styles/index.css";
-import "./styles/MouseCursorGradientTracking.css";
-import "./styles/AnimatedBackground.css";
 import { HeroUIProvider } from "@heroui/react";
 import { BrowserRouter } from "react-router-dom";
 import NavBar from "./components/shared/Navigation.jsx";

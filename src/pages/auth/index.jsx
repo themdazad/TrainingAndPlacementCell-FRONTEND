@@ -1,9 +1,9 @@
 import { useState } from "react";
-import GECSIWAN_COLLEGE from "../../../assets/images/gecsiwan.jpeg";
 import { Image } from "@heroui/react";
-import StudentLogin from "../../../components/auth/StudentLogin";
-import CoordinatorLogin from "../../../components/auth/CoordinatorLogin";
-import AdminLogin from "../../../components/auth/AdminLogin";
+import GECSIWAN_COLLEGE from "../../assets/images/gecsiwan.jpeg";
+import StudentLogin from "../../components/auth/StudentLogin";
+import CoordinatorLogin from "../../components/auth/CoordinatorLogin";
+import AdminLogin from "../../components/auth/AdminLogin";
 
 export default function Auth() {
   const [tab, setTab] = useState("Student");
