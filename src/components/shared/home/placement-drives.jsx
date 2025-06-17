@@ -31,14 +31,14 @@ export default function PlacementDrives() {
                 {/* hoverd: details card  */}
                 <div className="absolute bg-blue-100 dark:bg-stone-800 grid place-content-center z-9 backdrop-blur-xl backdrop-saturate-0 p-6 space-y-1 h-full w-full -top-full group-hover:top-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
                   <div className="space-y-2 text-center">
-                    <h1 className="text-xl font-extrabold">{item.title}</h1>
-                    <p className="">{item.description}</p>
+                    <h1 className="text-xl font-bold">{item.title}</h1>
+                    <p className="text-sm">{item.description}</p>
                     <div className="inline-flex gap-2">
                       {item.branch.map((data, ls) => {
                         return <p key={ls}>{data}</p>;
                       })}
                     </div>
-                    <p className="">Last Date: {item.deadline}</p>
+                    {!!item.deadline && <p className="">Last Date: {item.deadline}</p>}
                   </div>
 
                   <div className="space-x-2 flex justify-center">
@@ -47,8 +47,7 @@ export default function PlacementDrives() {
                         <Button
                           className="hover:shadow-xl bg-white cursor-pointer rounded-3xl"
                           variant="outline"
-                        >
-                          <Link /> Apply
+                        > Apply
                         </Button>
                       </NavLink>
                     )}

@@ -139,7 +139,7 @@ export default function Footer() {
             rel="noopener noreferrer"
             className="underline text-blue-500"
           >
-            Testing Version
+            Designed & Developed with 💙by GEC Students
           </a>
         </div>
 

@@ -37,7 +37,9 @@ export default function WorkshopsTraining() {
                         return <p key={ls}>{data}</p>;
                       })}
                     </div>
-                    <p className="">Last Date: {item.deadline}</p>
+                    {!!item.deadline && (
+                      <p className="">Last Date: {item.deadline}</p>
+                    )}
                   </div>
 
                   <div className="space-x-2 flex justify-center">
