@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 export default function Footer() {
   return (
     <footer className=" bg-neutral-100 border-t-4 rounded-3xl border-blue-500 dark:bg-neutral-900 transition-all duration-200">
-      <div className="max-w-screen-2xl m-auto py-10 sm:pt-16 px-[2.5%] ">
+      <div className="max-w-screen-2xl m-auto py-4 md:py-10  px-4 ">
         {/* Top Section */}
         <div className=" grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-y-10 gap-x-12">
           {/* About */}
@@ -119,11 +119,8 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Divider */}
-        <Divider className="mt-10 mb-6" />
-
         {/* Bottom Bar */}
-        <div className="text-center text-sm text-neutral-600 dark:text-neutral-300">
+        <div className="text-center text-sm text-neutral-600 dark:text-neutral-300 py-4">
           <p>
             © 2025, All Rights Reserved by{" "}
             <a
@@ -142,9 +139,10 @@ export default function Footer() {
             rel="noopener noreferrer"
             className="underline text-blue-500"
           >
-            Currently Under Development
+            Testing Version
           </a>
         </div>
+
       </div>
     </footer>
   );

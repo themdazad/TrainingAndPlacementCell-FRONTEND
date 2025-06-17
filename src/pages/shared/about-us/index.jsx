@@ -6,6 +6,7 @@ import About from "../../../components/shared/about-us/About.jsx";
 import AcademicPrograms from "../../../components/shared/about-us/AcademicPrograms.jsx";
 import PageHeader from "../../../components/ui/PageHeader.jsx";
 import { Button, Image } from "@heroui/react";
+import { NavLink } from "react-router-dom";
 
 const breadcrumbItems = [
   { label: "Home", to: "/" },
@@ -14,7 +15,7 @@ const breadcrumbItems = [
 export default function AboutUs() {
   return (
     <main className="about-us">
-      <div className="m-auto max-w-screen-2xl px-4  grid py-6 gap-12">
+      <div className="m-auto max-w-screen-2xl px-4 space-y-10 lg:space-y-24 py-10">
         <div>
           <PageHeader title={" About Us"} breadcrumbItems={breadcrumbItems} />
         </div>
@@ -38,9 +39,15 @@ export default function AboutUs() {
               academic-industry gap and provide students with ample
               opportunities to realize their professional goals.
             </p>
-            <Button>College Site</Button>
+            <Button as={NavLink} to={"https://www.gecsiwan.org/"} variant="outlined" color={"primary"}>
+              Visit official college website
+            </Button>
           </div>
-          <Image src="/images/heroThumbnails/gecsiwan_building.png" />
+          <Image
+            className="rounded-[60px]"
+            src="/images/gecsiwan.jpeg"
+            loading="lazy"
+          />
           {/* Address */}
           {/* <div className="py-6 bg-sky-500/10 dark:bg-neutral-800 rounded-3xl border-t-4 border-t-blue-600  shadow-md place-content-center text-center">
             <h5 className="font-semibold uppercase text-blue-600 dark:text-neutral-300 mb-2">
@@ -65,7 +72,6 @@ export default function AboutUs() {
         <AcademicPrograms />
         <ReachUs />
         <TPCellMembers />
-        {/* <TPCellCoordinators /> */}
       </div>
     </main>
   );

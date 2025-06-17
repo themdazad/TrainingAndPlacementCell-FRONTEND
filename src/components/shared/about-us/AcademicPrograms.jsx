@@ -41,9 +41,9 @@ const item = {
 
 export default function AcademicPrograms() {
   return (
-    <section className="section w-full overflow-hidden">
+    <section className="w-full overflow-hidden">
       <motion.div
-        className="snap-mandatory snap snap-x overflow-scroll scrollbar-hide w-full flex  gap-6"
+        className="snap-mandatory snap snap-x overflow-scroll scrollbar-hide w-full flex gap-6"
         variants={container}
         initial="hidden"
         whileInView="show"
@@ -55,7 +55,7 @@ export default function AcademicPrograms() {
             <motion.div
               key={index}
               variants={item}
-              className="academic-program__item snap-center min-w-[300px] flex flex-col items-center justify-center gap-4 text-center bg-sky-500/10 border-t-4 border-blue-500 p-6  dark:bg-neutral-80  rounded-3xl hover:shadow-lg transition-all duration-200"
+              className="academic-program__item snap-center max-w-full min-w-[300px] flex flex-col items-center justify-center gap-4 text-center bg-sky-500/10 border-t-4 border-blue-500 p-6  dark:bg-neutral-80  rounded-3xl"
             >
               <Icon className="h-16 w-16 text-blue-500 dark:text-blue-400" />
               <div className="academic-program__item-title font-bold text-lg text-neutral-900 dark:text-white">

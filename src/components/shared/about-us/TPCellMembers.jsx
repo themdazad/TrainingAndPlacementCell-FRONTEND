@@ -4,15 +4,15 @@ import TPCellMemberProfiles from "../../../assets/data/TPCellMemberProfiles.js";
 
 export default function TPCellMembers() {
   return (
-    <section className="m-auto px-[2.5%] grid grid-cols-1 gap-6">
-      <div className="members  p-4 rounded-3xl">
+    <section className="m-auto grid grid-cols-1 ">
+      <div className="members rounded-3xl">
         {/* Section Title */}
         <div className="title text-xl md:text-3xl font-extrabold text-center py-12">
           Training & Placement Members
         </div>
 
         {/* Members Details */}
-        <div className="members-list grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-4">
+        <div className="members-list grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-4">
           <ProfileList profiles={TPCellMemberProfiles} />
         </div>
       </div>

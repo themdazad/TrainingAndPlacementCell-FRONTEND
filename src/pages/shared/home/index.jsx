@@ -11,7 +11,7 @@ import WorkshopsTraining from "../../../components/shared/home/workshops-trainin
 export default function Home() {
   return (
     <main className="dark:bg-neutral-900">
-      <section className="min-h-screen overflow-hidden space-y-10">
+      <section className="min-h-screen overflow-hidden space-y-10 lg:space-y-24 py-10">
         <Hero />
         <Announcements />
         <PlacementDrives />
