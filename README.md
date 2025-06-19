@@ -1,8 +1,53 @@
-# React + Vite
+<!-- 
+Project Owner: 
+Md. Azad  | Github- @themdazad
+Email-collezian@gmail.com
+Contact/Whatsapp-9119172886 
+-->
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+`Contribution`
+Frontend developer:  
 
-Currently, two official plugins are available:
+<!-- Important  -->
+Naming Convention:
+`Components and Containers`: PascleCase,
+`variables, function and utility files`: camelCase,
+`routes & pages`: kebab-case
+`Constants or ENV`: UPPERCASE or UPPER_CASE 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<!-- Files and Folder Structure -->
+├───public :(Contain all static files)
+│  
+└───src
+    ├───assets
+    │   ├───data 
+    │   └───images
+    │       
+    ├───components :(All Global components & third-party ui)
+    |
+    ├───api :(api calls )
+    |
+    ├───hooks (custom hooks)
+    │  
+    ├───modules :(Role folders)
+    |   |
+    │   ├───admin
+    │   │   ├───components :(Role based components)
+    │   │   ├───pages  :(role bases pages)
+    │   │   └───styles :(page related stylessheets)
+    |   |
+    │   ├───shared
+    │   │      
+    │   └───student
+    |
+    ├───routes :(Role based routes )
+    │       ├───example-student-routes.js
+    │       ├───example-admin-routes.js
+    |       └───example-shared-routes.js
+    |
+    ├───utils :(utilities or helper functions)
+    |
+    |
+    ├───index.css :(Global Stylesheet)
+    |
+    └───main.jsx :(Root file)
