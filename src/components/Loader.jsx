@@ -1,8 +1,8 @@
 
 import GECSIWAN_LOGO from "../assets/images/logos/gecsiwanlogo.svg";
 import GECSIWAN_LOGO_LIGHT from "../assets/images/logos/gecsiwan-logo-light.png";
-import RandomLoadingMessage from "../utils/RandomLoadingMessage.jsx"
-// components/Loader.js
+import RandomLoadingMessage from "./RandomLoadingMessage.jsx"
+
 export default function Loader() {
     return (
       <div className="flex items-center justify-center min-h-screen dark:bg-neutral-800">

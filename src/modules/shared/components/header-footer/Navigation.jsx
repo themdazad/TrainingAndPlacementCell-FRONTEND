@@ -138,10 +138,7 @@ export default function NavBar() {
               </div>
             </div>
             <div className="r-logos  max-md:hidden flex gap-3 items-center">
-              <div className="hidden md:flex flex-col text-right text-sm">
-                <a href="">Contact: +91-9084063221</a>
-                <a href="">Email: tpogecsiwan@gmail.com</a>
-              </div>
+             
               <div className="images flex gap-1 md:gap-3">
                 <img
                   className="brand-logo border border-black dark:border-white p-1 rounded-full min-h-[30px] max-h-[48px] aspect-square"

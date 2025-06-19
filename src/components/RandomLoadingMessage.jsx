@@ -25,9 +25,7 @@ const RandomLoadingMessage = () => {
       <h1 className="dm-serif-text-bold text-3xl mb-[1.5rem]">
         {getRandomLoadingMessage()}
       </h1>
-      <p className="sm:text-lg text-neutral-500">
-        Training and Placement Cell <br /> Government Engineering College, Siwan
-      </p>
+      
     </div>
   );
 };

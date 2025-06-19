@@ -1,4 +1,1 @@
-
-The 'assets' folder is used to store static resources such as images, icons, fonts, and static data files (e.g., JSON, markdown, or text files) that are required by the application.
-
-These files are not processed by the build tools and are served as-is to the client.
+placement_drives_data: = https://docs.google.com/spreadsheets/d/e/2PACX-1vQl8ryQvd4otEGN24fOy0eWNudgr1zPRJtLC1x5xw0CoIb_6dEBns5hPZzLX9YzAV166dEZz-bMWfGm/pub?gid=0&single=true&output=csv

@@ -2,10 +2,15 @@ import { Button, Divider, Image } from "@heroui/react";
 import { useState } from "react";
 import { Dot, Eye, GithubIcon, Globe, Link } from "lucide-react";
 import { NavLink } from "react-router-dom";
-import PlacementDrivesData from "../../../../assets/data/placement-drives-data.js";
+
+
+// import PlacementDrivesData from "../../../../assets/data/placement-drives-data.js";  // static data
+import {usePlacementDrivesData} from "../../../../api/shared/placement-drives-api.js";
+
+
 
 export default function PlacementDrives() {
-  const [cardData, setCardData] = useState(PlacementDrivesData);
+  const { data, loading, error, searchTerm, setSearchTerm } = usePlacementDrivesData();
   return (
     <div className="section ">
       <section className="max-w-screen-2xl m-auto space-y-10 w-full">
@@ -15,15 +20,15 @@ export default function PlacementDrives() {
         </span>
         <Divider />
         <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {cardData.map((item) => {
+          {data.map((item) => {
             return (
               <div
-                key={item._id}
+                key={item.date}
                 className="group aspect-video bg-white relative overflow-hidden rounded-3xl shadow-xl transition-all duration-300"
               >
                 <Image
                   src={item.image}
-                  alt={"azad-"}
+                  alt={"placement-drives-image-gec-siwan"}
                   width={400}
                   height={200}
                   className="absolute z-8 object-contain"
@@ -34,11 +39,12 @@ export default function PlacementDrives() {
                     <h1 className="text-xl font-bold">{item.title}</h1>
                     <p className="text-sm">{item.description}</p>
                     <div className="inline-flex gap-2">
-                      {item.branch.map((data, ls) => {
-                        return <p key={ls}>{data}</p>;
-                      })}
+                      <p>{item.branch}</p>
                     </div>
-                    {!!item.deadline && <p className="">Last Date: {item.deadline}</p>}
+                    {!!item.deadline && <p className="">Date: {item.date}</p>}
+                    {!!item.deadline && (
+                      <p className="">Last Date: {item.deadline}</p>
+                    )}
                   </div>
 
                   <div className="space-x-2 flex justify-center">
@@ -47,7 +53,9 @@ export default function PlacementDrives() {
                         <Button
                           className="hover:shadow-xl bg-white cursor-pointer rounded-3xl"
                           variant="outline"
-                        > Apply
+                        >
+                          {" "}
+                          Apply
                         </Button>
                       </NavLink>
                     )}
@@ -64,8 +72,13 @@ export default function PlacementDrives() {
                     )}
                   </div>
                 </div>
+
                 <div className="absolute z-10 px-3 py-1 flex dark:bg-stone-800 text-white bg-blue-500 rounded-tr-3xl opacity-100 group-hover:opacity-0 min-w-max -bottom-0 group-hover:-bottom-full transition-all duration-500 ">
-                  <p className=" px-2">{item.title}</p>
+                  {loading ? (
+                    "Loading..."
+                  ) : (
+                    <p className=" px-2">{item.title}</p>
+                  )}
                 </div>
               </div>
             );

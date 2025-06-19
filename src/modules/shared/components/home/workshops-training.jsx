@@ -10,7 +10,7 @@ export default function WorkshopsTraining() {
     <div className="section ">
       <section className="max-w-screen-2xl m-auto space-y-10 w-full">
         {/* page title  */}
-        <span className="text-2xl md:text-4xl font-extrabold backdrop-blur-md inline-flex rounded-full text-nowrap">
+        <span className="text-2xl md:text-3xl font-extrabold backdrop-blur-md inline-flex rounded-full text-nowrap">
           Workshops & Training
         </span>
         <Divider />

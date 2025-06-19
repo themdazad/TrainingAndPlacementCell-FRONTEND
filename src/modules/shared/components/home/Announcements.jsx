@@ -1,5 +1,6 @@
 import axios from "axios";
 import Papa from "papaparse";
+import {BellDot} from "lucide-react"
 import { useState, useEffect } from "react";
 import About from "../about-us/About";
 
@@ -64,10 +65,10 @@ export function Notice() {
         .includes(searchTerm.toLowerCase())
     );
   return (
-    <div className="notice-area bg-sky-100 rounded-3xl border-t-4 border-blue-500 px-4">
+    <div className="notice-area bg-sky-500/20 rounded-3xl border-t-4 border-blue-500 px-4">
       <div className="grid grid-cols-2 items-center">
-        <h2 className="text-2xl w-full font-extrabold text-blue-500 flex max-md:justify-center gap-x-4 items-center">
-          Announcements
+        <h2 className="text-2xl max-md:text-center w-full font-bold text-blue-500 flex max-md:justify-center gap-x-4 items-center">
+        <BellDot/>Latest updates
         </h2>
 
         {/* 🔍 Search Input */}
@@ -76,7 +77,7 @@ export function Notice() {
           placeholder="Search here..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full mt-4 mb-2 px-3 p-2 border border-neutral-300 dark:border-neutral-700 rounded-3xl focus:outline-none focus:ring-2 focus:ring-blue-400 dark:bg-neutral-800 dark:text-white"
+          className="max-md:hidden w-full mt-4 mb-2 px-3 p-2 border border-neutral-300 dark:border-neutral-700 rounded-3xl focus:outline-none focus:ring-2 focus:ring-blue-400 dark:bg-neutral-800 dark:text-white"
         />
       </div>
 
@@ -84,7 +85,7 @@ export function Notice() {
         className="row-container box-border my-[1em] max-h-64 overflow-y-scroll overflow-x-hidden"
         style={{
           maskImage:
-            "linear-gradient(to bottom, transparent 0%, black 0%, black 70%, transparent 100%)",
+            "linear-gradient(to bottom, transparent 0%, black 0%, black 50%, transparent 100%)",
         }}
       >
         {filteredNotices.length > 0 ? (
