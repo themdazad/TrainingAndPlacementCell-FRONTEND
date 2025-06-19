@@ -1,12 +1,10 @@
-import GECSIWAN_LOGO from "../../assets/images/logos/gecsiwan-logo.png";
-import GECSIWAN_LOGO_LIGHT from "../../assets/images/logos/gecsiwan-logo-light.png";
-import { Button, Image, Card, CardBody, Input, Link } from "@heroui/react";
+import axios from "axios";
+import { Button, Card, CardBody, Input, Link } from "@heroui/react";
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import axios from "axios";
 import { useContext } from "react";
-import AuthContext from "../../hooks/contexts/auth/AuthContext";
+import AuthContext from "../../../../hooks/contexts/auth/AuthContext";
 
 const StudentLogin = () => {
   const { setIsLogedIn } = useContext(AuthContext);

@@ -4,7 +4,7 @@ import { Button, Card, CardBody, Input } from "@heroui/react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import AuthContext from "../../hooks/contexts/auth/AuthContext";
+import AuthContext from "../../../../hooks/contexts/auth/AuthContext";
 
 const AdminLogin = () => {
   const { setIsLogedIn } = useContext(AuthContext);

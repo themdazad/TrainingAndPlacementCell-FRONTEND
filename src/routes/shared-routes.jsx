@@ -1,8 +1,7 @@
 import { Routes, Route } from "react-router-dom";
-// auth Pages
-import Auth from "../pages/auth/index.jsx";
-// Public Routes
+// Shared Routes
 import Home from "../modules/shared/pages/home/index.jsx";
+import Auth from "../modules/shared/pages/auth/index.jsx";
 import CampusPlacements2025 from "../modules/shared/pages/campus-placement/2025/campus-placement-2025.jsx";
 import Projects from "../modules/shared/pages/projects/index.jsx";
 import CourseHighlights from "../modules/shared/pages/academics/course-highlights/index.jsx";

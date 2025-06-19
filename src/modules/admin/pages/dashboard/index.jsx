@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Home, Settings, UploadCloud, Image } from "lucide-react";
 import { Button } from "@heroui/react";
-import Dashboard from "../../../components/admin/Dashboard.jsx";
-import { useAuth } from "../../../hooks/contexts/auth/AuthContext"; // Adjust path as needed
+import Dashboard from "../../../../components/admin/Dashboard.jsx";
+import { useAuth } from "../../../../hooks/contexts/auth/AuthContext.jsx"; // Adjust path as needed
 
 const Tabs = [
   { name: "Dashboard", icon: Home },

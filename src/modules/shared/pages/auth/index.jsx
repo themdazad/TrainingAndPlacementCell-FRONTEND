@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Image } from "@heroui/react";
-import GECSIWAN_COLLEGE from "../../assets/images/gecsiwan.jpeg";
+import GECSIWAN_COLLEGE from "../../../../assets/images/gecsiwan.jpeg";
 import StudentLogin from "../../components/auth/StudentLogin";
 import CoordinatorLogin from "../../components/auth/CoordinatorLogin";
 import AdminLogin from "../../components/auth/AdminLogin";
