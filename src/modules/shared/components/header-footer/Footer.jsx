@@ -122,27 +122,25 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="text-center text-sm text-neutral-600 dark:text-neutral-300 py-4">
           <p>
-            © 2025, All Rights Reserved by{" "}
             <a
               href="https://www.gecsiwan.org/"
               target="_blank"
               rel="noopener noreferrer"
-              className="underline hover:text-blue-500 dark:hover:text-blue-400"
+              className=" hover:text-blue-500 dark:hover:text-blue-400"
             >
               Training and Placement Cell | GEC, Siwan
             </a>
-            .
+            ,© 2025
           </p>
           <a
             href="https://www.linkedin.com/in/themdazad/"
             target="_blank"
             rel="noopener noreferrer"
-            className="underline text-blue-500"
+            className=" text-blue-500"
           >
-            Designed & Developed with 💙by GEC Students
+            {"<Deve💙per/>"}
           </a>
         </div>
-
       </div>
     </footer>
   );

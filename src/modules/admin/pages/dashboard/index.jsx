@@ -1,13 +1,12 @@
 import { useState } from "react";
-import { Home, Settings, UploadCloud, Image } from "lucide-react";
+import { Home, Book, Settings, UploadCloud } from "lucide-react";
 import { Button } from "@heroui/react";
-import Dashboard from "../../../../components/admin/Dashboard.jsx";
-import { useAuth } from "../../../../hooks/contexts/auth/AuthContext.jsx"; // Adjust path as needed
-
+import { useAuth } from "../../../../hooks/contexts/auth/AuthContext.jsx";
 const Tabs = [
   { name: "Dashboard", icon: Home },
-  { name: "Publish", icon: UploadCloud },
-  { name: "Add Photos", icon: Image },
+  { name: "Application Status", icon: UploadCloud },
+  { name: "Projects", icon: UploadCloud },
+  { name: "Blogs", icon: Book },
   { name: "Settings", icon: Settings },
 ];
 
@@ -19,15 +18,11 @@ export default function AdminDashboard() {
   function renderContent() {
     switch (activeTab) {
       case "Dashboard":
-        return <Dashboard />;
-      case "Add Photos":
-        return (
-          <>
-            {" "}
-            Add Gallery Photos | Add Photo to Home Slider | Add Past Recruiter
-          </>
-        );
-     
+        return <>Admin Dashboard</>;
+      case "Application Status":
+        return<> You can check realtime application status | Applied jobs | </>
+       case "Blogs":
+        return <>Write a Blogs and Publish | Post Mode: Public, Private, Delete | Likes, Comments, Share</>;
       case "Settings":
         return <p>Settings Section</p>;
       default:

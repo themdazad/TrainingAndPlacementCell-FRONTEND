@@ -1,20 +1,22 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import PLACEMENT_BROCHURE from "../../../../assets/downloads/GEC_SIWAN_PLACEMENT_BROCHURE.pdf";
-import SimpleSlider from "../../../../components/ui/SimpleSlider.jsx";
-import SliderData from "../../../../assets/data/SliderData.js";
+import SimpleSlider from "../../../../components/SimpleSlider.jsx";
+import HeroSliderImages from "../../../../assets/data/hero-slider-images.js";
 
+const sliderImages = HeroSliderImages;
 export default function Hero(){
   const [year, setYear] = useState(Date().split(" ")[3]);
   return (
     <section className=" section grid items-center grid-cols-1 gap-6 lg:grid-cols-2">
       <div className="space-y-4">
-        <h1 className="mt-2 lg:mt-8 font-extrabold text-6xl text-neutral-900 dark:text-white">
-         PLACEMENT DRIVES-{year}
+        <h1 className="mt-2 lg:mt-8 dm-serif-text-bold text-6xl text-neutral-900 dark:text-white">
+          PLACEMENT DRIVES-{year}
           {/* Training & Placement Cell */}
         </h1>
         <p className="text-xl md:text-3xl font-semibold  text-blue-500 dark:text-blue-400 pt-4">
-            Government Engineering College, Siwan</p>
+          Government Engineering College, Siwan
+        </p>
         <p className="mt-4 leading-relaxed text-neutral-800 dark:text-neutral-300 lg:mt-8">
           We strive to organize mock sessions, and provide real-world exposure
           through internships and project showcases, ensuring each student steps
@@ -53,7 +55,7 @@ export default function Hero(){
       </div>
 
       <div className="max-md:hidden">
-        <SimpleSlider slider_data={SliderData} />
+        <SimpleSlider slider_data={sliderImages} />
       </div>
     </section>
   );

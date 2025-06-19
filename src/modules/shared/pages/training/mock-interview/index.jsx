@@ -1,5 +1,5 @@
 
-import PageHeader from "../../../../../components/ui/PageHeader.jsx";
+import PageHeader from "../../../../../components/PageHeader.jsx";
 const mock_interview_data = [
   {
     id: "#tpmock1",

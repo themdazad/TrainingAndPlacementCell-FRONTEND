@@ -1,15 +1,15 @@
-import { useState } from "react";
-import { slugify } from "../../../../utils/slugify";
 import "./projects.css";
-import { projects } from "../../../../assets/data/projectsData";
-import { NavLink } from "react-router-dom";
+import { useState } from "react";
 import { Image } from "@heroui/react";
+import { NavLink } from "react-router-dom";
+import { slugify } from "../../../../utils/slugify";
 import {
   Clock as ClockIcon,
   MapPin as MapPinIcon,
   ArrowRightCircle as ArrowRightCircleIcon,
 } from "lucide-react";
-import PageHeader from "../../../../components/ui/PageHeader.jsx";
+import PageHeader from "../../../../components/PageHeader.jsx";
+import { projects } from "../../../../assets/data/projectsData";
 
 export const projectsData = projects;
 const Projects = () => {

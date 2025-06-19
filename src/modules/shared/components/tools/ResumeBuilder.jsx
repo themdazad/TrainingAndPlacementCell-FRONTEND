@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { Button, Divider, Input } from "@heroui/react";
-import { Github, Linkedin, Mail, MapPinned, Phone, X } from "lucide-react";
+import { Github, Linkedin, X } from "lucide-react";
 import GECSIWAN_LOGO from "../../../../assets/images/logos/gecsiwanlogo.svg";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";

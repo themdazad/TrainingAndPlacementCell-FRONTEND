@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
-import StudentDashboard from "../pages/student/dashboard/index.jsx";
-import PrivateRoute from "../components/auth/PrivateRoute.jsx";
+import StudentDashboard from "../modules/student/pages/dashboard/index.jsx";
+import PrivateRoute from "../components/auth/PrivateRoute.jsx";  // Global Component
 
 const studentRoutes = [
   {

@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import PrivateRoute from "../components/auth/PrivateRoute.jsx"; // common
+import PrivateRoute from "../components/auth/PrivateRoute.jsx";
 import AdminDashboard from "../modules/admin/pages/dashboard/index.jsx";
 
 const adminRoutes = [

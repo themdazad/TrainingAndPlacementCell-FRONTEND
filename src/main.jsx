@@ -1,13 +1,13 @@
 import axios from "axios";
-import React, { Suspense, lazy, useState, useEffect } from "react";
+import  { Suspense, lazy } from "react";
 import {ToastContainer} from "react-toastify";
 import ReactDOM from "react-dom/client";
-import "./styles/index.css";
+import "./index.css";
 import { HeroUIProvider } from "@heroui/react";
 import { BrowserRouter } from "react-router-dom";
-import NavBar from "./components/Navigation.jsx";
-import Footer from "./components/Footer.jsx";  
-import Loader from "./components/ui/Loader.jsx";
+import NavBar from "./modules/shared/components/header-footer/Navigation.jsx";
+import Footer from "./modules/shared/components/header-footer/Footer.jsx";  
+import Loader from "./components/Loader.jsx";
 // contexts
 import ProgramsProvider from "./hooks/contexts/google-sheets/programs-provider.jsx";
 import AuthProvider from "./hooks/contexts/auth/AuthProvider.jsx";
@@ -49,5 +49,5 @@ function Root() {
 
 ReactDOM.createRoot(document.getElementById("root")).render(<Root />);
 
-// 👇 This line enables sending cookies with cross-origin requests
+// 👇 This line enables sending cookies with cross-origin requests (Backend can save cookies directly:)
 axios.defaults.withCredentials = true;

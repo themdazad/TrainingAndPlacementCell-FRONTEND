@@ -1,4 +1,4 @@
-import PageHeader from "../../../../../components/ui/PageHeader.jsx";
+import PageHeader from "../../../../../components/PageHeader.jsx";
 
 const breadcrumbItems = [
   { label: "Home", to: "/" },

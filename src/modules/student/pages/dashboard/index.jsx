@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Home, Book, Settings, UploadCloud, Image } from "lucide-react";
 import { Button } from "@heroui/react";
-import { useAuth } from "../../../hooks/contexts/auth/AuthContext.jsx";
+import { useAuth } from "../../../../hooks/contexts/auth/AuthContext.jsx";
 const Tabs = [
   { name: "Dashboard", icon: Home },
   { name: "Application Status", icon: UploadCloud },
@@ -12,7 +12,6 @@ const Tabs = [
 
 export default function StudentDashboard() {
   const [activeTab, setActiveTab] = useState("Dashboard");
-  const [studentData, setStudentData] = useState(null);
 
   const { handleLogout } = useAuth(); // Global auth context
 

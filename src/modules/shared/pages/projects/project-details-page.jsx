@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { projects } from "../../../../assets/data/projectsData.js";
-import PageHeader from "../../../../components/ui/PageHeader.jsx";
+import PageHeader from "../../../../components/PageHeader.jsx";
 
 // Fade-in animation configuration
 const fadeIn = {

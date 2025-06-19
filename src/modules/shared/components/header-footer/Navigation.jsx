@@ -2,8 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Image, Button } from "@heroui/react";
 import { ChevronDown, ChevronUp, X, AlignLeft } from "lucide-react";
-import { useAuth } from "../hooks/contexts/auth/AuthContext"; // Adjust path as needed
-import ThemeSwitch from "./ui/ThemeSwitch";
+import { useAuth } from "../../../../hooks/contexts/auth/AuthContext"; // Adjust path as needed
+import ThemeSwitch from "../../../../components/ThemeSwitch";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -13,16 +13,14 @@ const navLinks = [
     name: "For Student",
     dropdown: true,
     items: [
-      { name: "Resume Builder", path: "/student/tools/resume-builder" },
       { name: "Student's Projects", path: "/student/projects" },
-      { name: "Course Highlights", path: "/academics/course-highlights" },
     ],
   },
 
 
   // Careers
   {
-    name: "Training",
+    name: "Training and Careers",
     dropdown: true,
     items: [
       {
@@ -35,10 +33,6 @@ const navLinks = [
     ],
   },
 
-  {
-    name: "Careers",
-    path: "/careers",
-  },
   {
     name: "Gallery",
     path: "/gallery",

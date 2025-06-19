@@ -1,11 +1,10 @@
-
-import TPCellMembers from "../../components/about-us/TPCellMembers.jsx";
-import ReachUs from "../../components/about-us/ReachUs.jsx";
-// import TPCellCoordinators from "../../../components/about-us/TPCellCoordinators.jsx";
-import AcademicPrograms from "../../components/about-us/AcademicPrograms.jsx";
-import PageHeader from "../../../../components/ui/PageHeader.jsx";
 import { Button, Image } from "@heroui/react";
 import { NavLink } from "react-router-dom";
+import ReachUs from "../../components/about-us/ReachUs.jsx";
+import TPCellCoordinators from "../../components/about-us/TPCellCoordinators.jsx";
+import AcademicPrograms from "../../components/about-us/AcademicPrograms.jsx";
+import TPCellMembers from "../../components/about-us/TPCellMembers.jsx";
+import PageHeader from "../../../../components/PageHeader.jsx";
 
 const breadcrumbItems = [
   { label: "Home", to: "/" },
@@ -38,7 +37,12 @@ export default function AboutUs() {
               academic-industry gap and provide students with ample
               opportunities to realize their professional goals.
             </p>
-            <Button as={NavLink} to={"https://www.gecsiwan.org/"} variant="outlined" color={"primary"}>
+            <Button
+              as={NavLink}
+              to={"https://www.gecsiwan.org/"}
+              variant="outlined"
+              color={"primary"}
+            >
               Visit official college website
             </Button>
           </div>
@@ -71,6 +75,7 @@ export default function AboutUs() {
         <AcademicPrograms />
         <ReachUs />
         <TPCellMembers />
+        <TPCellCoordinators />
       </div>
     </main>
   );
