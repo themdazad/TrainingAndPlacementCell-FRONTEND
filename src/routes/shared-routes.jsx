@@ -2,16 +2,15 @@ import { Routes, Route } from "react-router-dom";
 // auth Pages
 import Auth from "../pages/auth/index.jsx";
 // Public Routes
-import Home from "../pages/shared/home/index.jsx";
-import CampusPlacements2025 from "../pages/shared/campus-placement/2025/campus-placement-2025.jsx";
-import Projects from "../pages/shared/projects/index.jsx";
-import CourseHighlights from "../pages/shared/academics/course-highlights/index.jsx";
-import ProjectDetailsPage from "../pages/shared/projects/project-details-page.jsx";
+import Home from "../modules/shared/pages/home/index.jsx";
+import CampusPlacements2025 from "../modules/shared/pages/campus-placement/2025/campus-placement-2025.jsx";
+import Projects from "../modules/shared/pages/projects/index.jsx";
+import CourseHighlights from "../modules/shared/pages/academics/course-highlights/index.jsx";
+import ProjectDetailsPage from "../modules/shared/pages/projects/project-details-page.jsx";
 
-import AboutUs from "../pages/shared/about-us/index.jsx";
-import SummerWebDevelopment2025 from "../pages/shared/training/summer-web-development-2025/index.jsx";
-import MockInterview from "../pages/shared/training/mock-interview/index.jsx";
-import ResumeBuilder from "../pages/shared/resume-builder/index.jsx";
+import AboutUs from "../modules/shared/pages/about-us/index.jsx";
+import SummerWebDevelopment2025 from "../modules/shared/pages/training/summer-web-development-2025/index.jsx";
+import ResumeBuilder from "../modules/shared/pages/resume-builder/index.jsx";
 
 const AppRoutes = () => {
   return (
