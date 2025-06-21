@@ -65,7 +65,7 @@ const Testimonials = () => {
     <section className="section text-center">
       <h2 className="text-3xl sm:text-4xl font-extrabold text-neutral-900 dark:text-white max-w-2xl mx-auto mb-20 leading-snug">
         Hear from our students and recruiters.{" "}
-        <span className="text-blue-500 dark:text-blue-400">
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500">
           100+ success stories
         </span>{" "}
         and counting.

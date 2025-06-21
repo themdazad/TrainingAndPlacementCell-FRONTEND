@@ -138,7 +138,7 @@ export default function Footer() {
             rel="noopener noreferrer"
             className=" text-blue-500"
           >
-            {"<Deve💙per/>"}
+            {"<Developer/>"}
           </a>
         </div>
       </div>

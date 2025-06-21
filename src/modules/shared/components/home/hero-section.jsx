@@ -2,6 +2,7 @@ import PLACEMENT_BROCHURE from "../../../../assets/downloads/GEC_SIWAN_PLACEMENT
 import SimpleSlider from "../../../../components/SimpleSlider.jsx";
 import HeroSliderImages from "../../../../assets/data/hero-slider-images.js";
 import { ArrowRightCircle, Download } from "lucide-react";
+import { easeIn, motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 const sliderImages = HeroSliderImages;
@@ -11,7 +12,8 @@ export default function Hero(){
       {/* CTA Section - Left Half */}
       <div className="space-y-6">
         <div className="space-y-6">
-          <div className="inline-flex uppercase items-center px-4 py-2 bg-blue-500/20 text-blue-800 dark:text-blue-100   rounded-full text-sm font-medium">
+          <div
+           className="inline-flex uppercase items-center px-4 py-2 bg-blue-500/20 text-blue-800 dark:text-blue-100   rounded-full text-sm font-medium">
             <span className="blinking-dot w-2 h-2  bg-blue-600 rounded-full mr-2 animate-pulse"></span>
             New For Students
           </div>
@@ -50,7 +52,7 @@ export default function Hero(){
         </div>
 
         <div className="flex items-center max-md:justify-center space-x-8 pt-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500">
-          *Note: Provide feedbacks for better experience.
+          *Provide feedbacks for better experience.
         </div>
       </div>
 

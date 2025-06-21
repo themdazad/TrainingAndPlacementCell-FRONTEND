@@ -6,7 +6,7 @@ import "./index.css";
 import { HeroUIProvider } from "@heroui/react";
 import { BrowserRouter } from "react-router-dom";
 import NavBar from "./modules/shared/components/header-footer/navigation-bar.jsx";
-import Footer from "./modules/shared/components/header-footer/Footer.jsx";  
+import Footer from "./modules/shared/components/header-footer/footer-bar.jsx";  
 import Loader from "./components/Loader.jsx";
 // contexts
 import ProgramsProvider from "./hooks/contexts/google-sheets/programs-provider.jsx";
