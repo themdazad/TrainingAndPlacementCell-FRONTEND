@@ -1,6 +1,6 @@
 import Hero from "../../components/home/hero-section.jsx";
 import Announcements from "../../components/home/notice-section.jsx";
-import SelectedStudentSlider from "../../components/home/selected-students.jsx";
+// import SelectedStudentSlider from "../../components/home/selected-students.jsx";
 import PastRecruiters from "../../components/home/past-recruiters-companies.jsx";
 import PlacementDrives from "../../components/home/placement-drives.jsx";
 import WorkshopsTraining from "../../components/home/workshops-training.jsx";
@@ -16,7 +16,6 @@ export default function Home() {
         <Announcements />
         <PlacementDrives />
         <WorkshopsTraining />
-        <SelectedStudentSlider />
         <PastRecruiters />
         <Testimonials />
         <FaqFeedbackForm />

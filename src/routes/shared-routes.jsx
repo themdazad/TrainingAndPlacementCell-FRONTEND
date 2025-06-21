@@ -6,15 +6,18 @@ import Projects from "../modules/shared/pages/projects/index.jsx";
 import ProjectDetailsPage from "../modules/shared/pages/projects/project-details-page.jsx";
 
 import AboutUs from "../modules/shared/pages/about-us/index.jsx";
-import SummerWebDevelopment2025 from "../modules/shared/pages/training/summer-web-development-2025/index.jsx";
+// Careers Pages 
+import PlacementDrives from "../modules/shared/pages/careers/placement-drives/placement-drives.jsx";
+import SummerWebDevelopment2025 from "../modules/shared/pages/careers/summer-web-development-2025/index.jsx";
 
-const AppRoutes = () => {
+const AppRoutes = () => { 
   return (
     <Routes>
       <Route path="/" element={<Home />} />
 
-      {/* Training and Careers */}
-      <Route path="/training">
+      {/* Careers */}
+      <Route path="/careers">
+        <Route path="placement-drives" element={<PlacementDrives />} />
         <Route
           path="summer-web-development-2025"
           element={<SummerWebDevelopment2025 />}
@@ -28,7 +31,6 @@ const AppRoutes = () => {
 
       <Route path="/auth" element={<Auth />} />
       <Route path="about-us" element={<AboutUs />} />
-
     </Routes>
   );
 };

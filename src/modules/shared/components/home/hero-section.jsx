@@ -1,13 +1,11 @@
-
-import { useState } from "react";
 import PLACEMENT_BROCHURE from "../../../../assets/downloads/GEC_SIWAN_PLACEMENT_BROCHURE.pdf";
 import SimpleSlider from "../../../../components/SimpleSlider.jsx";
 import HeroSliderImages from "../../../../assets/data/hero-slider-images.js";
 import { ArrowRightCircle, Download } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const sliderImages = HeroSliderImages;
 export default function Hero(){
-  const [year, setYear] = useState(Date().split(" ")[3]);
   return (
     <section className=" section grid items-center grid-cols-1 gap-6 lg:grid-cols-2">
       {/* CTA Section - Left Half */}
@@ -21,7 +19,7 @@ export default function Hero(){
           <h1 className="text-4xl md:text-5xl lg:text-8xl font-bold">
             Campus Placement
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500">
-              Drives {year}
+              Drives {Date().split(" ")[3]}
             </span>
           </h1>
           <p className="text-justify text-gray-600 dark:text-gray-300 max-w-lg">
@@ -32,13 +30,13 @@ export default function Hero(){
         </div>
 
         <div className="flex max-md:items-center gap-4">
-          <button
+          <Link to="/careers/placement-drives"
             size="lg"
             className="flex items-center bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-3xl font-semibold transition-all duration-200 transform hover:scale-105 hover:shadow-lg group"
           >
             Apply Now
             <ArrowRightCircle className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
-          </button>
+          </Link>
 
           <a
             href={PLACEMENT_BROCHURE}

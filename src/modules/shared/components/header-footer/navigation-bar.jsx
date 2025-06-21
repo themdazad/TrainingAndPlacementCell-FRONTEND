@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { Image, Button } from "@heroui/react";
 import { ChevronDown, ChevronUp, X, AlignLeft } from "lucide-react";
 import { useAuth } from "../../../../hooks/contexts/auth/AuthContext"; // Adjust path as needed
@@ -20,15 +20,15 @@ const navLinks = [
 
   // Careers
   {
-    name: "Training and Careers",
+    name: "Careers",
     dropdown: true,
     items: [
+      { name: "Placement Drives", path: "/careers/placement-drives" },
       {
         name: "Summer Web Development 2025",
         path: "/training/summer-web-development-2025",
       },
       { name: "Mock Interviews", path: "/training/mock-interview" },
-      { name: "Placement Drives", path: "/career/placement-drives" },
       { name: "Workshops & Webinars", path: "/training/workshops" },
     ],
   },
@@ -79,9 +79,6 @@ export default function NavBar() {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isMobileMenuOpen]);
-
-  // Handling login/logout Features
-  const navigate = useNavigate();
 
   const handleDropdownToggle = (name) => {
     setIsDropdownOpen((prev) => ({

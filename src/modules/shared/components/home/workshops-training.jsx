@@ -8,7 +8,7 @@ export default function WorkshopsTraining() {
   const [cardData, setCardData] = useState(WorkshopsTrainingData);
   return (
     <div className="section ">
-      <section className="max-w-screen-2xl m-auto space-y-10 w-full">
+      <section className="max-w-screen-2xl m-auto space-y-6 w-full">
         {/* page title  */}
         <span className="text-xl md:text-3xl font-semibold backdrop-blur-md inline-flex rounded-full  bg-clip-text bg-gradient-to-r from-blue-500 to-green-500 text-nowrap">
           Workshops & Training
@@ -73,6 +73,7 @@ export default function WorkshopsTraining() {
             );
           })}
         </div>
+        
       </section>
     </div>
   );
