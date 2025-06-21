@@ -115,7 +115,7 @@ export default function NavBar() {
         {/* Navigation Header*/}
         <div className="navHeader bg-white dark:bg-neutral-900  px-4 py-2">
           <div className="max-w-screen-2xl m-auto flex justify-between items-center">
-            <div className="max-md:w-full flex max-md:flex-col justify-center items-center gap-3 md:gap-6 lg:gap-12">
+            <div className="max-md:w-full flex max-md:flex-col justify-center items-center gap-3 md:gap-6 ">
               <div className="college-logo flex justify-center aspect-square">
                 <Image
                   className="dark:hidden h-[80px]"
@@ -138,7 +138,6 @@ export default function NavBar() {
               </div>
             </div>
             <div className="r-logos  max-md:hidden flex gap-3 items-center">
-             
               <div className="images flex gap-1 md:gap-3">
                 <img
                   className="brand-logo border border-black dark:border-white p-1 rounded-full min-h-[30px] max-h-[48px] aspect-square"
@@ -156,7 +155,7 @@ export default function NavBar() {
         </div>
 
         {/* Menu items bar*/}
-        <div className=" py-2 mx-auto relative bg-sky-100 dark:bg-neutral-800">
+        <div className=" py-1 mx-auto relative bg-neutral-100 dark:bg-neutral-800">
           <div className="max-w-screen-2xl m-auto">
             <div className=" px-4 flex items-center justify-between py-2 relative z-50">
               {/* Hamburger */}
@@ -210,7 +209,7 @@ export default function NavBar() {
                         <ChevronDown className="rotate-0 group-hover:rotate-180 transition-rotate duration-200" />
                       </span>
                       <ul
-                        className={`absolute  shadow-md left-1/2 transform -translate-x-1/2 min-w-max text-small rounded-xl border-t-1 hover:border-t-4 border-t-blue-600 bg-white dark:bg-neutral-800 p-3  transition-all duration-200 ${
+                        className={`absolute  shadow-md left-1/2 transform -translate-x-1/2 min-w-max text-small rounded-xl border-t-1 hover:border-t-4 border-t-blue-600 bg-white dark:bg-neutral-800 py-2 transition-all duration-200 ${
                           isDropdownOpen[link.name] ? "flex flex-col" : "hidden"
                         }`}
                       >
@@ -219,7 +218,7 @@ export default function NavBar() {
                           <NavLink
                             key={idx}
                             to={item.path}
-                            className="hover:text-neutral-100 hover:bg-blue-600 rounded-3xl w-full py-2 px-3"
+                            className="hover:bg-blue-500/30 w-full py-2 px-3"
                           >
                             {item.name}
                           </NavLink>
@@ -245,7 +244,7 @@ export default function NavBar() {
                     variant="solid"
                     radius="full"
                     color="primary"
-                    className="inline-flex text-sm items-centerfont-medium"
+                    className="inline-flex text-sm items-center font-medium bg-gradient-to-r from-blue-500 to-sky-500"
                   >
                     Login
                   </Button>

@@ -65,9 +65,9 @@ export function Notice() {
         .includes(searchTerm.toLowerCase())
     );
   return (
-    <div className="notice-area bg-sky-500/20 rounded-3xl border-t-4 border-blue-500 px-4">
+    <div className="notice-area rounded-3xl md:border-l-4 border-blue-500 px-4">
       <div className="grid grid-cols-2 items-center">
-        <h2 className="text-2xl max-md:text-center w-full font-bold text-blue-500 flex max-md:justify-center gap-x-4 items-center">
+        <h2 className="text-2xl max-md:text-center text-nowrap w-full font-semibold text-blue-500 flex max-md:justify-center gap-x-4 items-center">
         <BellDot/>Latest updates
         </h2>
 

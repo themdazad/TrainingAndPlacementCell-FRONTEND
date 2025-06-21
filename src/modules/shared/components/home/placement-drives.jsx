@@ -1,6 +1,4 @@
 import { Button, Divider, Image } from "@heroui/react";
-import { useState } from "react";
-import { Dot, Eye, GithubIcon, Globe, Link } from "lucide-react";
 import { NavLink } from "react-router-dom";
 
 
@@ -15,11 +13,13 @@ export default function PlacementDrives() {
     <div className="section ">
       <section className="max-w-screen-2xl m-auto space-y-10 w-full">
         {/* page title  */}
-        <span className="text-2xl md:text-3xl font-extrabold backdrop-blur-md inline-flex rounded-full text-nowrap">
-          Latest Placement Drives
+        <span className="text-xl md:text-3xl font-semibold inline-flex rounded-full text-nowrap">
+          Placement Drives
         </span>
         <Divider />
-        <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {loading && "Loading..."}
+          {error && "Check internet connection!"}
           {data.map((item) => {
             return (
               <div
@@ -53,9 +53,7 @@ export default function PlacementDrives() {
                         <Button
                           className="hover:shadow-xl bg-white cursor-pointer rounded-3xl"
                           variant="outline"
-                        >
-                          {" "}
-                          Apply
+                        >Apply
                         </Button>
                       </NavLink>
                     )}

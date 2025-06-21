@@ -1,7 +1,7 @@
 import axios from "axios";
 import Papa from "papaparse";
 import { useState, useEffect } from "react";
-
+import PlacementDrivesData from "../../assets/data/placement-drives-data.js" // default dummy local data
 const GOOGLE_SHEET_API = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQl8ryQvd4otEGN24fOy0eWNudgr1zPRJtLC1x5xw0CoIb_6dEBns5hPZzLX9YzAV166dEZz-bMWfGm/pub?gid=673892581&single=true&output=csv";
 
 // CSV to JSON converter
@@ -58,7 +58,7 @@ export function usePlacementDrivesData() {
         `${title} ${description} ${branch} ${date}`.toLowerCase();
       return searchableText.includes(searchTerm.toLowerCase());
     });
-    
+
   return {
     data: filteredData,
     loading,
@@ -66,4 +66,5 @@ export function usePlacementDrivesData() {
     searchTerm,
     setSearchTerm,
   };
+  
 }

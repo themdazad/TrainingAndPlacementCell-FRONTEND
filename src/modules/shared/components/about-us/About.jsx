@@ -1,13 +1,14 @@
 import { Button } from "@heroui/react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 export default function About() {
   return (
     <>
       <div>
         <p className="text-sm tracking-widest text-bold uppercase dark:text-neutral-400 mb-2">
-          About Us
+          About
         </p>
-        <h2 className="text-2xl md:text-3xl font-extrabold text-neutral-800 dark:text-white">
+        <h2 className="text-xl md:text-6xl text-bold text-neutral-800 dark:text-white">
           Training & Placement Cell
         </h2>
         <p className="my-4 text-justify text-neutral-600 dark:text-neutral-300 leading-relaxed">
@@ -21,7 +22,7 @@ export default function About() {
           the academic-industry gap and provide students with ample
           opportunities to realize their professional goals.
         </p>
-        <Button className="rounded-3xl" color="primary">Know more</Button>
+        <button className="rounded-3xl text-blue-500">Know more</button>
       </div>
     
     </>

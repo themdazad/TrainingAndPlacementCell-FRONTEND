@@ -1,6 +1,6 @@
 import { Button, Divider, Image } from "@heroui/react";
 import { useState } from "react";
-import { Dot, Eye, GithubIcon, Globe, Link } from "lucide-react";
+import {Link } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import WorkshopsTrainingData from "../../../../assets/data/workshops-training-data.js";
 
@@ -10,7 +10,7 @@ export default function WorkshopsTraining() {
     <div className="section ">
       <section className="max-w-screen-2xl m-auto space-y-10 w-full">
         {/* page title  */}
-        <span className="text-2xl md:text-3xl font-extrabold backdrop-blur-md inline-flex rounded-full text-nowrap">
+        <span className="text-xl md:text-3xl font-semibold backdrop-blur-md inline-flex rounded-full  bg-clip-text bg-gradient-to-r from-blue-500 to-green-500 text-nowrap">
           Workshops & Training
         </span>
         <Divider />
@@ -46,7 +46,7 @@ export default function WorkshopsTraining() {
                     {!!item?.apply && (
                       <NavLink to={item.apply} target="_blank">
                         <Button
-                          className="hover:shadow-xl  cursor-pointer rounded-3xl"
+                          className="hover:shadow-xl cursor-pointer rounded-3xl"
                           variant="outline"
                         >
                           <Link /> Apply
