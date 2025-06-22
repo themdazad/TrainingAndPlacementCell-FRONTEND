@@ -8,7 +8,7 @@ export default function WorkshopsTraining() {
   const [cardData, setCardData] = useState(WorkshopsTrainingData);
   return (
     <div className="section ">
-      <section className="max-w-screen-2xl m-auto space-y-6 w-full">
+      <section className="max-w-screen-2xl m-auto px-[2.5%] space-y-6 w-full">
         {/* page title  */}
         <span className="text-xl md:text-3xl font-semibold backdrop-blur-md inline-flex rounded-full  bg-clip-text bg-gradient-to-r from-blue-500 to-green-500 text-nowrap">
           Workshops & Training
@@ -66,14 +66,13 @@ export default function WorkshopsTraining() {
                     )}
                   </div>
                 </div>
-                <div className="absolute z-10 px-3 py-1 flex dark:bg-stone-800 text-white bg-blue-500 rounded-tr-3xl opacity-100 group-hover:opacity-0 min-w-max -bottom-0 group-hover:-bottom-full transition-all duration-500 ">
+                <div className="absolute z-10 px-3 py-1 text-sm flex dark:bg-stone-800 text-white bg-blue-500 rounded-tr-3xl opacity-100 group-hover:opacity-0 min-w-max -bottom-0 group-hover:-bottom-full transition-all duration-500 ">
                   <p className=" px-2">{item.title}</p>
                 </div>
               </div>
             );
           })}
         </div>
-        
       </section>
     </div>
   );

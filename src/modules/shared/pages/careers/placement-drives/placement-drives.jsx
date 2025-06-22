@@ -79,7 +79,7 @@ export function JobsInternships({ data }) {
         filteredNotices.map((notice) => (
           <div
             key={notice.id}
-            className="bg-sky-500/10 hover:border-t-4 border-t-blue-500 rounded-3xl p-4 hover:shadow-md transition-all duration-200"
+            className="snap-center min-w-[320px] bg-sky-500/10 hover:border-t-4 border-t-blue-500 rounded-3xl p-4 hover:shadow-md transition-all duration-200"
           >
             <div className="flex items-start justify-between mb-3">
               <div className="flex-1">
@@ -102,7 +102,7 @@ export function JobsInternships({ data }) {
             <p className="mb-3">{notice.description}</p>
 
             <div className="flex items-center justify-between">
-              <div className="flex items-center text-sm">
+              <div className="flex text-sm">
                 <MapPin className="w-4 h-4 mr-1" />
                 {notice.location}
               </div>

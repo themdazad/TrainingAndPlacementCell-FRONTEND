@@ -19,7 +19,7 @@ const ThemeSwitch = () => {
   return (
     <Switch
       defaultSelected={theme === "dark"}
-      size="lg"
+      size="md"
       color="default"
       startContent={<Sun />}
       endContent={<MoonStar />}

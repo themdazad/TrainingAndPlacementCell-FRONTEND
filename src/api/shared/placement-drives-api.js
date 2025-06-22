@@ -47,7 +47,8 @@ export function usePlacementDrivesData() {
   const filteredData = response
     .slice()
     .reverse()
-    .filter((item) => {
+    .filter((item) => { 
+      
       const title = String(item.title ?? "");
       const description = String(item.description ?? "");
       const branch = String(item.branch ?? "");

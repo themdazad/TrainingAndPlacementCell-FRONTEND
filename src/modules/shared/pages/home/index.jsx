@@ -11,7 +11,7 @@ import HaveDoubts from "../../components/home/have-doubts-section.jsx";
 export default function Home() {
   return (
     <main className="dark:bg-neutral-900">
-      <section className="min-h-screen overflow-hidden space-y-10 lg:space-y-40 py-10">
+      <section className="min-h-screen overflow-hidden space-y-16 lg:space-y-32">
         <Hero />
         <Announcements />
         <PlacementDrives />

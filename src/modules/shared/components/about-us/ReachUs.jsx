@@ -64,21 +64,20 @@ export default function ReachUs() {
             width=""
             height=""
             allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
             className="google-map w-full h-full rounded-3xl"
           ></iframe>
         </div>
 
         {/* Travel cards */}
-        <div className="contact-info grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="snap-mandatory snap-x overflow-x-scroll scrollbar-hide p-2 flex items-start  gap-6">
           {data.map(({ mode, icon, description, cities }) => (
             <div
               key={mode}
-              className="card shadow-md p-6 dark:bg-neutral-800 rounded-3xl"
+              className="snap-center min-w-[280px] card shadow-md p-6 dark:bg-neutral-800 rounded-3xl"
             >
               <h1 className="text-lg font-bold inline-flex gap-2 text-blue-500 dark:text-blue-400">
-                {icon}{mode}
+                {icon}
+                {mode}
               </h1>
               <p className="mt-2">{description}</p>
               {cities?.length > 0 && (

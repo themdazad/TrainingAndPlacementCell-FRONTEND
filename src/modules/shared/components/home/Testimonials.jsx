@@ -62,8 +62,8 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="section text-center">
-      <h2 className="text-3xl sm:text-4xl font-extrabold text-neutral-900 dark:text-white max-w-2xl mx-auto mb-20 leading-snug">
+    <section className="max-w-screen-2xl m-auto px-[2.5%] text-center ">
+      <h2 className="text-2xl sm:text-4xl font-extrabold text-neutral-900 dark:text-white max-w-2xl mx-auto mb-10 leading-snug">
         Hear from our students and recruiters.{" "}
         <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500">
           100+ success stories
@@ -89,7 +89,7 @@ const Testimonials = () => {
               } transition duration-300 ease-in-out hover:scale-105 hover:shadow-md`}
             >
               <p className="text-neutral-800 dark:text-neutral-100 mb-4 leading-relaxed">
-                "{t.text}"
+                {t.text}
               </p>
               <div>
                 <p className="font-semibold text-neutral-900 text-sm dark:text-white">

@@ -3,7 +3,7 @@ import { useState } from "react";
 
 export default function FaqFeedbackForm() {
   return (
-    <section className=" section grid lg:grid-cols-2 gap-6">
+    <section className=" max-w-screen-2xl m-auto px-[2.5%] grid lg:grid-cols-2 gap-6">
       <FAQAccordion />
       <FeedbackForm />
     </section>
@@ -53,9 +53,9 @@ function FAQAccordion() {
   const [accordionItems, setAccordionItems] = useState(faq_data);
 
   return (
-    <div className="accordion ">
-      <h2 className="text-3xl text-center my-6 font-extrabold text-neutral-900 dark:text-white">
-        FAQ
+    <div className="asked-questions-section  ">
+      <h2 className="text-2xl text-center my-6 font-extrabold text-neutral-900 dark:text-white">
+        Asked Questions!
       </h2>
       <Accordion variant="light" className="md:text-lg">
         {accordionItems.map((item, index) => (

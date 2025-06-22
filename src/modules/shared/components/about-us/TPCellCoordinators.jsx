@@ -4,35 +4,31 @@ import { Linkedin, Github, Mail } from "lucide-react";
 const coordinators = [
   {
     name: "Md. Azad",
-    designation: "Electrical Engineering, 23103151965",
+    designation: "Electrical Engineering",
     mobile: "+91 9110172886",
     email: "collezian@gmail.com",
     linkedin: "https://www.linkedin.com/in/themdazad",
-    github: "https://www.github.com/themdazad/",
   },
   {
     name: "Abhishek Kumar Singh",
-    designation: "Mechanical Engineering, 22102151907",
+    designation: "Mechanical Engineering",
     mobile: "+91 8804080749",
     email: "abhishek.gecs@gmail.com",
     linkedin: "https://www.linkedin.com/in/abhishek-kumar-singh-8312a931b",
-    github: "",
   },
   {
     name: "Abhinav Kumar",
-    designation: "Electrical Engineering, 23103151945",
+    designation: "Electrical Engineering",
     mobile: "",
     email: "",
     linkedin: "#",
-    github: "",
   },
   {
     name: "Anupam Kumar",
-    designation: "Electrical Engineering, 23103151945",
+    designation: "Electrical Engineering",
     mobile: "",
     email: "",
     linkedin: "#",
-    github: "",
   },
   {
     name: "Shahnoor Ishtiyaque",
@@ -40,7 +36,6 @@ const coordinators = [
     mobile: "",
     email: "",
     linkedin: "#",
-    github: "",
   },
 ];
 
@@ -51,7 +46,7 @@ export default function TPCellCoordinators() {
         {/* Section Title */}
         <div className="title  text-center py-12">
           <h1 className="text-xl md:text-3xl font-extrabold">
-            T&P Student Coordinators
+            T&P Coordinators
           </h1>
           <p>
             Have questions about placements or internships? We’re here to help!
@@ -86,17 +81,13 @@ export function Card({
   github,
 }) {
   return (
-    <div className="w-full max-w-4xl bg-neutral-100/50 dark:bg-neutral-800 rounded-3xl shadow-md grid grid-cols-2 p-6 gap-3 items-start md:items-center justify-between">
-      <h3 className="col-span-2 text-lg font-bold dark:text-white">{name}</h3>
-      {/* Middle Content */}
-      <div className="flex-1 text-center md:text-left space-y-2">
-        <p className="text-sm ">{designation}</p>
-        <p className="text-sm">Mobile: {mobile}</p>
-      </div>
+    <div className="w-full max-w-4xl bg-neutral-100/50 dark:bg-neutral-800 rounded-3xl shadow-md  space-y-2 p-6 gap-3 ">
+      <h3 className="text-center text-lg font-bold">{name}</h3>
+      <p className="text-center">{designation}</p>
 
-      {/* Right-Aligned Bottom Section */}
-      <div className="flex flex-col items-end justify-end h-full self-stretch gap-2">
-        <div className="flex gap-4 ">
+      <div className="social-media-links flex items-center justify-center gap-4">
+       {mobile && <p className="text-sm flex text-nowrap">Contact: {mobile}</p>}
+        <div className="flex items-center gap-4 ">
           {/* LinkedIn */}
           {linkedin && (
             <a
@@ -108,26 +99,15 @@ export function Card({
               <Linkedin className="w-6 h-6" />
             </a>
           )}
-
-          {Github && (
-            <a
-              href={github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300"
-            >
-              <Github className="w-6 h-6" />
-            </a>
-          )}
+          {/* Email */}
+          <a
+            href={`mailto:${email}`}
+            className="text-blue-500 dark:text-blue-400 hover:underline flex items-center gap-1"
+          >
+            <Mail className="w-6 h-6" />
+            <span className="hidden md:inline">{email}</span>
+          </a>
         </div>
-        {/* Email */}
-        <a
-          href={`mailto:${email}`}
-          className="text-blue-500 dark:text-blue-400 hover:underline flex items-center gap-1"
-        >
-          <Mail className="w-4 h-4" />
-          <span className="hidden md:inline">{email}</span>
-        </a>
       </div>
     </div>
   );

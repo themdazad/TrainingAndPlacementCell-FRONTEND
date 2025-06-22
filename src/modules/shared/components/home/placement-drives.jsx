@@ -15,21 +15,19 @@ export default function PlacementDrives() {
   const { data, loading, error, searchTerm, setSearchTerm } =
     usePlacementDrivesData();
   return (
-    <div className="section ">
-      <section className="max-w-screen-2xl m-auto space-y-6 w-full">
-        {/* page title  */}
-        <span className="text-xl md:text-3xl font-semibold inline-flex rounded-full text-nowrap">
-          Placement Drives
-        </span>
-        <Divider />
-        <div className="py-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 items-center gap-y-6 overflow-y-auto">
-          <JobsInternships data={jobsInternships} />
-        </div>
-        <Link to="/careers/placement-drives" className="flex justify-end">
-          See more <ArrowUpRight />{" "}
-        </Link>
-      </section>
-    </div>
+    <section className="max-w-screen-2xl m-auto px-[2.5%] space-y-6 w-full">
+      {/* page title  */}
+      <span className="text-xl md:text-3xl font-semibold inline-flex rounded-full text-nowrap">
+        Placement Drives
+      </span>
+      <Divider />
+      <div className="py-2 snap-mandatory snap-x overflow-x-scroll scrollbar-hide flex items-stretch gap-x-4 gap-y-6 overflow-y-auto">
+        <JobsInternships data={jobsInternships} />
+      </div>
+      <Link to="/careers/placement-drives" className="flex justify-end">
+        See more <ArrowUpRight />{" "}
+      </Link>
+    </section>
   );
 }
 

@@ -40,46 +40,43 @@ const logos = [
 
 const PastRecruiters = () => {
   return (
-      <section className="section flex flex-col items-center justify-center gap-6">
-        {/* title */}
-        <div className="mb-6 text-2xl md:text-[32px] font-extrabold">
-          Past Recruiters
-        </div>
-        {/* logos bar */}
-        <div
-          className="group relative flex justify-center gap-6 overflow-hidden p-2"
-          style={{
-            maskImage:
-              "linear-gradient(to right, transparent 0%, black 40%, black 70%, transparent 100%)",
-          }}
-        >
-          {Array(5)
-            .fill(null)
-            .map(
-              (
-                _,
-                index // Use the second argument of map for the index
-              ) => (
-                <div
-                  key={index}
-                  className="flex shrink-0 animate-logo-cloud flex-row justify-around gap-6"
-                >
-                  {logos.map((logo, key) => (
-                    <a href={`${logo.link}`} target="_blank">
-                      <Image
-                        key={key}
-                        src={logo.url}
-                        className="max-h-12 px-2 mix-blend-multiply saturate-0 hover:saturate-100 transition-all duration-500 hover:scale-110 dark:invert"
-                        alt={`${logo.name}`}
-                      />
-                    </a>
-                  ))}
-                </div>
-              )
-            )}
-        </div>
-      </section>
-   
+    <section className="max-w-screen-2xl m-auto px-[2.5%] py-24 flex flex-col items-center justify-center gap-6">
+      {/* title */}
+      <div className="mb-6 text-xl md:text-[32px] font-extrabold">
+        Past Recruiters
+      </div>
+      {/* logos bar */}
+      <div
+        className="group relative flex justify-center gap-6 overflow-hidden p-2"
+        style={{
+          maskImage:
+            "linear-gradient(to right, transparent 0%, black 40%, black 70%, transparent 100%)",
+        }}
+      >
+        {Array(5)
+          .fill(null)
+          .map(
+            (
+              _,
+              index // Use the second argument of map for the index
+            ) => (
+              <div
+                key={index}
+                className="flex shrink-0 animate-logo-cloud flex-row justify-around gap-6"
+              >
+                {logos.map((logo, key) => (
+                  <Image
+                    key={key}
+                    src={logo.url}
+                    className="max-h-12 px-2 mix-blend-multiply transition-all duration-500 hover:scale-110 "
+                    alt={`${logo.name}`}
+                  />
+                ))}
+              </div>
+            )
+          )}
+      </div>
+    </section>
   );
 };
 
