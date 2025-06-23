@@ -1,13 +1,13 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
 import { MapPin, ExternalLink } from "lucide-react";
-import { Button } from "@heroui/react";
-import PlacementDrivesDataAPI from "../../../../../api/shared/placement-drives-api.js"; // API path
-
+import { Button, Skeleton } from "@heroui/react";
+import usePlacementDrivesData from "../../../../../api/shared/placement-drives-api.js";
 
 export default function PlacementDrives() {
- const { res, loading, error } = PlacementDrivesDataAPI(); // Fetched data
-    
+  const { data, loading, error } = usePlacementDrivesData();
+  const [res, setRes] = useState(data);
+
   return (
     <main className="">
       {/* Header/ */}
@@ -29,15 +29,14 @@ export default function PlacementDrives() {
       <hr />
       <section>
         <div className="max-w-screen-2xl m-auto px-[2%] py-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 items-center gap-y-6 overflow-y-auto">
-          <JobsInternships err={error} isLoading={loading} res={res} />
+          <JobsInternships error={error} loading={loading} data={res} />
         </div>
       </section>
     </main>
   );
 }
 
-export function JobsInternships({res,err,isLoading}) {
-  const [data, setData] = useState(res);
+export function JobsInternships({ data, error, loading }) {
   const getCategoryColor = (category) => {
     switch (category) {
       case "Placement":
@@ -51,69 +50,66 @@ export function JobsInternships({res,err,isLoading}) {
     }
   };
 
+  if (error) return <p>Something went wrong!</p>;
+  if (loading) return <p>Loading...</p>;
+
   return (
     <>
-      {data.length > 0 ? (
-        data.map((post) => (
-          <div
-            key={post._id}
-            className="snap-center min-w-[320px] bg-sky-500/10 hover:border-t-4 border-t-blue-500 rounded-3xl p-4 hover:shadow-md transition-all duration-200"
-          >
-            <div className="flex items-start justify-between mb-3">
-              <div className="flex-1">
-                <h4 className="text-lg font-semibold mb-1">{post.title}</h4>
-                <div className="flex items-center gap-2 mb-2">
-                  <span
-                    className={`px-2 py-1 rounded-full text-xs font-medium ${getCategoryColor(
-                      post.category
-                    )}`}
-                  >
-                    {post.category}
+      {data.map((post) => (
+        <div
+          key={post._id}
+          className="snap-center min-w-[320px] bg-sky-500/10 hover:border-t-4 border-t-blue-500 rounded-3xl p-4 hover:shadow-md transition-all duration-200"
+        >
+          <div className="flex items-start justify-between mb-3">
+            <div className="flex-1">
+              <h4 className="text-lg font-semibold mb-1">{post.title}</h4>
+              <div className="flex items-center gap-2 mb-2">
+                <span
+                  className={`px-2 py-1 rounded-full text-xs font-medium ${getCategoryColor(
+                    post.category
+                  )}`}
+                >
+                  {post.category}
+                </span>
+                {post.deadline && (
+                  <span className="px-2 text-danger py-1 rounded-full text-xs font-medium">
+                    {post.deadline}
                   </span>
-                  {post.deadline && (
-                    <span className="px-2 text-danger py-1 rounded-full text-xs font-medium">
-                      {post.deadline}
-                    </span>
-                  )}
-                </div>
+                )}
               </div>
-              <div className="text-sm">{post.post_date}</div>
             </div>
+            <div className="text-sm">{post.post_date}</div>
+          </div>
 
-            {post.description && <p className="mb-3">{post.description}</p>}
+          {post.description && <p className="mb-3">{post.description}</p>}
 
-            <div className="flex items-center justify-between">
-              {post.location && (
-                <div className="flex text-sm">
-                  <MapPin className="w-4 h-4 mr-1" />
-                  {post.location}
-                </div>
-              )}
-              <div className="flex items-center gap-2">
-                {post.apply && (
-                  <a href={post.apply} target="_blank">
-                    <Button variant="outline" color="primary" size="sm">
-                      Apply
-                    </Button>
-                  </a>
-                )}
-                {post.external_link && (
-                  <a href={post.external_link} target="_blank">
-                    <Button variant="outline" size="sm" className="text-xs">
-                      <ExternalLink className="w-3 h-3 mr-1" />
-                      View Details
-                    </Button>
-                  </a>
-                )}
+          <div className="flex items-center justify-between">
+            {post.location && (
+              <div className="flex text-sm">
+                <MapPin className="w-4 h-4 mr-1" />
+                {post.location}
               </div>
+            )}
+            <div className="flex items-center gap-2">
+              {post.apply && (
+                <a href={post.apply} target="_blank">
+                  <Button variant="outline" color="primary" size="sm">
+                    Apply
+                  </Button>
+                </a>
+              )}
+              {post.external_link && (
+                <a href={post.external_link} target="_blank">
+                  <Button variant="outline" size="sm" className="text-xs">
+                    <ExternalLink className="w-3 h-3 mr-1" />
+                    View Details
+                  </Button>
+                </a>
+              )}
             </div>
           </div>
-        ))
-      ) : (
-        <div className="text-center py-8 text-gray-500">
-         {err}
         </div>
-      )}
+      ))}
     </>
   );
 }

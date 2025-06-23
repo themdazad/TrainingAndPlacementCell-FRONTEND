@@ -14,17 +14,16 @@ const NavigationMenuDetails = [
     dropdown: true,
     items: [
       { name: "Placement Drives", path: "/careers/placement-drives" },
+      { name: "Mock Interviews", path: "/careers/mock-interview" },
       {
         name: "Summer Web Development 2025",
-        path: "/training/summer-web-development-2025",
+        path: "/careers/summer-web-development-2025",
       },
-      { name: "Mock Interviews", path: "/training/mock-interview" },
-      { name: "Workshops & Webinars", path: "/training/workshops" },
     ],
   },
   {
-	name: "Alumni",
-	path: "/alumni",
+    name: "Alumni",
+    path: "/alumni",
   },
   {
     name: "Gallery",

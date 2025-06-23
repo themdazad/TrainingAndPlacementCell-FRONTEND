@@ -1,25 +1,9 @@
-import axios from "axios";
-import Papa from "papaparse";
+
 import { BellDot, Search } from "lucide-react";
-import { useState, useEffect } from "react";
-import { easeIn, motion } from "framer-motion";
+import { useState } from "react";
+import { motion } from "framer-motion";
 import { Input } from "@heroui/react";
-
-// csv to json converter
-const csvToJson = (csvString) => {
-  const results = Papa.parse(csvString, {
-    header: true,
-    dynamicTyping: true,
-    skipEmptyLines: true,
-  });
-
-  if (results.errors.length > 0) {
-    console.error("Error parsing CSV:", results.errors);
-    return null;
-  }
-
-  return results.data;
-};
+import useNoticeAnnouncements from "../../../../api/shared/notice-announcements-api.js"
 
 export default function Announcements() {
   return (
@@ -29,32 +13,10 @@ export default function Announcements() {
   );
 }
 export function Notice() {
-  const [response, setResponse] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+const {data, loading, error} = useNoticeAnnouncements();
   const [searchTerm, setSearchTerm] = useState(""); // 🔍 search
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get(
-          "https://docs.google.com/spreadsheets/d/e/2PACX-1vQl8ryQvd4otEGN24fOy0eWNudgr1zPRJtLC1x5xw0CoIb_6dEBns5hPZzLX9YzAV166dEZz-bMWfGm/pub?gid=1871965751&single=true&output=csv",
-          { withCredentials: false }
-        );
-        setResponse(csvToJson(res.data));
-      } catch (err) {
-        setError(err);
-        console.error("Error fetching data:", err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
-
   // Filter notices by searchTerm
-  const filteredNotices = response
+  const filteredNotices = data
     .slice() // Clone to prevent mutating original
     .reverse()
     .filter((item) =>
@@ -62,6 +24,7 @@ export function Notice() {
         .toLowerCase()
         .includes(searchTerm.toLowerCase())
     );
+
   return (
     <motion.section
       initial={{ width: 512, y: 10 }}
@@ -90,13 +53,13 @@ export function Notice() {
         </div>
 
         <div
-          className="row-container box-border my-[1em] max-h-64 overflow-y-scroll scrollbar-hide overflow-x-hidden"
+          className="row-container box-border my-[1em] max-h-64 overflow-y-scroll  overflow-x-hidden"
           style={{
             maskImage:
               "linear-gradient(to bottom, transparent 0%, black 0%, black 50%, transparent 100%)",
           }}
         >
-          {filteredNotices.length > 0 ? (
+          {filteredNotices ? (
             filteredNotices.map((data, index) => (
               <a
                 key={index}
@@ -115,7 +78,9 @@ export function Notice() {
             ))
           ) : (
             <p className="text-neutral-500 dark:text-neutral-400">
-              No internet !
+            
+              {loading && <p className="animate-pulse">Loading...</p>}
+              {error && { error }}
             </p>
           )}
         </div>
