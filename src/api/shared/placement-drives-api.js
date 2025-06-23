@@ -20,7 +20,7 @@ const csvToJson = (csvString) => {
 };
 
 // ✅ Proper custom hook
-export function usePlacementDrivesData() {
+export default function usePlacementDrivesData() {
   const [response, setResponse] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
