@@ -53,7 +53,7 @@ export default function Hero(){
         </div>
       </div>
 
-      <div className="max-md:hidden">
+      <div>
         <SimpleSlider slider_data={sliderImages} />
       </div>
     </section>
