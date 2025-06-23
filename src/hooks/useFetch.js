@@ -16,7 +16,7 @@ export default function useGoogleSheet(url) {
         });
         setRes(csvToJson(res.data) || []); // calling csv-string to JSON converter.
       } catch (err) {
-        setError(err);
+        setError(err.message);
         console.error("Error fetching data:", err);
       } finally {
         setLoading(false);
@@ -26,7 +26,7 @@ export default function useGoogleSheet(url) {
     
   }, []);
 
-  return { res, loading, error };
+  return {res,error,loading}; // return a JSON
 }
 
 

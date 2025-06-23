@@ -4,8 +4,8 @@ import { JobsInternships } from "../../pages/careers/placement-drives/placement-
 import PlacementDrivesDataAPI from "../../../../api/shared/placement-drives-api.js"; // API path
 
 export default function PlacementDrives() { 
-  const { data, loading, error } = PlacementDrivesDataAPI(); // Fetched data
-   
+  const { res, loading, error } = PlacementDrivesDataAPI(); // Fetched data
+  
   return (
     <section className="max-w-screen-2xl m-auto px-[2.5%] space-y-6 w-full">
       {/* page title  */}
@@ -17,7 +17,7 @@ export default function PlacementDrives() {
         <JobsInternships
           err={error}
           isLoading={loading}
-          res={data}
+          res={res}
         />
       </div>
       <Link to="/careers/placement-drives" className="flex justify-center">

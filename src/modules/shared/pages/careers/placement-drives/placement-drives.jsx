@@ -6,7 +6,7 @@ import PlacementDrivesDataAPI from "../../../../../api/shared/placement-drives-a
 
 
 export default function PlacementDrives() {
-  const { data, loading, error } = PlacementDrivesDataAPI(); // Fetched data
+ const { res, loading, error } = PlacementDrivesDataAPI(); // Fetched data
     
   return (
     <main className="">
@@ -29,7 +29,7 @@ export default function PlacementDrives() {
       <hr />
       <section>
         <div className="max-w-screen-2xl m-auto px-[2%] py-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 items-center gap-y-6 overflow-y-auto">
-          <JobsInternships err={error} isLoading={loading} res={data} />
+          <JobsInternships err={error} isLoading={loading} res={res} />
         </div>
       </section>
     </main>
@@ -53,7 +53,7 @@ export function JobsInternships({res,err,isLoading}) {
 
   return (
     <>
-      {data ? (
+      {data.length > 0 ? (
         data.map((post) => (
           <div
             key={post._id}
@@ -111,7 +111,7 @@ export function JobsInternships({res,err,isLoading}) {
         ))
       ) : (
         <div className="text-center py-8 text-gray-500">
-         <p>No internet !</p>
+         {err}
         </div>
       )}
     </>
