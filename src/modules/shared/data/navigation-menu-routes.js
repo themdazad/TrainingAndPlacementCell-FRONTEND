@@ -23,8 +23,8 @@ const NavigationMenuDetails = [
     ],
   },
   {
-	name: "Alumani",
-	path: "/alumani",
+	name: "Alumni",
+	path: "/alumni",
   },
   {
     name: "Gallery",

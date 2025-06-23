@@ -74,7 +74,7 @@ export function Notice() {
         <div className="grid grid-cols-2 items-center justify-between">
           <h2 className="text-2xl text-nowrap font-semibold text-blue-500 flex items-center gap-2 ">
             <BellDot />
-            Latest updates
+            T&P Notices/Announcements
           </h2>
 
           {/* 🔍 Search Input */}
