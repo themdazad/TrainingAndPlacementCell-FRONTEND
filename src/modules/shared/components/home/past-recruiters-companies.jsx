@@ -1,80 +1,40 @@
-import { Image } from "@heroui/react";
-
-const logos = [
-  {
-    name: "prithivi pratap buildcon",
-    link: "https://prithivipratapbuildcon.com/",
-    url: "https://prithivipratapbuildcon.com/image/logo.png",
-  },
-  {
-    name: "high-technext engineering & telecom pvt ltd",
-    link: "https://high-technext.com/",
-    url: "https://blogger.googleusercontent.com/img/a/AVvXsEhrpjspiyfkKTXyAVTyuK7w8CcTYv1O-o8trPlYN0a1z3kMbnxZc01rJVFaQTnxRJHsl4Nwau_NWroWWHxwbnuADKpK4ObApMVmSEiVAiHwMaZk1aiZxOeQMpW6ZxeoH9d0bJ1v4edV5rAKlCd5ULSBoWUnYUTuf8GVSNyG9wptaLhLvL5U0QnHCiVJLg",
-  },
-  {
-    name: "Rinex Logo",
-    link: "https://rinex.ai/",
-    url: "https://www.sret.edu.in/images/Placement/logo/RInex.png",
-  },
-  {
-    name: "Ecospace infra",
-    link: "https://www.ecospaceinfra.com/wp-content/uploads/2019/06/LOGO-3.png",
-    url: "https://www.ecospaceinfra.com/wp-content/uploads/2019/06/LOGO-3.png",
-  },
-  {
-    name: "Subros limited",
-    link: "https://subros.com/",
-    url: "https://tse4.mm.bing.net/th?id=OIP.MxbqpqV51-L4PNVOIR_BGwHaB1&rs=1&pid=ImgDetMain",
-  },
-  {
-    name: "argumentik software private limited",
-    link: "https://agumentiksoftware.com/",
-    url: "https://th.bing.com/th/id/R.ba2981bc542e78ac8b5188ae54f74191?rik=FJ%2fblXUhmQ%2fUtA&riu=http%3a%2f%2fagumentiksoftware.com%2fimages%2fSOFTWARERED%26BLACK.png&ehk=Lbw42WINhMkZEZCN8X0hf74K2l1ccyrNOky38md6viU%3d&risl=&pid=ImgRaw&r=0",
-  },
-  {
-    name: "nissi engineering solution pvt ltd",
-    link: "https://nissi.co.in/",
-    url: "https://th.bing.com/th/id/OIP.uHxfZSoiW2LbqQ6CEWGsPgHaC-?rs=1&pid=ImgDetMain",
-  },
-];
+import { PastRecruitersData } from "../../../../assets/data/past-recruiters-data";
 
 const PastRecruiters = () => {
   return (
-    <section className="max-w-screen-2xl m-auto px-[2.5%] py-24 flex flex-col items-center justify-center gap-6">
-      {/* title */}
-      <div className="mb-6 text-xl md:text-[32px] font-extrabold">
-        Past Recruiters
-      </div>
-      {/* logos bar */}
+    <section className="max-w-screen-2xl mx-auto px-[2.5%] py-24 flex flex-col items-center gap-8">
+      {/* Title */}
+      <h2 className="text-xl md:text-3xl font-extrabold">Past Recruiters</h2>
+
+      {/* Auto-scrolling logos */}
       <div
-        className="group relative flex justify-center gap-6 overflow-hidden p-2"
+        className="relative flex overflow-hidden p-2"
         style={{
           maskImage:
-            "linear-gradient(to right, transparent 0%, black 40%, black 70%, transparent 100%)",
+            "linear-gradient(to right, transparent 0%, black 40%, black 60%, transparent 100%)",
         }}
       >
-        {Array(5)
-          .fill(null)
-          .map(
-            (
-              _,
-              index // Use the second argument of map for the index
-            ) => (
-              <div
-                key={index}
-                className="flex shrink-0 animate-logo-cloud flex-row justify-around gap-6"
+        {Array.from({ length: 5 }).map((_, loopIndex) => (
+          <div
+            key={loopIndex}
+            className="flex shrink-0 animate-logo-cloud gap-6"
+          >
+            {PastRecruitersData.map((logo, logoIndex) => (
+              <a
+                href={logo.link}
+                key={`${loopIndex}-${logo.name}`}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                {logos.map((logo, key) => (
-                  <Image
-                    key={key}
-                    src={logo.url}
-                    className="max-h-12 px-2 mix-blend-multiply transition-all duration-500 hover:scale-110 "
-                    alt={`${logo.name}`}
-                  />
-                ))}
-              </div>
-            )
-          )}
+                <img
+                  src={logo.url}
+                  alt={logo.name}
+                  className="max-h-12 px-2 object-contain mix-blend-multiply transition-transform duration-500 hover:scale-110"
+                />
+              </a>
+            ))}
+          </div>
+        ))}
       </div>
     </section>
   );

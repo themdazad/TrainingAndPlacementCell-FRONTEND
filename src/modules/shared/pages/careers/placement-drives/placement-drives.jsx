@@ -1,17 +1,21 @@
 /* eslint-disable no-unused-vars */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MapPin, ExternalLink } from "lucide-react";
-import { Button, Skeleton } from "@heroui/react";
+import { Button } from "@heroui/react";
 import usePlacementDrivesData from "../../../../../api/shared/placement-drives-api.js";
 
-export default function PlacementDrives() {
+export default function PlacementDrivesPage() {
   const { data, loading, error } = usePlacementDrivesData();
-  const [res, setRes] = useState(data);
+  const [res, setRes] = useState([]);
+
+  useEffect(() => {
+    setRes(data);
+  }, [data]);
 
   return (
     <main className="">
       {/* Header/ */}
-      <div className="top-banner">
+      <div className="top-banner shadow-md">
         <div className="banner-container max-w-screen-2xl m-auto space-y-6 px-[2%] py-6 md:py-12 text-center">
           <div className="inline-flex uppercase items-center px-4 py-2 bg-blue-500/20 text-blue-800 dark:text-blue-100   rounded-full text-sm font-medium">
             <span className="blinking-dot w-2 h-2  bg-blue-600 rounded-full mr-2 animate-pulse"></span>
@@ -26,7 +30,6 @@ export default function PlacementDrives() {
           </h1>
         </div>
       </div>
-      <hr />
       <section>
         <div className="max-w-screen-2xl m-auto px-[2%] py-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 items-center gap-y-6 overflow-y-auto">
           <JobsInternships error={error} loading={loading} data={res} />
@@ -55,61 +58,77 @@ export function JobsInternships({ data, error, loading }) {
 
   return (
     <>
-      {data.map((post) => (
-        <div
-          key={post._id}
-          className="snap-center min-w-[320px] bg-sky-500/10 hover:border-t-4 border-t-blue-500 rounded-3xl p-4 hover:shadow-md transition-all duration-200"
-        >
-          <div className="flex items-start justify-between mb-3">
-            <div className="flex-1">
-              <h4 className="text-lg font-semibold mb-1">{post.title}</h4>
-              <div className="flex items-center gap-2 mb-2">
-                <span
-                  className={`px-2 py-1 rounded-full text-xs font-medium ${getCategoryColor(
-                    post.category
-                  )}`}
-                >
-                  {post.category}
-                </span>
-                {post.deadline && (
-                  <span className="px-2 text-danger py-1 rounded-full text-xs font-medium">
-                    {post.deadline}
+      {data
+        .slice()
+        .reverse()
+        .map((post, index) => (
+          <div
+            key={post._id || post.title + post.post_date || index}
+            className="min-w-[320px] snap-center bg-sky-100 dark:bg-sky-900/10 rounded-3xl p-4 border-t-4 border-transparent hover:border-blue-500 hover:shadow transition duration-200"
+          >
+            {/* Header */}
+            <div className="flex justify-between items-start mb-3">
+              <div className="flex-1">
+                <h4 className="text-lg font-semibold mb-1">{post.title}</h4>
+                <div className="flex items-center gap-2 text-xs mb-2">
+                  <span
+                    className={`px-2 py-1 rounded-full font-medium ${getCategoryColor(
+                      post.category
+                    )}`}
+                  >
+                    {post.category}
                   </span>
+                  {post.deadline && (
+                    <span className="px-2 py-1 rounded-full text-danger font-medium">
+                      {post.deadline}
+                    </span>
+                  )}
+                </div>
+              </div>
+              <span className="text-sm">{post.post_date}</span>
+            </div>
+
+            {/* Description */}
+            {post.description && (
+              <p className="mb-3 text-sm">{post.description}</p>
+            )}
+
+            {/* Footer */}
+            <div className="flex justify-between items-center text-sm">
+              {post.location && (
+                <div className="flex items-center gap-1">
+                  <MapPin className="w-4 h-4" />
+                  {post.location}
+                </div>
+              )}
+              <div className="flex gap-2">
+                {post.apply && (
+                  <a
+                    href={post.apply}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button variant="outline" color="primary" size="sm">
+                      Apply
+                    </Button>
+                  </a>
+                )}
+                {post.external_link && (
+                  <a
+                    href={post.external_link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button variant="outline" size="sm" className="text-xs">
+                      <ExternalLink className="w-3 h-3 mr-1" />
+                      View Details
+                    </Button>
+                  </a>
                 )}
               </div>
             </div>
-            <div className="text-sm">{post.post_date}</div>
           </div>
-
-          {post.description && <p className="mb-3">{post.description}</p>}
-
-          <div className="flex items-center justify-between">
-            {post.location && (
-              <div className="flex text-sm">
-                <MapPin className="w-4 h-4 mr-1" />
-                {post.location}
-              </div>
-            )}
-            <div className="flex items-center gap-2">
-              {post.apply && (
-                <a href={post.apply} target="_blank">
-                  <Button variant="outline" color="primary" size="sm">
-                    Apply
-                  </Button>
-                </a>
-              )}
-              {post.external_link && (
-                <a href={post.external_link} target="_blank">
-                  <Button variant="outline" size="sm" className="text-xs">
-                    <ExternalLink className="w-3 h-3 mr-1" />
-                    View Details
-                  </Button>
-                </a>
-              )}
-            </div>
-          </div>
-        </div>
-      ))}
+        ))}
     </>
   );
 }

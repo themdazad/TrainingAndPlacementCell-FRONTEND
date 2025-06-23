@@ -6,7 +6,7 @@ export default function BreadCrumbs({ items = [], ...props }) {
   return (
     <Breadcrumbs {...props} size="lg">
       {items.map((item, index) => (
-        <BreadcrumbItem  key={index} isCurrent={item.isCurrent}>
+        <BreadcrumbItem key={index} isCurrent={item.isCurrent}>
           {item.to && !item.isCurrent ? (
             <NavLink to={item.to} style={{ textDecoration: "none" }}>
               {item.label}

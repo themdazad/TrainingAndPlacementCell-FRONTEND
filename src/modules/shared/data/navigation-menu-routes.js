@@ -5,7 +5,9 @@ const NavigationMenuDetails = [
   {
     name: "For Student",
     dropdown: true,
-    items: [{ name: "Student's Projects", path: "/student/projects" }],
+    items: [
+      { name: "Student's Projects", path: "/student/projects" },
+    ],
   },
 
   // Careers

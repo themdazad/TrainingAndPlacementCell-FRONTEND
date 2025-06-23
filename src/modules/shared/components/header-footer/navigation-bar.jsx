@@ -64,16 +64,20 @@ export default function NavBar() {
     <nav className="sticky top-4 w-full m-auto z-50 p-2">
       <header>
         {/* Navigation Header*/}
-        <div className="navHeader">
+        <div
+          className={`navHeader
+            ${
+              isVisible
+                ? "translate-y-0 opacity-1"
+                : "-translate-y-full opacity-0"
+            }
+            transition-all duration-500 
+          `}
+        >
           <div className="max-w-screen-2xl m-auto flex justify-between items-center gap-4">
             {/* 1. Left-side-logo */}
             <div
-              className={`${
-                isVisible
-                  ? "translate-x-0 opacity-1"
-                  : "-translate-x-full opacity-0"
-              }
-                 transition-all duration-500  max-sm:hidden hover:shadow-md hover:scale-105 backdrop-blur-md bg-neutral-200/70 dark:bg-neutral-800/70 p-1 rounded-full flex justify-center`}
+              className={`max-sm:hidden hover:shadow-md hover:scale-105 backdrop-blur-md bg-neutral-200/70 dark:bg-neutral-800/70 p-1 rounded-full flex justify-center`}
             >
               <Link to="/">
                 <Image
@@ -91,13 +95,7 @@ export default function NavBar() {
 
             {/* 2. center-navigation-bar  */}
             <div
-              className={`
-            ${
-              isVisible
-                ? "translate-y-0 opacity-1"
-                : "-translate-y-full opacity-0"
-            }
-                 transition-all duration-500
+              className={`transition-all duration-500
             w-full relative md:max-w-min text-nowrap py-1 mx-auto rounded-full backdrop-blur-md bg-neutral-100/70 dark:bg-neutral-800/70`}
             >
               <div className=" px-4 flex items-center justify-between py-2 relative z-50">
@@ -160,13 +158,13 @@ export default function NavBar() {
                         >
                           {/* dropdown list items  */}
                           {link.items.map((item, idx) => (
-                            <NavLink
+                            <Link
                               key={idx}
                               to={item.path}
                               className="hover:bg-blue-500/30 w-full py-2 px-3"
                             >
                               {item.name}
-                            </NavLink>
+                            </Link>
                           ))}
                         </ul>
                       </div>
@@ -226,7 +224,7 @@ export default function NavBar() {
                   )}
                 </div>
               </div>
-              
+
               {/* ii. Shows in Mobile only:  Dropdown lists */}
               <div
                 ref={mobileMenuRef}
@@ -302,14 +300,7 @@ export default function NavBar() {
 
             {/* 3. right-side-logos */}
             <div
-              className={`
-            ${
-              isVisible
-                ? "translate-x-0 opacity-1"
-                : "translate-x-full opacity-0"
-            }
-                 transition-all duration-500
-              hidden md:flex gap-1 md:gap-3 backdrop-blur-md bg-neutral-200 dark:bg-neutral-800 p-2 rounded-full`}
+              className={`hidden md:flex gap-1 md:gap-3 backdrop-blur-md bg-neutral-200 dark:bg-neutral-800 p-2 rounded-full`}
             >
               <Image
                 className="brand-logo border border-black dark:border-white p-1 rounded-full min-h-[30px] max-h-[52px] aspect-square"

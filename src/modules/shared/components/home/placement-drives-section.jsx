@@ -1,26 +1,31 @@
 import { Divider } from "@heroui/react";
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import { JobsInternships } from "../../pages/careers/placement-drives/placement-drives.jsx";  // Component
-import PlacementDrivesDataAPI from "../../../../api/shared/placement-drives-api.js"; // API path
+import { JobsInternships } from "../../pages/careers/placement-drives/placement-drives.jsx";
+import usePlacementDrivesData from "../../../../api/shared/placement-drives-api.js";
 
-export default function PlacementDrives() { 
-  const { data, loading, error } = PlacementDrivesDataAPI();
-  const [res, setRes] = useState(data);
-  
+export default function PlacementDrives() {
+  const { data, loading, error } = usePlacementDrivesData();
+
   return (
-    <section className="max-w-screen-2xl m-auto px-[2.5%] space-y-6 w-full">
-      {/* page title  */}
-      <span className="text-xl md:text-3xl font-semibold inline-flex rounded-full text-nowrap">
-        Latest updates
-      </span>
+    <section className="max-w-screen-2xl mx-auto w-full px-[2.5%] space-y-6">
+      {/* Section title */}
+      <h2 className="text-xl md:text-3xl font-semibold">Latest Updates</h2>
       <Divider />
-      <div className="py-2 snap-mandatory snap-x overflow-x-scroll scrollbar-hide flex items-stretch gap-x-4 gap-y-6 overflow-y-auto">
-        <JobsInternships error={error} loading={loading} data={res} />
+
+      {/* Scrollable job cards */}
+      <div className="flex snap-x snap-mandatory gap-x-4 py-2 overflow-x-auto overflow-y-hidden scrollbar-hide">
+        <JobsInternships data={data} loading={loading} error={error} />
       </div>
-      <Link to="/careers/placement-drives" className="flex justify-center">
-        See more
-      </Link>
+
+      {/* View more link */}
+      <div className="flex justify-center">
+        <Link
+          to="/careers/placement-drives"
+          className=" font-medium"
+        >
+          See more
+        </Link>
+      </div>
     </section>
   );
 }

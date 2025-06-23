@@ -6,19 +6,20 @@ import Projects from "../modules/shared/pages/projects/index.jsx";
 import ProjectDetailsPage from "../modules/shared/pages/projects/project-details-page.jsx";
 
 import AboutUs from "../modules/shared/pages/about-us/index.jsx";
-// Careers Pages 
-import PlacementDrives from "../modules/shared/pages/careers/placement-drives/placement-drives.jsx";
+// Careers Pages
+import PlacementDrivesPage from "../modules/shared/pages/careers/placement-drives/placement-drives.jsx";
 import SummerWebDevelopment2025 from "../modules/shared/pages/careers/summer-web-development-2025/index.jsx";
 import Error_404 from "../components/error_404.jsx";
+import Alumni from "../modules/shared/pages/alumni/index.jsx";
+import Gallery from "../modules/shared/pages/gallery-page/index.jsx";
 
-const AppRoutes = () => { 
+const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-
       {/* Careers */}
       <Route path="/careers">
-        <Route path="placement-drives" element={<PlacementDrives />} />
+        <Route path="placement-drives" element={<PlacementDrivesPage />} />
         <Route
           path="summer-web-development-2025"
           element={<SummerWebDevelopment2025 />}
@@ -29,13 +30,14 @@ const AppRoutes = () => {
         <Route path="projects" element={<Projects />} />
         <Route path="projects/:title/:id" element={<ProjectDetailsPage />} />
       </Route>
+      <Route path="/alumni" element={<Alumni />} />
+      <Route path="/gallery" element={<Gallery />} />
 
       <Route path="/auth" element={<Auth />} />
-      <Route path="about-us" element={<AboutUs />} />
+      <Route path="/about-us" element={<AboutUs />} />
 
       {/* page not found  */}
       <Route path="*" element={<Error_404 />} />
-
     </Routes>
   );
 };

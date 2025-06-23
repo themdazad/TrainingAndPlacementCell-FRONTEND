@@ -65,7 +65,7 @@ function FAQAccordion() {
             aria-label={`Accordion ${index + 1}`}
             title={item.question}
           >
-            <p className="text-[14px] text-neutral-800 dark:text-neutral-200">
+            <p className=" text-neutral-800 dark:text-neutral-200">
               {item.answer}
             </p>
           </AccordionItem>

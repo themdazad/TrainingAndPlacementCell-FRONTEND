@@ -35,7 +35,7 @@ export default function HaveDoubts() {
         Still have doubts?
       </h2>
       <p className="text-neutral-700 dark:text-neutral-300 my-2">
-        Can't find the answer you're looking for? Contact us!
+        Can&apos;t find the answer you&apos;re looking for? Contact us!
       </p>
 
       <NavLink
