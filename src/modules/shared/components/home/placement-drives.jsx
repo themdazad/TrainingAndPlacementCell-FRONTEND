@@ -6,7 +6,7 @@ import usePlacementDrivesData  from "../../../../api/shared/placement-drives-api
 
 export default function PlacementDrives() {
  
-  const { data, loading, error, searchTerm, setSearchTerm } =usePlacementDrivesData();
+  const { data, loading, error} = usePlacementDrivesData();  // api data
   const [jobsInternships, setJobInternshipData] = useState(data.slice(0, 3));
   
   return (
@@ -17,8 +17,7 @@ export default function PlacementDrives() {
       </span>
       <Divider />
       <div className="py-2 snap-mandatory snap-x overflow-x-scroll scrollbar-hide flex items-stretch gap-x-4 gap-y-6 overflow-y-auto">
-        {loading && "Loading..."}
-        <JobsInternships data={jobsInternships} />
+        <JobsInternships err={error} isLoading={loading} res={jobsInternships} />
       </div>
       <Link to="/careers/placement-drives" className="flex justify-center">
         See more

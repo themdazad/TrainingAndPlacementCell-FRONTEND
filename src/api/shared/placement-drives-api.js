@@ -24,7 +24,6 @@ export default function usePlacementDrivesData() {
   const [response, setResponse] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -44,26 +43,11 @@ export default function usePlacementDrivesData() {
     fetchData();
   }, []);
 
-  const filteredData = response
-    .slice()
-    .reverse()
-    .filter((item) => {       
-      const post_date = String(item.post_date ?? "");
-      const category = String(item.category ?? "");
-      const title = String(item.title ?? "");
-      const description = String(item.description ?? "");
-
-      const searchableText =
-        `${title} ${description} ${category} ${post_date}`.toLowerCase();
-      return searchableText.includes(searchTerm.toLowerCase());
-    });
 
   return {
-    data: filteredData,
+    data: response,
     loading,
     error,
-    searchTerm,
-    setSearchTerm,
   };
   
 }

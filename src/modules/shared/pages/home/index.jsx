@@ -15,7 +15,7 @@ export default function Home() {
         <Hero />
         <Announcements />
         <PlacementDrives />
-        <WorkshopsTraining />
+        {/* <WorkshopsTraining /> */}
         <PastRecruiters />
         <Testimonials />
         <FaqFeedbackForm />

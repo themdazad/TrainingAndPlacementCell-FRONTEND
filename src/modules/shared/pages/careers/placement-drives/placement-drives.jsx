@@ -19,7 +19,7 @@ export default function PlacementDrives() {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold">
             Job opportunities and Internships
             <span className="block dm-serif-text-bold-italic text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-sky-500">
-               {Date().split(" ")[3]}
+              {Date().split(" ")[3]}
             </span>
           </h1>
         </div>
@@ -27,39 +27,15 @@ export default function PlacementDrives() {
       <hr />
       <section>
         <div className="max-w-screen-2xl m-auto px-[2%] py-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 items-center gap-y-6 overflow-y-auto">
-          <JobsInternships data={JobsInternshipsData} />
+          <JobsInternships res={JobsInternshipsData} />
         </div>
       </section>
     </main>
   );
 }
 
-export function JobsInternships({ data }) {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("All");
-  const [filteredNotices, setFilteredNotices] = useState(data);
-
-  // Filter based on search term and category
-  useEffect(() => {
-    let filtered = data;
-
-    if (searchTerm) {
-      filtered = filtered.filter(
-        (post) =>
-          post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          post.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          post.category.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-    }
-
-    if (selectedCategory !== "All") {
-      filtered = filtered.filter(
-        (post) => post.category === selectedCategory
-      );
-    }
-
-    setFilteredNotices(filtered);
-  }, [searchTerm, selectedCategory]);
+export function JobsInternships(res,err,isLoading) {
+  const [data, setData] = useState(res);
 
   const getCategoryColor = (category) => {
     switch (category) {
@@ -76,9 +52,8 @@ export function JobsInternships({ data }) {
 
   return (
     <>
-     
-      {filteredNotices.length > 0 ? (
-        filteredNotices.map((post) => (
+      {data.length > 0 ? (
+        data.map((post) => (
           <div
             key={post._id}
             className="snap-center min-w-[320px] bg-sky-500/10 hover:border-t-4 border-t-blue-500 rounded-3xl p-4 hover:shadow-md transition-all duration-200"
@@ -135,8 +110,7 @@ export function JobsInternships({ data }) {
         ))
       ) : (
         <div className="text-center py-8 text-gray-500">
-          <Search className="w-12 h-12 mx-auto mb-4 text-gray-300" />
-          <p>No notices found matching your search criteria.</p>
+         <p>Loading...</p>
         </div>
       )}
     </>
