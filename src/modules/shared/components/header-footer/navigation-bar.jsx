@@ -6,7 +6,6 @@ import { useAuth } from "../../../../hooks/contexts/auth/AuthContext"; // Adjust
 import ThemeSwitch from "../../../../components/ThemeSwitch";
 import NavigationMenuRoutes from "../../data/navigation-menu-routes.js"
 
-
 export default function NavBar() {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -62,11 +61,11 @@ export default function NavBar() {
   }, [lastScrollY]);
 
   return (
-    <nav className="sticky top-6 w-full m-auto z-50 p-2">
+    <nav className="sticky top-4 w-full m-auto z-50 p-2">
       <header>
         {/* Navigation Header*/}
         <div className="navHeader">
-          <div className="max-w-screen-2xl m-auto flex justify-between items-center">
+          <div className="max-w-screen-2xl m-auto flex justify-between items-center gap-4">
             {/* 1. Left-side-logo */}
             <div
               className={`${
@@ -74,16 +73,16 @@ export default function NavBar() {
                   ? "translate-x-0 opacity-1"
                   : "-translate-x-full opacity-0"
               }
-                 transition-all duration-500  max-sm:hidden hover:shadow-md hover:scale-105 backdrop-blur-md bg-neutral-200/70 dark:bg-neutral-800/70 p-1 rounded-full flex justify-center aspect-square`}
+                 transition-all duration-500  max-sm:hidden hover:shadow-md hover:scale-105 backdrop-blur-md bg-neutral-200/70 dark:bg-neutral-800/70 p-1 rounded-full flex justify-center`}
             >
               <Link to="/">
                 <Image
-                  className="dark:hidden h-[80px] "
+                  className="dark:hidden h-[80px] aspect-square"
                   src="/images/gecsiwan-logo.png"
                   alt="gec-siwan-logo"
                 />
                 <Image
-                  className="hidden dark:inline h-[80px]"
+                  className="hidden dark:inline h-[80px] aspect-square"
                   src="/images/gecsiwan-logo-light.png"
                   alt="gec-siwan-logo"
                 />
@@ -227,6 +226,7 @@ export default function NavBar() {
                   )}
                 </div>
               </div>
+              
               {/* ii. Shows in Mobile only:  Dropdown lists */}
               <div
                 ref={mobileMenuRef}
@@ -255,9 +255,10 @@ export default function NavBar() {
                         {link.name}
                       </NavLink>
                     ) : (
+                      // dropdown menu
                       <div key={index} className="flex flex-col gap-2">
                         <button
-                          className="text-lg text-left w-full p-3 rounded-2xl text-neutral-800 dark:text-white flex justify-between items-center hover:bg-neutral-100 dark:hover:bg-neutral-800"
+                          className="text-xl text-left w-full p-3 rounded-2xl text-neutral-800 dark:text-white flex justify-between items-center hover:bg-neutral-100 dark:hover:bg-neutral-800"
                           onClick={() => handleDropdownToggle(link.name)}
                         >
                           {link.name}

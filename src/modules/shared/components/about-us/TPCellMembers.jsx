@@ -1,4 +1,4 @@
-import { Linkedin } from "lucide-react";
+import { Linkedin, Mail } from "lucide-react";
 import TPCellMemberProfiles from "../../../../assets/data/TPCellMemberProfiles.js";
 
 
@@ -12,7 +12,7 @@ export default function TPCellMembers() {
         </div>
 
         {/* Members Details */}
-        <div className="members-list grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-4">
+        <div className="members-list grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-4">
           <ProfileList profiles={TPCellMemberProfiles} />
         </div>
       </div>
@@ -64,19 +64,9 @@ function ProfileCard({
           {designation}
         </p>
 
-        <p className="text-sm text-blue-700 dark:text-blue-300 ">
-          Email:{" "}
-          <a
-            href={`mailto:${email}`}
-            className="text-blue-500 dark:text-blue-400"
-          >
-            {email}
-          </a>
-        </p>
-
-        {/* LinkedIn Icon */}
-        {linkedin && (
-          <div className="mt-4 flex justify-center">
+        <div className="mt-4 flex justify-center gap-4">
+          {/* LinkedIn Icon */}
+          {linkedin && (
             <a
               href={linkedin}
               target="_blank"
@@ -86,8 +76,20 @@ function ProfileCard({
             >
               <Linkedin className="w-6 h-6" />
             </a>
-          </div>
-        )}
+          )}
+          {/* Email Icon */}
+          {email && (
+            <a
+              href={email}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex gap-2 text-sky-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300"
+              aria-label="LinkedIn"
+            >
+              <Mail className="w-6 h-6 " /> 
+              <p className="max-md:hidden">{email}</p></a>
+          )}
+        </div>
       </div>
     </div>
   );

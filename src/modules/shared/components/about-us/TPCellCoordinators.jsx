@@ -1,18 +1,18 @@
 
-import { Linkedin, Github, Mail } from "lucide-react";
+import { Linkedin, Github, Mail, Phone } from "lucide-react";
 
 const coordinators = [
   {
     name: "Md. Azad",
     designation: "Electrical Engineering",
-    mobile: "+91 9110172886",
+    mobile: "+91-9110172886",
     email: "collezian@gmail.com",
     linkedin: "https://www.linkedin.com/in/themdazad",
   },
   {
     name: "Abhishek Kumar Singh",
     designation: "Mechanical Engineering",
-    mobile: "+91 8804080749",
+    mobile: "+91-8804080749",
     email: "abhishek.gecs@gmail.com",
     linkedin: "https://www.linkedin.com/in/abhishek-kumar-singh-8312a931b",
   },
@@ -21,21 +21,21 @@ const coordinators = [
     designation: "Electrical Engineering",
     mobile: "",
     email: "",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/abhinav-kumar-gecsiwan/",
   },
   {
     name: "Anupam Kumar",
     designation: "Electrical Engineering",
-    mobile: "",
+    mobile: "+91-9162305494",
     email: "",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/jnvdeotianupan/",
   },
   {
     name: "Shahnoor Ishtiyaque",
     designation: "CSE (IoT)",
-    mobile: "",
-    email: "",
-    linkedin: "#",
+    mobile: "+91-7547899822",
+    email: "shahnoorishtiyaque687@gmail.com",
+    linkedin: "https://www.linkedin.com/in/shahnoor-ishtiyaque-496843297/",
   },
 ];
 
@@ -86,7 +86,6 @@ export function Card({
       <p className="text-center">{designation}</p>
 
       <div className="social-media-links flex items-center justify-center gap-4">
-       {mobile && <p className="text-sm flex text-nowrap">Contact: {mobile}</p>}
         <div className="flex items-center gap-4 ">
           {/* LinkedIn */}
           {linkedin && (
@@ -105,9 +104,15 @@ export function Card({
             className="text-blue-500 dark:text-blue-400 hover:underline flex items-center gap-1"
           >
             <Mail className="w-6 h-6" />
-            <span className="hidden md:inline">{email}</span>
+            
           </a>
         </div>
+        {mobile && (
+          <p className="text-sm flex gap-2 items-center text-nowrap">
+            <Phone />
+            {mobile}
+          </p>
+        )}
       </div>
     </div>
   );

@@ -1,11 +1,13 @@
 /* eslint-disable no-unused-vars */
-import { useState, useEffect } from "react";
-import { MapPin, ExternalLink, Search } from "lucide-react";
+import { useState } from "react";
+import { MapPin, ExternalLink } from "lucide-react";
 import { Button } from "@heroui/react";
-import JobsInternshipsData from "../../../../../assets/data/jobs-internships-data.js"; // Local static dummy data
-// import JobsInternshipsData from "../../../../../api/shared/placement-drives-api.js"
+import PlacementDrivesDataAPI from "../../../../../api/shared/placement-drives-api.js"; // API path
+
 
 export default function PlacementDrives() {
+  const { data, loading, error } = PlacementDrivesDataAPI(); // Fetched data
+    
   return (
     <main className="">
       {/* Header/ */}
@@ -27,16 +29,15 @@ export default function PlacementDrives() {
       <hr />
       <section>
         <div className="max-w-screen-2xl m-auto px-[2%] py-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 items-center gap-y-6 overflow-y-auto">
-          <JobsInternships res={JobsInternshipsData} />
+          <JobsInternships err={error} isLoading={loading} res={data} />
         </div>
       </section>
     </main>
   );
 }
 
-export function JobsInternships(res,err,isLoading) {
+export function JobsInternships({res,err,isLoading}) {
   const [data, setData] = useState(res);
-
   const getCategoryColor = (category) => {
     switch (category) {
       case "Placement":
@@ -52,7 +53,7 @@ export function JobsInternships(res,err,isLoading) {
 
   return (
     <>
-      {data.length > 0 ? (
+      {data ? (
         data.map((post) => (
           <div
             key={post._id}
@@ -110,7 +111,7 @@ export function JobsInternships(res,err,isLoading) {
         ))
       ) : (
         <div className="text-center py-8 text-gray-500">
-         <p>Loading...</p>
+         <p>No internet !</p>
         </div>
       )}
     </>

@@ -47,7 +47,7 @@ export default function AboutUs() {
             </Button>
           </div>
           <Image
-            className="rounded-[60px]"
+            className="rounded-[30px]"
             src="/images/gecsiwan.jpeg"
             loading="lazy"
           />

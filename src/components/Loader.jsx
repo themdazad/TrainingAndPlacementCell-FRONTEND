@@ -5,7 +5,7 @@ import RandomLoadingMessage from "./RandomLoadingMessage.jsx"
 
 export default function Loader() {
     return (
-      <div className="flex items-center justify-center min-h-screen dark:bg-neutral-800">
+      <div className="flex items-center justify-center min-h-screen bg-transparent">
         {/* Container for spinner + logo */}
         <div className="flex flex-col items-center gap-3">
           <img

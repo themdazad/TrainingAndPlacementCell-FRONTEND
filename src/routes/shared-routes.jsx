@@ -9,6 +9,7 @@ import AboutUs from "../modules/shared/pages/about-us/index.jsx";
 // Careers Pages 
 import PlacementDrives from "../modules/shared/pages/careers/placement-drives/placement-drives.jsx";
 import SummerWebDevelopment2025 from "../modules/shared/pages/careers/summer-web-development-2025/index.jsx";
+import Error_404 from "../components/error_404.jsx";
 
 const AppRoutes = () => { 
   return (
@@ -31,6 +32,10 @@ const AppRoutes = () => {
 
       <Route path="/auth" element={<Auth />} />
       <Route path="about-us" element={<AboutUs />} />
+
+      {/* page not found  */}
+      <Route path="*" element={<Error_404 />} />
+
     </Routes>
   );
 };

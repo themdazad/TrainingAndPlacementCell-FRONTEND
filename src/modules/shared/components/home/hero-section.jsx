@@ -12,11 +12,11 @@ export default function Hero(){
       {/* CTA Section - Left Half */}
       <div className="space-y-6">
         <div className="space-y-6">
-          <div className="inline-flex uppercase items-center px-4 py-2 bg-blue-500/20 text-blue-800 dark:text-blue-100   rounded-full text-sm font-medium">
+          <div className="inline-flex items-center px-4 py-2 bg-blue-500/20 text-blue-800 dark:text-blue-100   rounded-full text-sm font-medium">
             <span className="blinking-dot w-2 h-2 bg-blue-600 rounded-full mr-2 animate-pulse"></span>
-            New For Students
+            New @tpogecsiwan
           </div>
-          <h1 className=" dm-serif-text-bold md:text-5xl text-6xl lg:text-7xl font-bold space-y-4">
+          <h1 className=" dm-serif-text-bold md:text-5xl text-6xl lg:text-7xl font-bold">
             Campus Placement
             <span className="block dm-serif-text-bold-italic text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500">
               Drives {Date().split(" ")[3]}
@@ -49,7 +49,7 @@ export default function Hero(){
         </div>
 
         <div className=" pt-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500">
-          *Provide feedbacks for better experience.
+          *[Under Development]: Provide feedbacks for better experience.
         </div>
       </div>
 
