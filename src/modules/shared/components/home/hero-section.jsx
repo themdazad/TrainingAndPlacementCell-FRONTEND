@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Image } from "@heroui/react";
 import PLACEMENT_BROCHURE from "../../../../assets/downloads/GEC_SIWAN_PLACEMENT_BROCHURE.pdf";
 import SimpleSlider from "../../../../components/SimpleSlider.jsx";
 import HeroSliderImages from "../../../../assets/data/hero-slider-images.js";
@@ -22,7 +23,7 @@ export default function Hero() {
     },
   };
   return (
-    <section className="max-w-screen-2xl pt-[100px] px-[2.5%] m-auto grid items-center grid-cols-1 gap-6 lg:grid-cols-2 ">
+    <section className="max-w-screen-2xl pt-[80px] px-[2.5%] m-auto grid items-center grid-cols-1 gap-6 lg:grid-cols-2 ">
       {/* CTA Section - Left Half */}
       <motion.div
         className="space-y-6 text-center items-center sm:text-left sm:items-start flex flex-col"
@@ -32,6 +33,21 @@ export default function Hero() {
         viewport={{ once: true }}
       >
         <motion.div className="space-y-6" variants={fadeUp}>
+          <motion.div
+          className="flex sm:hidden justify-center"
+             variants={fadeUp}
+          >
+            <Image
+              className="dark:hidden h-[140px] aspect-square"
+              src="/images/gecsiwan-logo.png"
+              alt="gec-siwan-logo"
+            />
+            <Image
+              className="hidden dark:inline h-[140px] aspect-square"
+              src="/images/gecsiwan-logo-light.png"
+              alt="gec-siwan-logo"
+            />
+          </motion.div>
           <motion.div
             className="inline-flex items-center justify-center sm:justify-start px-4 py-2 bg-blue-500/20 text-blue-800 dark:text-blue-100 rounded-full text-sm font-medium"
             variants={fadeUp}
@@ -44,9 +60,9 @@ export default function Hero() {
             className="dm-serif-text-bold text-6xl lg:text-7xl font-bold"
             variants={fadeUp}
           >
-            Campus Placement
+            Training and Placement Cell
             <span className="block dm-serif-text-bold-italic text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500">
-              Drives {Date().split(" ")[3]}
+              GEC SIWAN
             </span>
           </motion.h1>
 
@@ -83,7 +99,7 @@ export default function Hero() {
         </motion.div>
 
         <motion.div
-          className="pt-8 text-sm text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500"
+          className="pt-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500"
           variants={fadeUp}
         >
           *[Under Development]: Provide feedbacks for better experience.

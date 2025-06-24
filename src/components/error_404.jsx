@@ -5,9 +5,8 @@ import { NavLink } from "react-router-dom";
 
 export default function Error_404() {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-transparent">
-      {/* Container for spinner + logo */}
-      <div className="flex flex-col items-center gap-3">
+    <div className="flex items-center justify-center min-h-[80dvh] bg-transparent">
+      <div className="flex flex-col animate-pulse items-center gap-3">
         <img
           src={GECSIWAN_LOGO}
           alt="Loader image "
@@ -17,10 +16,12 @@ export default function Error_404() {
         <img
           src={GECSIWAN_LOGO_LIGHT}
           alt="Loader image "
-          className="hidden dark:inline-flex w-56 h-56 m-auto animate-pulse"
+          className="hidden dark:inline-flex w-56 h-56 m-auto "
           style={{ userSelect: "none" }}
         />
-        <p className="animate-pulse text-blue-500 text-3xl text-center font-extrabold">404 <br/> Page not found! </p>
+        <p className="animate-pulse text-blue-500 text-3xl pb-10 text-center font-bold">
+          404 <br /> Page not found!{" "}
+        </p>
         <Button as={NavLink} to="/" varient={"solid"} color="primary">
           Go to Home
         </Button>

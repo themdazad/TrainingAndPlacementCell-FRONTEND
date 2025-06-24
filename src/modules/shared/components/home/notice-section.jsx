@@ -34,7 +34,7 @@ const {data, loading, error} = useNoticeAnnouncements();
       className="latest-updates-section max-w-screen-2xl m-auto px-[2.5%]"
     >
       <div className="min-w-full rounded-3xl max-md:border-y-4 md:border-x-4 border-blue-500 p-3 px-6 min-h-52 ">
-        <div className="grid grid-cols-2 items-center justify-between">
+        <div className="flex items-center max-md:justify-center justify-between">
           <h2 className="text-2xl text-nowrap font-semibold text-blue-500 flex items-center gap-2 ">
             <BellDot />
             T&P Notices/Announcements
@@ -53,7 +53,7 @@ const {data, loading, error} = useNoticeAnnouncements();
         </div>
 
         <div
-          className="row-container box-border my-[1em] max-h-64 overflow-y-scroll  overflow-x-hidden"
+          className="row-container box-border my-[1em] max-h-96 overflow-y-scroll  overflow-x-hidden"
           style={{
             maskImage:
               "linear-gradient(to bottom, transparent 0%, black 0%, black 50%, transparent 100%)",
@@ -71,7 +71,7 @@ const {data, loading, error} = useNoticeAnnouncements();
                 <span className="news-notice-card-tag text-[10px] backdrop-blur-lg bg-blue-500/10 rounded-3xl px-[1em] py-[0.5em] ">
                   {data.date}
                 </span>
-                <p className="group-hover:text-blue-500 news-notice-card-content max-sm:text-[14px] text-justify py-[1em] w-full overflow-ellipsis">
+                <p className="group-hover:text-blue-500 news-notice-card-content text-justify py-[1em] w-full overflow-ellipsis">
                   {data.content}
                 </p>
               </a>
