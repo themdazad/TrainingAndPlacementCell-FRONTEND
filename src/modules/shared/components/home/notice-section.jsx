@@ -27,17 +27,17 @@ const {data, loading, error} = useNoticeAnnouncements();
 
   return (
     <motion.section
-      initial={{ width: 512, y: 10 }}
+      initial={{ width: 360, y: 10 }}
       whileInView={{ width: "100%", y: 0 }}
       transition={{ duration: 0.5, delay: 1, ease: "easeOut" }}
       viewport={{ once: true, amount: 0.2 }}
-      className="latest-updates-section max-w-screen-2xl m-auto px-[2.5%]"
+      className="latest-updates-section max-w-screen-2xl overflow-hidden m-auto px-[2.5%]"
     >
       <div className="min-w-full rounded-3xl max-md:border-y-4 md:border-x-4 border-blue-500 p-3 px-6 min-h-52 ">
         <div className="flex items-center max-md:justify-center justify-between">
-          <h2 className="text-2xl text-nowrap font-semibold text-blue-500 flex items-center gap-2 ">
+          <h2 className="text-2xl text-nowrap font-semibold text-blue-500 flex flex-wrap justify-center items-center gap-2 ">
             <BellDot />
-            T&P Notices/Announcements
+            Notices/Announcements
           </h2>
 
           {/* 🔍 Search Input */}

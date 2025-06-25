@@ -106,7 +106,7 @@ export default function Hero() {
         </motion.div>
       </motion.div>
 
-      <div>
+      <div className="max-sm:hidden">
         <SimpleSlider slider_data={sliderImages} />
       </div>
     </section>
