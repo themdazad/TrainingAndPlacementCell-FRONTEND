@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { MapPin, ExternalLink } from "lucide-react";
 import { Button } from "@heroui/react";
 import usePlacementDrivesData from "../../../../../api/shared/placement-drives-api.js";
+import { Link, NavLink } from "react-router-dom";
 
 export default function PlacementDrivesPage() {
   const { data, loading, error } = usePlacementDrivesData();
@@ -103,27 +104,27 @@ export function JobsInternships({ data, error, loading }) {
               )}
               <div className="flex gap-2">
                 {post.apply && (
-                  <a
-                    href={post.apply}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Button variant="outline" color="primary" size="sm">
-                      Apply
-                    </Button>
-                  </a>
+                  <Button
+                  as={Link}
+                  to={post.apply}
+                  variant="outline"
+                  size="sm"
+                  className="text-"
+                  target="_blank"
+                > Apply</Button>
                 )}
                 {post.external_link && (
-                  <a
-                    href={post.external_link}
+                  <Button
+                    as={Link}
+                    to={post.external_link}
+                    variant="outline"
+                    size="sm"
+                    className="text-"
                     target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Button variant="outline" size="sm" className="text-xs">
+                  >                 
                       <ExternalLink className="w-3 h-3 mr-1" />
                       View Details
-                    </Button>
-                  </a>
+                  </Button>
                 )}
               </div>
             </div>
