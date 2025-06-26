@@ -1,28 +1,27 @@
-import { Routes, Route } from "react-router-dom";
-import StudentDashboard from "../modules/student/pages/dashboard/index.jsx";
-import PrivateRoute from "../components/auth/PrivateRoute.jsx";  // Global Component
+import { Route } from "react-router-dom";
+import StudentDashboard from "../modules/student/views/dashboard/index.jsx";
+import Projects from "../modules/web/views/projects/index.jsx";
+import ProjectDetailsPage from "../modules/web/views/projects/project-details-page.jsx";
+import PrivateRoute from "../components/auth/PrivateRoute.jsx";
 
-const studentRoutes = [
-  {
-    path: "/dashboard/student",
-    Page: <StudentDashboard />,
-  },
+export const studentRoutes = [
+  <Route
+    key="/dashboard/student"
+    path="/dashboard/student"
+    element={
+      <PrivateRoute>
+        <StudentDashboard />
+      </PrivateRoute>
+    }
+  />,
+  <Route
+    key="/student/projects"
+    path="/student/projects"
+    element={<Projects />}
+  />,
+  <Route
+    key="/student/projects/:title/:id"
+    path="/student/projects/:title/:id"
+    element={<ProjectDetailsPage />}
+  />,
 ];
-
-const AppRoutes = () => {
-  return (
-    <Routes>
-      {studentRoutes.map((value, index) => {
-        return (
-          <Route
-            key={index}
-            path={value.path}
-            element={<PrivateRoute>{value.Page}</PrivateRoute>}
-          />
-        );
-      })}
-    </Routes>
-  );
-};
-
-export default AppRoutes;

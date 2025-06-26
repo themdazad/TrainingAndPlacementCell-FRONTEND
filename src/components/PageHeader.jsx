@@ -1,4 +1,4 @@
-import BreadCrumbs from "./BreadCrumbs.jsx";
+import BreadCrumbs from "./common/BreadCrumbs.jsx";
 export default function PageHeader({ title, description, breadcrumbItems }) {
   return (
     <div className="grid gap-4 my-12">

@@ -33,7 +33,7 @@ _(Add your name here)_
 |--------------------------------|-------------------|-------------------------------|
 | Components & Containers        | `PascalCase`      | `UserProfile`, `SidebarMenu`  |
 | Variables, Functions, Utils    | `camelCase`       | `getUserData`, `formatDate`   |
-| Routes & Pages                 | `kebab-case`      | `user-dashboard.js`           |
+| Routes & views                 | `kebab-case`      | `user-dashboard.js`           |
 | Constants / ENV Variables      | `UPPER_CASE`      | `API_URL`, `JWT_SECRET`       |
 
 > **Note**: Follow naming conventions strictly to maintain readability and consistency.
@@ -58,17 +58,17 @@ _(Add your name here)_
 ├── modules/ # Feature-based modules by role
 │ ├── admin/ # Admin-specific logic
 │ │ ├── components/ # Admin-specific components
-│ │ ├── pages/ # Admin-specific pages
+│ │ ├── views/ # Admin-specific views
 │ │ └── styles/ # Admin page styles
 │ │
 │ ├── student/
 │ │
-│ └── shared/ 
+│ └── web/ 
 │
 ├── routes/ # Role-based routing
 │ ├── example-admin-routes.js
 │ ├── example-student-routes.js
-│ └── example-shared-routes.js
+│ └── example-web-routes.js
 │
 ├── utils/ # Utility and helper functions
 │

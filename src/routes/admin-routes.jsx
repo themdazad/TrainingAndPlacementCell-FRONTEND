@@ -1,28 +1,15 @@
-import { Routes, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
+import AdminDashboard from "../modules/admin/views/dashboard/index.jsx";
 import PrivateRoute from "../components/auth/PrivateRoute.jsx";
-import AdminDashboard from "../modules/admin/pages/dashboard/index.jsx";
 
-const adminRoutes = [
-  {
-    path: "/dashboard/admin",
-    Page: <AdminDashboard />,
-  },
+export const adminRoutes = [
+  <Route
+    key="/dashboard/admin"
+    path="/dashboard/admin"
+    element={
+      <PrivateRoute>
+        <AdminDashboard />
+      </PrivateRoute>
+    }
+  />,
 ];
-
-const AppRoutes = () => {
-  return (
-    <Routes>
-      {adminRoutes.map((value, index) => {
-        return (
-          <Route
-            key={index}
-            path={value.path}
-            element={<PrivateRoute>{value.Page}</PrivateRoute>}
-          />
-        );
-      })}
-    </Routes>
-  );
-};
-
-export default AppRoutes;
