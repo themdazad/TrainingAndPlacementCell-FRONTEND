@@ -5,7 +5,7 @@ import { galleryData } from "../../data/galleryData.js";
 
 export default function Gallery() {
   return (
-    <main className="min-h-screen bg-white dark:bg-neutral-900 text-neutral-800 dark:text-neutral-100">
+    <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100">
       <div className="m-auto max-w-screen-2xl px-[5%] sm:px-[4%] space-y-10 lg:space-y-20 py-10">
         {/* 📸 Banner Section */}
         <div className="relative overflow-hidden rounded-3xl shadow-md">
@@ -14,7 +14,7 @@ export default function Gallery() {
             alt="Gallery Banner"
             className="w-full aspect-[21/9] max-md:aspect-video object-cover object-center"
           />
-          <div className="max-md:hidden absolute inset-0 bg-gradient-to-t from-neutral-200/70 to-neutral-200/0 dark:from-neutral-800/70 dark:to-neutral-800/0  py-10  flex flex-col justify-end text-center px-4">
+          <div className="max-md:hidden absolute inset-0 bg-gradient-to-t from-gray-200/70 to-gray-200/0 dark:from-gray-800/70 dark:to-gray-800/0  py-10  flex flex-col justify-end text-center px-4">
             <h1 className="text-md sm:text-4xl font-bold py-4 drop-shadow">
               Government Engineering College, Siwan
             </h1>
@@ -29,7 +29,7 @@ export default function Gallery() {
         {/* 📅 Year-wise Gallery Section */}
         {galleryData.map((yearBlock, i) => (
           <section key={i} className="space-y-8">
-            <h2 className="text-2xl sm:text-3xl font-bold border-b pb-2 border-neutral-300 dark:border-neutral-700">
+            <h2 className="text-2xl sm:text-3xl font-bold border-b pb-2 border-gray-300 dark:border-gray-700">
               Year {yearBlock.year}
             </h2>
 
@@ -45,7 +45,7 @@ export default function Gallery() {
                     {event.images.map((src, imgIdx) => (
                       <div
                         key={imgIdx}
-                        className="break-inside-avoid rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition duration-300 bg-white dark:bg-neutral-800"
+                        className="break-inside-avoid rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition duration-300 bg-white dark:bg-gray-800"
                       >
                         <Image
                           src={src}

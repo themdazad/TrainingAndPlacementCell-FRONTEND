@@ -2,7 +2,7 @@ import { Globe, Linkedin, Twitter, } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className=" bg-neutral-100 py-4 space-y-4 border-t-4 rounded-3xl border-blue-500 dark:bg-neutral-900 transition-all duration-200">
+    <footer className=" bg-gray-100 py-4 space-y-4 border-t-4 rounded-3xl border-blue-500 dark:bg-gray-900 transition-all duration-200">
       {/* social media icons */}
       <div className="max-w-screen-2xl m-auto flex justify-center gap-4 items-center ">
         <a href="https://www.linkedin.com/company/tpogecsiwan/" target="_blank">
@@ -17,7 +17,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="text-center text-sm flex flex-col gap-4 text-neutral-600 dark:text-neutral-300 ">
+      <div className="text-center text-sm flex flex-col gap-4 text-gray-600 dark:text-gray-300 ">
         <a
           href="https://www.gecsiwan.org/"
           target="_blank"

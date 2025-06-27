@@ -23,7 +23,7 @@ export default function Hero() {
     },
   };
   return (
-    <section className="max-w-screen-2xl pt-[80px] px-[2%] m-auto grid items-center grid-cols-1 gap-6 lg:grid-cols-2 ">
+    <section className="max-w-screen-2xl m-auto min-h-[80dvh] pt-[80px] px-[2%]  grid items-center grid-cols-1 gap-6 lg:grid-cols-2 ">
       {/* CTA Section - Left Half */}
       <motion.div
         className="space-y-6 text-center items-center sm:text-left sm:items-start flex flex-col"
@@ -44,7 +44,7 @@ export default function Hero() {
             />
             <Image
               className="hidden dark:inline h-[140px] aspect-square"
-              src="/images/gecsiwan-logo-light.png" 
+              src="/images/gecsiwan-logo-light.png"
               alt="gec-siwan-logo"
             />
           </motion.div>
@@ -57,11 +57,11 @@ export default function Hero() {
           </motion.div>
 
           <motion.h1
-            className="dm-serif-text-bold text-6xl lg:text-7xl font-bold"
+            className="font-serif text-6xl lg:text-7xl font-bold"
             variants={fadeUp}
           >
             Training and Placement Cell
-            <span className="block dm-serif-text-bold-italic text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500">
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500">
               GEC SIWAN
             </span>
           </motion.h1>

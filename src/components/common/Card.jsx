@@ -106,7 +106,7 @@ export const Card = () => {
                   )}
                 </div>
               </div>
-              <div className="absolute z-10 px-3 py-1 flex bg-stone-800 text-white text-[12px] rounded-tr-3xl opacity-100 group-hover:opacity-0 min-w-max -bottom-0 group-hover:-bottom-full transition-all duration-500 ">
+              <div className="absolute z-10 px-3 py-1 flex bg-gray-800 text-white text-[12px] rounded-tr-3xl opacity-100 group-hover:opacity-0 min-w-max -bottom-0 group-hover:-bottom-full transition-all duration-500 ">
                 <p className=" px-2">{item.title}</p>
               </div>
             </div>

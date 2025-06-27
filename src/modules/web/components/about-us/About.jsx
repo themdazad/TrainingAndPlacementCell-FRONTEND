@@ -5,13 +5,13 @@ export default function About() {
   return (
     <>
       <div>
-        <p className="text-sm tracking-widest text-bold uppercase dark:text-neutral-400 mb-2">
+        <p className="text-sm tracking-widest text-bold uppercase dark:text-gray-400 mb-2">
           About
         </p>
-        <h2 className="text-xl md:text-6xl text-bold text-neutral-800 dark:text-white">
+        <h2 className="text-xl md:text-6xl text-bold text-gray-800 dark:text-white">
           Training & Placement Cell
         </h2>
-        <p className="my-4 text-justify text-neutral-600 dark:text-neutral-300 leading-relaxed">
+        <p className="my-4 text-justify text-gray-600 dark:text-gray-300 leading-relaxed">
           The Training and Placement Cell at Government Engineering College,
           Siwan, is dedicated to preparing students for successful careers in
           industry and academia. Under the esteemed leadership of our Principal,{" "}

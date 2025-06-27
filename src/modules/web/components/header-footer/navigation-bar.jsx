@@ -74,10 +74,10 @@ export default function NavBar() {
             transition-all duration-500 
           `}
         >
-          <div className="max-w-screen-2xl m-auto flex justify-between items-center gap-4">
+          <div className="max-w-screen-2xl px-[2%] m-auto flex justify-between items-center gap-4">
             {/* 1. Left-side-logo */}
             <div
-              className={`max-sm:hidden hover:shadow-md hover:scale-105 backdrop-blur-md bg-neutral-200/70 dark:bg-neutral-800/70 p-1 rounded-full flex justify-center`}
+              className={`max-sm:hidden hover:shadow-md hover:scale-105 backdrop-blur-md bg-gray-200/70 dark:bg-gray-800/70 p-1 rounded-full flex justify-center`}
             >
               <Link to="/">
                 <Image
@@ -96,7 +96,7 @@ export default function NavBar() {
             {/* 2. center-navigation-bar  */}
             <div
               className={`transition-all duration-500
-            w-full relative md:max-w-min text-nowrap py-1 mx-auto rounded-full backdrop-blur-md bg-neutral-100/70 dark:bg-neutral-800/70`}
+            w-full relative md:max-w-min text-nowrap py-1 mx-auto rounded-full backdrop-blur-md bg-gray-200/70 dark:bg-gray-800/70`}
             >
               <div className=" px-4 flex items-center justify-between py-2 relative z-50">
                 {/* Hamburger-Botton */}
@@ -150,7 +150,7 @@ export default function NavBar() {
                           <ChevronDown className="rotate-0 group-hover:rotate-180 transition-rotate duration-200" />
                         </span>
                         <ul
-                          className={`absolute  shadow-md left-1/2 transform -translate-x-1/2 min-w-max text-small rounded-xl border-t-1 hover:border-t-4 border-t-blue-600 bg-white dark:bg-neutral-800 py-2 transition-all duration-200 ${
+                          className={`absolute  shadow-md left-1/2 transform -translate-x-1/2 min-w-max text-small rounded-xl border-t-1 hover:border-t-4 border-t-blue-600 bg-white dark:bg-gray-800 py-2 transition-all duration-200 ${
                             isDropdownOpen[link.name]
                               ? "flex flex-col"
                               : "hidden"
@@ -195,10 +195,10 @@ export default function NavBar() {
                   {!!isLogedIn.admin && (
                     <NavLink
                       to="/dashboard/admin"
-                      className="flex items-center gap-2 text-neutral-800 dark:text-neutral-100"
+                      className="flex items-center gap-2 text-gray-800 dark:text-gray-100"
                     >
                       <Image
-                        className="rounded-full border border-neutral-300 dark:border-neutral-600 w-10 h-10 object-cover"
+                        className="rounded-full border border-gray-300 dark:border-gray-600 w-10 h-10 object-cover"
                         src="/images/profile-default-photo.jpg"
                         alt="user-profile"
                       />
@@ -210,10 +210,10 @@ export default function NavBar() {
                   {!!isLogedIn.student && (
                     <NavLink
                       to="/dashboard/student"
-                      className="flex items-center gap-2 text-neutral-800 dark:text-neutral-100"
+                      className="flex items-center gap-2 text-gray-800 dark:text-gray-100"
                     >
                       <Image
-                        className="rounded-full border border-neutral-300 dark:border-neutral-600 w-10 h-10 object-cover"
+                        className="rounded-full border border-gray-300 dark:border-gray-600 w-10 h-10 object-cover"
                         src="/images/profile-default-photo.jpg"
                         alt="user-profile"
                       />
@@ -235,7 +235,7 @@ export default function NavBar() {
                   transitionProperty: "height, opacity",
                 }}
               >
-                <div className="flex flex-col rounded-3xl justify-center bg-neutral-100 dark:bg-neutral-800 p-6 space-y-4">
+                <div className="flex flex-col rounded-3xl justify-center bg-gray-100 dark:bg-gray-800 p-6 space-y-4">
                   {NavigationMenuRoutes.map((link, index) =>
                     !link.dropdown ? (
                       <NavLink
@@ -246,8 +246,8 @@ export default function NavBar() {
                           `py-4 px-2 text-xl rounded-md ${
                             isActive
                               ? "text-blue-500 dark:text-blue-400 font-semibold"
-                              : "text-neutral-800 dark:text-white"
-                          } hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all`
+                              : "text-gray-800 dark:text-white"
+                          } hover:bg-gray-100 dark:hover:bg-gray-800 transition-all`
                         }
                       >
                         {link.name}
@@ -256,7 +256,7 @@ export default function NavBar() {
                       // dropdown menu
                       <div key={index} className="flex flex-col gap-2">
                         <button
-                          className="text-xl text-left w-full p-3 rounded-2xl text-neutral-800 dark:text-white flex justify-between items-center hover:bg-neutral-100 dark:hover:bg-neutral-800"
+                          className="text-xl text-left w-full p-3 rounded-2xl text-gray-800 dark:text-white flex justify-between items-center hover:bg-gray-100 dark:hover:bg-gray-800"
                           onClick={() => handleDropdownToggle(link.name)}
                         >
                           {link.name}
@@ -282,8 +282,8 @@ export default function NavBar() {
                                   `block px-2 py-3 text-md rounded-3xl ${
                                     isActive
                                       ? "text-blue-500 dark:text-blue-400 font-medium"
-                                      : "text-neutral-800 dark:text-white"
-                                  } hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all`
+                                      : "text-gray-800 dark:text-white"
+                                  } hover:bg-gray-100 dark:hover:bg-gray-800 transition-all`
                                 }
                               >
                                 {item.name}
@@ -300,7 +300,7 @@ export default function NavBar() {
 
             {/* 3. right-side-logos */}
             <div
-              className={`hidden md:flex gap-1 md:gap-3 backdrop-blur-md bg-neutral-200 dark:bg-neutral-800 p-2 rounded-full`}
+              className={`hidden md:flex gap-1 md:gap-3 backdrop-blur-md bg-gray-200 dark:bg-gray-800 p-2 rounded-full`}
             >
               <Image
                 className="brand-logo border border-black dark:border-white p-1 rounded-full min-h-[30px] max-h-[52px] aspect-square"

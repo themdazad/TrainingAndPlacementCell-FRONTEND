@@ -7,7 +7,7 @@ export default function PageHeader({ title, description, breadcrumbItems }) {
           {title}
         </h1>
         {description && (
-          <p className="max-w-2xl text-neutral-600 dark:text-neutral-400">
+          <p className="max-w-2xl text-gray-600 dark:text-gray-400">
             {description}
           </p>
         )}

@@ -59,7 +59,7 @@ const AdminLogin = () => {
 
   return (
     <div className="flex items-center justify-center">
-      <Card className="border-t-4 border-y-blue-500 w-full max-w-md p-3 m-[5%] shadow-md rounded-3xl">
+      <Card className="border-t-4 border-y-blue-500  w-full max-w-md p-3 m-[5%] shadow-md rounded-3xl">
         <CardBody>
           <h2 className="text-2xl font-bold text-center mb-6">Admin Login</h2>
           <form className="space-y-4">

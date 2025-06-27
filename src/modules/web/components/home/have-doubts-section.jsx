@@ -16,30 +16,30 @@ export default function HaveDoubts() {
         <img
           src="/images/coordinators/abhishek_profile.jpg"
           alt="Abhishek"
-          className="w-20 aspect-square rounded-full border-2 dark:border-neutral-700 border-white"
+          className="w-20 aspect-square rounded-full border-2 dark:border-gray-700 border-white"
         />
         <img
           src="/images/coordinators/anupam_profile.jpg"
           alt="Anupam"
-          className="w-20 aspect-square rounded-full border-2 dark:border-neutral-700 border-white"
+          className="w-20 aspect-square rounded-full border-2 dark:border-gray-700 border-white"
         />
         <img
           src="/images/coordinators/azad_profile.jpg"
           alt="Azad"
-          className="w-20 aspect-square rounded-full border-2 dark:border-neutral-700 border-white"
+          className="w-20 aspect-square rounded-full border-2 dark:border-gray-700 border-white"
         />
         <img
           src="https://avatars.githubusercontent.com/u/156394664?v=4"
           alt="Coordinator 3"
-          className="w-20 aspect-square rounded-full border-2 dark:border-neutral-700 border-white"
+          className="w-20 aspect-square rounded-full border-2 dark:border-gray-700 border-white"
         />
       </div>
 
       {/* Contact Section */}
-      <h2 className="text-xl font-semibold text-neutral-900 dark:text-white">
+      <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
         Still have doubts?
       </h2>
-      <p className="text-neutral-700 dark:text-neutral-300 my-2">
+      <p className="text-gray-700 dark:text-gray-300 my-2">
         Can&apos;t find the answer you&apos;re looking for? Contact us!
       </p>
 

@@ -81,7 +81,7 @@ export function Card({
   github,
 }) {
   return (
-    <div className="w-full max-w-4xl bg-neutral-100/50 dark:bg-neutral-800 rounded-3xl shadow-md  space-y-2 p-6 gap-3 ">
+    <div className="w-full max-w-4xl bg-gray-100/50 dark:bg-gray-800 rounded-3xl shadow-md  space-y-2 p-6 gap-3 ">
       <h3 className="text-center text-lg font-bold">{name}</h3>
       <p className="text-center">{designation}</p>
 

@@ -77,7 +77,7 @@ const {data, loading, error} = useNoticeAnnouncements();
               </a>
             ))
           ) : (
-            <p className="text-neutral-500 dark:text-neutral-400">
+            <p className="text-gray-500 dark:text-gray-400">
             
               {loading && <p className="animate-pulse">Loading...</p>}
               {error && { error }}
