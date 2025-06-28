@@ -44,13 +44,13 @@ export function JobsInternships({ data, error, loading }) {
   const getCategoryColor = (category) => {
     switch (category) {
       case "Placement":
-        return "bg-green-100 text-green-800";
+        return "bg-slate-100 text-slate-800";
       case "Internship":
         return "bg-red-100 text-red-800";
       case "Hackathon":
         return "bg-sky-100 text-sky-800";
       default:
-        return "bg-gray-100 text-gray-800";
+        return "bg-slate-100 text-slate-800";
     }
   };
 

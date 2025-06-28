@@ -23,6 +23,7 @@ export default function Hero() {
     },
   };
   return (
+    
     <section className="max-w-screen-2xl m-auto min-h-[80dvh] pt-[80px] px-[2%]  grid items-center grid-cols-1 gap-6 lg:grid-cols-2 ">
       {/* CTA Section - Left Half */}
       <motion.div
@@ -61,13 +62,13 @@ export default function Hero() {
             variants={fadeUp}
           >
             Training and Placement Cell
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500">
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-slate-500">
               GEC SIWAN
             </span>
           </motion.h1>
 
           <motion.p
-            className="text-gray-600 dark:text-gray-300 max-w-lg mx-auto sm:mx-0"
+            className="text-slate-600 dark:text-slate-300 max-w-lg mx-auto sm:mx-0"
             variants={fadeUp}
           >
             We strive to organize mock sessions, and provide real-world exposure
@@ -91,7 +92,7 @@ export default function Hero() {
           <a
             href={PLACEMENT_BROCHURE}
             target="_blank"
-            className="flex items-center justify-center border-2 border-gray-300 hover:border-blue-600 hover:text-blue-600 px-4 py-2 rounded-3xl font-semibold transition-all duration-200 transform hover:scale-105 group"
+            className="flex items-center justify-center border-2 border-slate-300 hover:border-blue-600 hover:text-blue-600 px-4 py-2 rounded-3xl font-semibold transition-all duration-200 transform hover:scale-105 group"
           >
             <Download className="mr-2 w-5 h-5 transition-transform group-hover:scale-110" />
             Brochure
@@ -99,7 +100,7 @@ export default function Hero() {
         </motion.div>
 
         <motion.div
-          className="pt-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500"
+          className="pt-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-slate-500"
           variants={fadeUp}
         >
           *[Under Development]: Provide feedbacks for better experience.

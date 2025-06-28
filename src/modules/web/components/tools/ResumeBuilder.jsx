@@ -161,11 +161,11 @@ export default function ResumeBuilder() {
   };
 
   return (
-    <div className="dark:bg-gray-900 min-h-screen text-gray-800 dark:text-gray-100 transition-colors duration-300 py-8">
+    <div className="dark:bg-slate-900 min-h-screen text-slate-800 dark:text-slate-100 transition-colors duration-300 py-8">
       <div className="flex flex-col lg:flex-row gap-8 mx-auto">
-        <div className="w-full lg:w-1/2 p-6 rounded shadow overflow-auto max-h-[90vh] space-y-6 bg-white dark:bg-gray-900">
+        <div className="w-full lg:w-1/2 p-6 rounded shadow overflow-auto max-h-[90vh] space-y-6 bg-white dark:bg-slate-900">
           {/* Personal Info */}
-          <section className="p-5 border border-gray-300 dark:border-gray-700 rounded-3xl bg-gray-50 dark:bg-gray-800 space-y-4">
+          <section className="p-5 border border-slate-300 dark:border-slate-700 rounded-3xl bg-slate-50 dark:bg-slate-800 space-y-4">
             <h3 className="text-lg font-semibold text-blue-500">
               Personal Information
             </h3>
@@ -190,7 +190,7 @@ export default function ResumeBuilder() {
 
           {/* Career Objective */}
          
-          <section className="p-5 border border-gray-300 dark:border-gray-700 rounded-2xl bg-gray-50 dark:bg-gray-800 space-y-4">
+          <section className="p-5 border border-slate-300 dark:border-slate-700 rounded-2xl bg-slate-50 dark:bg-slate-800 space-y-4">
             <h3 className="text-lg font-semibold text-blue-500">
               Career Objective
             </h3>
@@ -206,7 +206,7 @@ export default function ResumeBuilder() {
           
 
           {/* Online Profiles */}
-          <section className="p-5 border border-gray-300 dark:border-gray-700 rounded-2xl bg-gray-50 dark:bg-gray-800 space-y-4">
+          <section className="p-5 border border-slate-300 dark:border-slate-700 rounded-2xl bg-slate-50 dark:bg-slate-800 space-y-4">
             <h3 className="text-lg font-semibold text-blue-500">
               Online Profiles
             </h3>
@@ -233,7 +233,7 @@ export default function ResumeBuilder() {
           </section>
 
           {/* Skills */}
-          <section className="p-5 border border-gray-300 dark:border-gray-700 rounded-2xl bg-gray-50 dark:bg-gray-800 space-y-4">
+          <section className="p-5 border border-slate-300 dark:border-slate-700 rounded-2xl bg-slate-50 dark:bg-slate-800 space-y-4">
             <div className="flex justify-between items-center">
               <h3 className="text-lg font-semibold text-blue-500">Skills</h3>
             </div>
@@ -267,7 +267,7 @@ export default function ResumeBuilder() {
           </section>
 
           {/* Education */}
-          <section className="p-5 border border-gray-300 dark:border-gray-700 rounded-2xl bg-gray-50 dark:bg-gray-800 space-y-4">
+          <section className="p-5 border border-slate-300 dark:border-slate-700 rounded-2xl bg-slate-50 dark:bg-slate-800 space-y-4">
             <div className="flex justify-between items-center">
               <h3 className="text-lg font-semibold text-blue-500">Education</h3>
             </div>
@@ -275,7 +275,7 @@ export default function ResumeBuilder() {
               {education.map((edu, i) => (
                 <div
                   key={i}
-                  className="border border-gray-300 dark:border-gray-600 rounded-2xl p-4 space-y-3 bg-white dark:bg-gray-700"
+                  className="border border-slate-300 dark:border-slate-600 rounded-2xl p-4 space-y-3 bg-white dark:bg-slate-700"
                 >
                   <div className="grid grid-cols-2 gap-4">
                     <Input
@@ -331,7 +331,7 @@ export default function ResumeBuilder() {
           </section>
 
           {/* Experience */}
-          <section className="p-5 border border-gray-300 dark:border-gray-700 rounded-2xl bg-gray-50 dark:bg-gray-800 space-y-4">
+          <section className="p-5 border border-slate-300 dark:border-slate-700 rounded-2xl bg-slate-50 dark:bg-slate-800 space-y-4">
             <div className="flex justify-between items-center">
               <h3 className="text-lg font-semibold text-blue-500">
                 Projects/Experience
@@ -341,7 +341,7 @@ export default function ResumeBuilder() {
               {experience.map((exp, i) => (
                 <div
                   key={i}
-                  className="border border-gray-300 dark:border-gray-600 rounded-2xl p-4 space-y-3 bg-white dark:bg-gray-700"
+                  className="border border-slate-300 dark:border-slate-600 rounded-2xl p-4 space-y-3 bg-white dark:bg-slate-700"
                 >
                   <div className="grid grid-cols-3 gap-4">
                     <Input
@@ -371,7 +371,7 @@ export default function ResumeBuilder() {
                   </div>
 
                   <div>
-                    <h4 className="font-semibold text-sm text-gray-600 dark:text-gray-200 mb-1">
+                    <h4 className="font-semibold text-sm text-slate-600 dark:text-slate-200 mb-1">
                       Details
                     </h4>
                     <div className="space-y-2">
@@ -424,7 +424,7 @@ export default function ResumeBuilder() {
           </section>
 
           {/* Achievements */}
-          <section className="p-5 border border-gray-300 dark:border-gray-700 rounded-2xl bg-gray-50 dark:bg-gray-800 space-y-4">
+          <section className="p-5 border border-slate-300 dark:border-slate-700 rounded-2xl bg-slate-50 dark:bg-slate-800 space-y-4">
             <div className="flex justify-between items-center">
               <h3 className="text-lg font-semibold text-blue-500">
                 Achievements
@@ -460,7 +460,7 @@ export default function ResumeBuilder() {
 
 
           {/* Interests and Hobbies */}
-          <section className="p-5 border border-gray-300 dark:border-gray-700 rounded-2xl bg-gray-50 dark:bg-gray-800 space-y-4">
+          <section className="p-5 border border-slate-300 dark:border-slate-700 rounded-2xl bg-slate-50 dark:bg-slate-800 space-y-4">
             <div className="flex justify-between items-center">
               <h3 className="text-lg font-semibold text-blue-500">
                 Interests and Hobbies
@@ -498,7 +498,7 @@ export default function ResumeBuilder() {
         {/* Resume Preview */}
         <div
           ref={resumeRef}
-          className="w-full lg:w-1/2 bg-white dark:bg-gray-800 text-black dark:text-gray-100 p-8 rounded shadow font-sans text-sm overflow-auto "
+          className="w-full lg:w-1/2 bg-white dark:bg-slate-800 text-black dark:text-slate-100 p-8 rounded shadow font-sans text-sm overflow-auto "
         >
           {/* I. Header */}
           <div className="py-2">
@@ -557,9 +557,9 @@ export default function ResumeBuilder() {
           {education.length > 0 && (
             <div className="my-6">
               <h2 className="mb-3 text-lg font-semibold">Education</h2>
-              <div className="w-full border border-gray-300 dark:border-gray-700 ">
+              <div className="w-full border border-slate-300 dark:border-slate-700 ">
                 {/* Table Row */}
-                <div className="grid grid-cols-5 pb-3 bg-gray-100 dark:bg-gray-800 text-center font-semibold border-b border-gray-300 dark:border-gray-700">
+                <div className="grid grid-cols-5 pb-3 bg-slate-100 dark:bg-slate-800 text-center font-semibold border-b border-slate-300 dark:border-slate-700">
                   <span>Year</span>
                   <span>Course</span>
                   <span className="col-span-2">School/College</span>
@@ -570,7 +570,7 @@ export default function ResumeBuilder() {
                 {education.map((edu, i) => (
                   <div
                     key={i}
-                    className=" text-center border-b border-gray-200 dark:border-gray-700"
+                    className=" text-center border-b border-slate-200 dark:border-slate-700"
                   >
                     <div className="grid grid-cols-5 mb-3">
                       <span>{edu.year}</span>

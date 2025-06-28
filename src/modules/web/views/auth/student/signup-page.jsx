@@ -146,7 +146,7 @@ const StudentSignup = () => {
           </form>
 
           <div className="text-center mt-2">
-            <span className="text-gray-600">Already have an account?</span>{" "}
+            <span className="text-slate-600">Already have an account?</span>{" "}
             <NavLink to="/auth/student/login" className="text-primary">
               Login
             </NavLink>

@@ -29,9 +29,9 @@ const Profile = () => {
       transition={{ duration: 0.5 }}
       className="mx-auto mt-6"
     >
-      <div className="shadow-lg w-full rounded-2xl p-6  dark:bg-gray-800">
+      <div className="shadow-lg w-full rounded-2xl p-6  dark:bg-slate-800">
       {/* Profile Header */}
-      <div className="flex items-center gap-4 border-b border-gray-500/50 pb-4">
+      <div className="flex items-center gap-4 border-b border-slate-500/50 pb-4">
         <div className="w-16 h-16">
           <img
             src={student.profilePic}
@@ -41,10 +41,10 @@ const Profile = () => {
         </div>
         <div>
           <h2 className="text-xl font-semibold">{student.name}</h2>
-          <p className="text-gray-400 text-sm">{student.email}</p>
+          <p className="text-slate-400 text-sm">{student.email}</p>
         </div>
         <button
-          className="ml-auto p-2 rounded-full hover:bg-gray-200"
+          className="ml-auto p-2 rounded-full hover:bg-slate-200"
           onClick={() => setIsEditing(!isEditing)}
         >
           ✏️
@@ -54,23 +54,23 @@ const Profile = () => {
       {/* Profile Details */}
       <div className="grid grid-cols-2 gap-4 text-sm mt-4">
         <div>
-          <p className="text-gray-400">Department</p>
+          <p className="text-slate-400">Department</p>
           <p className="font-medium">{student.department}</p>
         </div>
         <div>
-          <p className="text-gray-400">register No.</p>
+          <p className="text-slate-400">register No.</p>
           <p className="font-medium">BEU-{student.registerNo}</p>
         </div>
         <div>
-          <p className="text-gray-400">CGPA</p>
+          <p className="text-slate-400">CGPA</p>
           <p className="font-medium">{student.cgpa}</p>
         </div>
         <div>
-          <p className="text-gray-400">Placement Status</p>
+          <p className="text-slate-400">Placement Status</p>
           <p
             className={`font-medium ${
               student.placementStatus === "Eligible"
-                ? "text-green-500"
+                ? "text-slate-500"
                 : "text-red-500"
             }`}
           >
@@ -78,7 +78,7 @@ const Profile = () => {
           </p>
         </div>
         <div>
-          <p className="text-gray-400">Phone</p>
+          <p className="text-slate-400">Phone</p>
           <p className="font-medium">{student.phone}</p>
         </div>
         
@@ -86,7 +86,7 @@ const Profile = () => {
 
       {/* Projects Section */}
       {student.projects.length > 0 && (
-        <div className="mt-6 border-t border-gray-500/50 pt-4">
+        <div className="mt-6 border-t border-slate-500/50 pt-4">
           <h3 className="text-lg font-semibold mb-2">Projects</h3>
           <ul className="list-disc pl-5 space-y-1">
             {student.projects.map((project, index) => (

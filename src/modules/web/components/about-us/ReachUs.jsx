@@ -73,7 +73,7 @@ export default function ReachUs() {
           {data.map(({ mode, icon, description, cities }) => (
             <div
               key={mode}
-              className="snap-center min-w-[280px] card shadow-md p-6 dark:bg-gray-800 rounded-3xl"
+              className="snap-center min-w-[280px] card shadow-md p-6 dark:bg-slate-800 rounded-3xl"
             >
               <h1 className="text-lg font-bold inline-flex gap-2 text-blue-500 dark:text-blue-400">
                 {icon}
@@ -101,7 +101,7 @@ export default function ReachUs() {
         </div>
 
         {/* Accommodation  */}
-        <div className="shadow-md p-6 dark:bg-gray-800 rounded-3xl max-w-full">
+        <div className="shadow-md p-6 dark:bg-slate-800 rounded-3xl max-w-full">
           <h2 className="text-lg font-bold text-blue-500 dark:text-blue-400 inline-flex gap-3 items-center mb-4">
             <BedDouble /> Accommodation
           </h2>

@@ -43,7 +43,7 @@ export default function MockInterview() {
   };
   
   return (
-    <main className="max-w-screen-2xl px-[2%] m-auto dark:bg-gray-900 grid gap-12 py-6 ">
+    <main className="max-w-screen-2xl px-[2%] m-auto dark:bg-slate-900 grid gap-12 py-6 ">
       <PageHeader breadcrumbItems={breadcrumbItems} />
 
       {/* main content */}
@@ -68,12 +68,12 @@ export default function MockInterview() {
 
           {/* Latest Mock Interview Registration Card  */}
           <div className="grid content-center">
-            <div className="bg-blue-100 dark:bg-gray-800 rounded-3xl shadow-md p-8 grid gap-3 text-center  w-full">
+            <div className="bg-blue-100 dark:bg-slate-800 rounded-3xl shadow-md p-8 grid gap-3 text-center  w-full">
               <h2 className="text-2xl font-bold">
                 {mock_interview_data[mock_interview_data.length - 1].id}
               </h2>
               <h2 className="text-2xl font-bold">Mock Interview Session</h2>
-              <p className="font-bold text-gray-600 dark:text-gray-300">
+              <p className="font-bold text-slate-600 dark:text-slate-300">
                 Register by :
                 {mock_interview_data[mock_interview_data.length - 1].last_date}
               </p>
@@ -106,11 +106,11 @@ export default function MockInterview() {
             return (
               <div
                 key={index}
-                className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-8 grid gap-3 text-center  w-full"
+                className="bg-white dark:bg-slate-800 rounded-xl shadow-md p-8 grid gap-3 text-center  w-full"
               >
                 <h2 className="text-lg font-bold">{data.id}</h2>
                 <h2 className="font-semibold">Mock Interview Session</h2>
-                <p className=" text-gray-600 dark:text-gray-300">
+                <p className=" text-slate-600 dark:text-slate-300">
                   Register by :{data.last_date}
                 </p>
               </div>

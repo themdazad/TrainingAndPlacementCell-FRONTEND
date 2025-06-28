@@ -55,13 +55,13 @@ export default function AcademicPrograms() {
             <motion.div
               key={index}
               variants={item}
-              className="academic-program__item snap-center max-w-full min-w-[300px] flex flex-col items-center justify-center gap-4 text-center bg-sky-500/10 border-t-4 border-blue-500 p-6  dark:bg-gray-80  rounded-3xl"
+              className="academic-program__item snap-center max-w-full min-w-[300px] flex flex-col items-center justify-center gap-4 text-center bg-sky-500/10 border-t-4 border-blue-500 p-6  dark:bg-slate-80  rounded-3xl"
             >
               <Icon className="h-16 w-16 text-blue-500 dark:text-blue-400" />
-              <div className="academic-program__item-title font-bold text-lg text-gray-900 dark:text-white">
+              <div className="academic-program__item-title font-bold text-lg text-slate-900 dark:text-white">
                 {card.title}
               </div>
-              <div className="academic-program__item-description leading-relaxed text-sm text-gray-700 dark:text-gray-300">
+              <div className="academic-program__item-description leading-relaxed text-sm text-slate-700 dark:text-slate-300">
                 {card.description}
               </div>
             </motion.div>

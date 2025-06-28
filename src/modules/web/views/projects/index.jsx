@@ -58,12 +58,12 @@ const Projects = () => {
               setSearchQuery(e.target.value);
               setCurrentPage(1);
             }}
-            className="w-full md:w-[14em] p-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-full"
+            className="w-full md:w-[14em] p-3 border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 rounded-full"
           />
           <select
             value={sortOrder}
             onChange={(e) => setSortOrder(e.target.value)}
-            className="w-full md:w-[14em] p-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-full"
+            className="w-full md:w-[14em] p-3 border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 rounded-full"
           >
             <option value="newest">Sort by Newest</option>
             <option value="oldest">Sort by Oldest</option>
@@ -78,7 +78,7 @@ const Projects = () => {
               <NavLink
                 key={project.id}
                 to={`${slugify(project.title)}/${project.id}`}
-                className="rounded-xl border border-transparent hover:border-blue-500 bg-white dark:bg-gray-900 shadow-sm hover:shadow-md transition-all duration-200 overflow-hidden flex flex-col"
+                className="rounded-xl border border-transparent hover:border-blue-500 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md transition-all duration-200 overflow-hidden flex flex-col"
               >
                 <Image
                   className="object-cover aspect-video w-full"
@@ -88,10 +88,10 @@ const Projects = () => {
                 />
 
                 <div className="p-4 flex flex-col gap-2">
-                  <h2 className="font-semibold text-lg text-gray-800 dark:text-white">
+                  <h2 className="font-semibold text-lg text-slate-800 dark:text-white">
                     {project.title}
                   </h2>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                  <p className="text-sm text-slate-600 dark:text-slate-400">
                     {project.description.split(" ").slice(0, 15).join(" ")}...
                   </p>
                 </div>
@@ -106,7 +106,7 @@ const Projects = () => {
             <button
               onClick={() => goToPage(currentPage - 1)}
               disabled={currentPage === 1}
-              className="px-3 py-1 border rounded-full disabled:opacity-50 bg-gray-200 dark:bg-gray-700"
+              className="px-3 py-1 border rounded-full disabled:opacity-50 bg-slate-200 dark:bg-slate-700"
             >
               Previous
             </button>
@@ -117,7 +117,7 @@ const Projects = () => {
                 className={`px-4 py-2 border rounded-full transition-colors duration-200 ${
                   currentPage === i + 1
                     ? "bg-blue-600 text-white"
-                    : "bg-gray-200 dark:bg-gray-700"
+                    : "bg-slate-200 dark:bg-slate-700"
                 }`}
               >
                 {i + 1}
@@ -126,7 +126,7 @@ const Projects = () => {
             <button
               onClick={() => goToPage(currentPage + 1)}
               disabled={currentPage === totalPages}
-              className="px-3 py-1 border rounded-full disabled:opacity-50 bg-gray-200 dark:bg-gray-700"
+              className="px-3 py-1 border rounded-full disabled:opacity-50 bg-slate-200 dark:bg-slate-700"
             >
               Next
             </button>

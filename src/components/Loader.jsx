@@ -5,7 +5,7 @@ import RandomLoadingMessage from "./RandomLoadingMessage.jsx";
 export default function Loader() {
   return (
     <div className="absolute inset-0 z-50 flex items-center justify-center pointer-events-none">
-      <div className="flex flex-col items-center gap-4 animate-fadeIn backdrop-blur-sm bg-white/30 dark:bg-gray-900/30 px-6 py-6 rounded-xl shadow-lg">
+      <div className="flex flex-col items-center gap-4 animate-fadeIn backdrop-blur-sm bg-white/30 dark:bg-slate-900/30 px-6 py-6 rounded-xl shadow-lg">
         {/* Light mode logo */}
         <img
           src={GECSIWAN_LOGO}

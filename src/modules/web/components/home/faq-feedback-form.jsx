@@ -54,7 +54,7 @@ function FAQAccordion() {
 
   return (
     <div className="asked-questions-section  ">
-      <h2 className="text-2xl text-center my-6 font-extrabold text-gray-900 dark:text-white">
+      <h2 className="text-2xl text-center my-6 font-extrabold text-slate-900 dark:text-white">
         Asked Questions!
       </h2>
       <Accordion variant="light" className="md:text-lg">
@@ -65,7 +65,7 @@ function FAQAccordion() {
             aria-label={`Accordion ${index + 1}`}
             title={item.question}
           >
-            <p className=" text-gray-800 dark:text-gray-200">
+            <p className=" text-slate-800 dark:text-slate-200">
               {item.answer}
             </p>
           </AccordionItem>

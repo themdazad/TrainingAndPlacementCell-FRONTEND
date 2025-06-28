@@ -10,7 +10,7 @@ export default function WorkshopsTraining() {
     <div className="section ">
       <section className="max-w-screen-2xl m-auto px-[2%] space-y-6 w-full">
         {/* page title  */}
-        <span className="text-xl md:text-3xl font-semibold backdrop-blur-md inline-flex rounded-full  bg-clip-text bg-gradient-to-r from-blue-500 to-green-500 text-nowrap">
+        <span className="text-xl md:text-3xl font-semibold backdrop-blur-md inline-flex rounded-full  bg-clip-text bg-gradient-to-r from-blue-500 to-slate-500 text-nowrap">
           Workshops & Training
         </span>
         <Divider />
@@ -29,7 +29,7 @@ export default function WorkshopsTraining() {
                   className="absolute z-8 object-contain"
                 />
                 {/*hoverd: details card  */}
-                <div className="absolute bg-blue-100 dark:bg-gray-800 grid place-content-center z-9 backdrop-blur-xl backdrop-saturate-0 p-6 space-y-1 h-full w-full -top-full group-hover:top-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                <div className="absolute bg-blue-100 dark:bg-slate-800 grid place-content-center z-9 backdrop-blur-xl backdrop-saturate-0 p-6 space-y-1 h-full w-full -top-full group-hover:top-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
                   <div className="space-y-2 text-center">
                     <h1 className="text-xl font-extrabold">{item.title}</h1>
                     <div className="inline-flex gap-2">
@@ -66,7 +66,7 @@ export default function WorkshopsTraining() {
                     )}
                   </div>
                 </div>
-                <div className="absolute z-10 px-3 py-1 text-sm flex dark:bg-gray-800 text-white bg-blue-500 rounded-tr-3xl opacity-100 group-hover:opacity-0 min-w-max -bottom-0 group-hover:-bottom-full transition-all duration-500 ">
+                <div className="absolute z-10 px-3 py-1 text-sm flex dark:bg-slate-800 text-white bg-blue-500 rounded-tr-3xl opacity-100 group-hover:opacity-0 min-w-max -bottom-0 group-hover:-bottom-full transition-all duration-500 ">
                   <p className=" px-2">{item.title}</p>
                 </div>
               </div>

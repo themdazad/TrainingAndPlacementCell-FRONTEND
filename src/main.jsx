@@ -15,7 +15,7 @@ function App() {
   return (
     <HeroUIProvider>
       <ToastContainer />
-      <main className="text-foreground bg-background dark:bg-gray-950 min-h-screen">
+      <main className="text-foreground bg-background dark:bg-slate-950 min-h-screen">
         <NProgressLoader />        
           <NavBar />
           <AppRoutes />

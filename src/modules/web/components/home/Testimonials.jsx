@@ -63,9 +63,9 @@ const Testimonials = () => {
 
   return (
     <section className="max-w-screen-2xl m-auto px-[2%] text-center ">
-      <h2 className="text-2xl sm:text-4xl font-extrabold text-gray-900 dark:text-white max-w-2xl mx-auto mb-10 leading-snug">
+      <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white max-w-2xl mx-auto mb-10 leading-snug">
         Hear from our students and recruiters.{" "}
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500">
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-slate-500">
           100+ success stories
         </span>{" "}
         and counting.
@@ -88,19 +88,19 @@ const Testimonials = () => {
                 t.rotate ?? ""
               } transition duration-300 ease-in-out hover:scale-105 hover:shadow-md`}
             >
-              <p className="text-gray-800 dark:text-gray-100 mb-4 leading-relaxed">
+              <p className="text-slate-800 dark:text-slate-100 mb-4 leading-relaxed">
                 {t.text}
               </p>
               <div>
-                <p className="font-semibold text-gray-900 text-sm dark:text-white">
+                <p className="font-semibold text-slate-900 text-sm dark:text-white">
                   {t.name}
                 </p>
-                <p className="text-gray-600 dark:text-gray-400 text-sm mb-2">
+                <p className="text-slate-600 dark:text-slate-400 text-sm mb-2">
                   {t.title}
                 </p>
-                <div className="flex items-center justify-between border-t border-gray-500/50 dark:border-gray-700 pt-2 mt-2">
+                <div className="flex items-center justify-between border-t border-slate-500/50 dark:border-slate-700 pt-2 mt-2">
                   <div className="flex items-center gap-2">
-                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
                       {t.companyName}
                     </span>
                   </div>
@@ -114,14 +114,14 @@ const Testimonials = () => {
         <div className="absolute top-1/2 -translate-y-1/2 w-full hidden md:flex justify-between pointer-events-none">
           <button
             onClick={prevSlide}
-            className="text-3xl absolute -left-20 text-gray-600 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition pointer-events-auto"
+            className="text-3xl absolute -left-20 text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-400 transition pointer-events-auto"
             aria-label="Previous"
           >
             <ChevronLeft />
           </button>
           <button
             onClick={nextSlide}
-            className="text-3xl absolute -right-20 text-gray-600 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition pointer-events-auto"
+            className="text-3xl absolute -right-20 text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-400 transition pointer-events-auto"
             aria-label="Next"
           >
             <ChevronRight />

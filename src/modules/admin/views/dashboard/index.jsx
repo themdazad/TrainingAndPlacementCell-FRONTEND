@@ -36,8 +36,8 @@ export default function AdminDashboard() {
           {Tabs.map((tab) => (
             <li
               key={tab}
-              className={`flex items-center gap-2 p-2 text-nowrap cursor-pointer dark:hover:bg-gray-800 rounded-xl ${
-                activeTab === tab.name ? "bg-gray-500/40" : ""
+              className={`flex items-center gap-2 p-2 text-nowrap cursor-pointer dark:hover:bg-slate-800 rounded-xl ${
+                activeTab === tab.name ? "bg-slate-500/40" : ""
               }`}
               onClick={() => setActiveTab(tab.name)}
             >

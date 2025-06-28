@@ -105,7 +105,7 @@ const StudentLogin = () => {
               </span>
             </div>
             <div className="text-center mt-2">
-              <span className="text-gray-600">Not registered?</span>{" "}
+              <span className="text-slate-600">Not registered?</span>{" "}
               <NavLink to="student/signup" className="text-primary">
                 Sign Up
               </NavLink>
