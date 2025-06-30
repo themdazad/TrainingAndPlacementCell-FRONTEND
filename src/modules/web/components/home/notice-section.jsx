@@ -25,15 +25,15 @@ export function Notice() {
     );
 
   return (
-    <section className="bg-gray-100 dark:bg-gray-900 py-6">
+    <section className=" py-6">
       <motion.div
-        initial={{ width: "70%", y: 10 }}
-        whileInView={{ width: "100%", y: 0 }}
+        initial={{ y: 10 }}
+        whileInView={{ y: 0 }}
         transition={{ duration: 0.5, delay: 1, ease: "easeOut" }}
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: false, amount: 0.2 }}
         className="latest-updates-section max-w-screen-2xl overflow-hidden m-auto px-[2%]"
       >
-        <div className="min-w-full rounded-3xl max-md:border-y-4 md:border-x-4 border-blue-500 p-3 px-6 min-h-40 ">
+        <div className="bg-sky-100 dark:bg-gray-900 min-w-full rounded-3xl max-md:border-y-4 md:border-x-4 border-blue-500 p-3 px-6 min-h-40 ">
           <div className="flex items-center max-md:justify-center justify-between">
             <h2 className="text-2xl text-nowrap font-semibold text-blue-500 flex flex-wrap justify-center items-center gap-2 ">
               <BellDot />

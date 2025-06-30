@@ -14,11 +14,6 @@ export default function HaveDoubts() {
       {/* Coordinator Images */}
       <div className="flex justify-center -space-x-4">
         <img
-          src="/images/coordinators/abhishek_profile.jpg"
-          alt="Abhishek"
-          className="w-20 aspect-square rounded-full border-2 dark:border-slate-700 border-white"
-        />
-        <img
           src="/images/coordinators/anupam_profile.jpg"
           alt="Anupam"
           className="w-20 aspect-square rounded-full border-2 dark:border-slate-700 border-white"
