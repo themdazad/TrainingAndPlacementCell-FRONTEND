@@ -1,7 +1,6 @@
 import { BellDot, Search } from "lucide-react";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Input } from "@heroui/react";
 import useNoticeAnnouncements from "../../../../api/web/notice-announcements-api.js";
 
 export default function Announcements() {

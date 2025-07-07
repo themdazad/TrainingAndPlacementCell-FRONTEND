@@ -45,7 +45,7 @@ export default function Hero() {
             />
             <Image
               className="hidden dark:inline h-[100px] aspect-square"
-              src="/images/gecsiwan-logo-light.png"
+              src="/images/logos/gecsiwan-logo-light.png"
               alt="gec-siwan-logo"
             />
           </motion.div>

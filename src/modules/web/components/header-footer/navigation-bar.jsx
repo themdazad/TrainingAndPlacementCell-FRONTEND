@@ -87,7 +87,7 @@ export default function NavBar() {
                 />
                 <Image
                   className="hidden dark:inline h-[80px] aspect-square"
-                  src="/images/gecsiwan-logo-light.png"
+                  src="/images/logos/gecsiwan-logo-light.png"
                   alt="gec-siwan-logo"
                 />
               </Link>
