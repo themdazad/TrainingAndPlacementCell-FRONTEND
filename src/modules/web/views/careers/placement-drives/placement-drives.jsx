@@ -25,7 +25,7 @@ export default function PlacementDrivesPage() {
 
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold">
             Job opportunities and Internships
-            <span className="block dm-serif-text-bold-italic text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-sky-500">
+            <span className="block font-forum text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-sky-500">
               {Date().split(" ")[3]}
             </span>
           </h1>

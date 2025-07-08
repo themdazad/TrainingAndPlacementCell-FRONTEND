@@ -23,7 +23,6 @@ export default function Hero() {
     },
   };
   return (
-    
     <section className="max-w-screen-2xl m-auto min-h-[50dvh] pt-[40px] px-[2%]  grid items-center grid-cols-1 gap-6 lg:grid-cols-2 ">
       {/* CTA Section - Left Half */}
       <motion.div
@@ -58,10 +57,11 @@ export default function Hero() {
           </motion.div>
 
           <motion.h1
-            className="font-serif text-5xl lg:text-6xl "
+            className="font-forum text-5xl lg:text-7xl "
             variants={fadeUp}
           >
-            Training and <br/>Placement Cell
+            Training and <br />
+            Placement Cell
             <span className="block text-xl text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-400">
               Government Engineering College, Siwan
             </span>
@@ -83,7 +83,7 @@ export default function Hero() {
         >
           <Link
             to="/careers/placement-drives"
-            className="flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white px-6 py-4 rounded-3xl font-semibold transition-all duration-200 transform hover:scale-105 hover:shadow-lg group"
+            className="flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-3xl font-semibold transition-all duration-200 transform hover:scale-105 hover:shadow-lg group"
           >
             Apply Now
             <ArrowRightCircle className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
@@ -92,7 +92,7 @@ export default function Hero() {
           <a
             href={PLACEMENT_BROCHURE}
             target="_blank"
-            className="flex items-center justify-center border-2 border-slate-300 hover:border-blue-600 hover:text-blue-600 px-6 py-4 rounded-3xl font-semibold transition-all duration-200 transform hover:scale-105 group"
+            className="flex items-center justify-center border-2 border-slate-300 hover:border-blue-600 hover:text-blue-600 px-4 py-3 rounded-3xl font-semibold transition-all duration-200 transform hover:scale-105 group"
           >
             <Download className="mr-2 w-5 h-5 transition-transform group-hover:scale-110" />
             Brochure

@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Forum&display=swap');
+
 
 @tailwind base;
 @tailwind components;
@@ -27,7 +29,7 @@ body {
 
   font-optical-sizing: auto;
 
-  /* font-family: 'SF Pro Display', sans-serif; */
+  font-family: "Inter",sans-serif;
 }
 
 h1,
@@ -40,55 +42,32 @@ h6 {
 }
 
 /* to hide visiblity of scroll bar  */
-/* ::-webkit-scrollbar{
+::-webkit-scrollbar{
   width: 0;
-} */
-.dm-serif-text-regular {
-  font-family: "DM Serif Text", serif;
+}
+
+.font-forum{
+  font-family: "Forum", serif;
+}
+
+.font-forum-regular {
+  font-family: "Forum", serif;
   font-weight: 400;
   font-style: normal;
 }
 
-.dm-serif-text-regular-italic {
-  font-family: "DM Serif Text", serif;
+.font-forum-regular-italic {
+  font-family: "Forum", serif;
   font-weight: 400;
   font-style: italic;
 }
-.dm-serif-text-bold {
-  font-family: "DM Serif Text", serif;
+.font-forum-bold {
+  font-family: "Forum", serif;
   font-weight: 700;
   font-style: normal;
 }
-.dm-serif-text-bold-italic {
-  font-family: "DM Serif Text", serif;
+.font-forum-bold-italic {
+  font-family: "Forum", serif;
   font-weight: 700;
   font-style: italic;
-}
-
-
-.p{
-  font-family: "Hanken Grotesk", sans-serif;
-}
-.hanken-grotesk{
-  font-family: "Hanken Grotesk", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
-}
-.hanken-grotesk-200 {
-  font-family: "Hanken Grotesk", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 200;
-  font-style: normal;
-}
-.hanken-grotesk-400 {
-  font-family: "Hanken Grotesk", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-}
-.hanken-grotesk-800 {
-  font-family: "Hanken Grotesk", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 800;
-  font-style: normal;
 }

@@ -13,7 +13,7 @@ export default function PlacementDrives() {
       <Divider />
 
       {/* Scrollable job cards */}
-      <div className="flex snap-x snap-mandatory gap-x-4 py-2 overflow-x-auto overflow-y-hidden scrollbar-hide">
+      <div className="flex snap-x snap-mandatory gap-x-4 py-2 overflow-x-auto overflow-y-hidden ">
         <JobsInternships data={data} loading={loading} error={error} />
       </div>
 
