@@ -64,20 +64,22 @@ export function JobsInternships({ data, error, loading }) {
         .reverse()
         .map((post, index) => (
           <div
-            key={post._id || post.title + post.post_date || index}
+            key={post._id || post.title + post.post_date || `post-${index}`}
             className="min-w-[320px] snap-center bg-sky-100 dark:bg-sky-900/10 rounded-3xl p-4 border-t-4 border-transparent hover:border-blue-500 hover:shadow transition duration-200"
           >
             {/* Header */}
             <div className="flex justify-between items-start mb-3">
               <div className="flex-1">
-                <h4 className="text-lg font-semibold mb-1">{post.title}</h4>
+                <h4 className="text-lg font-semibold mb-1">
+                  {post.title || "Untitled Post"}
+                </h4>
                 <div className="flex items-center gap-2 text-xs mb-2">
                   <span
-                    className={`px-2 py-1 rounded-full font-medium ${getCategoryColor(
-                      post.category
-                    )}`}
+                    className={`px-2 py-1 rounded-full font-medium ${
+                      getCategoryColor(post.category) || "bg-gray-300"
+                    }`}
                   >
-                    {post.category}
+                    {post.category || "No Category"}
                   </span>
                   {post.deadline && (
                     <span className="px-2 py-1 rounded-full text-danger font-medium">
@@ -86,7 +88,9 @@ export function JobsInternships({ data, error, loading }) {
                   )}
                 </div>
               </div>
-              <span className="text-sm">{post.post_date}</span>
+              <span className="text-sm">
+                {post.post_date || "Date not available"}
+              </span>
             </div>
 
             {/* Description */}
@@ -105,13 +109,16 @@ export function JobsInternships({ data, error, loading }) {
               <div className="flex gap-2">
                 {post.apply && (
                   <Button
-                  as={Link}
-                  to={post.apply}
-                  variant="outline"
-                  size="sm"
-                  className="text-"
-                  target="_blank"
-                > Apply</Button>
+                    as={Link}
+                    to={post.apply}
+                    variant="outline"
+                    size="sm"
+                    className="text-blue-500"
+                    target="_blank"
+                    aria-label="Apply for this post"
+                  >
+                    Apply
+                  </Button>
                 )}
                 {post.external_link && (
                   <Button
@@ -119,11 +126,12 @@ export function JobsInternships({ data, error, loading }) {
                     to={post.external_link}
                     variant="outline"
                     size="sm"
-                    className="text-"
+                    className="text-blue-500"
                     target="_blank"
-                  >                 
-                      <ExternalLink className="w-3 h-3 mr-1" />
-                      View Details
+                    aria-label="View post details"
+                  >
+                    <ExternalLink className="w-3 h-3 mr-1" />
+                    View Details
                   </Button>
                 )}
               </div>
