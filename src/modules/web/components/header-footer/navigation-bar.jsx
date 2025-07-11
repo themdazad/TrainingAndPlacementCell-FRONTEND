@@ -81,13 +81,13 @@ export default function NavBar() {
             >
               <Link to="/">
                 <Image
-                  className="dark:hidden h-[80px] aspect-square"
+                  className="dark:hidden h-[70px] aspect-square"
                   src="/images/logos/gecsiwan-logo.png"
                   alt="gec-siwan-logo"
                 />
                 <Image
                   className="hidden dark:inline h-[80px] aspect-square"
-                  src="/images/logos/gecsiwan-logo-light.png"
+                  src="/images/gecsiwan-logo-light.png"
                   alt="gec-siwan-logo"
                 />
               </Link>
@@ -300,15 +300,15 @@ export default function NavBar() {
 
             {/* 3. right-side-logos */}
             <div
-              className={`hidden md:flex gap-1 md:gap-3 backdrop-blur-md bg-slate-200 dark:bg-slate-800 p-2 rounded-full`}
+              className={`hidden md:flex gap-1 md:gap-3 backdrop-blur-md`}
             >
               <Image
-                className="brand-logo border border-black dark:border-white p-1 rounded-full min-h-[30px] max-h-[52px] aspect-square"
+                className="brand-logo border border-black dark:border-white p-1 rounded-full min-h-[30px] max-h-[60px] aspect-square"
                 src="/images/dstbihar-logo.png"
                 alt="dstbihar-logo"
               />
               <Image
-                className="brand-logo min-h-[30px] max-h-[52px] aspect-square"
+                className="brand-logo min-h-[30px] max-h-[60px] aspect-square"
                 src="/images/aicte-logo.png"
                 alt="aicte-logo"
               />
