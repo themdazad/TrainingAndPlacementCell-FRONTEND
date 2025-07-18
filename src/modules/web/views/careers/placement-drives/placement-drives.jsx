@@ -65,7 +65,7 @@ export function JobsInternships({ data, error, loading }) {
         .map((post, index) => (
           <div
             key={post._id || post.title + post.post_date || `post-${index}`}
-            className="min-w-[320px] snap-center bg-sky-100 dark:bg-sky-900/10 rounded-3xl p-4 border-t-4 border-transparent hover:border-blue-500 hover:shadow transition duration-200"
+            className="min-w-[320px] snap-center bg-neutral-100 dark:bg-sky-900/10 rounded-3xl p-4 border-t-4 border-transparent hover:border-blue-500 hover:shadow transition duration-200"
           >
             {/* Header */}
             <div className="flex justify-between items-start mb-3">

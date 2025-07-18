@@ -65,7 +65,7 @@ const Testimonials = () => {
     <section className="max-w-screen-2xl m-auto px-[2%] text-center ">
       <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white max-w-2xl mx-auto mb-10 leading-snug">
         Hear from our students and recruiters.{" "}
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-slate-500">
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500">
           100+ success stories
         </span>{" "}
         and counting.
@@ -84,7 +84,7 @@ const Testimonials = () => {
           {visibleTestimonials.map((t, index) => (
             <div
               key={index}
-              className={`snap-start min-w-[320px] bg-sky-500/10 border-t-4 border-blue-500  p-6 text-left rounded-3xl flex flex-col justify-between transition-all duration-100 ${
+              className={`snap-start min-w-[320px] bg-neutral-500/10 border-t-4 border-blue-500  p-6 text-left rounded-3xl flex flex-col justify-between transition-all duration-100 ${
                 t.rotate ?? ""
               } transition duration-300 ease-in-out hover:scale-105 hover:shadow-md`}
             >

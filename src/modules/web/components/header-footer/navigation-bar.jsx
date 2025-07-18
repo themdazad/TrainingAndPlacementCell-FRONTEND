@@ -82,12 +82,12 @@ export default function NavBar() {
               <Link to="/">
                 <Image
                   className="dark:hidden h-[70px] aspect-square"
-                  src="/images/logos/gecsiwan-logo.png"
+                  src="/images/logos/gecsiwan-logo-dark.png"
                   alt="gec-siwan-logo"
                 />
                 <Image
-                  className="hidden dark:inline h-[80px] aspect-square"
-                  src="/images/gecsiwan-logo-light.png"
+                  className="hidden dark:inline h-[70px] aspect-square"
+                  src="/images/logos/gecsiwan-logo-light.png"
                   alt="gec-siwan-logo"
                 />
               </Link>
@@ -96,7 +96,7 @@ export default function NavBar() {
             {/* 2. center-navigation-bar  */}
             <div
               className={`transition-all duration-500
-            w-full relative md:max-w-min text-nowrap py-1 mx-auto rounded-full backdrop-blur-md bg-slate-200/70 dark:bg-slate-800/70`}
+            w-full relative md:max-w-min text-nowrap py-1 px-2 mx-auto rounded-full backdrop-blur-md bg-slate-200/70 dark:bg-slate-800/70`}
             >
               <div className=" px-4 flex items-center justify-between py-2 relative z-50">
                 {/* Hamburger-Botton */}

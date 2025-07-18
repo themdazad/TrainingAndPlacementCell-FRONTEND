@@ -10,11 +10,6 @@ export const PastRecruitersData = [
     url: "https://blogger.googleusercontent.com/img/a/AVvXsEhrpjspiyfkKTXyAVTyuK7w8CcTYv1O-o8trPlYN0a1z3kMbnxZc01rJVFaQTnxRJHsl4Nwau_NWroWWHxwbnuADKpK4ObApMVmSEiVAiHwMaZk1aiZxOeQMpW6ZxeoH9d0bJ1v4edV5rAKlCd5ULSBoWUnYUTuf8GVSNyG9wptaLhLvL5U0QnHCiVJLg",
   },
   {
-    name: "Rinex",
-    link: "https://rinex.ai/",
-    url: "https://www.sret.edu.in/images/Placement/logo/RInex.png",
-  },
-  {
     name: "Ecospace Infra",
     link: "https://www.ecospaceinfra.com/",
     url: "https://www.ecospaceinfra.com/wp-content/uploads/2019/06/LOGO-3.png",

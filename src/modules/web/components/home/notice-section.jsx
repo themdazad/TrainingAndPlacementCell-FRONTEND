@@ -24,7 +24,7 @@ export function Notice() {
     );
 
   return (
-    <section className=" py-6">
+    <section className="py-6">
       <motion.div
         initial={{ y: 10 }}
         whileInView={{ y: 0 }}
@@ -32,7 +32,7 @@ export function Notice() {
         viewport={{ once: false, amount: 0.2 }}
         className="latest-updates-section max-w-screen-2xl overflow-hidden m-auto px-[2%]"
       >
-        <div className="bg-sky-100 dark:bg-gray-900 min-w-full rounded-3xl max-md:border-y-4 md:border-x-4 border-blue-500 p-3 px-6 min-h-40 ">
+        <div className="bg-neutral-100 dark:bg-gray-900 min-w-full rounded-3xl max-md:border-y-4 md:border-x-4 border-blue-500 p-3 px-6 min-h-40 ">
           <div className="flex items-center max-md:justify-center justify-between">
             <h2 className="text-2xl text-nowrap font-semibold text-blue-500 flex flex-wrap justify-center items-center gap-2 ">
               <BellDot />

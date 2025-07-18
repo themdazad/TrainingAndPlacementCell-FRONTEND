@@ -8,12 +8,12 @@ import HaveDoubts from "../../components/home/have-doubts-section.jsx";
 
 export default function Home() {
   return (
-    <main className="dark:bg-slate-950">
+    <main className="dark:bg-gray-950">
       <section className="min-h-screen overflow-hidden space-y-16 lg:space-y-32">
         <Hero />
+        <PastRecruiters />
         <Announcements />
         <PlacementDrives />
-        <PastRecruiters />
         <Testimonials />
         <FaqFeedbackForm />
         <HaveDoubts />
