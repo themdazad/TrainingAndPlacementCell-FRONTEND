@@ -77,26 +77,22 @@ export default function NavBar() {
           <div className="max-w-screen-2xl px-[2%] m-auto flex justify-between items-center gap-4">
             {/* 1. Left-side-logo */}
             <div
-              className={`max-sm:hidden hover:shadow-md hover:scale-105 backdrop-blur-md bg-slate-200/70 dark:bg-slate-800/70 p-1 rounded-full flex justify-center`}
+              className={`max-sm:hidden hover:shadow-md hover:scale-105 bg-slate-200 dark:bg-slate-800 p-1 rounded-full flex justify-center`}
             >
               <Link to="/">
                 <Image
-                  className="dark:hidden h-[70px] aspect-square"
-                  src="/images/logos/gecsiwan-logo-dark.png"
+                  className="h-[70px] aspect-square"
+                  src="/images/logos/gecsiwanlogo.svg"
                   alt="gec-siwan-logo"
                 />
-                <Image
-                  className="hidden dark:inline h-[70px] aspect-square"
-                  src="/images/logos/gecsiwan-logo-light.png"
-                  alt="gec-siwan-logo"
-                />
+                
               </Link>
             </div>
 
             {/* 2. center-navigation-bar  */}
             <div
               className={`transition-all duration-500
-            w-full relative md:max-w-min text-nowrap py-1 px-2 mx-auto rounded-full backdrop-blur-md bg-slate-200/70 dark:bg-slate-800/70`}
+            w-full relative md:max-w-min text-nowrap py-1 px-2 mx-auto rounded-full bg-slate-200 dark:bg-slate-800`}
             >
               <div className=" px-4 flex items-center justify-between py-2 relative z-50">
                 {/* Hamburger-Botton */}

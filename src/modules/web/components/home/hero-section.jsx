@@ -3,9 +3,8 @@ import { Image } from "@heroui/react";
 import PLACEMENT_BROCHURE from "../../../../assets/downloads/GEC_SIWAN_PLACEMENT_BROCHURE.pdf";
 import SimpleSlider from "../../../../components/common/SimpleSlider.jsx";
 import HeroSliderImages from "../../data/hero-slider-images.js";
-import { ArrowRightCircle, Download } from "lucide-react";
+import { Download } from "lucide-react";
 
-import { Link } from "react-router-dom";
 
 const sliderImages = HeroSliderImages;
 export default function Hero() {
@@ -52,10 +51,10 @@ export default function Hero() {
               />
             </motion.div>
             <motion.div
-              className="inline-flex items-center justify-center sm:justify-start px-4 py-2 bg-blue-500/20 text-blue-800 dark:text-blue-100 rounded-full font-medium"
+              className="inline-flex items-center justify-center sm:justify-start px-4 py-2 bg-blue-500/20 text-blue-800 dark:text-blue-100 rounded-full"
               variants={fadeUp}
             >
-              <span className="blinking-dot w-2 h-2 bg-blue-600 rounded-full mr-2 animate-pulse"></span>
+              <span className="blinking-dot w-2 h-2 bg-blue-600 rounded-full mr-2 animate-pulse"/>
               New
             </motion.div>
 
@@ -87,7 +86,7 @@ export default function Hero() {
             <a
               href={PLACEMENT_BROCHURE}
               target="_blank"
-              className="flex items-center justify-center border-2 border-slate-300 hover:border-blue-600 hover:text-blue-600 px-4 py-3 rounded-3xl transition-all duration-200 transform hover:scale-105 group"
+              className="flex items-center justify-center border-1 border-slate-300 hover:border-blue-600 hover:text-blue-600 px-4 py-3 rounded-3xl transition-all duration-200 transform hover:scale-105 group"
             >
               <Download className="mr-2 w-5 h-5 transition-transform group-hover:scale-110" />
               Brochure
