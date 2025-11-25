@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 
 export default function Error_404() {
   return (
-    <div className="flex items-center justify-center min-h-[80dvh] bg-transparent">
+    <div className="flex max-w-screen-xl m-auto items-center justify-center min-h-[80dvh] bg-transparent">
       <div className="flex flex-col animate-pulse items-center gap-3">
         <img
           src={GECSIWAN_LOGO}

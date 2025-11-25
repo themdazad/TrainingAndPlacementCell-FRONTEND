@@ -9,7 +9,7 @@ import HaveDoubts from "../../components/home/have-doubts-section.jsx";
 export default function Home() {
   return (
     <main className="dark:bg-gray-950">
-      <section className="min-h-screen overflow-hidden space-y-16 lg:space-y-32">
+      <section className="min-h-screen m-auto overflow-hidden max-w-screen-xl space-y-16 lg:space-y-32">
         <Hero />
         <PastRecruiters />
         <Announcements />

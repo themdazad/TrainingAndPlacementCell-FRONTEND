@@ -61,7 +61,7 @@ export default function NavBar() {
   }, [lastScrollY]);
 
   return (
-    <nav className="sticky top-4 w-full m-auto z-50 p-2">
+    <nav className="sticky top-4 max-w-screen-xl m-auto z-50 p-2">
       <header>
         {/* Navigation Header*/}
         <div

@@ -8,7 +8,7 @@ const breadcrumbItems = [
 export default function Alumni() {
   return (
     <main className="about-us">
-      <div className="m-auto max-w-screen-2xl px-4 space-y-10 lg:space-y-24 py-10">
+      <div className="m-auto max-w-screen-xl px-4 space-y-10 lg:space-y-24 py-10">
         <div>
           <PageHeader title={"Our Alumnis"} breadcrumbItems={breadcrumbItems} />
         </div>

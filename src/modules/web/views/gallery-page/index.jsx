@@ -6,7 +6,7 @@ import { galleryData } from "../../data/galleryData.js";
 export default function Gallery() {
   return (
     <main className="min-h-screen bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100">
-      <div className="m-auto max-w-screen-2xl px-[5%] sm:px-[4%] space-y-10 lg:space-y-20 py-10">
+      <div className="m-auto max-w-screen-xl px-[5%] sm:px-[4%] space-y-10 lg:space-y-20 py-10">
         {/* 📸 Banner Section */}
         <div className="relative overflow-hidden rounded-3xl shadow-md">
           <img

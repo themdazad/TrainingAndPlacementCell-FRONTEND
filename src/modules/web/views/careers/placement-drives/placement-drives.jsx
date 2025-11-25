@@ -14,7 +14,7 @@ export default function PlacementDrivesPage() {
   }, [data]);
 
   return (
-    <main className="">
+    <main className="max-w-screen-xl m-auto ">
       {/* Header/ */}
       <div className="top-banner shadow-md">
         <div className="banner-container max-w-screen-2xl m-auto space-y-6 px-[2%] py-6 md:py-12 text-center">

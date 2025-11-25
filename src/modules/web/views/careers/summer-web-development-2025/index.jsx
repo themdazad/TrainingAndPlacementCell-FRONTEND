@@ -7,7 +7,7 @@ const breadcrumbItems = [
 ];
 export default function SummerWebDevelopment2025() {
   return (
-    <main className="max-w-screen-2xl m-auto  px-[2%] dark:bg-slate-900 grid gap-12 py-6 ">
+    <main className="max-w-screen-xl m-auto   px-[2%] dark:bg-slate-900 grid gap-12 py-6 ">
       <PageHeader
         title={"Summer Program"}
         breadcrumbItems={breadcrumbItems}
