@@ -36,7 +36,7 @@ export function Notice() {
           <div className="flex items-center max-md:justify-center justify-between">
             <h2 className="text-2xl text-nowrap font-semibold text-blue-500 flex flex-wrap justify-center items-center gap-2 ">
               <BellDot />
-              Notices/Announcements
+              Announcements
             </h2>
           </div>
           <div

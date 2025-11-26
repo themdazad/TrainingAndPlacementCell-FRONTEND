@@ -13,7 +13,7 @@ export default function Hero() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   };
 
-  const stagger = {
+  const stagger = { 
     hidden: {},
     visible: {
       transition: {
@@ -25,7 +25,7 @@ export default function Hero() {
     <section className=" ">
       
       {/* Main Content */}
-      <div className="max-w-screen-2xl m-auto min-h-[600px] px-[2%] grid items-end grid-cols-1 gap-6 lg:grid-cols-2 ">
+      <div className="max-w-screen-2xl m-auto min-h-[500px] px-[2%] grid items-end grid-cols-1 gap-6 lg:grid-cols-2 ">
         {/* CTA Section - Left Half */}
         <motion.div
           className="space-y-6 text-center items-center sm:text-left sm:items-start flex flex-col"
@@ -59,7 +59,7 @@ export default function Hero() {
             </motion.div>
 
             <motion.h1
-              className="font-black text-5xl lg:text-6xl "
+              className="font-bold text-5xl lg:text-6xl "
               variants={fadeUp}
             >
               Training and <br />

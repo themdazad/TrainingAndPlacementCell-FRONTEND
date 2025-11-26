@@ -1,8 +1,6 @@
-import { Button, Image } from "@heroui/react";
-import { NavLink } from "react-router-dom";
+import { Image } from "@heroui/react";
 import ReachUs from "../../components/about-us/ReachUs.jsx";
 import TPCellCoordinators from "../../components/about-us/TPCellCoordinators.jsx";
-import AcademicPrograms from "../../components/about-us/AcademicPrograms.jsx";
 import TPCellMembers from "../../components/about-us/TPCellMembers.jsx";
 import PageHeader from "../../../../components/PageHeader.jsx";
 
@@ -37,14 +35,6 @@ export default function AboutUs() {
               academic-industry gap and provide students with ample
               opportunities to realize their professional goals.
             </p>
-            <Button
-              as={NavLink}
-              to={"https://www.gecsiwan.org/"}
-              variant="outlined"
-              color={"primary"}
-            >
-              Visit official college website
-            </Button>
           </div>
           <Image
             className="rounded-[30px]"
@@ -72,7 +62,6 @@ export default function AboutUs() {
             </p>
           </div> */}
         </section>
-        <AcademicPrograms />
         <ReachUs />
         <TPCellMembers />
         <TPCellCoordinators />

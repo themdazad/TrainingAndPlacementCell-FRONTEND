@@ -296,7 +296,7 @@ export default function NavBar() {
 
             {/* 3. right-side-logos */}
             <div
-              className={`hidden md:flex gap-1 md:gap-3 backdrop-blur-md`}
+              className={`hidden rounded-full md:flex gap-1 md:gap-3 backdrop-blur-md`}
             >
               <Image
                 className="brand-logo border border-black dark:border-white p-1 rounded-full min-h-[30px] max-h-[60px] aspect-square"
