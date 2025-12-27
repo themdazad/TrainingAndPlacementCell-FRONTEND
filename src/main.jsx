@@ -4,12 +4,12 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import { HeroUIProvider } from "@heroui/react";
 import { BrowserRouter } from "react-router-dom";
-import NavBar from "./modules/web/components/header-footer/navigation-bar.jsx";
-import Footer from "./modules/web/components/header-footer/footer-bar.jsx";  
+import NavBar from "./components/header-footer/navigation-bar.jsx";
+import Footer from "./components/header-footer/footer-bar.jsx";  
 import NProgressLoader from "./components/common/NProgressLoader.jsx";
 
 import AuthProvider from "./hooks/contexts/auth/AuthProvider.jsx"; // useContexts
-import AppRoutes from "./routes/routes.jsx";
+import AppRoutes from "./routes/index.jsx";
 
 function App() {
   return (

@@ -1,0 +1,42 @@
+import { Suspense, lazy } from "react";
+import { Routes, Route } from "react-router-dom";
+import { PATHS } from "./paths.js";
+import PrivateRoute from "../components/auth/PrivateRoute.jsx";
+import StudentDashboard from "../pages/(dashboard)/student";
+
+// Lazy load pages
+const Home = lazy(() => import("../pages/home"));
+const AboutUs = lazy(() => import("../pages/about-page"));
+const Alumni = lazy(() => import("../pages/alumni-page"));
+const Gallery = lazy(() => import("../pages/gallery-page"));
+const Auth = lazy(() => import("../pages/auth-page"));
+
+const AppRoutes = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Routes>
+        {/* 🌐 Public Routes with Main Layout */}
+        <Route path={PATHS.HOME} element={<Home />} />
+        <Route path={PATHS.ABOUT_US} element={<AboutUs />} />
+        <Route path={PATHS.ALUMNI} element={<Alumni />} />
+        <Route path={PATHS.GALLERY} element={<Gallery />} />
+        <Route path={PATHS.AUTH} element={<Auth />} />
+
+        {/* Auth Routes */}
+        {/* <Route path={PATHS.LOGIN} element={<Login />} /> */}
+
+        {/* 🔒 Protected Routes */}
+        <Route
+          path="/(dashboard)/student"
+          element={
+            <PrivateRoute>
+              <StudentDashboard />
+            </PrivateRoute>
+          }
+        />
+      </Routes>
+    </Suspense>
+  );
+};
+
+export default AppRoutes;
