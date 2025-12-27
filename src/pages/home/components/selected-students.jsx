@@ -86,7 +86,7 @@ function AvatarCarousel({
               }}
             >
               <h2 className="font-bold">{avatar.details.package}</h2>
-              <p className="text-[12px]">Reg. No. {avatar.details.regNo}</p>
+              <p className="text-[12px]">Reg. No. {avatar.details.registrationNumber}</p>
             </a>
           </div>
         );

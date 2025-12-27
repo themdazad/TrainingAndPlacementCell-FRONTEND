@@ -1,34 +1,22 @@
 import { useState } from "react";
-import { Image } from "@heroui/react";
-import GECSIWAN_COLLEGE from "../../assets/images/gecsiwan.jpeg";
-import StudentLogin from "./components/StudentLogin";
-import CoordinatorLogin from "./components/CoordinatorLogin";
-import AdminLogin from "./components/AdminLogin";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
 
 export default function Auth() {
-  const [tab, setTab] = useState("Student");
+  const [tab, setTab] = useState("Login");
   return (
     <main>
       <div className=" max-w-screen-2xl m-auto min-h-[80dvh] grid tems-center">
-        {/* Left Section */}
-        {/* <div className="max-lg:hidden flex flex-col justify-center items-center px-10 ">
-          <Image
-            src={GECSIWAN_COLLEGE}
-            alt="GEC Siwan Logo"
-            className="my-6 rounded-[4rem]"
-          />
-        </div> */}
-
         {/* Right Section */}
         <div className=" flex items-center justify-center">
           <div className="w-full max-w-md">
             <h2 className="text-center text-blue-500 font-semibold mb-4">
-              Sign-in to GEC Siwan Placement Portal
+              Welcome to GEC Siwan Placement Portal
             </h2>
 
             {/* Tabs */}
             <div className="flex justify-center space-x-6 text-sm font-medium text-slate-500 mb-6">
-              {["Student", "Admin", "Coordinator"].map((value, index) => {
+              {["Login", "Sign-up"].map((value, index) => {
                 return (
                   <a
                     key={value}
@@ -48,9 +36,8 @@ export default function Auth() {
             </div>
 
             {/* rendered components */}
-            {tab === "Student" && <StudentLogin />}
-            {tab === "Coordinator" && <CoordinatorLogin />}
-            {tab === "Admin" && <AdminLogin />}
+            {tab === "Login" && <Login />}
+            {tab === "Sign-up" && <Signup />}
           </div>
         </div>
       </div>

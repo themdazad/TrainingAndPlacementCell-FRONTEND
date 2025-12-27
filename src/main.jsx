@@ -1,11 +1,12 @@
 import axios from "axios";
-import {ToastContainer} from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import ReactDOM from "react-dom/client";
 import "./index.css";
+import AutoThemeListener from "./components/AutoThemeListener";
 import { HeroUIProvider } from "@heroui/react";
 import { BrowserRouter } from "react-router-dom";
 import NavBar from "./components/header-footer/navigation-bar.jsx";
-import Footer from "./components/header-footer/footer-bar.jsx";  
+import Footer from "./components/header-footer/footer-bar.jsx";
 import NProgressLoader from "./components/common/NProgressLoader.jsx";
 
 import AuthProvider from "./hooks/contexts/auth/AuthProvider.jsx"; // useContexts
@@ -16,10 +17,10 @@ function App() {
     <HeroUIProvider>
       <ToastContainer />
       <main className="text-foreground bg-background dark:bg-slate-950 min-h-screen">
-        <NProgressLoader />        
-          <NavBar />
-          <AppRoutes />
-          <Footer />
+        <NProgressLoader />
+        <NavBar />
+        <AppRoutes />
+        <Footer />
       </main>
     </HeroUIProvider>
   );
@@ -30,8 +31,9 @@ function Root() {
   return (
     <BrowserRouter>
       <AuthProvider>
-          <App />
-       </AuthProvider>
+        <App />
+        <AutoThemeListener />
+      </AuthProvider>
     </BrowserRouter>
   );
 }

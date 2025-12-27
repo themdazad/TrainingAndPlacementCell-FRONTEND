@@ -3,6 +3,7 @@ import { Globe, Linkedin, Twitter } from 'lucide-react';
 export default function Footer1() {
   return (
     <footer className="bg-slate-100 py-4 border-t-4 rounded-3xl border-blue-500 dark:bg-slate-900 transition-all duration-200">
+
       <div className="max-w-screen-2xl mx-auto px-4 flex flex-row flex-wrap items-center gap-4">
         {/* copyright / text */}
         <div className="w-full sm:w-auto text-center sm:text-left text-sm text-slate-600 dark:text-slate-300">

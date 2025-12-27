@@ -3,7 +3,6 @@ import { Link, NavLink } from "react-router-dom";
 import { Image, Button } from "@heroui/react";
 import { ChevronDown, ChevronUp, X, AlignLeft } from "lucide-react";
 import { useAuth } from "../../hooks/contexts/auth/AuthContext"; // Adjust path as needed
-import ThemeSwitch from "../../components/ThemeSwitch";
 import NavigationMenuRoutes from "../../data/navigation-menu-routes.js"
 
 export default function NavBar() {
@@ -168,9 +167,8 @@ export default function NavBar() {
                   )}
                 </div>
 
-                {/*Theme Switch, Dashboard/Login, and Logout */}
+                {/* Dashboard/Login, and Logout */}
                 <div className="flex items-center gap-6 ml-4">
-                  <ThemeSwitch />
 
                   {/* Login Button */}
                   {!(isLogedIn.admin || isLogedIn.student) && (

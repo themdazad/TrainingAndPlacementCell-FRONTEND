@@ -4,7 +4,7 @@ const studentDetails = [
     image: "/images/students2025/abhishek22102151907.jpg",
     details: {
       name: "Abhishek Kumar Singh",
-      regNo: "22102151907",
+      registrationNumber: "22102151907",
       branch: "Mechanical Engineering",
 
       email: "abhishek.gecs@gmail.com",
@@ -29,7 +29,7 @@ const studentDetails = [
     image: "/images/students2025/rupa21102151010.jpg",
     details: {
       name: "Rupa Kumari",
-      regNo: "21102151010",
+      registrationNumber: "21102151010",
       branch: "Mechanical Engineering",
       email: "",
       phone: "+91-",
@@ -47,7 +47,7 @@ const studentDetails = [
     image: "/images/students2025/guddu22103151944.jpg",
     details: {
       name: "Guddu Kumar",
-      regNo: "22103151944",
+      registrationNumber: "22103151944",
       branch: "Electrical Engineering",
       email: "",
       phone: "+91-",
@@ -65,7 +65,7 @@ const studentDetails = [
     image: "/images/students2025/nishant21103151005.jpg",
     details: {
       name: "Nishant Raj",
-      regNo: "21103151005",
+      registrationNumber: "21103151005",
       branch: "Electrical Engineering",
       college: "",
       email: "",
@@ -84,7 +84,7 @@ const studentDetails = [
     image: "/images/students2025/prakash21103151003.jpg",
     details: {
       name: "Prakash Sharma",
-      regNo: "21103151003",
+      registrationNumber: "21103151003",
       branch: "Electrical Engineering",
       college: "",
       email: "",
@@ -103,7 +103,7 @@ const studentDetails = [
     image: "/images/students2025/romi22102151903.jpg",
     details: {
       name: "Romi Patel",
-      regNo: "22102151903",
+      registrationNumber: "22102151903",
       branch: "Electrical Engineering",
       college: "",
       email: "",
@@ -122,7 +122,7 @@ const studentDetails = [
     image: "/images/students2025/sidhant21103151018.jpg",
     details: {
       name: "Sidhant Singh",
-      regNo: "21103151018",
+      registrationNumber: "21103151018",
       branch: "Electrical Engineering",
       college: "NIT Example",
       email: "sidhant.singh@example.com",

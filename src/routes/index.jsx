@@ -6,10 +6,10 @@ import StudentDashboard from "../pages/(dashboard)/student";
 
 // Lazy load pages
 const Home = lazy(() => import("../pages/home"));
-const AboutUs = lazy(() => import("../pages/about-page"));
-const Alumni = lazy(() => import("../pages/alumni-page"));
-const Gallery = lazy(() => import("../pages/gallery-page"));
-const Auth = lazy(() => import("../pages/auth-page"));
+const AboutUs = lazy(() => import("../pages/about/index.jsx"));
+const Alumni = lazy(() => import("../pages/alumni/index.jsx"));
+const Gallery = lazy(() => import("../pages/gallery/index.jsx"));
+const Auth = lazy(() => import("../pages/auth/index.jsx"));
 
 const AppRoutes = () => {
   return (
