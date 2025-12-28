@@ -2,7 +2,6 @@ import Hero from "./components/Hero";
 import PastRecruiters from "./components/PastRecruiters";
 import Announcements from "./components/Announcements";
 import Testimonials from "./components/Testimonials";
-import FaqFeedbackForm from "./components/FaqFeedbackForm";
 import HaveDoubts from "./components/HaveDoubts";
 
 export default function Home() {
@@ -13,7 +12,6 @@ export default function Home() {
         <PastRecruiters />
         <Announcements />
         <Testimonials />
-        <FaqFeedbackForm />
         <HaveDoubts />
       </section>
     </main>

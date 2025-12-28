@@ -1,13 +1,12 @@
 const NavigationMenuDetails = [
   { name: "Home", path: "/" },
-  // Careers
-  {
-    name: "Careers",
-    dropdown: true,
-    items: [
-      { name: "Placement Drives", path: "/careers/placement-drives" },
-    ],
-  },
+  // {
+  //   name: "Careers",
+  //   dropdown: true,
+  //   items: [
+  //     { name: "Placement Drives", path: "/careers/placement-drives" },
+  //   ],
+  // },
   {
     name: "Alumni",
     path: "/alumni",

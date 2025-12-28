@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { Image, Button } from "@heroui/react";
 import { ChevronDown, ChevronUp, X, AlignLeft } from "lucide-react";
 import { useAuth } from "../../hooks/contexts/auth/AuthContext"; // Adjust path as needed
-import NavigationMenuRoutes from "../../data/navigation-menu-routes.js"
+import NavigationMenuRoutes from "./navigation-menu-routes.js"
 
 export default function NavBar() {
   const [isVisible, setIsVisible] = useState(true);
