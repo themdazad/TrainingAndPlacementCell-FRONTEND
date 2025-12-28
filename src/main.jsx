@@ -12,7 +12,7 @@ import NProgressLoader from "./components/common/NProgressLoader.jsx";
 import AuthProvider from "./hooks/contexts/auth/AuthProvider.jsx"; // useContexts
 import AppRoutes from "./routes/index.jsx";
 
-function App() {
+export function App() {
   return (
     <HeroUIProvider>
       <ToastContainer />

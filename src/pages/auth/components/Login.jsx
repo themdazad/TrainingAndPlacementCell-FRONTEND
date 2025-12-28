@@ -1,4 +1,4 @@
-import { Button, Card, CardBody, Input, Link } from "@heroui/react";
+import { Button, Card, CardBody, Input } from "@heroui/react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
@@ -6,7 +6,7 @@ import AuthContext from "../../../hooks/contexts/auth/AuthContext";
 import { Eye, EyeOff } from "lucide-react";
 
 const Login = () => {
-  const [registrationNumber, setRegistrationNumber] = useState("");
+  const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
@@ -26,8 +26,8 @@ const Login = () => {
   const handleLogin = async () => {
     const newErrors = {};
 
-    if (!validateInput(registrationNumber)) {
-      newErrors.registrationNumber = "Email or registration number is required";
+    if (!validateInput(identifier)) {
+      newErrors.identifier = "Email or registration number is required";
     }
     if (!password) {
       newErrors.password = "Password is required";
@@ -58,7 +58,7 @@ const Login = () => {
 
       // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 1000));
-      console.log("Login called with:", { registrationNumber, password });
+      console.log("Login called with:", { identifier, password });
       setIsLogedIn(true);
       navigate("/");
     } catch (error) {
@@ -96,10 +96,10 @@ const Login = () => {
               type="text"
               label="Email or Registration Number"
               placeholder="Enter your email or reg no."
-              value={registrationNumber}
-              onChange={(e) => setRegistrationNumber(e.target.value)}
-              isInvalid={!!errors.registrationNumber}
-              errorMessage={errors.registrationNumber}
+              value={identifier}
+              onChange={(e) => setIdentifier(e.target.value)}
+              isInvalid={!!errors.identifier}
+              errorMessage={errors.identifier}
               className="w-full"
               disabled={loading}
             />
