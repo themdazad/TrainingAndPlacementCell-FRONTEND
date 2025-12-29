@@ -2,16 +2,16 @@ import { useState, useEffect, useRef } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Image, Button } from "@heroui/react";
 import { ChevronDown, ChevronUp, X, AlignLeft } from "lucide-react";
-import { useAuth } from "../../hooks/contexts/auth/AuthContext"; // Adjust path as needed
 import NavigationMenuRoutes from "./navigation-menu-routes.js"
 
 export default function NavBar() {
   const [isVisible, setIsVisible] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState({});
   // Access auth context
-  const { isLogedIn, setIsLogedIn } = useAuth();
+
 
   const mobileMenuRef = useRef(null);
   const hamburgerRef = useRef(null);
@@ -171,7 +171,7 @@ export default function NavBar() {
                 <div className="flex items-center gap-6 ml-4">
 
                   {/* Login Button */}
-                  {!(isLogedIn.admin || isLogedIn.student) && (
+                  {!(isLoggedIn.admin || isLoggedIn.student) && (
                     <Button
                       as={NavLink}
                       to="/login"
@@ -186,7 +186,7 @@ export default function NavBar() {
                   )}
 
                   {/* Dashboard button  */}
-                  {!!isLogedIn.admin && (
+                  {!!isLoggedIn.admin && (
                     <NavLink
                       to="/dashboard/admin"
                       className="flex items-center gap-2 text-slate-800 dark:text-slate-100"
@@ -201,7 +201,7 @@ export default function NavBar() {
                       </span>
                     </NavLink>
                   )}
-                  {!!isLogedIn.student && (
+                  {!!isLoggedIn.student && (
                     <NavLink
                       to="/dashboard/student"
                       className="flex items-center gap-2 text-slate-800 dark:text-slate-100"

@@ -46,7 +46,8 @@
       "react-slick": "^0.30.3",
       "react-storage-complete": "^1.1.10",
       "react-toastify": "^11.0.5",
-      "swiper": "^11.2.1"
+      "swiper": "^11.2.1",
+      "zustand": "^5.0.9"
    },
    "devDependencies": {
       "@types/node": "^22.10.7",

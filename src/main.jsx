@@ -1,15 +1,14 @@
-import axios from "axios";
-import { ToastContainer } from "react-toastify";
-import ReactDOM from "react-dom/client";
 import "./index.css";
+import axios from "axios";
+import ReactDOM from "react-dom/client";
 import AutoThemeListener from "./components/AutoThemeListener";
+import { ToastContainer } from "react-toastify";
 import { HeroUIProvider } from "@heroui/react";
 import { BrowserRouter } from "react-router-dom";
 import NavBar from "./components/header-footer/navigation-bar.jsx";
 import Footer from "./components/header-footer/footer-bar.jsx";
 import NProgressLoader from "./components/common/NProgressLoader.jsx";
 
-import AuthProvider from "./hooks/contexts/auth/AuthProvider.jsx"; // useContexts
 import AppRoutes from "./routes/index.jsx";
 
 export function App() {
@@ -30,10 +29,8 @@ export function App() {
 function Root() {
   return (
     <BrowserRouter>
-      <AuthProvider>
         <App />
         <AutoThemeListener />
-      </AuthProvider>
     </BrowserRouter>
   );
 }
