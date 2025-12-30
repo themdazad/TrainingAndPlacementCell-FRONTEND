@@ -1,8 +1,6 @@
 import { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 import { PATHS } from "./paths.js";
-import PrivateRoute from "../components/auth/PrivateRoute.jsx";
-import StudentDashboard from "../pages/(dashboard)/student";
 
 // Lazy load pages
 const Home = lazy(() => import("../pages/home"));
@@ -26,14 +24,7 @@ const AppRoutes = () => {
         {/* <Route path={PATHS.LOGIN} element={<Login />} /> */}
 
         {/* 🔒 Protected Routes */}
-        <Route
-          path="/(dashboard)/student"
-          element={
-            <PrivateRoute>
-              <StudentDashboard />
-            </PrivateRoute>
-          }
-        />
+
       </Routes>
     </Suspense>
   );

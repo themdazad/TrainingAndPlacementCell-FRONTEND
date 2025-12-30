@@ -13,7 +13,6 @@ const Login = () => {
 
   const navigate = useNavigate();
   const handleLogin = async () => {
-    console.log("handleLogin clicked!"); // remove later
     setLoading(true);
     try {
       // api call: /api/auth/login
@@ -25,12 +24,12 @@ const Login = () => {
           body: JSON.stringify({ identifier, password }),
         }
       );
-      if (!response.ok) throw new Error("Invalid credentials");
-      const { data } = await response.json();
-
-      console.log("Login successful:", data); // remove later
-      toast.success(`You login as a ${data.user.role}.`);
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.message || "Login failed");
+      console.log(result);
+      const { user } = result.data;
       
+      toast.success(`You login as a ${user.role}.`);
       navigate("/");
     } catch (error) {
       setErrors({ submit: error.message || "Login failed. Please try again." });
