@@ -27,7 +27,10 @@ const Login = () => {
       );
       if (!response.ok) throw new Error("Invalid credentials");
       const { data } = await response.json();
-      toast.success(data.message || "Login successful");
+
+      console.log("Login successful:", data); // remove later
+      toast.success(`You login as a ${data.user.role}.`);
+      
       navigate("/");
     } catch (error) {
       setErrors({ submit: error.message || "Login failed. Please try again." });

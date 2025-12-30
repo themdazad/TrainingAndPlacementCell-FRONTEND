@@ -2,6 +2,7 @@ import { Button, Card, CardBody, Input } from "@heroui/react";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { ArrowLeft } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const [step, setStep] = useState(1); // 1: Send OTP, 2: Verify + Password
@@ -12,6 +13,8 @@ const Signup = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
+
+  const navigate = useNavigate();
 
   // Validation helper
   const validateEmail = (email) => {
@@ -50,19 +53,22 @@ const Signup = () => {
 
     try {
       // TODO: Replace with actual API call
-      // const response = await fetch('/api/auth/send-otp', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify({ registrationNumber, email })
-      // });
-      // if (!response.ok) throw new Error('Failed to send OTP');
+      const response = await fetch(
+        `${import.meta.env.VITE_API_BASE_URL}/api/auth/send-otp`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ registrationNumber, email }),
+        }
+      );
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.message || "Failed to send OTP");
 
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
       toast.success("OTP sent to your email");
+
       setStep(2);
     } catch (error) {
-      toast.error(error.message || "Failed to send OTP");
+      toast.error(error.message);
     } finally {
       setLoading(false);
     }
@@ -95,21 +101,24 @@ const Signup = () => {
 
     try {
       // TODO: Replace with actual API call
-      // const response = await fetch('/api/auth/signup', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify({ registrationNumber, email, otp, password })
-      // });
-      // if (!response.ok) throw new Error('Signup failed');
-      // const data = await response.json();
+      const response = await fetch(
+        `${import.meta.env.VITE_API_BASE_URL}/api/auth/register`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ registrationNumber, email, otp, password }),
+        }
+      );
 
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      const result = await response.json();
+
+      if (!response.ok) throw new Error(result.message || "Signup failed");
+
       toast.success("Account created successfully!");
-      // TODO: Redirect to login or dashboard
-      // navigate('/login') or similar
+      // Optionally, redirect to login or home page
+      navigate("/");
     } catch (error) {
-      toast.error(error.message || "Signup failed");
+      toast.error(error.message);
     } finally {
       setLoading(false);
     }
