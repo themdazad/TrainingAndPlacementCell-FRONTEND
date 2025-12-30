@@ -3,8 +3,12 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
 import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import axios from "axios";
+import {setAuthState}  from "../../../store/authSlice";
 
 const Login = () => {
+  const dispatch = useDispatch();
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -16,23 +20,28 @@ const Login = () => {
     setLoading(true);
     try {
       // api call: /api/auth/login
-      const response = await fetch(
+      const response = await axios.post(
         `${import.meta.env.VITE_API_BASE_URL}/api/auth/login`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ identifier, password }),
-        }
+        { identifier, password }
       );
-      const result = await response.json();
-      if (!response.ok) throw new Error(result.message || "Login failed");
-      console.log(result);
-      const { user } = result.data;
+      const result = response.data;
+
+      toast.success(`You login as a ${result.data.user.role}.`);
       
-      toast.success(`You login as a ${user.role}.`);
+      // Update redux state
+      dispatch(
+        setAuthState(
+          {
+            isAuthenticated: true,
+            user : result.data.user,
+          }
+        )
+      );
+      
       navigate("/");
     } catch (error) {
-      setErrors({ submit: error.message || "Login failed. Please try again." });
+      const message = error.response?.data?.message || error.message || "Login failed. Please try again.";
+      setErrors({ submit: message });
     } finally {
       setLoading(false);
     }

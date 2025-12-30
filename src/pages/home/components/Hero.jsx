@@ -35,21 +35,6 @@ export default function Hero() {
         >
           <motion.div className="space-y-6" variants={fadeUp}>
             <motion.div
-              className="flex sm:hidden justify-center"
-              variants={fadeUp}
-            >
-              <Image
-                className="dark:hidden h-[100px] aspect-square"
-                src="/images/logos/gecsiwan-logo.png"
-                alt="gec-siwan-logo"
-              />
-              <Image
-                className="hidden dark:inline h-[100px] aspect-square"
-                src="/images/logos/gecsiwan-logo-light.png"
-                alt="gec-siwan-logo"
-              />
-            </motion.div>
-            <motion.div
               className="inline-flex items-center justify-center sm:justify-start px-4 py-2 bg-blue-500/20 text-blue-800 dark:text-blue-100 rounded-full"
               variants={fadeUp}
             >

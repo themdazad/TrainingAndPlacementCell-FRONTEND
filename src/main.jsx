@@ -1,6 +1,8 @@
 import "./index.css";
 import axios from "axios";
 import ReactDOM from "react-dom/client";
+import { Provider } from 'react-redux'
+import { store } from './store/store.js'
 import AutoThemeListener from "./components/AutoThemeListener";
 import { ToastContainer } from "react-toastify";
 import { HeroUIProvider } from "@heroui/react";
@@ -29,8 +31,10 @@ export function App() {
 function Root() {
   return (
     <BrowserRouter>
+    <Provider store={store}>
         <App />
         <AutoThemeListener />
+    </Provider>
     </BrowserRouter>
   );
 }
