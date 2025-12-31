@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { ArrowLeft } from "lucide-react";
+import PATHS from "../../../constants/paths";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -55,7 +56,7 @@ const ForgotPassword = () => {
   };
 
   const handleBack = () => {
-    navigate("/login");
+    navigate(PATHS.AUTH.LOGIN);
   };
 
   if (submitted) {
@@ -96,7 +97,7 @@ const ForgotPassword = () => {
               <Button
                 color="primary"
                 className="w-full font-semibold"
-                onClick={() => navigate("/login")}
+                onClick={() => navigate(PATHS.AUTH.LOGIN)}
               >
                 Back to Login
               </Button>
@@ -178,7 +179,7 @@ const ForgotPassword = () => {
           <div className="text-center border-t pt-4">
             <p className="text-sm text-gray-600">
               Remember your password?{" "}
-              <a href="/login" className="text-blue-500 hover:underline font-semibold">
+              <a href={PATHS.AUTH.LOGIN} className="text-blue-500 hover:underline font-semibold">
                 Login
               </a>
             </p>

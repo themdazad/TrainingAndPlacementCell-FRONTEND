@@ -1,8 +1,8 @@
 import "./index.css";
 import axios from "axios";
 import ReactDOM from "react-dom/client";
-import { Provider } from 'react-redux'
-import { store } from './store/store.js'
+import { Provider } from "react-redux";
+import { store } from "./store/store.js";
 import AutoThemeListener from "./components/AutoThemeListener";
 import { ToastContainer } from "react-toastify";
 import { HeroUIProvider } from "@heroui/react";
@@ -12,12 +12,14 @@ import Footer from "./components/header-footer/footer-bar.jsx";
 import ScrollToTop from "./components/ScrollToTop.js";
 import NProgressLoader from "./components/common/NProgressLoader.jsx";
 
+// 👇 This line enables sending cookies with cross-origin requests (Backend can save cookies directly:)
+axios.defaults.withCredentials = true;
 import AppRoutes from "./routes/index.jsx";
 
 export function App() {
   return (
     <HeroUIProvider>
-      <ToastContainer 
+      <ToastContainer
         position="top-center"
         autoClose={3000}
         hideProgressBar={false}
@@ -29,12 +31,9 @@ export function App() {
         pauseOnHover
         theme="light"
       />
-      <main className="text-foreground bg-background dark:bg-slate-950 min-h-screen">
         <NProgressLoader />
-        <NavBar />
         <AppRoutes />
-        <Footer />
-      </main>
+      
     </HeroUIProvider>
   );
 }
@@ -43,16 +42,15 @@ export function App() {
 function Root() {
   return (
     <BrowserRouter>
-    <Provider store={store}>
+      <Provider store={store}>
         <App />
         <AutoThemeListener />
-    </Provider>
-    <ScrollToTop/>
+      </Provider>
+      <ScrollToTop />
     </BrowserRouter>
   );
 }
 
 ReactDOM.createRoot(document.getElementById("root")).render(<Root />);
 
-// 👇 This line enables sending cookies with cross-origin requests (Backend can save cookies directly:)
-axios.defaults.withCredentials = true;
+

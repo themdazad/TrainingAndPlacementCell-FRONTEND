@@ -1,5 +1,7 @@
+import PATHS from "../../constants/paths";
+
 const NavigationMenuDetails = [
-  { name: "Home", path: "/" },
+  { name: "Home", path: PATHS.MAIN.HOME },
   // {
   //   name: "Careers",
   //   dropdown: true,
@@ -9,16 +11,16 @@ const NavigationMenuDetails = [
   // },
   {
     name: "Alumni",
-    path: "/alumni",
+    path: PATHS.MAIN.ALUMNI,
   },
   {
     name: "Gallery",
-    path: "/gallery",
+    path: PATHS.MAIN.GALLERY,
   },
   // Static Info
   {
     name: "About us",
-    path: "/about-us",
+    path: PATHS.MAIN.ABOUT_US,
   },
 ];
 

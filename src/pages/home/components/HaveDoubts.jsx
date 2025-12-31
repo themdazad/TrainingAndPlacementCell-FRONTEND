@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRightCircle } from "lucide-react";
 import { NavLink } from "react-router-dom";
+import PATHS from "../../../constants/paths";
 
 export default function HaveDoubts() {
   return (
@@ -40,7 +41,7 @@ export default function HaveDoubts() {
 
       <NavLink
         className="text-blue-500 dark:text-blue-400 hover:text-blue-500 font-medium inline-flex items-center"
-        to="/about-us"
+        to={PATHS.MAIN.ABOUT_US}
       >
         Contact us
         <ArrowRightCircle className="w-4 h-4 ml-1" />

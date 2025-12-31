@@ -1,11 +1,12 @@
 import { Button, Card, CardBody, Input } from "@heroui/react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import {setAuthState}  from "../../../store/authSlice";
+import PATHS from "../../../constants/paths";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -46,7 +47,15 @@ const Login = () => {
   };
 
   return (
-    <Card className="border-t-4 border-blue-500 w-full max-w-md shadow-lg rounded-2xl">
+    <main>
+      <div className="max-w-screen-2xl m-auto min-h-[80dvh] grid items-center">
+        <div className="flex items-center justify-center">
+          <div className="w-full max-w-md">
+            <h2 className="text-center text-blue-500 font-semibold mb-4">
+              Welcome to GEC Siwan Placement Portal
+            </h2>
+
+            <Card className="border-t-4 border-blue-500 w-full max-w-md shadow-lg rounded-2xl">
       <CardBody className="p-6 space-y-6">
         {/* Header */}
         <div className="text-center space-y-2">
@@ -107,7 +116,7 @@ const Login = () => {
           {/* Forgot Password Link */}
           <div className="text-right">
             <a
-              href="/forgot-password"
+              href={PATHS.AUTH.FORGOT_PASSWORD}
               className="text-xs text-blue-500 hover:underline"
             >
               Forgot password?
@@ -124,9 +133,21 @@ const Login = () => {
           >
             Login
           </Button>
+
+          {/* Sign up link */}
+          <p className="text-center text-sm text-slate-600 dark:text-slate-400 mt-4">
+            Don&apos;t have an account?{" "}
+            <Link to={PATHS.AUTH.SIGNUP} className="text-blue-600 dark:text-blue-400 font-medium hover:underline">
+              Sign up
+            </Link>
+          </p>
         </form>
       </CardBody>
     </Card>
+          </div>
+        </div>
+      </div>
+    </main>
   );
 };
 

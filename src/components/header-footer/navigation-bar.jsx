@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { Image, Button, Avatar, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Badge } from "@heroui/react";
 import { ChevronDown, ChevronUp, X, Menu, User, LogOut, LayoutDashboard, Bell } from "lucide-react";
 import NavigationMenuRoutes from "./navigation-menu-routes.js";
+import PATHS from "../../constants/paths";
 
 // SOLID Principle: Single Responsibility - Custom Hooks
 const useClickOutside = (ref, handler) => {
@@ -165,7 +166,7 @@ const UserDropdown = ({ user }) => (
 const LoginButton = () => (
   <Button
     as={NavLink}
-    to="/login"
+    to={PATHS.AUTH.LOGIN}
     radius="lg"
     size="md"
     className="bg-gradient-to-r from-blue-600 to-blue-500 text-white font-semibold shadow-md hover:shadow-lg transition-all duration-200 px-8 text-base"
