@@ -9,6 +9,7 @@ import { HeroUIProvider } from "@heroui/react";
 import { BrowserRouter } from "react-router-dom";
 import NavBar from "./components/header-footer/navigation-bar.jsx";
 import Footer from "./components/header-footer/footer-bar.jsx";
+import ScrollToTop from "./components/ScrollToTop.js";
 import NProgressLoader from "./components/common/NProgressLoader.jsx";
 
 import AppRoutes from "./routes/index.jsx";
@@ -16,7 +17,18 @@ import AppRoutes from "./routes/index.jsx";
 export function App() {
   return (
     <HeroUIProvider>
-      <ToastContainer />
+      <ToastContainer 
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <main className="text-foreground bg-background dark:bg-slate-950 min-h-screen">
         <NProgressLoader />
         <NavBar />
@@ -35,6 +47,7 @@ function Root() {
         <App />
         <AutoThemeListener />
     </Provider>
+    <ScrollToTop/>
     </BrowserRouter>
   );
 }

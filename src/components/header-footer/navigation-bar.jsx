@@ -241,7 +241,7 @@ export default function NavBar() {
         <div className="max-w-screen-2xl mx-auto bg-white/90 dark:bg-slate-900/90 backdrop-blur-lg rounded-none md:rounded-3xl shadow-lg border-b md:border border-slate-200 dark:border-slate-700">
           
           {/* Top Bar - Logo and Actions */}
-          <div className="px-4 md:px-6 py-3 flex justify-between items-center">
+          <div className="px-4 md:px-6 py-2 flex justify-between items-center">
             
             <CollegeLogo />
 

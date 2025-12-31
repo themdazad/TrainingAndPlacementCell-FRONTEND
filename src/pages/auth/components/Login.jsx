@@ -25,7 +25,7 @@ const Login = () => {
         { identifier, password }
       );
       const result = response.data;
-      
+      toast.success("Login successful!");
       // Update redux state
       dispatch(
         setAuthState(
