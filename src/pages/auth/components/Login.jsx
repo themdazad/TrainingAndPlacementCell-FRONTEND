@@ -1,11 +1,11 @@
-import { Button, Card, CardBody, Input } from "@heroui/react";
+import { Button, Input } from "@heroui/react";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import axios from "axios";
-import {setAuthState}  from "../../../store/authSlice";
+import { setAuthState } from "../../../store/authSlice";
 import PATHS from "../../../constants/paths";
 
 const Login = () => {
@@ -17,137 +17,149 @@ const Login = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   const navigate = useNavigate();
+
   const handleLogin = async () => {
     setLoading(true);
     try {
-      // api call: /api/auth/login
       const response = await axios.post(
         `${import.meta.env.VITE_API_BASE_URL}/api/auth/login`,
         { identifier, password }
       );
       const result = response.data;
-      toast.success("Login successful!");
-      // Update redux state
-      dispatch(
-        setAuthState(
-          {
-            isAuthenticated: true,
-            user : result.data.user,
-          }
-        )
-      );
-      
-      navigate("/");
+      toast.success("Welcome back!");
+      dispatch(setAuthState({ isAuthenticated: true, user: result.data.user }));
+      navigate(PATHS.MAIN.HOME);
     } catch (error) {
-      const message = error.response?.data?.message || error.message || "Login failed. Please try again.";
-      setErrors({ submit: message });
+      setErrors({ submit: error.response?.data?.message || "Invalid credentials" });
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <main>
-      <div className="max-w-screen-2xl m-auto min-h-[80dvh] grid items-center">
-        <div className="flex items-center justify-center">
-          <div className="w-full max-w-md">
-            <h2 className="text-center text-blue-500 font-semibold mb-4">
-              Welcome to GEC Siwan Placement Portal
-            </h2>
-
-            <Card className="border-t-4 border-blue-500 w-full max-w-md shadow-lg rounded-2xl">
-      <CardBody className="p-6 space-y-6">
-        {/* Header */}
-        <div className="text-center space-y-2">
-          <h1 className="text-3xl font-bold">Welcome Back</h1>
-          <p className="text-sm text-gray-600">Sign in to your account</p>
-        </div>
-
-        {/* Error Alert */}
-        {errors.submit && (
-          <div className="p-3 bg-red-50/5 border border-red-500/50 rounded-lg">
-            <p className="text-sm text-red-500">{errors.submit}</p>
-          </div>
-        )}
-
-        <form
-          className="space-y-4"
-          onSubmit={(e) => {
-            e.preventDefault();
-            handleLogin();
-          }}
-        >
-          {/* Email/Registration Input */}
-          <Input
-            type="text"
-            label="Email or Registration Number"
-            placeholder="Enter your email or reg no."
-            value={identifier}
-            onChange={(e) => setIdentifier(e.target.value)}
-            isInvalid={!!errors.identifier}
-            errorMessage={errors.identifier}
-            className="w-full"
-            disabled={loading}
-          />
-
-          {/* Password Input with Toggle */}
-          <div className="relative">
-            <Input
-              type={isPasswordVisible ? "text" : "password"}
-              label="Password"
-              placeholder="Enter your password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              isInvalid={!!errors.password}
-              errorMessage={errors.password}
-              className="w-full"
-              disabled={loading}
+    <div className="flex h-screen w-full overflow-hidden bg-[#fafafa] dark:bg-slate-950 font-sans">
+      
+      {/* LEFT: Aesthetic Image with Logo Overlay */}
+      <div className="relative hidden w-1/2 lg:block">
+        <div className="absolute inset-0 z-10 flex items-center justify-center">
+          <div className="space-y-6 text-center px-8">
+            <img 
+              src="/images/logos/collegelogo.png" 
+              alt="GEC Siwan Logo" 
+              className="h-40 w-auto mx-auto drop-shadow-2xl"
             />
-            <button
-              type="button"
-              onClick={() => setIsPasswordVisible(!isPasswordVisible)}
-              className="absolute right-3 top-7 text-gray-600 hover:text-gray-900 transition"
-              disabled={loading}
-            >
-              {isPasswordVisible ? <EyeOff size={18} /> : <Eye size={18} />}
-            </button>
+            <div className="space-y-2">
+              <h2 className="text-3xl font-bold tracking-tight text-white">
+                Training & Placement Cell
+              </h2>
+              <p className="text-lg text-white/90 font-medium">
+                Government Engineering College Siwan
+              </p>
+            </div>
+          </div>
+        </div>
+        <img 
+          src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop" 
+          alt="Campus" 
+          className="h-full w-full object-cover brightness-[0.6]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/40 to-slate-900/60"></div>
+      </div>
+
+      {/* RIGHT: Minimalistic Form */}
+      <div className="relative flex w-full flex-col items-center justify-center px-6 lg:w-1/2 bg-white dark:bg-slate-950">
+        
+        <div className="w-full max-w-[380px] space-y-12">
+          
+          <div className="space-y-2">
+            <h1 className="text-3xl font-bold text-slate-900 dark:text-white">
+              Sign in
+            </h1>
+            <p className="text-slate-600 dark:text-slate-400">
+              Enter your credentials to continue
+            </p>
           </div>
 
-          {/* Forgot Password Link */}
-          <div className="text-right">
-            <a
-              href={PATHS.AUTH.FORGOT_PASSWORD}
-              className="text-xs text-blue-500 hover:underline"
-            >
-              Forgot password?
-            </a>
-          </div>
+          <form onSubmit={(e) => { e.preventDefault(); handleLogin(); }} className="space-y-8">
+            <div className="space-y-6">
+              <Input
+                type="text"
+                label="Email or Registration Number"
+                variant="underlined"
+                placeholder="Enter your email or registration number"
+                classNames={{
+                  label: "text-slate-600 dark:text-slate-400 text-sm font-medium",
+                  input: "text-base px-0 dark:text-white",
+                }}
+                value={identifier}
+                onChange={(e) => setIdentifier(e.target.value)}
+                isInvalid={!!errors.identifier}
+                disabled={loading}
+              />
 
-          {/* Login Button */}
-          <Button
-            type="submit"
-            color="primary"
-            className="w-full font-semibold mt-6"
-            isLoading={loading}
-            disabled={loading}
-          >
-            Login
-          </Button>
+              <div className="relative">
+                <Input
+                  type={isPasswordVisible ? "text" : "password"}
+                  label="Password"
+                  variant="underlined"
+                  placeholder="Enter your password"
+                  classNames={{
+                    label: "text-slate-600 dark:text-slate-400 text-sm font-medium",
+                    input: "text-base px-0 dark:text-white",
+                  }}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  isInvalid={!!errors.password}
+                  disabled={loading}
+                  endContent={
+                    <button 
+                      type="button" 
+                      onClick={() => setIsPasswordVisible(!isPasswordVisible)}
+                      className="text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
+                      disabled={loading}
+                    >
+                      {isPasswordVisible ? <EyeOff size={18} /> : <Eye size={18} />}
+                    </button>
+                  }
+                />
+              </div>
+            </div>
 
-          {/* Sign up link */}
-          <p className="text-center text-sm text-slate-600 dark:text-slate-400 mt-4">
-            Don&apos;t have an account?{" "}
-            <Link to={PATHS.AUTH.SIGNUP} className="text-blue-600 dark:text-blue-400 font-medium hover:underline">
-              Sign up
-            </Link>
-          </p>
-        </form>
-      </CardBody>
-    </Card>
+            {errors.submit && (
+              <p className="text-sm text-red-500">
+                {errors.submit}
+              </p>
+            )}
+
+            <div className="flex flex-col gap-4 pt-2">
+              <Button
+                type="submit"
+                className="w-full bg-blue-600 text-white dark:bg-blue-600 font-semibold h-12 rounded-lg hover:bg-blue-700 transition-colors"
+                isLoading={loading}
+                disabled={loading}
+              >
+                Login
+              </Button>
+              <div className="flex items-center justify-between px-1">
+                 <Link to={PATHS.AUTH.SIGNUP} className="text-sm text-blue-600 dark:text-blue-400 hover:underline">
+                    Create account
+                 </Link>
+                 <Link to={PATHS.AUTH.FORGOT_PASSWORD} className="text-sm text-blue-600 dark:text-blue-400 hover:underline">
+                    Forgot password?
+                 </Link>
+              </div>
+            </div>
+          </form>
+
+          <div className="pt-16 text-center">
+             <p className="text-xs text-slate-400 dark:text-slate-500">
+                © 2025 T&P Cell, GEC Siwan
+             </p>
           </div>
         </div>
       </div>
-    </main>
+
+    </div>
   );
 };
 
