@@ -5,13 +5,15 @@ import PATHS from "../constants/paths.js";
 import MainLayout from "../layouts/MainLayout.jsx";
 import AuthLayout from "../layouts/AuthLayout.jsx";
 
-// Lazy load pages
+// Main Pages
 const Home = lazy(() => import("../pages/home"));
 const AboutUs = lazy(() => import("../pages/about/index.jsx"));
 const Alumni = lazy(() => import("../pages/alumni/index.jsx"));
 const Gallery = lazy(() => import("../pages/gallery/index.jsx"));
+// Auth Pages
 const Login = lazy(() => import("../pages/auth/components/Login.jsx"));
 const Signup = lazy(() => import("../pages/auth/components/Signup.jsx"));
+const ForgotPassword = lazy(() => import("../pages/auth/components/ForgotPassword.jsx"));
 
 const AppRoutes = () => {
   return (
@@ -29,6 +31,7 @@ const AppRoutes = () => {
         {/* Auth Routes */}
         <Route path={PATHS.AUTH.LOGIN} element={<Login />} />
         <Route path={PATHS.AUTH.SIGNUP} element={<Signup />} />
+        <Route path={PATHS.AUTH. FORGOT_PASSWORD} element={<ForgotPassword />} />
       </Route>
         {/* 🔒 Protected Routes */}
       </Routes>

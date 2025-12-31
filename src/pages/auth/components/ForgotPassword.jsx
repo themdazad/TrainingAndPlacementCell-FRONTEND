@@ -1,4 +1,4 @@
-import { Button, Card, CardBody, Input } from "@heroui/react";
+import { Button, Input } from "@heroui/react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -6,7 +6,7 @@ import { ArrowLeft } from "lucide-react";
 import PATHS from "../../../constants/paths";
 
 const ForgotPassword = () => {
-  const [email, setEmail] = useState("");
+  const [identifier, setIdentifier] = useState("");
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
@@ -61,15 +61,43 @@ const ForgotPassword = () => {
 
   if (submitted) {
     return (
-      <div className="flex items-center justify-center min-h-screen px-4">
-        <Card className="border-t-4 border-blue-500 w-full max-w-md shadow-lg rounded-2xl">
-          <CardBody className="p-6 space-y-6">
+      <div className="flex h-screen w-full overflow-hidden bg-[#fafafa] dark:bg-slate-950 font-sans">
+        {/* LEFT: Aesthetic Image with Logo Overlay */}
+        <div className="relative hidden w-1/2 lg:block">
+          <div className="absolute inset-0 z-10 flex items-center justify-center">
+            <div className="space-y-6 text-center px-8">
+              <img 
+                src="/images/logos/collegelogo.png" 
+                alt="GEC Siwan Logo" 
+                className="h-40 w-auto mx-auto drop-shadow-2xl"
+              />
+              <div className="space-y-2">
+                <h2 className="text-3xl font-b  old tracking-tight text-white">
+                  Training & Placement Cell
+                </h2>
+                <p className="text-lg text-white/90 font-medium">
+                  Government Engineering College Siwan
+                </p>
+              </div>
+            </div>
+          </div>
+          <img 
+            src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop" 
+            alt="Campus" 
+            className="h-full w-full object-cover brightness-[0.6]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-600/40 to-slate-900/60"></div>
+        </div>
+
+        {/* RIGHT: Success Message */}
+        <div className="relative flex w-full flex-col items-center justify-center px-6 lg:w-1/2 bg-white dark:bg-slate-950">
+          <div className="w-full max-w-[380px] space-y-12">
             {/* Success Message */}
-            <div className="text-center space-y-4">
+            <div className="text-center space-y-6">
               <div className="flex justify-center">
-                <div className="bg-green-100 rounded-full p-4">
+                <div className="bg-green-100 dark:bg-green-900/20 rounded-full p-4">
                   <svg
-                    className="w-8 h-8 text-green-600"
+                    className="w-12 h-12 text-green-600 dark:text-green-400"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -83,109 +111,157 @@ const ForgotPassword = () => {
                   </svg>
                 </div>
               </div>
-              <h2 className="text-2xl font-bold">Check Your Email</h2>
-              <p className="text-sm text-gray-600">
-                We've sent a password reset link to <span className="font-semibold">{email}</span>
-              </p>
-              <p className="text-xs text-gray-500">
-                Click the link in the email to reset your password. If you don't see it, check your spam folder.
-              </p>
+              <div className="space-y-3">
+                <h2 className="text-3xl font-bold text-slate-900 dark:text-white">Check Your Email</h2>
+                <p className="text-slate-600 dark:text-slate-400">
+                  We've sent a password reset link to
+                </p>
+                <p className="font-semibold text-slate-900 dark:text-white">{email}</p>
+                <p className="text-sm text-slate-500 dark:text-slate-400">
+                  Click the link in the email to reset your password. If you don't see it, check your spam folder.
+                </p>
+              </div>
             </div>
 
-            {/* Footer Links */}
-            <div className="space-y-3 border-t pt-4">
+            {/* Action Buttons */}
+            <div className="space-y-4">
               <Button
-                color="primary"
-                className="w-full font-semibold"
+                className="w-full bg-blue-600 text-white font-semibold h-12 rounded-lg hover:bg-blue-700 transition-colors"
                 onClick={() => navigate(PATHS.AUTH.LOGIN)}
               >
                 Back to Login
               </Button>
-              <button
-                type="button"
-                onClick={() => {
-                  setEmail("");
-                  setSubmitted(false);
-                  setErrors({});
-                }}
-                className="w-full text-sm text-blue-500 hover:underline py-2"
-              >
-                Try another email
-              </button>
+              <div className="text-center">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setEmail("");
+                    setSubmitted(false);
+                    setErrors({});
+                  }}
+                  className="text-sm text-blue-600 dark:text-blue-400 hover:underline"
+                >
+                  Try another email
+                </button>
+              </div>
             </div>
-          </CardBody>
-        </Card>
+
+            {/* Footer */}
+            <div className="pt-16 text-center">
+              <p className="text-xs text-slate-400 dark:text-slate-500">
+                © 2025 T&P Cell, GEC Siwan
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen px-4">
-      <Card className="border-t-4 border-blue-500 w-full max-w-md shadow-lg rounded-2xl">
-        <CardBody className="p-6 space-y-6">
-          {/* Back Button & Header */}
-          <div className="flex items-center gap-2">
-            <button
-              type="button"
-              onClick={handleBack}
-              className="flex items-center gap-2 text-sm text-blue-500 hover:text-blue-600 transition"
-            >
-              <ArrowLeft size={16} />
-              Back
-            </button>
+    <div className="flex h-screen w-full overflow-hidden bg-[#fafafa] dark:bg-slate-950 font-sans">
+      {/* LEFT: Aesthetic Image with Logo Overlay */}
+      <div className="relative hidden w-1/2 lg:block">
+        <div className="absolute inset-0 z-10 flex items-center justify-center">
+          <div className="space-y-6 text-center px-8">
+            <img 
+              src="/images/logos/collegelogo.png" 
+              alt="GEC Siwan Logo" 
+              className="h-40 w-auto mx-auto drop-shadow-2xl"
+            />
+            <div className="space-y-2">
+              <h2 className="text-3xl font-bold tracking-tight text-white">
+                Training & Placement Cell
+              </h2>
+              <p className="text-lg text-white/90 font-medium">
+                Government Engineering College Siwan
+              </p>
+            </div>
           </div>
+        </div>
+        <img 
+          src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop" 
+          alt="Campus" 
+          className="h-full w-full object-cover brightness-[0.6]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/40 to-slate-900/60"></div>
+      </div>
+
+      {/* RIGHT: Forgot Password Form */}
+      <div className="relative flex w-full flex-col items-center justify-center px-6 lg:w-1/2 bg-white dark:bg-slate-950">
+        <div className="w-full max-w-[380px] space-y-12">
+          {/* Back Button */}
+          <button
+            type="button"
+            onClick={handleBack}
+            className="flex items-center gap-2 text-sm text-blue-600 dark:text-blue-400 hover:underline"
+          >
+            <ArrowLeft size={16} />
+            Back to Login
+          </button>
 
           {/* Header */}
-          <div className="text-center space-y-2">
-            <h2 className="text-2xl font-bold">Forgot Password?</h2>
-            <p className="text-sm text-gray-600">
-              Enter your email address and we'll send you a link to reset your password.
+          <div className="space-y-2">
+            <h1 className="text-3xl font-bold text-slate-900 dark:text-white">
+              Reset password
+            </h1>
+            <p className="text-slate-600 dark:text-slate-400">
+              Enter your email address and we'll send you a reset link
             </p>
           </div>
 
           <form
-            className="space-y-4"
+            className="space-y-8"
             onSubmit={(e) => {
               e.preventDefault();
               handleForgotPassword();
             }}
           >
-            {/* Email Input */}
+            {/* Identifier Input */}
             <Input
-              type="email"
-              label="Email Address"
-              placeholder="name@example.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              isInvalid={!!errors.email}
-              errorMessage={errors.email}
-              className="w-full"
-              disabled={loading}
-            />
+                type="text"
+                label="Email or Registration Number"
+                variant="underlined"
+                classNames={{
+                  label:
+                    "text-slate-600 dark:text-slate-400 py-2 text-md font-medium",
+                  input: "text-base px-0  dark:text-white",
+                }}
+                value={identifier}
+                onChange={(e) => setIdentifier(e.target.value)}
+                isInvalid={!!errors.identifier}
+                disabled={loading}
+              />
 
             {/* Submit Button */}
-            <Button
-              type="submit"
-              color="primary"
-              className="w-full font-semibold mt-6"
-              isLoading={loading}
-              disabled={loading}
-            >
-              Send Reset Link
-            </Button>
+            <div className="flex flex-col gap-4 pt-2">
+              <Button
+                type="submit"
+                className="w-full bg-blue-600 text-white font-semibold h-12 rounded-lg hover:bg-blue-700 transition-colors"
+                isLoading={loading}
+                disabled={loading}
+              >
+                Send Reset Link
+              </Button>
+              <div className="text-center">
+                <p className="text-sm text-slate-600 dark:text-slate-400">
+                  Remember your password?{" "}
+                  <a href={PATHS.AUTH.LOGIN} className="text-blue-600 dark:text-blue-400 hover:underline font-medium">
+                    Login
+                  </a>
+                </p>
+              </div>
+            </div>
           </form>
 
           {/* Footer */}
-          <div className="text-center border-t pt-4">
-            <p className="text-sm text-gray-600">
-              Remember your password?{" "}
-              <a href={PATHS.AUTH.LOGIN} className="text-blue-500 hover:underline font-semibold">
-                Login
-              </a>
+          <div className="pt-16 text-center">
+            <p className="text-xs text-slate-400 dark:text-slate-500">
+              © 2025 T&P Cell, GEC Siwan
             </p>
           </div>
-        </CardBody>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 };
