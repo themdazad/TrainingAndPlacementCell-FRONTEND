@@ -18,11 +18,18 @@ const Login = () => {
     try {
       const response = await fetch(
         `${import.meta.env.VITE_API_BASE_URL}/api/auth/login`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ identifier, password }),
-        }
+        { identifier, password }
+      );
+      const result = response.data;
+      toast.success("Login successful!");
+      // Update redux state
+      dispatch(
+        setAuthState(
+          {
+            isAuthenticated: true,
+            user : result.data.user,
+          }
+        )
       );
 
       const result = await response.json();

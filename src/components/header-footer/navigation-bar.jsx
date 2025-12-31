@@ -61,10 +61,16 @@ export default function NavBar() {
   }, [lastScrollY]);
 
   return (
-    <nav className="sticky top-4 max-w-screen-xl m-auto z-50 p-2">
-      <header>
-        <div className={`navHeader ${isVisible ? "translate-y-0 opacity-1" : "-translate-y-full opacity-0"} transition-all duration-500`}>
-          <div className="max-w-screen-2xl px-[2%] m-auto flex justify-between items-center gap-4">
+    <nav className="sticky top-0 md:top-4 w-full z-[100] p-0 md:p-2">
+      <div
+        className={`transition-all duration-500 ease-in-out ${
+          isVisible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
+        }`}
+      >
+        <div className="max-w-screen-2xl mx-auto bg-white/90 dark:bg-slate-900/90 backdrop-blur-lg rounded-none md:rounded-3xl shadow-lg border-b md:border border-slate-200 dark:border-slate-700">
+          
+          {/* Top Bar - Logo and Actions */}
+          <div className="px-4 md:px-6 py-2 flex justify-between items-center">
             
             {/* 1. Left-side-logo */}
             <div className="max-sm:hidden hover:shadow-md hover:scale-105 bg-slate-200 dark:bg-slate-800 p-1 rounded-full flex justify-center">

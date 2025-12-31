@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
-import { Image } from "@heroui/react";
 import PLACEMENT_BROCHURE from "../../../assets/downloads/GEC_SIWAN_PLACEMENT_BROCHURE.pdf";
-import SimpleSlider from "../../../components/common/SimpleSlider.jsx";
+import SimpleSlider from "./SimpleSlider.jsx";
 import HeroSliderImages from "../../../data/hero-slider-images.js";
 import { Download } from "lucide-react";
 
