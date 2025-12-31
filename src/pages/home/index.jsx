@@ -9,8 +9,8 @@ export default function Home() {
     <main className="dark:bg-gray-950">
       <section className="min-h-screen m-auto overflow-hidden max-w-screen-xl space-y-16 lg:space-y-24">
         <Hero />
-        <PastRecruiters />
         <Announcements />
+        <PastRecruiters />
         <Testimonials />
         <HaveDoubts />
       </section>

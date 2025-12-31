@@ -21,7 +21,7 @@ export default function Hero() {
     },
   };
   return (
-    <section className=" ">
+    <section className="relative z-10">
       
       {/* Main Content */}
       <div className="max-w-screen-2xl m-auto min-h-[500px] px-[2%] grid items-end grid-cols-1 gap-6 lg:grid-cols-2 ">

@@ -150,7 +150,7 @@ export default function NavBar() {
                         isIconOnly
                         size="sm"
                         variant="light"
-                        color="primary"
+                        color="danger"
                         onClick={handleLogout}
                         title="Logout"
                       >
