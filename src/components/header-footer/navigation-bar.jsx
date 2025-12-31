@@ -1,53 +1,32 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { Image, Button } from "@heroui/react";
-import { ChevronDown, ChevronUp, X, AlignLeft } from "lucide-react";
-import NavigationMenuRoutes from "./navigation-menu-routes.js"
+import { useSelector } from "react-redux";
+import { Image, Button, Avatar, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Badge } from "@heroui/react";
+import { ChevronDown, ChevronUp, X, Menu, User, LogOut, LayoutDashboard, Bell } from "lucide-react";
+import NavigationMenuRoutes from "./navigation-menu-routes.js";
 
-export default function NavBar() {
-  const [isVisible, setIsVisible] = useState(true);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [lastScrollY, setLastScrollY] = useState(0);
-  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState({});
-  // Access auth context
-
-
-  const mobileMenuRef = useRef(null);
-  const hamburgerRef = useRef(null);
-
+// SOLID Principle: Single Responsibility - Custom Hooks
+const useClickOutside = (ref, handler) => {
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (
-        mobileMenuRef.current &&
-        !mobileMenuRef.current.contains(event.target) &&
-        hamburgerRef.current &&
-        !hamburgerRef.current.contains(event.target)
-      ) {
-        setMobileMenuOpen(false);
+    const listener = (event) => {
+      if (!ref.current || ref.current.contains(event.target)) {
+        return;
       }
+      handler(event);
     };
+    document.addEventListener("mousedown", listener);
+    return () => document.removeEventListener("mousedown", listener);
+  }, [ref, handler]);
+};
 
-    if (isMobileMenuOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [isMobileMenuOpen]);
-
-  const handleDropdownToggle = (name) => {
-    setIsDropdownOpen((prev) => ({
-      ...prev,
-      [name]: !prev[name],
-    }));
-  };
+const useScrollVisibility = (threshold = 50) => {
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      if (currentScrollY > lastScrollY && currentScrollY > 50) {
+      if (currentScrollY > lastScrollY && currentScrollY > threshold) {
         setIsVisible(false);
       } else {
         setIsVisible(true);
@@ -57,259 +36,367 @@ export default function NavBar() {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+  }, [lastScrollY, threshold]);
+
+  return isVisible;
+};
+
+// SOLID Principle: Single Responsibility - Logo Component
+const CollegeLogo = () => (
+  <Link to="/" className="flex items-center gap-3 md:gap-4 flex-shrink-0 hover:scale-105 transition-transform duration-300">
+    <Image
+      className="h-16 md:h-20 w-auto"
+      src="/images/logos/collegelogo.png"
+      alt="GEC Siwan Logo"
+    />
+    <div className="hidden md:flex flex-col">
+      <h1 className="text-lg md:text-2xl font-bold text-slate-800 dark:text-slate-100 leading-tight">
+        Training and Placement Cell
+      </h1>
+      <p className="text-sm md:text-base text-slate-600 dark:text-slate-400 leading-tight">
+        Government Engineering College Siwan
+      </p>
+    </div>
+  </Link>
+);
+
+// SOLID Principle: Single Responsibility - Mobile Menu Toggle
+const MobileMenuToggle = ({ isOpen, onClick, ref }) => (
+  <button
+    ref={ref}
+    onClick={onClick}
+    className="lg:hidden p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 transition-colors"
+    aria-label="Toggle menu"
+  >
+    {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+  </button>
+);
+
+// SOLID Principle: Single Responsibility - Notification Bell Component
+const NotificationBell = ({ count = 5 }) => (
+  <Dropdown placement="bottom-end">
+    <DropdownTrigger>
+      <button className="relative p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 transition-all duration-200">
+        <Bell className="w-6 h-6" />
+        {count > 0 && (
+          <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-6 w-6 flex items-center justify-center font-semibold">
+            {count > 9 ? '9+' : count}
+          </span>
+        )}
+      </button>
+    </DropdownTrigger>
+    <DropdownMenu aria-label="Notifications" className="w-80" variant="flat">
+      <DropdownItem key="header" className="h-10 gap-2" textValue="Notifications">
+        <p className="font-semibold text-slate-900 dark:text-slate-100">Notifications</p>
+      </DropdownItem>
+      <DropdownItem key="notification-1" textValue="New placement drive">
+        <div className="flex flex-col gap-1">
+          <p className="text-sm font-medium">New placement drive added</p>
+          <p className="text-xs text-slate-500">2 hours ago</p>
+        </div>
+      </DropdownItem>
+      <DropdownItem key="notification-2" textValue="Application deadline">
+        <div className="flex flex-col gap-1">
+          <p className="text-sm font-medium">Application deadline approaching</p>
+          <p className="text-xs text-slate-500">5 hours ago</p>
+        </div>
+      </DropdownItem>
+      <DropdownItem key="view-all" className="text-center" textValue="View all">
+        <Link to="/notifications" className="text-blue-600 dark:text-blue-400 text-sm font-medium">
+          View all notifications
+        </Link>
+      </DropdownItem>
+    </DropdownMenu>
+  </Dropdown>
+);
+
+// SOLID Principle: Single Responsibility - User Dropdown Component
+const UserDropdown = ({ user }) => (
+  <Dropdown placement="bottom-end">
+    <DropdownTrigger>
+      <Avatar
+        as="button"
+        className="cursor-pointer ring-2 ring-blue-500 ring-offset-2 dark:ring-offset-slate-900 hover:ring-blue-600 transition-all duration-200"
+        size="md"
+        src={user?.profileImage || "/images/profile-default-photo.jpg"}
+        alt={user?.name || "User"}
+      />
+    </DropdownTrigger>
+    <DropdownMenu aria-label="User menu" className="w-56" variant="flat">
+      <DropdownItem key="profile" className="h-14 gap-2" textValue="User profile">
+        <p className="font-semibold text-slate-900 dark:text-slate-100">
+          {user?.name || "Welcome"}
+        </p>
+        <p className="text-xs text-slate-500 dark:text-slate-400">
+          {user?.email || "user@example.com"}
+        </p>
+      </DropdownItem>
+      <DropdownItem
+        key="dashboard"
+        as={Link}
+        to={user?.role === "admin" ? "/dashboard/admin" : "/dashboard/student"}
+        startContent={<LayoutDashboard className="w-4 h-4" />}
+        textValue="Dashboard"
+      >
+        Dashboard
+      </DropdownItem>
+      <DropdownItem
+        key="my-profile"
+        as={Link}
+        to="/profile"
+        startContent={<User className="w-4 h-4" />}
+        textValue="My Profile"
+      >
+        My Profile
+      </DropdownItem>
+      <DropdownItem
+        key="logout"
+        color="danger"
+        startContent={<LogOut className="w-4 h-4" />}
+        textValue="Logout"
+      >
+        Logout
+      </DropdownItem>
+    </DropdownMenu>
+  </Dropdown>
+);
+
+// SOLID Principle: Single Responsibility - Login Button Component
+const LoginButton = () => (
+  <Button
+    as={NavLink}
+    to="/login"
+    radius="lg"
+    size="md"
+    className="bg-gradient-to-r from-blue-600 to-blue-500 text-white font-semibold shadow-md hover:shadow-lg transition-all duration-200 px-8 text-base"
+  >
+    Login
+  </Button>
+);
+
+// SOLID Principle: Single Responsibility - Dashboard Button Component
+const DashboardButton = ({ userRole }) => (
+  <Button
+    as={NavLink}
+    to={userRole === "admin" ? "/dashboard/admin" : "/dashboard/student"}
+    radius="lg"
+    size="md"
+    startContent={<LayoutDashboard className="w-5 h-5" />}
+    className="hidden md:flex bg-gradient-to-r from-blue-600 to-blue-500 text-white font-semibold shadow-md hover:shadow-lg transition-all"
+  >
+    Dashboard
+  </Button>
+);
+
+
+// SOLID Principle: Single Responsibility - Auth Section Component
+const AuthSection = ({ isAuthenticated, user }) => {
+  if (!isAuthenticated) {
+    return <LoginButton />;
+  }
 
   return (
-    <nav className="sticky top-4 max-w-screen-xl m-auto z-50 p-2">
-      <header>
-        {/* Navigation Header*/}
-        <div
-          className={`navHeader
-            ${
-              isVisible
-                ? "translate-y-0 opacity-1"
-                : "-translate-y-full opacity-0"
-            }
-            transition-all duration-500 
-          `}
-        >
-          <div className="max-w-screen-2xl px-[2%] m-auto flex justify-between items-center gap-4">
-            {/* 1. Left-side-logo */}
-            <div
-              className={`max-sm:hidden hover:shadow-md hover:scale-105 bg-slate-200 dark:bg-slate-800 p-1 rounded-full flex justify-center`}
-            >
-              <Link to="/">
-                <Image
-                  className="h-[70px] aspect-square"
-                  src="/images/logos/gecsiwanlogo.svg"
-                  alt="gec-siwan-logo"
-                />
-                
-              </Link>
-            </div>
+    <div className="flex items-center gap-3">
+      <DashboardButton userRole={user?.role} />
+      <NotificationBell />
+      <UserDropdown user={user} />
+    </div>
+  );
+};
 
-            {/* 2. center-navigation-bar  */}
-            <div
-              className={`transition-all duration-500
-            w-full relative md:max-w-min text-nowrap py-1 px-2 mx-auto rounded-full bg-slate-200 dark:bg-slate-800`}
-            >
-              <div className=" px-4 flex items-center justify-between py-2 relative z-50">
-                {/* Hamburger-Botton */}
-                <button
-                  ref={hamburgerRef}
-                  onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
-                  className="text-black dark:text-white transition-all duration-200 lg:hidden"
-                >
-                  <AlignLeft
-                    className={`${
-                      isMobileMenuOpen ? "hidden" : "block"
-                    } w-8 h-auto`}
-                  />
-                  <X
-                    className={`${
-                      isMobileMenuOpen ? "block" : "hidden"
-                    } w-8 h-auto `}
-                  />
-                </button>
+// Main NavBar Component
+export default function NavBar() {
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState({});
+  
+  const { isAuthenticated, user } = useSelector((state) => state.auth);
+  const isVisible = useScrollVisibility(50);
 
-                {/* i. Shows in Desktop by default: Navigation menus */}
-                <div className="hidden lg:flex lg:items-center lg:space-x-6">
-                  {NavigationMenuRoutes.map((link, index) =>
-                    !link.dropdown ? (
-                      <NavLink
-                        key={index}
-                        to={link.path}
-                        className={({ isActive }) =>
-                          `relative after:bg-blue-600 dark:after:bg-blue-400  ${
-                            isActive
-                              ? "text-blue-500 dark:text-blue-400 after:w-full"
-                              : "text-black dark:text-white after:w-0 group-hover:after:w-full"
-                          } hover:opacity-80 transition-all`
-                        }
-                      >
-                        {link.name}
-                      </NavLink>
-                    ) : (
-                      <div
-                        key={index}
-                        className="relative group"
-                        onMouseEnter={() =>
-                          setIsDropdownOpen({ [link.name]: true })
-                        }
-                        onMouseLeave={() =>
-                          setIsDropdownOpen({ [link.name]: false })
-                        }
-                      >
-                        <span className="flex items-center cursor-pointer transition-all duration-200hover:text-opacity-80 dark:hover:text-opacity-80">
-                          {link.name}
-                          <ChevronDown className="rotate-0 group-hover:rotate-180 transition-rotate duration-200" />
-                        </span>
-                        <ul
-                          className={`absolute  shadow-md left-1/2 transform -translate-x-1/2 min-w-max text-small rounded-xl border-t-1 hover:border-t-4 border-t-blue-600 bg-white dark:bg-slate-800 py-2 transition-all duration-200 ${
-                            isDropdownOpen[link.name]
-                              ? "flex flex-col"
-                              : "hidden"
-                          }`}
-                        >
-                          {/* dropdown list items  */}
-                          {link.items.map((item, idx) => (
-                            <Link
-                              key={idx}
-                              to={item.path}
-                              className="hover:bg-blue-500/30 w-full py-2 px-3"
-                            >
-                              {item.name}
-                            </Link>
-                          ))}
-                        </ul>
-                      </div>
-                    )
-                  )}
-                </div>
+  const mobileMenuRef = useRef(null);
+  const hamburgerRef = useRef(null);
 
-                {/* Dashboard/Login, and Logout */}
-                <div className="flex items-center gap-6 ml-4">
+  // Use custom hook for click outside
+  useClickOutside(mobileMenuRef, () => {
+    if (isMobileMenuOpen && !hamburgerRef.current?.contains(event.target)) {
+      setMobileMenuOpen(false);
+    }
+  });
 
-                  {/* Login Button */}
-                  {!(isLoggedIn.admin || isLoggedIn.student) && (
-                    <Button
-                      as={NavLink}
-                      to="/login"
-                      content="Login"
-                      variant="solid"
-                      radius="full"
-                      color="primary"
-                      className="inline-flex text-sm items-center font-medium bg-gradient-to-r from-blue-500 to-sky-500"
-                    >
-                      Login
-                    </Button>
-                  )}
+  // Handle dropdown toggle for mobile menu
+  const handleDropdownToggle = (name) => {
+    setIsDropdownOpen((prev) => ({
+      ...prev,
+      [name]: !prev[name],
+    }));
+  };
 
-                  {/* Dashboard button  */}
-                  {!!isLoggedIn.admin && (
-                    <NavLink
-                      to="/dashboard/admin"
-                      className="flex items-center gap-2 text-slate-800 dark:text-slate-100"
-                    >
-                      <Image
-                        className="rounded-full border border-slate-300 dark:border-slate-600 w-10 h-10 object-cover"
-                        src="/images/profile-default-photo.jpg"
-                        alt="user-profile"
-                      />
-                      <span className="hidden sm:inline text-sm font-medium">
-                        Dashboard
-                      </span>
-                    </NavLink>
-                  )}
-                  {!!isLoggedIn.student && (
-                    <NavLink
-                      to="/dashboard/student"
-                      className="flex items-center gap-2 text-slate-800 dark:text-slate-100"
-                    >
-                      <Image
-                        className="rounded-full border border-slate-300 dark:border-slate-600 w-10 h-10 object-cover"
-                        src="/images/profile-default-photo.jpg"
-                        alt="user-profile"
-                      />
-                      <span className="hidden sm:inline text-sm font-medium">
-                        Dashboard
-                      </span>
-                    </NavLink>
-                  )}
-                </div>
-              </div>
 
-              {/* ii. Shows in Mobile only:  Dropdown lists */}
-              <div
-                ref={mobileMenuRef}
-                className={`lg:hidden absolute w-full rounded-3xl backdrop-blur-md z-40  overflow-hidden transition-all duration-200 ease-in-out ${
-                  isMobileMenuOpen ? "opacity-100" : "hidden opacity-0"
-                }`}
-                style={{
-                  transitionProperty: "height, opacity",
-                }}
-              >
-                <div className="flex flex-col rounded-3xl justify-center bg-slate-100 dark:bg-slate-800 p-6 space-y-4">
-                  {NavigationMenuRoutes.map((link, index) =>
-                    !link.dropdown ? (
-                      <NavLink
-                        key={index}
-                        to={link.path}
-                        onClick={() => setMobileMenuOpen(false)}
-                        className={({ isActive }) =>
-                          `py-4 px-2 text-xl rounded-md ${
-                            isActive
-                              ? "text-blue-500 dark:text-blue-400 font-semibold"
-                              : "text-slate-800 dark:text-white"
-                          } hover:bg-slate-100 dark:hover:bg-slate-800 transition-all`
-                        }
-                      >
-                        {link.name}
-                      </NavLink>
-                    ) : (
-                      // dropdown menu
-                      <div key={index} className="flex flex-col gap-2">
-                        <button
-                          className="text-xl text-left w-full p-3 rounded-2xl text-slate-800 dark:text-white flex justify-between items-center hover:bg-slate-100 dark:hover:bg-slate-800"
-                          onClick={() => handleDropdownToggle(link.name)}
-                        >
-                          {link.name}
-                          <span>
-                            {isDropdownOpen[link.name] ? (
-                              <ChevronUp />
-                            ) : (
-                              <ChevronDown />
-                            )}
-                          </span>
-                        </button>
-                        <ul
-                          className={`ml-4 space-y-3 transition-all duration-200 ${
-                            isDropdownOpen[link.name] ? "block" : "hidden"
-                          }`}
-                        >
-                          {link.items.map((item, idx) => (
-                            <li key={idx}>
-                              <NavLink
-                                to={item.path}
-                                onClick={() => setMobileMenuOpen(false)}
-                                className={({ isActive }) =>
-                                  `block px-2 py-3 text-md rounded-3xl ${
-                                    isActive
-                                      ? "text-blue-500 dark:text-blue-400 font-medium"
-                                      : "text-slate-800 dark:text-white"
-                                  } hover:bg-slate-100 dark:hover:bg-slate-800 transition-all`
-                                }
-                              >
-                                {item.name}
-                              </NavLink>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )
-                  )}
-                </div>
-              </div>
-            </div>
+  return (
+    <nav className="sticky top-0 md:top-4 w-full z-[100] p-0 md:p-2">
+      <div
+        className={`transition-all duration-500 ease-in-out ${
+          isVisible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
+        }`}
+      >
+        <div className="max-w-screen-2xl mx-auto bg-white/90 dark:bg-slate-900/90 backdrop-blur-lg rounded-none md:rounded-3xl shadow-lg border-b md:border border-slate-200 dark:border-slate-700">
+          
+          {/* Top Bar - Logo and Actions */}
+          <div className="px-4 md:px-6 py-3 flex justify-between items-center">
+            
+            <CollegeLogo />
 
-            {/* 3. right-side-logos */}
-            <div
-              className={`hidden rounded-full md:flex gap-1 md:gap-3 backdrop-blur-md`}
-            >
-              <Image
-                className="brand-logo border border-black dark:border-white p-1 rounded-full min-h-[30px] max-h-[60px] aspect-square"
-                src="/images/dstbihar-logo.png"
-                alt="dstbihar-logo"
+            {/* Right Side Actions */}
+            <div className="flex items-center gap-3">
+              <MobileMenuToggle 
+                isOpen={isMobileMenuOpen} 
+                onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
+                ref={hamburgerRef}
               />
-              <Image
-                className="brand-logo min-h-[30px] max-h-[60px] aspect-square"
-                src="/images/aicte-logo.png"
-                alt="aicte-logo"
-              />
+              <AuthSection isAuthenticated={isAuthenticated} user={user} />
             </div>
           </div>
+
+          {/* Desktop Navigation Menu */}
+          <div className="hidden lg:flex items-center justify-between px-6 pb-3 pt-2 border-t border-slate-200/50 dark:border-slate-700/50">
+            
+            {/* Navigation Links */}
+            <div className="flex items-center space-x-1">
+              {NavigationMenuRoutes.map((link, index) =>
+                !link.dropdown ? (
+                  <NavLink
+                    key={index}
+                    to={link.path}
+                    className={({ isActive }) =>
+                      `px-4 py-2 rounded-xl font-medium text-sm transition-all duration-200 ${
+                        isActive
+                          ? "text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/50"
+                          : "text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-slate-100 dark:hover:bg-slate-800"
+                      }`
+                    }
+                  >
+                    {link.name}
+                  </NavLink>
+                ) : (
+                  <div
+                    key={index}
+                    className="relative group"
+                    onMouseEnter={() => setIsDropdownOpen({ [link.name]: true })}
+                    onMouseLeave={() => setIsDropdownOpen({ [link.name]: false })}
+                  >
+                    <span className="flex items-center gap-1 px-4 py-2 rounded-lg font-medium text-sm cursor-pointer text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
+                      {link.name}
+                      <ChevronDown
+                        className={`w-4 h-4 transition-transform duration-200 ${
+                          isDropdownOpen[link.name] ? "rotate-180" : ""
+                        }`}
+                      />
+                    </span>
+                    <ul
+                      className={`absolute top-full left-1/2 transform -translate-x-1/2 mt-2 min-w-max shadow-lg rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 py-2 transition-all duration-200 ${
+                        isDropdownOpen[link.name]
+                          ? "opacity-100 visible translate-y-0"
+                          : "opacity-0 invisible -translate-y-2"
+                      }`}
+                    >
+                      {link.items.map((item, idx) => (
+                        <Link
+                          key={idx}
+                          to={item.path}
+                          className="block px-4 py-2 text-sm text-slate-700 dark:text-slate-300 hover:bg-blue-50 dark:hover:bg-blue-950/50 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                        >
+                          {item.name}
+                        </Link>
+                      ))}
+                    </ul>
+                  </div>
+                )
+              )}
+            </div>
+
+          </div>
         </div>
-      </header>
+
+        {/* Mobile Menu */}
+        <div
+          ref={mobileMenuRef}
+          className={`lg:hidden absolute left-0 right-0 mt-2 mx-3 md:mx-6 rounded-2xl backdrop-blur-lg bg-white/95 dark:bg-slate-900/95 border border-slate-200 dark:border-slate-700 shadow-xl overflow-hidden transition-all duration-300 ${
+            isMobileMenuOpen
+              ? "opacity-100 visible max-h-[70vh] overflow-y-auto"
+              : "opacity-0 invisible max-h-0"
+          }`}
+        >
+          <div className="p-4 space-y-2">
+            {NavigationMenuRoutes.map((link, index) =>
+              !link.dropdown ? (
+                <NavLink
+                  key={index}
+                  to={link.path}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={({ isActive }) =>
+                    `block px-4 py-3 rounded-lg font-medium text-base transition-all ${
+                      isActive
+                        ? "text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/50"
+                        : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
+                    }`
+                  }
+                >
+                  {link.name}
+                </NavLink>
+              ) : (
+                <div key={index} className="space-y-1">
+                  <button
+                    className="w-full flex items-center justify-between px-4 py-3 rounded-lg font-medium text-base text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all"
+                    onClick={() => handleDropdownToggle(link.name)}
+                  >
+                    {link.name}
+                    {isDropdownOpen[link.name] ? (
+                      <ChevronUp className="w-5 h-5" />
+                    ) : (
+                      <ChevronDown className="w-5 h-5" />
+                    )}
+                  </button>
+                  <div
+                    className={`ml-4 space-y-1 overflow-hidden transition-all duration-200 ${
+                      isDropdownOpen[link.name] ? "max-h-96" : "max-h-0"
+                    }`}
+                  >
+                    {link.items.map((item, idx) => (
+                      <NavLink
+                        key={idx}
+                        to={item.path}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className={({ isActive }) =>
+                          `block px-4 py-2 rounded-lg text-sm transition-all ${
+                            isActive
+                              ? "text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/50"
+                              : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
+                          }`
+                        }
+                      >
+                        {item.name}
+                      </NavLink>
+                    ))}
+                  </div>
+                </div>
+              )
+            )}
+
+            {/* Mobile Dashboard Link */}
+            {isAuthenticated && (
+              <div className="pt-4 border-t border-slate-200 dark:border-slate-700">
+                <NavLink
+                  to={user?.role === "admin" ? "/dashboard/admin" : "/dashboard/student"}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center gap-3 px-4 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-blue-500 text-white font-medium shadow-md"
+                >
+                  <LayoutDashboard className="w-5 h-5" />
+                  Go to Dashboard
+                </NavLink>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
     </nav>
   );
 }

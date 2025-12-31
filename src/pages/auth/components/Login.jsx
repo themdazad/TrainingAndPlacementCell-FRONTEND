@@ -25,8 +25,6 @@ const Login = () => {
         { identifier, password }
       );
       const result = response.data;
-
-      toast.success(`You login as a ${result.data.user.role}.`);
       
       // Update redux state
       dispatch(
