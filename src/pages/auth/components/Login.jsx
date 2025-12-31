@@ -3,12 +3,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
 import { toast } from "react-toastify";
-import { useDispatch } from "react-redux";
-import axios from "axios";
-import {setAuthState}  from "../../../store/authSlice";
 
 const Login = () => {
-  const dispatch = useDispatch();
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -16,32 +12,34 @@ const Login = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   const navigate = useNavigate();
+
   const handleLogin = async () => {
     setLoading(true);
     try {
-      // api call: /api/auth/login
-      const response = await axios.post(
+      const response = await fetch(
         `${import.meta.env.VITE_API_BASE_URL}/api/auth/login`,
-        { identifier, password }
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ identifier, password }),
+        }
       );
-      const result = response.data;
+
+      const result = await response.json();
+
+      if (!response.ok) throw new Error(result.message || "Invalid credentials");
+
+      // 1. Persist the session data
+      localStorage.setItem("token", result.data.token);
+      localStorage.setItem("user", JSON.stringify(result.data.user));
+
+      // 2. Notify other components (like NavBar) of the change
+      window.dispatchEvent(new Event("storage"));
 
       toast.success(`You login as a ${result.data.user.role}.`);
-      
-      // Update redux state
-      dispatch(
-        setAuthState(
-          {
-            isAuthenticated: true,
-            user : result.data.user,
-          }
-        )
-      );
-      
       navigate("/");
     } catch (error) {
-      const message = error.response?.data?.message || error.message || "Login failed. Please try again.";
-      setErrors({ submit: message });
+      setErrors({ submit: error.message || "Login failed. Please try again." });
     } finally {
       setLoading(false);
     }
@@ -50,13 +48,11 @@ const Login = () => {
   return (
     <Card className="border-t-4 border-blue-500 w-full max-w-md shadow-lg rounded-2xl">
       <CardBody className="p-6 space-y-6">
-        {/* Header */}
         <div className="text-center space-y-2">
           <h1 className="text-3xl font-bold">Welcome Back</h1>
           <p className="text-sm text-gray-600">Sign in to your account</p>
         </div>
 
-        {/* Error Alert */}
         {errors.submit && (
           <div className="p-3 bg-red-50/5 border border-red-500/50 rounded-lg">
             <p className="text-sm text-red-500">{errors.submit}</p>
@@ -70,7 +66,6 @@ const Login = () => {
             handleLogin();
           }}
         >
-          {/* Email/Registration Input */}
           <Input
             type="text"
             label="Email or Registration Number"
@@ -83,7 +78,6 @@ const Login = () => {
             disabled={loading}
           />
 
-          {/* Password Input with Toggle */}
           <div className="relative">
             <Input
               type={isPasswordVisible ? "text" : "password"}
@@ -106,17 +100,12 @@ const Login = () => {
             </button>
           </div>
 
-          {/* Forgot Password Link */}
           <div className="text-right">
-            <a
-              href="/forgot-password"
-              className="text-xs text-blue-500 hover:underline"
-            >
+            <a href="/forgot-password" size="sm" className="text-xs text-blue-500 hover:underline">
               Forgot password?
             </a>
           </div>
 
-          {/* Login Button */}
           <Button
             type="submit"
             color="primary"

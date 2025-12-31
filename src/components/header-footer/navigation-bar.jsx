@@ -1,41 +1,42 @@
 import { useState, useEffect, useRef } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { Image, Button } from "@heroui/react";
-import { ChevronDown, ChevronUp, X, AlignLeft } from "lucide-react";
-import NavigationMenuRoutes from "./navigation-menu-routes.js"
+import { ChevronDown, ChevronUp, X, AlignLeft, LogOut } from "lucide-react";
+import { toast } from "react-toastify";
+import NavigationMenuRoutes from "./navigation-menu-routes.js";
 
 export default function NavBar() {
   const [isVisible, setIsVisible] = useState(true);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState(null); // Changed from isLoggedIn to user object
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState({});
-  // Access auth context
-
+  const navigate = useNavigate();
 
   const mobileMenuRef = useRef(null);
   const hamburgerRef = useRef(null);
 
+  // Sync auth state with localStorage
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (
-        mobileMenuRef.current &&
-        !mobileMenuRef.current.contains(event.target) &&
-        hamburgerRef.current &&
-        !hamburgerRef.current.contains(event.target)
-      ) {
-        setMobileMenuOpen(false);
-      }
+    const checkAuth = () => {
+      const storedUser = localStorage.getItem("user");
+      setUser(storedUser ? JSON.parse(storedUser) : null);
     };
 
-    if (isMobileMenuOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
+    checkAuth();
 
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [isMobileMenuOpen]);
+    // Listen for custom login/logout events
+    window.addEventListener("storage", checkAuth);
+    return () => window.removeEventListener("storage", checkAuth);
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    setUser(null);
+    toast.info("Logged out successfully");
+    navigate("/login");
+  };
 
   const handleDropdownToggle = (name) => {
     setIsDropdownOpen((prev) => ({
@@ -62,57 +63,28 @@ export default function NavBar() {
   return (
     <nav className="sticky top-4 max-w-screen-xl m-auto z-50 p-2">
       <header>
-        {/* Navigation Header*/}
-        <div
-          className={`navHeader
-            ${
-              isVisible
-                ? "translate-y-0 opacity-1"
-                : "-translate-y-full opacity-0"
-            }
-            transition-all duration-500 
-          `}
-        >
+        <div className={`navHeader ${isVisible ? "translate-y-0 opacity-1" : "-translate-y-full opacity-0"} transition-all duration-500`}>
           <div className="max-w-screen-2xl px-[2%] m-auto flex justify-between items-center gap-4">
+            
             {/* 1. Left-side-logo */}
-            <div
-              className={`max-sm:hidden hover:shadow-md hover:scale-105 bg-slate-200 dark:bg-slate-800 p-1 rounded-full flex justify-center`}
-            >
+            <div className="max-sm:hidden hover:shadow-md hover:scale-105 bg-slate-200 dark:bg-slate-800 p-1 rounded-full flex justify-center">
               <Link to="/">
-                <Image
-                  className="h-[70px] aspect-square"
-                  src="/images/logos/gecsiwanlogo.svg"
-                  alt="gec-siwan-logo"
-                />
-                
+                <Image className="h-[70px] aspect-square" src="/images/logos/gecsiwanlogo.svg" alt="gec-siwan-logo" />
               </Link>
             </div>
 
-            {/* 2. center-navigation-bar  */}
-            <div
-              className={`transition-all duration-500
-            w-full relative md:max-w-min text-nowrap py-1 px-2 mx-auto rounded-full bg-slate-200 dark:bg-slate-800`}
-            >
-              <div className=" px-4 flex items-center justify-between py-2 relative z-50">
-                {/* Hamburger-Botton */}
+            {/* 2. Center-navigation-bar */}
+            <div className="transition-all duration-500 w-full relative md:max-w-min text-nowrap py-1 px-2 mx-auto rounded-full bg-slate-200 dark:bg-slate-800">
+              <div className="px-4 flex items-center justify-between py-2 relative z-50">
+                
                 <button
                   ref={hamburgerRef}
                   onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
-                  className="text-black dark:text-white transition-all duration-200 lg:hidden"
+                  className="text-black dark:text-white lg:hidden"
                 >
-                  <AlignLeft
-                    className={`${
-                      isMobileMenuOpen ? "hidden" : "block"
-                    } w-8 h-auto`}
-                  />
-                  <X
-                    className={`${
-                      isMobileMenuOpen ? "block" : "hidden"
-                    } w-8 h-auto `}
-                  />
+                  {isMobileMenuOpen ? <X className="w-8 h-auto" /> : <AlignLeft className="w-8 h-auto" />}
                 </button>
 
-                {/* i. Shows in Desktop by default: Navigation menus */}
                 <div className="hidden lg:flex lg:items-center lg:space-x-6">
                   {NavigationMenuRoutes.map((link, index) =>
                     !link.dropdown ? (
@@ -120,11 +92,7 @@ export default function NavBar() {
                         key={index}
                         to={link.path}
                         className={({ isActive }) =>
-                          `relative after:bg-blue-600 dark:after:bg-blue-400  ${
-                            isActive
-                              ? "text-blue-500 dark:text-blue-400 after:w-full"
-                              : "text-black dark:text-white after:w-0 group-hover:after:w-full"
-                          } hover:opacity-80 transition-all`
+                          `relative ${isActive ? "text-blue-500 dark:text-blue-400 font-semibold" : "text-black dark:text-white"}`
                         }
                       >
                         {link.name}
@@ -133,31 +101,16 @@ export default function NavBar() {
                       <div
                         key={index}
                         className="relative group"
-                        onMouseEnter={() =>
-                          setIsDropdownOpen({ [link.name]: true })
-                        }
-                        onMouseLeave={() =>
-                          setIsDropdownOpen({ [link.name]: false })
-                        }
+                        onMouseEnter={() => setIsDropdownOpen({ [link.name]: true })}
+                        onMouseLeave={() => setIsDropdownOpen({ [link.name]: false })}
                       >
-                        <span className="flex items-center cursor-pointer transition-all duration-200hover:text-opacity-80 dark:hover:text-opacity-80">
+                        <span className="flex items-center cursor-pointer">
                           {link.name}
-                          <ChevronDown className="rotate-0 group-hover:rotate-180 transition-rotate duration-200" />
+                          <ChevronDown className="group-hover:rotate-180 transition-transform" />
                         </span>
-                        <ul
-                          className={`absolute  shadow-md left-1/2 transform -translate-x-1/2 min-w-max text-small rounded-xl border-t-1 hover:border-t-4 border-t-blue-600 bg-white dark:bg-slate-800 py-2 transition-all duration-200 ${
-                            isDropdownOpen[link.name]
-                              ? "flex flex-col"
-                              : "hidden"
-                          }`}
-                        >
-                          {/* dropdown list items  */}
+                        <ul className={`absolute shadow-md left-1/2 -translate-x-1/2 min-w-max rounded-xl bg-white dark:bg-slate-800 py-2 ${isDropdownOpen[link.name] ? "flex flex-col" : "hidden"}`}>
                           {link.items.map((item, idx) => (
-                            <Link
-                              key={idx}
-                              to={item.path}
-                              className="hover:bg-blue-500/30 w-full py-2 px-3"
-                            >
+                            <Link key={idx} to={item.path} className="hover:bg-blue-500/30 w-full py-2 px-3">
                               {item.name}
                             </Link>
                           ))}
@@ -167,145 +120,52 @@ export default function NavBar() {
                   )}
                 </div>
 
-                {/* Dashboard/Login, and Logout */}
-                <div className="flex items-center gap-6 ml-4">
-
-                  {/* Login Button */}
-                  {!(isLoggedIn.admin || isLoggedIn.student) && (
+                {/* Authentication Toggle */}
+                <div className="flex items-center gap-4 ml-4">
+                  {!user ? (
                     <Button
                       as={NavLink}
                       to="/login"
-                      content="Login"
                       variant="solid"
                       radius="full"
                       color="primary"
-                      className="inline-flex text-sm items-center font-medium bg-gradient-to-r from-blue-500 to-sky-500"
+                      className="text-sm font-medium bg-gradient-to-r from-blue-500 to-sky-500"
                     >
                       Login
                     </Button>
-                  )}
-
-                  {/* Dashboard button  */}
-                  {!!isLoggedIn.admin && (
-                    <NavLink
-                      to="/dashboard/admin"
-                      className="flex items-center gap-2 text-slate-800 dark:text-slate-100"
-                    >
-                      <Image
-                        className="rounded-full border border-slate-300 dark:border-slate-600 w-10 h-10 object-cover"
-                        src="/images/profile-default-photo.jpg"
-                        alt="user-profile"
-                      />
-                      <span className="hidden sm:inline text-sm font-medium">
-                        Dashboard
-                      </span>
-                    </NavLink>
-                  )}
-                  {!!isLoggedIn.student && (
-                    <NavLink
-                      to="/dashboard/student"
-                      className="flex items-center gap-2 text-slate-800 dark:text-slate-100"
-                    >
-                      <Image
-                        className="rounded-full border border-slate-300 dark:border-slate-600 w-10 h-10 object-cover"
-                        src="/images/profile-default-photo.jpg"
-                        alt="user-profile"
-                      />
-                      <span className="hidden sm:inline text-sm font-medium">
-                        Dashboard
-                      </span>
-                    </NavLink>
-                  )}
-                </div>
-              </div>
-
-              {/* ii. Shows in Mobile only:  Dropdown lists */}
-              <div
-                ref={mobileMenuRef}
-                className={`lg:hidden absolute w-full rounded-3xl backdrop-blur-md z-40  overflow-hidden transition-all duration-200 ease-in-out ${
-                  isMobileMenuOpen ? "opacity-100" : "hidden opacity-0"
-                }`}
-                style={{
-                  transitionProperty: "height, opacity",
-                }}
-              >
-                <div className="flex flex-col rounded-3xl justify-center bg-slate-100 dark:bg-slate-800 p-6 space-y-4">
-                  {NavigationMenuRoutes.map((link, index) =>
-                    !link.dropdown ? (
+                  ) : (
+                    <div className="flex items-center gap-3">
                       <NavLink
-                        key={index}
-                        to={link.path}
-                        onClick={() => setMobileMenuOpen(false)}
-                        className={({ isActive }) =>
-                          `py-4 px-2 text-xl rounded-md ${
-                            isActive
-                              ? "text-blue-500 dark:text-blue-400 font-semibold"
-                              : "text-slate-800 dark:text-white"
-                          } hover:bg-slate-100 dark:hover:bg-slate-800 transition-all`
-                        }
+                        to={user.role === "admin" ? "/dashboard/admin" : "/dashboard/student"}
+                        className="flex items-center gap-2"
                       >
-                        {link.name}
+                        <Image
+                          className="rounded-full border w-10 h-10 object-cover"
+                          src="/images/profile-default-photo.jpg"
+                          alt="profile"
+                        />
+                        <span className="hidden sm:inline text-sm font-medium">Dashboard</span>
                       </NavLink>
-                    ) : (
-                      // dropdown menu
-                      <div key={index} className="flex flex-col gap-2">
-                        <button
-                          className="text-xl text-left w-full p-3 rounded-2xl text-slate-800 dark:text-white flex justify-between items-center hover:bg-slate-100 dark:hover:bg-slate-800"
-                          onClick={() => handleDropdownToggle(link.name)}
-                        >
-                          {link.name}
-                          <span>
-                            {isDropdownOpen[link.name] ? (
-                              <ChevronUp />
-                            ) : (
-                              <ChevronDown />
-                            )}
-                          </span>
-                        </button>
-                        <ul
-                          className={`ml-4 space-y-3 transition-all duration-200 ${
-                            isDropdownOpen[link.name] ? "block" : "hidden"
-                          }`}
-                        >
-                          {link.items.map((item, idx) => (
-                            <li key={idx}>
-                              <NavLink
-                                to={item.path}
-                                onClick={() => setMobileMenuOpen(false)}
-                                className={({ isActive }) =>
-                                  `block px-2 py-3 text-md rounded-3xl ${
-                                    isActive
-                                      ? "text-blue-500 dark:text-blue-400 font-medium"
-                                      : "text-slate-800 dark:text-white"
-                                  } hover:bg-slate-100 dark:hover:bg-slate-800 transition-all`
-                                }
-                              >
-                                {item.name}
-                              </NavLink>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )
+                      <Button
+                        isIconOnly
+                        size="sm"
+                        variant="light"
+                        color="primary"
+                        onClick={handleLogout}
+                        title="Logout"
+                      >
+                        <LogOut size={20} />
+                      </Button>
+                    </div>
                   )}
                 </div>
               </div>
             </div>
 
-            {/* 3. right-side-logos */}
-            <div
-              className={`hidden rounded-full md:flex gap-1 md:gap-3 backdrop-blur-md`}
-            >
-              <Image
-                className="brand-logo border border-black dark:border-white p-1 rounded-full min-h-[30px] max-h-[60px] aspect-square"
-                src="/images/dstbihar-logo.png"
-                alt="dstbihar-logo"
-              />
-              <Image
-                className="brand-logo min-h-[30px] max-h-[60px] aspect-square"
-                src="/images/aicte-logo.png"
-                alt="aicte-logo"
-              />
+            {/* 3. Right-side-logos */}
+            <div className="hidden rounded-full md:flex gap-3 backdrop-blur-md">
+              <Image className="brand-logo border p-1 rounded-full max-h-[60px]" src="/images/dstbihar-logo.png" alt="dstbihar" />
+              <Image className="brand-logo max-h-[60px]" src="/images/aicte-logo.png" alt="aicte" />
             </div>
           </div>
         </div>
