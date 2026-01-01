@@ -3,12 +3,10 @@ import axios from "axios";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import { store } from "./store/store.js";
-import AutoThemeListener from "./components/AutoThemeListener";
+import AutoThemeListener from "./components/layout/AutoThemeListener";
 import { ToastContainer } from "react-toastify";
 import { HeroUIProvider } from "@heroui/react";
 import { BrowserRouter } from "react-router-dom";
-import NavBar from "./components/header-footer/navigation-bar.jsx";
-import Footer from "./components/header-footer/footer-bar.jsx";
 import ScrollToTop from "./components/ScrollToTop.js";
 import NProgressLoader from "./components/common/NProgressLoader.jsx";
 
@@ -33,7 +31,6 @@ export function App() {
       />
         <NProgressLoader />
         <AppRoutes />
-      
     </HeroUIProvider>
   );
 }

@@ -208,291 +208,257 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex h-screen w-full overflow-hidden bg-[#fafafa] dark:bg-slate-950 font-sans">
-      {/* LEFT: Aesthetic Image with Logo Overlay */}
-      <div className="relative hidden w-1/2 lg:block">
-        <div className="absolute inset-0 z-10 flex items-center justify-center">
-          <div className="space-y-6 text-center px-8">
-            <img 
-              src="/images/logos/collegelogo.png" 
-              alt="GEC Siwan Logo" 
-              className="h-40 w-auto mx-auto drop-shadow-2xl"
-            />
-            <div className="space-y-2">
-              <h2 className="text-3xl font-bold tracking-tight text-white">
-                Training & Placement Cell
-              </h2>
-              <p className="text-lg text-white/90 font-medium">
-                Government Engineering College Siwan
-              </p>
-            </div>
-          </div>
+    <div className="relative flex w-full flex-col items-center justify-center px-6 lg:w-1/2 bg-white dark:bg-slate-950 overflow-y-auto">
+      <div className="w-full max-w-[420px] py-8">
+        {/* Header with Back Button */}
+        <div className="space-y-2 mb-8">
+          {step > 1 && (
+            <button
+              type="button"
+              onClick={handleBack}
+              className="flex items-center gap-2 text-sm text-blue-600 dark:text-blue-400 hover:underline mb-4"
+            >
+              <ArrowLeft size={16} />
+              Back
+            </button>
+          )}
+          <h1 className="text-3xl font-bold text-slate-900 dark:text-white">
+            {step === 1
+              ? "Create account"
+              : step === 2
+              ? "Verify OTP"
+              : "Set password"}
+          </h1>
+          <p className="text-slate-600 dark:text-slate-400">
+            {step === 1
+              ? "Enter your details to get started"
+              : step === 2
+              ? "Check your email for verification code"
+              : "Create a secure password for your account"}
+          </p>
         </div>
-        <img 
-          src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop" 
-          alt="Campus" 
-          className="h-full w-full object-cover brightness-[0.6]"
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/40 to-slate-900/60"></div>
-      </div>
 
-      {/* RIGHT: Signup Form */}
-      <div className="relative flex w-full flex-col items-center justify-center px-6 lg:w-1/2 bg-white dark:bg-slate-950 overflow-y-auto">
-        <div className="w-full max-w-[420px] py-8">
-          {/* Header with Back Button */}
-          <div className="space-y-2 mb-8">
-            {step > 1 && (
-              <button
-                type="button"
-                onClick={handleBack}
-                className="flex items-center gap-2 text-sm text-blue-600 dark:text-blue-400 hover:underline mb-4"
-              >
-                <ArrowLeft size={16} />
-                Back
-              </button>
-            )}
-            <h1 className="text-3xl font-bold text-slate-900 dark:text-white">
-              {step === 1
-                ? "Create account"
-                : step === 2
-                ? "Verify OTP"
-                : "Set password"}
-            </h1>
-            <p className="text-slate-600 dark:text-slate-400">
-              {step === 1
-                ? "Enter your details to get started"
-                : step === 2
-                ? "Check your email for verification code"
-                : "Create a secure password for your account"}
+        {/* Error Alert */}
+        {errors.submit && (
+          <div className="mb-6 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
+            <p className="text-sm text-red-600 dark:text-red-400">
+              {errors.submit}
             </p>
           </div>
-
-          {/* Error Alert */}
-          {errors.submit && (
-            <div className="mb-6 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
-              <p className="text-sm text-red-600 dark:text-red-400">
-                {errors.submit}
-              </p>
+        )}
+        <form
+          className="space-y-6"
+          onSubmit={(e) => {
+            e.preventDefault();
+            if (step === 1) handleSendOtp();
+            else if (step === 2) handleVerifyOtp();
+            else handleSignup();
+          }}
+        >
+          {/* Step 1: Registration & Email */}
+          {step === 1 && (
+            <div className="space-y-6">
+              <Input
+                type="email"
+                label="Email Address"
+                variant="underlined"
+                placeholder="name@example.com"
+                classNames={{
+                  label:
+                    "text-slate-600 dark:text-slate-400 py-2 text-md font-medium",
+                  input: "text-base px-0 dark:text-white",
+                }}
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  if (errors.submit) setErrors({});
+                }}
+                isInvalid={!!errors.email}
+                errorMessage={errors.email}
+                disabled={loading}
+              />
+              <Input
+                type="text"
+                label="Registration Number"
+                variant="underlined"
+                placeholder="e.g. 22103151000"
+                classNames={{
+                  label:
+                    "text-slate-600 dark:text-slate-400 py-2 text-md font-medium",
+                  input: "text-base px-0 dark:text-white",
+                }}
+                value={registrationNumber}
+                onChange={(e) => {
+                  setRegistrationNumber(e.target.value);
+                  if (errors.submit) setErrors({});
+                }}
+                isInvalid={!!errors.registrationNumber}
+                errorMessage={errors.registrationNumber}
+                disabled={loading}
+              />
             </div>
           )}
-          <form
-            className="space-y-6"
-            onSubmit={(e) => {
-              e.preventDefault();
-              if (step === 1) handleSendOtp();
-              else if (step === 2) handleVerifyOtp();
-              else handleSignup();
-            }}
-          >
-            {/* Step 1: Registration & Email */}
-            {step === 1 && (
-              <div className="space-y-6">
-                <Input
-                  type="email"
-                  label="Email Address"
-                  variant="underlined"
-                  placeholder="name@example.com"
-                  classNames={{
-                    label:
-                      "text-slate-600 dark:text-slate-400 py-2 text-md font-medium",
-                    input: "text-base px-0 dark:text-white",
-                  }}
-                  value={email}
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                    if (errors.submit) setErrors({});
-                  }}
-                  isInvalid={!!errors.email}
-                  errorMessage={errors.email}
-                  disabled={loading}
-                />
-                <Input
-                  type="text"
-                  label="Registration Number"
-                  variant="underlined"
-                  placeholder="e.g. 22103151000"
-                  classNames={{
-                    label:
-                      "text-slate-600 dark:text-slate-400 py-2 text-md font-medium",
-                    input: "text-base px-0 dark:text-white",
-                  }}
-                  value={registrationNumber}
-                  onChange={(e) => {
-                    setRegistrationNumber(e.target.value);
-                    if (errors.submit) setErrors({});
-                  }}
-                  isInvalid={!!errors.registrationNumber}
-                  errorMessage={errors.registrationNumber}
-                  disabled={loading}
-                />
-              </div>
-            )}
 
-            {/* Step 2: OTP Verification */}
-            {step === 2 && (
-              <div className="space-y-6">
-                <div className="text-center space-y-2">
-                  <p className="text-sm text-slate-600 dark:text-slate-400">
-                    Enter the 6-digit code sent to
-                  </p>
-                  <p className="font-medium text-slate-900 dark:text-white">
-                    {email}
-                  </p>
+          {/* Step 2: OTP Verification */}
+          {step === 2 && (
+            <div className="space-y-6">
+              <div className="text-center space-y-2">
+                <p className="text-sm text-slate-600 dark:text-slate-400">
+                  Enter the 6-digit code sent to
+                </p>
+                <p className="font-medium text-slate-900 dark:text-white">
+                  {email}
+                </p>
+              </div>
+
+              <div className="flex items-center justify-center gap-3">
+                <div className="flex gap-2">
+                  {otp.map((data, index) => (
+                    <input
+                      className="w-11 h-12 text-center text-lg border-2 border-slate-300 dark:border-slate-600 rounded-lg focus:border-blue-500 dark:focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
+                      type="text"
+                      name="otp"
+                      maxLength="1"
+                      key={index}
+                      value={data}
+                      onChange={(e) => handleOtpChange(e.target, index)}
+                      onKeyDown={(e) => handleOtpKeyDown(e, index)}
+                      onFocus={(e) => e.target.select()}
+                      disabled={isOtpVerified || loading}
+                    />
+                  ))}
                 </div>
 
-                <div className="flex items-center justify-center gap-3">
-                  <div className="flex gap-2">
-                    {otp.map((data, index) => (
-                      <input
-                        className="w-11 h-12 text-center text-lg border-2 border-slate-300 dark:border-slate-600 rounded-lg focus:border-blue-500 dark:focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
-                        type="text"
-                        name="otp"
-                        maxLength="1"
-                        key={index}
-                        value={data}
-                        onChange={(e) => handleOtpChange(e.target, index)}
-                        onKeyDown={(e) => handleOtpKeyDown(e, index)}
-                        onFocus={(e) => e.target.select()}
-                        disabled={isOtpVerified || loading}
-                      />
-                    ))}
+                {!isOtpVerified && (
+                  <Button
+                    type="button"
+                    className="h-12 min-w-0 px-6 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
+                    onClick={handleVerifyOtp}
+                    isLoading={loading}
+                    disabled={loading}
+                  >
+                    Verify
+                  </Button>
+                )}
+
+                {isOtpVerified && (
+                  <div className="text-green-500 animate-in zoom-in duration-300">
+                    <CheckCircle size={32} />
                   </div>
-
-                  {!isOtpVerified && (
-                    <Button
-                      type="button"
-                      className="h-12 min-w-0 px-6 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
-                      onClick={handleVerifyOtp}
-                      isLoading={loading}
-                      disabled={loading}
-                    >
-                      Verify
-                    </Button>
-                  )}
-
-                  {isOtpVerified && (
-                    <div className="text-green-500 animate-in zoom-in duration-300">
-                      <CheckCircle size={32} />
-                    </div>
-                  )}
-                </div>
+                )}
               </div>
-            )}
+            </div>
+          )}
 
-            {/* Step 3: Password Creation */}
-            {step === 3 && (
-              <div className="space-y-6">
-                <Input
-                  type={showPassword ? "text" : "password"}
-                  label="Password"
-                  variant="underlined"
-                  placeholder="Minimum 6 characters"
-                  classNames={{
-                    label:
-                      "text-slate-600 dark:text-slate-400 py-2 text-md font-medium",
-                    input: "text-base px-0 dark:text-white",
-                  }}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  isInvalid={!!errors.password}
-                  errorMessage={errors.password}
-                  disabled={loading}
-                  endContent={
-                    <button
-                      type="button"
-                      onClick={() => setShowPassword(!showPassword)}
-                      className="text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
-                      disabled={loading}
-                    >
-                      {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-                    </button>
-                  }
-                />
-
-                <Input
-                  type={showConfirmPassword ? "text" : "password"}
-                  label="Confirm Password"
-                  variant="underlined"
-                  placeholder="Re-enter your password"
-                  classNames={{
-                    label:
-                      "text-slate-600 dark:text-slate-400 py-2 text-md font-medium",
-                    input: "text-base px-0 dark:text-white",
-                  }}
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                  isInvalid={
-                    !!errors.confirmPassword ||
-                    (confirmPassword && password !== confirmPassword)
-                  }
-                  errorMessage={
-                    errors.confirmPassword ||
-                    (confirmPassword && password !== confirmPassword
-                      ? "Passwords do not match"
-                      : "")
-                  }
-                  disabled={loading}
-                  endContent={
-                    <button
-                      type="button"
-                      onClick={() =>
-                        setShowConfirmPassword(!showConfirmPassword)
-                      }
-                      className="text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
-                      disabled={loading}
-                    >
-                      {showConfirmPassword ? (
-                        <EyeOff size={18} />
-                      ) : (
-                        <Eye size={18} />
-                      )}
-                    </button>
-                  }
-                />
-              </div>
-            )}
-
-            {/* Action Button */}
-            <div className="pt-4">
-              <Button
-                type="submit"
-                className="w-full bg-blue-600 text-white font-semibold h-12 rounded-lg hover:bg-blue-700 transition-colors"
-                isLoading={loading}
-                disabled={
-                  loading ||
-                  (step === 3 &&
-                    confirmPassword &&
-                    password !== confirmPassword)
+          {/* Step 3: Password Creation */}
+          {step === 3 && (
+            <div className="space-y-6">
+              <Input
+                type={showPassword ? "text" : "password"}
+                label="Password"
+                variant="underlined"
+                placeholder="Minimum 6 characters"
+                classNames={{
+                  label:
+                    "text-slate-600 dark:text-slate-400 py-2 text-md font-medium",
+                  input: "text-base px-0 dark:text-white",
+                }}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                isInvalid={!!errors.password}
+                errorMessage={errors.password}
+                disabled={loading}
+                endContent={
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
+                    disabled={loading}
+                  >
+                    {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                  </button>
                 }
+              />
+
+              <Input
+                type={showConfirmPassword ? "text" : "password"}
+                label="Confirm Password"
+                variant="underlined"
+                placeholder="Re-enter your password"
+                classNames={{
+                  label:
+                    "text-slate-600 dark:text-slate-400 py-2 text-md font-medium",
+                  input: "text-base px-0 dark:text-white",
+                }}
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                isInvalid={
+                  !!errors.confirmPassword ||
+                  (confirmPassword && password !== confirmPassword)
+                }
+                errorMessage={
+                  errors.confirmPassword ||
+                  (confirmPassword && password !== confirmPassword
+                    ? "Passwords do not match"
+                    : "")
+                }
+                disabled={loading}
+                endContent={
+                  <button
+                    type="button"
+                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                    className="text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
+                    disabled={loading}
+                  >
+                    {showConfirmPassword ? (
+                      <EyeOff size={18} />
+                    ) : (
+                      <Eye size={18} />
+                    )}
+                  </button>
+                }
+              />
+            </div>
+          )}
+
+          {/* Action Button */}
+          <div className="pt-4">
+            <Button
+              type="submit"
+              className="w-full bg-blue-600 text-white font-semibold h-12 rounded-lg hover:bg-blue-700 transition-colors"
+              isLoading={loading}
+              disabled={
+                loading ||
+                (step === 3 && confirmPassword && password !== confirmPassword)
+              }
+            >
+              {step === 1
+                ? "Send OTP"
+                : step === 2
+                ? "Continue"
+                : "Create Account"}
+            </Button>
+          </div>
+
+          {/* Login Link */}
+          <div className="text-center pt-4">
+            <p className="text-sm text-slate-600 dark:text-slate-400">
+              Already have an account?{" "}
+              <Link
+                to={PATHS.AUTH.LOGIN}
+                className="text-blue-600 dark:text-blue-400 hover:underline font-medium"
               >
-                {step === 1
-                  ? "Send OTP"
-                  : step === 2
-                  ? "Continue"
-                  : "Create Account"}
-              </Button>
-            </div>
-
-            {/* Login Link */}
-            <div className="text-center pt-4">
-              <p className="text-sm text-slate-600 dark:text-slate-400">
-                Already have an account?{" "}
-                <Link
-                  to={PATHS.AUTH.LOGIN}
-                  className="text-blue-600 dark:text-blue-400 hover:underline font-medium"
-                >
-                  Login
-                </Link>
-              </p>
-            </div>
-          </form>
-
-          {/* Footer */}
-          <div className="pt-16 text-center">
-            <p className="text-xs text-slate-400 dark:text-slate-500">
-              © 2025 T&P Cell, GEC Siwan
+                Login
+              </Link>
             </p>
           </div>
+        </form>
+
+        {/* Footer */}
+        <div className="pt-16 text-center">
+          <p className="text-xs text-slate-400 dark:text-slate-500">
+            © 2025 T&P Cell, GEC Siwan
+          </p>
         </div>
       </div>
     </div>

@@ -1,8 +1,8 @@
 import { Globe, Linkedin, Twitter, Mail, Phone, MapPin } from 'lucide-react';
 
-export default function Footer1() {
+export default function Footer() {
   return (
-    <footer className="bg-slate-100 dark:bg-slate-900 py-6 border-t-4 border-blue-500 transition-colors duration-200">
+    <footer className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-none py-6 border-t-2 border-blue-500 transition-colors duration-200">
       <div className="max-w-screen-2xl mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10">
           {/* Left Section - Info */}

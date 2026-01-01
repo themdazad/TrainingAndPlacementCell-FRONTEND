@@ -1,4 +1,4 @@
-import PATHS from "../../constants/paths";
+import PATHS from "../../../constants/paths";
 
 const NavigationMenuDetails = [
   { name: "Home", path: PATHS.MAIN.HOME },

@@ -1,10 +1,27 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { Image, Button, Avatar, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Badge } from "@heroui/react";
-import { ChevronDown, ChevronUp, X, Menu, User, LogOut, LayoutDashboard, Bell } from "lucide-react";
+import {
+  Image,
+  Button,
+  Avatar,
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownItem,
+} from "@heroui/react";
+import {
+  ChevronDown,
+  ChevronUp,
+  X,
+  Menu,
+  User,
+  LogOut,
+  LayoutDashboard,
+  Bell,
+} from "lucide-react";
 import NavigationMenuRoutes from "./navigation-menu-routes.js";
-import PATHS from "../../constants/paths";
+import PATHS from "../../../constants/paths.js";
 
 // SOLID Principle: Single Responsibility - Custom Hooks
 const useClickOutside = (ref, handler) => {
@@ -44,7 +61,10 @@ const useScrollVisibility = (threshold = 50) => {
 
 // SOLID Principle: Single Responsibility - Logo Component
 const CollegeLogo = () => (
-  <Link to="/" className="flex items-center gap-3 md:gap-4 flex-shrink-0 hover:scale-105 transition-transform duration-300">
+  <Link
+    to="/"
+    className="flex items-center gap-3 md:gap-4 flex-shrink-0 hover:scale-105 transition-transform duration-300"
+  >
     <Image
       className="h-16 md:h-20 w-auto"
       src="/images/logos/collegelogo.png"
@@ -81,14 +101,20 @@ const NotificationBell = ({ count = 5 }) => (
         <Bell className="w-6 h-6" />
         {count > 0 && (
           <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-6 w-6 flex items-center justify-center font-semibold">
-            {count > 9 ? '9+' : count}
+            {count > 9 ? "9+" : count}
           </span>
         )}
       </button>
     </DropdownTrigger>
     <DropdownMenu aria-label="Notifications" className="w-80" variant="flat">
-      <DropdownItem key="header" className="h-10 gap-2" textValue="Notifications">
-        <p className="font-semibold text-slate-900 dark:text-slate-100">Notifications</p>
+      <DropdownItem
+        key="header"
+        className="h-10 gap-2"
+        textValue="Notifications"
+      >
+        <p className="font-semibold text-slate-900 dark:text-slate-100">
+          Notifications
+        </p>
       </DropdownItem>
       <DropdownItem key="notification-1" textValue="New placement drive">
         <div className="flex flex-col gap-1">
@@ -98,12 +124,17 @@ const NotificationBell = ({ count = 5 }) => (
       </DropdownItem>
       <DropdownItem key="notification-2" textValue="Application deadline">
         <div className="flex flex-col gap-1">
-          <p className="text-sm font-medium">Application deadline approaching</p>
+          <p className="text-sm font-medium">
+            Application deadline approaching
+          </p>
           <p className="text-xs text-slate-500">5 hours ago</p>
         </div>
       </DropdownItem>
       <DropdownItem key="view-all" className="text-center" textValue="View all">
-        <Link to="/notifications" className="text-blue-600 dark:text-blue-400 text-sm font-medium">
+        <Link
+          to="/notifications"
+          className="text-blue-600 dark:text-blue-400 text-sm font-medium"
+        >
           View all notifications
         </Link>
       </DropdownItem>
@@ -124,7 +155,11 @@ const UserDropdown = ({ user }) => (
       />
     </DropdownTrigger>
     <DropdownMenu aria-label="User menu" className="w-56" variant="flat">
-      <DropdownItem key="profile" className="h-14 gap-2" textValue="User profile">
+      <DropdownItem
+        key="profile"
+        className="h-14 gap-2"
+        textValue="User profile"
+      >
         <p className="font-semibold text-slate-900 dark:text-slate-100">
           {user?.name || "Welcome"}
         </p>
@@ -189,7 +224,6 @@ const DashboardButton = ({ userRole }) => (
   </Button>
 );
 
-
 // SOLID Principle: Single Responsibility - Auth Section Component
 const AuthSection = ({ isAuthenticated, user }) => {
   if (!isAuthenticated) {
@@ -205,11 +239,11 @@ const AuthSection = ({ isAuthenticated, user }) => {
   );
 };
 
-// Main NavBar Component
-export default function NavBar() {
+// Main Navbar Component
+export default function Navbar() {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState({});
-  
+
   const { isAuthenticated, user } = useSelector((state) => state.auth);
   const isVisible = useScrollVisibility(50);
 
@@ -231,25 +265,24 @@ export default function NavBar() {
     }));
   };
 
-
   return (
-    <nav className="sticky top-0 md:top-4 w-full z-[100] p-0 md:p-2">
+    <nav className="sticky top-0 w-full z-[100] ">
       <div
         className={`transition-all duration-500 ease-in-out ${
-          isVisible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
+          isVisible
+            ? "translate-y-0 opacity-100"
+            : "-translate-y-full opacity-0"
         }`}
       >
-        <div className="max-w-screen-2xl mx-auto bg-white/90 dark:bg-slate-900/90 backdrop-blur-lg rounded-none md:rounded-3xl shadow-lg border-b md:border border-slate-200 dark:border-slate-700">
-          
+        <div className="max-w-screen-2xl mx-auto dark:bg-slate-950 rounded-none ">
           {/* Top Bar - Logo and Actions */}
-          <div className="px-4 md:px-6 py-2 flex justify-between items-center">
-            
+          <div className="px-6 md:px-12 py-4 flex justify-between items-center">
             <CollegeLogo />
 
             {/* Right Side Actions */}
             <div className="flex items-center gap-3">
-              <MobileMenuToggle 
-                isOpen={isMobileMenuOpen} 
+              <MobileMenuToggle
+                isOpen={isMobileMenuOpen}
                 onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
                 ref={hamburgerRef}
               />
@@ -258,8 +291,7 @@ export default function NavBar() {
           </div>
 
           {/* Desktop Navigation Menu */}
-          <div className="hidden lg:flex items-center justify-between px-6 pb-3 pt-2 border-t border-slate-200/50 dark:border-slate-700/50">
-            
+          <div className="hidden lg:flex items-center justify-between px-6 md:px-12 pb-3 pt-2 bg-slate-100 dark:bg-slate-900 border-t border-slate-200/50 dark:border-slate-700/50">
             {/* Navigation Links */}
             <div className="flex items-center space-x-1">
               {NavigationMenuRoutes.map((link, index) =>
@@ -281,8 +313,12 @@ export default function NavBar() {
                   <div
                     key={index}
                     className="relative group"
-                    onMouseEnter={() => setIsDropdownOpen({ [link.name]: true })}
-                    onMouseLeave={() => setIsDropdownOpen({ [link.name]: false })}
+                    onMouseEnter={() =>
+                      setIsDropdownOpen({ [link.name]: true })
+                    }
+                    onMouseLeave={() =>
+                      setIsDropdownOpen({ [link.name]: false })
+                    }
                   >
                     <span className="flex items-center gap-1 px-4 py-2 rounded-lg font-medium text-sm cursor-pointer text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
                       {link.name}
@@ -313,14 +349,13 @@ export default function NavBar() {
                 )
               )}
             </div>
-
           </div>
         </div>
 
         {/* Mobile Menu */}
         <div
           ref={mobileMenuRef}
-          className={`lg:hidden absolute left-0 right-0 mt-2 mx-3 md:mx-6 rounded-2xl backdrop-blur-lg bg-white/95 dark:bg-slate-900/95 border border-slate-200 dark:border-slate-700 shadow-xl overflow-hidden transition-all duration-300 ${
+          className={`lg:hidden absolute left-0 right-0 backdrop-blur-lg bg-white/95 dark:bg-slate-900/95 border border-slate-200 dark:border-slate-700 shadow-xl overflow-hidden transition-all duration-300 ${
             isMobileMenuOpen
               ? "opacity-100 visible max-h-[70vh] overflow-y-auto"
               : "opacity-0 invisible max-h-0"
@@ -334,7 +369,7 @@ export default function NavBar() {
                   to={link.path}
                   onClick={() => setMobileMenuOpen(false)}
                   className={({ isActive }) =>
-                    `block px-4 py-3 rounded-lg font-medium text-base transition-all ${
+                    `block px-4 py-3 rounded-xl font-medium text-base transition-all ${
                       isActive
                         ? "text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/50"
                         : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
@@ -386,7 +421,11 @@ export default function NavBar() {
             {isAuthenticated && (
               <div className="pt-4 border-t border-slate-200 dark:border-slate-700">
                 <NavLink
-                  to={user?.role === "admin" ? "/dashboard/admin" : "/dashboard/student"}
+                  to={
+                    user?.role === "admin"
+                      ? "/dashboard/admin"
+                      : "/dashboard/student"
+                  }
                   onClick={() => setMobileMenuOpen(false)}
                   className="flex items-center gap-3 px-4 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-blue-500 text-white font-medium shadow-md"
                 >
