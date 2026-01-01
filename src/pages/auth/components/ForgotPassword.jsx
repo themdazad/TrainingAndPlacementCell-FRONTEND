@@ -135,112 +135,70 @@ const ForgotPassword = () => {
   }
 
   return (
-    <div className="flex h-screen w-full overflow-hidden bg-[#fafafa] dark:bg-slate-950 font-sans">
-      {/* LEFT: Aesthetic Image with Logo Overlay */}
-      <div className="relative hidden w-1/2 lg:block">
-        <div className="absolute inset-0 z-10 flex items-center justify-center">
-          <div className="space-y-6 text-center px-8">
-            <Link to={PATHS.MAIN.HOME}>
-              <img
-                src="/images/logos/collegelogo.png"
-                alt="GEC Siwan Logo"
-                className="h-40 w-auto mx-auto drop-shadow-2xl cursor-pointer hover:scale-105 transition-transform"
-              />
-            </Link>
-            <div className="space-y-2">
-              <h2 className="text-3xl font-bold tracking-tight text-white">
-                Training & Placement Cell
-              </h2>
-              <p className="text-lg text-white/90 font-medium">
-                Government Engineering College Siwan
-              </p>
-            </div>
-          </div>
+    <div className="relative flex w-full flex-col items-center justify-center px-6 lg:w-1/2 bg-white dark:bg-slate-950">
+      <div className="w-full max-w-[380px] space-y-12">
+        {/* Back Button */}
+        <button
+          type="button"
+          onClick={handleBack}
+          className="flex items-center gap-2 text-sm text-blue-600 dark:text-blue-400 hover:underline"
+        >
+          <ArrowLeft size={16} />
+          Back to Login
+        </button>
+
+        {/* Header */}
+        <div className="space-y-2">
+          <h1 className="text-3xl font-bold text-slate-900 dark:text-white">
+            Reset password
+          </h1>
+          <p className="text-slate-600 dark:text-slate-400">
+            Enter your email address and we'll send you a reset link
+          </p>
         </div>
-        <img
-          src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop"
-          alt="Campus"
-          className="h-full w-full object-cover brightness-[0.6]"
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/40 to-slate-900/60"></div>
-      </div>
 
-      {/* RIGHT: Forgot Password Form */}
-      <div className="relative flex w-full flex-col items-center justify-center px-6 lg:w-1/2 bg-white dark:bg-slate-950">
-        <div className="w-full max-w-[380px] space-y-12">
-          {/* Back Button */}
-          <button
-            type="button"
-            onClick={handleBack}
-            className="flex items-center gap-2 text-sm text-blue-600 dark:text-blue-400 hover:underline"
-          >
-            <ArrowLeft size={16} />
-            Back to Login
-          </button>
-
-          {/* Header */}
-          <div className="space-y-2">
-            <h1 className="text-3xl font-bold text-slate-900 dark:text-white">
-              Reset password
-            </h1>
-            <p className="text-slate-600 dark:text-slate-400">
-              Enter your email address and we'll send you a reset link
-            </p>
-          </div>
-
-          <form
-            className="space-y-8"
-            onSubmit={(e) => {
-              e.preventDefault();
-              handleForgotPassword();
+        <form
+          className="space-y-8"
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleForgotPassword();
+          }}
+        >
+          {/* Identifier Input */}
+          <Input
+            type="text"
+            label="Email or Registration Number"
+            variant="underlined"
+            classNames={{
+              label:
+                "text-slate-600 dark:text-slate-400 py-2 text-md font-medium",
+              input: "text-base px-0  dark:text-white",
             }}
-          >
-            {/* Identifier Input */}
-            <Input
-              type="text"
-              label="Email or Registration Number"
-              variant="underlined"
-              classNames={{
-                label:
-                  "text-slate-600 dark:text-slate-400 py-2 text-md font-medium",
-                input: "text-base px-0  dark:text-white",
-              }}
-              value={identifier}
-              onChange={(e) => setIdentifier(e.target.value)}
-              isInvalid={!!errors.identifier}
+            value={identifier}
+            onChange={(e) => setIdentifier(e.target.value)}
+            isInvalid={!!errors.identifier}
+            disabled={loading}
+          />
+
+          {/* Submit Button */}
+          <div className="flex flex-col gap-4 pt-2">
+            <Button
+              type="submit"
+              className="w-full bg-blue-600 text-white font-semibold h-12 rounded-lg hover:bg-blue-700 transition-colors"
+              isLoading={loading}
               disabled={loading}
-            />
-
-            {/* Submit Button */}
-            <div className="flex flex-col gap-4 pt-2">
-              <Button
-                type="submit"
-                className="w-full bg-blue-600 text-white font-semibold h-12 rounded-lg hover:bg-blue-700 transition-colors"
-                isLoading={loading}
-                disabled={loading}
-              >
-                Send Reset Link
-              </Button>
-              <div className="text-center">
-                <p className="text-sm text-slate-600 dark:text-slate-400">
-                  Remember your password?{" "}
-                  <a
-                    href={PATHS.AUTH.LOGIN}
-                    className="text-blue-600 dark:text-blue-400 hover:underline font-medium"
-                  >
-                    Login
-                  </a>
-                </p>
-              </div>
-            </div>
-          </form>
-
-          {/* Footer */}
-          <div className="pt-16 text-center">
-            <p className="text-xs text-slate-400 dark:text-slate-500">
-              © 2025 T&P Cell, GEC Siwan
-            </p>
+            >
+              Send Reset Link
+            </Button>
+            
           </div>
+        </form>
+
+        {/* Footer */}
+        <div className="pt-16 text-center">
+          <p className="text-xs text-slate-400 dark:text-slate-500">
+            © 2025 T&P Cell, GEC Siwan
+          </p>
         </div>
       </div>
     </div>

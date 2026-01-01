@@ -2,7 +2,8 @@ import "./index.css";
 import axios from "axios";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
-import { store } from "./store/store.js";
+import { store, persistor } from "./store/configureStore.js";
+import { PersistGate } from "redux-persist/integration/react";
 import AutoThemeListener from "./components/layout/AutoThemeListener";
 import { ToastContainer } from "react-toastify";
 import { HeroUIProvider } from "@heroui/react";
@@ -29,8 +30,8 @@ export function App() {
         pauseOnHover
         theme="light"
       />
-        <NProgressLoader />
-        <AppRoutes />
+      <NProgressLoader />
+      <AppRoutes />
     </HeroUIProvider>
   );
 }
@@ -40,8 +41,10 @@ function Root() {
   return (
     <BrowserRouter>
       <Provider store={store}>
-        <App />
-        <AutoThemeListener />
+        <PersistGate loading={null} persistor={persistor}>
+          <App />
+          <AutoThemeListener />
+        </PersistGate>
       </Provider>
       <ScrollToTop />
     </BrowserRouter>
@@ -49,5 +52,3 @@ function Root() {
 }
 
 ReactDOM.createRoot(document.getElementById("root")).render(<Root />);
-
-
