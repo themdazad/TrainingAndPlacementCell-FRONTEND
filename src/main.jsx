@@ -1,5 +1,6 @@
 import './index.css';
 import axios from 'axios';
+import { Toaster } from 'sonner';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { store } from './store/store.js';
@@ -42,6 +43,7 @@ function Root() {
     <BrowserRouter>
       <Provider store={store}>
         <AuthValidator>
+          <Toaster position="top-center" richColors />
           <App />
         </AuthValidator>
         <AutoThemeListener />

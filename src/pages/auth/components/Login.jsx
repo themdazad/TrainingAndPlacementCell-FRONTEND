@@ -2,7 +2,7 @@ import { Button, Input } from '@heroui/react';
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Eye, EyeOff } from 'lucide-react';
-import { toast } from 'react-toastify';
+import { toast } from 'sonner';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { setAuthState } from '../../../store/authSlice';

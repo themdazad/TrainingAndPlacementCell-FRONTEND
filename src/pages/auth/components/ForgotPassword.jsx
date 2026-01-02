@@ -1,7 +1,7 @@
 import { Button, Input } from '@heroui/react';
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { toast } from 'sonner';
 import { ArrowLeft } from 'lucide-react';
 import PATHS from '../../../constants/paths';
 

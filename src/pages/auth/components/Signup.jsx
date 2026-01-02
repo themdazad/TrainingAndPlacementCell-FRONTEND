@@ -1,7 +1,7 @@
 import { Button, Input } from '@heroui/react';
 import { Image } from '@heroui/react';
 import { useState, useEffect } from 'react';
-import { toast } from 'react-toastify';
+import { toast } from 'sonner';
 import { ArrowLeft, CheckCircle, Eye, EyeOff } from 'lucide-react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
