@@ -11,17 +11,16 @@ const AuthValidator = ({ children }) => {
   useEffect(() => {
     const validate = async () => {
       try {
-        const { data } = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/auth/me`, {
-          withCredentials: true,
-        });
-        if (!data.user) {
+        const { data } = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/auth/me`);
+
+        if (!data.success) {
           throw new Error('No user data found');
         }
         // Success: User data aur auth status set karein
-        dispatch(setAuthState({ user: data.user, isAuthenticated: true }));
+        dispatch(setAuthState({ user: data.result, isAuthenticated: true, isChecking: false }));
       } catch (err) {
         // Fail: User ko null karein
-        dispatch(setAuthState({ user: null, isAuthenticated: false }));
+        dispatch(setAuthState({ user: null, isAuthenticated: false, isChecking: false }));
       }
     };
     validate();
