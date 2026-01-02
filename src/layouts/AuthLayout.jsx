@@ -1,6 +1,6 @@
-import { Outlet } from "react-router-dom";
-import { Link } from "react-router-dom";
-import PATHS from "../constants/paths";
+import { Outlet } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import PATHS from '../constants/paths';
 
 const AuthLayout = () => {
   return (

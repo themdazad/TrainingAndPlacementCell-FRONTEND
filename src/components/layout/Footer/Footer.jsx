@@ -22,20 +22,31 @@ export default function Footer() {
 
             {/* Contact Info */}
             <div className="space-y-2">
-              <h4 className="text-base font-semibold text-slate-800 dark:text-slate-200 mb-2">Contact Us</h4>
+              <h4 className="text-base font-semibold text-slate-800 dark:text-slate-200 mb-2">
+                Contact Us
+              </h4>
               <div className="flex items-start gap-2 text-sm text-slate-700 dark:text-slate-300">
-                <MapPin size={18} className="mt-0.5 flex-shrink-0 text-blue-600 dark:text-blue-400" />
+                <MapPin
+                  size={18}
+                  className="mt-0.5 flex-shrink-0 text-blue-600 dark:text-blue-400"
+                />
                 <p>Suta Mill Factory, Old, Mairwa Rd, Bhada Khurd, Siwan, Bihar 841436</p>
               </div>
               <div className="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-300">
                 <Phone size={18} className="flex-shrink-0 text-blue-600 dark:text-blue-400" />
-                <a href="tel:+916155242002" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                <a
+                  href="tel:+916155242002"
+                  className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                >
                   +91 6155 242 002
                 </a>
               </div>
               <div className="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-300">
                 <Mail size={18} className="flex-shrink-0 text-blue-600 dark:text-blue-400" />
-                <a href="mailto:tpogecsiwan@gmail.com" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                <a
+                  href="mailto:tpogecsiwan@gmail.com"
+                  className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                >
                   tpogecsiwan@gmail.com
                 </a>
               </div>
@@ -43,7 +54,9 @@ export default function Footer() {
 
             {/* Social Media */}
             <div>
-              <h4 className="text-base font-semibold text-slate-800 dark:text-slate-200 mb-2">Follow Us</h4>
+              <h4 className="text-base font-semibold text-slate-800 dark:text-slate-200 mb-2">
+                Follow Us
+              </h4>
               <div className="flex items-center gap-3">
                 <a
                   href="https://www.linkedin.com/company/tpogecsiwan/"
@@ -94,7 +107,8 @@ export default function Footer() {
         {/* Copyright - Center Bottom */}
         <div className="mt-6 pt-4 border-t border-slate-300 dark:border-slate-700">
           <p className="text-xs text-center text-slate-600 dark:text-slate-400">
-            © 2025 Training and Placement Cell, Government Engineering College, Siwan. All rights reserved.
+            © 2025 Training and Placement Cell, Government Engineering College, Siwan. All rights
+            reserved.
           </p>
         </div>
       </div>

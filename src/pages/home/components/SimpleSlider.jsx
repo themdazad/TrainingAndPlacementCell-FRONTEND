@@ -1,7 +1,7 @@
-import { Image } from "@heroui/react";
-import Slider from "react-slick";
+import { Image } from '@heroui/react';
+import Slider from 'react-slick';
 
-function SimpleSlider({slider_data}) {
+function SimpleSlider({ slider_data }) {
   const settings = {
     infinite: true,
     speed: 2000,
@@ -24,7 +24,7 @@ function SimpleSlider({slider_data}) {
                 className="w-full h-full rounded-none object-cover"
                 width="100%"
                 height="100%"
-                loading={index === 0 ? "eager" : "lazy"}
+                loading={index === 0 ? 'eager' : 'lazy'}
               />
             </div>
           );

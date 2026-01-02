@@ -1,28 +1,26 @@
-import { motion } from "framer-motion";
-import { Hourglass, BookCheck, Backpack, Handshake } from "lucide-react";
+import { motion } from 'framer-motion';
+import { Hourglass, BookCheck, Backpack, Handshake } from 'lucide-react';
 
 const cards = [
   {
     icon: Hourglass,
-    title: "Duration 4 Years",
+    title: 'Duration 4 Years',
     description:
-      "The Bachelor of Technology (B.Tech) is an 8-semester, full-time undergraduate program, regulated by AICTE and structured as per BEU guidelines. Students undergo continuous internal evaluation, hands-on labs, and real-world internships.",
+      'The Bachelor of Technology (B.Tech) is an 8-semester, full-time undergraduate program, regulated by AICTE and structured as per BEU guidelines. Students undergo continuous internal evaluation, hands-on labs, and real-world internships.',
   },
   {
     icon: BookCheck,
-    title: "6 Accredited Specializations",
+    title: '6 Accredited Specializations',
     description:
-      "We offer streams: Computer Science and Engineering, CSE IoT, VLSI, Mechanical, Civil, and Electrical Engineering. Each is aligned with current industry and research trends.",
+      'We offer streams: Computer Science and Engineering, CSE IoT, VLSI, Mechanical, Civil, and Electrical Engineering. Each is aligned with current industry and research trends.',
   },
   {
     icon: Backpack,
-    title: "1400+ Enrolled Students",
+    title: '1400+ Enrolled Students',
     description:
-      "Over 1,400 students are currently pursuing their B.Tech degrees across six specializations. Our academic environment emphasizes mentorship, peer collaboration, and continuous support through faculty advisors and career guidance cells.",
+      'Over 1,400 students are currently pursuing their B.Tech degrees across six specializations. Our academic environment emphasizes mentorship, peer collaboration, and continuous support through faculty advisors and career guidance cells.',
   },
-  
 ];
-
 
 const container = {
   hidden: { opacity: 0 },

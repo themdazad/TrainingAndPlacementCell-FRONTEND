@@ -1,7 +1,5 @@
-import { Image } from "@heroui/react";
-import { galleryData } from "../../data/galleryData.js";
-
-
+import { Image } from '@heroui/react';
+import { galleryData } from '../../data/galleryData.js';
 
 export default function Gallery() {
   return (
@@ -19,9 +17,8 @@ export default function Gallery() {
               Government Engineering College, Siwan
             </h1>
             <blockquote>
-              The dedicated faculty of Government Engineering College Siwan
-              stand united, shaping the future with knowledge, care, and
-              commitment.
+              The dedicated faculty of Government Engineering College Siwan stand united, shaping
+              the future with knowledge, care, and commitment.
             </blockquote>
           </div>
         </div>
@@ -40,7 +37,7 @@ export default function Gallery() {
                 </h3>
 
                 {/* Uploaded Images: Masonry Layout */}
-                {event.type === "upload" && (
+                {event.type === 'upload' && (
                   <div className="columns-1 sm:columns-2 md:columns-3 gap-4 space-y-4">
                     {event.images.map((src, imgIdx) => (
                       <div
@@ -58,7 +55,7 @@ export default function Gallery() {
                 )}
 
                 {/* Embedded Posts */}
-                {event.type === "embed" && (
+                {event.type === 'embed' && (
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                     {event.embeds.map((url, embedIdx) => (
                       <div key={embedIdx} className="w-full aspect-[4/3]">
