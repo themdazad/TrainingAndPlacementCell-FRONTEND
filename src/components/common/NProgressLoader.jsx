@@ -1,26 +1,30 @@
 // src/components/NProgressLoader.jsx
-import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useEffect, useRef } from 'react';
+import { useLocation, useNavigation } from 'react-router-dom';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 
-NProgress.configure({ showSpinner: false, trickleSpeed: 100 });
+// Configure NProgress for smooth, fast loading bar
+NProgress.configure({
+  showSpinner: false,
+  trickleSpeed: 200,
+  minimum: 0.1,
+  easing: 'ease',
+  speed: 400,
+});
 
 export default function NProgressLoader() {
   const location = useLocation();
+  const prevLocation = useRef(location.pathname);
 
   useEffect(() => {
-    NProgress.start();
-
-    // Fake delay of 1.5 seconds
-    const timer = setTimeout(() => {
+    // Only trigger on actual route changes
+    if (prevLocation.current !== location.pathname) {
+      NProgress.start();
+      // Complete quickly since lazy loading handles the actual delay
       NProgress.done();
-    }, 1500);
-
-    return () => {
-      clearTimeout(timer);
-      NProgress.done(); // Ensure cleanup on unmount
-    };
+      prevLocation.current = location.pathname;
+    }
   }, [location]);
 
   return null;
