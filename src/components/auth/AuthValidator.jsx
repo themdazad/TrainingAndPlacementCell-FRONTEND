@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setAuthState } from '../../store/authSlice';
-// import FullPageLoader from '../ui/FullPageLoader';
-import Loader from '../common/Loader';
+import FullPageLoader from '../ui/FullPageLoader';
 import axios from 'axios';
 
 const AuthValidator = ({ children }) => {
@@ -30,8 +29,7 @@ const AuthValidator = ({ children }) => {
   }, [dispatch]);
 
   // Jab tak API call chal rahi hai, tab tak Loader dikhega
-  // if (isChecking) return <FullPageLoader />;
-  if (isChecking) return <Loader />;
+  if (isChecking) return <FullPageLoader />;
 
   return children;
 };
