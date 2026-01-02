@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setAuthState } from '../../store/authSlice';
-import FullPageLoader from '../ui/FullPageLoader';
+// import FullPageLoader from '../ui/FullPageLoader';
+import Loader from '../common/Loader';
 import axios from 'axios';
 
 const AuthValidator = ({ children }) => {
@@ -14,21 +15,23 @@ const AuthValidator = ({ children }) => {
         const { data } = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/auth/me`, {
           withCredentials: true,
         });
-        if (!data.user) {
+
+        if (!data.success) {
           throw new Error('No user data found');
         }
         // Success: User data aur auth status set karein
-        dispatch(setAuthState({ user: data.user, isAuthenticated: true }));
+        dispatch(setAuthState({ user: data.user, isAuthenticated: true, isChecking: false }));
       } catch (err) {
         // Fail: User ko null karein
-        dispatch(setAuthState({ user: null, isAuthenticated: false }));
+        dispatch(setAuthState({ user: null, isAuthenticated: false, isChecking: false }));
       }
     };
     validate();
   }, [dispatch]);
 
   // Jab tak API call chal rahi hai, tab tak Loader dikhega
-  if (isChecking) return <FullPageLoader />;
+  // if (isChecking) return <FullPageLoader />;
+  if (isChecking) return <Loader />;
 
   return children;
 };

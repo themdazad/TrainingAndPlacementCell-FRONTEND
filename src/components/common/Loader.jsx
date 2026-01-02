@@ -1,6 +1,5 @@
-import GECSIWAN_LOGO from '../assets/images/logos/gecsiwanlogo.svg';
-import GECSIWAN_LOGO_LIGHT from '../assets/images/logos/gecsiwan-logo-light.png';
-import RandomLoadingMessage from './RandomLoadingMessage.jsx';
+import GECSIWAN_LOGO from '../../assets/images/logos/collegelogo.png';
+import GECSIWAN_LOGO_LIGHT from '../../assets/images/logos/gecsiwanlogo.svg';
 
 export default function Loader() {
   return (
@@ -19,8 +18,6 @@ export default function Loader() {
           alt="Loading logo"
           className="hidden dark:inline w-28 h-28 animate-pulse select-none"
         />
-
-        <RandomLoadingMessage />
       </div>
     </div>
   );
