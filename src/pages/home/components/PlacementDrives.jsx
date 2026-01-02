@@ -1,7 +1,7 @@
-import { Divider } from "@heroui/react";
-import { Link } from "react-router-dom";
-import { JobsInternships } from "../../../modules/web/views/careers/placement-drives/placement-drives.jsx";
-import usePlacementDrivesData from "../../../api/web/placement-drives-api.js";
+import { Divider } from '@heroui/react';
+import { Link } from 'react-router-dom';
+import { JobsInternships } from '../../../modules/web/views/careers/placement-drives/placement-drives.jsx';
+import usePlacementDrivesData from '../../../api/web/placement-drives-api.js';
 
 export default function PlacementDrives() {
   const { data, loading, error } = usePlacementDrivesData();
@@ -19,10 +19,7 @@ export default function PlacementDrives() {
 
       {/* View more link */}
       <div className="flex justify-center">
-        <Link
-          to="/careers/placement-drives"
-          className=" font-medium"
-        >
+        <Link to="/careers/placement-drives" className=" font-medium">
           See more
         </Link>
       </div>

@@ -1,8 +1,8 @@
-import { motion } from "framer-motion";
-import PLACEMENT_BROCHURE from "../../../assets/downloads/GEC_SIWAN_PLACEMENT_BROCHURE.pdf";
-import SimpleSlider from "./SimpleSlider.jsx";
-import HeroSliderImages from "../../../data/hero-slider-images.js";
-import { Download } from "lucide-react";
+import { motion } from 'framer-motion';
+import PLACEMENT_BROCHURE from '../../../assets/downloads/GEC_SIWAN_PLACEMENT_BROCHURE.pdf';
+import SimpleSlider from './SimpleSlider.jsx';
+import HeroSliderImages from '../../../data/hero-slider-images.js';
+import { Download } from 'lucide-react';
 
 const sliderImages = HeroSliderImages;
 export default function Hero() {
@@ -11,7 +11,7 @@ export default function Hero() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   };
 
-  const stagger = { 
+  const stagger = {
     hidden: {},
     visible: {
       transition: {
@@ -21,7 +21,6 @@ export default function Hero() {
   };
   return (
     <section className="relative z-10">
-      
       {/* Main Content */}
       <div className="max-w-screen-2xl m-auto min-h-[500px] px-[2%] grid items-end grid-cols-1 gap-6 lg:grid-cols-2 ">
         {/* CTA Section - Left Half */}
@@ -37,14 +36,11 @@ export default function Hero() {
               className="inline-flex items-center justify-center sm:justify-start px-4 py-2 bg-blue-500/20 text-blue-800 dark:text-blue-100 rounded-full"
               variants={fadeUp}
             >
-              <span className="blinking-dot w-2 h-2 bg-blue-600 rounded-full mr-2 animate-pulse"/>
+              <span className="blinking-dot w-2 h-2 bg-blue-600 rounded-full mr-2 animate-pulse" />
               New
             </motion.div>
 
-            <motion.h1
-              className="font-bold text-5xl lg:text-6xl "
-              variants={fadeUp}
-            >
+            <motion.h1 className="font-bold text-5xl lg:text-6xl " variants={fadeUp}>
               Training and <br />
               Placement Cell
               <span className="block text-xl text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-400">
@@ -56,9 +52,9 @@ export default function Hero() {
               className="text-slate-600 dark:text-slate-300 max-w-lg mx-auto sm:mx-0"
               variants={fadeUp}
             >
-              We strive to organize mock sessions, and provide real-world
-              exposure through internships and project showcases, ensuring each
-              student steps confidently into the professional world.
+              We strive to organize mock sessions, and provide real-world exposure through
+              internships and project showcases, ensuring each student steps confidently into the
+              professional world.
             </motion.p>
           </motion.div>
 
@@ -70,6 +66,7 @@ export default function Hero() {
               href={PLACEMENT_BROCHURE}
               target="_blank"
               className="flex items-center justify-center border-1 border-slate-300 hover:border-blue-600 hover:text-blue-600 px-4 py-3 rounded-3xl transition-all duration-200 transform hover:scale-105 group"
+              rel="noreferrer"
             >
               <Download className="mr-2 w-5 h-5 transition-transform group-hover:scale-110" />
               Brochure

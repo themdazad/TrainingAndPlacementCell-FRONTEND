@@ -1,8 +1,8 @@
-import { Button, Divider, Image } from "@heroui/react";
-import { useState } from "react";
-import {Link } from "lucide-react";
-import { NavLink } from "react-router-dom";
-import WorkshopsTrainingData from "../../../modules/web/data/workshops-training-data.js";
+import { Button, Divider, Image } from '@heroui/react';
+import { useState } from 'react';
+import { Link } from 'lucide-react';
+import { NavLink } from 'react-router-dom';
+import WorkshopsTrainingData from '../../../modules/web/data/workshops-training-data.js';
 
 export default function WorkshopsTraining() {
   const [cardData, setCardData] = useState(WorkshopsTrainingData);
@@ -23,7 +23,7 @@ export default function WorkshopsTraining() {
               >
                 <Image
                   src={item.image}
-                  alt={"azad-"}
+                  alt={'azad-'}
                   width={400}
                   height={200}
                   className="absolute z-8 object-contain"
@@ -37,9 +37,7 @@ export default function WorkshopsTraining() {
                         return <p key={ls}>{data}</p>;
                       })}
                     </div>
-                    {!!item.deadline && (
-                      <p className="">Last Date: {item.deadline}</p>
-                    )}
+                    {!!item.deadline && <p className="">Last Date: {item.deadline}</p>}
                   </div>
 
                   <div className="space-x-2 flex justify-center">
