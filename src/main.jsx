@@ -1,18 +1,19 @@
-import "./index.css";
-import axios from "axios";
-import ReactDOM from "react-dom/client";
-import { Provider } from "react-redux";
-import { store } from "./store/store.js";
-import AutoThemeListener from "./components/layout/AutoThemeListener";
-import { ToastContainer } from "react-toastify";
-import { HeroUIProvider } from "@heroui/react";
-import { BrowserRouter } from "react-router-dom";
-import ScrollToTop from "./components/ScrollToTop.js";
-import NProgressLoader from "./components/common/NProgressLoader.jsx";
+import './index.css';
+import axios from 'axios';
+import ReactDOM from 'react-dom/client';
+import { Provider } from 'react-redux';
+import { store } from './store/store.js';
+import AutoThemeListener from './components/layout/AutoThemeListener';
+import { ToastContainer } from 'react-toastify';
+import { HeroUIProvider } from '@heroui/react';
+import { BrowserRouter } from 'react-router-dom';
+import ScrollToTop from './components/ScrollToTop.js';
+import NProgressLoader from './components/common/NProgressLoader.jsx';
+import AuthValidator from './components/auth/AuthValidator.jsx';
 
-// 👇 This line enables sending cookies with cross-origin requests (Backend can save cookies directly:)
+// This line enables sending cookies with cross-origin requests with axios(Backend can save cookies directly:)
 axios.defaults.withCredentials = true;
-import AppRoutes from "./routes/index.jsx";
+import AppRoutes from './routes/index.jsx';
 
 export function App() {
   return (
@@ -29,8 +30,8 @@ export function App() {
         pauseOnHover
         theme="light"
       />
-        <NProgressLoader />
-        <AppRoutes />
+      <NProgressLoader />
+      <AppRoutes />
     </HeroUIProvider>
   );
 }
@@ -40,7 +41,9 @@ function Root() {
   return (
     <BrowserRouter>
       <Provider store={store}>
-        <App />
+        <AuthValidator>
+          <App />
+        </AuthValidator>
         <AutoThemeListener />
       </Provider>
       <ScrollToTop />
@@ -48,6 +51,4 @@ function Root() {
   );
 }
 
-ReactDOM.createRoot(document.getElementById("root")).render(<Root />);
-
-
+ReactDOM.createRoot(document.getElementById('root')).render(<Root />);
