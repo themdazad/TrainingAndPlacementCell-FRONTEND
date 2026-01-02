@@ -19,6 +19,7 @@ const authSlice = createSlice({
       // logout karne pe state reset kar dena without payload
       state.isAuthenticated = false;
       state.user = null;
+      state.isChecking = false;
     },
   },
 });
