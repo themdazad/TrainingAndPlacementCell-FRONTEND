@@ -260,11 +260,13 @@ export default function Navbar() {
 
             {/* Right Side Actions */}
             <div className="flex items-center gap-3">
-              <MobileMenuToggle
-                isOpen={isMobileMenuOpen}
-                onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
-                ref={hamburgerRef}
-              />
+              <div className="lg:hidden">
+                <MobileMenuToggle
+                  isOpen={isMobileMenuOpen}
+                  onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
+                  ref={hamburgerRef}
+                />
+              </div>
               <AuthSection isAuthenticated={isAuthenticated} user={user} />
             </div>
           </div>
