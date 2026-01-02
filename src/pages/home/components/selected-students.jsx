@@ -1,11 +1,7 @@
-import studentDetails from "../../../modules/web/data/PlacedStudentDetails";
-import { useEffect, useState } from "react";
+import studentDetails from '../../../modules/web/data/PlacedStudentDetails';
+import { useEffect, useState } from 'react';
 
-function AvatarCarousel({
-  avatarSize = 140,
-  avatarSpacing = 8,
-  avatars = studentDetails,
-}) {
+function AvatarCarousel({ avatarSize = 140, avatarSpacing = 8, avatars = studentDetails }) {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const getPlacementIndex = (index) => {
@@ -35,9 +31,8 @@ function AvatarCarousel({
       className="relative h-full w-full gap-2 py-[100px]"
       style={{
         WebkitMaskImage:
-          "linear-gradient(to right, transparent, black 30%, black 80%, transparent)",
-        maskImage:
-          "linear-gradient(to right, transparent, black 30%, black 80%, transparent)",
+          'linear-gradient(to right, transparent, black 30%, black 80%, transparent)',
+        maskImage: 'linear-gradient(to right, transparent, black 30%, black 80%, transparent)',
         minHeight: `${avatarSize + 60}px`,
         maxWidth: `${(avatarSize + avatarSpacing) * 10}px`,
       }}
@@ -54,18 +49,16 @@ function AvatarCarousel({
               src={avatar.image}
               alt={`Avatar ${index}`}
               className={`${
-                isActive ? "" : "saturate-0"
+                isActive ? '' : 'saturate-0'
               }  absolute  border-2 border-white dark:border-slate-800 aspect-square m-0 rounded-full object-cover transition-all duration-1000`}
               style={{
                 width: avatarSize,
-                top: "50%",
+                top: '50%',
                 left: `calc(50% + ${left}px)`,
-                transform: `translate(-50%, -50%) scale(${
-                  1 - Math.abs(placement) * 0.1
-                })`,
+                transform: `translate(-50%, -50%) scale(${1 - Math.abs(placement) * 0.1})`,
                 zIndex: isActive ? 1 : 0,
                 opacity: shouldHide ? 0 : isActive ? 1 : 0.3,
-                transformOrigin: "top left",
+                transformOrigin: 'top left',
               }}
             />
 
@@ -75,14 +68,12 @@ function AvatarCarousel({
               rel="noopener noreferrer"
               className={`absolute bg-white dark:bg-slate-800 dark:text-slate-100 hover:shadow-md dark:hover:shadow-lg rounded-3xl px-6 py-1 m-0 text-center transition-all duration-1000`}
               style={{
-                bottom: "-5%",
+                bottom: '-5%',
                 left: `calc(50% + ${left}px)`,
-                transform: `translate(-50%, -50%) scale(${
-                  1 - Math.abs(placement) * 0.1
-                })`,
+                transform: `translate(-50%, -50%) scale(${1 - Math.abs(placement) * 0.1})`,
                 zIndex: isActive ? 1 : 0,
                 opacity: shouldHide ? 0 : isActive ? 1 : 0,
-                transformOrigin: "top left",
+                transformOrigin: 'top left',
               }}
             >
               <h2 className="font-bold">{avatar.details.package}</h2>
@@ -97,10 +88,9 @@ function AvatarCarousel({
 
 const SelectedStudentSlider = () => {
   return (
-      <section className=" section flex h-full w-full flex-col items-center justify-center">
-        <AvatarCarousel />
-      </section>
-    
+    <section className=" section flex h-full w-full flex-col items-center justify-center">
+      <AvatarCarousel />
+    </section>
   );
 };
 

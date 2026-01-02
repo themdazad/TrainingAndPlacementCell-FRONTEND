@@ -1,6 +1,5 @@
-import { Linkedin, Mail } from "lucide-react";
-import TPCellMemberProfiles from "../../../data/TPCellMemberProfiles.js";
-
+import { Linkedin, Mail } from 'lucide-react';
+import TPCellMemberProfiles from '../../../data/TPCellMemberProfiles.js';
 
 export default function TPCellMembers() {
   return (
@@ -39,20 +38,10 @@ function ProfileList({ profiles }) {
   );
 }
 
-function ProfileCard({
-  title,
-  image,
-  name,
-  designation,
-  mobile,
-  email,
-  linkedin,
-}) {
+function ProfileCard({ title, image, name, designation, mobile, email, linkedin }) {
   return (
     <div className="max-w-sm bg-slate-100/50 dark:bg-slate-800 rounded-3xl shadow-md p-6 text-center space-y-4">
-      <h2 className="text-lg font-bold text-blue-500 dark:text-blue-500 py-2">
-        {title}
-      </h2>
+      <h2 className="text-lg font-bold text-blue-500 dark:text-blue-500 py-2">{title}</h2>
       <img
         src={image}
         alt={name}
@@ -60,9 +49,7 @@ function ProfileCard({
       />
       <div>
         <p className="font-bold">{name}</p>
-        <p className="text-sm text-blue-700 dark:text-blue-300">
-          {designation}
-        </p>
+        <p className="text-sm text-blue-700 dark:text-blue-300">{designation}</p>
 
         <div className="mt-4 flex justify-center gap-4">
           {/* LinkedIn Icon */}
@@ -86,8 +73,9 @@ function ProfileCard({
               className="flex gap-2 text-sky-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300"
               aria-label="LinkedIn"
             >
-              <Mail className="w-6 h-6 " /> 
-              <p className="max-md:hidden">{email}</p></a>
+              <Mail className="w-6 h-6 " />
+              <p className="max-md:hidden">{email}</p>
+            </a>
           )}
         </div>
       </div>

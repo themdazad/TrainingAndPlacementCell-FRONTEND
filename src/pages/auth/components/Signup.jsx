@@ -1,22 +1,22 @@
-import { Button, Input } from "@heroui/react";
-import { Image } from "@heroui/react";
-import { useState, useEffect } from "react";
-import { toast } from "react-toastify";
-import { ArrowLeft, CheckCircle, Eye, EyeOff } from "lucide-react";
-import { useNavigate, Link } from "react-router-dom";
-import axios from "axios";
-import PATHS from "../../../constants/paths";
+import { Button, Input } from '@heroui/react';
+import { Image } from '@heroui/react';
+import { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
+import { ArrowLeft, CheckCircle, Eye, EyeOff } from 'lucide-react';
+import { useNavigate, Link } from 'react-router-dom';
+import axios from 'axios';
+import PATHS from '../../../constants/paths';
 
 const Signup = () => {
   const [step, setStep] = useState(1); // 1: Send OTP, 2: Verify OTP, 3: Set Password
-  const [registrationNumber, setRegistrationNumber] = useState("");
-  const [email, setEmail] = useState("");
+  const [registrationNumber, setRegistrationNumber] = useState('');
+  const [email, setEmail] = useState('');
 
   // OTP State
-  const [otp, setOtp] = useState(new Array(6).fill(""));
+  const [otp, setOtp] = useState(new Array(6).fill(''));
 
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -52,8 +52,8 @@ const Signup = () => {
   };
 
   const handleOtpKeyDown = (e, index) => {
-    if (e.key === "Backspace") {
-      if (otp[index] === "" && e.target.previousSibling) {
+    if (e.key === 'Backspace') {
+      if (otp[index] === '' && e.target.previousSibling) {
         e.target.previousSibling.focus();
       }
     }
@@ -64,12 +64,12 @@ const Signup = () => {
     const newErrors = {};
 
     if (!validateRegNo(registrationNumber)) {
-      newErrors.registrationNumber = "Registration No is required";
+      newErrors.registrationNumber = 'Registration No is required';
     }
     if (!email) {
-      newErrors.email = "Email is required";
+      newErrors.email = 'Email is required';
     } else if (!validateEmail(email)) {
-      newErrors.email = "Please enter a valid email";
+      newErrors.email = 'Please enter a valid email';
     }
 
     if (Object.keys(newErrors).length > 0) {
@@ -81,16 +81,15 @@ const Signup = () => {
     setLoading(true);
 
     try {
-      await axios.post(
-        `${import.meta.env.VITE_API_BASE_URL}/api/auth/send-otp`,
-        { registrationNumber, email }
-      );
+      await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/auth/send-otp`, {
+        registrationNumber,
+        email,
+      });
 
-      toast.success("OTP sent to your email");
+      toast.success('OTP sent to your email');
       setStep(2);
     } catch (error) {
-      const message =
-        error.response?.data?.message || error.message || "Failed to send OTP";
+      const message = error.response?.data?.message || error.message || 'Failed to send OTP';
 
       // Show error in Error Alert component
       setErrors({ submit: message });
@@ -101,9 +100,9 @@ const Signup = () => {
 
   // Step 2: Verify OTP
   const handleVerifyOtp = async () => {
-    const otpValue = otp.join("");
+    const otpValue = otp.join('');
     if (otpValue.length !== 6) {
-      toast.error("Please enter a valid 6-digit OTP");
+      toast.error('Please enter a valid 6-digit OTP');
       return;
     }
 
@@ -112,17 +111,17 @@ const Signup = () => {
       // Simulate network delay for better UX
       await new Promise((resolve) => setTimeout(resolve, 1500));
 
-      await axios.post(
-        `${import.meta.env.VITE_API_BASE_URL}/api/auth/verify-otp`,
-        { registrationNumber, email, otp: otpValue }
-      );
+      await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/auth/verify-otp`, {
+        registrationNumber,
+        email,
+        otp: otpValue,
+      });
 
       setIsOtpVerified(true);
-      toast.success("OTP Verified Successfully!");
+      toast.success('OTP Verified Successfully!');
       setStep(3); // Move to password creation
     } catch (error) {
-      const message =
-        error.response?.data?.message || error.message || "Invalid OTP";
+      const message = error.response?.data?.message || error.message || 'Invalid OTP';
       toast.error(message);
     } finally {
       setLoading(false);
@@ -134,9 +133,9 @@ const Signup = () => {
     if (errors.password) {
       // Clear if valid, or if it was just "required" and user typed something
       if (validatePassword(password)) {
-        setErrors((prev) => ({ ...prev, password: "" }));
-      } else if (password && errors.password === "Password is required") {
-        setErrors((prev) => ({ ...prev, password: "" }));
+        setErrors((prev) => ({ ...prev, password: '' }));
+      } else if (password && errors.password === 'Password is required') {
+        setErrors((prev) => ({ ...prev, password: '' }));
       }
     }
   }, [password, errors.password]);
@@ -145,12 +144,9 @@ const Signup = () => {
     if (errors.confirmPassword) {
       // Clear if matches, or if it was just "required" and user typed something
       if (confirmPassword && password === confirmPassword) {
-        setErrors((prev) => ({ ...prev, confirmPassword: "" }));
-      } else if (
-        confirmPassword &&
-        errors.confirmPassword === "Please confirm your password"
-      ) {
-        setErrors((prev) => ({ ...prev, confirmPassword: "" }));
+        setErrors((prev) => ({ ...prev, confirmPassword: '' }));
+      } else if (confirmPassword && errors.confirmPassword === 'Please confirm your password') {
+        setErrors((prev) => ({ ...prev, confirmPassword: '' }));
       }
     }
   }, [confirmPassword, password, errors.confirmPassword]);
@@ -160,15 +156,15 @@ const Signup = () => {
     const newErrors = {};
 
     if (!password) {
-      newErrors.password = "Password is required";
+      newErrors.password = 'Password is required';
     } else if (!validatePassword(password)) {
-      newErrors.password = "Password must be at least 6 characters";
+      newErrors.password = 'Password must be at least 6 characters';
     }
 
     if (!confirmPassword) {
-      newErrors.confirmPassword = "Please confirm your password";
+      newErrors.confirmPassword = 'Please confirm your password';
     } else if (password !== confirmPassword) {
-      newErrors.confirmPassword = "Passwords do not match";
+      newErrors.confirmPassword = 'Passwords do not match';
     }
 
     if (Object.keys(newErrors).length > 0) {
@@ -180,16 +176,17 @@ const Signup = () => {
     setLoading(true);
 
     try {
-      await axios.post(
-        `${import.meta.env.VITE_API_BASE_URL}/api/auth/register`,
-        { registrationNumber, email, otp: otp.join(""), password }
-      );
+      await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/auth/register`, {
+        registrationNumber,
+        email,
+        otp: otp.join(''),
+        password,
+      });
 
-      toast.success("Account created successfully!");
-      navigate("/");
+      toast.success('Account created successfully!');
+      navigate('/');
     } catch (error) {
-      const message =
-        error.response?.data?.message || error.message || "Signup failed";
+      const message = error.response?.data?.message || error.message || 'Signup failed';
       toast.error(message);
     } finally {
       setLoading(false);
@@ -202,7 +199,7 @@ const Signup = () => {
       setIsOtpVerified(false);
     } else if (step === 2) {
       setStep(1); // Go back to Email/Reg
-      setOtp(new Array(6).fill(""));
+      setOtp(new Array(6).fill(''));
     }
     setErrors({});
   };
@@ -223,27 +220,21 @@ const Signup = () => {
             </button>
           )}
           <h1 className="text-3xl font-bold text-slate-900 dark:text-white">
-            {step === 1
-              ? "Create account"
-              : step === 2
-              ? "Verify OTP"
-              : "Set password"}
+            {step === 1 ? 'Create account' : step === 2 ? 'Verify OTP' : 'Set password'}
           </h1>
           <p className="text-slate-600 dark:text-slate-400">
             {step === 1
-              ? "Enter your details to get started"
+              ? 'Enter your details to get started'
               : step === 2
-              ? "Check your email for verification code"
-              : "Create a secure password for your account"}
+                ? 'Check your email for verification code'
+                : 'Create a secure password for your account'}
           </p>
         </div>
 
         {/* Error Alert */}
         {errors.submit && (
           <div className="mb-6 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
-            <p className="text-sm text-red-600 dark:text-red-400">
-              {errors.submit}
-            </p>
+            <p className="text-sm text-red-600 dark:text-red-400">{errors.submit}</p>
           </div>
         )}
         <form
@@ -264,9 +255,8 @@ const Signup = () => {
                 variant="underlined"
                 placeholder="name@example.com"
                 classNames={{
-                  label:
-                    "text-slate-600 dark:text-slate-400 py-2 text-md font-medium",
-                  input: "text-base px-0 dark:text-white",
+                  label: 'text-slate-600 dark:text-slate-400 py-2 text-md font-medium',
+                  input: 'text-base px-0 dark:text-white',
                 }}
                 value={email}
                 onChange={(e) => {
@@ -283,9 +273,8 @@ const Signup = () => {
                 variant="underlined"
                 placeholder="e.g. 22103151000"
                 classNames={{
-                  label:
-                    "text-slate-600 dark:text-slate-400 py-2 text-md font-medium",
-                  input: "text-base px-0 dark:text-white",
+                  label: 'text-slate-600 dark:text-slate-400 py-2 text-md font-medium',
+                  input: 'text-base px-0 dark:text-white',
                 }}
                 value={registrationNumber}
                 onChange={(e) => {
@@ -306,9 +295,7 @@ const Signup = () => {
                 <p className="text-sm text-slate-600 dark:text-slate-400">
                   Enter the 6-digit code sent to
                 </p>
-                <p className="font-medium text-slate-900 dark:text-white">
-                  {email}
-                </p>
+                <p className="font-medium text-slate-900 dark:text-white">{email}</p>
               </div>
 
               <div className="flex items-center justify-center gap-3">
@@ -354,14 +341,13 @@ const Signup = () => {
           {step === 3 && (
             <div className="space-y-6">
               <Input
-                type={showPassword ? "text" : "password"}
+                type={showPassword ? 'text' : 'password'}
                 label="Password"
                 variant="underlined"
                 placeholder="Minimum 6 characters"
                 classNames={{
-                  label:
-                    "text-slate-600 dark:text-slate-400 py-2 text-md font-medium",
-                  input: "text-base px-0 dark:text-white",
+                  label: 'text-slate-600 dark:text-slate-400 py-2 text-md font-medium',
+                  input: 'text-base px-0 dark:text-white',
                 }}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -381,26 +367,22 @@ const Signup = () => {
               />
 
               <Input
-                type={showConfirmPassword ? "text" : "password"}
+                type={showConfirmPassword ? 'text' : 'password'}
                 label="Confirm Password"
                 variant="underlined"
                 placeholder="Re-enter your password"
                 classNames={{
-                  label:
-                    "text-slate-600 dark:text-slate-400 py-2 text-md font-medium",
-                  input: "text-base px-0 dark:text-white",
+                  label: 'text-slate-600 dark:text-slate-400 py-2 text-md font-medium',
+                  input: 'text-base px-0 dark:text-white',
                 }}
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 isInvalid={
-                  !!errors.confirmPassword ||
-                  (confirmPassword && password !== confirmPassword)
+                  !!errors.confirmPassword || (confirmPassword && password !== confirmPassword)
                 }
                 errorMessage={
                   errors.confirmPassword ||
-                  (confirmPassword && password !== confirmPassword
-                    ? "Passwords do not match"
-                    : "")
+                  (confirmPassword && password !== confirmPassword ? 'Passwords do not match' : '')
                 }
                 disabled={loading}
                 endContent={
@@ -410,11 +392,7 @@ const Signup = () => {
                     className="text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
                     disabled={loading}
                   >
-                    {showConfirmPassword ? (
-                      <EyeOff size={18} />
-                    ) : (
-                      <Eye size={18} />
-                    )}
+                    {showConfirmPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                   </button>
                 }
               />
@@ -427,23 +405,16 @@ const Signup = () => {
               type="submit"
               className="w-full bg-blue-600 text-white font-semibold h-12 rounded-lg hover:bg-blue-700 transition-colors"
               isLoading={loading}
-              disabled={
-                loading ||
-                (step === 3 && confirmPassword && password !== confirmPassword)
-              }
+              disabled={loading || (step === 3 && confirmPassword && password !== confirmPassword)}
             >
-              {step === 1
-                ? "Send OTP"
-                : step === 2
-                ? "Continue"
-                : "Create Account"}
+              {step === 1 ? 'Send OTP' : step === 2 ? 'Continue' : 'Create Account'}
             </Button>
           </div>
 
           {/* Login Link */}
           <div className="text-center pt-4">
             <p className="text-sm text-slate-600 dark:text-slate-400">
-              Already have an account?{" "}
+              Already have an account?{' '}
               <Link
                 to={PATHS.AUTH.LOGIN}
                 className="text-blue-600 dark:text-blue-400 hover:underline font-medium"
@@ -456,9 +427,7 @@ const Signup = () => {
 
         {/* Footer */}
         <div className="pt-16 text-center">
-          <p className="text-xs text-slate-400 dark:text-slate-500">
-            © 2025 T&P Cell, GEC Siwan
-          </p>
+          <p className="text-xs text-slate-400 dark:text-slate-500">© 2025 T&P Cell, GEC Siwan</p>
         </div>
       </div>
     </div>

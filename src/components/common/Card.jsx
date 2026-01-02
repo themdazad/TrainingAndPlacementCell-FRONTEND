@@ -1,63 +1,62 @@
-import { Button, Divider, Image } from "@heroui/react";
-import { Eye, GithubIcon } from "lucide-react";
-import { NavLink } from "react-router-dom";
+import { Button, Divider, Image } from '@heroui/react';
+import { Eye, GithubIcon } from 'lucide-react';
+import { NavLink } from 'react-router-dom';
 
 const ProjectsData = [
   {
     _id: 1,
-    title: "Training & Placement Cell",
+    title: 'Training & Placement Cell',
     description:
-      "Full-Stact web platform for training and palcement cell, student, coordinator and recruiter. ",
-    skills: ["React.js", "Node.js"],
-    image: "/images/heroThumbnails/2.svg",
-    view: "https://training-and-placement-cell-gec-siwan.vercel.app/",
-    github: "https://github.com/themdazad/TrainingAndPlacementCell-FRONTEND",
+      'Full-Stact web platform for training and palcement cell, student, coordinator and recruiter. ',
+    skills: ['React.js', 'Node.js'],
+    image: '/images/heroThumbnails/2.svg',
+    view: 'https://training-and-placement-cell-gec-siwan.vercel.app/',
+    github: 'https://github.com/themdazad/TrainingAndPlacementCell-FRONTEND',
   },
   {
     _id: 2,
-    title: "Technical Club ",
+    title: 'Technical Club ',
     description:
-      "Fullstack Technical club website of Government Engineering College, Siwan. Quiz | Live updates | User Registration ",
-    skills: ["React.js", "Node.js"],
-    image: "/images/heroThumbnails/3.svg",
-    view: "https://training-and-placement-cell-gec-siwan.vercel.app/",
-    github: "",
+      'Fullstack Technical club website of Government Engineering College, Siwan. Quiz | Live updates | User Registration ',
+    skills: ['React.js', 'Node.js'],
+    image: '/images/heroThumbnails/3.svg',
+    view: 'https://training-and-placement-cell-gec-siwan.vercel.app/',
+    github: '',
   },
   {
     _id: 3,
-    title: "Resume Builder Tools ",
-    description:
-      "React.js mini project that help student to build resume quickly.",
-    skills: ["React.js", "tialwind CSS"],
-    image: "/images/heroThumbnails/4.webp",
-    view: "https://training-and-placement-cell-gec-siwan.vercel.app/",
-    github: "",
+    title: 'Resume Builder Tools ',
+    description: 'React.js mini project that help student to build resume quickly.',
+    skills: ['React.js', 'tialwind CSS'],
+    image: '/images/heroThumbnails/4.webp',
+    view: 'https://training-and-placement-cell-gec-siwan.vercel.app/',
+    github: '',
   },
   {
     _id: 4,
-    title: "Portfolio",
-    description: "My own portfolio to showcase skills and project.",
-    skills: ["Next.js", "Tailwind CSD"],
-    image: "/images/azad_sign.svg",
-    view: "",
-    github: "",
+    title: 'Portfolio',
+    description: 'My own portfolio to showcase skills and project.',
+    skills: ['Next.js', 'Tailwind CSD'],
+    image: '/images/azad_sign.svg',
+    view: '',
+    github: '',
   },
   {
     _id: 5,
-    title: "College Logo",
-    description: "Redesigned college official logo and won 1st prize.",
-    skills: ["Logo Design"],
-    image: "/images/gecsiwan-logo.png",
-    view: "",
-    github: "",
+    title: 'College Logo',
+    description: 'Redesigned college official logo and won 1st prize.',
+    skills: ['Logo Design'],
+    image: '/images/gecsiwan-logo.png',
+    view: '',
+    github: '',
   },
 ];
 
 export const Card = () => {
   return (
     <div className="max-w-screen-2xl m-auto">
-        <h1 className="text-4xl font-extrabold mb-6">Workshops & Training</h1>
-		<Divider/>
+      <h1 className="text-4xl font-extrabold mb-6">Workshops & Training</h1>
+      <Divider />
       <section className=" grid grid-cols-4 gap-6">
         {ProjectsData.map((item) => {
           return (
@@ -67,7 +66,7 @@ export const Card = () => {
             >
               <Image
                 src={item.image}
-                alt={"azad-projects"}
+                alt={'azad-projects'}
                 width={600}
                 height={400}
                 className="object-contain bg-center "

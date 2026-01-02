@@ -1,56 +1,53 @@
-import { useState } from "react";
-import { CarFront, TrainFront, PlaneTakeoff, BedDouble } from "lucide-react";
-
+import { useState } from 'react';
+import { CarFront, TrainFront, PlaneTakeoff, BedDouble } from 'lucide-react';
 
 const transportModes = [
   {
-    mode: "By Road",
+    mode: 'By Road',
     icon: <CarFront />,
     description:
-      "Government Engineering College, Siwan, is well-connected by road to major cities in Bihar. The college is located approximately 4 km from Siwan city center, easily accessible via local and state highways.",
+      'Government Engineering College, Siwan, is well-connected by road to major cities in Bihar. The college is located approximately 4 km from Siwan city center, easily accessible via local and state highways.',
     cities: [
-      { name: "Patna", distance: "137 km", travelTime: "3 hrs 52 mins" },
-      { name: "Muzaffarpur", distance: "127 km", travelTime: "3 hrs 9 mins" },
-      { name: "Gopalganj", distance: "34 km", travelTime: "1 hr 5 mins" },
-      { name: "Chhapra", distance: "67 km", travelTime: "1 hr 51 mins" },
+      { name: 'Patna', distance: '137 km', travelTime: '3 hrs 52 mins' },
+      { name: 'Muzaffarpur', distance: '127 km', travelTime: '3 hrs 9 mins' },
+      { name: 'Gopalganj', distance: '34 km', travelTime: '1 hr 5 mins' },
+      { name: 'Chhapra', distance: '67 km', travelTime: '1 hr 51 mins' },
     ],
   },
 
   {
-    mode: "By Train",
+    mode: 'By Train',
     icon: <TrainFront />,
     description:
-      "Siwan Junction is the nearest railway station, located approximately 3 km from the college. It is a major station with connections to cities like Delhi, Kolkata, Patna, and Varanasi.",
+      'Siwan Junction is the nearest railway station, located approximately 3 km from the college. It is a major station with connections to cities like Delhi, Kolkata, Patna, and Varanasi.',
     cities: [
-      { name: "Patna", travelTime: "3 hrs" },
-      { name: "Varanasi", travelTime: "5 hrs" },
-      { name: "Delhi", travelTime: "12 hrs" },
+      { name: 'Patna', travelTime: '3 hrs' },
+      { name: 'Varanasi', travelTime: '5 hrs' },
+      { name: 'Delhi', travelTime: '12 hrs' },
     ],
   },
 
   {
-    mode: "By Air",
+    mode: 'By Air',
     icon: <PlaneTakeoff />,
     description:
-      "The nearest airport to Siwan is Jay Prakash Narayan International Airport, Patna, approximately 130 km away. It is connected to major Indian cities by regular domestic flights.",
+      'The nearest airport to Siwan is Jay Prakash Narayan International Airport, Patna, approximately 130 km away. It is connected to major Indian cities by regular domestic flights.',
     cities: [
       {
-        name: "Patna Airport",
-        distance: "130 km",
-        travelTime: "3.5 hrs by road",
+        name: 'Patna Airport',
+        distance: '130 km',
+        travelTime: '3.5 hrs by road',
       },
       {
-        name: "Gorakhpur Airport",
-        distance: "160 km",
-        travelTime: "4 hrs by road",
+        name: 'Gorakhpur Airport',
+        distance: '160 km',
+        travelTime: '4 hrs by road',
       },
     ],
   },
 ];
 
-
 export default function ReachUs() {
- 
   const [data, setData] = useState(transportModes);
 
   return (
@@ -82,15 +79,12 @@ export default function ReachUs() {
               <p className="mt-2">{description}</p>
               {cities?.length > 0 && (
                 <>
-                  <p className="font-bold mt-4">
-                    Distance/Travel Time from key locations:
-                  </p>
+                  <p className="font-bold mt-4">Distance/Travel Time from key locations:</p>
                   <ul className="list-disc list-inside mt-2">
                     {cities.map(({ name, distance, travelTime }) => (
                       <li key={name}>
-                        <strong>{name}:</strong>{" "}
-                        {distance && `Approximately ${distance}, `}travel time ~{" "}
-                        {travelTime}
+                        <strong>{name}:</strong> {distance && `Approximately ${distance}, `}travel
+                        time ~ {travelTime}
                       </li>
                     ))}
                   </ul>
@@ -106,34 +100,29 @@ export default function ReachUs() {
             <BedDouble /> Accommodation
           </h2>
           <p>
-            Government Engineering College, Siwan provides on-campus
-            accommodation facilities for visiting faculty, recruiters, and
-            guests through its dedicated guest house. This facility ensures a
-            comfortable stay within the college premises, facilitating easy
+            Government Engineering College, Siwan provides on-campus accommodation facilities for
+            visiting faculty, recruiters, and guests through its dedicated guest house. This
+            facility ensures a comfortable stay within the college premises, facilitating easy
             access to campus activities.
           </p>
 
           <ul className="list-disc list-inside mt-4 space-y-2">
             <li>
-              <strong>Location:</strong> Within the campus at Mairwa Road, Old
-              Suta Mill Factory, Bhada Khurd, Siwan, Bihar – 841226.
+              <strong>Location:</strong> Within the campus at Mairwa Road, Old Suta Mill Factory,
+              Bhada Khurd, Siwan, Bihar – 841226.
             </li>
             <li>
-              <strong>Facilities:</strong> The guest house offers well-furnished
-              rooms equipped with essential amenities to ensure a pleasant stay
-              for guests.
+              <strong>Facilities:</strong> The guest house offers well-furnished rooms equipped with
+              essential amenities to ensure a pleasant stay for guests.
             </li>
             <li>
-              <strong>Eligibility:</strong> Primarily available for visiting
-              faculty, recruiters, and family members of students.
+              <strong>Eligibility:</strong> Primarily available for visiting faculty, recruiters,
+              and family members of students.
             </li>
             <li>
-              <strong>Booking:</strong> For reservations and inquiries, please
-              contact the college administration at{" "}
-              <a
-                href="mailto:gecsiwan@gmail.com"
-                className="text-blue-500 underline"
-              >
+              <strong>Booking:</strong> For reservations and inquiries, please contact the college
+              administration at{' '}
+              <a href="mailto:gecsiwan@gmail.com" className="text-blue-500 underline">
                 gecsiwan@gmail.com
               </a>
               .

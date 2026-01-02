@@ -1,6 +1,6 @@
-import GECSIWAN_LOGO from "../assets/images/logos/gecsiwanlogo.svg";
-import GECSIWAN_LOGO_LIGHT from "../assets/images/logos/gecsiwan-logo-light.png";
-import RandomLoadingMessage from "./RandomLoadingMessage.jsx";
+import GECSIWAN_LOGO from '../assets/images/logos/gecsiwanlogo.svg';
+import GECSIWAN_LOGO_LIGHT from '../assets/images/logos/gecsiwan-logo-light.png';
+import RandomLoadingMessage from './RandomLoadingMessage.jsx';
 
 export default function Loader() {
   return (

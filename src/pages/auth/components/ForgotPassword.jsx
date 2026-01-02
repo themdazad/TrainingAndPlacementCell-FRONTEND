@@ -1,12 +1,12 @@
-import { Button, Input } from "@heroui/react";
-import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
-import { toast } from "react-toastify";
-import { ArrowLeft } from "lucide-react";
-import PATHS from "../../../constants/paths";
+import { Button, Input } from '@heroui/react';
+import { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { ArrowLeft } from 'lucide-react';
+import PATHS from '../../../constants/paths';
 
 const ForgotPassword = () => {
-  const [identifier, setIdentifier] = useState("");
+  const [identifier, setIdentifier] = useState('');
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
@@ -23,10 +23,9 @@ const ForgotPassword = () => {
     const newErrors = {};
 
     if (!identifier) {
-      newErrors.identifier = "Email or Registration Number is required";
+      newErrors.identifier = 'Email or Registration Number is required';
     } else if (!validateEmail(identifier)) {
-      newErrors.identifier =
-        "Please enter a valid email or registration number";
+      newErrors.identifier = 'Please enter a valid email or registration number';
     }
 
     if (Object.keys(newErrors).length > 0) {
@@ -47,10 +46,10 @@ const ForgotPassword = () => {
       // if (!response.ok) throw new Error('Failed to send reset link');
 
       await new Promise((resolve) => setTimeout(resolve, 1000));
-      toast.success("Reset link sent to your email");
+      toast.success('Reset link sent to your email');
       setSubmitted(true);
     } catch (error) {
-      toast.error(error.message || "Failed to send reset link");
+      toast.error(error.message || 'Failed to send reset link');
     } finally {
       setLoading(false);
     }
@@ -90,12 +89,10 @@ const ForgotPassword = () => {
               <p className="text-slate-600 dark:text-slate-400">
                 We've sent a password reset link to
               </p>
-              <p className="font-semibold text-slate-900 dark:text-white">
-                {identifier}
-              </p>
+              <p className="font-semibold text-slate-900 dark:text-white">{identifier}</p>
               <p className="text-sm text-slate-500 dark:text-slate-400">
-                Click the link in the email to reset your password. If you don't
-                see it, check your spam folder.
+                Click the link in the email to reset your password. If you don't see it, check your
+                spam folder.
               </p>
             </div>
           </div>
@@ -112,7 +109,7 @@ const ForgotPassword = () => {
               <button
                 type="button"
                 onClick={() => {
-                  setIdentifier("");
+                  setIdentifier('');
                   setSubmitted(false);
                   setErrors({});
                 }}
@@ -125,9 +122,7 @@ const ForgotPassword = () => {
 
           {/* Footer */}
           <div className="pt-16 text-center">
-            <p className="text-xs text-slate-400 dark:text-slate-500">
-              © 2025 T&P Cell, GEC Siwan
-            </p>
+            <p className="text-xs text-slate-400 dark:text-slate-500">© 2025 T&P Cell, GEC Siwan</p>
           </div>
         </div>
       </div>
@@ -180,9 +175,7 @@ const ForgotPassword = () => {
 
           {/* Header */}
           <div className="space-y-2">
-            <h1 className="text-3xl font-bold text-slate-900 dark:text-white">
-              Reset password
-            </h1>
+            <h1 className="text-3xl font-bold text-slate-900 dark:text-white">Reset password</h1>
             <p className="text-slate-600 dark:text-slate-400">
               Enter your email address and we'll send you a reset link
             </p>
@@ -201,9 +194,8 @@ const ForgotPassword = () => {
               label="Email or Registration Number"
               variant="underlined"
               classNames={{
-                label:
-                  "text-slate-600 dark:text-slate-400 py-2 text-md font-medium",
-                input: "text-base px-0  dark:text-white",
+                label: 'text-slate-600 dark:text-slate-400 py-2 text-md font-medium',
+                input: 'text-base px-0  dark:text-white',
               }}
               value={identifier}
               onChange={(e) => setIdentifier(e.target.value)}
@@ -223,7 +215,7 @@ const ForgotPassword = () => {
               </Button>
               <div className="text-center">
                 <p className="text-sm text-slate-600 dark:text-slate-400">
-                  Remember your password?{" "}
+                  Remember your password?{' '}
                   <a
                     href={PATHS.AUTH.LOGIN}
                     className="text-blue-600 dark:text-blue-400 hover:underline font-medium"
@@ -237,9 +229,7 @@ const ForgotPassword = () => {
 
           {/* Footer */}
           <div className="pt-16 text-center">
-            <p className="text-xs text-slate-400 dark:text-slate-500">
-              © 2025 T&P Cell, GEC Siwan
-            </p>
+            <p className="text-xs text-slate-400 dark:text-slate-500">© 2025 T&P Cell, GEC Siwan</p>
           </div>
         </div>
       </div>
