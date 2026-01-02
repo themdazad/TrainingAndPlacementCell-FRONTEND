@@ -1,8 +1,8 @@
 // src/components/NProgressLoader.jsx
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
-import NProgress from "nprogress";
-import "nprogress/nprogress.css";
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import NProgress from 'nprogress';
+import 'nprogress/nprogress.css';
 
 NProgress.configure({ showSpinner: false, trickleSpeed: 100 });
 

@@ -1,7 +1,7 @@
-import { BellDot } from "lucide-react";
-import { useState } from "react";
-import { motion } from "framer-motion";
-import useNoticeAnnouncements from "../../../api/web/notice-announcements-api.js";
+import { BellDot } from 'lucide-react';
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import useNoticeAnnouncements from '../../../api/web/notice-announcements-api.js';
 
 export default function Announcements() {
   return (
@@ -12,23 +12,19 @@ export default function Announcements() {
 }
 export function Notice() {
   const { data, loading, error } = useNoticeAnnouncements();
-  const [searchTerm, setSearchTerm] = useState(""); // 🔍 search
+  const [searchTerm, setSearchTerm] = useState(''); // 🔍 search
   // Filter notices by searchTerm
   const filteredNotices = data
     .slice() // Clone to prevent mutating original
     .reverse()
-    .filter((item) =>
-      (item.content + item.date)
-        .toLowerCase()
-        .includes(searchTerm.toLowerCase())
-    );
+    .filter((item) => (item.content + item.date).toLowerCase().includes(searchTerm.toLowerCase()));
 
   return (
     <section className="py-6">
       <motion.div
         initial={{ y: 10 }}
         whileInView={{ y: 0 }}
-        transition={{ duration: 0.5, delay: 1, ease: "easeOut" }}
+        transition={{ duration: 0.5, delay: 1, ease: 'easeOut' }}
         viewport={{ once: false, amount: 0.2 }}
         className="latest-updates-section max-w-screen-2xl overflow-hidden m-auto px-[2%]"
       >
@@ -43,7 +39,7 @@ export function Notice() {
             className="row-container box-border my-[1em] max-h-96 overflow-y-scroll  overflow-x-hidden"
             style={{
               maskImage:
-                "linear-gradient(to bottom, transparent 0%, black 0%, black 50%, transparent 100%)",
+                'linear-gradient(to bottom, transparent 0%, black 0%, black 50%, transparent 100%)',
             }}
           >
             {filteredNotices ? (

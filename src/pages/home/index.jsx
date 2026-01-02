@@ -1,8 +1,8 @@
-import Hero from "./components/Hero";
-import PastRecruiters from "./components/PastRecruiters";
-import Announcements from "./components/Announcements";
-import Testimonials from "./components/Testimonials";
-import HaveDoubts from "./components/HaveDoubts";
+import Hero from './components/Hero';
+import PastRecruiters from './components/PastRecruiters';
+import Announcements from './components/Announcements';
+import Testimonials from './components/Testimonials';
+import HaveDoubts from './components/HaveDoubts';
 
 export default function Home() {
   return (

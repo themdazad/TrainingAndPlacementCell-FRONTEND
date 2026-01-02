@@ -1,37 +1,37 @@
-import { useState, useRef } from "react";
-import { Button, Divider, Input } from "@heroui/react";
-import { Github, Linkedin, X } from "lucide-react";
-import GECSIWAN_LOGO from "../../assets/images/logos/gecsiwanlogo.svg";
-import jsPDF from "jspdf";
-import html2canvas from "html2canvas";
+import { useState, useRef } from 'react';
+import { Button, Divider, Input } from '@heroui/react';
+import { Github, Linkedin, X } from 'lucide-react';
+import GECSIWAN_LOGO from '../../assets/images/logos/gecsiwanlogo.svg';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 const initialData = {
   personalInfo: {
-    name: "",
-    title: "",
-    email: "",
-    phone: "",
-    location: "",
+    name: '',
+    title: '',
+    email: '',
+    phone: '',
+    location: '',
   },
   onlineProfiles: {
-    github: "",
-    linkedin: "",
+    github: '',
+    linkedin: '',
   },
-  skills: [""],
+  skills: [''],
   education: [
     {
-      year: "",
-      course: "",
-      institution: "",
-      marks_cgpa: "",
+      year: '',
+      course: '',
+      institution: '',
+      marks_cgpa: '',
     },
   ],
   experience: [
     {
-      role: "",
-      company: "",
-      duration: "",
-      details: [""],
+      role: '',
+      company: '',
+      duration: '',
+      details: [''],
     },
   ],
   achievements: [],
@@ -41,9 +41,7 @@ const initialData = {
 export default function ResumeBuilder() {
   const [personalInfo, setPersonalInfo] = useState(initialData.personalInfo);
   const [careerObjective, setCareerObjective] = useState();
-  const [onlineProfiles, setOnlineProfiles] = useState(
-    initialData.onlineProfiles
-  );
+  const [onlineProfiles, setOnlineProfiles] = useState(initialData.onlineProfiles);
   const [skills, setSkills] = useState(initialData.skills);
   const [education, setEducation] = useState(initialData.education);
   const [experience, setExperience] = useState(initialData.experience);
@@ -63,7 +61,7 @@ export default function ResumeBuilder() {
   };
 
   // Skill handlers
-  const addSkill = () => setSkills([...skills, ""]);
+  const addSkill = () => setSkills([...skills, '']);
   const updateSkill = (index, value) => {
     const newSkills = [...skills];
     newSkills[index] = value;
@@ -76,10 +74,7 @@ export default function ResumeBuilder() {
 
   // Education handlers
   const addEducation = () =>
-    setEducation([
-      ...education,
-      { year: "", course: "", institution: "", marks_cgpa: "" },
-    ]);
+    setEducation([...education, { year: '', course: '', institution: '', marks_cgpa: '' }]);
   const updateEducation = (index, field, value) => {
     const newEducation = [...education];
     newEducation[index][field] = value;
@@ -91,10 +86,7 @@ export default function ResumeBuilder() {
 
   // Experience handlers
   const addExperience = () =>
-    setExperience([
-      ...experience,
-      { role: "", company: "", duration: "", details: [""] },
-    ]);
+    setExperience([...experience, { role: '', company: '', duration: '', details: [''] }]);
   const updateExperienceField = (index, field, value) => {
     const newExperience = [...experience];
     newExperience[index][field] = value;
@@ -102,7 +94,7 @@ export default function ResumeBuilder() {
   };
   const addExperienceDetail = (index) => {
     const newExperience = [...experience];
-    newExperience[index].details.push("");
+    newExperience[index].details.push('');
     setExperience(newExperience);
   };
   const updateExperienceDetail = (expIndex, detailIndex, value) => {
@@ -120,7 +112,7 @@ export default function ResumeBuilder() {
   };
 
   // Achievements handlers
-  const addAchievement = () => setAchievements([...achievements, ""]);
+  const addAchievement = () => setAchievements([...achievements, '']);
   const updateAchievement = (index, value) => {
     const newAchievements = [...achievements];
     newAchievements[index] = value;
@@ -131,8 +123,7 @@ export default function ResumeBuilder() {
   };
 
   // Interests and Hobbies handlers
-  const addInterestsHobbies = () =>
-    setInterestsHobbies([...interestsandhobbies, ""]);
+  const addInterestsHobbies = () => setInterestsHobbies([...interestsandhobbies, '']);
   const updateInterestsHobbies = (index, value) => {
     const newInterestsHobbies = [...interestsandhobbies];
     newInterestsHobbies[index] = value;
@@ -150,14 +141,14 @@ export default function ResumeBuilder() {
     const canvas = await html2canvas(input, {
       scale: 3,
       useCORS: true,
-      svgRendering: "foreignObject", // helps preserve icon rendering
+      svgRendering: 'foreignObject', // helps preserve icon rendering
     });
-    const imgData = canvas.toDataURL("image/png");
-    const pdf = new jsPDF("p", "mm", "a4");
+    const imgData = canvas.toDataURL('image/png');
+    const pdf = new jsPDF('p', 'mm', 'a4');
     const pdfWidth = pdf.internal.pageSize.getWidth();
     const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
-    pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
-    pdf.save(`${personalInfo.name.replace(/\s+/g, "_")}_Resume.pdf`);
+    pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+    pdf.save(`${personalInfo.name.replace(/\s+/g, '_')}_Resume.pdf`);
   };
 
   return (
@@ -166,15 +157,10 @@ export default function ResumeBuilder() {
         <div className="w-full lg:w-1/2 p-6 rounded shadow overflow-auto max-h-[90vh] space-y-6 bg-white dark:bg-slate-900">
           {/* Personal Info */}
           <section className="p-5 border border-slate-300 dark:border-slate-700 rounded-3xl bg-slate-50 dark:bg-slate-800 space-y-4">
-            <h3 className="text-lg font-semibold text-blue-500">
-              Personal Information
-            </h3>
+            <h3 className="text-lg font-semibold text-blue-500">Personal Information</h3>
             <div className="grid grid-cols-2 gap-4">
-              {["name", "title", "email", "phone", "location"].map((field) => (
-                <div
-                  key={field}
-                  className={`${field === "location" ? "col-span-2" : ""}`}
-                >
+              {['name', 'title', 'email', 'phone', 'location'].map((field) => (
+                <div key={field} className={`${field === 'location' ? 'col-span-2' : ''}`}>
                   <Input
                     type="text"
                     label={field}
@@ -189,11 +175,9 @@ export default function ResumeBuilder() {
           </section>
 
           {/* Career Objective */}
-         
+
           <section className="p-5 border border-slate-300 dark:border-slate-700 rounded-2xl bg-slate-50 dark:bg-slate-800 space-y-4">
-            <h3 className="text-lg font-semibold text-blue-500">
-              Career Objective
-            </h3>
+            <h3 className="text-lg font-semibold text-blue-500">Career Objective</h3>
             <Input
               type="textarea"
               rows={4}
@@ -203,20 +187,17 @@ export default function ResumeBuilder() {
               className="w-full "
             />
           </section>
-          
 
           {/* Online Profiles */}
           <section className="p-5 border border-slate-300 dark:border-slate-700 rounded-2xl bg-slate-50 dark:bg-slate-800 space-y-4">
-            <h3 className="text-lg font-semibold text-blue-500">
-              Online Profiles
-            </h3>
+            <h3 className="text-lg font-semibold text-blue-500">Online Profiles</h3>
             <div className="space-y-2">
               <Input
                 type="text"
                 name="github"
                 placeholder="github.com/yourusername"
                 startContent={<Github className="py-1" />}
-                value={onlineProfiles["github"]}
+                value={onlineProfiles['github']}
                 onChange={handleOnlineProfilesChange}
                 className="w-full"
               />
@@ -225,7 +206,7 @@ export default function ResumeBuilder() {
                 name="linkedin"
                 placeholder="linkedin.com/in/yourusername"
                 startContent={<Linkedin className="py-1" />}
-                value={onlineProfiles["linkedin"]}
+                value={onlineProfiles['linkedin']}
                 onChange={handleOnlineProfilesChange}
                 className="w-full"
               />
@@ -257,11 +238,7 @@ export default function ResumeBuilder() {
                 </div>
               ))}
             </div>
-            <button
-              onClick={addSkill}
-              className="text-sm text-blue-600 "
-              type="button"
-            >
+            <button onClick={addSkill} className="text-sm text-blue-600 " type="button">
               + Add Skill
             </button>
           </section>
@@ -282,34 +259,26 @@ export default function ResumeBuilder() {
                       type="text"
                       placeholder="Year"
                       value={edu.year}
-                      onChange={(e) =>
-                        updateEducation(i, "year", e.target.value)
-                      }
+                      onChange={(e) => updateEducation(i, 'year', e.target.value)}
                     />
                     <Input
                       type="text"
                       placeholder="Course"
                       value={edu.course}
-                      onChange={(e) =>
-                        updateEducation(i, "course", e.target.value)
-                      }
+                      onChange={(e) => updateEducation(i, 'course', e.target.value)}
                     />
                   </div>
                   <Input
                     type="text"
                     placeholder="Institution"
                     value={edu.institution}
-                    onChange={(e) =>
-                      updateEducation(i, "institution", e.target.value)
-                    }
+                    onChange={(e) => updateEducation(i, 'institution', e.target.value)}
                   />
                   <Input
                     type="text"
                     placeholder="Marks/CGPA"
                     value={edu.marks_cgpa}
-                    onChange={(e) =>
-                      updateEducation(i, "marks_cgpa", e.target.value)
-                    }
+                    onChange={(e) => updateEducation(i, 'marks_cgpa', e.target.value)}
                   />
                   <button
                     onClick={() => removeEducation(i)}
@@ -321,11 +290,7 @@ export default function ResumeBuilder() {
                 </div>
               ))}
             </div>
-            <button
-              onClick={addEducation}
-              className="text-sm text-blue-500"
-              type="button"
-            >
+            <button onClick={addEducation} className="text-sm text-blue-500" type="button">
               + Add Education
             </button>
           </section>
@@ -333,9 +298,7 @@ export default function ResumeBuilder() {
           {/* Experience */}
           <section className="p-5 border border-slate-300 dark:border-slate-700 rounded-2xl bg-slate-50 dark:bg-slate-800 space-y-4">
             <div className="flex justify-between items-center">
-              <h3 className="text-lg font-semibold text-blue-500">
-                Projects/Experience
-              </h3>
+              <h3 className="text-lg font-semibold text-blue-500">Projects/Experience</h3>
             </div>
             <div className="space-y-4">
               {experience.map((exp, i) => (
@@ -348,25 +311,19 @@ export default function ResumeBuilder() {
                       type="text"
                       placeholder="Role"
                       value={exp.role}
-                      onChange={(e) =>
-                        updateExperienceField(i, "role", e.target.value)
-                      }
+                      onChange={(e) => updateExperienceField(i, 'role', e.target.value)}
                     />
                     <Input
                       type="text"
                       placeholder="Company"
                       value={exp.company}
-                      onChange={(e) =>
-                        updateExperienceField(i, "company", e.target.value)
-                      }
+                      onChange={(e) => updateExperienceField(i, 'company', e.target.value)}
                     />
                     <Input
                       type="text"
                       placeholder="Duration"
                       value={exp.duration}
-                      onChange={(e) =>
-                        updateExperienceField(i, "duration", e.target.value)
-                      }
+                      onChange={(e) => updateExperienceField(i, 'duration', e.target.value)}
                     />
                   </div>
 
@@ -380,9 +337,7 @@ export default function ResumeBuilder() {
                           <Input
                             type="text"
                             value={detail}
-                            onChange={(e) =>
-                              updateExperienceDetail(i, dIdx, e.target.value)
-                            }
+                            onChange={(e) => updateExperienceDetail(i, dIdx, e.target.value)}
                             className="w-full"
                           />
                           <button
@@ -414,11 +369,7 @@ export default function ResumeBuilder() {
                 </div>
               ))}
             </div>
-            <button
-              onClick={addExperience}
-              className="text-sm text-blue-600 "
-              type="button"
-            >
+            <button onClick={addExperience} className="text-sm text-blue-600 " type="button">
               + Add Experience
             </button>
           </section>
@@ -426,9 +377,7 @@ export default function ResumeBuilder() {
           {/* Achievements */}
           <section className="p-5 border border-slate-300 dark:border-slate-700 rounded-2xl bg-slate-50 dark:bg-slate-800 space-y-4">
             <div className="flex justify-between items-center">
-              <h3 className="text-lg font-semibold text-blue-500">
-                Achievements
-              </h3>
+              <h3 className="text-lg font-semibold text-blue-500">Achievements</h3>
             </div>
             <div className="space-y-2">
               {achievements.map((ach, i) => (
@@ -449,22 +398,15 @@ export default function ResumeBuilder() {
                 </div>
               ))}
             </div>
-            <button
-              onClick={addAchievement}
-              className="text-sm text-blue-600 "
-              type="button"
-            >
+            <button onClick={addAchievement} className="text-sm text-blue-600 " type="button">
               + Add Achievement
             </button>
           </section>
 
-
           {/* Interests and Hobbies */}
           <section className="p-5 border border-slate-300 dark:border-slate-700 rounded-2xl bg-slate-50 dark:bg-slate-800 space-y-4">
             <div className="flex justify-between items-center">
-              <h3 className="text-lg font-semibold text-blue-500">
-                Interests and Hobbies
-              </h3>
+              <h3 className="text-lg font-semibold text-blue-500">Interests and Hobbies</h3>
             </div>
             <div className="space-y-2">
               {interestsandhobbies.map((ach, i) => (
@@ -485,11 +427,7 @@ export default function ResumeBuilder() {
                 </div>
               ))}
             </div>
-            <button
-              onClick={addInterestsHobbies}
-              className="text-sm text-blue-600 "
-              type="button"
-            >
+            <button onClick={addInterestsHobbies} className="text-sm text-blue-600 " type="button">
               + Add Interest and Hobbies
             </button>
           </section>
@@ -531,12 +469,8 @@ export default function ResumeBuilder() {
               </div>
 
               <div className="text-sm">
-                <p className="flex items-center gap-1 leading-tight">
-                  Phone: {personalInfo.phone}
-                </p>
-                <p className="flex items-center gap-1 leading-tight">
-                  Email: {personalInfo.email}
-                </p>
+                <p className="flex items-center gap-1 leading-tight">Phone: {personalInfo.phone}</p>
+                <p className="flex items-center gap-1 leading-tight">Email: {personalInfo.email}</p>
                 <p className="flex items-center gap-1 leading-tight">
                   Adress: {personalInfo.location}
                 </p>
@@ -545,13 +479,13 @@ export default function ResumeBuilder() {
           </div>
 
           {/* II. Career Objective */}
-          {!!careerObjective &&
-          <div className="py-2">
-            <h2 className="font-semibold py-2">Career Objective</h2>
-            <p>{careerObjective}</p>
-          </div>
-        }
-          <Divider/>
+          {!!careerObjective && (
+            <div className="py-2">
+              <h2 className="font-semibold py-2">Career Objective</h2>
+              <p>{careerObjective}</p>
+            </div>
+          )}
+          <Divider />
 
           {/* III. Education Table*/}
           {education.length > 0 && (
@@ -601,7 +535,7 @@ export default function ResumeBuilder() {
           {experience.length > 0 && (
             <div className="py-2">
               <h2 className="mb-3 text-lg font-semibold ">Projects/Experience</h2>
-              <Divider/>
+              <Divider />
               {experience.map((exp, i) => (
                 <div key={i} className="mb-3">
                   <b>{exp.role}</b> — <i>{exp.company}</i> ({exp.duration})
@@ -618,10 +552,8 @@ export default function ResumeBuilder() {
           {/* Achievements */}
           {achievements.length > 0 && (
             <div className="mb-6">
-              <h2 className="mb-3 text-lg font-semibold ">
-                Achievements and Responsibility
-              </h2>
-              <Divider/>
+              <h2 className="mb-3 text-lg font-semibold ">Achievements and Responsibility</h2>
+              <Divider />
               <ul className="list-disc pl-6">
                 {achievements.map((ach, i) => (
                   <li key={i}>{ach}</li>
@@ -634,7 +566,7 @@ export default function ResumeBuilder() {
           {interestsandhobbies.length > 0 && (
             <div className="mb-6">
               <h2 className="mb-3 text-lg font-semibold">Interests and Hobbies</h2>
-              <Divider/>
+              <Divider />
               <ul className="list-disc pl-6">
                 {interestsandhobbies.map((ach, i) => (
                   <li key={i}>{ach}</li>

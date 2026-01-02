@@ -1,14 +1,14 @@
-import { motion } from "framer-motion";
-import { ArrowRightCircle } from "lucide-react";
-import { NavLink } from "react-router-dom";
-import PATHS from "../../../constants/paths";
+import { motion } from 'framer-motion';
+import { ArrowRightCircle } from 'lucide-react';
+import { NavLink } from 'react-router-dom';
+import PATHS from '../../../constants/paths';
 
 export default function HaveDoubts() {
   return (
     <motion.section
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      transition={{ duration: 0.6, ease: 'easeOut' }}
       viewport={{ once: false, amount: 0.2 }}
       className="max-w-screen-2xl m-auto px-[2%] space-y-3 text-center  pb-10"
     >
@@ -32,9 +32,7 @@ export default function HaveDoubts() {
       </div>
 
       {/* Contact Section */}
-      <h2 className="text-xl font-semibold text-slate-900 dark:text-white">
-        Still have doubts?
-      </h2>
+      <h2 className="text-xl font-semibold text-slate-900 dark:text-white">Still have doubts?</h2>
       <p className="text-slate-700 dark:text-slate-300 my-2">
         Can&apos;t find the answer you&apos;re looking for? Contact us!
       </p>

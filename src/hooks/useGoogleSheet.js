@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from "react";
-import axios from "axios";
-import Papa from "papaparse";
+import { useEffect, useRef, useState } from 'react';
+import axios from 'axios';
+import Papa from 'papaparse';
 
 export default function useGoogleSheet(url) {
   const [data, setData] = useState([]);
@@ -24,7 +24,7 @@ export default function useGoogleSheet(url) {
         const res = await axios.get(url, {
           signal: abortController.signal,
           headers: {
-            "Cache-Control": "no-cache",
+            'Cache-Control': 'no-cache',
           },
           withCredentials: false,
         });
@@ -36,13 +36,13 @@ export default function useGoogleSheet(url) {
         });
 
         if (parsed.errors.length > 0) {
-          throw new Error(parsed.errors.map((e) => e.message).join(", "));
+          throw new Error(parsed.errors.map((e) => e.message).join(', '));
         }
 
         setData(parsed.data || []);
       } catch (err) {
         if (axios.isCancel(err)) return; // silent cancel
-        setError(err.message || "Failed to fetch data.");
+        setError(err.message || 'Failed to fetch data.');
       } finally {
         setLoading(false);
       }
