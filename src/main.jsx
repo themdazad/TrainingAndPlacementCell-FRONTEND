@@ -1,10 +1,10 @@
 import './index.css';
 import axios from 'axios';
+import { Toaster } from 'sonner';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { store } from './store/store.js';
 import AutoThemeListener from './components/layout/AutoThemeListener';
-import { ToastContainer } from 'react-toastify';
 import { HeroUIProvider } from '@heroui/react';
 import { BrowserRouter } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop.js';
@@ -18,18 +18,6 @@ import AppRoutes from './routes/index.jsx';
 export function App() {
   return (
     <HeroUIProvider>
-      <ToastContainer
-        position="top-center"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
       <NProgressLoader />
       <AppRoutes />
     </HeroUIProvider>
@@ -42,6 +30,7 @@ function Root() {
     <BrowserRouter>
       <Provider store={store}>
         <AuthValidator>
+          <Toaster position="top-center" richColors />
           <App />
         </AuthValidator>
         <AutoThemeListener />
