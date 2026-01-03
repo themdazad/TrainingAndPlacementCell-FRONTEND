@@ -1,6 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { toast } from 'react-toastify';
+import { toast } from 'sonner';
+
+// --- Auth Slice ---
 
 const authSlice = createSlice({
   name: 'auth',

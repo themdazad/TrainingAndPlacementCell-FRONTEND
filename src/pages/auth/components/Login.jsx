@@ -2,7 +2,7 @@ import { Button, Input } from '@heroui/react';
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Eye, EyeOff } from 'lucide-react';
-import { toast } from 'react-toastify';
+import { toast } from 'sonner';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { setAuthState } from '../../../store/authSlice';
@@ -60,7 +60,8 @@ const Login = () => {
               variant="underlined"
               classNames={{
                 label: 'text-slate-600 dark:text-slate-400 py-2 text-md font-medium',
-                input: 'text-base px-0  dark:text-white',
+                input: 'text-base px-0 text-slate-900 dark:!text-white',
+                inputWrapper: 'border-slate-300 dark:border-slate-700',
               }}
               value={identifier}
               onChange={(e) => setIdentifier(e.target.value)}
@@ -74,8 +75,9 @@ const Login = () => {
                 label="Password"
                 variant="underlined"
                 classNames={{
-                  label: 'text-slate-600 dark:text-slate-400py-2 text-md font-medium',
-                  input: 'text-base px-0 dark:text-white',
+                  label: 'text-slate-600 dark:text-slate-400 py-2 text-md font-medium',
+                  input: 'text-base px-0 text-slate-900 dark:!text-white',
+                  inputWrapper: 'border-slate-300 dark:border-slate-700',
                 }}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
