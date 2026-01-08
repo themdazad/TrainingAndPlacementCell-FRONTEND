@@ -5,7 +5,7 @@ import PATHS from '../constants/paths.js';
 // Layouts
 import MainLayout from '../layouts/MainLayout.jsx';
 import AuthLayout from '../layouts/AuthLayout.jsx';
-
+import DashboardLayout from '../layouts/DashboardLayout.jsx';
 // Lazy load wrapper that triggers NProgress
 const lazyWithProgress = (importFn) => {
   return lazy(() => {
@@ -25,7 +25,9 @@ const Signup = lazyWithProgress(() => import('../pages/auth/components/Signup.js
 const ForgotPassword = lazyWithProgress(
   () => import('../pages/auth/components/ForgotPassword.jsx')
 );
-
+const ResetPassword = lazyWithProgress(() => import('../pages/auth/components/ResetPassword.jsx'));
+// Dashboard
+const Dashboard = lazyWithProgress(() => import('../pages/dashboard/index.jsx'));
 const AppRoutes = () => {
   return (
     <Suspense fallback={null}>
@@ -43,8 +45,14 @@ const AppRoutes = () => {
           <Route path={PATHS.AUTH.LOGIN} element={<Login />} />
           <Route path={PATHS.AUTH.SIGNUP} element={<Signup />} />
           <Route path={PATHS.AUTH.FORGOT_PASSWORD} element={<ForgotPassword />} />
+          <Route path={PATHS.AUTH.RESET_PASSWORD} element={<ResetPassword />} />
         </Route>
-        {/* 🔒 Protected Routes */}
+
+        {/* 🔒 Protected Routes: User must have a token */}
+        <Route element={<DashboardLayout />}>
+          {/* user dashboard routes will added here! */}
+          <Route path={PATHS.DASHBOARD.INDEX} element={<Dashboard />} />
+        </Route>
       </Routes>
     </Suspense>
   );

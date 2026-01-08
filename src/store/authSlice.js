@@ -35,13 +35,12 @@ export const logoutUser = () => async (dispatch) => {
     const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/auth/logout`);
 
     const { message, success } = response.data;
-
     if (!success) {
       throw new Error(message || 'Logout failed');
     }
     // 2. Client-side state saaf karo
     dispatch(logout());
-    toast.error(JSON.stringify(message));
+    toast.error('Logged out successfully');
   } catch (error) {
     toast.error('Logout failed. Please try again.');
   }
