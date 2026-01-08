@@ -19,24 +19,14 @@ const MobileMenu = forwardRef(
 
     return (
       <>
-        {/* Backdrop Overlay */}
-        <div
-          className={`fixed inset-0 bg-black/50 z-40 lg:hidden transition-opacity duration-300 ${
-            isOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
-          }`}
-          onClick={() => setMobileMenuOpen(false)}
-        />
-
-        {/* Sidebar Menu */}
         <div
           ref={ref}
-          className={`fixed top-0 right-0 h-full w-72 max-w-[80vw] bg-white dark:bg-slate-900 shadow-xl z-50 lg:hidden transform transition-transform duration-300 ease-in-out ${
-            isOpen ? 'translate-x-0' : 'translate-x-full'
+          className={`fixed top-0 left-0 h-screen w-full bg-white dark:bg-slate-900 shadow-xl z-50 lg:hidden transform transition-transform duration-300 ease-in-out ${
+            isOpen ? 'translate-x-0' : '-translate-x-full'
           }`}
         >
           {/* Close Button */}
           <div className="flex items-center justify-between p-4 border-b border-slate-200 dark:border-slate-700">
-            <span className="font-semibold text-slate-800 dark:text-white">Menu</span>
             <button
               onClick={() => setMobileMenuOpen(false)}
               className="p-2 rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
@@ -47,7 +37,7 @@ const MobileMenu = forwardRef(
           </div>
 
           {/* Navigation Links */}
-          <nav className="p-4 overflow-y-auto max-h-[calc(100vh-80px)]">
+          <nav className="p-4 text-center overflow-y-auto max-h-[calc(100vh-80px)] backdrop-blur-2xl">
             <ul className="space-y-1">
               {NavigationMenuRoutes.map((link, index) =>
                 !link.dropdown ? (

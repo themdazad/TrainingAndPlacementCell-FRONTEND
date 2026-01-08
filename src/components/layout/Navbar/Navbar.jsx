@@ -42,18 +42,20 @@ export default function Navbar() {
         <div className="max-w-screen-2xl mx-auto dark:bg-slate-950 shadow-sm bg-white">
           {/* Main Header: Logo + Actions */}
           <div className="px-6 md:px-12 py-4 flex justify-between items-center">
-            <CollegeLogo />
+            <div className="hidden lg:flex items-center">
+              <CollegeLogo />
+            </div>
+
+            {/* Mobile Toggle Button */}
+            <div className="lg:hidden">
+              <MobileMenuToggle
+                isOpen={isMobileMenuOpen}
+                onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
+                ref={hamburgerRef}
+              />
+            </div>
 
             <div className="flex items-center gap-3">
-              {/* Mobile Toggle Button */}
-              <div className="lg:hidden">
-                <MobileMenuToggle
-                  isOpen={isMobileMenuOpen}
-                  onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
-                  ref={hamburgerRef}
-                />
-              </div>
-
               {/* User Login/Profile Section */}
               <AuthSection isAuthenticated={isAuthenticated} user={user} />
             </div>

@@ -37,10 +37,10 @@ export default function Hero() {
               variants={fadeUp}
             >
               <span className="blinking-dot w-2 h-2 bg-blue-600 rounded-full mr-2 animate-pulse" />
-              New
+              Placement Season 2025-26 is Live!
             </motion.div>
 
-            <motion.h1 className="font-bold text-5xl lg:text-6xl " variants={fadeUp}>
+            <motion.h1 className="font-bold text-5xl lg:text-6xl" variants={fadeUp}>
               Training and <br />
               Placement Cell
               <span className="block text-xl text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-400">
@@ -52,25 +52,25 @@ export default function Hero() {
               className="text-slate-600 dark:text-slate-300 max-w-lg mx-auto sm:mx-0"
               variants={fadeUp}
             >
-              We strive to organize mock sessions, and provide real-world exposure through
-              internships and project showcases, ensuring each student steps confidently into the
-              professional world.
+              Empowering engineers with industry-ready skills through comprehensive training
+              programs, mock interviews, internship opportunities, and direct placement assistance
+              from leading global organizations.
             </motion.p>
           </motion.div>
 
-          <motion.div
-            className="flex max-sm:items-center justify-center sm:justify-start gap-4"
-            variants={fadeUp}
-          >
+          <motion.div className="flex max-sm:flex-col gap-4 w-full sm:w-auto" variants={fadeUp}>
             <a
               href={PLACEMENT_BROCHURE}
-              target="_blank"
-              className="flex items-center justify-center border-1 border-slate-300 hover:border-blue-600 hover:text-blue-600 px-4 py-3 rounded-3xl transition-all duration-200 transform hover:scale-105 group"
+              download
+              className="flex items-center justify-center border-1 border-slate-300 hover:border-blue-600 hover:text-blue-600 px-6 py-3 rounded-3xl transition-all duration-200 transform hover:scale-105 group"
               rel="noreferrer"
             >
               <Download className="mr-2 w-5 h-5 transition-transform group-hover:scale-110" />
-              Brochure
+              Download Brochure
             </a>
+            <button className="flex items-center justify-center bg-blue-600 text-white hover:bg-blue-700 px-6 py-3 rounded-3xl transition-all duration-200 transform hover:scale-105">
+              Explore Opportunities
+            </button>
           </motion.div>
         </motion.div>
 
