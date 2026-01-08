@@ -10,7 +10,7 @@ import PATHS from '../../../constants/paths';
 
 const Login = () => {
   const dispatch = useDispatch();
-  const [identifier, setIdentifier] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
@@ -22,7 +22,7 @@ const Login = () => {
     setLoading(true);
     try {
       const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/auth/login`, {
-        identifier,
+        email,
         password,
       });
       const result = response.data;
@@ -56,16 +56,16 @@ const Login = () => {
           <div className="space-y-6">
             <Input
               type="text"
-              label="Email or Registration Number"
+              label="Email Address"
               variant="underlined"
               classNames={{
                 label: 'text-slate-600 dark:text-slate-400 py-2 text-md font-medium',
                 input: 'text-base px-0 text-slate-900 dark:!text-white',
                 inputWrapper: 'border-slate-300 dark:border-slate-700',
               }}
-              value={identifier}
-              onChange={(e) => setIdentifier(e.target.value)}
-              isInvalid={!!errors.identifier}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              isInvalid={!!errors.email}
               disabled={loading}
             />
 
@@ -113,7 +113,7 @@ const Login = () => {
                 to={PATHS.AUTH.SIGNUP}
                 className="text-sm text-blue-600 dark:text-blue-400 hover:underline"
               >
-                Create account
+                Create a new account
               </Link>
               <Link
                 to={PATHS.AUTH.FORGOT_PASSWORD}

@@ -1,14 +1,29 @@
 import { Button, Input } from '@heroui/react';
-import { Image } from '@heroui/react';
 import { useState, useEffect } from 'react';
 import { toast } from 'sonner';
-import { ArrowLeft, CheckCircle, Eye, EyeOff } from 'lucide-react';
+import { ArrowLeft, CheckCircle, Eye, EyeOff, GraduationCap, Briefcase, Users } from 'lucide-react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import PATHS from '../../../constants/paths';
 
+const ROLES = [
+  {
+    key: 'student',
+    label: 'Student',
+    icon: GraduationCap,
+    description: 'I am a student looking for placements',
+  },
+  {
+    key: 'coordinator',
+    label: 'Coordinator',
+    icon: Users,
+    description: 'I am a placement coordinator',
+  },
+];
+
 const Signup = () => {
-  const [step, setStep] = useState(1); // 1: Send OTP, 2: Verify OTP, 3: Set Password
+  const [step, setStep] = useState(0); // 0: Choose Role, 1: Send OTP, 2: Verify OTP, 3: Set Password
+  const [role, setRole] = useState('');
   const [registrationNumber, setRegistrationNumber] = useState('');
   const [email, setEmail] = useState('');
 
@@ -181,6 +196,7 @@ const Signup = () => {
         email,
         otp: otp.join(''),
         password,
+        role,
       });
 
       toast.success('Account created successfully!');
@@ -200,6 +216,8 @@ const Signup = () => {
     } else if (step === 2) {
       setStep(1); // Go back to Email/Reg
       setOtp(new Array(6).fill(''));
+    } else if (step === 1) {
+      setStep(0); // Go back to Role selection
     }
     setErrors({});
   };
@@ -209,7 +227,7 @@ const Signup = () => {
       <div className="w-full max-w-[420px] py-8">
         {/* Header with Back Button */}
         <div className="space-y-2 mb-8">
-          {step > 1 && (
+          {step > 0 && (
             <button
               type="button"
               onClick={handleBack}
@@ -220,14 +238,22 @@ const Signup = () => {
             </button>
           )}
           <h1 className="text-3xl font-bold text-slate-900 dark:text-white">
-            {step === 1 ? 'Create account' : step === 2 ? 'Verify OTP' : 'Set password'}
+            {step === 0
+              ? 'Who are you?'
+              : step === 1
+                ? 'Create account'
+                : step === 2
+                  ? 'Verify OTP'
+                  : 'Set password'}
           </h1>
           <p className="text-slate-600 dark:text-slate-400">
-            {step === 1
-              ? 'Enter your details to get started'
-              : step === 2
-                ? 'Check your email for verification code'
-                : 'Create a secure password for your account'}
+            {step === 0
+              ? 'Select your role to continue'
+              : step === 1
+                ? 'Enter your details to get started'
+                : step === 2
+                  ? 'Check your email for verification code'
+                  : 'Create a secure password for your account'}
           </p>
         </div>
 
@@ -241,11 +267,69 @@ const Signup = () => {
           className="space-y-6"
           onSubmit={(e) => {
             e.preventDefault();
-            if (step === 1) handleSendOtp();
+            if (step === 0) {
+              if (!role) {
+                setErrors({ role: 'Please select your role' });
+                return;
+              }
+              setStep(1);
+            } else if (step === 1) handleSendOtp();
             else if (step === 2) handleVerifyOtp();
             else handleSignup();
           }}
         >
+          {/* Step 0: Role Selection */}
+          {step === 0 && (
+            <div className="space-y-4">
+              {ROLES.map((roleOption) => {
+                const IconComponent = roleOption.icon;
+                const isSelected = role === roleOption.key;
+                return (
+                  <button
+                    key={roleOption.key}
+                    type="button"
+                    onClick={() => {
+                      setRole(roleOption.key);
+                      if (errors.role) setErrors({});
+                    }}
+                    className={`w-full p-4 rounded-2xl border-1 transition-all duration-200 flex items-center gap-4 text-left ${
+                      isSelected
+                        ? 'border-blue-600 bg-blue-50 dark:bg-blue-900/20'
+                        : 'border-slate-200 dark:border-slate-700 hover:border-blue-300 dark:hover:border-blue-700'
+                    }`}
+                  >
+                    <div
+                      className={`p-3 rounded-lg ${
+                        isSelected
+                          ? 'bg-blue-600 text-white'
+                          : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400'
+                      }`}
+                    >
+                      <IconComponent size={24} />
+                    </div>
+                    <div className="flex-1">
+                      <p
+                        className={`font-semibold ${
+                          isSelected
+                            ? 'text-blue-600 dark:text-blue-400'
+                            : 'text-slate-900 dark:text-white'
+                        }`}
+                      >
+                        {roleOption.label}
+                      </p>
+                      <p className="text-sm text-slate-500 dark:text-slate-400">
+                        {roleOption.description}
+                      </p>
+                    </div>
+                  </button>
+                );
+              })}
+              {errors.role && (
+                <p className="text-sm text-red-500 dark:text-red-400">{errors.role}</p>
+              )}
+            </div>
+          )}
+
           {/* Step 1: Registration & Email */}
           {step === 1 && (
             <div className="space-y-6">
@@ -315,24 +399,6 @@ const Signup = () => {
                     />
                   ))}
                 </div>
-
-                {!isOtpVerified && (
-                  <Button
-                    type="button"
-                    className="h-12 min-w-0 px-6 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
-                    onClick={handleVerifyOtp}
-                    isLoading={loading}
-                    disabled={loading}
-                  >
-                    Verify
-                  </Button>
-                )}
-
-                {isOtpVerified && (
-                  <div className="text-green-500 animate-in zoom-in duration-300">
-                    <CheckCircle size={32} />
-                  </div>
-                )}
               </div>
             </div>
           )}
