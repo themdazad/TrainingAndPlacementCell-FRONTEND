@@ -13,11 +13,79 @@ const PATHS = {
     SIGNUP: '/signup',
     FORGOT_PASSWORD: '/forgot-password',
     RESET_PASSWORD: '/auth/reset-password/:resetToken',
+    VERIFY_OTP: '/verify-otp',
   },
 
-  // Private Panels (Andar ka maamla - Sidebar ke saath)
+  // Common Dashboard
   DASHBOARD: {
-    INDEX: '/dashboard',
+    ROOT: '/dashboard',
+    PROFILE: '/dashboard/profile',
+  },
+
+  // Student Dashboard
+  STUDENT: {
+    DASHBOARD: '/dashboard/student',
+    JOBS: '/dashboard/student/jobs',
+    JOB_DETAIL: '/dashboard/student/jobs/:jobId',
+    APPLICATIONS: '/dashboard/student/applications',
+    EVENTS: '/dashboard/student/events',
+    RESOURCES: '/dashboard/student/resources',
+    PROFILE: '/dashboard/student/profile',
+  },
+
+  // Admin Dashboard
+  ADMIN: {
+    DASHBOARD: '/dashboard/admin',
+    JOBS: '/dashboard/admin/jobs',
+    JOB_DETAIL: '/dashboard/admin/jobs/:jobId',
+    STUDENTS: '/dashboard/admin/students',
+    STUDENT_DETAIL: '/dashboard/admin/students/:studentId',
+    COORDINATORS: '/dashboard/admin/coordinators',
+    RECRUITERS: '/dashboard/admin/recruiters',
+    EVENTS: '/dashboard/admin/events',
+    RESOURCES: '/dashboard/admin/resources',
+    ANALYTICS: '/dashboard/admin/analytics',
+    SETTINGS: '/dashboard/admin/settings',
+    USER_VERIFICATION: '/dashboard/admin/user-verification',
+    ANNOUNCEMENTS: '/dashboard/admin/announcements',
+  },
+
+  // Coordinator Dashboard
+  COORDINATOR: {
+    DASHBOARD: '/dashboard/coordinator',
+    JOBS: '/dashboard/coordinator/jobs',
+    APPLICATIONS: '/dashboard/coordinator/applications',
+    STUDENTS: '/dashboard/coordinator/students',
+    EVENTS: '/dashboard/coordinator/events',
+  },
+
+  // Recruiter Dashboard
+  RECRUITER: {
+    DASHBOARD: '/dashboard/recruiter',
+    JOBS: '/dashboard/recruiter/jobs',
+    JOBS_CREATE: '/dashboard/recruiter/jobs/create',
+    JOB_EDIT: '/dashboard/recruiter/jobs/:jobId/edit',
+    JOB_DETAIL: '/dashboard/recruiter/jobs/:jobId',
+    APPLICATIONS: '/dashboard/recruiter/applications',
+    EVENTS: '/dashboard/recruiter/events',
+    PROFILE: '/dashboard/recruiter/profile',
+  },
+
+  // Public Job/Event routes (for non-logged-in users)
+  JOBS: {
+    LIST: '/jobs',
+    DETAIL: '/jobs/:jobId',
+  },
+
+  EVENTS: {
+    LIST: '/events',
+    DETAIL: '/events/:eventId',
+  },
+
+  RESOURCES: {
+    LIST: '/resources',
+    DETAIL: '/resources/:resourceId',
+    INTERVIEW_EXPERIENCES: '/resources/interview-experiences',
   },
 };
 
@@ -31,8 +99,8 @@ export default PATHS;
  * 2. "No Typos": Strings (" ") likhne mein galti ho sakti hai, par object keys (PATHS.LOGIN)
  * mein galti hone par VS Code turant error de dega.
  * * 💡 KAISE? (How):
- * Grouping kari gayi hai 'Domain' ke hisaab se:
+ * Grouping kari gayi hai 'Role' ke hisaab se:
  * - MAIN: Public pages jo sabko dikhte hain.
  * - AUTH: Login/Signup related (Aksar bina Navbar wale).
- * - DASHBOARD: User login hone ke baad ke pages.
+ * - STUDENT/ADMIN/COORDINATOR/RECRUITER: Role-specific dashboard pages.
  */

@@ -1,11 +1,11 @@
 import { Button, Input } from '@heroui/react';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Eye, EyeOff } from 'lucide-react';
 import { toast } from 'sonner';
 import { useDispatch } from 'react-redux';
-import axios from 'axios';
-import { setAuthState } from '../../../store/authSlice';
+import { authAPI } from '../../../api';
+import { checkAuthStatus } from '../../../store/authSlice';
 import PATHS from '../../../constants/paths';
 
 const Login = () => {
@@ -15,20 +15,27 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [isAdminMode, setIsAdminMode] = useState(false);
+  const passwordRef = useRef(null);
 
   const navigate = useNavigate();
 
-  const handleLogin = async () => {
+  const handleLogin = async (loginEmail = email, loginPassword = password) => {
     setLoading(true);
+    setErrors({});
     try {
-      const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/auth/login`, {
-        email,
-        password,
-      });
-      const result = response.data;
-      toast.success('Welcome back!');
-      dispatch(setAuthState({ isAuthenticated: true, user: result.data.user }));
-      navigate(PATHS.MAIN.HOME);
+      // Use admin login API if in admin mode
+      if (isAdminMode) {
+        await authAPI.adminLogin({ email: loginEmail, password: loginPassword });
+      } else {
+        await authAPI.login({ email: loginEmail, password: loginPassword });
+      }
+      
+      // Fetch user data after successful login
+      await dispatch(checkAuthStatus());
+      
+      toast.success(isAdminMode ? 'Welcome Admin!' : 'Welcome back!');
+      navigate(PATHS.DASHBOARD.ROOT);
     } catch (error) {
       setErrors({
         submit: error.response?.data?.message || 'Invalid credentials',
@@ -36,6 +43,14 @@ const Login = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleAdminLogin = () => {
+    setIsAdminMode(true);
+    setEmail('');
+    setPassword('');
+    setErrors({});
+    toast.info('Enter admin credentials to continue');
   };
 
   return (
@@ -71,6 +86,7 @@ const Login = () => {
 
             <div className="relative">
               <Input
+                ref={passwordRef}
                 type={isPasswordVisible ? 'text' : 'password'}
                 label="Password"
                 variant="underlined"
@@ -99,15 +115,51 @@ const Login = () => {
 
           {errors.submit && <p className="text-sm text-red-500">{errors.submit}</p>}
 
+          {isAdminMode && (
+            <div className="flex items-center justify-between p-3 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg">
+              <span className="text-sm text-amber-700 dark:text-amber-300">🔐 Admin Login Mode</span>
+              <button
+                type="button"
+                onClick={() => {
+                  setIsAdminMode(false);
+                  setEmail('');
+                  setPassword('');
+                  setErrors({});
+                }}
+                className="text-xs text-amber-600 dark:text-amber-400 hover:underline"
+              >
+                Cancel
+              </button>
+            </div>
+          )}
+
           <div className="flex flex-col gap-4 pt-2">
             <Button
               type="submit"
-              className="w-full bg-blue-600 text-white dark:bg-blue-600 font-semibold h-12 rounded-lg hover:bg-blue-700 transition-colors"
+              className={`w-full font-semibold h-12 rounded-lg transition-colors ${
+                isAdminMode 
+                  ? 'bg-amber-600 text-white hover:bg-amber-700' 
+                  : 'bg-blue-600 text-white dark:bg-blue-600 hover:bg-blue-700'
+              }`}
               isLoading={loading}
               disabled={loading}
             >
-              Login
+              {isAdminMode ? 'Login as Admin' : 'Login'}
             </Button>
+
+            {/* Quick Admin Login - for development/demo */}
+            {!isAdminMode && (
+              <Button
+                type="button"
+                variant="bordered"
+                className="w-full border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-medium h-10 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                onPress={handleAdminLogin}
+                disabled={loading}
+              >
+                🔐 Login as Admin
+              </Button>
+            )}
+
             <div className="flex items-center justify-between px-1">
               <Link
                 to={PATHS.AUTH.SIGNUP}
