@@ -1,6 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { toast } from 'sonner';
+import { toast } from '../utils/toast';
+
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
 
 // --- Auth Slice ---
 
@@ -8,45 +10,102 @@ const authSlice = createSlice({
   name: 'auth',
   initialState: {
     isChecking: true,
-    isAuthenticated: false, // by default false
-    user: null, // by default null
+    isAuthenticated: false,
+    user: null,
+    profile: null, // Polymorphic profile (Student/Admin/Coordinator/Recruiter)
   },
   reducers: {
     setAuthState: (state, action) => {
-      // isme data aayega payload ke through
-      const { isAuthenticated, user } = action.payload;
+      const { isAuthenticated, user, profile } = action.payload;
       state.isAuthenticated = isAuthenticated;
       state.user = user;
+      state.profile = profile || user?.profileRef || null;
       state.isChecking = false;
     },
+    setUser: (state, action) => {
+      state.user = action.payload;
+      state.profile = action.payload?.profileRef || null;
+    },
+    setProfile: (state, action) => {
+      state.profile = action.payload;
+    },
+    setIsAuthenticated: (state, action) => {
+      state.isAuthenticated = action.payload;
+    },
+    setIsChecking: (state, action) => {
+      state.isChecking = action.payload;
+    },
     logout: (state) => {
-      // logout karne pe state reset kar dena without payload
       state.isAuthenticated = false;
       state.user = null;
+      state.profile = null;
       state.isChecking = false;
     },
   },
 });
 
+// --- Selectors ---
+export const selectUser = (state) => state.auth.user;
+export const selectProfile = (state) => state.auth.profile;
+export const selectIsAuthenticated = (state) => state.auth.isAuthenticated;
+export const selectIsChecking = (state) => state.auth.isChecking;
+export const selectUserRole = (state) => state.auth.user?.role;
+
 // --- Redux Thunks ---
+
+// Check if user is authenticated on app load
+export const checkAuthStatus = () => async (dispatch) => {
+  dispatch(setIsChecking(true));
+  try {
+    const response = await axios.get(`${API_BASE_URL}/api/auth/me`, {
+      withCredentials: true,
+    });
+    const { user } = response.data;
+    dispatch(setAuthState({
+      isAuthenticated: true,
+      user,
+      profile: user?.profileRef,
+    }));
+  } catch {
+    dispatch(setAuthState({
+      isAuthenticated: false,
+      user: null,
+      profile: null,
+    }));
+  }
+};
+
+// Logout user
 export const logoutUser = () => async (dispatch) => {
   try {
-    // 1. API call: backend cookie se token remove karega and logout karega
-    const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/auth/logout`);
+    const response = await axios.post(
+      `${API_BASE_URL}/api/auth/logout`,
+      {},
+      { withCredentials: true }
+    );
 
-    const { message, success } = response.data;
+    const { success } = response.data;
     if (!success) {
-      throw new Error(message || 'Logout failed');
+      throw new Error('Logout failed');
     }
-    // 2. Client-side state saaf karo
     dispatch(logout());
-    toast.error('Logged out successfully');
-  } catch (error) {
+    toast.success('Logged out successfully');
+  } catch {
+    // Even if API fails, clear local state
+    dispatch(logout());
     toast.error('Logout failed. Please try again.');
   }
 };
 
-export const { setAuthState, logout } = authSlice.actions;
+export const {
+  setAuthState,
+  setUser,
+  setProfile,
+  setIsAuthenticated,
+  setIsChecking,
+  logout,
+} = authSlice.actions;
+
 export default authSlice.reducer;
 
 /**

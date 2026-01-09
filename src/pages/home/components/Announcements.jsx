@@ -1,7 +1,7 @@
 import { BellDot } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import useNoticeAnnouncements from '../../../api/web/notice-announcements-api.js';
+import { announcementsAPI } from '../../../api';
 
 export default function Announcements() {
   return (
@@ -11,13 +11,36 @@ export default function Announcements() {
   );
 }
 export function Notice() {
-  const { data, loading, error } = useNoticeAnnouncements();
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState(''); // 🔍 search
+
+  useEffect(() => {
+    const fetchAnnouncements = async () => {
+      try {
+        setLoading(true);
+        const response = await announcementsAPI.getPublicAnnouncements({ limit: 50 });
+        setData(response.data.data.announcements || []);
+      } catch (err) {
+        setError(err?.message || 'Failed to fetch announcements');
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchAnnouncements();
+  }, []);
+
   // Filter notices by searchTerm
-  const filteredNotices = data
-    .slice() // Clone to prevent mutating original
-    .reverse()
-    .filter((item) => (item.content + item.date).toLowerCase().includes(searchTerm.toLowerCase()));
+  const filteredNotices = data.filter((item) => 
+    (item.title + (item.description || '')).toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const formatDate = (dateString) => {
+    if (!dateString) return '';
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-IN', { day: '2-digit', month: '2-digit', year: 'numeric' });
+  };
 
   return (
     <section className="py-6">
@@ -42,28 +65,29 @@ export function Notice() {
                 'linear-gradient(to bottom, transparent 0%, black 0%, black 50%, transparent 100%)',
             }}
           >
-            {filteredNotices ? (
-              filteredNotices.map((data, index) => (
+            {loading ? (
+              <p className="text-slate-500 dark:text-slate-400 animate-pulse">Loading...</p>
+            ) : error ? (
+              <p className="text-red-500">{error}</p>
+            ) : filteredNotices.length > 0 ? (
+              filteredNotices.map((item) => (
                 <a
-                  key={index}
-                  href={data.pdf_link}
-                  target="_blank"
+                  key={item._id}
+                  href={item.link || '#'}
+                  target={item.link ? '_blank' : '_self'}
                   rel="noopener noreferrer"
                   className="group news-notice-row transition-all duration-300 flex items-center space-x-2"
                 >
                   <span className="news-notice-card-tag text-[10px] backdrop-blur-lg bg-blue-500/10 rounded-3xl px-[1em] py-[0.5em] ">
-                    {data.date}
+                    {formatDate(item.publishDate)}
                   </span>
                   <p className="group-hover:text-blue-500 news-notice-card-content text-justify py-2 w-full overflow-ellipsis">
-                    {data.content}
+                    {item.title}
                   </p>
                 </a>
               ))
             ) : (
-              <p className="text-slate-500 dark:text-slate-400">
-                {loading && <p className="animate-pulse">Loading...</p>}
-                {error && { error }}
-              </p>
+              <p className="text-slate-500 dark:text-slate-400">No announcements available</p>
             )}
           </div>
         </div>

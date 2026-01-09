@@ -1,9 +1,11 @@
 import { Button, Input } from '@heroui/react';
 import { useState, useEffect } from 'react';
-import { toast } from 'sonner';
-import { ArrowLeft, CheckCircle, Eye, EyeOff, GraduationCap, Briefcase, Users } from 'lucide-react';
+import { toast } from '../../../utils/toast';
+import { ArrowLeft, Eye, EyeOff, GraduationCap, Users } from 'lucide-react';
 import { useNavigate, Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import axios from 'axios';
+import { checkAuthStatus } from '../../../store/authSlice';
 import PATHS from '../../../constants/paths';
 
 const ROLES = [
@@ -22,13 +24,14 @@ const ROLES = [
 ];
 
 const Signup = () => {
+  const dispatch = useDispatch();
   const [step, setStep] = useState(0); // 0: Choose Role, 1: Send OTP, 2: Verify OTP, 3: Set Password
   const [role, setRole] = useState('');
   const [registrationNumber, setRegistrationNumber] = useState('');
   const [email, setEmail] = useState('');
 
   // OTP State
-  const [otp, setOtp] = useState(new Array(6).fill(''));
+  const [otp, setOtp] = useState('');
 
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -47,7 +50,9 @@ const Signup = () => {
   };
 
   const validateRegNo = (registrationNumber) => {
-    return registrationNumber.trim().length > 0;
+    // Registration number must be 10-12 characters for students
+    const len = registrationNumber.trim().length;
+    return len >= 10 && len <= 12;
   };
 
   const validatePassword = (password) => {
@@ -55,31 +60,20 @@ const Signup = () => {
   };
 
   // Handle OTP Input Change
-  const handleOtpChange = (element, index) => {
-    if (isNaN(element.value)) return false;
-
-    setOtp([...otp.map((d, idx) => (idx === index ? element.value : d))]);
-
-    // Focus next input
-    if (element.nextSibling) {
-      element.nextSibling.focus();
-    }
-  };
-
-  const handleOtpKeyDown = (e, index) => {
-    if (e.key === 'Backspace') {
-      if (otp[index] === '' && e.target.previousSibling) {
-        e.target.previousSibling.focus();
-      }
-    }
+  const handleOtpChange = (value) => {
+    // Only allow digits, max 6 characters
+    const cleanValue = value.replace(/\D/g, '').slice(0, 6);
+    setOtp(cleanValue);
   };
 
   // Step 1: Send OTP to email
   const handleSendOtp = async () => {
     const newErrors = {};
 
-    if (!validateRegNo(registrationNumber)) {
+    if (!registrationNumber.trim()) {
       newErrors.registrationNumber = 'Registration No is required';
+    } else if (!validateRegNo(registrationNumber)) {
+      newErrors.registrationNumber = 'Registration No must be 10-12 characters';
     }
     if (!email) {
       newErrors.email = 'Email is required';
@@ -115,9 +109,8 @@ const Signup = () => {
 
   // Step 2: Verify OTP
   const handleVerifyOtp = async () => {
-    const otpValue = otp.join('');
-    if (otpValue.length !== 6) {
-      toast.error('Please enter a valid 6-digit OTP');
+    if (otp.length !== 4) {
+      toast.error('Please enter a valid OTP');
       return;
     }
 
@@ -129,7 +122,7 @@ const Signup = () => {
       await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/auth/verify-otp`, {
         registrationNumber,
         email,
-        otp: otpValue,
+        otp,
       });
 
       setIsOtpVerified(true);
@@ -191,16 +184,17 @@ const Signup = () => {
     setLoading(true);
 
     try {
-      await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/auth/register`, {
-        registrationNumber,
-        email,
-        otp: otp.join(''),
-        password,
-        role,
-      });
+      await axios.post(
+        `${import.meta.env.VITE_API_BASE_URL}/api/auth/register`,
+        { registrationNumber, email, otp, password, role },
+        { withCredentials: true }
+      );
 
+      // Fetch user data after successful registration
+      await dispatch(checkAuthStatus());
+      
       toast.success('Account created successfully!');
-      navigate('/');
+      navigate(PATHS.DASHBOARD.ROOT);
     } catch (error) {
       const message = error.response?.data?.message || error.message || 'Signup failed';
       toast.error(message);
@@ -377,29 +371,25 @@ const Signup = () => {
             <div className="space-y-6">
               <div className="text-center space-y-2">
                 <p className="text-sm text-slate-600 dark:text-slate-400">
-                  Enter the 6-digit code sent to
+                  Enter the code sent to
                 </p>
                 <p className="font-medium text-slate-900 dark:text-white">{email}</p>
               </div>
 
-              <div className="flex items-center justify-center gap-3">
-                <div className="flex gap-2">
-                  {otp.map((data, index) => (
-                    <input
-                      className="w-11 h-12 text-center text-lg border-2 border-slate-300 dark:border-slate-600 rounded-lg focus:border-blue-500 dark:focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
-                      type="text"
-                      name="otp"
-                      maxLength="1"
-                      key={index}
-                      value={data}
-                      onChange={(e) => handleOtpChange(e.target, index)}
-                      onKeyDown={(e) => handleOtpKeyDown(e, index)}
-                      onFocus={(e) => e.target.select()}
-                      disabled={isOtpVerified || loading}
-                    />
-                  ))}
-                </div>
-              </div>
+              <Input
+                type="text"
+                label="OTP Code"
+                variant="underlined"
+                placeholder="Enter OTP"
+                classNames={{
+                  label: 'text-slate-600 dark:text-slate-400 py-2 text-md font-medium',
+                  input: 'text-center text-xl tracking-[0.5em] px-0 dark:text-white',
+                }}
+                value={otp}
+                onChange={(e) => handleOtpChange(e.target.value)}
+                maxLength={4}
+                disabled={isOtpVerified || loading}
+              />
             </div>
           )}
 

@@ -1,4 +1,4 @@
-export default function StudentDashboard() {
+export default function StudentDashboard({role}) {
   return (
     <main className="min-h-screen">
       {/* Main Content */}

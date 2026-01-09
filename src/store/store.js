@@ -1,8 +1,19 @@
 import { configureStore } from '@reduxjs/toolkit';
 import authReducer from './authSlice';
+import uiReducer from './uiSlice';
 
 export const store = configureStore({
   reducer: {
-    auth: authReducer, // 'auth' key will be managed by authReducer
+    auth: authReducer,
+    ui: uiReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        // Ignore these action types
+        ignoredActions: ['auth/setAuthState'],
+      },
+    }),
 });
+
+export default store;
