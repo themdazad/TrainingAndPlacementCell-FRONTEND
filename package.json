@@ -1,7 +1,7 @@
 {
   "name": "tpocellgecsiwan_frontend",
   "private": true,
-  "version": "2.1.0",
+  "version": "2.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@heroui/accordion": "2.2.8",
-    "@heroui/card": "^2.2.27",
+    "@heroui/card": "^2.2.10",
     "@heroui/react": "2.6.14",
     "@reduxjs/toolkit": "^2.11.2",
     "axios": "^1.7.9",
@@ -31,9 +31,7 @@
     "react-router-dom": "^6.30.0",
     "react-slick": "^0.30.3",
     "react-toastify": "^11.0.5",
-    "sonner": "^2.0.7",
-    "@heroui/system": "^2.4.25",
-    "@heroui/theme": "^2.4.25"
+    "sonner": "^2.0.7"
   },
   "devDependencies": {
     "@types/node": "^22.10.7",
@@ -50,7 +48,7 @@
     "lint-staged": "^16.2.7",
     "postcss": "^8.5.1",
     "prettier": "^3.7.4",
-    "tailwindcss": "^4.1.18",
+    "tailwindcss": "3.4.17",
     "vite": "^5.2.0"
   },
   "lint-staged": {
