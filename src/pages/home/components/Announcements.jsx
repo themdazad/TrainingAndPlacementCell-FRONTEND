@@ -2,6 +2,8 @@ import { BellDot } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { announcementsAPI } from '../../../api';
+import { useAuth } from '../../../hooks/useAuth';
+import { toast } from '../../../utils/toast';
 
 export default function Announcements() {
   return (
@@ -15,7 +17,7 @@ export function Notice() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState(''); // 🔍 search
-
+  const { isAuthenticated, user } = useAuth();
   useEffect(() => {
     const fetchAnnouncements = async () => {
       try {
@@ -32,7 +34,7 @@ export function Notice() {
   }, []);
 
   // Filter notices by searchTerm
-  const filteredNotices = data.filter((item) => 
+  const filteredNotices = data.filter((item) =>
     (item.title + (item.description || '')).toLowerCase().includes(searchTerm.toLowerCase())
   );
 
@@ -70,22 +72,42 @@ export function Notice() {
             ) : error ? (
               <p className="text-red-500">{error}</p>
             ) : filteredNotices.length > 0 ? (
-              filteredNotices.map((item) => (
-                <a
-                  key={item._id}
-                  href={item.link || '#'}
-                  target={item.link ? '_blank' : '_self'}
-                  rel="noopener noreferrer"
-                  className="group news-notice-row transition-all duration-300 flex items-center space-x-2"
-                >
-                  <span className="news-notice-card-tag text-[10px] backdrop-blur-lg bg-blue-500/10 rounded-3xl px-[1em] py-[0.5em] ">
-                    {formatDate(item.publishDate)}
-                  </span>
-                  <p className="group-hover:text-blue-500 news-notice-card-content text-justify py-2 w-full overflow-ellipsis">
-                    {item.title}
-                  </p>
-                </a>
-              ))
+              filteredNotices.map((item) => {
+                const canAccessLink = isAuthenticated && user?.role === 'student';
+                return canAccessLink ? (
+                  <a
+                    key={item._id}
+                    href={item.link || '#'}
+                    target={item.link ? '_blank' : '_self'}
+                    rel="noopener noreferrer"
+                    className="group news-notice-row transition-all duration-300 flex items-center space-x-2"
+                  >
+                    <span className="news-notice-card-tag text-[10px] backdrop-blur-lg bg-blue-500/10 rounded-3xl px-[1em] py-[0.5em] ">
+                      {formatDate(item.publishDate)}
+                    </span>
+                    <p className="group-hover:text-blue-500 news-notice-card-content text-justify py-2 w-full overflow-ellipsis">
+                      {item.title}
+                    </p>
+                  </a>
+                ) : (
+                  <div
+                    key={item._id}
+                    className="news-notice-row flex items-center space-x-2 opacity-60 cursor-not-allowed"
+                    title="Login as student to access link"
+                    onClick={() =>
+                      toast.info('Please login as student to access the announcement link.')
+                    }
+                    style={{ userSelect: 'none' }}
+                  >
+                    <span className="news-notice-card-tag text-[10px] backdrop-blur-lg bg-blue-500/10 rounded-3xl px-[1em] py-[0.5em] ">
+                      {formatDate(item.publishDate)}
+                    </span>
+                    <p className="news-notice-card-content text-justify py-2 w-full overflow-ellipsis">
+                      {item.title}
+                    </p>
+                  </div>
+                );
+              })
             ) : (
               <p className="text-slate-500 dark:text-slate-400">No announcements available</p>
             )}
