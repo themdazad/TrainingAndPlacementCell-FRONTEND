@@ -24,29 +24,29 @@ import { JOB_TYPES, BRANCHES, BATCHES } from '../../../../constants/api.constant
 const CreateJob = () => {
   const navigate = useNavigate();
   const { createJob, loading } = useJobs();
-  
+
   const [formData, setFormData] = useState({
     title: '',
     description: '',
     type: '',
     location: '',
     skillsRequired: '',
-    
+
     // Compensation
     ctc: '',
     baseSalary: '',
     bonus: '',
-    
+
     // Eligibility
     minCgpa: '',
     branches: [],
     batches: [],
     maxBacklogs: '0',
-    
+
     // Dates
     applicationDeadline: '',
     joiningDate: '',
-    
+
     // Additional
     openings: '1',
     selectionProcess: '',
@@ -71,7 +71,10 @@ const CreateJob = () => {
         description: formData.description,
         type: formData.type,
         location: formData.location,
-        skillsRequired: formData.skillsRequired.split(',').map(s => s.trim()).filter(Boolean),
+        skillsRequired: formData.skillsRequired
+          .split(',')
+          .map((s) => s.trim())
+          .filter(Boolean),
         compensation: {
           ctc: parseFloat(formData.ctc) || undefined,
           baseSalary: parseFloat(formData.baseSalary) || undefined,
@@ -80,14 +83,17 @@ const CreateJob = () => {
         eligibility: {
           minCgpa: parseFloat(formData.minCgpa) || undefined,
           branches: formData.branches,
-          batches: formData.batches.map(b => parseInt(b)),
+          batches: formData.batches.map((b) => parseInt(b)),
           maxActiveBacklogs: parseInt(formData.maxBacklogs) || 0,
         },
         applicationDeadline: formData.applicationDeadline || undefined,
         joiningDate: formData.joiningDate || undefined,
         openings: parseInt(formData.openings) || 1,
         selectionProcess: formData.selectionProcess.split('\n').filter(Boolean),
-        perks: formData.perks.split(',').map(p => p.trim()).filter(Boolean),
+        perks: formData.perks
+          .split(',')
+          .map((p) => p.trim())
+          .filter(Boolean),
         jobDescriptionUrl: formData.jobDescriptionUrl || undefined,
         status: asDraft ? 'Draft' : 'Pending Approval',
       };
@@ -314,18 +320,10 @@ const CreateJob = () => {
       <Card>
         <CardBody>
           <div className="flex flex-col sm:flex-row gap-4 justify-end">
-            <Button
-              variant="flat"
-              isLoading={loading}
-              onPress={() => handleSubmit(true)}
-            >
+            <Button variant="flat" isLoading={loading} onPress={() => handleSubmit(true)}>
               Save as Draft
             </Button>
-            <Button
-              color="primary"
-              isLoading={loading}
-              onPress={() => handleSubmit(false)}
-            >
+            <Button color="primary" isLoading={loading} onPress={() => handleSubmit(false)}>
               Submit for Approval
             </Button>
           </div>

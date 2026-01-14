@@ -255,7 +255,12 @@ const AdminAnnouncements = () => {
       case 'actions':
         return (
           <div className="flex gap-1">
-            <Button size="sm" variant="flat" color="primary" onPress={() => handleOpenEdit(announcement)}>
+            <Button
+              size="sm"
+              variant="flat"
+              color="primary"
+              onPress={() => handleOpenEdit(announcement)}
+            >
               Edit
             </Button>
             <Button
@@ -266,7 +271,12 @@ const AdminAnnouncements = () => {
             >
               {announcement.isActive ? 'Deactivate' : 'Activate'}
             </Button>
-            <Button size="sm" variant="flat" color="danger" onPress={() => openDeleteModal(announcement)}>
+            <Button
+              size="sm"
+              variant="flat"
+              color="danger"
+              onPress={() => openDeleteModal(announcement)}
+            >
               Delete
             </Button>
           </div>
@@ -333,8 +343,18 @@ const AdminAnnouncements = () => {
               onChange={(e) => setFilters((prev) => ({ ...prev, search: e.target.value }))}
               onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
               startContent={
-                <svg className="w-4 h-4 text-default-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                <svg
+                  className="w-4 h-4 text-default-400"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
                 </svg>
               }
               className="flex-1"
@@ -357,8 +377,12 @@ const AdminAnnouncements = () => {
               onChange={(e) => setFilters((prev) => ({ ...prev, isActive: e.target.value }))}
               className="w-full md:w-32"
             >
-              <SelectItem key="true" value="true">Active</SelectItem>
-              <SelectItem key="false" value="false">Inactive</SelectItem>
+              <SelectItem key="true" value="true">
+                Active
+              </SelectItem>
+              <SelectItem key="false" value="false">
+                Inactive
+              </SelectItem>
             </Select>
             <Button color="primary" onPress={handleSearch}>
               Search
@@ -404,7 +428,9 @@ const AdminAnnouncements = () => {
       {/* Create/Edit Modal */}
       <Modal isOpen={isOpen} onClose={onClose} size="2xl">
         <ModalContent>
-          <ModalHeader>{selectedAnnouncement ? 'Edit Announcement' : 'New Announcement'}</ModalHeader>
+          <ModalHeader>
+            {selectedAnnouncement ? 'Edit Announcement' : 'New Announcement'}
+          </ModalHeader>
           <ModalBody>
             <div className="space-y-4">
               <Input

@@ -1,8 +1,12 @@
 /**
  * Users API Service
- * Handles user management operations for admin
+ * Explanation:
+ * This module provides functions to interact with user-related API endpoints.
+ * It includes methods for managing students, coordinators, recruiters, and fetching user statistics.
+ * Each function uses the apiClient to make HTTP requests and returns the server response.
  */
-import apiClient from '../config';
+
+import apiClient from '../axiosInstance';
 
 const usersAPI = {
   // Get dashboard stats for admin

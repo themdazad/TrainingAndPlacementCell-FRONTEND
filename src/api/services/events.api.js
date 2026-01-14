@@ -1,8 +1,12 @@
 /**
  * Events API Service
- * Handles PPTs, workshops, seminars, training sessions
+ * Explanation:
+ * This module provides functions to interact with the Events API endpoints.
+ * It includes methods for retrieving, creating, updating, and managing events,
+ * as well as handling registrations, attendance, and feedback.
  */
-import api from '../config';
+
+import api from '../axiosInstance';
 
 const eventsApi = {
   // Get all events

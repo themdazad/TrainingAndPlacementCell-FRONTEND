@@ -1,4 +1,4 @@
-;import { Button, Input } from '@heroui/react';
+import { Button, Input } from '@heroui/react';
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';

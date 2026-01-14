@@ -54,30 +54,33 @@ const UserVerification = () => {
   const [userToDelete, setUserToDelete] = useState(null);
   const [deleting, setDeleting] = useState(false);
 
-  const fetchUsers = useCallback(async (page = 1) => {
-    setLoading(true);
-    try {
-      const params = {
-        page,
-        limit: 10,
-        ...filters,
-      };
-      // Remove empty filters
-      Object.keys(params).forEach((key) => {
-        if (params[key] === '') delete params[key];
-      });
+  const fetchUsers = useCallback(
+    async (page = 1) => {
+      setLoading(true);
+      try {
+        const params = {
+          page,
+          limit: 10,
+          ...filters,
+        };
+        // Remove empty filters
+        Object.keys(params).forEach((key) => {
+          if (params[key] === '') delete params[key];
+        });
 
-      const response = await usersAPI.getAllUsers(params);
-      if (response.data.success) {
-        setUsers(response.data.data.users);
-        setPagination(response.data.data.pagination);
+        const response = await usersAPI.getAllUsers(params);
+        if (response.data.success) {
+          setUsers(response.data.data.users);
+          setPagination(response.data.data.pagination);
+        }
+      } catch (error) {
+        toast.error(error.response?.data?.message || 'Failed to fetch users');
+      } finally {
+        setLoading(false);
       }
-    } catch (error) {
-      toast.error(error.response?.data?.message || 'Failed to fetch users');
-    } finally {
-      setLoading(false);
-    }
-  }, [filters]);
+    },
+    [filters]
+  );
 
   useEffect(() => {
     fetchUsers();
@@ -91,9 +94,7 @@ const UserVerification = () => {
         // Update local state
         setUsers((prev) =>
           prev.map((user) =>
-            user._id === userId
-              ? { ...user, isVerified: response.data.data.isVerified }
-              : user
+            user._id === userId ? { ...user, isVerified: response.data.data.isVerified } : user
           )
         );
         toast.success(response.data.message);
@@ -155,9 +156,7 @@ const UserVerification = () => {
       {/* Header */}
       <div>
         <h1 className="text-2xl font-bold">User Verification</h1>
-        <p className="text-default-500">
-          Manage user verification status for new registrations
-        </p>
+        <p className="text-default-500">Manage user verification status for new registrations</p>
       </div>
 
       {/* Filters */}
@@ -170,8 +169,18 @@ const UserVerification = () => {
               onChange={(e) => handleFilterChange('search', e.target.value)}
               className="md:w-64"
               startContent={
-                <svg className="w-4 h-4 text-default-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                <svg
+                  className="w-4 h-4 text-default-400"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
                 </svg>
               }
             />
@@ -222,15 +231,11 @@ const UserVerification = () => {
               <Spinner size="lg" />
             </div>
           ) : users.length === 0 ? (
-            <div className="text-center py-8 text-default-500">
-              No users found
-            </div>
+            <div className="text-center py-8 text-default-500">No users found</div>
           ) : (
             <Table aria-label="Users table" removeWrapper>
               <TableHeader columns={columns}>
-                {(column) => (
-                  <TableColumn key={column.key}>{column.label}</TableColumn>
-                )}
+                {(column) => <TableColumn key={column.key}>{column.label}</TableColumn>}
               </TableHeader>
               <TableBody items={users}>
                 {(user) => (
@@ -244,18 +249,12 @@ const UserVerification = () => {
                         />
                         <div>
                           <p className="font-medium">{user.email}</p>
-                          <p className="text-xs text-default-400">
-                            ID: {user._id.slice(-6)}
-                          </p>
+                          <p className="text-xs text-default-400">ID: {user._id.slice(-6)}</p>
                         </div>
                       </div>
                     </TableCell>
                     <TableCell>
-                      <Chip
-                        size="sm"
-                        color={getRoleColor(user.role)}
-                        variant="flat"
-                      >
+                      <Chip size="sm" color={getRoleColor(user.role)} variant="flat">
                         {user.role}
                       </Chip>
                     </TableCell>
@@ -308,22 +307,15 @@ const UserVerification = () => {
           <ModalHeader>Confirm Delete</ModalHeader>
           <ModalBody>
             <p>
-              Are you sure you want to delete user{' '}
-              <strong>{userToDelete?.email}</strong>?
+              Are you sure you want to delete user <strong>{userToDelete?.email}</strong>?
             </p>
-            <p className="text-sm text-danger mt-2">
-              This action cannot be undone.
-            </p>
+            <p className="text-sm text-danger mt-2">This action cannot be undone.</p>
           </ModalBody>
           <ModalFooter>
             <Button variant="light" onClick={onClose}>
               Cancel
             </Button>
-            <Button
-              color="danger"
-              onClick={handleDeleteConfirm}
-              isLoading={deleting}
-            >
+            <Button color="danger" onClick={handleDeleteConfirm} isLoading={deleting}>
               Delete
             </Button>
           </ModalFooter>

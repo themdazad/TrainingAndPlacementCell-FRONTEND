@@ -1,8 +1,10 @@
 /**
  * Applications API Service
- * Handles job application-related API calls
+ * Explanation:
+ * This module provides functions to interact with the backend API for managing job applications.
+ * It includes methods for applying to jobs, retrieving applications, updating statuses, and more.
  */
-import api from '../config';
+import api from '../axiosInstance';
 
 const applicationsApi = {
   // Apply to a job

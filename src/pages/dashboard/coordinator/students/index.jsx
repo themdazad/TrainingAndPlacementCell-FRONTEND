@@ -75,13 +75,18 @@ const CoordinatorStudents = () => {
       const data = response.data;
       setStudents(data.students || []);
       setPagination(data.pagination || { page: 1, pages: 1, total: 0 });
-      
+
       // Calculate stats from response
       setStats({
         total: data.pagination?.total || 0,
-        placed: data.students?.filter(s => s.placementStatus === 'Placed').length || 0,
-        seeking: data.students?.filter(s => !s.placementStatus || s.placementStatus === 'Not Placed').length || 0,
-        optedOut: data.students?.filter(s => s.placementStatus === 'Opted Out' || s.placementStatus === 'Higher Studies').length || 0,
+        placed: data.students?.filter((s) => s.placementStatus === 'Placed').length || 0,
+        seeking:
+          data.students?.filter((s) => !s.placementStatus || s.placementStatus === 'Not Placed')
+            .length || 0,
+        optedOut:
+          data.students?.filter(
+            (s) => s.placementStatus === 'Opted Out' || s.placementStatus === 'Higher Studies'
+          ).length || 0,
       });
     } catch {
       toast.error('Failed to fetch students');
@@ -122,11 +127,7 @@ const CoordinatorStudents = () => {
       case 'name':
         return (
           <div className="flex items-center gap-3">
-            <Avatar
-              name={getInitials(student.userId)}
-              src={student.avatar}
-              size="sm"
-            />
+            <Avatar name={getInitials(student.userId)} src={student.avatar} size="sm" />
             <div>
               <p className="font-medium">{getFullName(student.userId)}</p>
               <p className="text-xs text-default-400">{student.userId?.email}</p>
@@ -151,8 +152,8 @@ const CoordinatorStudents = () => {
         );
       case 'status':
         return (
-          <Chip 
-            size="sm" 
+          <Chip
+            size="sm"
             color={placementStatusColors[student.placementStatus] || 'warning'}
             variant="flat"
           >
@@ -188,8 +189,18 @@ const CoordinatorStudents = () => {
                 <p className="text-2xl font-bold">{stats.total}</p>
               </div>
               <div className="p-2 bg-primary/10 rounded-lg">
-                <svg className="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                <svg
+                  className="w-6 h-6 text-primary"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                  />
                 </svg>
               </div>
             </div>
@@ -204,8 +215,18 @@ const CoordinatorStudents = () => {
                 <p className="text-2xl font-bold text-success">{stats.placed}</p>
               </div>
               <div className="p-2 bg-success/10 rounded-lg">
-                <svg className="w-6 h-6 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                <svg
+                  className="w-6 h-6 text-success"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
                 </svg>
               </div>
             </div>
@@ -220,8 +241,18 @@ const CoordinatorStudents = () => {
                 <p className="text-2xl font-bold text-warning">{stats.seeking}</p>
               </div>
               <div className="p-2 bg-warning/10 rounded-lg">
-                <svg className="w-6 h-6 text-warning" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                <svg
+                  className="w-6 h-6 text-warning"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
                 </svg>
               </div>
             </div>
@@ -232,11 +263,7 @@ const CoordinatorStudents = () => {
           <CardBody>
             <p className="text-sm text-default-500 mb-2">Placement Rate</p>
             <div className="flex items-center gap-3">
-              <Progress 
-                value={parseFloat(placementRate)} 
-                color="success"
-                className="flex-1"
-              />
+              <Progress value={parseFloat(placementRate)} color="success" className="flex-1" />
               <span className="font-bold text-success">{placementRate}%</span>
             </div>
           </CardBody>
@@ -253,8 +280,18 @@ const CoordinatorStudents = () => {
               onChange={(e) => setFilters((prev) => ({ ...prev, search: e.target.value }))}
               onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
               startContent={
-                <svg className="w-4 h-4 text-default-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                <svg
+                  className="w-4 h-4 text-default-400"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
                 </svg>
               }
               className="flex-1"
@@ -295,9 +332,7 @@ const CoordinatorStudents = () => {
         <CardBody className="p-0">
           <Table aria-label="Students table" removeWrapper>
             <TableHeader columns={columns}>
-              {(column) => (
-                <TableColumn key={column.key}>{column.label}</TableColumn>
-              )}
+              {(column) => <TableColumn key={column.key}>{column.label}</TableColumn>}
             </TableHeader>
             <TableBody
               items={students}
@@ -307,9 +342,7 @@ const CoordinatorStudents = () => {
             >
               {(student) => (
                 <TableRow key={student._id}>
-                  {(columnKey) => (
-                    <TableCell>{renderCell(student, columnKey)}</TableCell>
-                  )}
+                  {(columnKey) => <TableCell>{renderCell(student, columnKey)}</TableCell>}
                 </TableRow>
               )}
             </TableBody>
@@ -342,11 +375,9 @@ const CoordinatorStudents = () => {
                     className="w-16 h-16 text-xl"
                   />
                   <div>
-                    <h3 className="text-xl font-semibold">
-                      {getFullName(selectedStudent.userId)}
-                    </h3>
+                    <h3 className="text-xl font-semibold">{getFullName(selectedStudent.userId)}</h3>
                     <p className="text-default-500">{selectedStudent.userId?.email}</p>
-                    <Chip 
+                    <Chip
                       color={placementStatusColors[selectedStudent.placementStatus] || 'warning'}
                       variant="flat"
                       size="sm"
@@ -376,15 +407,21 @@ const CoordinatorStudents = () => {
                   </div>
                   <div>
                     <p className="text-sm text-default-400">10th %</p>
-                    <p className="font-medium">{selectedStudent.academicInfo?.tenthPercentage || '-'}%</p>
+                    <p className="font-medium">
+                      {selectedStudent.academicInfo?.tenthPercentage || '-'}%
+                    </p>
                   </div>
                   <div>
                     <p className="text-sm text-default-400">12th %</p>
-                    <p className="font-medium">{selectedStudent.academicInfo?.twelfthPercentage || '-'}%</p>
+                    <p className="font-medium">
+                      {selectedStudent.academicInfo?.twelfthPercentage || '-'}%
+                    </p>
                   </div>
                   <div>
                     <p className="text-sm text-default-400">Active Backlogs</p>
-                    <p className="font-medium">{selectedStudent.academicInfo?.activeBacklogs || 0}</p>
+                    <p className="font-medium">
+                      {selectedStudent.academicInfo?.activeBacklogs || 0}
+                    </p>
                   </div>
                   <div>
                     <p className="text-sm text-default-400">Applications</p>
@@ -401,7 +438,9 @@ const CoordinatorStudents = () => {
                     <p className="text-sm text-default-400 mb-2">Skills</p>
                     <div className="flex flex-wrap gap-2">
                       {selectedStudent.skills.map((skill) => (
-                        <Chip key={skill} size="sm" variant="bordered">{skill}</Chip>
+                        <Chip key={skill} size="sm" variant="bordered">
+                          {skill}
+                        </Chip>
                       ))}
                     </div>
                   </div>
@@ -413,9 +452,7 @@ const CoordinatorStudents = () => {
             <Button variant="light" onPress={onClose}>
               Close
             </Button>
-            <Button color="primary">
-              View Applications
-            </Button>
+            <Button color="primary">View Applications</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

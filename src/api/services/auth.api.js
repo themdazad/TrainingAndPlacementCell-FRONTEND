@@ -1,8 +1,11 @@
 /**
  * Auth API Service
- * Handles authentication-related API calls
+ * Explanation:
+ * This module provides functions to interact with authentication-related API endpoints.
+ * It includes methods for user registration, login, logout, password management, and profile updates.
  */
-import api from '../config';
+
+import api from '../axiosInstance';
 
 const authApi = {
   // Register new user

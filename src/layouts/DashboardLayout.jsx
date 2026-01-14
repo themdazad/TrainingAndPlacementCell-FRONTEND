@@ -241,22 +241,6 @@ const DashboardLayout = () => {
               <NavItem key={item.path} item={item} onClick={() => setMobileMenuOpen(false)} />
             ))}
           </nav>
-
-          {/* User section */}
-          <div className="p-4 border-t border-divider">
-            <div className="flex items-center gap-3">
-              <Avatar
-                name={getInitials(user)}
-                src={profile?.avatar || user?.avatar}
-                size="sm"
-                className="flex-shrink-0"
-              />
-              <div className="flex-1 min-w-0">
-                <p className="font-medium text-sm truncate">{getFullName(user)}</p>
-                <p className="text-xs text-default-400 capitalize">{role?.toLowerCase()}</p>
-              </div>
-            </div>
-          </div>
         </div>
       </aside>
 
