@@ -5,7 +5,7 @@
  * Each function uses the apiClient to make HTTP requests and returns the server response.
  */
 
-import api from '../axiosInstance';
+import api from '../config';
 
 const jobsApi = {
   // Get all jobs with optional filters

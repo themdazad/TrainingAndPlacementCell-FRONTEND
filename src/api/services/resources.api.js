@@ -6,7 +6,7 @@
  * and tracking downloads of resources.
  */
 
-import api from '../axiosInstance';
+import api from '../config';
 
 const resourcesApi = {
   // Get all resources

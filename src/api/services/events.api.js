@@ -6,7 +6,7 @@
  * as well as handling registrations, attendance, and feedback.
  */
 
-import api from '../axiosInstance';
+import api from '../config';
 
 const eventsApi = {
   // Get all events

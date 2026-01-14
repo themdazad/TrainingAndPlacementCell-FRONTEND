@@ -6,7 +6,7 @@
  * Each function uses the apiClient to make HTTP requests and returns the server response.
  */
 
-import apiClient from '../axiosInstance';
+import apiClient from '../config';
 
 const usersAPI = {
   // Get dashboard stats for admin

@@ -6,7 +6,7 @@
  
  */
 
-export { default as api } from './axiosInstance';
+export { default as api } from './config';
 export { default as authAPI } from './services/auth.api';
 export { default as jobsAPI } from './services/jobs.api';
 export { default as applicationsAPI } from './services/applications.api';

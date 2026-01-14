@@ -4,7 +4,7 @@
  * This module provides functions to interact with the backend API for managing announcements.
  * It includes methods for creating, retrieving, updating, and deleting announcements.
  */
-import apiClient from '../axiosInstance';
+import apiClient from '../config';
 
 const announcementsAPI = {
   // Get public announcements (for homepage)

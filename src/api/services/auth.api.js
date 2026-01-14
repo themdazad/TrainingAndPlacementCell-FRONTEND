@@ -5,7 +5,7 @@
  * It includes methods for user registration, login, logout, password management, and profile updates.
  */
 
-import api from '../axiosInstance';
+import api from '../config';
 
 const authApi = {
   // Register new user

@@ -4,7 +4,7 @@
  * This module provides functions to interact with the backend API for managing job applications.
  * It includes methods for applying to jobs, retrieving applications, updating statuses, and more.
  */
-import api from '../axiosInstance';
+import api from '../config';
 
 const applicationsApi = {
   // Apply to a job
