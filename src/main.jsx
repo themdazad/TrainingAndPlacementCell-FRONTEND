@@ -9,7 +9,6 @@ import CookieConsent from 'react-cookie-consent';
 import { HeroUIProvider } from '@heroui/react';
 import { BrowserRouter } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop.js';
-import NProgressLoader from './components/common/NProgressLoader.jsx';
 import AuthValidator from './components/auth/AuthValidator.jsx';
 
 // This line enables sending cookies with cross-origin requests with axios(Backend can save cookies directly:)
@@ -19,7 +18,6 @@ import AppRoutes from './routes/index.jsx';
 export function App() {
   return (
     <HeroUIProvider>
-      <NProgressLoader />
       <AppRoutes />
       <CookieConsent
         location="bottom"

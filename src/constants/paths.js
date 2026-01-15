@@ -5,6 +5,7 @@ const PATHS = {
     ABOUT_US: '/about-us',
     ALUMNI: '/alumni',
     GALLERY: '/gallery',
+    ASSISTANT: '/ai_assistant',
   },
 
   // Authentication (Ghar mein dakhila lene ke liye)

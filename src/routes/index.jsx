@@ -10,6 +10,7 @@ import { USER_ROLES } from '../constants/api.constants.js';
 import MainLayout from '../layouts/MainLayout.jsx';
 import AuthLayout from '../layouts/AuthLayout.jsx';
 import DashboardLayout from '../layouts/DashboardLayout.jsx';
+import AssistantLayout from '../layouts/AssistantLayout.jsx';
 
 // Lazy load wrapper that triggers NProgress
 const lazyWithProgress = (importFn) => {
@@ -24,6 +25,7 @@ const Home = lazyWithProgress(() => import('../pages/home'));
 const AboutUs = lazyWithProgress(() => import('../pages/about/index.jsx'));
 const Alumni = lazyWithProgress(() => import('../pages/alumni/index.jsx'));
 const Gallery = lazyWithProgress(() => import('../pages/gallery/index.jsx'));
+const AI_Assistant = lazyWithProgress(() => import('../features/ai-assistant/index.jsx'));
 
 // Auth Pages
 const Login = lazyWithProgress(() => import('../pages/auth/components/Login.jsx'));
@@ -284,6 +286,12 @@ const AppRoutes = () => {
               </ProtectedRoute>
             }
           />
+        </Route>
+
+        {/* 🤖 AI Assistant Routes */}
+        <Route element={<AssistantLayout />}>
+          {/* <Route path={PATHS.MAIN.ASSISTANT} element={<AI_Assistant />} /> */}
+          <Route path={PATHS.MAIN.ASSISTANT} element={<AI_Assistant />} />
         </Route>
 
         {/* 404 - Catch all */}
