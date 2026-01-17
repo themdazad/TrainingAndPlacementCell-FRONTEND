@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 // Hooks (Paths as per your previous code)
 import { useScrollVisibility } from '../../../hooks/useScrollVisibility';
 import { useClickOutside } from '../../../hooks/useClickOutside';
+import ThemeToggle from '../../ui/ThemeToggle';
 
 // Components (Same folder imports)
 import CollegeLogo from './CollegeLogo';
@@ -60,7 +61,6 @@ export default function Navbar() {
               <AuthSection isAuthenticated={isAuthenticated} user={user} />
             </div>
           </div>
-
           {/* Desktop Navigation Row */}
           <div className="hidden lg:flex px-6 md:px-12 pb-3 pt-2 bg-slate-100 dark:bg-slate-900 border-t border-slate-200/50 dark:border-slate-800/50">
             <NavigationMenu isDropdownOpen={isDropdownOpen} setIsDropdownOpen={setIsDropdownOpen} />
