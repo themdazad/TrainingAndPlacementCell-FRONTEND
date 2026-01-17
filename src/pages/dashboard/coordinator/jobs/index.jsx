@@ -53,8 +53,8 @@ const CoordinatorJobs = () => {
   });
 
   useEffect(() => {
-    const statusFilter = selectedTab === 'active' ? 'Published' : 
-                         selectedTab === 'pending' ? 'Pending Approval' : '';
+    const statusFilter =
+      selectedTab === 'active' ? 'Published' : selectedTab === 'pending' ? 'Pending Approval' : '';
     fetchAllJobs({
       page: filters.page,
       limit: 10,
@@ -66,8 +66,8 @@ const CoordinatorJobs = () => {
 
   const handleSearch = () => {
     setFilters((prev) => ({ ...prev, page: 1 }));
-    const statusFilter = selectedTab === 'active' ? 'Published' : 
-                         selectedTab === 'pending' ? 'Pending Approval' : '';
+    const statusFilter =
+      selectedTab === 'active' ? 'Published' : selectedTab === 'pending' ? 'Pending Approval' : '';
     fetchAllJobs({
       page: 1,
       limit: 10,
@@ -103,7 +103,11 @@ const CoordinatorJobs = () => {
       case 'company':
         return job.company;
       case 'type':
-        return <Chip size="sm" variant="flat">{job.type}</Chip>;
+        return (
+          <Chip size="sm" variant="flat">
+            {job.type}
+          </Chip>
+        );
       case 'applications':
         return (
           <div className="text-center">
@@ -114,11 +118,7 @@ const CoordinatorJobs = () => {
         return formatDate(job.applicationDeadline);
       case 'status':
         return (
-          <Chip 
-            size="sm" 
-            color={statusColorMap[job.status] || 'default'}
-            variant="flat"
-          >
+          <Chip size="sm" color={statusColorMap[job.status] || 'default'} variant="flat">
             {job.status}
           </Chip>
         );
@@ -157,7 +157,7 @@ const CoordinatorJobs = () => {
         <Card>
           <CardBody className="text-center py-4">
             <p className="text-2xl font-bold text-success">
-              {jobs.filter(j => j.status === 'Published').length}
+              {jobs.filter((j) => j.status === 'Published').length}
             </p>
             <p className="text-sm text-default-500">Active</p>
           </CardBody>
@@ -165,7 +165,7 @@ const CoordinatorJobs = () => {
         <Card>
           <CardBody className="text-center py-4">
             <p className="text-2xl font-bold text-warning">
-              {jobs.filter(j => j.status === 'Pending Approval').length}
+              {jobs.filter((j) => j.status === 'Pending Approval').length}
             </p>
             <p className="text-sm text-default-500">Pending</p>
           </CardBody>
@@ -202,8 +202,18 @@ const CoordinatorJobs = () => {
               onChange={(e) => setFilters((prev) => ({ ...prev, search: e.target.value }))}
               onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
               startContent={
-                <svg className="w-4 h-4 text-default-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                <svg
+                  className="w-4 h-4 text-default-400"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
                 </svg>
               }
               className="flex-1"
@@ -232,9 +242,7 @@ const CoordinatorJobs = () => {
         <CardBody className="p-0">
           <Table aria-label="Jobs table" removeWrapper>
             <TableHeader columns={columns}>
-              {(column) => (
-                <TableColumn key={column.key}>{column.label}</TableColumn>
-              )}
+              {(column) => <TableColumn key={column.key}>{column.label}</TableColumn>}
             </TableHeader>
             <TableBody
               items={jobs}
@@ -244,9 +252,7 @@ const CoordinatorJobs = () => {
             >
               {(job) => (
                 <TableRow key={job._id}>
-                  {(columnKey) => (
-                    <TableCell>{renderCell(job, columnKey)}</TableCell>
-                  )}
+                  {(columnKey) => <TableCell>{renderCell(job, columnKey)}</TableCell>}
                 </TableRow>
               )}
             </TableBody>
@@ -293,7 +299,9 @@ const CoordinatorJobs = () => {
                   </div>
                   <div>
                     <p className="text-sm text-default-400">Package</p>
-                    <p className="font-medium text-success">{formatPackage(selectedJob.compensation?.ctc)}</p>
+                    <p className="font-medium text-success">
+                      {formatPackage(selectedJob.compensation?.ctc)}
+                    </p>
                   </div>
                   <div>
                     <p className="text-sm text-default-400">Applications</p>
@@ -319,7 +327,9 @@ const CoordinatorJobs = () => {
                     <p className="text-sm text-default-400 mb-2">Required Skills</p>
                     <div className="flex flex-wrap gap-2">
                       {selectedJob.skillsRequired.map((skill) => (
-                        <Chip key={skill} size="sm" variant="bordered">{skill}</Chip>
+                        <Chip key={skill} size="sm" variant="bordered">
+                          {skill}
+                        </Chip>
                       ))}
                     </div>
                   </div>
@@ -331,9 +341,7 @@ const CoordinatorJobs = () => {
             <Button variant="light" onPress={onClose}>
               Close
             </Button>
-            <Button color="primary">
-              View Applications
-            </Button>
+            <Button color="primary">View Applications</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

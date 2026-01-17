@@ -8,11 +8,7 @@ import PropTypes from 'prop-types';
 import PATHS from '../../constants/paths';
 import FullPageLoader from '../ui/FullPageLoader';
 
-const ProtectedRoute = ({
-  children,
-  allowedRoles = [],
-  redirectTo = PATHS.AUTH.LOGIN,
-}) => {
+const ProtectedRoute = ({ children, allowedRoles = [], redirectTo = PATHS.AUTH.LOGIN }) => {
   const location = useLocation();
   const { isAuthenticated, isChecking, user } = useSelector((state) => state.auth);
 

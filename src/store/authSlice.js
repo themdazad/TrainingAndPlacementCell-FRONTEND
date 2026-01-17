@@ -61,17 +61,21 @@ export const checkAuthStatus = () => async (dispatch) => {
       withCredentials: true,
     });
     const { user } = response.data;
-    dispatch(setAuthState({
-      isAuthenticated: true,
-      user,
-      profile: user?.profileRef,
-    }));
+    dispatch(
+      setAuthState({
+        isAuthenticated: true,
+        user,
+        profile: user?.profileRef,
+      })
+    );
   } catch {
-    dispatch(setAuthState({
-      isAuthenticated: false,
-      user: null,
-      profile: null,
-    }));
+    dispatch(
+      setAuthState({
+        isAuthenticated: false,
+        user: null,
+        profile: null,
+      })
+    );
   }
 };
 
@@ -97,14 +101,8 @@ export const logoutUser = () => async (dispatch) => {
   }
 };
 
-export const {
-  setAuthState,
-  setUser,
-  setProfile,
-  setIsAuthenticated,
-  setIsChecking,
-  logout,
-} = authSlice.actions;
+export const { setAuthState, setUser, setProfile, setIsAuthenticated, setIsChecking, logout } =
+  authSlice.actions;
 
 export default authSlice.reducer;
 

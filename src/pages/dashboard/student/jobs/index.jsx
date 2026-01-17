@@ -17,7 +17,12 @@ import {
   Pagination,
 } from '@heroui/react';
 import { useJobs, useApplications } from '../../../../hooks';
-import { formatDate, formatPackage, isDeadlinePassed, truncateText } from '../../../../utils/helpers';
+import {
+  formatDate,
+  formatPackage,
+  isDeadlinePassed,
+  truncateText,
+} from '../../../../utils/helpers';
 import { JOB_TYPES } from '../../../../constants/api.constants';
 
 const JobCard = ({ job, onApply, applying }) => {
@@ -35,9 +40,7 @@ const JobCard = ({ job, onApply, applying }) => {
         </Chip>
       </CardHeader>
       <CardBody className="space-y-3">
-        <p className="text-sm text-default-600">
-          {truncateText(job.description, 120)}
-        </p>
+        <p className="text-sm text-default-600">{truncateText(job.description, 120)}</p>
         <div className="flex flex-wrap gap-2">
           {job.skillsRequired?.slice(0, 4).map((skill) => (
             <Chip key={skill} size="sm" variant="bordered">
@@ -138,8 +141,18 @@ const StudentJobs = () => {
               onChange={(e) => setFilters((prev) => ({ ...prev, search: e.target.value }))}
               onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
               startContent={
-                <svg className="w-4 h-4 text-default-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                <svg
+                  className="w-4 h-4 text-default-400"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
                 </svg>
               }
               className="flex-1"
@@ -166,20 +179,17 @@ const StudentJobs = () => {
       {/* Jobs Grid */}
       {loading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {Array(6).fill(0).map((_, i) => (
-            <Skeleton key={i} className="h-64 rounded-xl" />
-          ))}
+          {Array(6)
+            .fill(0)
+            .map((_, i) => (
+              <Skeleton key={i} className="h-64 rounded-xl" />
+            ))}
         </div>
       ) : jobs.length > 0 ? (
         <>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {jobs.map((job) => (
-              <JobCard
-                key={job._id}
-                job={job}
-                onApply={handleApply}
-                applying={applying}
-              />
+              <JobCard key={job._id} job={job} onApply={handleApply} applying={applying} />
             ))}
           </div>
 
@@ -197,8 +207,18 @@ const StudentJobs = () => {
       ) : (
         <Card>
           <CardBody className="text-center py-12">
-            <svg className="w-16 h-16 mx-auto text-default-300 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            <svg
+              className="w-16 h-16 mx-auto text-default-300 mb-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.5}
+                d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+              />
             </svg>
             <h3 className="text-lg font-medium mb-2">No Jobs Found</h3>
             <p className="text-default-500">

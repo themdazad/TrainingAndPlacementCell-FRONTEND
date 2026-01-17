@@ -115,10 +115,7 @@ export const BRANCHES = [
 
 // Batches (last 5 years + next 2)
 const currentYear = new Date().getFullYear();
-export const BATCHES = Array.from(
-  { length: 7 },
-  (_, i) => currentYear - 4 + i
-);
+export const BATCHES = Array.from({ length: 7 }, (_, i) => currentYear - 4 + i);
 
 // Skills categories
 export const SKILL_CATEGORIES = {

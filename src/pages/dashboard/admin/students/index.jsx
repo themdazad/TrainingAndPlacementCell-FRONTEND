@@ -233,12 +233,18 @@ const AdminStudents = () => {
         },
         academicInfo: {
           ...editForm.academicInfo,
-          yearOfStudy: editForm.academicInfo.yearOfStudy ? parseInt(editForm.academicInfo.yearOfStudy) : undefined,
+          yearOfStudy: editForm.academicInfo.yearOfStudy
+            ? parseInt(editForm.academicInfo.yearOfStudy)
+            : undefined,
           batch: editForm.academicInfo.batch ? parseInt(editForm.academicInfo.batch) : undefined,
           cgpa: editForm.academicInfo.cgpa ? parseFloat(editForm.academicInfo.cgpa) : undefined,
           backlogs: editForm.academicInfo.backlogs ? parseInt(editForm.academicInfo.backlogs) : 0,
-          tenthPercentage: editForm.academicInfo.tenthPercentage ? parseFloat(editForm.academicInfo.tenthPercentage) : undefined,
-          twelfthPercentage: editForm.academicInfo.twelfthPercentage ? parseFloat(editForm.academicInfo.twelfthPercentage) : undefined,
+          tenthPercentage: editForm.academicInfo.tenthPercentage
+            ? parseFloat(editForm.academicInfo.tenthPercentage)
+            : undefined,
+          twelfthPercentage: editForm.academicInfo.twelfthPercentage
+            ? parseFloat(editForm.academicInfo.twelfthPercentage)
+            : undefined,
         },
         bio: editForm.bio,
         skills: skillsArray,
@@ -294,13 +300,15 @@ const AdminStudents = () => {
         return (
           <div className="flex items-center gap-3">
             <Avatar
-              name={getInitials(student.personalInfo) || student.userId?.email?.charAt(0).toUpperCase()}
+              name={
+                getInitials(student.personalInfo) || student.userId?.email?.charAt(0).toUpperCase()
+              }
               src={student.userId?.profilePicture}
               size="sm"
             />
             <div>
               <p className="font-medium">
-                {student.personalInfo?.firstName || student.personalInfo?.lastName 
+                {student.personalInfo?.firstName || student.personalInfo?.lastName
                   ? `${student.personalInfo?.firstName || ''} ${student.personalInfo?.lastName || ''}`.trim()
                   : student.userId?.email?.split('@')[0]}
               </p>
@@ -318,8 +326,8 @@ const AdminStudents = () => {
         return student.academicInfo?.cgpa?.toFixed(2) || '-';
       case 'status':
         return (
-          <Chip 
-            size="sm" 
+          <Chip
+            size="sm"
             color={placementStatusColors[student.placementStatus] || 'default'}
             variant="flat"
           >
@@ -332,38 +340,48 @@ const AdminStudents = () => {
             <Button size="sm" variant="light" onPress={() => handleViewDetails(student)}>
               View
             </Button>
-            <Button size="sm" variant="flat" color="primary" onPress={() => handleEditStudent(student)}>
+            <Button
+              size="sm"
+              variant="flat"
+              color="primary"
+              onPress={() => handleEditStudent(student)}
+            >
               Edit
             </Button>
             <Dropdown>
               <DropdownTrigger>
                 <Button isIconOnly size="sm" variant="light">
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"
+                    />
                   </svg>
                 </Button>
               </DropdownTrigger>
               <DropdownMenu aria-label="Student actions">
-                <DropdownItem 
-                  key="placed" 
+                <DropdownItem
+                  key="placed"
                   onPress={() => handleUpdateStatus(student._id, 'Placed')}
                 >
                   Mark as Placed
                 </DropdownItem>
-                <DropdownItem 
-                  key="seeking" 
+                <DropdownItem
+                  key="seeking"
                   onPress={() => handleUpdateStatus(student._id, 'Seeking')}
                 >
                   Mark as Seeking
                 </DropdownItem>
-                <DropdownItem 
-                  key="not-interested" 
+                <DropdownItem
+                  key="not-interested"
                   onPress={() => handleUpdateStatus(student._id, 'Not Interested')}
                 >
                   Mark as Not Interested
                 </DropdownItem>
-                <DropdownItem 
-                  key="higher-studies" 
+                <DropdownItem
+                  key="higher-studies"
                   onPress={() => handleUpdateStatus(student._id, 'Higher Studies')}
                 >
                   Mark as Higher Studies
@@ -386,11 +404,19 @@ const AdminStudents = () => {
           <p className="text-default-500">View and manage student accounts</p>
         </div>
         <div className="flex gap-2">
-          <Button variant="flat" startContent={
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-            </svg>
-          }>
+          <Button
+            variant="flat"
+            startContent={
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                />
+              </svg>
+            }
+          >
             Export
           </Button>
         </div>
@@ -407,7 +433,7 @@ const AdminStudents = () => {
         <Card>
           <CardBody className="text-center">
             <p className="text-2xl font-bold text-success">
-              {students.filter(s => s.placementStatus === 'Placed').length}
+              {students.filter((s) => s.placementStatus === 'Placed').length}
             </p>
             <p className="text-sm text-default-500">Placed</p>
           </CardBody>
@@ -415,7 +441,7 @@ const AdminStudents = () => {
         <Card>
           <CardBody className="text-center">
             <p className="text-2xl font-bold text-warning">
-              {students.filter(s => !s.placementStatus || s.placementStatus === 'Seeking').length}
+              {students.filter((s) => !s.placementStatus || s.placementStatus === 'Seeking').length}
             </p>
             <p className="text-sm text-default-500">Seeking</p>
           </CardBody>
@@ -423,7 +449,7 @@ const AdminStudents = () => {
         <Card>
           <CardBody className="text-center">
             <p className="text-2xl font-bold text-secondary">
-              {students.filter(s => s.placementStatus === 'Higher Studies').length}
+              {students.filter((s) => s.placementStatus === 'Higher Studies').length}
             </p>
             <p className="text-sm text-default-500">Higher Studies</p>
           </CardBody>
@@ -440,8 +466,18 @@ const AdminStudents = () => {
               onChange={(e) => setFilters((prev) => ({ ...prev, search: e.target.value }))}
               onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
               startContent={
-                <svg className="w-4 h-4 text-default-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                <svg
+                  className="w-4 h-4 text-default-400"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
                 </svg>
               }
               className="flex-1"
@@ -494,9 +530,7 @@ const AdminStudents = () => {
         <CardBody className="p-0">
           <Table aria-label="Students table" removeWrapper>
             <TableHeader columns={columns}>
-              {(column) => (
-                <TableColumn key={column.key}>{column.label}</TableColumn>
-              )}
+              {(column) => <TableColumn key={column.key}>{column.label}</TableColumn>}
             </TableHeader>
             <TableBody
               items={students}
@@ -506,9 +540,7 @@ const AdminStudents = () => {
             >
               {(student) => (
                 <TableRow key={student._id}>
-                  {(columnKey) => (
-                    <TableCell>{renderCell(student, columnKey)}</TableCell>
-                  )}
+                  {(columnKey) => <TableCell>{renderCell(student, columnKey)}</TableCell>}
                 </TableRow>
               )}
             </TableBody>
@@ -536,13 +568,17 @@ const AdminStudents = () => {
               <div className="space-y-4">
                 <div className="flex items-center gap-4">
                   <Avatar
-                    name={selectedStudent.personalInfo?.firstName?.charAt(0) || selectedStudent.userId?.email?.charAt(0).toUpperCase()}
+                    name={
+                      selectedStudent.personalInfo?.firstName?.charAt(0) ||
+                      selectedStudent.userId?.email?.charAt(0).toUpperCase()
+                    }
                     src={selectedStudent.userId?.profilePicture}
                     size="lg"
                   />
                   <div>
                     <h3 className="text-xl font-semibold">
-                      {selectedStudent.personalInfo?.firstName || selectedStudent.personalInfo?.lastName 
+                      {selectedStudent.personalInfo?.firstName ||
+                      selectedStudent.personalInfo?.lastName
                         ? `${selectedStudent.personalInfo?.firstName || ''} ${selectedStudent.personalInfo?.lastName || ''}`.trim()
                         : selectedStudent.userId?.email?.split('@')[0]}
                     </h3>
@@ -553,7 +589,9 @@ const AdminStudents = () => {
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <p className="text-sm text-default-400">Registration Number</p>
-                    <p className="font-mono font-medium">{selectedStudent.academicInfo?.registrationNumber || '-'}</p>
+                    <p className="font-mono font-medium">
+                      {selectedStudent.academicInfo?.registrationNumber || '-'}
+                    </p>
                   </div>
                   <div>
                     <p className="text-sm text-default-400">Branch</p>
@@ -565,15 +603,21 @@ const AdminStudents = () => {
                   </div>
                   <div>
                     <p className="text-sm text-default-400">CGPA</p>
-                    <p className="font-medium">{selectedStudent.academicInfo?.cgpa?.toFixed(2) || '-'}</p>
+                    <p className="font-medium">
+                      {selectedStudent.academicInfo?.cgpa?.toFixed(2) || '-'}
+                    </p>
                   </div>
                   <div>
                     <p className="text-sm text-default-400">10th %</p>
-                    <p className="font-medium">{selectedStudent.academicInfo?.tenthPercentage || '-'}%</p>
+                    <p className="font-medium">
+                      {selectedStudent.academicInfo?.tenthPercentage || '-'}%
+                    </p>
                   </div>
                   <div>
                     <p className="text-sm text-default-400">12th %</p>
-                    <p className="font-medium">{selectedStudent.academicInfo?.twelfthPercentage || '-'}%</p>
+                    <p className="font-medium">
+                      {selectedStudent.academicInfo?.twelfthPercentage || '-'}%
+                    </p>
                   </div>
                   <div>
                     <p className="text-sm text-default-400">Backlogs</p>
@@ -581,7 +625,7 @@ const AdminStudents = () => {
                   </div>
                   <div>
                     <p className="text-sm text-default-400">Placement Status</p>
-                    <Chip 
+                    <Chip
                       color={placementStatusColors[selectedStudent.placementStatus] || 'default'}
                       variant="flat"
                     >
@@ -592,7 +636,9 @@ const AdminStudents = () => {
 
                 {selectedStudent.placedAt?.companyName && (
                   <div className="p-4 bg-success-50 dark:bg-success-900/20 rounded-lg">
-                    <p className="text-sm text-success-600 dark:text-success-400 mb-2">Placement Details</p>
+                    <p className="text-sm text-success-600 dark:text-success-400 mb-2">
+                      Placement Details
+                    </p>
                     <div className="grid grid-cols-3 gap-4">
                       <div>
                         <p className="text-sm text-default-400">Company</p>
@@ -604,7 +650,11 @@ const AdminStudents = () => {
                       </div>
                       <div>
                         <p className="text-sm text-default-400">Package</p>
-                        <p className="font-medium">{selectedStudent.placedAt.package ? `${selectedStudent.placedAt.package} LPA` : '-'}</p>
+                        <p className="font-medium">
+                          {selectedStudent.placedAt.package
+                            ? `${selectedStudent.placedAt.package} LPA`
+                            : '-'}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -615,7 +665,9 @@ const AdminStudents = () => {
                     <p className="text-sm text-default-400 mb-2">Skills</p>
                     <div className="flex flex-wrap gap-2">
                       {selectedStudent.skills.map((skill) => (
-                        <Chip key={skill} size="sm" variant="bordered">{skill}</Chip>
+                        <Chip key={skill} size="sm" variant="bordered">
+                          {skill}
+                        </Chip>
                       ))}
                     </div>
                   </div>
@@ -644,32 +696,50 @@ const AdminStudents = () => {
                     <Input
                       label="First Name"
                       value={editForm.personalInfo.firstName}
-                      onChange={(e) => handleEditFormChange('personalInfo', 'firstName', e.target.value)}
+                      onChange={(e) =>
+                        handleEditFormChange('personalInfo', 'firstName', e.target.value)
+                      }
                     />
                     <Input
                       label="Last Name"
                       value={editForm.personalInfo.lastName}
-                      onChange={(e) => handleEditFormChange('personalInfo', 'lastName', e.target.value)}
+                      onChange={(e) =>
+                        handleEditFormChange('personalInfo', 'lastName', e.target.value)
+                      }
                     />
                     <Input
                       label="Phone"
                       value={editForm.personalInfo.phone}
-                      onChange={(e) => handleEditFormChange('personalInfo', 'phone', e.target.value)}
+                      onChange={(e) =>
+                        handleEditFormChange('personalInfo', 'phone', e.target.value)
+                      }
                     />
                     <Select
                       label="Gender"
-                      selectedKeys={editForm.personalInfo.gender ? [editForm.personalInfo.gender] : []}
-                      onChange={(e) => handleEditFormChange('personalInfo', 'gender', e.target.value)}
+                      selectedKeys={
+                        editForm.personalInfo.gender ? [editForm.personalInfo.gender] : []
+                      }
+                      onChange={(e) =>
+                        handleEditFormChange('personalInfo', 'gender', e.target.value)
+                      }
                     >
-                      <SelectItem key="Male" value="Male">Male</SelectItem>
-                      <SelectItem key="Female" value="Female">Female</SelectItem>
-                      <SelectItem key="Other" value="Other">Other</SelectItem>
+                      <SelectItem key="Male" value="Male">
+                        Male
+                      </SelectItem>
+                      <SelectItem key="Female" value="Female">
+                        Female
+                      </SelectItem>
+                      <SelectItem key="Other" value="Other">
+                        Other
+                      </SelectItem>
                     </Select>
                     <Input
                       label="Date of Birth"
                       type="date"
                       value={editForm.personalInfo.dateOfBirth}
-                      onChange={(e) => handleEditFormChange('personalInfo', 'dateOfBirth', e.target.value)}
+                      onChange={(e) =>
+                        handleEditFormChange('personalInfo', 'dateOfBirth', e.target.value)
+                      }
                     />
                     <div className="md:col-span-2">
                       <Divider className="my-2" />
@@ -678,22 +748,30 @@ const AdminStudents = () => {
                     <Input
                       label="Street"
                       value={editForm.personalInfo.address.street}
-                      onChange={(e) => handleEditFormChange('personalInfo', 'address.street', e.target.value)}
+                      onChange={(e) =>
+                        handleEditFormChange('personalInfo', 'address.street', e.target.value)
+                      }
                     />
                     <Input
                       label="City"
                       value={editForm.personalInfo.address.city}
-                      onChange={(e) => handleEditFormChange('personalInfo', 'address.city', e.target.value)}
+                      onChange={(e) =>
+                        handleEditFormChange('personalInfo', 'address.city', e.target.value)
+                      }
                     />
                     <Input
                       label="State"
                       value={editForm.personalInfo.address.state}
-                      onChange={(e) => handleEditFormChange('personalInfo', 'address.state', e.target.value)}
+                      onChange={(e) =>
+                        handleEditFormChange('personalInfo', 'address.state', e.target.value)
+                      }
                     />
                     <Input
                       label="Pincode"
                       value={editForm.personalInfo.address.pincode}
-                      onChange={(e) => handleEditFormChange('personalInfo', 'address.pincode', e.target.value)}
+                      onChange={(e) =>
+                        handleEditFormChange('personalInfo', 'address.pincode', e.target.value)
+                      }
                     />
                   </div>
                 </Tab>
@@ -704,29 +782,45 @@ const AdminStudents = () => {
                     <Input
                       label="Registration Number"
                       value={editForm.academicInfo.registrationNumber}
-                      onChange={(e) => handleEditFormChange('academicInfo', 'registrationNumber', e.target.value)}
+                      onChange={(e) =>
+                        handleEditFormChange('academicInfo', 'registrationNumber', e.target.value)
+                      }
                     />
                     <Input
                       label="Course"
                       value={editForm.academicInfo.course}
-                      onChange={(e) => handleEditFormChange('academicInfo', 'course', e.target.value)}
+                      onChange={(e) =>
+                        handleEditFormChange('academicInfo', 'course', e.target.value)
+                      }
                     />
                     <Select
                       label="Branch"
-                      selectedKeys={editForm.academicInfo.branch ? [editForm.academicInfo.branch] : []}
-                      onChange={(e) => handleEditFormChange('academicInfo', 'branch', e.target.value)}
+                      selectedKeys={
+                        editForm.academicInfo.branch ? [editForm.academicInfo.branch] : []
+                      }
+                      onChange={(e) =>
+                        handleEditFormChange('academicInfo', 'branch', e.target.value)
+                      }
                     >
                       {BRANCHES.map((branch) => (
-                        <SelectItem key={branch} value={branch}>{branch}</SelectItem>
+                        <SelectItem key={branch} value={branch}>
+                          {branch}
+                        </SelectItem>
                       ))}
                     </Select>
                     <Select
                       label="Batch"
-                      selectedKeys={editForm.academicInfo.batch ? [editForm.academicInfo.batch] : []}
-                      onChange={(e) => handleEditFormChange('academicInfo', 'batch', e.target.value)}
+                      selectedKeys={
+                        editForm.academicInfo.batch ? [editForm.academicInfo.batch] : []
+                      }
+                      onChange={(e) =>
+                        handleEditFormChange('academicInfo', 'batch', e.target.value)
+                      }
                     >
                       {BATCHES.map((batch) => (
-                        <SelectItem key={batch.toString()} value={batch.toString()}>{batch}</SelectItem>
+                        <SelectItem key={batch.toString()} value={batch.toString()}>
+                          {batch}
+                        </SelectItem>
                       ))}
                     </Select>
                     <Input
@@ -735,7 +829,9 @@ const AdminStudents = () => {
                       min="1"
                       max="4"
                       value={editForm.academicInfo.yearOfStudy}
-                      onChange={(e) => handleEditFormChange('academicInfo', 'yearOfStudy', e.target.value)}
+                      onChange={(e) =>
+                        handleEditFormChange('academicInfo', 'yearOfStudy', e.target.value)
+                      }
                     />
                     <Input
                       label="CGPA"
@@ -751,7 +847,9 @@ const AdminStudents = () => {
                       type="number"
                       min="0"
                       value={editForm.academicInfo.backlogs}
-                      onChange={(e) => handleEditFormChange('academicInfo', 'backlogs', e.target.value)}
+                      onChange={(e) =>
+                        handleEditFormChange('academicInfo', 'backlogs', e.target.value)
+                      }
                     />
                     <Input
                       label="10th Percentage"
@@ -760,7 +858,9 @@ const AdminStudents = () => {
                       min="0"
                       max="100"
                       value={editForm.academicInfo.tenthPercentage}
-                      onChange={(e) => handleEditFormChange('academicInfo', 'tenthPercentage', e.target.value)}
+                      onChange={(e) =>
+                        handleEditFormChange('academicInfo', 'tenthPercentage', e.target.value)
+                      }
                     />
                     <Input
                       label="12th Percentage"
@@ -769,7 +869,9 @@ const AdminStudents = () => {
                       min="0"
                       max="100"
                       value={editForm.academicInfo.twelfthPercentage}
-                      onChange={(e) => handleEditFormChange('academicInfo', 'twelfthPercentage', e.target.value)}
+                      onChange={(e) =>
+                        handleEditFormChange('academicInfo', 'twelfthPercentage', e.target.value)
+                      }
                     />
                   </div>
                 </Tab>
@@ -822,16 +924,22 @@ const AdminStudents = () => {
                       <Select
                         label="Placement Status"
                         selectedKeys={editForm.placementStatus ? [editForm.placementStatus] : []}
-                        onChange={(e) => handleEditFormChange('root', 'placementStatus', e.target.value)}
+                        onChange={(e) =>
+                          handleEditFormChange('root', 'placementStatus', e.target.value)
+                        }
                       >
                         {Object.values(PLACEMENT_STATUS).map((status) => (
-                          <SelectItem key={status} value={status}>{status}</SelectItem>
+                          <SelectItem key={status} value={status}>
+                            {status}
+                          </SelectItem>
                         ))}
                       </Select>
                       <div className="flex items-center gap-4">
                         <Switch
                           isSelected={editForm.isEligible}
-                          onValueChange={(value) => handleEditFormChange('root', 'isEligible', value)}
+                          onValueChange={(value) =>
+                            handleEditFormChange('root', 'isEligible', value)
+                          }
                         >
                           Eligible for Placement
                         </Switch>
@@ -843,7 +951,9 @@ const AdminStudents = () => {
                         label="Eligibility Remarks"
                         placeholder="Reason for ineligibility..."
                         value={editForm.eligibilityRemarks}
-                        onChange={(e) => handleEditFormChange('root', 'eligibilityRemarks', e.target.value)}
+                        onChange={(e) =>
+                          handleEditFormChange('root', 'eligibilityRemarks', e.target.value)
+                        }
                       />
                     )}
 
@@ -855,19 +965,25 @@ const AdminStudents = () => {
                           <Input
                             label="Company Name"
                             value={editForm.placedAt.companyName}
-                            onChange={(e) => handleEditFormChange('placedAt', 'companyName', e.target.value)}
+                            onChange={(e) =>
+                              handleEditFormChange('placedAt', 'companyName', e.target.value)
+                            }
                           />
                           <Input
                             label="Role"
                             value={editForm.placedAt.role}
-                            onChange={(e) => handleEditFormChange('placedAt', 'role', e.target.value)}
+                            onChange={(e) =>
+                              handleEditFormChange('placedAt', 'role', e.target.value)
+                            }
                           />
                           <Input
                             label="Package (LPA)"
                             type="number"
                             step="0.1"
                             value={editForm.placedAt.package}
-                            onChange={(e) => handleEditFormChange('placedAt', 'package', e.target.value)}
+                            onChange={(e) =>
+                              handleEditFormChange('placedAt', 'package', e.target.value)
+                            }
                           />
                         </div>
                       </>
@@ -881,11 +997,7 @@ const AdminStudents = () => {
             <Button variant="flat" onPress={onEditClose}>
               Cancel
             </Button>
-            <Button 
-              color="primary" 
-              onPress={handleSaveStudent}
-              isLoading={isUpdating}
-            >
+            <Button color="primary" onPress={handleSaveStudent} isLoading={isUpdating}>
               Save Changes
             </Button>
           </ModalFooter>
