@@ -40,7 +40,9 @@ const Dashboard = lazyWithProgress(() => import('../pages/dashboard/index.jsx'))
 // Student Dashboard Pages
 const StudentDashboard = lazyWithProgress(() => import('../pages/dashboard/student'));
 const StudentJobs = lazyWithProgress(() => import('../pages/dashboard/student/jobs'));
-const StudentApplications = lazyWithProgress(() => import('../pages/dashboard/student/applications'));
+const StudentApplications = lazyWithProgress(
+  () => import('../pages/dashboard/student/applications')
+);
 const StudentEvents = lazyWithProgress(() => import('../pages/dashboard/student/events'));
 const StudentResources = lazyWithProgress(() => import('../pages/dashboard/student/resources'));
 const StudentProfile = lazyWithProgress(() => import('../pages/dashboard/student/profile'));
@@ -49,14 +51,20 @@ const StudentProfile = lazyWithProgress(() => import('../pages/dashboard/student
 const AdminDashboard = lazyWithProgress(() => import('../pages/dashboard/admin'));
 const AdminJobs = lazyWithProgress(() => import('../pages/dashboard/admin/jobs'));
 const AdminStudents = lazyWithProgress(() => import('../pages/dashboard/admin/students'));
-const AdminUserVerification = lazyWithProgress(() => import('../pages/dashboard/admin/user-verification'));
+const AdminUserVerification = lazyWithProgress(
+  () => import('../pages/dashboard/admin/user-verification')
+);
 const AdminAnnouncements = lazyWithProgress(() => import('../pages/dashboard/admin/announcements'));
 
 // Coordinator Dashboard Pages
 const CoordinatorDashboard = lazyWithProgress(() => import('../pages/dashboard/coordinator'));
 const CoordinatorJobs = lazyWithProgress(() => import('../pages/dashboard/coordinator/jobs'));
-const CoordinatorStudents = lazyWithProgress(() => import('../pages/dashboard/coordinator/students'));
-const CoordinatorApplications = lazyWithProgress(() => import('../pages/dashboard/coordinator/applications'));
+const CoordinatorStudents = lazyWithProgress(
+  () => import('../pages/dashboard/coordinator/students')
+);
+const CoordinatorApplications = lazyWithProgress(
+  () => import('../pages/dashboard/coordinator/applications')
+);
 
 // Recruiter Dashboard Pages
 const RecruiterDashboard = lazyWithProgress(() => import('../pages/dashboard/recruiter'));

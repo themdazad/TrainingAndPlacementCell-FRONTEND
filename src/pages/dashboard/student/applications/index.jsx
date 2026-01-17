@@ -35,9 +35,7 @@ const ApplicationCard = ({ application, onWithdraw }) => {
               <h3 className="font-semibold text-lg">
                 {application.jobId?.title || 'Job Position'}
               </h3>
-              <p className="text-default-500">
-                {application.jobId?.company || 'Company'}
-              </p>
+              <p className="text-default-500">{application.jobId?.company || 'Company'}</p>
               <div className="flex flex-wrap gap-2 mt-2">
                 <Chip
                   color={APPLICATION_STATUS_COLORS[application.status] || 'default'}
@@ -68,8 +66,8 @@ const ApplicationCard = ({ application, onWithdraw }) => {
             <div className="mt-4 pt-4 border-t border-divider">
               <p className="text-xs text-default-400 mb-2">Latest Update:</p>
               <p className="text-sm">
-                {application.timeline[application.timeline.length - 1]?.remarks || 
-                 `Status changed to ${application.status}`}
+                {application.timeline[application.timeline.length - 1]?.remarks ||
+                  `Status changed to ${application.status}`}
               </p>
             </div>
           )}
@@ -110,10 +108,7 @@ const ApplicationCard = ({ application, onWithdraw }) => {
                 </div>
                 <div>
                   <p className="text-sm text-default-400">Current Status</p>
-                  <Chip
-                    color={APPLICATION_STATUS_COLORS[application.status]}
-                    variant="flat"
-                  >
+                  <Chip color={APPLICATION_STATUS_COLORS[application.status]} variant="flat">
                     {application.status}
                   </Chip>
                 </div>
@@ -147,9 +142,7 @@ const ApplicationCard = ({ application, onWithdraw }) => {
                           {event.remarks && (
                             <p className="text-sm text-default-500">{event.remarks}</p>
                           )}
-                          <p className="text-xs text-default-400">
-                            {formatDate(event.changedAt)}
-                          </p>
+                          <p className="text-xs text-default-400">{formatDate(event.changedAt)}</p>
                         </div>
                       </div>
                     ))}
@@ -170,7 +163,8 @@ const ApplicationCard = ({ application, onWithdraw }) => {
 };
 
 const StudentApplications = () => {
-  const { applications, pagination, loading, fetchMyApplications, withdrawApplication } = useApplications();
+  const { applications, pagination, loading, fetchMyApplications, withdrawApplication } =
+    useApplications();
   const [selectedTab, setSelectedTab] = useState('all');
   const [page, setPage] = useState(1);
 
@@ -227,38 +221,42 @@ const StudentApplications = () => {
       {/* Applications List */}
       {loading ? (
         <div className="space-y-4">
-          {Array(4).fill(0).map((_, i) => (
-            <Skeleton key={i} className="h-40 rounded-xl" />
-          ))}
+          {Array(4)
+            .fill(0)
+            .map((_, i) => (
+              <Skeleton key={i} className="h-40 rounded-xl" />
+            ))}
         </div>
       ) : applications.length > 0 ? (
         <>
           <div className="space-y-4">
             {applications.map((app) => (
-              <ApplicationCard
-                key={app._id}
-                application={app}
-                onWithdraw={handleWithdraw}
-              />
+              <ApplicationCard key={app._id} application={app} onWithdraw={handleWithdraw} />
             ))}
           </div>
 
           {/* Pagination */}
           {pagination.pages > 1 && (
             <div className="flex justify-center">
-              <Pagination
-                total={pagination.pages}
-                page={page}
-                onChange={setPage}
-              />
+              <Pagination total={pagination.pages} page={page} onChange={setPage} />
             </div>
           )}
         </>
       ) : (
         <Card>
           <CardBody className="text-center py-12">
-            <svg className="w-16 h-16 mx-auto text-default-300 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            <svg
+              className="w-16 h-16 mx-auto text-default-300 mb-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.5}
+                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+              />
             </svg>
             <h3 className="text-lg font-medium mb-2">No Applications</h3>
             <p className="text-default-500">

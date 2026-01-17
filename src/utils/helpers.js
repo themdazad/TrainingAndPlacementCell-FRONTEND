@@ -42,22 +42,21 @@ export const isRecruiter = (user) => hasRole(user, USER_ROLES.RECRUITER);
 /**
  * Check if user is staff (admin or coordinator)
  */
-export const isStaff = (user) => 
-  hasAnyRole(user, [USER_ROLES.ADMIN, USER_ROLES.COORDINATOR]);
+export const isStaff = (user) => hasAnyRole(user, [USER_ROLES.ADMIN, USER_ROLES.COORDINATOR]);
 
 /**
  * Get dashboard path based on user role
  */
 export const getDashboardPath = (user) => {
   if (!user || !user.role) return '/';
-  
+
   const dashboardPaths = {
     [USER_ROLES.STUDENT]: '/dashboard/student',
     [USER_ROLES.ADMIN]: '/dashboard/admin',
     [USER_ROLES.COORDINATOR]: '/dashboard/coordinator',
     [USER_ROLES.RECRUITER]: '/dashboard/recruiter',
   };
-  
+
   return dashboardPaths[user.role] || '/';
 };
 
@@ -84,13 +83,13 @@ export const getInitials = (user) => {
  */
 export const formatDate = (date, options = {}) => {
   if (!date) return '';
-  
+
   const defaultOptions = {
     year: 'numeric',
     month: 'short',
     day: 'numeric',
   };
-  
+
   return new Date(date).toLocaleDateString('en-IN', {
     ...defaultOptions,
     ...options,
@@ -102,7 +101,7 @@ export const formatDate = (date, options = {}) => {
  */
 export const formatDateTime = (date) => {
   if (!date) return '';
-  
+
   return new Date(date).toLocaleString('en-IN', {
     year: 'numeric',
     month: 'short',
@@ -117,7 +116,7 @@ export const formatDateTime = (date) => {
  */
 export const formatPackage = (amount, currency = 'INR') => {
   if (!amount) return 'Not disclosed';
-  
+
   if (currency === 'INR') {
     if (amount >= 10000000) {
       return `₹${(amount / 10000000).toFixed(2)} Cr`;
@@ -127,7 +126,7 @@ export const formatPackage = (amount, currency = 'INR') => {
     }
     return `₹${amount.toLocaleString('en-IN')}`;
   }
-  
+
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency,
@@ -156,16 +155,16 @@ export const isDeadlinePassed = (deadline) => {
  */
 export const getRelativeTime = (date) => {
   if (!date) return '';
-  
+
   const now = new Date();
   const then = new Date(date);
   const diffInSeconds = Math.floor((now - then) / 1000);
-  
+
   if (diffInSeconds < 60) return 'Just now';
   if (diffInSeconds < 3600) return `${Math.floor(diffInSeconds / 60)}m ago`;
   if (diffInSeconds < 86400) return `${Math.floor(diffInSeconds / 3600)}h ago`;
   if (diffInSeconds < 604800) return `${Math.floor(diffInSeconds / 86400)}d ago`;
-  
+
   return formatDate(date);
 };
 

@@ -34,13 +34,8 @@ import { formatDate, getFullName, getInitials } from '../../../../utils/helpers'
 import { APPLICATION_STATUS, APPLICATION_STATUS_COLORS } from '../../../../constants/api.constants';
 
 const CoordinatorApplications = () => {
-  const { 
-    applications, 
-    pagination, 
-    loading, 
-    fetchAllApplications,
-    updateApplicationStatus 
-  } = useApplications();
+  const { applications, pagination, loading, fetchAllApplications, updateApplicationStatus } =
+    useApplications();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [selectedApplication, setSelectedApplication] = useState(null);
   const [statusUpdate, setStatusUpdate] = useState({ status: '', remarks: '' });
@@ -78,12 +73,12 @@ const CoordinatorApplications = () => {
 
   const handleUpdateStatus = async () => {
     if (!selectedApplication || !statusUpdate.status) return;
-    
+
     setUpdating(true);
     try {
       await updateApplicationStatus(
-        selectedApplication._id, 
-        statusUpdate.status, 
+        selectedApplication._id,
+        statusUpdate.status,
         statusUpdate.remarks
       );
       toast.success('Application status updated');
@@ -110,10 +105,7 @@ const CoordinatorApplications = () => {
       case 'student':
         return (
           <div className="flex items-center gap-3">
-            <Avatar
-              name={getInitials(application.studentId?.userId)}
-              size="sm"
-            />
+            <Avatar name={getInitials(application.studentId?.userId)} size="sm" />
             <div>
               <p className="font-medium">{getFullName(application.studentId?.userId)}</p>
               <p className="text-xs text-default-400">{application.studentId?.rollNumber}</p>
@@ -133,8 +125,8 @@ const CoordinatorApplications = () => {
         return formatDate(application.appliedAt);
       case 'status':
         return (
-          <Chip 
-            size="sm" 
+          <Chip
+            size="sm"
             color={APPLICATION_STATUS_COLORS[application.status] || 'default'}
             variant="flat"
           >
@@ -144,9 +136,9 @@ const CoordinatorApplications = () => {
       case 'actions':
         return (
           <div className="flex gap-1">
-            <Button 
-              size="sm" 
-              color="primary" 
+            <Button
+              size="sm"
+              color="primary"
               variant="flat"
               onPress={() => handleStatusChange(application)}
             >
@@ -178,7 +170,7 @@ const CoordinatorApplications = () => {
         <Card>
           <CardBody className="text-center py-4">
             <p className="text-2xl font-bold text-warning">
-              {applications.filter(a => a.status === 'Pending').length}
+              {applications.filter((a) => a.status === 'Pending').length}
             </p>
             <p className="text-xs text-default-500">Pending</p>
           </CardBody>
@@ -186,7 +178,7 @@ const CoordinatorApplications = () => {
         <Card>
           <CardBody className="text-center py-4">
             <p className="text-2xl font-bold text-secondary">
-              {applications.filter(a => a.status === 'Shortlisted').length}
+              {applications.filter((a) => a.status === 'Shortlisted').length}
             </p>
             <p className="text-xs text-default-500">Shortlisted</p>
           </CardBody>
@@ -194,7 +186,7 @@ const CoordinatorApplications = () => {
         <Card>
           <CardBody className="text-center py-4">
             <p className="text-2xl font-bold text-success">
-              {applications.filter(a => a.status === 'Offered' || a.status === 'Accepted').length}
+              {applications.filter((a) => a.status === 'Offered' || a.status === 'Accepted').length}
             </p>
             <p className="text-xs text-default-500">Offers</p>
           </CardBody>
@@ -202,7 +194,7 @@ const CoordinatorApplications = () => {
         <Card>
           <CardBody className="text-center py-4">
             <p className="text-2xl font-bold text-danger">
-              {applications.filter(a => a.status === 'Rejected').length}
+              {applications.filter((a) => a.status === 'Rejected').length}
             </p>
             <p className="text-xs text-default-500">Rejected</p>
           </CardBody>
@@ -219,8 +211,18 @@ const CoordinatorApplications = () => {
               onChange={(e) => setFilters((prev) => ({ ...prev, search: e.target.value }))}
               onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
               startContent={
-                <svg className="w-4 h-4 text-default-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                <svg
+                  className="w-4 h-4 text-default-400"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
                 </svg>
               }
               className="flex-1"
@@ -249,9 +251,7 @@ const CoordinatorApplications = () => {
         <CardBody className="p-0">
           <Table aria-label="Applications table" removeWrapper>
             <TableHeader columns={columns}>
-              {(column) => (
-                <TableColumn key={column.key}>{column.label}</TableColumn>
-              )}
+              {(column) => <TableColumn key={column.key}>{column.label}</TableColumn>}
             </TableHeader>
             <TableBody
               items={applications}
@@ -261,9 +261,7 @@ const CoordinatorApplications = () => {
             >
               {(application) => (
                 <TableRow key={application._id}>
-                  {(columnKey) => (
-                    <TableCell>{renderCell(application, columnKey)}</TableCell>
-                  )}
+                  {(columnKey) => <TableCell>{renderCell(application, columnKey)}</TableCell>}
                 </TableRow>
               )}
             </TableBody>
@@ -290,16 +288,19 @@ const CoordinatorApplications = () => {
             {selectedApplication && (
               <>
                 <div className="p-3 bg-default-100 rounded-lg">
-                  <p className="font-medium">{getFullName(selectedApplication.studentId?.userId)}</p>
+                  <p className="font-medium">
+                    {getFullName(selectedApplication.studentId?.userId)}
+                  </p>
                   <p className="text-sm text-default-500">
-                    Applied for: {selectedApplication.jobId?.title} at {selectedApplication.jobId?.company}
+                    Applied for: {selectedApplication.jobId?.title} at{' '}
+                    {selectedApplication.jobId?.company}
                   </p>
                 </div>
-                
+
                 <Select
                   label="New Status"
                   selectedKeys={statusUpdate.status ? [statusUpdate.status] : []}
-                  onChange={(e) => setStatusUpdate(prev => ({ ...prev, status: e.target.value }))}
+                  onChange={(e) => setStatusUpdate((prev) => ({ ...prev, status: e.target.value }))}
                 >
                   {Object.values(APPLICATION_STATUS).map((status) => (
                     <SelectItem key={status} value={status}>
@@ -307,12 +308,14 @@ const CoordinatorApplications = () => {
                     </SelectItem>
                   ))}
                 </Select>
-                
+
                 <Textarea
                   label="Remarks (optional)"
                   placeholder="Add any notes about this status change..."
                   value={statusUpdate.remarks}
-                  onChange={(e) => setStatusUpdate(prev => ({ ...prev, remarks: e.target.value }))}
+                  onChange={(e) =>
+                    setStatusUpdate((prev) => ({ ...prev, remarks: e.target.value }))
+                  }
                 />
               </>
             )}
@@ -321,11 +324,7 @@ const CoordinatorApplications = () => {
             <Button variant="light" onPress={onClose}>
               Cancel
             </Button>
-            <Button 
-              color="primary" 
-              isLoading={updating}
-              onPress={handleUpdateStatus}
-            >
+            <Button color="primary" isLoading={updating} onPress={handleUpdateStatus}>
               Update Status
             </Button>
           </ModalFooter>

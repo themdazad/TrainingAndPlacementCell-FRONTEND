@@ -192,7 +192,7 @@ const Signup = () => {
 
       // Fetch user data after successful registration
       await dispatch(checkAuthStatus());
-      
+
       toast.success('Account created successfully!');
       navigate(PATHS.DASHBOARD.ROOT);
     } catch (error) {
@@ -370,9 +370,7 @@ const Signup = () => {
           {step === 2 && (
             <div className="space-y-6">
               <div className="text-center space-y-2">
-                <p className="text-sm text-slate-600 dark:text-slate-400">
-                  Enter the code sent to
-                </p>
+                <p className="text-sm text-slate-600 dark:text-slate-400">Enter the code sent to</p>
                 <p className="font-medium text-slate-900 dark:text-white">{email}</p>
               </div>
 

@@ -90,7 +90,7 @@ const AdminJobs = () => {
 
   const handleAction = async () => {
     if (!selectedJob) return;
-    
+
     setActionLoading(true);
     try {
       if (actionType === 'delete') {
@@ -98,7 +98,9 @@ const AdminJobs = () => {
         toast.success('Job deleted successfully');
       } else {
         await updateJobStatus(selectedJob._id, actionType, remarks);
-        toast.success(`Job ${actionType === 'Published' ? 'approved' : actionType.toLowerCase()} successfully`);
+        toast.success(
+          `Job ${actionType === 'Published' ? 'approved' : actionType.toLowerCase()} successfully`
+        );
       }
       onClose();
       handleSearch();
@@ -131,18 +133,18 @@ const AdminJobs = () => {
       case 'company':
         return job.company;
       case 'type':
-        return <Chip size="sm" variant="flat">{job.type}</Chip>;
+        return (
+          <Chip size="sm" variant="flat">
+            {job.type}
+          </Chip>
+        );
       case 'package':
         return formatPackage(job.compensation?.ctc);
       case 'deadline':
         return formatDate(job.applicationDeadline);
       case 'status':
         return (
-          <Chip 
-            size="sm" 
-            color={statusColorMap[job.status] || 'default'}
-            variant="flat"
-          >
+          <Chip size="sm" color={statusColorMap[job.status] || 'default'} variant="flat">
             {job.status}
           </Chip>
         );
@@ -152,7 +154,12 @@ const AdminJobs = () => {
             <DropdownTrigger>
               <Button isIconOnly size="sm" variant="light">
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"
+                  />
                 </svg>
               </Button>
             </DropdownTrigger>
@@ -169,16 +176,16 @@ const AdminJobs = () => {
                 </DropdownItem>
               )}
               {job.status !== 'Cancelled' && (
-                <DropdownItem 
-                  key="cancel" 
+                <DropdownItem
+                  key="cancel"
                   className="text-warning"
                   onPress={() => openActionModal(job, 'Cancelled')}
                 >
                   Cancel
                 </DropdownItem>
               )}
-              <DropdownItem 
-                key="delete" 
+              <DropdownItem
+                key="delete"
                 className="text-danger"
                 onPress={() => openActionModal(job, 'delete')}
               >
@@ -212,8 +219,18 @@ const AdminJobs = () => {
               onChange={(e) => setFilters((prev) => ({ ...prev, search: e.target.value }))}
               onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
               startContent={
-                <svg className="w-4 h-4 text-default-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                <svg
+                  className="w-4 h-4 text-default-400"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
                 </svg>
               }
               className="flex-1"
@@ -254,9 +271,7 @@ const AdminJobs = () => {
         <CardBody className="p-0">
           <Table aria-label="Jobs table" removeWrapper>
             <TableHeader columns={columns}>
-              {(column) => (
-                <TableColumn key={column.key}>{column.label}</TableColumn>
-              )}
+              {(column) => <TableColumn key={column.key}>{column.label}</TableColumn>}
             </TableHeader>
             <TableBody
               items={jobs}
@@ -266,9 +281,7 @@ const AdminJobs = () => {
             >
               {(job) => (
                 <TableRow key={job._id}>
-                  {(columnKey) => (
-                    <TableCell>{renderCell(job, columnKey)}</TableCell>
-                  )}
+                  {(columnKey) => <TableCell>{renderCell(job, columnKey)}</TableCell>}
                 </TableRow>
               )}
             </TableBody>
@@ -291,13 +304,17 @@ const AdminJobs = () => {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalContent>
           <ModalHeader>
-            {actionType === 'delete' ? 'Delete Job' : 
-             actionType === 'Published' ? 'Approve Job' :
-             actionType === 'Closed' ? 'Close Job' : 'Cancel Job'}
+            {actionType === 'delete'
+              ? 'Delete Job'
+              : actionType === 'Published'
+                ? 'Approve Job'
+                : actionType === 'Closed'
+                  ? 'Close Job'
+                  : 'Cancel Job'}
           </ModalHeader>
           <ModalBody>
             <p className="text-default-500">
-              {actionType === 'delete' 
+              {actionType === 'delete'
                 ? `Are you sure you want to delete "${selectedJob?.title}"? This action cannot be undone.`
                 : `Are you sure you want to ${actionType === 'Published' ? 'approve' : actionType?.toLowerCase()} this job posting?`}
             </p>
@@ -314,13 +331,16 @@ const AdminJobs = () => {
             <Button variant="light" onPress={onClose}>
               Cancel
             </Button>
-            <Button 
-              color={actionType === 'delete' || actionType === 'Cancelled' ? 'danger' : 'primary'} 
+            <Button
+              color={actionType === 'delete' || actionType === 'Cancelled' ? 'danger' : 'primary'}
               isLoading={actionLoading}
               onPress={handleAction}
             >
-              {actionType === 'delete' ? 'Delete' : 
-               actionType === 'Published' ? 'Approve' : 'Confirm'}
+              {actionType === 'delete'
+                ? 'Delete'
+                : actionType === 'Published'
+                  ? 'Approve'
+                  : 'Confirm'}
             </Button>
           </ModalFooter>
         </ModalContent>
