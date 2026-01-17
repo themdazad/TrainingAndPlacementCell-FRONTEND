@@ -3,6 +3,8 @@ import PLACEMENT_BROCHURE from '../../../assets/downloads/GEC_SIWAN_PLACEMENT_BR
 import SimpleSlider from './SimpleSlider.jsx';
 import HeroSliderImages from '../../../data/hero-slider-images.js';
 import { Download } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import PATHS from '../../../constants/paths.js';
 
 const sliderImages = HeroSliderImages;
 export default function Hero() {
@@ -68,9 +70,11 @@ export default function Hero() {
               <Download className="mr-2 w-5 h-5 transition-transform group-hover:scale-110" />
               Download Brochure
             </a>
-            <button className="flex items-center justify-center bg-blue-600 text-white hover:bg-blue-700 px-6 py-3 rounded-3xl transition-all duration-200 transform hover:scale-105">
-              Explore Opportunities
-            </button>
+            <Link to={PATHS.MAIN.ASSISTANT}>
+              <button className="flex items-center justify-center bg-blue-600 text-white hover:bg-blue-700 px-6 py-3 rounded-3xl transition-all duration-200 transform hover:scale-105">
+                AI Assistant
+              </button>
+            </Link>
           </motion.div>
         </motion.div>
 

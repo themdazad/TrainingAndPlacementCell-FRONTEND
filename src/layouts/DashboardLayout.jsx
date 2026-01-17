@@ -211,6 +211,83 @@ const DashboardLayout = () => {
     );
   };
 
+  const DashboardHeader = () => {
+    return (
+      <header className="sticky top-0 z-30 h-16 bg-content1/80 backdrop-blur-lg border-b border-divider flex items-center justify-between px-4 lg:px-6">
+        {/* Mobile menu button */}
+        <Button
+          isIconOnly
+          variant="light"
+          className="lg:hidden"
+          onPress={() => setMobileMenuOpen(true)}
+        >
+          <Icon path="M4 6h16M4 12h16M4 18h16" />
+        </Button>
+
+        {/* Page title placeholder - can be dynamic */}
+        <div className="hidden lg:block" />
+
+        {/* Header actions */}
+        <div className="flex items-center gap-2">
+          {/* Notifications */}
+          <Badge content="3" color="danger" size="sm">
+            <Button isIconOnly variant="light" radius="full">
+              <Icon path="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+            </Button>
+          </Badge>
+
+          {/* User dropdown */}
+          <Dropdown placement="bottom-end">
+            <DropdownTrigger>
+              <Button variant="light" className="gap-2">
+                <Avatar name={getInitials(user)} src={profile?.avatar || user?.avatar} size="sm" />
+                <span className="hidden md:block max-w-[100px] truncate">{getFullName(user)}</span>
+                <Icon path="M19 9l-7 7-7-7" className="w-4 h-4" />
+              </Button>
+            </DropdownTrigger>
+            <DropdownMenu aria-label="User menu">
+              <DropdownItem
+                key="profile"
+                startContent={
+                  <Icon
+                    path="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                    className="w-4 h-4"
+                  />
+                }
+              >
+                My Profile
+              </DropdownItem>
+              <DropdownItem
+                key="settings"
+                startContent={
+                  <Icon
+                    path="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+                    className="w-4 h-4"
+                  />
+                }
+              >
+                Settings
+              </DropdownItem>
+              <DropdownItem
+                key="logout"
+                color="danger"
+                startContent={
+                  <Icon
+                    path="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                    className="w-4 h-4"
+                  />
+                }
+                onPress={handleLogout}
+              >
+                Logout
+              </DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
+        </div>
+      </header>
+    );
+  };
+
   return (
     <div className="flex min-h-screen bg-background">
       {/* Mobile sidebar overlay */}

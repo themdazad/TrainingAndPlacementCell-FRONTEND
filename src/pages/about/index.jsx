@@ -1,7 +1,5 @@
 import { Image } from '@heroui/react';
 import ReachUs from './components/ReachUs.jsx';
-import TPCellCoordinators from './components/TPCellCoordinators.jsx';
-import TPCellMembers from './components/TPCellMembers.jsx';
 
 export default function AboutUs() {
   return (
@@ -48,8 +46,6 @@ export default function AboutUs() {
           </div> */}
         </section>
         <ReachUs />
-        <TPCellMembers />
-        <TPCellCoordinators />
       </div>
     </main>
   );

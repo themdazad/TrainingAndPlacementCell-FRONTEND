@@ -1,7 +1,11 @@
 /**
  * Resources API Service
- * Handles study materials, mock tests, interview experiences
+ * Explanation:
+ * This module provides functions to interact with the resources-related API endpoints.
+ * It includes methods for fetching, creating, updating, deleting, approving, liking,
+ * and tracking downloads of resources.
  */
+
 import api from '../config';
 
 const resourcesApi = {

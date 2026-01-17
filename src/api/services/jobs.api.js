@@ -1,7 +1,10 @@
 /**
  * Jobs API Service
- * Handles job-related API calls
+ * Explanation:
+ * This module provides functions to interact with the Jobs-related API endpoints.
+ * Each function uses the apiClient to make HTTP requests and returns the server response.
  */
+
 import api from '../config';
 
 const jobsApi = {
