@@ -54,13 +54,7 @@ export const selectTheme = (state) => state.ui.theme;
 export const selectGlobalLoading = (state) => state.ui.globalLoading;
 export const selectModal = (state) => state.ui.modal;
 
-export const {
-  toggleSidebar,
-  setSidebarOpen,
-  setTheme,
-  setGlobalLoading,
-  openModal,
-  closeModal,
-} = uiSlice.actions;
+export const { toggleSidebar, setSidebarOpen, setTheme, setGlobalLoading, openModal, closeModal } =
+  uiSlice.actions;
 
 export default uiSlice.reducer;

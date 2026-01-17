@@ -32,7 +32,7 @@ export function Notice() {
   }, []);
 
   // Filter notices by searchTerm
-  const filteredNotices = data.filter((item) => 
+  const filteredNotices = data.filter((item) =>
     (item.title + (item.description || '')).toLowerCase().includes(searchTerm.toLowerCase())
   );
 

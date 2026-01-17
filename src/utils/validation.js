@@ -17,14 +17,14 @@ export const isValidPhone = (phone) => {
 // Password strength check
 export const getPasswordStrength = (password) => {
   let strength = 0;
-  
+
   if (password.length >= 8) strength++;
   if (password.length >= 12) strength++;
   if (/[a-z]/.test(password)) strength++;
   if (/[A-Z]/.test(password)) strength++;
   if (/[0-9]/.test(password)) strength++;
   if (/[^a-zA-Z0-9]/.test(password)) strength++;
-  
+
   if (strength <= 2) return { level: 'weak', color: 'red' };
   if (strength <= 4) return { level: 'medium', color: 'yellow' };
   return { level: 'strong', color: 'green' };
@@ -84,14 +84,14 @@ export const hasMaxLength = (value, maxLength) => {
 // Form validation helper
 export const validateForm = (values, rules) => {
   const errors = {};
-  
+
   Object.keys(rules).forEach((field) => {
     const fieldRules = rules[field];
     const value = values[field];
-    
+
     fieldRules.forEach((rule) => {
       if (errors[field]) return; // Skip if already has error
-      
+
       switch (rule.type) {
         case 'required':
           if (!isRequired(value)) {
@@ -143,7 +143,7 @@ export const validateForm = (values, rules) => {
       }
     });
   });
-  
+
   return errors;
 };
 

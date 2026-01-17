@@ -156,11 +156,7 @@ export const useResources = () => {
     try {
       const data = await resourcesApi.likeResource(resourceId);
       setResources((prev) =>
-        prev.map((r) =>
-          r._id === resourceId
-            ? { ...r, likes: (r.likes || 0) + 1 }
-            : r
-        )
+        prev.map((r) => (r._id === resourceId ? { ...r, likes: (r.likes || 0) + 1 } : r))
       );
       return data;
     } catch (err) {
@@ -173,11 +169,7 @@ export const useResources = () => {
     try {
       await resourcesApi.trackDownload(resourceId);
       setResources((prev) =>
-        prev.map((r) =>
-          r._id === resourceId
-            ? { ...r, downloads: (r.downloads || 0) + 1 }
-            : r
-        )
+        prev.map((r) => (r._id === resourceId ? { ...r, downloads: (r.downloads || 0) + 1 } : r))
       );
     } catch {
       // Silent fail for tracking

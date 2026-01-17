@@ -18,25 +18,28 @@ export const useJobs = (initialParams = {}) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const fetchJobs = useCallback(async (params = {}) => {
-    setLoading(true);
-    setError(null);
-    try {
-      const data = await jobsApi.getJobs({ ...initialParams, ...params });
-      setJobs(data.jobs || data.data || []);
-      if (data.pagination) {
-        setPagination(data.pagination);
+  const fetchJobs = useCallback(
+    async (params = {}) => {
+      setLoading(true);
+      setError(null);
+      try {
+        const data = await jobsApi.getJobs({ ...initialParams, ...params });
+        setJobs(data.jobs || data.data || []);
+        if (data.pagination) {
+          setPagination(data.pagination);
+        }
+        return data;
+      } catch (err) {
+        const message = err.response?.data?.message || 'Failed to fetch jobs';
+        setError(message);
+        toast.error(message);
+        throw err;
+      } finally {
+        setLoading(false);
       }
-      return data;
-    } catch (err) {
-      const message = err.response?.data?.message || 'Failed to fetch jobs';
-      setError(message);
-      toast.error(message);
-      throw err;
-    } finally {
-      setLoading(false);
-    }
-  }, [initialParams]);
+    },
+    [initialParams]
+  );
 
   const fetchJob = useCallback(async (jobId) => {
     setLoading(true);

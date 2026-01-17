@@ -30,10 +30,10 @@ const Login = () => {
       } else {
         await authAPI.login({ email: loginEmail, password: loginPassword });
       }
-      
+
       // Fetch user data after successful login
       await dispatch(checkAuthStatus());
-      
+
       toast.success(isAdminMode ? 'Welcome Admin!' : 'Welcome back!');
       navigate(PATHS.DASHBOARD.ROOT);
     } catch (error) {
@@ -117,7 +117,9 @@ const Login = () => {
 
           {isAdminMode && (
             <div className="flex items-center justify-between p-3 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg">
-              <span className="text-sm text-amber-700 dark:text-amber-300">🔐 Admin Login Mode</span>
+              <span className="text-sm text-amber-700 dark:text-amber-300">
+                🔐 Admin Login Mode
+              </span>
               <button
                 type="button"
                 onClick={() => {
@@ -137,8 +139,8 @@ const Login = () => {
             <Button
               type="submit"
               className={`w-full font-semibold h-12 rounded-lg transition-colors ${
-                isAdminMode 
-                  ? 'bg-amber-600 text-white hover:bg-amber-700' 
+                isAdminMode
+                  ? 'bg-amber-600 text-white hover:bg-amber-700'
                   : 'bg-blue-600 text-white dark:bg-blue-600 hover:bg-blue-700'
               }`}
               isLoading={loading}

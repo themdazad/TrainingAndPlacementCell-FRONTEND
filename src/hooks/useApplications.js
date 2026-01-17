@@ -99,9 +99,7 @@ export const useApplications = () => {
       const data = await applicationsApi.updateStatus(applicationId, status, remarks);
       // Update local state
       setApplications((prev) =>
-        prev.map((app) =>
-          app._id === applicationId ? { ...app, status } : app
-        )
+        prev.map((app) => (app._id === applicationId ? { ...app, status } : app))
       );
       toast.success(`Application ${status.toLowerCase()}`);
       return data;
@@ -120,9 +118,7 @@ export const useApplications = () => {
     try {
       await applicationsApi.withdrawApplication(applicationId);
       setApplications((prev) =>
-        prev.map((app) =>
-          app._id === applicationId ? { ...app, status: 'Withdrawn' } : app
-        )
+        prev.map((app) => (app._id === applicationId ? { ...app, status: 'Withdrawn' } : app))
       );
       toast.success('Application withdrawn');
     } catch (err) {

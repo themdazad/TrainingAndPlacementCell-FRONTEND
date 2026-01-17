@@ -14,24 +14,27 @@ export const useAuth = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const login = useCallback(async (credentials) => {
-    setLoading(true);
-    setError(null);
-    try {
-      const data = await authApi.login(credentials);
-      dispatch(setUser(data.user));
-      dispatch(setIsAuthenticated(true));
-      toast.success('Login successful!');
-      return data;
-    } catch (err) {
-      const message = err.response?.data?.message || 'Login failed';
-      setError(message);
-      toast.error(message);
-      throw err;
-    } finally {
-      setLoading(false);
-    }
-  }, [dispatch]);
+  const login = useCallback(
+    async (credentials) => {
+      setLoading(true);
+      setError(null);
+      try {
+        const data = await authApi.login(credentials);
+        dispatch(setUser(data.user));
+        dispatch(setIsAuthenticated(true));
+        toast.success('Login successful!');
+        return data;
+      } catch (err) {
+        const message = err.response?.data?.message || 'Login failed';
+        setError(message);
+        toast.error(message);
+        throw err;
+      } finally {
+        setLoading(false);
+      }
+    },
+    [dispatch]
+  );
 
   const register = useCallback(async (userData) => {
     setLoading(true);
