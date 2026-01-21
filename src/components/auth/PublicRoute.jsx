@@ -30,8 +30,6 @@ const PublicRoute = ({ children }) => {
     const roleDashboardMap = {
       student: PATHS.STUDENT.DASHBOARD,
       admin: PATHS.ADMIN.DASHBOARD,
-      coordinator: PATHS.COORDINATOR.DASHBOARD,
-      recruiter: PATHS.RECRUITER.DASHBOARD,
     };
 
     const dashboard = roleDashboardMap[user.role] || PATHS.DASHBOARD.ROOT;

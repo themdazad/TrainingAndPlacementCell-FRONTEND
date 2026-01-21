@@ -1,6 +1,5 @@
 import { Suspense, lazy } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import NProgress from 'nprogress';
 import PATHS from '../constants/paths.js';
 import { useSelector } from 'react-redux';
 import { ProtectedRoute, PublicRoute } from '../components/auth';
@@ -11,65 +10,33 @@ import MainLayout from '../layouts/MainLayout.jsx';
 import AuthLayout from '../layouts/AuthLayout.jsx';
 import DashboardLayout from '../layouts/DashboardLayout.jsx';
 
-// Lazy load wrapper that triggers NProgress
-const lazyWithProgress = (importFn) => {
-  return lazy(() => {
-    NProgress.start();
-    return importFn().finally(() => NProgress.done());
-  });
-};
-
 // Main Pages
-const Home = lazyWithProgress(() => import('../pages/home'));
-const AboutUs = lazyWithProgress(() => import('../pages/about/index.jsx'));
-const Alumni = lazyWithProgress(() => import('../pages/alumni/index.jsx'));
-const Gallery = lazyWithProgress(() => import('../pages/gallery/index.jsx'));
+const Home = lazy(() => import('../pages/home'));
+const AboutUs = lazy(() => import('../pages/about/index.jsx'));
+const Alumni = lazy(() => import('../pages/alumni/index.jsx'));
+const Gallery = lazy(() => import('../pages/gallery/index.jsx'));
 
 // Auth Pages
-const Login = lazyWithProgress(() => import('../pages/auth/components/Login.jsx'));
-const Signup = lazyWithProgress(() => import('../pages/auth/components/Signup.jsx'));
-const ForgotPassword = lazyWithProgress(
-  () => import('../pages/auth/components/ForgotPassword.jsx')
-);
-const ResetPassword = lazyWithProgress(() => import('../pages/auth/components/ResetPassword.jsx'));
+const Login = lazy(() => import('../pages/auth/components/Login.jsx'));
+const Signup = lazy(() => import('../pages/auth/components/Signup.jsx'));
+const ForgotPassword = lazy(() => import('../pages/auth/components/ForgotPassword.jsx'));
+() => import('../pages/auth/components/ForgotPassword.jsx');
+
+const ResetPassword = lazy(() => import('../pages/auth/components/ResetPassword.jsx'));
 
 // Dashboard Fallback - used for redirect logic
 // eslint-disable-next-line no-unused-vars
-const Dashboard = lazyWithProgress(() => import('../pages/dashboard/index.jsx'));
+const Dashboard = lazy(() => import('../pages/dashboard/index.jsx'));
 
 // Student Dashboard Pages
-const StudentDashboard = lazyWithProgress(() => import('../pages/dashboard/student'));
-const StudentJobs = lazyWithProgress(() => import('../pages/dashboard/student/jobs'));
-const StudentApplications = lazyWithProgress(
-  () => import('../pages/dashboard/student/applications')
-);
-const StudentEvents = lazyWithProgress(() => import('../pages/dashboard/student/events'));
-const StudentResources = lazyWithProgress(() => import('../pages/dashboard/student/resources'));
-const StudentProfile = lazyWithProgress(() => import('../pages/dashboard/student/profile'));
+const StudentDashboard = lazy(() => import('../pages/dashboard/student'));
+const StudentProfile = lazy(() => import('../pages/dashboard/student/profile'));
 
 // Admin Dashboard Pages
-const AdminDashboard = lazyWithProgress(() => import('../pages/dashboard/admin'));
-const AdminJobs = lazyWithProgress(() => import('../pages/dashboard/admin/jobs'));
-const AdminStudents = lazyWithProgress(() => import('../pages/dashboard/admin/students'));
-const AdminUserVerification = lazyWithProgress(
-  () => import('../pages/dashboard/admin/user-verification')
-);
-const AdminAnnouncements = lazyWithProgress(() => import('../pages/dashboard/admin/announcements'));
-
-// Coordinator Dashboard Pages
-const CoordinatorDashboard = lazyWithProgress(() => import('../pages/dashboard/coordinator'));
-const CoordinatorJobs = lazyWithProgress(() => import('../pages/dashboard/coordinator/jobs'));
-const CoordinatorStudents = lazyWithProgress(
-  () => import('../pages/dashboard/coordinator/students')
-);
-const CoordinatorApplications = lazyWithProgress(
-  () => import('../pages/dashboard/coordinator/applications')
-);
-
-// Recruiter Dashboard Pages
-const RecruiterDashboard = lazyWithProgress(() => import('../pages/dashboard/recruiter'));
-const RecruiterJobs = lazyWithProgress(() => import('../pages/dashboard/recruiter/jobs'));
-const CreateJob = lazyWithProgress(() => import('../pages/dashboard/recruiter/jobs/create.jsx'));
+const AdminDashboard = lazy(() => import('../pages/dashboard/admin'));
+const AdminStudents = lazy(() => import('../pages/dashboard/admin/students'));
+const AdminUserVerification = lazy(() => import('../pages/dashboard/admin/user-verification'));
+const AdminAnnouncements = lazy(() => import('../pages/dashboard/admin/announcements'));
 
 const AppRoutes = () => {
   const { user } = useSelector((state) => state.auth);
@@ -143,38 +110,6 @@ const AppRoutes = () => {
             }
           />
           <Route
-            path={PATHS.STUDENT.JOBS}
-            element={
-              <ProtectedRoute allowedRoles={[USER_ROLES.STUDENT]}>
-                <StudentJobs />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path={PATHS.STUDENT.APPLICATIONS}
-            element={
-              <ProtectedRoute allowedRoles={[USER_ROLES.STUDENT]}>
-                <StudentApplications />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path={PATHS.STUDENT.EVENTS}
-            element={
-              <ProtectedRoute allowedRoles={[USER_ROLES.STUDENT]}>
-                <StudentEvents />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path={PATHS.STUDENT.RESOURCES}
-            element={
-              <ProtectedRoute allowedRoles={[USER_ROLES.STUDENT]}>
-                <StudentResources />
-              </ProtectedRoute>
-            }
-          />
-          <Route
             path={PATHS.STUDENT.PROFILE}
             element={
               <ProtectedRoute allowedRoles={[USER_ROLES.STUDENT]}>
@@ -192,14 +127,7 @@ const AppRoutes = () => {
               </ProtectedRoute>
             }
           />
-          <Route
-            path={PATHS.ADMIN.JOBS}
-            element={
-              <ProtectedRoute allowedRoles={[USER_ROLES.ADMIN]}>
-                <AdminJobs />
-              </ProtectedRoute>
-            }
-          />
+
           <Route
             path={PATHS.ADMIN.STUDENTS}
             element={
@@ -221,66 +149,6 @@ const AppRoutes = () => {
             element={
               <ProtectedRoute allowedRoles={[USER_ROLES.ADMIN]}>
                 <AdminAnnouncements />
-              </ProtectedRoute>
-            }
-          />
-
-          {/* ===================== COORDINATOR ROUTES ===================== */}
-          <Route
-            path={PATHS.COORDINATOR.DASHBOARD}
-            element={
-              <ProtectedRoute allowedRoles={[USER_ROLES.COORDINATOR, USER_ROLES.ADMIN]}>
-                <CoordinatorDashboard />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path={PATHS.COORDINATOR.JOBS}
-            element={
-              <ProtectedRoute allowedRoles={[USER_ROLES.COORDINATOR, USER_ROLES.ADMIN]}>
-                <CoordinatorJobs />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path={PATHS.COORDINATOR.STUDENTS}
-            element={
-              <ProtectedRoute allowedRoles={[USER_ROLES.COORDINATOR, USER_ROLES.ADMIN]}>
-                <CoordinatorStudents />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path={PATHS.COORDINATOR.APPLICATIONS}
-            element={
-              <ProtectedRoute allowedRoles={[USER_ROLES.COORDINATOR, USER_ROLES.ADMIN]}>
-                <CoordinatorApplications />
-              </ProtectedRoute>
-            }
-          />
-
-          {/* ===================== RECRUITER ROUTES ===================== */}
-          <Route
-            path={PATHS.RECRUITER.DASHBOARD}
-            element={
-              <ProtectedRoute allowedRoles={[USER_ROLES.RECRUITER]}>
-                <RecruiterDashboard />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path={PATHS.RECRUITER.JOBS}
-            element={
-              <ProtectedRoute allowedRoles={[USER_ROLES.RECRUITER]}>
-                <RecruiterJobs />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path={PATHS.RECRUITER.JOBS_CREATE}
-            element={
-              <ProtectedRoute allowedRoles={[USER_ROLES.RECRUITER]}>
-                <CreateJob />
               </ProtectedRoute>
             }
           />

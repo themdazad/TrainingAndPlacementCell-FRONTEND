@@ -1,7 +1,11 @@
 /**
  * Users API Service
- * Handles user management operations for admin
+ * Explanation:
+ * This module provides functions to interact with user-related API endpoints.
+ * It includes methods for managing students, coordinators, recruiters, and fetching user statistics.
+ * Each function uses the apiClient to make HTTP requests and returns the server response.
  */
+
 import apiClient from '../config';
 
 const usersAPI = {
@@ -113,15 +117,6 @@ const usersAPI = {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
-    });
-    return response;
-  },
-
-  // Export students data
-  exportStudents: async (params = {}) => {
-    const response = await apiClient.get('/users/students/export', {
-      params,
-      responseType: 'blob',
     });
     return response;
   },
