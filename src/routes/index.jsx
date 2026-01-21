@@ -27,13 +27,9 @@ const ResetPassword = lazy(() => import('../pages/auth/components/ResetPassword.
 // Dashboard Fallback - used for redirect logic
 // eslint-disable-next-line no-unused-vars
 const Dashboard = lazy(() => import('../pages/dashboard/index.jsx'));
+
 // Student Dashboard Pages
 const StudentDashboard = lazy(() => import('../pages/dashboard/student'));
-const StudentJobs = lazy(() => import('../pages/dashboard/student/jobs'));
-const StudentApplications = lazy(() => import('../pages/dashboard/student/applications'));
-
-const StudentEvents = lazy(() => import('../pages/dashboard/student/events'));
-const StudentResources = lazy(() => import('../pages/dashboard/student/resources'));
 const StudentProfile = lazy(() => import('../pages/dashboard/student/profile'));
 
 // Admin Dashboard Pages
@@ -110,38 +106,6 @@ const AppRoutes = () => {
             element={
               <ProtectedRoute allowedRoles={[USER_ROLES.STUDENT]}>
                 <StudentDashboard />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path={PATHS.STUDENT.JOBS}
-            element={
-              <ProtectedRoute allowedRoles={[USER_ROLES.STUDENT]}>
-                <StudentJobs />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path={PATHS.STUDENT.APPLICATIONS}
-            element={
-              <ProtectedRoute allowedRoles={[USER_ROLES.STUDENT]}>
-                <StudentApplications />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path={PATHS.STUDENT.EVENTS}
-            element={
-              <ProtectedRoute allowedRoles={[USER_ROLES.STUDENT]}>
-                <StudentEvents />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path={PATHS.STUDENT.RESOURCES}
-            element={
-              <ProtectedRoute allowedRoles={[USER_ROLES.STUDENT]}>
-                <StudentResources />
               </ProtectedRoute>
             }
           />

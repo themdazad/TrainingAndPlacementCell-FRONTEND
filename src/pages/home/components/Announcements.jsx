@@ -2,7 +2,7 @@ import { BellDot } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { announcementsAPI } from '../../../api';
-import { useAuth } from '../../../hooks/useAuth';
+import { useAuth } from '../../../hooks/api/index.js';
 import { toast } from '../../../utils/toast';
 
 export default function Announcements() {
@@ -16,7 +16,7 @@ export function Notice() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [searchTerm, setSearchTerm] = useState(''); // 🔍 search
+  const [searchTerm, setSearchTerm] = useState(''); //search
   const { isAuthenticated, user } = useAuth();
   useEffect(() => {
     const fetchAnnouncements = async () => {
