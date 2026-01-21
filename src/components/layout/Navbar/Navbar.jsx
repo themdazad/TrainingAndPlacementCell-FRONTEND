@@ -2,9 +2,8 @@ import { useState, useRef } from 'react';
 import { useSelector } from 'react-redux';
 
 // Hooks (Paths as per your previous code)
-import { useScrollVisibility } from '../../../hooks/useScrollVisibility';
-import { useClickOutside } from '../../../hooks/useClickOutside';
-import ThemeToggle from '../../ui/ThemeToggle';
+import { useScrollVisibility } from '../../../hooks/ui/useScrollVisibility';
+import { useClickOutside } from '../../../hooks/ui/useClickOutside';
 
 // Components (Same folder imports)
 import CollegeLogo from './CollegeLogo';

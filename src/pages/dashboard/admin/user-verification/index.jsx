@@ -1,6 +1,11 @@
 /**
  * User Verification Page
- * Admin can view and toggle verification status of users
+ * ------------------------------------------
+ * Admin dashboard for managing user verification.
+ * - View all registered users with filters (role, status, search)
+ * - Toggle verification status for each user
+ * - Delete users with confirmation modal
+ * - Pagination support
  */
 import { useEffect, useState, useCallback } from 'react';
 import {
@@ -312,10 +317,10 @@ const UserVerification = () => {
             <p className="text-sm text-danger mt-2">This action cannot be undone.</p>
           </ModalBody>
           <ModalFooter>
-            <Button variant="light" onClick={onClose}>
+            <Button variant="light" onPress={onClose}>
               Cancel
             </Button>
-            <Button color="danger" onClick={handleDeleteConfirm} isLoading={deleting}>
+            <Button color="danger" onPress={handleDeleteConfirm} isLoading={deleting}>
               Delete
             </Button>
           </ModalFooter>

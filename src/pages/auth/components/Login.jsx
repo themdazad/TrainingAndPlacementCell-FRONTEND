@@ -45,14 +45,6 @@ const Login = () => {
     }
   };
 
-  const handleAdminLogin = () => {
-    setIsAdminMode(true);
-    setEmail('');
-    setPassword('');
-    setErrors({});
-    toast.info('Enter admin credentials to continue');
-  };
-
   return (
     <div className="relative flex w-full flex-col items-center justify-center px-6 lg:w-1/2 bg-white dark:bg-slate-950">
       <div className="w-full max-w-[380px] space-y-12">
@@ -148,19 +140,6 @@ const Login = () => {
             >
               {isAdminMode ? 'Login as Admin' : 'Login'}
             </Button>
-
-            {/* Quick Admin Login - for development/demo */}
-            {!isAdminMode && (
-              <Button
-                type="button"
-                variant="bordered"
-                className="w-full border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-medium h-10 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-                onPress={handleAdminLogin}
-                disabled={loading}
-              >
-                🔐 Login as Admin
-              </Button>
-            )}
 
             <div className="flex items-center justify-between px-1">
               <Link

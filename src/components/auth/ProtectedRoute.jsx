@@ -30,8 +30,6 @@ const ProtectedRoute = ({ children, allowedRoles = [], redirectTo = PATHS.AUTH.L
       const roleDashboardMap = {
         student: PATHS.STUDENT.DASHBOARD,
         admin: PATHS.ADMIN.DASHBOARD,
-        coordinator: PATHS.COORDINATOR.DASHBOARD,
-        recruiter: PATHS.RECRUITER.DASHBOARD,
       };
       const defaultDashboard = roleDashboardMap[user.role] || PATHS.MAIN.HOME;
       return <Navigate to={defaultDashboard} replace />;

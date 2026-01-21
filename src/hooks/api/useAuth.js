@@ -4,9 +4,9 @@
  */
 import { useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { authAPI as authApi } from '../api';
-import { setUser, setIsAuthenticated, setIsChecking, logout } from '../store/authSlice';
-import { toast } from '../utils/toast';
+import { authAPI as authApi } from '../../api';
+import { setUser, setIsAuthenticated, setIsChecking, logout } from '../../store/authSlice';
+import { toast } from '../../utils/toast';
 
 export const useAuth = () => {
   const dispatch = useDispatch();

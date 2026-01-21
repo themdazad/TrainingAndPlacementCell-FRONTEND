@@ -116,15 +116,6 @@ const usersAPI = {
     });
     return response;
   },
-
-  // Export students data
-  exportStudents: async (params = {}) => {
-    const response = await apiClient.get('/users/students/export', {
-      params,
-      responseType: 'blob',
-    });
-    return response;
-  },
 };
 
 export default usersAPI;

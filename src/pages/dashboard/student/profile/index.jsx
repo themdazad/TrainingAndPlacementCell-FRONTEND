@@ -26,6 +26,7 @@ import { toast } from '../../../../utils/toast';
 import { selectUser, selectProfile, setUser } from '../../../../store/authSlice';
 import { authAPI } from '../../../../api';
 import { formatDate, getFullName, getInitials } from '../../../../utils/helpers';
+import usersAPI from '../../../../api/services/users.api';
 
 const ProfileSection = ({ title, children }) => (
   <div className="space-y-4">
@@ -48,6 +49,7 @@ const StudentProfile = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const profile = useSelector(selectProfile);
+
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [loading, setLoading] = useState(false);
   const [selectedTab, setSelectedTab] = useState('personal');
@@ -68,6 +70,17 @@ const StudentProfile = () => {
     github: '',
     portfolio: '',
   });
+  const [studentProfile, setStudentProfile] = useState(null);
+  useEffect(() => {
+    async function fetchProfile() {
+      if (user?.id) {
+        const data = await usersAPI.getStudentById(user.id); // Make sure this returns a promise
+        setStudentProfile(data);
+      }
+    }
+    fetchProfile();
+  }, [user?.id]);
+  console.log('Student Profile:', studentProfile);
 
   useEffect(() => {
     if (user || profile) {
@@ -161,7 +174,7 @@ const StudentProfile = () => {
               </div>
             </div>
             <div className="text-center md:text-right">
-              <p className="text-sm text-default-400">Roll Number</p>
+              <p className="text-sm text-default-400">Registration Number</p>
               <p className="font-mono font-semibold text-lg">{profile?.rollNumber || 'N/A'}</p>
               <p className="text-sm text-default-400 mt-2">CGPA</p>
               <p className="font-semibold text-lg">{profile?.academicInfo?.cgpa || 'N/A'}</p>
@@ -237,7 +250,7 @@ const StudentProfile = () => {
           <CardBody className="p-6 space-y-6">
             <ProfileSection title="Academic Information">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <InfoRow label="Roll Number" value={profile?.rollNumber} />
+                <InfoRow label="Registration Number" value={profile?.rollNumber} />
                 <InfoRow label="Branch" value={profile?.branch} />
                 <InfoRow label="Batch" value={profile?.batch} />
                 <InfoRow label="CGPA" value={profile?.academicInfo?.cgpa} />
