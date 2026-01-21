@@ -7,8 +7,6 @@ const getDashboardPath = (role) => {
   const roleDashboardMap = {
     student: PATHS.STUDENT.DASHBOARD,
     admin: PATHS.ADMIN.DASHBOARD,
-    coordinator: PATHS.COORDINATOR.DASHBOARD,
-    recruiter: PATHS.RECRUITER.DASHBOARD,
   };
   return roleDashboardMap[role] || PATHS.DASHBOARD.ROOT;
 };

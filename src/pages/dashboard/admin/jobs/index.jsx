@@ -32,7 +32,7 @@ import {
   Textarea,
 } from '@heroui/react';
 import { toast } from '../../../../utils/toast';
-import { useJobs } from '../../../../hooks';
+import { useJobs } from '../../../../hooks/api';
 import { formatDate, formatPackage } from '../../../../utils/helpers';
 import { JOB_STATUS, JOB_TYPES } from '../../../../constants/api.constants';
 

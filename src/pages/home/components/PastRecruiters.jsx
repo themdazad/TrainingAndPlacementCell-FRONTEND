@@ -2,7 +2,7 @@ import { PastRecruitersData } from '../../../data/past-recruiters-data';
 
 const PastRecruiters = () => {
   return (
-    <section className="max-w-screen-2xl mx-auto px-[2%] py-6 flex flex-col items-center gap-8">
+    <section className="max-w-screen-2xl backdrop-blur-sm mx-auto px-[2%] py-6 flex flex-col items-center gap-8">
       {/* Auto-scrolling logos */}
       <div
         className="relative flex overflow-hidden p-2"
