@@ -51,27 +51,6 @@ const PATHS = {
     ANNOUNCEMENTS: '/dashboard/admin/announcements',
   },
 
-  // Coordinator Dashboard
-  COORDINATOR: {
-    DASHBOARD: '/dashboard/coordinator',
-    JOBS: '/dashboard/coordinator/jobs',
-    APPLICATIONS: '/dashboard/coordinator/applications',
-    STUDENTS: '/dashboard/coordinator/students',
-    EVENTS: '/dashboard/coordinator/events',
-  },
-
-  // Recruiter Dashboard
-  RECRUITER: {
-    DASHBOARD: '/dashboard/recruiter',
-    JOBS: '/dashboard/recruiter/jobs',
-    JOBS_CREATE: '/dashboard/recruiter/jobs/create',
-    JOB_EDIT: '/dashboard/recruiter/jobs/:jobId/edit',
-    JOB_DETAIL: '/dashboard/recruiter/jobs/:jobId',
-    APPLICATIONS: '/dashboard/recruiter/applications',
-    EVENTS: '/dashboard/recruiter/events',
-    PROFILE: '/dashboard/recruiter/profile',
-  },
-
   // Public Job/Event routes (for non-logged-in users)
   JOBS: {
     LIST: '/jobs',

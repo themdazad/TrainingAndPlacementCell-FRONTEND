@@ -83,7 +83,7 @@ const Testimonials = () => {
           {visibleTestimonials.map((t, index) => (
             <div
               key={index}
-              className={`snap-start min-w-[320px] bg-neutral-500/10 border-t-4 border-blue-500  p-6 text-left rounded-3xl flex flex-col justify-between transition-all duration-100 ${
+              className={`snap-start min-w-[320px] backdrop-blur-sm bg-neutral-500/10 border-t-4 border-blue-500  p-6 text-left rounded-3xl flex flex-col justify-between transition-all duration-100 ${
                 t.rotate ?? ''
               } transition duration-300 ease-in-out hover:scale-105 hover:shadow-md`}
             >
