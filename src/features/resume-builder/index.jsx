@@ -39,8 +39,10 @@ const ResumeBuilder = () => {
       // Placeholder entry
       {
         institution: 'Your Institution Name',
-        duration: 'Year - Year',
+        session: 'Year - Year',
         degree: 'Your Degree',
+        specialization: 'Your Specialization',
+        board: 'Your Board/University',
         result: 'Your Result',
       },
     ],
@@ -198,17 +200,36 @@ const ResumeBuilder = () => {
                   })
                 }
               />
-              <Input
-                label="Phone"
-                variant="bordered"
-                value={resumeData.personal.phone}
-                onChange={(e) =>
-                  setResumeData({
-                    ...resumeData,
-                    personal: { ...resumeData.personal, phone: e.target.value },
-                  })
-                }
-              />
+              <div>
+                <label className="block text-sm font-medium mb-1">Phone</label>
+                <div className="flex gap-2">
+                  <select
+                    className="border rounded-md px-2 py-2"
+                    value={resumeData.personal.countryCode || '+91'}
+                    onChange={(e) => {
+                      setResumeData({
+                        ...resumeData,
+                        personal: { ...resumeData.personal, countryCode: e.target.value },
+                      });
+                    }}
+                  >
+                    <option value="+91">+91 (India 🇮🇳)</option>
+                  </select>
+                  <Input
+                    label=""
+                    variant="bordered"
+                    className="flex-1"
+                    value={resumeData.personal.phone}
+                    onChange={(e) =>
+                      setResumeData({
+                        ...resumeData,
+                        personal: { ...resumeData.personal, phone: e.target.value },
+                      })
+                    }
+                    placeholder="Phone Number"
+                  />
+                </div>
+              </div>
               <Input
                 label="Email"
                 variant="bordered"
@@ -281,10 +302,10 @@ const ResumeBuilder = () => {
               {resumeData.education.map((edu, idx) => (
                 <div key={idx} className="border p-3 rounded-md mb-2 relative">
                   <Input
-                    label="Institution"
+                    label="School/College"
                     variant="bordered"
                     className="mb-2"
-                    value={edu.institution}
+                    placeholder={edu.institution}
                     onChange={(e) => {
                       const updated = [...resumeData.education];
                       updated[idx].institution = e.target.value;
@@ -303,13 +324,107 @@ const ResumeBuilder = () => {
                     }}
                   />
                   <Input
-                    label="Duration"
+                    label="Specialization"
                     variant="bordered"
                     className="mb-2"
-                    value={edu.duration}
+                    value={edu.specialization || ''}
                     onChange={(e) => {
                       const updated = [...resumeData.education];
-                      updated[idx].duration = e.target.value;
+                      updated[idx].specialization = e.target.value;
+                      setResumeData({ ...resumeData, education: updated });
+                    }}
+                  />
+                  <div className="mb-2">
+                    <label className="block text-sm font-medium mb-1">Board/University</label>
+                    <select
+                      className="border rounded-md px-3 py-2 w-full"
+                      value={
+                        [
+                          'Bihar School Examination Board, Patna',
+                          'Bihar Engineering University, Patna',
+                          'State Board Of Technica Education, Patna',
+                          'Central Board of Secondary Education (CBSE)',
+                          'Indian Certificate of Secondary Education (ICSE)',
+                          'Delhi University',
+                          'Jawaharlal Nehru University',
+                          'Banaras Hindu University',
+                          'University of Mumbai',
+                          'University of Calcutta',
+                          'University of Allahabad',
+                          'Aligarh Muslim University',
+                          'Savitribai Phule Pune University',
+                          'Jadavpur University',
+                          'Anna University',
+                          'Osmania University',
+                          'Jamia Millia Islamia',
+                          'Others',
+                        ].includes(edu.board)
+                          ? edu.board
+                          : 'Others'
+                      }
+                      onChange={(e) => {
+                        const updated = [...resumeData.education];
+                        updated[idx].board =
+                          e.target.value === 'Others'
+                            ? edu.board &&
+                              ![
+                                'Bihar School Examination Board, Patna',
+                                'Bihar Engineering University, Patna',
+                                'State Board Of Technica Education, Patna',
+                                'Central Board of Secondary Education (CBSE)',
+                                'Indian Certificate of Secondary Education (ICSE)',
+                              ].includes(edu.board)
+                              ? edu.board
+                              : ''
+                            : e.target.value;
+                        setResumeData({ ...resumeData, education: updated });
+                      }}
+                    >
+                      <option value="Bihar School Examination Board, Patna">
+                        Bihar School Examination Board, Patna
+                      </option>
+                      <option value="Bihar Engineering University, Patna">
+                        Bihar Engineering University, Patna
+                      </option>
+                      <option value="State Board Of Technica Education, Patna">
+                        State Board Of Technica Education, Patna
+                      </option>
+                      <option value="Central Board of Secondary Education (CBSE)">
+                        Central Board of Secondary Education (CBSE)
+                      </option>
+                      <option value="Indian Certificate of Secondary Education (ICSE)">
+                        Indian Certificate of Secondary Education (ICSE)
+                      </option>
+                      <option value="Others">Others</option>
+                    </select>
+                    {[
+                      'Bihar School Examination Board, Patna',
+                      'Bihar Engineering University, Patna',
+                      'State Board Of Technica Education, Patna',
+                      'Central Board of Secondary Education (CBSE)',
+                      'Indian Certificate of Secondary Education (ICSE)',
+                    ].includes(edu.board) === false && (
+                      <input
+                        type="text"
+                        className="border rounded-md px-3 py-2 w-full mt-2"
+                        placeholder="Enter Board/University"
+                        value={edu.board || ''}
+                        onChange={(e) => {
+                          const updated = [...resumeData.education];
+                          updated[idx].board = e.target.value;
+                          setResumeData({ ...resumeData, education: updated });
+                        }}
+                      />
+                    )}
+                  </div>
+                  <Input
+                    label="Session"
+                    variant="bordered"
+                    className="mb-2"
+                    value={edu.session}
+                    onChange={(e) => {
+                      const updated = [...resumeData.education];
+                      updated[idx].session = e.target.value;
                       setResumeData({ ...resumeData, education: updated });
                     }}
                   />
@@ -347,7 +462,14 @@ const ResumeBuilder = () => {
                     ...resumeData,
                     education: [
                       ...resumeData.education,
-                      { institution: '', degree: '', duration: '', result: '' },
+                      {
+                        institution: '',
+                        degree: '',
+                        specialization: '',
+                        board: '',
+                        session: '',
+                        result: '',
+                      },
                     ],
                   });
                 }}
@@ -799,7 +921,12 @@ const ResumeBuilder = () => {
             <div>
               <h1 className="text-3xl font-bold">{resumeData.personal.name}</h1>
               <div className="text-sm mt-1">
-                <p>Phone: {resumeData.personal.phone}</p>
+                <p>
+                  Phone:{' '}
+                  {(resumeData.personal.countryCode || '+91') +
+                    ' ' +
+                    (resumeData.personal.phone || '')}
+                </p>
                 <p>Email: {resumeData.personal.email}</p>
                 <p>Address: {resumeData.personal.address}</p>
                 <div className="flex justify-center gap-6 mt-1">
@@ -846,7 +973,13 @@ const ResumeBuilder = () => {
           {Array.isArray(resumeData.education) &&
             resumeData.education.length > 0 &&
             resumeData.education.some(
-              (edu) => edu.institution || edu.degree || edu.duration || edu.result
+              (edu) =>
+                edu.institution ||
+                edu.degree ||
+                edu.specialization ||
+                edu.board ||
+                edu.duration ||
+                edu.result
             ) && (
               <section className="mt-6">
                 <h2 className="text-lg font-bold border-b-1 border-gray-300 uppercase tracking-wider">
@@ -854,14 +987,25 @@ const ResumeBuilder = () => {
                 </h2>
                 {resumeData.education.map(
                   (edu, index) =>
-                    (edu.institution || edu.degree || edu.duration || edu.result) && (
+                    (edu.institution ||
+                      edu.degree ||
+                      edu.specialization ||
+                      edu.board ||
+                      edu.session ||
+                      edu.result) && (
                       <div key={index} className="mt-3 flex justify-between items-start">
                         <div className="text-sm">
                           {edu.institution && <p className="font-bold">{edu.institution}</p>}
-                          {edu.degree && <p className="italic">{edu.degree}</p>}
+                          <div className="flex flex-wrap gap-2">
+                            {edu.degree && <p className="italic">{edu.degree}</p>}
+                            {edu.specialization && (
+                              <p className="italic"> in {edu.specialization}</p>
+                            )}
+                            {edu.board && <p className="italic">- {edu.board}</p>}
+                          </div>
                         </div>
                         <div className="text-right text-sm">
-                          {edu.duration && <p>{edu.duration}</p>}
+                          {edu.session && <p>{edu.session}</p>}
                           {edu.result && <p className="font-bold">{edu.result}</p>}
                         </div>
                       </div>
