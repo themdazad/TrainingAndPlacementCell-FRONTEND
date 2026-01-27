@@ -132,10 +132,10 @@ const ResumeBuilder = () => {
   const currentIdx = sectionOrder.indexOf(activeSection);
 
   return (
-    <div className="flex flex-col md:flex-row gap-6 p-4 md:p-8 min-h-screen print:bg-white print:p-0">
+    <div className="flex flex-col md:flex-row gap-6 p-4 md:p-8 max-w-screen-2xl m-auto min-h-screen print:bg-white print:p-0">
       {/* LEFT: INPUT SECTIONS (Hidden during print) */}
-      <Card className="w-full md:w-2/5 p-6 space-y-6 shadow-lg print:hidden h-fit sticky top-8">
-        <div className="flex justify-between items-center">
+      <Card className="w-full md:w-2/5 p-6 space-y-6 shadow-lg print:hidden h-fit ">
+        <div className="flex max-md:flex-col justify-between items-center">
           <h2 className="text-2xl font-bold text-primary">Resume Editor</h2>
           <div className="flex flex-row items-center space-x-2">
             <Button onPress={() => window.print()} className="!rounded-md">
@@ -805,242 +805,244 @@ const ResumeBuilder = () => {
       </Card>
 
       {/* RIGHT: LIVE PREVIEW (Styled to match your layout ) */}
-      <div
-        id="resume-preview"
-        className="w-full md:w-3/5 bg-white shadow-2xl p-[0.5in] max-w-[210mm] min-h-[297mm] text-black font-serif print:shadow-none print:w-full print:m-0"
-      >
-        {/* Header (Basic Details) */}
-        <section className="border-b-1 border-black pb-2 flex flex-row items-start justify-between">
-          <div>
-            <h1 className="text-3xl font-bold">{resumeData.personal.name}</h1>
-            <div className="text-sm mt-1">
-              <p>Phone: {resumeData.personal.phone}</p>
-              <p>Email: {resumeData.personal.email}</p>
-              <p>Address: {resumeData.personal.address}</p>
-              <div className="flex justify-center gap-6 mt-1">
-                {resumeData.personal.github && (
-                  <a
-                    href={resumeData.personal.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    title="GitHub"
-                    className="text-gray-700 flex items-center gap-2 hover:text-black"
-                  >
-                    <Github /> {resumeData.personal.github}
-                  </a>
-                )}
-                {resumeData.personal.linkedin && (
-                  <a
-                    href={resumeData.personal.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    title="LinkedIn"
-                    className="text-blue-700 flex items-center gap-2 hover:text-blue-900"
-                  >
-                    <Linkedin />
-                    {resumeData.personal.linkedin}
-                  </a>
-                )}
+      <div className=" overflow-x-scroll">
+        <div
+          id="resume-preview"
+          className=" bg-white shadow-2xl p-[0.5in] print:w-[210mm] print:h-[297mm] text-black font-serif print:shadow-none print:m-0"
+        >
+          {/* Header (Basic Details) */}
+          <section className="border-b-1 border-black pb-2 flex flex-row items-start justify-between">
+            <div>
+              <h1 className="text-3xl font-bold">{resumeData.personal.name}</h1>
+              <div className="text-sm mt-1">
+                <p>Phone: {resumeData.personal.phone}</p>
+                <p>Email: {resumeData.personal.email}</p>
+                <p>Address: {resumeData.personal.address}</p>
+                <div className="flex justify-center gap-6 mt-1">
+                  {resumeData.personal.github && (
+                    <a
+                      href={resumeData.personal.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="GitHub"
+                      className="text-gray-700 flex items-center gap-2 hover:text-black"
+                    >
+                      <Github /> {resumeData.personal.github}
+                    </a>
+                  )}
+                  {resumeData.personal.linkedin && (
+                    <a
+                      href={resumeData.personal.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="LinkedIn"
+                      className="text-blue-700 flex items-center gap-2 hover:text-blue-900"
+                    >
+                      <Linkedin />
+                      {resumeData.personal.linkedin}
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
-          </div>
-          <img
-            src="/images/logos/collegelogo.png"
-            alt="College Logo"
-            className="h-24 w-auto object-contain ml-4"
-            style={{ maxWidth: '160px' }}
-          />
-        </section>
+            <img
+              src="/images/logos/collegelogo.png"
+              alt="College Logo"
+              className="h-24 w-auto object-contain ml-4"
+              style={{ maxWidth: '160px' }}
+            />
+          </section>
 
-        {/* Summary Section  */}
-        <section className="mt-4 text-sm leading-relaxed">
-          <p>{resumeData.personal.summary}</p>
-        </section>
+          {/* Summary Section  */}
+          <section className="mt-4 text-sm leading-relaxed">
+            <p>{resumeData.personal.summary}</p>
+          </section>
 
-        {/* Education Section  */}
-        {Array.isArray(resumeData.education) &&
-          resumeData.education.length > 0 &&
-          resumeData.education.some(
-            (edu) => edu.institution || edu.degree || edu.duration || edu.result
-          ) && (
-            <section className="mt-6">
-              <h2 className="text-lg font-bold border-b-1 border-gray-300 uppercase tracking-wider">
-                Education
-              </h2>
-              {resumeData.education.map(
-                (edu, index) =>
-                  (edu.institution || edu.degree || edu.duration || edu.result) && (
-                    <div key={index} className="mt-3 flex justify-between items-start">
-                      <div className="text-sm">
-                        {edu.institution && <p className="font-bold">{edu.institution}</p>}
-                        {edu.degree && <p className="italic">{edu.degree}</p>}
+          {/* Education Section  */}
+          {Array.isArray(resumeData.education) &&
+            resumeData.education.length > 0 &&
+            resumeData.education.some(
+              (edu) => edu.institution || edu.degree || edu.duration || edu.result
+            ) && (
+              <section className="mt-6">
+                <h2 className="text-lg font-bold border-b-1 border-gray-300 uppercase tracking-wider">
+                  Education
+                </h2>
+                {resumeData.education.map(
+                  (edu, index) =>
+                    (edu.institution || edu.degree || edu.duration || edu.result) && (
+                      <div key={index} className="mt-3 flex justify-between items-start">
+                        <div className="text-sm">
+                          {edu.institution && <p className="font-bold">{edu.institution}</p>}
+                          {edu.degree && <p className="italic">{edu.degree}</p>}
+                        </div>
+                        <div className="text-right text-sm">
+                          {edu.duration && <p>{edu.duration}</p>}
+                          {edu.result && <p className="font-bold">{edu.result}</p>}
+                        </div>
                       </div>
-                      <div className="text-right text-sm">
-                        {edu.duration && <p>{edu.duration}</p>}
-                        {edu.result && <p className="font-bold">{edu.result}</p>}
-                      </div>
-                    </div>
-                  )
-              )}
-            </section>
-          )}
-
-        {/* Skills Section  */}
-        {Array.isArray(resumeData.skills) &&
-          resumeData.skills.length > 0 &&
-          resumeData.skills.some((skill) => skill.label || skill.content) && (
-            <section className="mt-6">
-              <h2 className="text-lg font-bold border-b-1 border-gray-300 uppercase tracking-wider">
-                Skills
-              </h2>
-              <div className="mt-2 text-sm space-y-1">
-                {resumeData.skills.map(
-                  (skill, idx) =>
-                    (skill.label || skill.content) && (
-                      <p key={idx}>
-                        <strong>{skill.label}:</strong> {skill.content}
-                      </p>
                     )
                 )}
-              </div>
-            </section>
-          )}
+              </section>
+            )}
 
-        {/* Experience Section  */}
-        {Array.isArray(resumeData.experience) &&
-          resumeData.experience.length > 0 &&
-          resumeData.experience.some(
-            (exp) => exp.company || exp.role || exp.duration || exp.desc
-          ) && (
-            <section className="mt-6">
-              <h2 className="text-lg font-bold border-b-1 border-gray-300 uppercase tracking-wider">
-                Experience
-              </h2>
-              {resumeData.experience.map(
-                (exp, idx) =>
-                  (exp.company || exp.role || exp.duration || exp.desc) && (
-                    <div key={idx} className="mt-3 text-sm">
-                      <div className="flex justify-between">
-                        {exp.company && <p className="font-bold">{exp.company}</p>}
-                        {exp.role && <span className="italic">{exp.role}</span>}
-                        {exp.duration && <span>{exp.duration}</span>}
-                      </div>
-                      {exp.desc && (
-                        <ul className="list-disc ml-5 mt-1">
-                          {exp.desc
-                            .split(/\r?\n/)
-                            .filter((line) => line.trim())
-                            .map((line, i) => (
-                              <li key={i}>{line}</li>
-                            ))}
-                        </ul>
-                      )}
-                    </div>
-                  )
-              )}
-            </section>
-          )}
+          {/* Skills Section  */}
+          {Array.isArray(resumeData.skills) &&
+            resumeData.skills.length > 0 &&
+            resumeData.skills.some((skill) => skill.label || skill.content) && (
+              <section className="mt-6">
+                <h2 className="text-lg font-bold border-b-1 border-gray-300 uppercase tracking-wider">
+                  Skills
+                </h2>
+                <div className="mt-2 text-sm space-y-1">
+                  {resumeData.skills.map(
+                    (skill, idx) =>
+                      (skill.label || skill.content) && (
+                        <p key={idx}>
+                          <strong>{skill.label}:</strong> {skill.content}
+                        </p>
+                      )
+                  )}
+                </div>
+              </section>
+            )}
 
-        {/* Projects Section  */}
-        {Array.isArray(resumeData.projects) &&
-          resumeData.projects.length > 0 &&
-          resumeData.projects.some(
-            (proj) =>
-              proj.title ||
-              (Array.isArray(proj.links) && proj.links.some((link) => link.label || link.url)) ||
-              proj.desc
-          ) && (
-            <section className="mt-6">
-              <h2 className="text-lg font-bold border-b-1 border-gray-300 uppercase tracking-wider">
-                Projects
-              </h2>
-              {resumeData.projects.map(
-                (proj, index) =>
-                  (proj.title ||
-                    (Array.isArray(proj.links) &&
-                      proj.links.some((link) => link.label || link.url)) ||
-                    proj.desc) && (
-                    <div key={index} className="mt-3 text-sm">
-                      <div className="flex justify-between">
-                        {proj.title && <p className="font-bold">{proj.title}</p>}
-                        {Array.isArray(proj.links) && proj.links.length > 0 && (
-                          <div className="flex gap-2">
-                            {proj.links.map(
-                              (link, lidx) =>
-                                (link.label || link.url) && (
-                                  <a
-                                    key={lidx}
-                                    href={link.url}
-                                    className="text-blue-600 font-semibold"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                  >
-                                    {link.label || link.url}
-                                  </a>
-                                )
-                            )}
-                          </div>
+          {/* Experience Section  */}
+          {Array.isArray(resumeData.experience) &&
+            resumeData.experience.length > 0 &&
+            resumeData.experience.some(
+              (exp) => exp.company || exp.role || exp.duration || exp.desc
+            ) && (
+              <section className="mt-6">
+                <h2 className="text-lg font-bold border-b-1 border-gray-300 uppercase tracking-wider">
+                  Experience
+                </h2>
+                {resumeData.experience.map(
+                  (exp, idx) =>
+                    (exp.company || exp.role || exp.duration || exp.desc) && (
+                      <div key={idx} className="mt-3 text-sm">
+                        <div className="flex justify-between">
+                          {exp.company && <p className="font-bold">{exp.company}</p>}
+                          {exp.role && <span className="italic">{exp.role}</span>}
+                          {exp.duration && <span>{exp.duration}</span>}
+                        </div>
+                        {exp.desc && (
+                          <ul className="list-disc ml-5 mt-1">
+                            {exp.desc
+                              .split(/\r?\n/)
+                              .filter((line) => line.trim())
+                              .map((line, i) => (
+                                <li key={i}>{line}</li>
+                              ))}
+                          </ul>
                         )}
                       </div>
-                      {proj.desc && (
-                        <ul className="list-disc ml-5 mt-1">
-                          {proj.desc
-                            .split(/\r?\n/)
-                            .filter((line) => line.trim())
-                            .map((line, i) => (
-                              <li key={i}>{line}</li>
-                            ))}
-                        </ul>
-                      )}
-                    </div>
-                  )
-              )}
-            </section>
-          )}
+                    )
+                )}
+              </section>
+            )}
 
-        {/* Certifications Section  */}
-        {Array.isArray(resumeData.certifications) &&
-          resumeData.certifications.length > 0 &&
-          resumeData.certifications.some((cert) => cert.name || cert.issuer || cert.year) && (
-            <section className="mt-6">
-              <h2 className="text-lg font-bold border-b-1 border-gray-300 uppercase tracking-wider">
-                Certifications
-              </h2>
-              <div className="mt-2 text-sm space-y-1">
-                {resumeData.certifications.map(
-                  (cert, idx) =>
-                    (cert.name || cert.issuer || cert.year) && (
-                      <div key={idx} className="flex justify-between items-center">
-                        <span className="font-semibold">{cert.name}</span>
-                        <span className="italic">- {cert.issuer}</span>
+          {/* Projects Section  */}
+          {Array.isArray(resumeData.projects) &&
+            resumeData.projects.length > 0 &&
+            resumeData.projects.some(
+              (proj) =>
+                proj.title ||
+                (Array.isArray(proj.links) && proj.links.some((link) => link.label || link.url)) ||
+                proj.desc
+            ) && (
+              <section className="mt-6">
+                <h2 className="text-lg font-bold border-b-1 border-gray-300 uppercase tracking-wider">
+                  Projects
+                </h2>
+                {resumeData.projects.map(
+                  (proj, index) =>
+                    (proj.title ||
+                      (Array.isArray(proj.links) &&
+                        proj.links.some((link) => link.label || link.url)) ||
+                      proj.desc) && (
+                      <div key={index} className="mt-3 text-sm">
+                        <div className="flex justify-between">
+                          {proj.title && <p className="font-bold">{proj.title}</p>}
+                          {Array.isArray(proj.links) && proj.links.length > 0 && (
+                            <div className="flex gap-2">
+                              {proj.links.map(
+                                (link, lidx) =>
+                                  (link.label || link.url) && (
+                                    <a
+                                      key={lidx}
+                                      href={link.url}
+                                      className="text-blue-600 font-semibold"
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                    >
+                                      {link.label || link.url}
+                                    </a>
+                                  )
+                              )}
+                            </div>
+                          )}
+                        </div>
+                        {proj.desc && (
+                          <ul className="list-disc ml-5 mt-1">
+                            {proj.desc
+                              .split(/\r?\n/)
+                              .filter((line) => line.trim())
+                              .map((line, i) => (
+                                <li key={i}>{line}</li>
+                              ))}
+                          </ul>
+                        )}
                       </div>
                     )
                 )}
-              </div>
-            </section>
-          )}
+              </section>
+            )}
 
-        {/* Achievements Section  */}
-        {Array.isArray(resumeData.achievements) &&
-          resumeData.achievements.length > 0 &&
-          resumeData.achievements.some((ach) => ach.title || ach.desc) && (
-            <section className="mt-6">
-              <h2 className="text-lg font-bold border-b-1 border-gray-300 uppercase tracking-wider">
-                Achievements
-              </h2>
-              <div className="mt-2 text-sm space-y-1">
-                {resumeData.achievements.map(
-                  (ach, idx) =>
-                    (ach.title || ach.desc) && (
-                      <div key={idx} className="mb-2">
-                        <span className="font-semibold">{ach.title}</span>
-                        {ach.desc && <p className="ml-2 inline">- {ach.desc}</p>}
-                      </div>
-                    )
-                )}
-              </div>
-            </section>
-          )}
+          {/* Certifications Section  */}
+          {Array.isArray(resumeData.certifications) &&
+            resumeData.certifications.length > 0 &&
+            resumeData.certifications.some((cert) => cert.name || cert.issuer || cert.year) && (
+              <section className="mt-6">
+                <h2 className="text-lg font-bold border-b-1 border-gray-300 uppercase tracking-wider">
+                  Certifications
+                </h2>
+                <div className="mt-2 text-sm space-y-1">
+                  {resumeData.certifications.map(
+                    (cert, idx) =>
+                      (cert.name || cert.issuer || cert.year) && (
+                        <div key={idx} className="flex justify-between items-center">
+                          <span className="font-semibold">{cert.name}</span>
+                          <span className="italic">- {cert.issuer}</span>
+                        </div>
+                      )
+                  )}
+                </div>
+              </section>
+            )}
+
+          {/* Achievements Section  */}
+          {Array.isArray(resumeData.achievements) &&
+            resumeData.achievements.length > 0 &&
+            resumeData.achievements.some((ach) => ach.title || ach.desc) && (
+              <section className="mt-6">
+                <h2 className="text-lg font-bold border-b-1 border-gray-300 uppercase tracking-wider">
+                  Achievements
+                </h2>
+                <div className="mt-2 text-sm space-y-1">
+                  {resumeData.achievements.map(
+                    (ach, idx) =>
+                      (ach.title || ach.desc) && (
+                        <div key={idx} className="mb-2">
+                          <span className="font-semibold">{ach.title}</span>
+                          {ach.desc && <p className="ml-2 inline">- {ach.desc}</p>}
+                        </div>
+                      )
+                  )}
+                </div>
+              </section>
+            )}
+        </div>
       </div>
 
       {/* Print-Only CSS */}
