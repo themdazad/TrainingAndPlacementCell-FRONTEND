@@ -5,6 +5,7 @@ const PATHS = {
     ABOUT_US: '/about-us',
     ALUMNI: '/alumni',
     GALLERY: '/gallery',
+    RESUME_BUILDER: '/resume-builder',
     ASSISTANT: '/ai_assistant',
   },
 

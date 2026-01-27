@@ -73,12 +73,6 @@ const authApi = {
     });
     return response.data;
   },
-
-  // Update user profile
-  updateProfile: async (profileData) => {
-    const response = await api.patch('/auth/profile', profileData);
-    return response.data;
-  },
 };
 
 export default authApi;
