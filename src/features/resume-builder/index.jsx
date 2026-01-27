@@ -56,11 +56,6 @@ const ResumeBuilder = () => {
       },
     ],
     projects: [
-      {
-        title: 'Solar-Powered Water Pump',
-        links: [{ label: 'Demo Video', url: 'https://youtu.be/demo-solar-pump' }],
-        desc: 'Developed a solar-powered water pumping system for irrigation. Integrated solar panels, DC pump, and battery management for sustainable agriculture.',
-      },
       // Placeholder entry
       {
         title: 'Your Project Title',
@@ -68,19 +63,8 @@ const ResumeBuilder = () => {
         desc: 'Briefly describe your project, technologies used, and your role.',
       },
     ],
-    certifications: [
-      { name: 'PLC Programming Fundamentals', issuer: 'Coursera' },
-      { name: 'AutoCAD Electrical Essentials', issuer: 'Udemy' },
-    ],
+    certifications: [{ name: 'PLC Programming Fundamentals', issuer: 'Coursera' }],
     achievements: [
-      {
-        title: 'Runner-up, State Level Project Expo',
-        desc: "Presented 'Smart Energy Meter' and secured 2nd position among 50+ teams.",
-      },
-      {
-        title: 'GATE 2024 Qualified',
-        desc: 'Qualified GATE Electrical Engineering with AIR 2450.',
-      },
       // Placeholder entry
       { title: 'Achievement Title', desc: 'Describe your achievement here.' },
     ],
@@ -179,6 +163,7 @@ const ResumeBuilder = () => {
           onSelectionChange={setActiveSection}
         >
           {/* Order: personal, education, skills, experience, projects, certifications, achievements */}
+          {/* Personal Details */}
           <Tab
             key="personal"
             title={
@@ -192,7 +177,7 @@ const ResumeBuilder = () => {
               <Input
                 label="Full Name"
                 variant="bordered"
-                placeholder={'example- Md Azad'}
+                placeholder={'e.g., Md Azad'}
                 onChange={(e) =>
                   setResumeData({
                     ...resumeData,
@@ -232,7 +217,7 @@ const ResumeBuilder = () => {
               <Input
                 label="Email"
                 variant="bordered"
-                placeholder={resumeData.personal.email}
+                placeholder="e.g., example@example.com"
                 onChange={(e) =>
                   setResumeData({
                     ...resumeData,
@@ -243,7 +228,7 @@ const ResumeBuilder = () => {
               <Input
                 label="Address"
                 variant="bordered"
-                placeholder={resumeData.personal.address}
+                placeholder="e.g., Muzaffarpur, Bihar - 8441XX"
                 onChange={(e) =>
                   setResumeData({
                     ...resumeData,
@@ -254,7 +239,7 @@ const ResumeBuilder = () => {
               <Textarea
                 label="Professional Summary"
                 variant="bordered"
-                placeholder={resumeData.personal.summary}
+                placeholder="e.g., Experienced software developer with a passion for creating innovative solutions."
                 onChange={(e) =>
                   setResumeData({
                     ...resumeData,
@@ -266,7 +251,7 @@ const ResumeBuilder = () => {
               <Input
                 label="LinkedIn Profile URL"
                 variant="bordered"
-                placeholder={resumeData.personal.linkedin || ''}
+                placeholder="e.g., https://www.linkedin.com/in/themdazad"
                 onChange={(e) =>
                   setResumeData({
                     ...resumeData,
@@ -277,7 +262,7 @@ const ResumeBuilder = () => {
               <Input
                 label="GitHub Profile URL"
                 variant="bordered"
-                placeholder={resumeData.personal.github || ''}
+                placeholder="e.g., https://github.com/themdazad"
                 onChange={(e) =>
                   setResumeData({
                     ...resumeData,
@@ -287,6 +272,8 @@ const ResumeBuilder = () => {
               />
             </div>
           </Tab>
+
+          {/* Education */}
 
           <Tab
             key="education"
@@ -453,6 +440,7 @@ const ResumeBuilder = () => {
             </div>
           </Tab>
 
+          {/* Skills */}
           <Tab
             key="skills"
             title={
@@ -516,6 +504,7 @@ const ResumeBuilder = () => {
             </div>
           </Tab>
 
+          {/* Experience */}
           <Tab
             key="experience"
             title={
@@ -608,6 +597,7 @@ const ResumeBuilder = () => {
             </div>
           </Tab>
 
+          {/* Projects */}
           <Tab
             key="projects"
             title={
@@ -734,6 +724,7 @@ const ResumeBuilder = () => {
             </div>
           </Tab>
 
+          {/* Certifications */}
           <Tab
             key="certifications"
             title={
@@ -746,36 +737,46 @@ const ResumeBuilder = () => {
             <div className="space-y-4 pt-4">
               {Array.isArray(resumeData.certifications) &&
                 resumeData.certifications.map((cert, idx) => (
-                  <div key={idx} className="flex gap-2 items-center mb-2">
-                    <Input
-                      label="Certification Title"
-                      variant="bordered"
-                      className="w-1/3"
-                      placeholder={'IoT (Internet of Things) Fundamentals'}
-                      onChange={(e) => {
-                        const updated = [...resumeData.certifications];
-                        updated[idx].name = e.target.value;
-                        setResumeData({ ...resumeData, certifications: updated });
-                      }}
-                    />
-                    <Input
-                      label="Description"
-                      variant="bordered"
-                      className="w-1/3"
-                      placeholder={
-                        '(NPTEL, Elite Silver (86%): Understand hardware–software integration and real-time data monitoring.)'
-                      }
-                      value={cert.description || ''}
-                      onChange={(e) => {
-                        const updated = [...resumeData.certifications];
-                        updated[idx].description = e.target.value;
-                        setResumeData({ ...resumeData, certifications: updated });
-                      }}
-                    />
+                  <Card
+                    key={idx}
+                    className="flex flex-col md:flex-row gap-4 items-center mb-3 p-4 bg-gray-50 border border-gray-200 shadow-sm rounded-lg"
+                  >
+                    <div className="flex-1 w-full">
+                      <Input
+                        label="Certification Name"
+                        variant="faded"
+                        className="w-full mb-2"
+                        value={cert.name || ''}
+                        onChange={(e) => {
+                          const updated = [...resumeData.certifications];
+                          updated[idx].name = e.target.value;
+                          setResumeData({ ...resumeData, certifications: updated });
+                        }}
+                        radius="md"
+                        size="md"
+                        placeholder="e.g. AWS Certified Solutions Architect"
+                      />
+                      <Textarea
+                        label="Description"
+                        variant="faded"
+                        className="w-full"
+                        value={cert.description || ''}
+                        onChange={(e) => {
+                          const updated = [...resumeData.certifications];
+                          updated[idx].description = e.target.value;
+                          setResumeData({ ...resumeData, certifications: updated });
+                        }}
+                        radius="md"
+                        size="md"
+                        minRows={2}
+                        placeholder="e.g. Credential ID, details, etc."
+                      />
+                    </div>
                     <Button
                       size="sm"
                       color="danger"
                       variant="flat"
+                      className="self-start mt-2 md:mt-0"
                       onPress={() => {
                         const updated = resumeData.certifications.filter((_, i) => i !== idx);
                         setResumeData({ ...resumeData, certifications: updated });
@@ -783,7 +784,7 @@ const ResumeBuilder = () => {
                     >
                       <Trash size={16} />
                     </Button>
-                  </div>
+                  </Card>
                 ))}
               <Button
                 size="sm"
@@ -804,6 +805,7 @@ const ResumeBuilder = () => {
             </div>
           </Tab>
 
+          {/* Achievements */}
           <Tab
             key="achievements"
             title={
@@ -868,6 +870,7 @@ const ResumeBuilder = () => {
             </div>
           </Tab>
         </Tabs>
+
         {/* Navigation Buttons */}
         <div className="flex justify-between mt-4">
           <Button
@@ -926,6 +929,7 @@ const ResumeBuilder = () => {
                   {resumeData.personal.github && (
                     <a
                       href={resumeData.personal.github}
+                      placeholder="GitHub Profile URL"
                       target="_blank"
                       rel="noopener noreferrer"
                       title="GitHub"
