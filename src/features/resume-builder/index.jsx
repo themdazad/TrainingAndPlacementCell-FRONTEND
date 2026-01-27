@@ -36,12 +36,6 @@ const ResumeBuilder = () => {
       },
     ],
     education: [
-      {
-        institution: 'Government Engineering College, Siwan',
-        duration: '22 - 2026',
-        degree: 'B.Tech in Electrical Engineering - Bihar Engineering University, Patna',
-        result: 'CGPA 8.10/10',
-      },
       // Placeholder entry
       {
         institution: 'Your Institution Name',
@@ -51,12 +45,6 @@ const ResumeBuilder = () => {
       },
     ],
     experience: [
-      {
-        company: 'Bihar State Power Holding Company Ltd.',
-        duration: 'May 2024 - Jul 2024',
-        role: 'Intern',
-        desc: 'Assisted in maintenance of power distribution systems. Learned about transformer operation, load management, and safety protocols. Participated in field visits and technical workshops.',
-      },
       // Placeholder entry
       {
         company: 'Your Company Name',
@@ -66,11 +54,6 @@ const ResumeBuilder = () => {
       },
     ],
     projects: [
-      {
-        title: 'Smart Energy Meter using Arduino',
-        links: [{ label: 'Github', url: 'https://github.com/priyasharma/smart-energy-meter' }],
-        desc: 'Designed and implemented a smart energy meter using Arduino and GSM module for real-time energy monitoring and automated billing. Reduced manual errors and improved efficiency.',
-      },
       {
         title: 'Solar-Powered Water Pump',
         links: [{ label: 'Demo Video', url: 'https://youtu.be/demo-solar-pump' }],
@@ -330,7 +313,7 @@ const ResumeBuilder = () => {
                     }}
                   />
                   <Input
-                    label="Result"
+                    label="CGPA/Percentage"
                     variant="bordered"
                     className="mb-2"
                     value={edu.result}
@@ -808,7 +791,7 @@ const ResumeBuilder = () => {
       <div className=" overflow-x-scroll">
         <div
           id="resume-preview"
-          className=" bg-white shadow-2xl p-[0.5in] print:w-[210mm] print:h-[297mm] text-black font-serif print:shadow-none print:m-0"
+          className=" bg-white shadow-2xl p-[0.5in] w-[210mm] h-[297mm] text-black font-serif print:shadow-none print:m-0"
         >
           {/* Header (Basic Details) */}
           <section className="border-b-1 border-black pb-2 flex flex-row items-start justify-between">
