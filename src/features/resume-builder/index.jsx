@@ -242,17 +242,7 @@ const ResumeBuilder = () => {
                   })
                 }
               />
-              <Input
-                label="GitHub Profile URL"
-                variant="bordered"
-                value={resumeData.personal.github || ''}
-                onChange={(e) =>
-                  setResumeData({
-                    ...resumeData,
-                    personal: { ...resumeData.personal, github: e.target.value },
-                  })
-                }
-              />
+
               <Input
                 label="LinkedIn Profile URL"
                 variant="bordered"
@@ -261,6 +251,17 @@ const ResumeBuilder = () => {
                   setResumeData({
                     ...resumeData,
                     personal: { ...resumeData.personal, linkedin: e.target.value },
+                  })
+                }
+              />
+              <Input
+                label="GitHub Profile URL"
+                variant="bordered"
+                value={resumeData.personal.github || ''}
+                onChange={(e) =>
+                  setResumeData({
+                    ...resumeData,
+                    personal: { ...resumeData.personal, github: e.target.value },
                   })
                 }
               />
@@ -802,17 +803,6 @@ const ResumeBuilder = () => {
                 <p>Email: {resumeData.personal.email}</p>
                 <p>Address: {resumeData.personal.address}</p>
                 <div className="flex justify-center gap-6 mt-1">
-                  {resumeData.personal.github && (
-                    <a
-                      href={resumeData.personal.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title="GitHub"
-                      className="text-gray-700 flex items-center gap-2 hover:text-black"
-                    >
-                      <Github /> {resumeData.personal.github}
-                    </a>
-                  )}
                   {resumeData.personal.linkedin && (
                     <a
                       href={resumeData.personal.linkedin}
@@ -823,6 +813,17 @@ const ResumeBuilder = () => {
                     >
                       <Linkedin />
                       {resumeData.personal.linkedin}
+                    </a>
+                  )}
+                  {resumeData.personal.github && (
+                    <a
+                      href={resumeData.personal.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="GitHub"
+                      className="text-gray-700 flex items-center gap-2 hover:text-black"
+                    >
+                      <Github /> {resumeData.personal.github}
                     </a>
                   )}
                 </div>
