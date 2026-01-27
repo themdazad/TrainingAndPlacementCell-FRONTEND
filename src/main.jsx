@@ -4,13 +4,17 @@ import { Toaster } from 'sonner';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { store } from './store/store.js';
+
 import AutoThemeListener from './components/layout/AutoThemeListener';
 import CookieConsent from 'react-cookie-consent';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import { HeroUIProvider } from '@heroui/react';
 import { BrowserRouter } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop.js';
 import AuthValidator from './components/auth/AuthValidator.jsx';
 import ThemeToggle from './components/ui/ThemeToggle.jsx';
+
 // This line enables sending cookies with cross-origin requests with axios(Backend can save cookies directly:)
 axios.defaults.withCredentials = true;
 import AppRoutes from './routes/index.jsx';
