@@ -249,7 +249,7 @@ const ResumeBuilder = () => {
               />
 
               <Input
-                label="LinkedIn Profile URL"
+                label="LinkedIn Profile (Optional)"
                 variant="bordered"
                 placeholder="e.g., https://www.linkedin.com/in/themdazad"
                 onChange={(e) =>
@@ -260,7 +260,7 @@ const ResumeBuilder = () => {
                 }
               />
               <Input
-                label="GitHub Profile URL"
+                label="GitHub Profile (Optional)"
                 variant="bordered"
                 placeholder="e.g., https://github.com/themdazad"
                 onChange={(e) =>
