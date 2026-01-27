@@ -70,9 +70,9 @@ export default function Hero() {
               <Download className="mr-2 w-5 h-5 transition-transform group-hover:scale-110" />
               Download Brochure
             </a>
-            <Link to={PATHS.MAIN.ASSISTANT}>
+            <Link to={PATHS.MAIN.RESUME_BUILDER}>
               <button className="flex items-center justify-center bg-blue-600 text-white hover:bg-blue-700 px-6 py-3 rounded-3xl transition-all duration-200 transform hover:scale-105">
-                Explore opportunities
+                Resume Builder
               </button>
             </Link>
           </motion.div>

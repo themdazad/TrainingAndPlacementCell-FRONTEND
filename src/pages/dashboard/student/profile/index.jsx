@@ -126,7 +126,7 @@ const StudentProfile = () => {
         },
       };
 
-      const response = await authAPI.updateProfile(updateData);
+      const response = await authAPI.updateAccount(updateData);
       // Update Redux state with new user data
       if (response.user) {
         dispatch(setUser(response.user));

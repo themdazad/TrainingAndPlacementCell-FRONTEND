@@ -17,6 +17,10 @@ const NavigationMenuDetails = [
     name: 'Gallery',
     path: PATHS.MAIN.GALLERY,
   },
+  {
+    name: 'Resume Builder',
+    path: PATHS.MAIN.RESUME_BUILDER,
+  },
   // Static Info
   {
     name: 'About us',

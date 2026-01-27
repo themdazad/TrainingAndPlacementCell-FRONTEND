@@ -15,6 +15,7 @@ const Home = lazy(() => import('../pages/home'));
 const AboutUs = lazy(() => import('../pages/about/index.jsx'));
 const Alumni = lazy(() => import('../pages/alumni/index.jsx'));
 const Gallery = lazy(() => import('../pages/gallery/index.jsx'));
+const ResumeBuilder = lazy(() => import('../features/resume-builder'));
 
 // Auth Pages
 const Login = lazy(() => import('../pages/auth/components/Login.jsx'));
@@ -51,6 +52,7 @@ const AppRoutes = () => {
           <Route path={PATHS.MAIN.ABOUT_US} element={<AboutUs />} />
           <Route path={PATHS.MAIN.ALUMNI} element={<Alumni />} />
           <Route path={PATHS.MAIN.GALLERY} element={<Gallery />} />
+          <Route path={PATHS.MAIN.RESUME_BUILDER} element={<ResumeBuilder />} />
         </Route>
 
         {/* 🔐 Auth Routes - Redirect if already logged in */}
