@@ -424,7 +424,7 @@ const ResumeBuilder = () => {
             title={
               <div className="flex items-center gap-2">
                 <Award size={16} />
-                <span>Experience</span>
+                <span>Internships/Experience</span>
               </div>
             }
           >
@@ -849,7 +849,7 @@ const ResumeBuilder = () => {
             ) && (
               <section className="mt-6">
                 <h2 className="text-lg font-bold border-b-1 border-gray-300 uppercase tracking-wider">
-                  Education
+                  Educations
                 </h2>
                 {resumeData.education.map(
                   (edu, index) =>
@@ -898,7 +898,7 @@ const ResumeBuilder = () => {
             ) && (
               <section className="mt-6">
                 <h2 className="text-lg font-bold border-b-1 border-gray-300 uppercase tracking-wider">
-                  Experience
+                  Internships/Experiences
                 </h2>
                 {resumeData.experience.map(
                   (exp, idx) =>
