@@ -15,13 +15,13 @@ const Home = lazy(() => import('../pages/home'));
 const AboutUs = lazy(() => import('../pages/about/index.jsx'));
 const Alumni = lazy(() => import('../pages/alumni/index.jsx'));
 const Gallery = lazy(() => import('../pages/gallery/index.jsx'));
+const Projects = lazy(() => import('../pages/projects'));
 const ResumeBuilder = lazy(() => import('../features/resume-builder'));
 
 // Auth Pages
 const Login = lazy(() => import('../pages/auth/components/Login.jsx'));
 const Signup = lazy(() => import('../pages/auth/components/Signup.jsx'));
 const ForgotPassword = lazy(() => import('../pages/auth/components/ForgotPassword.jsx'));
-() => import('../pages/auth/components/ForgotPassword.jsx');
 
 const ResetPassword = lazy(() => import('../pages/auth/components/ResetPassword.jsx'));
 
@@ -32,12 +32,14 @@ const Dashboard = lazy(() => import('../pages/dashboard/index.jsx'));
 // Student Dashboard Pages
 const StudentDashboard = lazy(() => import('../pages/dashboard/student'));
 const StudentProfile = lazy(() => import('../pages/dashboard/student/profile'));
+const StudentProjects = lazy(() => import('../pages/dashboard/student/projects'));
 
 // Admin Dashboard Pages
 const AdminDashboard = lazy(() => import('../pages/dashboard/admin'));
 const AdminStudents = lazy(() => import('../pages/dashboard/admin/students'));
 const AdminUserVerification = lazy(() => import('../pages/dashboard/admin/user-verification'));
 const AdminAnnouncements = lazy(() => import('../pages/dashboard/admin/announcements'));
+const AdminProjects = lazy(() => import('../pages/dashboard/admin/projects'));
 
 const AppRoutes = () => {
   const { user } = useSelector((state) => state.auth);
@@ -52,6 +54,7 @@ const AppRoutes = () => {
           <Route path={PATHS.MAIN.ABOUT_US} element={<AboutUs />} />
           <Route path={PATHS.MAIN.ALUMNI} element={<Alumni />} />
           <Route path={PATHS.MAIN.GALLERY} element={<Gallery />} />
+          <Route path={PATHS.MAIN.PROJECTS} element={<Projects />} />
           <Route path={PATHS.MAIN.RESUME_BUILDER} element={<ResumeBuilder />} />
         </Route>
 
@@ -119,6 +122,14 @@ const AppRoutes = () => {
               </ProtectedRoute>
             }
           />
+          <Route
+            path={PATHS.STUDENT.PROJECTS}
+            element={
+              <ProtectedRoute allowedRoles={[USER_ROLES.STUDENT]}>
+                <StudentProjects />
+              </ProtectedRoute>
+            }
+          />
 
           {/* ===================== ADMIN ROUTES ===================== */}
           <Route
@@ -151,6 +162,14 @@ const AppRoutes = () => {
             element={
               <ProtectedRoute allowedRoles={[USER_ROLES.ADMIN]}>
                 <AdminAnnouncements />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={PATHS.ADMIN.PROJECTS}
+            element={
+              <ProtectedRoute allowedRoles={[USER_ROLES.ADMIN]}>
+                <AdminProjects />
               </ProtectedRoute>
             }
           />

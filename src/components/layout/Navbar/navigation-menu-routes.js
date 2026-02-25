@@ -18,6 +18,10 @@ const NavigationMenuDetails = [
     path: PATHS.MAIN.GALLERY,
   },
   {
+    name: 'Projects',
+    path: PATHS.MAIN.PROJECTS,
+  },
+  {
     name: 'Resume Builder',
     path: PATHS.MAIN.RESUME_BUILDER,
   },
