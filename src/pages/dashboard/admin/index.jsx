@@ -79,7 +79,7 @@ const AdminDashboard = () => {
       </div>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-7 gap-4">
         <StatCard
           title="Total Students"
           value={stats.totalStudents}
@@ -183,6 +183,23 @@ const AdminDashboard = () => {
             </svg>
           }
         />
+        <StatCard
+          title="Unverified Users"
+          value={stats.unverifiedUsers}
+          color="warning"
+          loading={loading}
+          icon={
+            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M12 9v2m0 4h.01M5.07 19h13.86c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.73 3z"
+                fill="none"
+              />
+            </svg>
+          }
+        />
       </div>
 
       {/* Placement Progress */}
@@ -227,7 +244,25 @@ const AdminDashboard = () => {
       </Card>
 
       {/* Quick Actions */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
+        <Button
+          as={Link}
+          to={PATHS.ADMIN.PROJECTS}
+          className="h-20 flex-col gap-2"
+          variant="flat"
+          color="secondary"
+        >
+          <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M3 7a2 2 0 012-2h3.586a1 1 0 01.707.293l1.414 1.414A1 1 0 0011.414 7H19a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"
+              fill="none"
+            />
+          </svg>
+          Project Approvals ({stats.pendingApprovals})
+        </Button>
         <Button
           as={Link}
           to={PATHS.ADMIN.USER_VERIFICATION}
