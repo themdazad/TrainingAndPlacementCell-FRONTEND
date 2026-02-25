@@ -28,6 +28,24 @@ export const JOB_STATUS = {
   CANCELLED: 'Cancelled',
 };
 
+// Project Status (matching backend enum)
+export const PROJECT_STATUS = {
+  DRAFT: 'Draft',
+  APPROVED: 'Approved',
+  REJECTED: 'Rejected',
+  PUBLISHED: 'Published',
+  ARCHIVED: 'Archived',
+};
+
+// Project status colors (HeroUI color names)
+export const PROJECT_STATUS_COLORS = {
+  Draft: 'default',
+  Approved: 'success',
+  Rejected: 'danger',
+  Published: 'primary',
+  Archived: 'warning',
+};
+
 // Application Status
 export const APPLICATION_STATUS = {
   PENDING: 'Pending',
@@ -155,6 +173,8 @@ export default {
   USER_ROLES,
   JOB_TYPES,
   JOB_STATUS,
+  PROJECT_STATUS,
+  PROJECT_STATUS_COLORS,
   APPLICATION_STATUS,
   APPLICATION_STATUS_COLORS,
   EVENT_TYPES,

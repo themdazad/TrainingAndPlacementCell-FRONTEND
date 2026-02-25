@@ -32,6 +32,11 @@ const navigationConfig = {
       path: PATHS.STUDENT.PROFILE,
       icon: 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z',
     },
+    {
+      label: 'Projects',
+      path: PATHS.STUDENT.PROJECTS,
+      icon: 'M19 21H5a2 2 0 01-2-2V7a2 2 0 012-2h5l2 2h7a2 2 0 012 2v10a2 2 0 01-2 2z',
+    },
   ],
   [USER_ROLES.ADMIN]: [
     {
@@ -43,6 +48,11 @@ const navigationConfig = {
       label: 'Announcements',
       path: PATHS.ADMIN.ANNOUNCEMENTS,
       icon: 'M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z',
+    },
+    {
+      label: 'Projects',
+      path: PATHS.ADMIN.PROJECTS,
+      icon: 'M19 21H5a2 2 0 01-2-2V7a2 2 0 012-2h5l2 2h7a2 2 0 012 2v10a2 2 0 01-2 2z',
     },
     {
       label: 'User Verification',

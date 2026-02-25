@@ -5,6 +5,7 @@ const PATHS = {
     ABOUT_US: '/about-us',
     ALUMNI: '/alumni',
     GALLERY: '/gallery',
+    PROJECTS: '/projects',
     RESUME_BUILDER: '/resume-builder',
     ASSISTANT: '/ai_assistant',
   },
@@ -27,6 +28,7 @@ const PATHS = {
   // Student Dashboard
   STUDENT: {
     DASHBOARD: '/dashboard/student',
+    PROJECTS: '/dashboard/student/projects',
     JOBS: '/dashboard/student/jobs',
     JOB_DETAIL: '/dashboard/student/jobs/:jobId',
     APPLICATIONS: '/dashboard/student/applications',
@@ -38,6 +40,7 @@ const PATHS = {
   // Admin Dashboard
   ADMIN: {
     DASHBOARD: '/dashboard/admin',
+    PROJECTS: '/dashboard/admin/projects',
     JOBS: '/dashboard/admin/jobs',
     JOB_DETAIL: '/dashboard/admin/jobs/:jobId',
     STUDENTS: '/dashboard/admin/students',
