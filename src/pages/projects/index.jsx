@@ -13,6 +13,8 @@ import { toast } from '../../utils/toast';
 import { useProjects } from '../../hooks/api';
 import { PROJECT_STATUS_COLORS } from '../../constants/api.constants';
 
+const numberFormatter = new Intl.NumberFormat('en-US');
+
 const ProjectsPage = () => {
   const { getPublishedProjects, incrementViews, loading } = useProjects();
   const [projects, setProjects] = useState([]);
@@ -41,8 +43,39 @@ const ProjectsPage = () => {
   }, [page]);
 
   const handleSearch = () => {
+    const shouldLoadImmediately = page === 1;
     setPage(1);
-    loadProjects(1, search);
+
+    // Avoid duplicate fetch when page change already triggers useEffect.
+    if (shouldLoadImmediately) {
+      loadProjects(1, search);
+    }
+  };
+
+  const getProjectDestination = (project) =>
+    project?.links?.liveDemo || project?.links?.repository || project?.links?.documentation || null;
+
+  const getProjectActionLabel = (project) => {
+    if (project?.links?.liveDemo) return 'Open Live Demo';
+    if (project?.links?.repository) return 'View Repository';
+    if (project?.links?.documentation) return 'Read Docs';
+    return 'No Public Link';
+  };
+
+  const getInitials = (name = '') =>
+    name
+      .split(' ')
+      .filter(Boolean)
+      .slice(0, 2)
+      .map((part) => part[0]?.toUpperCase())
+      .join('') || 'ST';
+
+  const formatDate = (value) => {
+    if (!value) return 'Recently published';
+
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) return 'Recently published';
+    return `Published ${date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}`;
   };
 
   const handleViewProject = async (project) => {
@@ -52,8 +85,7 @@ const ProjectsPage = () => {
       // keep UX uninterrupted
     }
 
-    const destination =
-      project?.links?.liveDemo || project?.links?.repository || project?.links?.documentation;
+    const destination = getProjectDestination(project);
 
     if (!destination) {
       toast.info('No public link available for this project yet');
@@ -64,11 +96,28 @@ const ProjectsPage = () => {
   };
 
   return (
-    <div className="max-w-screen-2xl mx-auto px-4 md:px-8 py-8 space-y-6">
+    <div className="max-w-screen-2xl mx-auto px-4 md:px-8 py-8 space-y-8">
+      <div className="relative overflow-hidden rounded-3xl border border-default-200 bg-gradient-to-br from-content1 via-content1 to-primary/5 p-5 md:p-7">
+        <div className="absolute -top-16 -right-16 h-44 w-44 rounded-full bg-primary/10 blur-2xl" />
+        <div className="relative flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+          <div>
+            <p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold">
+              Showcase
+            </p>
+            <h1 className="text-3xl md:text-4xl font-black leading-tight">Student Projects</h1>
+            <p className="text-default-600 mt-2">Explore published projects from students</p>
+          </div>
+          <div className="rounded-2xl bg-content2/70 px-4 py-3 border border-default-200">
+            <p className="text-xs text-default-500 uppercase tracking-wide">Total Results</p>
+            <p className="text-2xl font-bold">{numberFormatter.format(pagination.total || 0)}</p>
+          </div>
+        </div>
+      </div>
+
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
         <div>
-          <h1 className="text-2xl md:text-3xl font-bold">Student Projects</h1>
-          <p className="text-default-500">Explore published projects from students</p>
+          <h2 className="text-xl md:text-2xl font-bold">Browse and discover</h2>
+          <p className="text-default-500 text-sm">Search by title, domain, or summary keywords</p>
         </div>
         <div className="flex gap-2 w-full md:w-auto">
           <Input
@@ -76,7 +125,16 @@ const ProjectsPage = () => {
             onChange={(event) => setSearch(event.target.value)}
             onKeyDown={(event) => event.key === 'Enter' && handleSearch()}
             placeholder="Search by title or description"
-            className="w-full md:w-80"
+            className="w-full md:w-96"
+            isClearable
+            onClear={() => {
+              setSearch('');
+              if (page === 1) {
+                loadProjects(1, '');
+              } else {
+                setPage(1);
+              }
+            }}
           />
           <Button color="primary" onPress={handleSearch}>
             Search
@@ -85,24 +143,35 @@ const ProjectsPage = () => {
       </div>
 
       {loading ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {Array.from({ length: 6 }).map((_, index) => (
-            <Card key={index}>
-              <CardBody className="space-y-3">
-                <Skeleton className="h-6 w-3/4 rounded-lg" />
-                <Skeleton className="h-16 w-full rounded-lg" />
-                <Skeleton className="h-8 w-full rounded-lg" />
+            <Card key={index} className="border border-default-200">
+              <CardHeader className="pb-2">
+                <div className="w-full space-y-3">
+                  <Skeleton className="h-5 w-3/4 rounded-md" />
+                  <Skeleton className="h-4 w-1/2 rounded-md" />
+                </div>
+              </CardHeader>
+              <CardBody className="space-y-4">
+                <Skeleton className="h-14 w-full rounded-lg" />
+                <Skeleton className="h-8 w-2/3 rounded-lg" />
+                <Skeleton className="h-10 w-full rounded-lg" />
               </CardBody>
             </Card>
           ))}
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {projects.map((project) => (
-            <Card key={project._id} className="h-full">
-              <CardHeader className="flex flex-col items-start gap-2">
-                <div className="flex justify-between items-start w-full gap-2">
-                  <h3 className="font-semibold line-clamp-2">{project.title}</h3>
+            <Card
+              key={project._id}
+              className="h-full border border-default-200 hover:border-primary/40 transition-all duration-300 hover:-translate-y-1"
+            >
+              <CardHeader className="flex flex-col items-start gap-3 pb-2">
+                <div className="flex justify-between items-start w-full gap-3">
+                  <h3 className="font-semibold text-base leading-6 line-clamp-2">
+                    {project.title}
+                  </h3>
                   <Chip
                     size="sm"
                     color={PROJECT_STATUS_COLORS[project.status] || 'default'}
@@ -111,15 +180,24 @@ const ProjectsPage = () => {
                     {project.status}
                   </Chip>
                 </div>
-                <p className="text-xs text-default-500">
-                  By {project?.uploadedBy?.personalInfo?.fullName || 'Student'}
-                </p>
-                <p className="text-xs text-default-500">
-                  Reg No: {project?.uploadedBy?.academicInfo?.registrationNumber || 'N/A'}
-                </p>
+                <div className="flex items-center gap-3 w-full">
+                  <div className="h-10 w-10 rounded-full bg-primary/15 text-primary font-semibold flex items-center justify-center text-xs">
+                    {getInitials(project?.uploadedBy?.personalInfo?.fullName || 'Student')}
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-sm font-medium truncate">
+                      {project?.uploadedBy?.personalInfo?.fullName || 'Student'}
+                    </p>
+                    <p className="text-xs text-default-500 truncate">
+                      Reg No: {project?.uploadedBy?.academicInfo?.registrationNumber || 'N/A'}
+                    </p>
+                  </div>
+                </div>
               </CardHeader>
-              <CardBody className="pt-0 space-y-4">
-                <p className="text-sm text-default-600 line-clamp-3">{project.description}</p>
+              <CardBody className="pt-0 h-full flex flex-col gap-4">
+                <p className="text-sm text-default-600 line-clamp-3 min-h-[60px]">
+                  {project.description}
+                </p>
 
                 <div className="flex flex-wrap gap-1">
                   {(project.technologies || []).slice(0, 4).map((tech) => (
@@ -127,17 +205,44 @@ const ProjectsPage = () => {
                       {tech}
                     </Chip>
                   ))}
+                  {(project.technologies || []).length > 4 && (
+                    <Chip size="sm" variant="flat" color="default">
+                      +{(project.technologies || []).length - 4} more
+                    </Chip>
+                  )}
                 </div>
 
-                <div className="flex justify-between items-center">
-                  <span className="text-xs text-default-500">{project.views || 0} views</span>
+                <div className="mt-auto space-y-3">
+                  <div className="flex justify-between items-center text-xs text-default-500 border-t border-default-100 pt-3">
+                    <span>{numberFormatter.format(project.views || 0)} views</span>
+                    <span>{formatDate(project.createdAt)}</span>
+                  </div>
+                  <div className="flex gap-2 flex-wrap">
+                    {project?.links?.liveDemo && (
+                      <Chip size="sm" variant="flat" color="success">
+                        Live Demo
+                      </Chip>
+                    )}
+                    {project?.links?.repository && (
+                      <Chip size="sm" variant="flat" color="secondary">
+                        GitHub
+                      </Chip>
+                    )}
+                    {project?.links?.documentation && (
+                      <Chip size="sm" variant="flat" color="warning">
+                        Docs
+                      </Chip>
+                    )}
+                  </div>
                   <Button
-                    size="sm"
+                    size="md"
                     color="primary"
-                    variant="flat"
+                    variant="shadow"
                     onPress={() => handleViewProject(project)}
+                    isDisabled={!getProjectDestination(project)}
+                    className="w-full font-semibold"
                   >
-                    View Project
+                    {getProjectActionLabel(project)}
                   </Button>
                 </div>
               </CardBody>
@@ -147,9 +252,12 @@ const ProjectsPage = () => {
       )}
 
       {!loading && projects.length === 0 && (
-        <Card>
-          <CardBody className="text-center py-10">
-            <p className="text-default-500">No published projects found.</p>
+        <Card className="border border-dashed border-default-300">
+          <CardBody className="text-center py-12 space-y-2">
+            <p className="text-lg font-semibold">No published projects found</p>
+            <p className="text-default-500 text-sm">
+              Try a different keyword or clear your search to see more results.
+            </p>
           </CardBody>
         </Card>
       )}

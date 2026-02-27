@@ -108,7 +108,7 @@ const ResumeBuilder = () => {
           <h2 className="text-2xl font-bold text-primary">Resume Editor</h2>
           <div className="flex flex-row items-center space-x-2">
             <Button onPress={() => window.print()} className="!rounded-md">
-              Save as PDF
+              Print
             </Button>
             <Button
               color="danger"
@@ -895,23 +895,26 @@ const ResumeBuilder = () => {
       </Card>
 
       {/* RIGHT: LIVE PREVIEW (Styled to match your layout ) */}
-      <div className=" overflow-x-scroll">
+      <div className=" overflow-x-scroll ">
         <div
           id="resume-preview"
           className=" bg-white shadow-2xl p-[0.5in] w-[210mm] h-[297mm] text-black font-serif print:shadow-none print:m-0"
         >
           {/* Header (Basic Details) */}
-          <section className="border-b-1 border-black pb-2 flex flex-row items-start justify-between">
-            <div>
+          <section className="border-b-1 border-black pb-2">
+            <div className="text-center">
               <h1 className="text-3xl font-bold">{resumeData.personal.name}</h1>
               <div className="text-sm mt-1">
-                <p>
-                  Phone:{' '}
-                  {(resumeData.personal.countryCode || '+91') +
-                    ' ' +
-                    (resumeData.personal.phone || '')}
-                </p>
-                <p>Email: {resumeData.personal.email}</p>
+                <div className="contact-details flex justify-center gap-4">
+                  <p>
+                    Phone:{' '}
+                    {(resumeData.personal.countryCode || '+91') +
+                      ' ' +
+                      (resumeData.personal.phone || '')}
+                  </p>
+                  <p>Email: {resumeData.personal.email}</p>
+                </div>
+
                 <p>Address: {resumeData.personal.address}</p>
                 <div className="flex justify-center gap-6 mt-1">
                   {resumeData.personal.linkedin && (
@@ -941,12 +944,6 @@ const ResumeBuilder = () => {
                 </div>
               </div>
             </div>
-            <img
-              src="/images/logos/collegelogo.png"
-              alt="College Logo"
-              className="h-24 w-auto object-contain ml-4"
-              style={{ maxWidth: '160px' }}
-            />
           </section>
 
           {/* Summary Section  */}
@@ -967,7 +964,7 @@ const ResumeBuilder = () => {
                 edu.result
             ) && (
               <section className="mt-6">
-                <h2 className="text-lg font-bold border-b-1 border-gray-300 uppercase tracking-wider">
+                <h2 className="text-md font-bold border-b-1 border-gray-300 uppercase tracking-wider">
                   Educations
                 </h2>
                 {resumeData.education.map(
@@ -1004,7 +1001,7 @@ const ResumeBuilder = () => {
             resumeData.skills.length > 0 &&
             resumeData.skills.some((skill) => skill.label || skill.content) && (
               <section className="mt-6">
-                <h2 className="text-lg font-bold border-b-1 border-gray-300 uppercase tracking-wider">
+                <h2 className="text-md font-bold border-b-1 border-gray-300 uppercase tracking-wider">
                   Skills
                 </h2>
                 <div className="mt-2 text-sm space-y-1">
@@ -1027,7 +1024,7 @@ const ResumeBuilder = () => {
               (exp) => exp.company || exp.role || exp.duration || exp.desc
             ) && (
               <section className="mt-6">
-                <h2 className="text-lg font-bold border-b-1 border-gray-300 uppercase tracking-wider">
+                <h2 className="text-md font-bold border-b-1 border-gray-300 uppercase tracking-wider">
                   Internships/Experiences
                 </h2>
                 {resumeData.experience.map(
@@ -1065,7 +1062,7 @@ const ResumeBuilder = () => {
                 proj.desc
             ) && (
               <section className="mt-6">
-                <h2 className="text-lg font-bold border-b-1 border-gray-300 uppercase tracking-wider">
+                <h2 className="text-md font-bold border-b-1 border-gray-300 uppercase tracking-wider">
                   Projects
                 </h2>
                 {resumeData.projects.map(
@@ -1119,7 +1116,7 @@ const ResumeBuilder = () => {
               (cert) => cert.name || cert.description || cert.year
             ) && (
               <section className="mt-6">
-                <h2 className="text-lg font-bold border-b-1 border-gray-300 uppercase tracking-wider">
+                <h2 className="text-md font-bold border-b-1 border-gray-300 uppercase tracking-wider">
                   Certifications
                 </h2>
                 <div className="mt-2 text-sm space-y-1">
@@ -1141,7 +1138,7 @@ const ResumeBuilder = () => {
             resumeData.achievements.length > 0 &&
             resumeData.achievements.some((ach) => ach.title || ach.desc) && (
               <section className="mt-6">
-                <h2 className="text-lg font-bold border-b-1 border-gray-300 uppercase tracking-wider">
+                <h2 className="text-md font-bold border-b-1 border-gray-300 uppercase tracking-wider">
                   Achievements
                 </h2>
                 <div className="mt-2 text-sm space-y-1">
