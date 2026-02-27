@@ -10,11 +10,22 @@ import { toast } from '../../../utils/toast';
 import { getFullName } from '../../../utils/helpers';
 import PATHS from '../../../constants/paths';
 import usersAPI from '../../../api/services/users.api';
+7799022129;
+
+const STAT_COLOR_CLASSES = {
+  primary: 'bg-primary/10 text-primary',
+  success: 'bg-success/10 text-success',
+  secondary: 'bg-secondary/10 text-secondary',
+  warning: 'bg-warning/10 text-warning',
+  danger: 'bg-danger/10 text-danger',
+};
 
 const StatCard = ({ title, value, subtitle, icon, color = 'primary', loading }) => (
   <Card className="bg-content1">
     <CardBody className="flex flex-row items-center gap-4">
-      <div className={`p-3 rounded-xl bg-${color}/10 text-${color}`}>{icon}</div>
+      <div className={`p-3 rounded-xl ${STAT_COLOR_CLASSES[color] || STAT_COLOR_CLASSES.primary}`}>
+        {icon}
+      </div>
       <div className="flex-1">
         <p className="text-sm text-default-500">{title}</p>
         {loading ? (
@@ -70,11 +81,6 @@ const AdminDashboard = () => {
         <div>
           <h1 className="text-2xl font-bold">Admin Dashboard</h1>
           <p className="text-default-500">Welcome back, {getFullName(user) || 'Admin'}</p>
-        </div>
-        <div className="flex gap-2">
-          <Button color="primary" as={Link} to={PATHS.ADMIN.ANALYTICS}>
-            View Reports
-          </Button>
         </div>
       </div>
 

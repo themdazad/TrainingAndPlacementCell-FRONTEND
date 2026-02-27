@@ -28,7 +28,14 @@ import { useProjects } from '../../../../hooks/api';
 import { PROJECT_STATUS, PROJECT_STATUS_COLORS } from '../../../../constants/api.constants';
 
 const AdminProjects = () => {
-  const { getAllProjects, approveProject, publishProject, archiveProject, loading } = useProjects();
+  const {
+    getAllProjects,
+    approveProject,
+    publishProject,
+    suspendProject,
+    adminDeleteProject,
+    loading,
+  } = useProjects();
   const [projects, setProjects] = useState([]);
   const [pagination, setPagination] = useState({ page: 1, pages: 1, total: 0 });
   const [filters, setFilters] = useState({
@@ -67,8 +74,13 @@ const AdminProjects = () => {
 
   const handleSearch = () => {
     const nextFilters = { ...filters, page: 1 };
+    const shouldLoadImmediately = filters.page === 1;
     setFilters(nextFilters);
-    loadProjects(nextFilters);
+
+    // Avoid duplicate request when page change already triggers useEffect.
+    if (shouldLoadImmediately) {
+      loadProjects(nextFilters);
+    }
   };
 
   const handleFilterChange = (key, value) => {
@@ -110,11 +122,29 @@ const AdminProjects = () => {
 
   const handleArchive = async (id) => {
     try {
-      await archiveProject(id);
-      toast.success('Project archived successfully');
+      await suspendProject(id);
+      toast.success('Project suspended successfully');
       await loadProjects(filters);
     } catch (error) {
-      toast.error(error?.response?.data?.message || 'Failed to archive project');
+      toast.error(error?.response?.data?.message || 'Failed to suspend project');
+    }
+  };
+
+  const handleDelete = async (id) => {
+    const shouldDelete = window.confirm(
+      'Delete this project permanently? This action cannot be undone.'
+    );
+
+    if (!shouldDelete) {
+      return;
+    }
+
+    try {
+      await adminDeleteProject(id);
+      toast.success('Project deleted successfully');
+      await loadProjects(filters);
+    } catch (error) {
+      toast.error(error?.response?.data?.message || 'Failed to delete project');
     }
   };
 
@@ -131,7 +161,9 @@ const AdminProjects = () => {
     <div className="space-y-6">
       <div>
         <h1 className="text-2xl font-bold">Projects Moderation</h1>
-        <p className="text-default-500">Review, approve, publish, and archive student projects</p>
+        <p className="text-default-500">
+          Review, approve, publish, suspend, and delete student projects
+        </p>
       </div>
 
       <Card>
@@ -257,7 +289,15 @@ const AdminProjects = () => {
                         onPress={() => handleArchive(project._id)}
                         isDisabled={project.status === PROJECT_STATUS.ARCHIVED}
                       >
-                        Archive
+                        Suspend
+                      </Button>
+                      <Button
+                        size="sm"
+                        color="danger"
+                        variant="flat"
+                        onPress={() => handleDelete(project._id)}
+                      >
+                        Delete
                       </Button>
                     </div>
                   </TableCell>

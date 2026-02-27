@@ -108,6 +108,26 @@ const projectAPI = {
   },
 
   /**
+   * Suspend project (admin)
+   * @param {string} id
+   * @returns {Promise<import('axios').AxiosResponse<any>>}
+   */
+  suspendProject: async (id) => {
+    const response = await apiClient.post(`/projects/${id}/suspend`);
+    return response;
+  },
+
+  /**
+   * Delete project (admin)
+   * @param {string} id
+   * @returns {Promise<import('axios').AxiosResponse<any>>}
+   */
+  adminDeleteProject: async (id) => {
+    const response = await apiClient.delete(`/projects/${id}/admin-delete`);
+    return response;
+  },
+
+  /**
    * Increment project views (public)
    * @param {string} id
    * @returns {Promise<import('axios').AxiosResponse<any>>}

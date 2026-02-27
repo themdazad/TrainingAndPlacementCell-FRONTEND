@@ -68,6 +68,16 @@ const useProjects = () => {
     [execute]
   );
 
+  const suspendProject = useCallback(
+    (id) => execute(() => projectAPI.suspendProject(id)),
+    [execute]
+  );
+
+  const adminDeleteProject = useCallback(
+    (id) => execute(() => projectAPI.adminDeleteProject(id)),
+    [execute]
+  );
+
   const incrementViews = useCallback(
     (id) => execute(() => projectAPI.incrementViews(id)),
     [execute]
@@ -88,6 +98,8 @@ const useProjects = () => {
     approveProject,
     publishProject,
     archiveProject,
+    suspendProject,
+    adminDeleteProject,
     incrementViews,
   };
 };

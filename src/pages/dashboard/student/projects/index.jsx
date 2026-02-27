@@ -139,9 +139,14 @@ const StudentProjects = () => {
   };
 
   const applyStatusFilter = (nextStatus) => {
+    const shouldLoadImmediately = page === 1;
     setStatusFilter(nextStatus);
     setPage(1);
-    loadProjects(1, nextStatus);
+
+    // Avoid duplicate request when page change already triggers useEffect.
+    if (shouldLoadImmediately) {
+      loadProjects(1, nextStatus);
+    }
   };
 
   return (
