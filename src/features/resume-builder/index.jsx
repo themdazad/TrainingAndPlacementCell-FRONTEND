@@ -154,7 +154,6 @@ const ResumeBuilder = () => {
             </Button>
           </div>
         </div>
-
         <Tabs
           aria-label="Resume Sections"
           color="primary"

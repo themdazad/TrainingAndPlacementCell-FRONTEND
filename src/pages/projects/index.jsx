@@ -97,21 +97,10 @@ const ProjectsPage = () => {
 
   return (
     <div className="max-w-screen-2xl mx-auto px-4 md:px-8 py-8 space-y-8">
-      <div className="relative overflow-hidden rounded-3xl border border-default-200 bg-gradient-to-br from-content1 via-content1 to-primary/5 p-5 md:p-7">
-        <div className="absolute -top-16 -right-16 h-44 w-44 rounded-full bg-primary/10 blur-2xl" />
-        <div className="relative flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-          <div>
-            <p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold">
-              Showcase
-            </p>
-            <h1 className="text-3xl md:text-4xl font-black leading-tight">Student Projects</h1>
-            <p className="text-default-600 mt-2">Explore published projects from students</p>
-          </div>
-          <div className="rounded-2xl bg-content2/70 px-4 py-3 border border-default-200">
-            <p className="text-xs text-default-500 uppercase tracking-wide">Total Results</p>
-            <p className="text-2xl font-bold">{numberFormatter.format(pagination.total || 0)}</p>
-          </div>
-        </div>
+      <div className="text-center">
+        <p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold">Showcase</p>
+        <h1 className="text-3xl md:text-4xl font-black leading-tight">Student Projects</h1>
+        <p className="text-default-600 mt-2">Explore published projects from students</p>
       </div>
 
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">

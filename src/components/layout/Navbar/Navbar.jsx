@@ -33,13 +33,13 @@ export default function Navbar() {
   });
 
   return (
-    <nav className="sticky top-0 w-full z-[100]">
+    <nav className="sticky top-0 w-full z-[100] ">
       <div
-        className={`transition-all duration-500 ease-in-out ${
+        className={`transition-all duration-500 ease-in-out backdrop-blur-xl  ${
           isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
         }`}
       >
-        <div className="max-w-screen-2xl mx-auto dark:bg-slate-950 shadow-sm bg-white">
+        <div className="max-w-screen-2xl mx-auto shadow-sm ">
           {/* Main Header: Logo + Actions */}
           <div className="px-6 md:px-12 py-4 flex justify-between items-center">
             <div className="hidden lg:flex items-center">
@@ -61,7 +61,7 @@ export default function Navbar() {
             </div>
           </div>
           {/* Desktop Navigation Row */}
-          <div className="hidden lg:flex px-6 md:px-12 pb-3 pt-2 bg-slate-100 dark:bg-slate-900 border-t border-slate-200/50 dark:border-slate-800/50">
+          <div className="hidden lg:flex px-6 md:px-12 pb-3 pt-2  border-t border-slate-200/50 dark:border-slate-800/50">
             <NavigationMenu isDropdownOpen={isDropdownOpen} setIsDropdownOpen={setIsDropdownOpen} />
           </div>
         </div>
